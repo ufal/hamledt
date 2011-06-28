@@ -1,11 +1,11 @@
-LANGCODE=en
+LANGCODE=ar
 DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
 
 prepare_source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(DATADIR)/source
-	#ln -s or cp or wget ... $(DATADIR)/source/train.conll
-	#ln -s or cp or wget ... $(DATADIR)/source/test.conll
+	ln -s /net/data/conll/2007/ar/train.conll $(DATADIR)/source/train.conll
+	ln -s /net/data/conll/2007/ar/test.conll $(DATADIR)/source/test.conll
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
