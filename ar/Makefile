@@ -23,8 +23,8 @@ prepare_dirs:
 # run a conversion of the original data into the treex format
 # and store the results in 000_orig/
 to_treex:
-	treex -L$(LANGCODE) Read::CoNLLX from=$(TRAIN) lines_per_doc=500 A2A::AR::CoNLL2PDTStyle Write::Treex to=$(DATADIR)/treex/000_orig/train
-	treex -L$(LANGCODE) Read::CoNLLX from=$(TEST) lines_per_doc=500 A2A::AR::CoNLL2PDTStyle Write::Treex to=$(DATADIR)/treex/000_orig/test
+	treex -L$(LANGCODE) Read::CoNLLX from=$(TRAIN) lines_per_doc=500 A2A::AR::CoNLL2PDTStyle Write::Treex to=$(DATADIR)/treex/000_orig/train/000.treex
+	#treex -L$(LANGCODE) Read::CoNLLX from=$(TEST) lines_per_doc=500 A2A::AR::CoNLL2PDTStyle Write::Treex to=$(DATADIR)/treex/000_orig/test
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
