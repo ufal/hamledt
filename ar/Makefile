@@ -1,11 +1,13 @@
 LANGCODE=ar
 DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
+TRAIN=$(DATADIR)/source/train.conll
+TEST=$(DATADIR)/source/test.conll
 
 prepare_source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(DATADIR)/source
-	ln -s /net/data/conll/2007/ar/train.conll $(DATADIR)/source/train.conll
-	ln -s /net/data/conll/2007/ar/test.conll $(DATADIR)/source/test.conll
+	ln -s /net/data/conll/2007/ar/train.conll $(TRAIN)
+	ln -s /net/data/conll/2007/ar/test.conll $(TEST)
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
@@ -21,6 +23,8 @@ prepare_dirs:
 # run a conversion of the original data into the treex format
 # and store the results in 000_orig/
 to_treex:
+	treex -L$(LANGCODE) Read::CoNLLX from=$(TRAIN) lines_per_doc=500 A2A::AR::CoNLL2PDTStyle Write::Treex to=$(DATADIR)/treex/000_orig/train
+	treex -L$(LANGCODE) Read::CoNLLX from=$(TEST) lines_per_doc=500 A2A::AR::CoNLL2PDTStyle Write::Treex to=$(DATADIR)/treex/000_orig/test
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
