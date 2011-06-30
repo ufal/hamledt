@@ -1,34 +1,40 @@
 LANGCODE=ta
 DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
+IN       = $(DATADIR)/source
+DIR0     = $(DATADIR)/treex/000_orig
+DIR1     = $(DATADIR)/treex/001_pdtstyle
+TREEX    = treex -L$(LANGCODE)
+IMPORT   = Read::CoNLLX lines_per_doc=500
+WRITE    = Write::Treex
 
 # treebank
 TB=/net/data/TamilTB/TamilTB.v0.1/data/TamilTB.v0.1.conll
 
 # orig conll
-CONLL_FILE=$(DATADIR)/treex/000_orig/$(LANGCODE).conll
-CONLL_TRAIN=$(DATADIR)/treex/000_orig/train/$(LANGCODE)_train.conll
-CONLL_TEST=$(DATADIR)/treex/000_orig/test/$(LANGCODE)_test.conll
+CONLL_FILE=$(DIR0)/$(LANGCODE).conll
+CONLL_TRAIN=$(DIR0)/train/$(LANGCODE)_train.conll
+CONLL_TEST=$(DIR0)/test/$(LANGCODE)_test.conll
 
 # pdt style treebank in treex format
-TREEX_FILE=$(DATADIR)/treex/001_pdtstyle/$(LANGCODE).treex
-TREEX_TRAIN=$(DATADIR)/treex/001_pdtstyle/train/$(LANGCODE)_train.treex
-TREEX_TEST=$(DATADIR)/treex/001_pdtstyle/test/$(LANGCODE)_test.treex
+TREEX_FILE=$(DIR1)/$(LANGCODE).treex
+TREEX_TRAIN=$(DIR1)/train/$(LANGCODE)_train.treex
+TREEX_TEST=$(DIR1)/test/$(LANGCODE)_test.treex
 
 all: clean prepare_dirs to_treex to_pdt
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
 	mkdir -p $(DATADIR)
-	mkdir -p $(DATADIR)/treex/000_orig
-	mkdir -p $(DATADIR)/treex/000_orig/train
-	mkdir -p $(DATADIR)/treex/000_orig/test
-	mkdir -p $(DATADIR)/treex/001_pdtstyle
-	mkdir -p $(DATADIR)/treex/001_pdtstyle/train
-	mkdir -p $(DATADIR)/treex/001_pdtstyle/test
+	mkdir -p $(DIR0)
+	mkdir -p $(DIR0)/train
+	mkdir -p $(DIR0)/test
+	mkdir -p $(DIR1)
+	mkdir -p $(DIR1)/train
+	mkdir -p $(DIR1)/test
 
 # run a conversion of the original data into the treex format
 # and store the results in 000_orig/
-to_treex:	
+to_treex:
 	@echo "\n"
 	cp $(TB) $(CONLL_FILE)
 	@echo "\n"

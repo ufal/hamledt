@@ -1,11 +1,17 @@
 LANGCODE=ar
 DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
-TRAIN=$(DATADIR)/source/train.conll
-TEST=$(DATADIR)/source/test.conll
+IN       = $(DATADIR)/source
+DIR0     = $(DATADIR)/treex/000_orig
+DIR1     = $(DATADIR)/treex/001_pdtstyle
+TREEX    = treex -L$(LANGCODE)
+IMPORT   = Read::CoNLLX lines_per_doc=500
+WRITE    = Write::Treex
+TRAIN=$(IN)/train.conll
+TEST=$(IN)/test.conll
 
 prepare_source:
 	mkdir -p $(DATADIR)
-	mkdir -p $(DATADIR)/source
+	mkdir -p $(IN)
 	ln -s /net/data/conll/2007/ar/train.conll $(TRAIN)
 	ln -s /net/data/conll/2007/ar/test.conll $(TEST)
 
@@ -13,26 +19,31 @@ prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
 	mkdir -p $(DATADIR)
 	if [ ! -e data ]; then ln -s $(DATADIR) data; fi
-	mkdir -p $(DATADIR)/treex/000_orig
-	mkdir -p $(DATADIR)/treex/000_orig/train
-	mkdir -p $(DATADIR)/treex/000_orig/test
-	mkdir -p $(DATADIR)/treex/001_pdtstyle
-	mkdir -p $(DATADIR)/treex/001_pdtstyle/train
-	mkdir -p $(DATADIR)/treex/001_pdtstyle/test
+	mkdir -p $(DIR0)
+	mkdir -p $(DIR0)/train
+	mkdir -p $(DIR0)/test
+	mkdir -p $(DIR1)
+	mkdir -p $(DIR1)/train
+	mkdir -p $(DIR1)/test
 
 # run a conversion of the original data into the treex format
 # and store the results in 000_orig/
 READ = Read::CoNLLX lines_per_doc=500
 WRITE = Write::Treex file_stem=''
-IN = $(DATADIR)/source
-OUT = $(DATADIR)/treex/000_orig
+IN = $(IN)
+OUT = $(DIR0)
 to_treex:
+	$(TREEX) $(IMPORT) from=$(IN)/train.conll $(WRITE) path=$(DIR0)/train/
+	$(TREEX) $(IMPORT) from=$(IN)/test.conll  $(WRITE) path=$(DIR0)/test/
 	treex -L$(LANGCODE) $(READ) from=$(IN)/train.conll $(WRITE) path=$(OUT)/train/
 	treex -L$(LANGCODE) $(READ) from=$(IN)/test.conll  $(WRITE) path=$(OUT)/test/
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
+SCEN1 = A2A::AR::CoNLL2PDTStyle
 to_pdt:
+	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
+	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex
 
 clean:
 	rm -rf $(DATADIR)/treex
