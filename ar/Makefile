@@ -35,8 +35,6 @@ OUT = $(DIR0)
 to_treex:
 	$(TREEX) $(IMPORT) from=$(IN)/train.conll $(WRITE) path=$(DIR0)/train/
 	$(TREEX) $(IMPORT) from=$(IN)/test.conll  $(WRITE) path=$(DIR0)/test/
-	treex -L$(LANGCODE) $(READ) from=$(IN)/train.conll $(WRITE) path=$(OUT)/train/
-	treex -L$(LANGCODE) $(READ) from=$(IN)/test.conll  $(WRITE) path=$(OUT)/test/
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
