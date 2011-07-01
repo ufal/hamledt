@@ -6,3 +6,12 @@ training size = 2861 sentences, 44731 tokens
 test size     =  402 sentences,  4244 tokens
 
 See the documentation in /net/data/russian-dt/doc.
+
+========================================================
+
+SynTagRus
+
+License: unknown (Natalka should know more)
+
+- not divided into training and testing part
+
