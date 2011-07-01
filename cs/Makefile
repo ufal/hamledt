@@ -5,6 +5,8 @@ DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle
 TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::CoNLLX lines_per_doc=500
+WRITE0   = Write::Treex file_stem=''
+WRITE0   = Write::Treex file_stem=''
 WRITE    = Write::Treex
 
 prepare_source:
@@ -27,8 +29,8 @@ prepare_dirs:
 # run a conversion of the original data into the treex format
 # and store the results in 000_orig/
 to_treex:
-	$(TREEX) $(IMPORT) from=$(IN)/train.conll $(WRITE) path=$(DIR0)/train/
-	$(TREEX) $(IMPORT) from=$(IN)/test.conll  $(WRITE) path=$(DIR0)/test/
+	$(TREEX) $(IMPORT) from=$(IN)/train.conll $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORT) from=$(IN)/test.conll  $(WRITE0) path=$(DIR0)/test/
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
@@ -39,5 +41,3 @@ to_pdt:
 
 clean:
 	rm -rf $(DATADIR)/treex
-
-

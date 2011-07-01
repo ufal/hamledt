@@ -58,44 +58,17 @@ sub process_makefile
     while(<MAKEFILE>)
     {
         $i_line++;
-        # Apply new shortcuts.
-        s-\$\(DATADIR\)/source-\$(IN)-g;
-        s-\$\(DATADIR\)/treex/000_orig-\$(DIR0)-g;
-        s-\$\(DATADIR\)/treex/001_pdtstyle-\$(DIR1)-g;
-        print MF1;
-        # Insert new variable definitions after line 2.
-        if($i_line==2)
+        if(m/WRITE\s*=\s*Write::Treex/)
         {
-            print MF1 <<EOF
-IN       = \$(DATADIR)/source
-DIR0     = \$(DATADIR)/treex/000_orig
-DIR1     = \$(DATADIR)/treex/001_pdtstyle
-TREEX    = treex -L\$(LANGCODE)
-IMPORT   = Read::CoNLLX lines_per_doc=500
-WRITE    = Write::Treex
-EOF
-            ;
-            $i_line += 6;
-        }
-        # Insert commands for goal to_treex.
-        if(m/^to_treex:$/)
-        {
-            print MF1 ("\t", '$(TREEX) $(IMPORT) from=$(IN)/train.conll $(WRITE) path=$(DIR0)/train/', "\n");
-            print MF1 ("\t", '$(TREEX) $(IMPORT) from=$(IN)/test.conll  $(WRITE) path=$(DIR0)/test/', "\n");
-            $i_line += 2;
-        }
-        # Define the to_pdt scenario.
-        if(m/and store the result in 001_pdtstyle/)
-        {
-            print MF1 ("SCEN1 = A2A::", $lang, "::CoNLL2PDTStyle\n");
+            print STDERR (" ... hit WRITE\n");
+            print MF1 ("WRITE0   = Write::Treex file_stem=''\n");
+            print MF1 ("WRITE    = Write::Treex\n");
             $i_line++;
         }
-        # Insert commands for goal to_pdt.
-        if(m/^to_pdt:$/)
+        else
         {
-            print MF1 ("\t", '$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex', "\n");
-            print MF1 ("\t", '$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex', "\n");
-            $i_line += 2;
+            s/(\$\(TREEX\) \$\(IMPORT\) from=\$\(IN\)\/(train|test)\.conll\s+\$\()WRITE(\) path)/$1WRITE0$3/;
+            print MF1;
         }
     }
     close(MAKEFILE);

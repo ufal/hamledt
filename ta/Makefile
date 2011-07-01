@@ -5,6 +5,7 @@ DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle
 TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::CoNLLX lines_per_doc=500
+WRITE0   = Write::Treex file_stem=''
 WRITE    = Write::Treex
 
 # treebank
