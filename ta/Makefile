@@ -8,24 +8,16 @@ IMPORT   = Read::CoNLLX lines_per_doc=500
 WRITE0   = Write::Treex file_stem=''
 WRITE    = Write::Treex
 
-# treebank
-TB=/net/data/TamilTB/TamilTB.v0.1/data/TamilTB.v0.1.conll
-
-# orig conll
-CONLL_FILE=$(DIR0)/$(LANGCODE).conll
-CONLL_TRAIN=$(DIR0)/train/$(LANGCODE)_train.conll
-CONLL_TEST=$(DIR0)/test/$(LANGCODE)_test.conll
-
-# pdt style treebank in treex format
-TREEX_FILE=$(DIR1)/$(LANGCODE).treex
-TREEX_TRAIN=$(DIR1)/train/$(LANGCODE)_train.treex
-TREEX_TEST=$(DIR1)/test/$(LANGCODE)_test.treex
-
-all: clean prepare_dirs to_treex to_pdt
+prepare_source:
+	mkdir -p $(DATADIR)
+	mkdir -p $(IN)
+	ln -s /net/data/TamilTB/train.conll $(IN)/train.conll
+	ln -s /net/data/TamilTB/test.conll $(IN)/test.conll
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
 	mkdir -p $(DATADIR)
+	if [ ! -e data ]; then ln -s $(DATADIR) data; fi
 	mkdir -p $(DIR0)
 	mkdir -p $(DIR0)/train
 	mkdir -p $(DIR0)/test
@@ -36,20 +28,15 @@ prepare_dirs:
 # run a conversion of the original data into the treex format
 # and store the results in 000_orig/
 to_treex:
-	@echo "\n"
-	cp $(TB) $(CONLL_FILE)
-	@echo "\n"
-	@echo "Dividing the data into training and testing sets ==> \n"
-	cat $(CONLL_FILE) | $(TMT_ROOT)/tools/data_partitioning/divide_data.pl -x $(CONLL_TRAIN) -y $(CONLL_TEST)
+	$(TREEX) $(IMPORT) from=$(IN)/train.conll $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORT) from=$(IN)/test.conll  $(WRITE0) path=$(DIR0)/test/
 
 # make the trees as similar to the PDT-style as possible
-# and store the result in 000_pdtstyle
+# and store the result in 001_pdtstyle
+SCEN1 = A2A::TA::CoNLL2PDTStyle
 to_pdt:
-	@echo "\n"
-	@echo "Converting conll files into pdt style treex format ==> \n"
-	treex -Lta Read::CoNLLX from=$(CONLL_FILE) A2A::TA::CoNLL2PDTStyle Write::Treex to=$(TREEX_FILE)
-	treex -Lta Read::CoNLLX from=$(CONLL_TRAIN) A2A::TA::CoNLL2PDTStyle Write::Treex to=$(TREEX_TRAIN)
-	treex -Lta Read::CoNLLX from=$(CONLL_TEST) A2A::TA::CoNLL2PDTStyle Write::Treex to=$(TREEX_TEST)
+	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
+	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex
 
 clean:
 	rm -rf $(DATADIR)/treex
