@@ -38,5 +38,9 @@ to_pdt:
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex
 
+# This goal serves development and debugging of the CoNLL2PDTStyle block.
+test:
+	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/ -- $(DIR0)/test/*.treex
+
 clean:
 	rm -rf $(DATADIR)/treex

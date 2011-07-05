@@ -58,16 +58,18 @@ sub process_makefile
     while(<MAKEFILE>)
     {
         $i_line++;
-        if(m/WRITE\s*=\s*Write::Treex/)
+        if(m/\t\$\(TREEX\) \$\(SCEN1\).*\/test\//)
         {
-            print STDERR (" ... hit WRITE\n");
-            print MF1 ("WRITE0   = Write::Treex file_stem=''\n");
-            print MF1 ("WRITE    = Write::Treex\n");
-            $i_line++;
+            print STDERR (" ... hit SCEN1\n");
+            print MF1;
+            print MF1 ("\n");
+            print MF1 ("\# This goal serves development and debugging of the CoNLL2PDTStyle block.\n");
+            print MF1 ("test:\n");
+            print MF1 ("\t\$(TREEX) \$(SCEN1) \$(WRITE) path=\$(DIR1)/test/ -- \$(DIR0)/test/*.treex\n");
+            $i_line += 4;
         }
         else
         {
-            s/(\$\(TREEX\) \$\(IMPORT\) from=\$\(IN\)\/(train|test)\.conll\s+\$\()WRITE(\) path)/$1WRITE0$3/;
             print MF1;
         }
     }
