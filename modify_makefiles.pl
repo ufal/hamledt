@@ -58,15 +58,16 @@ sub process_makefile
     while(<MAKEFILE>)
     {
         $i_line++;
-        if(m/\t\$\(TREEX\) \$\(SCEN1\).*\/test\//)
+        if(m/chmod g\+w/)
         {
-            print STDERR (" ... hit SCEN1\n");
+            $i_line--;
+        }
+        elsif(m/mkdir -p \$\(DIR1\)\/test/)
+        {
+            print STDERR (" ... hit -e data\n");
             print MF1;
-            print MF1 ("\n");
-            print MF1 ("\# This goal serves development and debugging of the CoNLL2PDTStyle block.\n");
-            print MF1 ("test:\n");
-            print MF1 ("\t\$(TREEX) \$(SCEN1) \$(WRITE) path=\$(DIR1)/test/ -- \$(DIR0)/test/*.treex\n");
-            $i_line += 4;
+            print MF1 ("\tchmod -R g+w data/. data/*\n");
+            $i_line++;
         }
         else
         {

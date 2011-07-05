@@ -23,6 +23,7 @@ prepare_dirs:
 	mkdir -p $(DIR1)
 	mkdir -p $(DIR1)/train
 	mkdir -p $(DIR1)/test
+	chmod -R g+w data/. data/*
 
 # run a conversion of the original data into the treex format
 # and store the results in 000_orig/
