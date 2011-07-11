@@ -11,8 +11,8 @@ WRITE    = Write::Treex
 prepare_source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	ln -s /net/data/conll/2007/el/train.conll $(IN)/train.conll
-	ln -s /net/data/conll/2007/el/test.conll $(IN)/test.conll
+	ln -s  /net/data/conll/2010-pred-publikaci/2007/multilingual_data/greek/gdt/train/greek_gdt_train.conll $(IN)/train.conll
+	ln -s /net/data/conll/2010-pred-publikaci/2007/multilingual_test/greek/gdt/test/greek_gdt_test.conll  $(IN)/test.conll
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
