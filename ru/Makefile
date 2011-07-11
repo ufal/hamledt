@@ -11,8 +11,7 @@ WRITE    = Write::Treex
 prepare_source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	cp /net/data/russian-dt/data_csts/*.csts $(IN)
-	mv $(IN)/Vyzhivshij_kamikadze.csts $(IN)/test.csts
+	./copy_and_rename_files.pl
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
