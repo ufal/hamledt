@@ -1,47 +1,47 @@
---	11
-AC	658
-ADC	27
-AG	17581
-AMS	435
-APP	2401
-AVC	35
-CC	1779
-CD	15765
-CJ	22042
-CM	1970
-CP	6440
-CVC	1355
-DA	4045
-DH	160
-DM	58
-EP	1215
-HD	15
-JU	1290
-MNR	19200
-MO	85349
-NG	4189
-NK	213084
-NMC	2058
-OA	25221
-OA2	16
-OC	28742
-OG	155
-OP	5676
-PAR	1374
-PD	7574
-PG	2627
-PH	265
-PM	3605
-PNC	9101
-PUNC	93887
-RC	5203
-RE	1999
-ROOT	38631
-RS	107
-SB	49986
-SBP	1315
-SP	2
-SVP	3766
-UC	254
-VO	42
+--	11	data/treex/000_orig/train//003#43:dpa
+AC	658	data/treex/000_orig/train//001#54:zum
+ADC	27	data/treex/000_orig/train//008#68:New
+AG	17581	data/treex/000_orig/train//001#7:Welt
+AMS	435	data/treex/000_orig/train//001#53:Jahre
+APP	2401	data/treex/000_orig/train//001#20:Rezession
+AVC	35	data/treex/000_orig/train//011#190:Und
+CC	1779	data/treex/000_orig/train//001#17:Perot
+CD	15765	data/treex/000_orig/train//001#5:und
+CJ	22042	data/treex/000_orig/train//001#5:Demokraten
+CM	1970	data/treex/000_orig/train//001#17:wie
+CP	6440	data/treex/000_orig/train//001#6:Daß
+CVC	1355	data/treex/000_orig/train//001#27:in
+DA	4045	data/treex/000_orig/train//001#9:sich
+DH	160	data/treex/000_orig/train//001#102:FR
+DM	58	data/treex/000_orig/train//001#428:Ja
+EP	1215	data/treex/000_orig/train//001#17:es
+HD	15	data/treex/000_orig/train//012#38:halben
+JU	1290	data/treex/000_orig/train//001#8:Und
+MNR	19200	data/treex/000_orig/train//001#3:über
+MO	85349	data/treex/000_orig/train//001#1:vielleicht
+NG	4189	data/treex/000_orig/train//001#8:nicht
+NK	213084	data/treex/000_orig/train//001#1:ein
+NMC	2058	data/treex/000_orig/train//001#21:20
+OA	25221	data/treex/000_orig/train//001#2:Milliardär
+OA2	16	data/treex/000_orig/train//001#155:das
+OC	28742	data/treex/000_orig/train//001#4:aufgeschreckt
+OG	155	data/treex/000_orig/train//001#127:Gesellschaft
+OP	5676	data/treex/000_orig/train//001#5:um
+PAR	1374	data/treex/000_orig/train//001#142:Stadtverordneter
+PD	7574	data/treex/000_orig/train//001#1:Diktator
+PG	2627	data/treex/000_orig/train//001#10:von
+PH	265	data/treex/000_orig/train//001#6:davon
+PM	3605	data/treex/000_orig/train//001#7:zu
+PNC	9101	data/treex/000_orig/train//001#1:Ross
+PUNC	93887	data/treex/000_orig/train//001#1:``
+RC	5203	data/treex/000_orig/train//001#18:sitzt
+RE	1999	data/treex/000_orig/train//001#22:wäre
+ROOT	38631	data/treex/000_orig/train//001#1:wäre
+RS	107	data/treex/000_orig/train//001#34:sei
+SB	49986	data/treex/000_orig/train//001#1:Perot
+SBP	1315	data/treex/000_orig/train//001#24:von
+SP	2	data/treex/000_orig/train//043#276:brauchen
+SVP	3766	data/treex/000_orig/train//001#2:ab
+UC	254	data/treex/000_orig/train//001#10:President
+VO	42	data/treex/000_orig/train//001#211:Tina
 TOTAL 46 TAG TYPES FOR 680710 TOKENS
