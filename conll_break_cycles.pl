@@ -9,6 +9,8 @@ binmode(STDIN, ":utf8");
 binmode(STDOUT, ":utf8");
 binmode(STDERR, ":utf8");
 
+# Empty first element of @tokens corresponds to the artificial root node.
+@tokens = ([]);
 while(<>)
 {
     # Empty line separates sentences.
@@ -30,7 +32,7 @@ while(<>)
                     if($map[$j])
                     {
                         # Save the information about the original parent at deprel.
-                        $tokens[$lastj][7] .= "-CYCLE:$j"
+                        $tokens[$lastj][7] .= "-CYCLE:$j";
                         # Break the cycle.
                         $tokens[$lastj][6] = 0;
                         $parents[$lastj] = 0;
@@ -49,7 +51,7 @@ while(<>)
             }
             print("\n");
         }
-        splice(@tokens);
+        @tokens = ([]);
     }
     else
     {
