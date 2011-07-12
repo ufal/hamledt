@@ -11,8 +11,8 @@ WRITE    = Write::Treex
 prepare_source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	perl -I /home/zeman/lib /net/work/people/zeman/parsing/projects/icon2009/conll_wx2utf.pl -l $(LANGCODE) < /net/data/icon2010/hi/fine-grained/training/hindi_training.conll > $(IN)/train.conll
-	perl -I /home/zeman/lib /net/work/people/zeman/parsing/projects/icon2009/conll_wx2utf.pl -l $(LANGCODE) < /net/data/icon2010/hi/fine-grained/development/hindi_development.conll > $(IN)/test.conll
+	perl -I /home/zeman/lib /net/work/people/zeman/parsing/projects/icon2009/conll_wx2utf.pl -l $(LANGCODE) < /net/data/icon2010/hi/fine-grained/training/hindi_training.conll | ../conll_break_cycles.pl > $(IN)/train.conll
+	perl -I /home/zeman/lib /net/work/people/zeman/parsing/projects/icon2009/conll_wx2utf.pl -l $(LANGCODE) < /net/data/icon2010/hi/fine-grained/development/hindi_development.conll | ../conll_break_cycles.pl > $(IN)/test.conll
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
