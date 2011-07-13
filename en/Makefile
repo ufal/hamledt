@@ -13,7 +13,8 @@ prepare_source:
 	mkdir -p $(IN)
 	ln -s /net/data/conll/2009/en/train.conll $(IN)/train.conll
 	ln -s /net/data/conll/2009/en/dev.conll $(IN)/test.conll
-	
+	perl trim_conll.pl data/source/train.conll data/source/train_trim.conll 
+	perl trim_conll.pl data/source/test.conll data/source/test_trim.conll 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
 	mkdir -p $(DATADIR)
@@ -29,8 +30,8 @@ prepare_dirs:
 # run a conversion of the original data into the treex format
 # and store the results in 000_orig/
 to_treex:
-	$(TREEX) $(IMPORT) from=$(IN)/train2.conll $(WRITE0) path=$(DIR0)/train/
-	$(TREEX) $(IMPORT) from=$(IN)/test2.conll  $(WRITE0) path=$(DIR0)/test/
+	$(TREEX) $(IMPORT) from=$(IN)/train_trim.conll $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORT) from=$(IN)/test_trim.conll  $(WRITE0) path=$(DIR0)/test/
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
