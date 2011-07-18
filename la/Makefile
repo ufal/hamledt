@@ -57,5 +57,6 @@ test:
 
 clean:
 	rm -rf $(DATADIR)/treex
+	rm -rf $(DATADIR)/source
 
 
