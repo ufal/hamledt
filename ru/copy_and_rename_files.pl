@@ -51,7 +51,7 @@ foreach my $subdir (@src_subdirs)
             # Hard-wired selection of the test file:
             if($file3 eq 'vyzhivshij_kamikadze.tgt')
             {
-                $file3 = 'test.tgt';
+                $file3 .= '.TEST';
             }
             # Copy the source file to the target file.
             my $srcfile = "$path/$file";

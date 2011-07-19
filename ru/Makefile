@@ -29,7 +29,7 @@ prepare_dirs:
 # and store the results in 000_orig/
 to_treex:
 	cat $(IN)/*.tgt | $(TREEX) $(IMPORT) language=ru $(WRITE0) path=$(DIR0)/train/
-#	$(TREEX) $(IMPORT) from=$(IN)/test.conll  $(WRITE0) path=$(DIR0)/test/
+	cat $(IN)/*.tgt.TEST | $(TREEX) $(IMPORT) language=ru $(WRITE0) path=$(DIR0)/test/
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
