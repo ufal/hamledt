@@ -18,7 +18,12 @@ GetOptions(
 sub error {
     my $message = shift;
     die "ERROR: $message
-Usage:
+Run transform.pl --help to see its correct usage.
+";
+}
+
+sub usage {
+    die "Usage:
   transform.pl [OPTIONS] [LANGUAGES] [TRANSFORMERS]
      LANGUAGES     - list of ISO codes of languages to be processed
      TRANSFORMERS  - list of transformation blocks (short module names, without namespace)
@@ -30,12 +35,14 @@ Usage:
 ";
 }
 
+my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
+
 sub find_available_languages {
     my $share_dir = Treex::Core::Config::share_dir();
     my @languages = grep {/^.{2,3}$/}
         map {/(\w+)$/;$1}
             grep {glob "$_/treex/001_pdtstyle/*/*treex"}
-            glob "../../../../share/data/resources/normalized_treebanks/*";
+            glob "$data_dir/*";
     print STDERR scalar(@languages)," languages with available PDT-styled data: ",(join " ",sort @languages),"\n\n";
     return @languages;
 }
@@ -50,7 +57,7 @@ sub find_available_transformers {
 }
 
 if ($help) {
-    error('Missing arguments');
+    usage('');
 }
 
 my @transformers;
@@ -90,7 +97,7 @@ else {
     @languages = @listed_languages;
 }
 
-if ($allt) {
+if ($allt or $all) {
     if (@listed_transformers) {
         error "No transformation list can be specified if --all or --allt is present";
     }
@@ -100,3 +107,29 @@ else {
     @transformers = @listed_transformers;
 }
 
+if (not @languages) {
+    error "Languages to be processed must be specified, either by listing them or by --alll or --all options.";
+}
+
+if (not @transformers) {
+    error "Some transformations must be specified, either by listing them or by --allt or --all options.";
+}
+
+
+my $tasks = @transformers * @languages;
+
+print STDERR "Total number of transformation tasks: ".
+    scalar(@languages)." language(s) * ".scalar(@transformers)." transformation(s) = $tasks task(s)\n";
+
+my $current_task;
+
+foreach my $transformer (@transformers) {
+    foreach my $language (@languages) {
+        $current_task++;
+#        my $command_line = "treex A2A::Transform::$transformer -- $data_dir/$language/treex/001_pdtstyle/*/*treex";
+
+        my $command_line = 'treex '.($parallel?'-p ':'')."A2A::Transform::$transformer language=$language Util::Eval document='my \$path=\$document->path; \$path=~s/001_pdtstyle/trans_$transformer/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' Write::Treex -- $data_dir/$language/treex/001_pdtstyle/*/*treex";
+        print STDERR "Executing task $current_task/$tasks\n $command_line\n\n";
+        system $command_line;
+    }
+}
