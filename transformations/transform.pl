@@ -128,7 +128,11 @@ foreach my $transformer (@transformers) {
         $current_task++;
 #        my $command_line = "treex A2A::Transform::$transformer -- $data_dir/$language/treex/001_pdtstyle/*/*treex";
 
-        my $command_line = 'treex '.($parallel?'-p ':'')."A2A::Transform::$transformer language=$language Util::Eval document='my \$path=\$document->path; \$path=~s/001_pdtstyle/trans_$transformer/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' Write::Treex -- $data_dir/$language/treex/001_pdtstyle/*/*treex";
+        my $command_line = 'treex '.($parallel?'-p ':'')
+            . "A2A::CopyAtree source_language=$language language=$language selector=before " # storing trees before transformation
+                ."A2A::Transform::$transformer language=$language "
+                    . "Util::Eval document='my \$path=\$document->path; \$path=~s/001_pdtstyle/trans_$transformer/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' "
+                        . " Write::Treex -- $data_dir/$language/treex/001_pdtstyle/*/*treex";
         print STDERR "Executing task $current_task/$tasks\n $command_line\n\n";
         system $command_line;
     }
