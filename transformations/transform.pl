@@ -129,6 +129,7 @@ foreach my $transformer (@transformers) {
 #        my $command_line = "treex A2A::Transform::$transformer -- $data_dir/$language/treex/001_pdtstyle/*/*treex";
 
         my $command_line = 'treex '.($parallel?'-p ':'')
+            . " Util::Eval bundle='\$bundle->remove_zone(qw($language),qw(orig))' " # remove the original trees (before PDT styling)
             . "A2A::CopyAtree source_language=$language language=$language selector=before " # storing trees before transformation
                 ."A2A::Transform::$transformer language=$language "
                     . "Util::Eval document='my \$path=\$document->path; \$path=~s/001_pdtstyle/trans_$transformer/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' "
