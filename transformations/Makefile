@@ -17,3 +17,6 @@ stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \
 	/net/projects/tectomt_shared//data/resources/normalized_treebanks/{bg,bn,cs,da,de,el,hi,la,sl,ta,te}/treex/trans*/*/*treex \
 	> stats.raw
+
+resume:
+	cat stats.raw | resume_stats.pl
