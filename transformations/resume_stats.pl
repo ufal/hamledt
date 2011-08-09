@@ -9,7 +9,8 @@ my %nodes;
 while (<>) {
     chomp;
     my ($language,$transformation) = split;
-    $nodes{$language}++;
+    $transformation =~ s/trans_//;
+    $nodes{$language}{$transformation}++;
     $transformations{$transformation}{$language}++ if $transformation ne 'unchanged';
 }
 
@@ -19,11 +20,23 @@ sub string30 {
 
 my @languages = sort keys %nodes;
 
-print string30(""),'   ',(join '   ',@languages),"\n";
+print string30(""),'   ',(join '    ',@languages),"\n";
 
 foreach my $transformation (keys %transformations) {
 
-    print string30($transformation)," ",
-        (join ' ', map {sprintf("%4s",sprintf "%.1f",100*$transformations{$transformation}{$_}/$nodes{$_})} @languages),"\n";
+    print string30($transformation)," ";
+
+    foreach my $language (@languages) {
+        my $value;
+        if ($nodes{$language}{$transformation}) {
+            $value = sprintf ("%.1f",100*$transformations{$transformation}{$language}/$nodes{$language}{$transformation});
+        }
+        else {
+            $value = '?'
+        }
+
+        print sprintf("%5s",$value)." ";
+    }
+    print "\n";
 }
 
