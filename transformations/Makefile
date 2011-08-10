@@ -8,12 +8,9 @@ test:
 	@echo Test: a simple transformation applied on a single language
 	./transform.pl -p cs AllPunctBelowTechRoot
 
-all:
-	./transform.pl -p --allt $(PDT_READY)
+runall:
+	./transform.pl -p --allt $(PDT_READY) 2>&1 | tee runall.log
 
-
-all_pdtready:
-	./transform.pl -p $(PDT_READY) AllPunctBelowTechRoot
 
 stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \
@@ -24,6 +21,6 @@ resume_stats:
 	cat stats.raw | resume_stats.pl
 
 clean:
-	rm stats.raw 
-	rm *cluster-run -rf
+	rm stats.raw  -rf
+	rm *cluster-run* -rf
 	rm $(DATADIR)/*/*/trans* -rf

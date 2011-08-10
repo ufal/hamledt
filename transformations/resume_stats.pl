@@ -26,7 +26,7 @@ my @languages = sort keys %nodes;
 
 print string30(""),'   ',(join '    ',@languages),"\n";
 
-foreach my $directory (keys %directories) {
+foreach my $directory (sort keys %directories) {
 
     print string30($directory)," ";
 
