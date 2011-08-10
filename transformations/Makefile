@@ -17,10 +17,10 @@ all_pdtready:
 
 stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \
-	$(DATADIR)/{bg,bn,cs,da,de,el,hi,la,sl,ta,te}/treex/trans*/*/*treex \
+	$(DATADIR)/*/treex/trans*/*/*treex \
 	> stats.raw
 
-resume:
+resume_stats:
 	cat stats.raw | resume_stats.pl
 
 clean:

@@ -3,15 +3,19 @@
 use strict;
 use warnings;
 
-my %transformations;
 my %nodes;
+my %rehanged_nodes;
+my %directories;
 
 while (<>) {
     chomp;
-    my ($language,$transformation) = split;
-    $transformation =~ s/trans_//;
-    $nodes{$language}{$transformation}++;
-    $transformations{$transformation}{$language}++ if $transformation ne 'unchanged';
+    my ( $language, $directory, $transformation ) = split;
+    $directory =~ s/trans_//;
+    $nodes{$language}{$directory}++;
+    if ($transformation) {
+        $rehanged_nodes{$language}{$directory}++;
+    }
+    $directories{$directory} = 1;
 }
 
 sub string30 {
@@ -22,19 +26,18 @@ my @languages = sort keys %nodes;
 
 print string30(""),'   ',(join '    ',@languages),"\n";
 
-foreach my $transformation (keys %transformations) {
+foreach my $directory (keys %directories) {
 
-    print string30($transformation)," ";
+    print string30($directory)," ";
 
     foreach my $language (@languages) {
         my $value;
-        if ($nodes{$language}{$transformation}) {
-            $value = sprintf ("%.1f",100*$transformations{$transformation}{$language}/$nodes{$language}{$transformation});
+        if ($nodes{$language}{$directory}) {
+            $value = sprintf ("%.2f",100*($rehanged_nodes{$language}{$directory}||0)/$nodes{$language}{$directory});
         }
         else {
-            $value = '?'
+            $value = '???';
         }
-
         print sprintf("%5s",$value)." ";
     }
     print "\n";
