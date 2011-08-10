@@ -16,6 +16,19 @@ foreach my $language (@ARGV) {
     foreach my $dir (glob "$data_dir/$language/treex/*") {
         next if (!-d $dir);
         next if (!-e "$dir/mcd.model");
-        system "treex -ps Util::SetGlobal language=$language selector=mcdnonprojo2 A2A::CopyAtree flatten=1 W2A::ParseMST model=$dir/mcd.model -- $dir/test/*.treex";
+        my $name = $dir;
+        $name =~ s/^.+\///;
+        $name = "$language-$name";
+        print STDERR "Creating script for McD parsing $name.\n";
+        open (BASHSCRIPT, ">:utf8", "$name-parse.sh") or die;
+        print BASHSCRIPT "#!/bin/bash\n\n";
+        print BASHSCRIPT "treex -s Util::SetGlobal language=$language selector=mcdnonprojo2 \\
+  Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' \\
+  A2A::CopyAtree flatten=1 \\
+  W2A::ParseMST model=$dir/mcd.model \\
+  Eval::AtreeUAS selector=''\\
+  -- $dir/test/*.treex >> uas.txt";
+        close BASHSCRIPT;
+        system "qsub -cwd $name-parse.sh";
     }
 }
