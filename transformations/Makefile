@@ -1,13 +1,15 @@
-PDT_READY= bg bn cs da de el hi la sl ta te
-# ar invalid, grc deep recursion (why?)
+PDT_READY= ar bg bn cs da de el grc hi la sl ta te
+
 SHELL=/bin/bash
+
+DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/
 
 test:
 	@echo Test: a simple transformation applied on a single language
 	./transform.pl -p cs AllPunctBelowTechRoot
 
 all:
-	./transform.pl --all
+	./transform.pl -p --allt $(PDT_READY)
 
 
 all_pdtready:
@@ -15,8 +17,13 @@ all_pdtready:
 
 stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \
-	/net/projects/tectomt_shared//data/resources/normalized_treebanks/{bg,bn,cs,da,de,el,hi,la,sl,ta,te}/treex/trans*/*/*treex \
+	$(DATADIR)/{bg,bn,cs,da,de,el,hi,la,sl,ta,te}/treex/trans*/*/*treex \
 	> stats.raw
 
 resume:
 	cat stats.raw | resume_stats.pl
+
+clean:
+	rm stats.raw 
+	rm *cluster-run -rf
+	rm $(DATADIR)/*/*/trans* -rf
