@@ -28,7 +28,7 @@ if ($help || !@ARGV) {
 foreach my $language (@ARGV) {
     foreach my $dir (glob "$data_dir/$language/treex/*") {
         next if (!-d $dir);
-        if (!-e "$dir/parsed/*.treex") {
+        if (!-e "$dir/parsed/001.treex") {
             print STDERR "Treex files not found in 'parsed' directory. They will be copied form 'test' directory.\n";
             system "cp $dir/test/*.treex $dir/parsed/";
         }
@@ -50,10 +50,10 @@ foreach my $language (@ARGV) {
         }
         $scenario .= "Eval::AtreeUAS selector='' ";
         print STDERR "Creating script for parsing ($name).\n";
-        open (BASHSCRIPT, ">:utf8", "$name-parse.sh") or die;
+        open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
         print BASHSCRIPT "#!/bin/bash\n\n";
         print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex >> $dir/parsed/uas.txt";
         close BASHSCRIPT;
-        system "qsub -cwd $name-parse.sh";
+        system "qsub -cwd parse-$name.sh";
     }
 }

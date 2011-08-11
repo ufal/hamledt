@@ -1,5 +1,8 @@
 train:
 	./train.pl --mcd --malt it
 
+parse:
+	./parse.pl --mcd --malt it
+
 clean:
-	rm mcd-* malt-*
+	rm mcd-* malt-* parse-*
