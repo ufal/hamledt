@@ -17,7 +17,7 @@ GetOptions(
 );
 
 if ($help || !@ARGV) {
-    die "Usage: train.pl [OPTIONS] [LANGUAGES]
+    die "Usage: parse.pl [OPTIONS] [LANGUAGES]
     LANGUAGES  - list of ISO codes of languages to be processed
     --mst      - run McDonald's MST parser
     --malt     - run Malt parser
