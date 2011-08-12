@@ -6,8 +6,16 @@ validate:
 	@echo
 	@echo Output of the validation test stored in $(VALLOG)
 
-resume:
+resume_validation:
 	cat $(VALLOG) | grep -v TREEX > errors.log
+
+test:
+	treex -p --survive --jobs $(JOBS) \
+	Util::SetGlobal language=mul \
+	Test::A::MemberInEveryCoAp \
+	-- $(TMT_ROOT)/share/data/resources/normalized_treebanks/*/treex/001_pdtstyle/*/*treex 2>&1 | tee $(VALLOG)
+
+
 
 clean:
 	rm *.log
