@@ -10,13 +10,17 @@ validate:
 resume_validation:
 	cat $(VALLOG) | grep -v TREEX > errors.log
 
-test:
+tests:
 	treex -p --survive --jobs $(JOBS) \
 	Util::SetGlobal language=mul \
 	Test::A::MemberInEveryCoAp \
 	Test::A::CoApAboveEveryMember \
 	-- $(TMT_ROOT)/share/data/resources/normalized_treebanks/*/treex/001_pdtstyle/*/*treex \
 	2>&1 | tee $(TESTLOG)
+
+resume_tests:
+	cat $(TESTLOG) | ./resume_tests.pl
+
 
 clean:
 	rm *.log
