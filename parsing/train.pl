@@ -46,7 +46,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "#!/bin/bash\n\n";
             print BASHSCRIPT "python $mcd_dir/bin/conll2mst.py $dir/parsed/train.conll > $dir/parsed/train.mst\n";
             print BASHSCRIPT "java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx10g mstparser.DependencyParser \\\n";
-            print BASHSCRIPT "  train order:2 format:MST train-file:$dir/parsed/train.mst model-name:$dir/mcd_nonproj_o2.model\n";
+            print BASHSCRIPT "  train order:2 format:MST train-file:$dir/parsed/train.mst model-name:$dir/parsed/mcd_nonproj_o2.model\n";
             close BASHSCRIPT;
             system "qsub -cwd mcd-$name.sh";
         }

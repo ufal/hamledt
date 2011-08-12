@@ -52,7 +52,7 @@ foreach my $language (@ARGV) {
         print STDERR "Creating script for parsing ($name).\n";
         open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
         print BASHSCRIPT "#!/bin/bash\n\n";
-        print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex >> $dir/parsed/uas.txt";
+        print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex > $dir/parsed/uas.txt";
         close BASHSCRIPT;
         system "qsub -cwd parse-$name.sh";
     }
