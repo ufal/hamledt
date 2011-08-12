@@ -1,5 +1,6 @@
 JOBS=120
 VALLOG=validation.log
+TESTLOG=test.log
 
 validate:
 	treex -p --survive --jobs $(JOBS) -- $(TMT_ROOT)/share/data/resources/normalized_treebanks/*/treex/001_pdtstyle/*/*treex 2>&1 | tee $(VALLOG)
@@ -13,9 +14,9 @@ test:
 	treex -p --survive --jobs $(JOBS) \
 	Util::SetGlobal language=mul \
 	Test::A::MemberInEveryCoAp \
-	-- $(TMT_ROOT)/share/data/resources/normalized_treebanks/*/treex/001_pdtstyle/*/*treex 2>&1 | tee $(VALLOG)
-
-
+	Test::A::CoApAboveEveryMember \
+	-- $(TMT_ROOT)/share/data/resources/normalized_treebanks/*/treex/001_pdtstyle/*/*treex \
+	2>&1 | tee $(TESTLOG)
 
 clean:
 	rm *.log
