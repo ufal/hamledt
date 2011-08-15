@@ -40,13 +40,13 @@ foreach my $language (@ARGV) {
             $scenario .= "Util::SetGlobal language=$language selector=mcdnonprojo2 ";
             $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
             $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-            $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model ";
+            $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model tag_attribute=conll/pos ";
         }
         if ($malt && -e "$dir/parsed/malt_stackeager.mco") {
             $scenario .= "Util::SetGlobal language=$language selector=maltstackeager ";
             $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
             $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-            $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_stackeager.mco ";
+            $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_stackeager.mco tag_attribute=conll/pos ";
         }
         $scenario .= "Eval::AtreeUAS selector='' ";
         print STDERR "Creating script for parsing ($name).\n";

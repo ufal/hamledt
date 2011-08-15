@@ -6,3 +6,4 @@ parse:
 
 clean:
 	rm mcd-* malt-* parse-*
+	rm -r ???-cluster-run-?????

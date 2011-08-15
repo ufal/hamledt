@@ -36,10 +36,7 @@ foreach my $language (@ARGV) {
         $name =~ s/^.+\///;
         $name = "$language-$name";
         system "mkdir -p $dir/parsed";
-        if (!-e "$dir/parsed/train.conll") {
-            print STDERR "CoNLL file not found. Will be created.\n";
-            system "treex Write::CoNLLX language=$language -- $dir/train/*.treex > $dir/parsed/train.conll";
-        }
+        system "treex -p Write::CoNLLX language=$language -- $dir/train/*.treex > $dir/parsed/train.conll";
         if ($mcd) {
             print STDERR "Creating script for training McDonald's parser ($name).\n";
             open (BASHSCRIPT, ">:utf8", "mcd-$name.sh") or die;
