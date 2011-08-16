@@ -1,4 +1,4 @@
-JOBS=120
+JOBS=200
 VALLOG=validation.log
 TESTLOG=test.log
 
@@ -13,9 +13,14 @@ resume_validation:
 tests:
 	treex -p --survive --jobs $(JOBS) \
 	Util::SetGlobal language=mul \
-	Test::A::MemberInEveryCoAp \
 	Test::A::CoApAboveEveryMember \
-	-- $(TMT_ROOT)/share/data/resources/normalized_treebanks/*/treex/001_pdtstyle/*/*treex \
+	Test::A::LeafAux \
+	Test::A::MemberInEveryCoAp \
+	Test::A::NonemptyAttr \
+	Test::A::NonleafAuxC \
+	Test::A::NonleafAuxP \
+	Test::A::SubjectBelowVerb \
+	-- $(TMT_ROOT)/share/data/resources/normalized_treebanks/*/treex/001_pdtstyle/t*/*treex \
 	2>&1 | tee $(TESTLOG)
 
 resume_tests:
