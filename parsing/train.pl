@@ -36,7 +36,7 @@ foreach my $language (@ARGV) {
         $name =~ s/^.+\///;
         $name = "$language-$name";
         system "mkdir -p $dir/parsed";
-        system "treex -p Write::CoNLLX language=$language -- $dir/train/*.treex > $dir/parsed/train.conll";
+        system "treex -p -j 100 Write::CoNLLX language=$language -- $dir/train/*.treex > $dir/parsed/train.conll";
         if ($mcd) {
             print STDERR "Creating script for training McDonald's parser ($name).\n";
             open (BASHSCRIPT, ">:utf8", "mcd-$name.sh") or die;
