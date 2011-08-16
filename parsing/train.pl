@@ -35,8 +35,9 @@ foreach my $language (@ARGV) {
         my $name = $dir;
         $name =~ s/^.+\///;
         $name = "$language-$name";
+        my $deprel_attribute = $name =~ /000_orig/ ? 'conll/deprel' : 'afun';
         system "mkdir -p $dir/parsed";
-        system "treex -p -j 100 Write::CoNLLX language=$language -- $dir/train/*.treex > $dir/parsed/train.conll";
+        system "treex -p -j 100 Write::CoNLLX language=$language deprel_attribute=$deprel_attribute -- $dir/train/*.treex > $dir/parsed/train.conll";
         if ($mcd) {
             print STDERR "Creating script for training McDonald's parser ($name).\n";
             open (BASHSCRIPT, ">:utf8", "mcd-$name.sh") or die;
@@ -45,15 +46,15 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n";
             print BASHSCRIPT "  train order:2 format:MST train-file:$dir/parsed/train.mst model-name:$dir/parsed/mcd_nonproj_o2.model\n";
             close BASHSCRIPT;
-            system "qsub -l mf=3g -cwd mcd-$name.sh";
+            system "qsub -l mf=10g -cwd mcd-$name.sh";
         }
         if ($malt) {
             print STDERR "Creating script for training Malt parser ($name).\n";
             open (BASHSCRIPT, ">:utf8", "malt-$name.sh") or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
-            print BASHSCRIPT "cd $dir/parsed/; java -Xmx9g -jar $malt_dir/malt.jar -i train.conll -c malt_stackeager -a stackeager -l liblinear -m learn\n";
+            print BASHSCRIPT "cd $dir/parsed/; java -Xmx29g -jar $malt_dir/malt.jar -i train.conll -c malt_stackeager -a stackeager -l liblinear -m learn\n";
             close BASHSCRIPT;
-            system "qsub -l mf=3g -cwd malt-$name.sh";
+            system "qsub -l mf=30g -cwd malt-$name.sh";
         }
     }
 }
