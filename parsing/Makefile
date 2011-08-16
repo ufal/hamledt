@@ -7,7 +7,10 @@ parse:
 	./parse.pl --mcd --malt ${LANGUAGES} 
 
 table:
-	./print_table.pl --mcd --malt ${LANGUAGES} 
+	echo "MALT PARSER:" 
+	./print_table.pl --malt ${LANGUAGES}
+	echo "MCD PARSER:"
+	./print_table.pl --mcd ${LANGUAGES} 
 
 clean:
 	rm mcd-* malt-* parse-*

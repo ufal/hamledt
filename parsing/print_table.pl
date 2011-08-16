@@ -39,7 +39,10 @@ foreach my $language (@ARGV) {
         while (<UAS>) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
-            if ($sys =~ /malt/) {
+            if ($sys =~ /malt/ && $malt) {
+                $value{$trans}{$language} = substr($score, 0, 5);
+            }
+            elsif ($sys =~ /mcd/ && $mcd) {
                 $value{$trans}{$language} = substr($score, 0, 5);
             }
         }

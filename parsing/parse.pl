@@ -40,13 +40,13 @@ foreach my $language (@ARGV) {
             $scenario .= "Util::SetGlobal language=$language selector=mcdnonprojo2 ";
             $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
             $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-            $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model tag_attribute=conll/pos ";
+            $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model pos_attribute=conll/pos ";
         }
         if ($malt && -e "$dir/parsed/malt_stackeager.mco") {
             $scenario .= "Util::SetGlobal language=$language selector=maltstackeager ";
             $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
             $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-            $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_stackeager.mco tag_attribute=conll/pos ";
+            $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_stackeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos ";
         }
         $scenario .= "Eval::AtreeUAS selector='' ";
         print STDERR "Creating script for parsing ($name).\n";
@@ -54,6 +54,6 @@ foreach my $language (@ARGV) {
         print BASHSCRIPT "#!/bin/bash\n\n";
         print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex > $dir/parsed/uas.txt";
         close BASHSCRIPT;
-        system "qsub -cwd parse-$name.sh";
+        system "qsub -l mf=3g -cwd parse-$name.sh";
     }
 }
