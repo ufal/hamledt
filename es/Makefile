@@ -4,7 +4,7 @@ IN       = $(DATADIR)/source
 DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle
 TREEX    = treex -L$(LANGCODE)
-IMPORT   = Read::CoNLLX lines_per_doc=500
+IMPORT   = Read::CoNLL2009 lines_per_doc=500
 WRITE0   = Write::Treex file_stem=''
 WRITE    = Write::Treex
 
@@ -36,8 +36,8 @@ to_treex:
 # and store the result in 001_pdtstyle
 SCEN1 = A2A::TEMPLATE::CoNLL2PDTStyle
 to_pdt:
-	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
-	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex
+	$(TREEX) -p --jobs 20 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
+	$(TREEX) -p --jobs 20 $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
 test:
