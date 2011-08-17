@@ -42,6 +42,13 @@ to_pdt:
 test:
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/ -- $(DIR0)/test/*.treex
 
+checklog:
+	checklog.sh -p ':\t*#.*|\tNode .*no afun\.' make.e.log
+
+search:
+	treex Util::Eval language=fi \
+	anode='print $$anode->parent->pos,"\n" if "infmod" eq $$anode->conll_deprel' -- \
+	$(DATADIR)/treex/000_orig/*/*.treex | sort | uniq -c | sort -n
 clean:
 	rm -rf $(DATADIR)/treex
 
