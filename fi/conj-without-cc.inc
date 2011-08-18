@@ -1,16 +1,17 @@
 my $punct = qr%^[-,:\x{2013}\x{2212}/;]$%;
-if ("conj" eq $anode->conll_deprel
-    and not grep "cc" eq $_->conll_deprel,
-        $anode->parent->children) {
-    my $bad;
-    my $adept = $anode;
-    $adept = $adept->lbrother while $adept
-        and $adept !~ $punct
-        and ($adept == $anode
-             or "conj" eq $adept->conll_deprel);
-    unless ($adept) {
-        ($adept) = grep $_->lemma =~ $punct,
-            $anode->children;
+if ("conj" eq $anode->conll_deprel) {
+    my $adept = $anode->lbrother;
+    if (! ref $adept
+            or "cc" ne $adept->conll_deprel
+            and $adept->lemma !~ $punct) {
+        $adept = $anode->firstson;
+        unless ($adept and $adept->lemma =~ $punct) {
+            $adept = $anode->lbrother;
+            if ($adept) {
+                $adept = ($adept->children)[-1];
+            }
+            undef $adept if $adept and $adept->lemma !~ $punct;
+        }
     }
-    print $anode->get_address, "\n" unless $adept;
+    print "No adept\t", $anode->get_address, "\n" unless ref $adept;
 }
