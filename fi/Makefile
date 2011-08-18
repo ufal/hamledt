@@ -1,3 +1,5 @@
+SHELL:=/bin/bash
+
 LANGCODE=fi
 DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
 IN       = $(DATADIR)/source
@@ -49,6 +51,12 @@ search:
 	treex Util::Eval language=fi \
 	anode='print $$anode->parent->pos,"\n" if "infmod" eq $$anode->conll_deprel' -- \
 	$(DATADIR)/treex/000_orig/*/*.treex | sort | uniq -c | sort -n
+
+%.lst: %.inc
+	treex Util::Eval language=fi anode="'$$(< $<)'" -- \
+	$(DATADIR)/treex/000_orig/*/*.treex | tee $@
+	wc -l < $@
+
 clean:
 	rm -rf $(DATADIR)/treex
 
