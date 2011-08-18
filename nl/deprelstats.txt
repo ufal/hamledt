@@ -1,0 +1,27 @@
+ROOT	16528	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#1:BASISTAKENPAKKET
+app	2388	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#29:zorgdossier
+body	10419	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#2:kunnen
+cnj	8964	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#2:gezondheidssituatie
+crd	119	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#54:als
+det	28286	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#1:0-19
+dp	1	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/train//025#330:en
+hd	9	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/train//001#232:moet
+hdf	102	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#19:toe
+ld	1762	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#6:om
+me	301	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#85:dagen
+mod	44074	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#2:omdat
+obcomp	474	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#17:mogelijk
+obj1	29086	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#2:uitstek
+obj2	687	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#8:aan
+pc	2705	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#2:Daarvoor
+pobj1	194	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#68:het
+predc	3875	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#3:op
+predm	476	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#18:samen
+punct	22130	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#2:.
+sat	1	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/train//017#279:als
+se	452	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#122:zich
+su	15279	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#2:gemeenten
+sup	234	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#25:Het
+svp	1985	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#4:zorg
+vc	10123	/net/projects/tectomt_shared/data/resources/normalized_treebanks/nl/treex/000_orig/test//001#2:gekozen
+TOTAL 26 TAG TYPES FOR 200654 TOKENS
