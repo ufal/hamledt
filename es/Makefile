@@ -34,7 +34,7 @@ to_treex:
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
-SCEN1 = A2A::TEMPLATE::CoNLL2PDTStyle
+SCEN1 = A2A::ES::CoNLL2PDTStyle
 to_pdt:
 	$(TREEX) -p --jobs 29 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
 	$(TREEX) -p --jobs 4 $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex
