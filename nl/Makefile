@@ -36,7 +36,7 @@ to_treex:
 # and store the result in 001_pdtstyle
 SCEN1 = A2A::NL::CoNLL2PDTStyle
 to_pdt:
-	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
+	$(TREEX) -p --jobs 27 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
