@@ -10,7 +10,7 @@ total         = 4042 sentences, 36150 tokens
 RDT is missing:
 * diacritics (originally encoded in ASCII which has no Ă, Â, Î, Ș, Ț)
 * punctuation
-* complex grammatical structures
+* complex grammatical structures (many sentences are split into clauses!)
 
 
 The master's thesis of Mihaela Călăcean (2008) contains a description of RDT:

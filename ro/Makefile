@@ -1,36 +1,40 @@
+SHELL=bash
 LANGCODE=ro
-DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
+ORIG_TREEBANK=${TMT_ROOT}/share/data/resources/treebanks/ro
+DATADIR=${TMT_ROOT}/share/data/resources/normalized_treebanks/$(LANGCODE)
 IN       = $(DATADIR)/source
 DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle
 TREEX    = treex -L$(LANGCODE)
-IMPORT   = Read::CoNLLX lines_per_doc=500
+IMPORT   = Read::DGA bundles_per_doc=500
 WRITE0   = Write::Treex file_stem=''
 WRITE    = Write::Treex
 
-prepare_source:
-	mkdir -p $(DATADIR)
+prepare_source: $(IN)/test.xml $(IN)/train.xml
+
+$(IN)/%.xml: $(ORIG_TREEBANK)/*.xml
 	mkdir -p $(IN)
-	cat /net/data/romanian-dt/tp*.xml | sed 's/encoding="iso-8859-1"/encoding="utf-8"/' | iconv -f iso-8859-1 -t utf-8 > $(IN)/train.xml
-	cat /net/data/romanian-dt/t[0-9]*.xml | sed 's/encoding="iso-8859-1"/encoding="utf-8"/' | iconv -f iso-8859-1 -t utf-8 > $(IN)/test.xml
+	echo '<?xml version="1.0" encoding="utf-8"?>' > $@
+	echo '<!DOCTYPE DGAdoc SYSTEM "dga.dtd">' >> $@
+	echo '<DGAdoc>' >> $@
+	[ $* = train ] && SOURCE='tp*.xml' || SOURCE='t[0-9]*.xml';\
+	for FILE in $(ORIG_TREEBANK)/$$SOURCE ; do\
+	  head -n -1 $$FILE | tail -n +5 | iconv -f l1 -t utf8  >> $@;\
+        done
+	echo '</DGAdoc>' >> $@
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
 	mkdir -p $(DATADIR)
 	if [ ! -e data ]; then ln -s $(DATADIR) data; fi
-	mkdir -p $(DIR0)
-	mkdir -p $(DIR0)/train
-	mkdir -p $(DIR0)/test
-	mkdir -p $(DIR1)
-	mkdir -p $(DIR1)/train
-	mkdir -p $(DIR1)/test
+	mkdir -p {$(DIR0),$(DIR1)}/{train,test}
 	chmod -R g+w data/. data/*
 
 # run a conversion of the original data into the treex format
 # and store the results in 000_orig/
 to_treex:
-	$(TREEX) $(IMPORT) from=$(IN)/train.conll $(WRITE0) path=$(DIR0)/train/
-	$(TREEX) $(IMPORT) from=$(IN)/test.conll  $(WRITE0) path=$(DIR0)/test/
+	$(TREEX) $(IMPORT) from=$(IN)/train.xml $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORT) from=$(IN)/test.xml  $(WRITE0) path=$(DIR0)/test/
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
