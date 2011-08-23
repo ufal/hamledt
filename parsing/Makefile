@@ -9,8 +9,10 @@ parse:
 table:
 	echo "MALT PARSER:"
 	./print_table.pl --malt ${LANGUAGES}
-	echo "MCD PARSER:"
+	echo "MCD PARSER (NON-PROJECTIVE):"
 	./print_table.pl --mcd ${LANGUAGES} 
+	echo "MCD PARSER (PROJECTIVE):"
+	./print_table.pl --mcdproj ${LANGUAGES} 
 
 clean:
 	rm -r mcd-* malt-* parse-* *-cluster-run-*

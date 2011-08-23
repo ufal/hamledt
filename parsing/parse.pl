@@ -8,19 +8,21 @@ use Treex::Core::Config;
 
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
 
-my ($help, $mcd, $malt, $new);
+my ($help, $mcd, $mcdproj, $malt, $new);
 
 GetOptions(
-    "help|h" => \$help,
-    "mcd"    => \$mcd,
-    "malt"   => \$malt,
-    "new"   =>  \$new,
+    "help|h"  => \$help,
+    "mcd"     => \$mcd,
+    "mcdproj" => \$mcdproj,
+    "malt"    => \$malt,
+    "new"     => \$new,
 );
 
 if ($help || !@ARGV) {
     die "Usage: parse.pl [OPTIONS] [LANGUAGES]
     LANGUAGES  - list of ISO codes of languages to be processed
-    --mst      - run McDonald's MST parser
+    --mcd      - run McDonald's MST non-projective parser
+    --mcdproj  - run McDonald's MST projective parser
     --malt     - run Malt parser
     --new      - copy the testing file from 'test' directory
     -h,--help  - print this help
@@ -41,7 +43,13 @@ foreach my $language (@ARGV) {
             $scenario .= "Util::SetGlobal language=$language selector=mcdnonprojo2 ";
             $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
             $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-            $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model decodetype=proj pos_attribute=conll/pos ";
+            $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos ";
+        }
+        if ($mcdproj && -e "$dir/parsed/mcd_proj_o2.model") {
+            $scenario .= "Util::SetGlobal language=$language selector=mcdprojo2 ";
+            $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
+            $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+            $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos ";
         }
         if ($malt && -e "$dir/parsed/malt_stackeager.mco") {
             $scenario .= "Util::SetGlobal language=$language selector=maltstackeager ";

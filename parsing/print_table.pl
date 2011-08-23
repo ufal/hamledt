@@ -9,19 +9,21 @@ use Text::Table;
 
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
 
-my ($help, $mcd, $malt);
+my ($help, $mcd, $mcdproj, $malt);
 
 GetOptions(
-    "help|h" => \$help,
-    "mcd"    => \$mcd,
-    "malt"   => \$malt,
+    "help|h"  => \$help,
+    "mcd"     => \$mcd,
+    "mcdproj" => \$mcdproj,
+    "malt"    => \$malt,
 );
 
 
 if ($help || !@ARGV) {
     die "Usage: print_table.pl [OPTIONS] [LANGUAGES]
     LANGUAGES  - list of ISO codes of languages to be processed
-    --mcd      - McDonald's MST parser
+    --mcd      - McDonald's MST non-projective parser
+    --mcdproj  - McDonald's MST projective parser
     --malt     - Malt parser
     -h,--help  - print this help
 ";
@@ -42,7 +44,10 @@ foreach my $language (@ARGV) {
             if ($sys =~ /malt/ && $malt) {
                 $value{$trans}{$language} = substr($score, 0, 5);
             }
-            elsif ($sys =~ /mcd/ && $mcd) {
+            elsif ($sys =~ /mcdnonproj/ && $mcd) {
+                $value{$trans}{$language} = substr($score, 0, 5);
+            }
+            elsif ($sys =~ /mcdproj/ && $mcdproj) {
                 $value{$trans}{$language} = substr($score, 0, 5);
             }
         }
