@@ -52,9 +52,9 @@ foreach my $language (@ARGV) {
             print STDERR "Creating script for training Malt parser ($name).\n";
             open (BASHSCRIPT, ">:utf8", "malt-$name.sh") or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
-            print BASHSCRIPT "cd $dir/parsed/; java -Xmx29g -jar $malt_dir/malt.jar -i train.conll -c malt_stackeager -a stackeager -l liblinear -m learn\n";
+            print BASHSCRIPT "cd $dir/parsed/; java -Xmx9g -jar $malt_dir/malt.jar -i train.conll -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
             close BASHSCRIPT;
-            system "qsub -l mf=30g -cwd malt-$name.sh";
+            system "qsub -l mf=10g -cwd malt-$name.sh";
         }
     }
 }

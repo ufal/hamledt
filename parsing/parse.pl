@@ -8,12 +8,13 @@ use Treex::Core::Config;
 
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
 
-my ($help, $mcd, $malt);
+my ($help, $mcd, $malt, $new);
 
 GetOptions(
     "help|h" => \$help,
     "mcd"    => \$mcd,
     "malt"   => \$malt,
+    "new"   =>  \$new,
 );
 
 if ($help || !@ARGV) {
@@ -21,6 +22,7 @@ if ($help || !@ARGV) {
     LANGUAGES  - list of ISO codes of languages to be processed
     --mst      - run McDonald's MST parser
     --malt     - run Malt parser
+    --new      - copy the testing file from 'test' directory
     -h,--help  - print this help
 ";
 }
@@ -28,8 +30,7 @@ if ($help || !@ARGV) {
 foreach my $language (@ARGV) {
     foreach my $dir (glob "$data_dir/$language/treex/*") {
         next if (!-d $dir);
-        if (!-e "$dir/parsed/001.treex") {
-            print STDERR "Treex files not found in 'parsed' directory. They will be copied form 'test' directory.\n";
+        if (!-e "$dir/parsed/001.treex" || $new) {
             system "cp $dir/test/*.treex $dir/parsed/";
         }
         my $name = $dir;
@@ -40,13 +41,13 @@ foreach my $language (@ARGV) {
             $scenario .= "Util::SetGlobal language=$language selector=mcdnonprojo2 ";
             $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
             $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-            $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model pos_attribute=conll/pos ";
+            $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model decodetype=proj pos_attribute=conll/pos ";
         }
         if ($malt && -e "$dir/parsed/malt_stackeager.mco") {
             $scenario .= "Util::SetGlobal language=$language selector=maltstackeager ";
             $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
             $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-            $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_stackeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos ";
+            $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos ";
         }
         $scenario .= "Eval::AtreeUAS selector='' ";
         print STDERR "Creating script for parsing ($name).\n";
