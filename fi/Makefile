@@ -48,12 +48,12 @@ checklog:
 	checklog.sh -p ':\t*#.*|\tNode .*no afun\.' make.e.log
 
 search:
-	treex Util::Eval language=fi \
+	treex Util::Eval language=$(LANGCODE) \
 	anode='print $$anode->parent->pos,"\n" if "infmod" eq $$anode->conll_deprel' -- \
 	$(DATADIR)/treex/000_orig/*/*.treex | sort | uniq -c | sort -n
 
 %.lst: %.inc
-	treex Util::Eval language=fi anode="'$$(< $<)'" -- \
+	treex Util::Eval language=$(LANGCODE) anode="'$$(< $<)'" -- \
 	$(DATADIR)/treex/000_orig/*/*.treex | tee $@
 	wc -l < $@
 
