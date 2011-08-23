@@ -1,3 +1,4 @@
+SHELL:=/bin/bash
 LANGCODE=et
 DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
 IN       = $(DATADIR)/source
@@ -8,11 +9,18 @@ IMPORT   = Read::CoNLLX lines_per_doc=500
 WRITE0   = Write::Treex file_stem=''
 WRITE    = Write::Treex
 
+
+EXTRACT_BODY:=sed -n '/<body>/ {n;b c}; d;:c {\%</body>% {d};p;n;b c}'
 prepare_source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	cat /net/data/estonian-treebank/piialaused.xml /net/data/estonian-treebank/ratsepalaused.xml /net/data/estonian-treebank/sul.xml > $(IN)/train.xml
-	cp /net/data/estonian-treebank/arborest.xml $(IN)/test.xml
+	( echo '<corpus><body>'; \
+	for file in /net/data/estonian-treebank/{piialaused,ratsepalaused,sul}.xml ; do \
+		$(EXTRACT_BODY) $$file ; \
+	done ; echo '</body></corpus>' ) > $(IN)/train.xml
+	( echo '<corpus><body>' ; \
+	$(EXTRACT_BODY) /net/data/estonian-treebank/arborest.xml; \
+	echo '</body></corpus>' ) > $(IN)/test.xml
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
