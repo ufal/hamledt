@@ -42,13 +42,13 @@ foreach my $language (@ARGV) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
             if ($sys =~ /malt/ && $malt) {
-                $value{$trans}{$language} = substr($score, 0, 5);
+                $value{$trans}{$language} = substr($score, 0, 6);
             }
             elsif ($sys =~ /mcdnonproj/ && $mcd) {
-                $value{$trans}{$language} = substr($score, 0, 5);
+                $value{$trans}{$language} = substr($score, 0, 6);
             }
             elsif ($sys =~ /mcdproj/ && $mcdproj) {
-                $value{$trans}{$language} = substr($score, 0, 5);
+                $value{$trans}{$language} = substr($score, 0, 6);
             }
         }
     }

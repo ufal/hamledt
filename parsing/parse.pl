@@ -51,8 +51,8 @@ foreach my $language (@ARGV) {
             $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
             $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos ";
         }
-        if ($malt && -e "$dir/parsed/malt_stackeager.mco") {
-            $scenario .= "Util::SetGlobal language=$language selector=maltstackeager ";
+        if ($malt && -e "$dir/parsed/malt_nivreeager.mco") {
+            $scenario .= "Util::SetGlobal language=$language selector=maltnivreeager ";
             $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
             $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
             $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos ";

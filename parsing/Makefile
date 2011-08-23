@@ -1,4 +1,5 @@
 LANGUAGES=ar bg bn cs da de el grc hi la sl ta te 
+ALL_LANGUAGES=ar bn da el es eu grc hu it la nl pt ro sl sv te zh bg ca cs de en et fi hi is ja ru ta tr
 
 train:
 	./train.pl --mcd --malt ${LANGUAGES}
@@ -8,11 +9,13 @@ parse:
 
 table:
 	echo "MALT PARSER:"
-	./print_table.pl --malt ${LANGUAGES}
+	./print_table.pl --malt ar bg bn ca cs da de el en es et eu fi grc hi
+	./print_table.pl --malt hu is it ja la nl pt ro ru sl sv ta te tr zh
 	echo "MCD PARSER (NON-PROJECTIVE):"
-	./print_table.pl --mcd ${LANGUAGES} 
-	echo "MCD PARSER (PROJECTIVE):"
-	./print_table.pl --mcdproj ${LANGUAGES} 
+	./print_table.pl --mcd ar bg bn ca cs da de el en es et eu fi grc hi
+	./print_table.pl --mcd hu is it ja la nl pt ro ru sl sv ta te tr zh
+	#echo "MCD PARSER (PROJECTIVE):"
+	#./print_table.pl --mcdproj ${LANGUAGES} 
 
 clean:
-	rm -r mcd-* malt-* parse-* *-cluster-run-*
+	rm -r mcd-* mcdproj-* malt-* parse-* *-cluster-run-*
