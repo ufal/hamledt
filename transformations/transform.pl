@@ -53,7 +53,7 @@ sub find_available_languages {
 
 sub find_available_transformers {
     my $transformer_dir = Treex::Core::Config::lib_core_dir()."/../Block/A2A/Transform/";
-    my @transformers = grep {not /^Base/}
+    my @transformers = grep {not /^(Base|Inv)/}
         map {/(\w+).pm$/;$1}
             glob "$transformer_dir/*.pm";
     print (STDERR scalar(@transformers)," available transformers: ",(join " ",sort @transformers),"\n\n");
