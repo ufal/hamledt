@@ -26,7 +26,7 @@ tests:
 	Test::A::NonleafAuxC \
 	Test::A::NonleafAuxP \
 	Test::A::SubjectBelowVerb \
-	-- $(FILES) 2>&1 | tee $(TESTLOG)
+	-- $(FILES) 2> $(TESTLOG)
 
 summarize_tests:
 	cat $(TESTLOG) | ./summarize_tests.pl
