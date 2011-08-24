@@ -3,7 +3,8 @@ LANGCODE=et
 DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
 IN       = $(DATADIR)/source
 DIR0     = $(DATADIR)/treex/000_orig
-DIR1     = $(DATADIR)/treex/001_pdtstyle
+DIR1     = $(DATADIR)/treex/001_dep
+DIR2     = $(DATADIR)/treex/002_pdtstyle
 TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::Tiger
 WRITE0   = Write::Treex file_stem='et'
@@ -26,12 +27,11 @@ prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
 	mkdir -p $(DATADIR)
 	if [ ! -e data ]; then ln -s $(DATADIR) data; fi
-	mkdir -p $(DIR0)
-	mkdir -p $(DIR0)/train
-	mkdir -p $(DIR0)/test
-	mkdir -p $(DIR1)
-	mkdir -p $(DIR1)/train
-	mkdir -p $(DIR1)/test
+	for dir in $(DIR0) $(DIR1) $(DIR2) ; do \
+		mkdir -p "$$dir"; \
+		mkdir -p "$$dir"/train; \
+		mkdir -p "$$dir"/test; \
+	done
 	chmod -R g+w data/. data/*
 
 # run a conversion of the original data into the treex format
@@ -40,12 +40,18 @@ to_treex:
 	$(TREEX) $(IMPORT) from=$(IN)/train.xml $(WRITE0) path=$(DIR0)/train/
 	$(TREEX) $(IMPORT) from=$(IN)/test.xml  $(WRITE0) path=$(DIR0)/test/
 
-# make the trees as similar to the PDT-style as possible
-# and store the result in 001_pdtstyle
-SCEN1 = A2A::TEMPLATE::CoNLL2PDTStyle
-to_pdt:
+# converts trees from phrase to dependency style
+SCEN1 = P2A::TigerET
+to_dep:
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex
+
+# converts dependencies to pdt style dependencies
+SCEN2 = A2A::ET::TigerDep2PDT
+to_pdt:
+	$(TREEX) $(SCEN2) $(WRITE) path=$(DIR2)/train/ -- $(DIR1)/train/*.treex
+	$(TREEX) $(SCEN2) $(WRITE) path=$(DIR2)/test/  -- $(DIR1)/test/*.treex
+
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
 test:
