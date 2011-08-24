@@ -1,4 +1,4 @@
-PDT_READY= ar bg bn cs da de el grc hi la sl ta te
+PDT_READY= ar bg bn cs da de el grc hi la ro sl ta te
 
 SHELL=/bin/bash
 
