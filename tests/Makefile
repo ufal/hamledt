@@ -2,6 +2,7 @@ SHELL=bash
 JOBS=200
 VALLOG=validation.log
 TESTLOG=test.log
+# You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
 #LANGS={en,cs}
 LANGS=*
 SETS={train,test}
@@ -12,8 +13,8 @@ validate:
 	@echo
 	@echo Output of the validation test stored in $(VALLOG)
 
-resume_validation:
-	cat $(VALLOG) | grep -v TREEX > errors.log
+summarize_validation:
+	grep -v TREEX $(VALLOG) || exit 0
 
 tests:
 	treex -p --survive --jobs $(JOBS) \
@@ -27,8 +28,8 @@ tests:
 	Test::A::SubjectBelowVerb \
 	-- $(FILES) 2>&1 | tee $(TESTLOG)
 
-resume_tests:
-	cat $(TESTLOG) | ./resume_tests.pl
+summarize_tests:
+	cat $(TESTLOG) | ./summarize_tests.pl
 
 
 clean:
