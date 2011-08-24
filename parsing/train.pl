@@ -39,6 +39,7 @@ foreach my $language (@ARGV) {
         $name = "$language-$name";
         my $deprel_attribute = $name =~ /000_orig/ ? 'conll/deprel' : 'afun';
         system "mkdir -p $dir/parsed";
+        system "chmod -R g+w $dir/parsed";
         system "treex -p -j 100 Write::CoNLLX language=$language deprel_attribute=$deprel_attribute -- $dir/train/*.treex > $dir/parsed/train.conll";
         system "python $mcd_dir/bin/conll2mst.py $dir/parsed/train.conll > $dir/parsed/train.mst\n";
         if ($mcd) {
