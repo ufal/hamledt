@@ -18,7 +18,7 @@ stats:
 	> stats.raw
 
 resume_stats:
-	cat stats.raw | resume_stats.pl
+	cat stats.raw | ./resume_stats.pl
 
 clean:
 	rm stats.raw  -rf
