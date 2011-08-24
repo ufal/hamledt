@@ -8,3 +8,10 @@ License: unknown but it was freely downloadable
 training size = 1140 sentences, 7040 tokens
 test size     =  175 sentences, 2451 tokens
 
+Annotation similar to this one:
+
+http://beta.visl.sdu.dk/visl/el/info/
+
+Some detail described here:
+
+http://beta.visl.sdu.dk/pdf/Bick_Uibo_Muurisep_TLT04.pdf
