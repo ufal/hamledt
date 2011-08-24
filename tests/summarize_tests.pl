@@ -13,11 +13,14 @@ while (<>) {
         or die "file doesn't match expected pattern: $file";
     my $language = $1;
     $count{$language}{$test}++;
+    $count{$language}{TOTAL}++;
+    $count{TOTAL}{$test}++;
+    $count{TOTAL}{TOTAL}++;
     $test{$test} = 1;
 }
 
 my @languages = sort keys %count;
-my @tests = sort keys %test;
+my @tests = (sort( keys %test), 'TOTAL');
 
 use Text::Table;
 
