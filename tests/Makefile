@@ -6,12 +6,15 @@ TESTLOG=test.log
 #LANGS={en,cs}
 LANGS=*
 SETS={train,test}
-FILES=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGS)/treex/001_pdtstyle/$(SETS)/*treex
+FILES=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGS)/treex/???_pdtstyle/$(SETS)/*treex
 
 validate:
 	treex -p --survive --jobs $(JOBS) -- $(FILES)  2>&1 | tee $(VALLOG)
 	@echo
 	@echo Output of the validation test stored in $(VALLOG)
+
+filelist:
+	echo $(FILES) | tr " " "\n"
 
 summarize_validation:
 	grep -v TREEX $(VALLOG) || exit 0
