@@ -1,4 +1,4 @@
-LANGUAGES=ar bg bn cs da de el grc hi la sl ta te 
+LANGUAGES=ar bg bn cs da de el grc hi la ro sl ta te 
 ALL_LANGUAGES=ar bn da el es eu grc hu it la nl pt ro sl sv te zh bg ca cs de en et fi hi is ja ru ta tr
 
 train:
@@ -15,7 +15,10 @@ table:
 	./print_table.pl --mcd ar bg bn ca cs da de el en es et eu fi grc hi
 	./print_table.pl --mcd hu is it ja la nl pt ro ru sl sv ta te tr zh
 	#echo "MCD PARSER (PROJECTIVE):"
-	#./print_table.pl --mcdproj ${LANGUAGES} 
+	#./print_table.pl --mcdproj ${LANGUAGES}
+
+rights:
+	chmod -R g+w ${TMT_ROOT}/share/data/resources/normalized_treebanks/*/treex/*/parsed
 
 clean:
 	rm -r mcd-* mcdproj-* malt-* parse-* *-cluster-run-*
