@@ -29,7 +29,7 @@ tests:
 	Test::A::NonleafAuxC \
 	Test::A::NonleafAuxP \
 	Test::A::SubjectBelowVerb \
-	-- $(FILES) 2> $(TESTLOG)
+	-- $(FILES) 2> test.err > $(TESTLOG)
 
 summarize_tests:
 	cat $(TESTLOG) | ./summarize_tests.pl
