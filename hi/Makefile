@@ -34,10 +34,10 @@ to_treex:
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
-SCEN1 = A2A::HI::CoNLL2PDTStyle
+SCEN1 = A2A::HI::CoNLL2PDTStyle A2A::Transform::InvPrepositionDownward language=hi
 to_pdt:
-	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
-	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex
+	$(TREEX) -p --jobs 12 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
+	$(TREEX) -p --jobs 3 $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
 test:
