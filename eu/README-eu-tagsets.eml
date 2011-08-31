@@ -1,0 +1,256 @@
+Return-Path: <koldo.gojenola@ehu.es>
+X-Spam-Checker-Version: SpamAssassin 3.3.2 (2011-06-06) on ufal.mff.cuni.cz
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=3.0 tests=BAYES_00,SPF_FAIL
+	autolearn=no version=3.3.2
+X-Original-To: zeman@ufal.mff.cuni.cz
+Delivered-To: zeman@ufal.mff.cuni.cz
+Received: from smtp1.ms.mff.cuni.cz (ns.ms.mff.cuni.cz [195.113.20.71])
+	by ufal.mff.cuni.cz (Postfix) with ESMTPS id 164ED2CB54;
+	Wed, 31 Aug 2011 10:36:47 +0200 (CEST)
+Received: from smtp.ehu.es (smtp.lg.ehu.es [158.227.0.66])
+	by smtp1.ms.mff.cuni.cz (8.14.4/8.14.4) with ESMTP id p7V8aFYH026465;
+	Wed, 31 Aug 2011 10:36:24 +0200 (CEST)
+	(envelope-from koldo.gojenola@ehu.es)
+Received: from lgux66.lgp.ehu.es (localhost.localdomain [127.0.0.1])
+	by smtp.ehu.es (8.14.4/8.14.4) with ESMTP id p7V8a9b9006595;
+	Wed, 31 Aug 2011 10:36:09 +0200
+Received: from b008823 (b008823.bp.ehu.es [158.227.70.184])
+	by lgux66.lgp.ehu.es (8.14.4/8.14.4) with ESMTP id p7V8a9RC006591;
+	Wed, 31 Aug 2011 10:36:09 +0200
+From: "Koldo" <koldo.gojenola@ehu.es>
+To: "'Daniel Zeman'" <zeman@ufal.mff.cuni.cz>
+Cc: "'Loganathan Ramasamy'" <ramasamy@ufal.mff.cuni.cz>
+References: <4E0AED5D.2040106@ufal.mff.cuni.cz> <F9123C4F3E514F2985029C3BD2E8F480@b008823> <4E0B39FB.5070901@ufal.mff.cuni.cz> <0985F40EB64F4446BD7E9FDA39F98C3D@b008823> <4E5D037F.10006@ufal.mff.cuni.cz>
+Subject: RE: Basque CoNLL treebank
+Date: Wed, 31 Aug 2011 10:35:52 +0200
+Message-ID: <00EBD76EC881434A99D248AF5092F2CB@b008823>
+MIME-Version: 1.0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Mailer: Microsoft Office Outlook 11
+In-Reply-To: <4E5D037F.10006@ufal.mff.cuni.cz>
+Thread-Index: AcxnMiX4KnrEoBf2QuOlhKE3cxDLGwAg71kg
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.6109
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.2.6 (lgux66.lgp.ehu.es [10.0.100.71]); Wed, 31 Aug 2011 10:36:09 +0200 (CEST)
+
+Dear all,
+
+Below I give you a list of CPOS and POS categories. Regarding FEATS, =
+these
+are the most important features:
+
+- KAS -> case (ERG(ative), ABS(olutive), DAT(ive) ...)
+- ASP -> aspect (for verbs)
+- ERL - relation (relative sentence, completive sentence, indirect =
+question,
+...)
+
+As for the syntactic relations, most of them are taken from Carroll et =
+al.
+1998, and they maintain the english names in most of the cases.
+
+You can ask us any additional information. This will also help us having =
+a
+better treebank documentation.
+
+IZE	-> N
+	ARR	-> common
+	IZB	-> proper names
+	LIB	-> place names
+	ZKI	-> number
+
+ADJ	-> ADJ
+	ARR	-> common
+	GAL	-> question
+
+ADI	-> V
+	SIN	-> simple
+	ADK	-> composed
+	ADP	-> periphrastic
+	FAK	-> factitive
+
+ADB	ADBERB
+	ARR	-> common
+	GAL	-> question
+
+DET	-> DET
+	ERKARR	-> demonstrative common
+	ERKIND	-> demonstrative emphatic
+	NOLARR	-> indefinite common
+	NOLGAL	-> indefinite question
+	ZNB	-> number
+	DZH	-> definite
+	BAN	-> distributive
+	ORD	-> ordinal
+	DZG	-> indefinite
+	ORO	-> general
+
+IOR	-> pronoun
+	PERARR	-> personal common
+	PERIND	-> personal emphatic=09
+	IZGMGB	-> indefinite=20
+	IZGGAL	-> question
+	BIH	-> ???
+	ELK	-> ???
+
+LOT	-> link
+	LOK	-> conector
+	JNT	-> conjunction
+
+PRT	-> particle
+ITJ	-> interjection
+BST	-> other
+
+ADL	-> auxiliary verb
+ADT	-> synthetic verb
+SIG	-> achronym
+SNB	-> symbol
+LAB	-> abbreviation
+
+Best regards,
+Koldo
+
+
+-----Mensaje original-----
+De: Daniel Zeman [mailto:zeman@ufal.mff.cuni.cz]=20
+Enviado el: martes, 30 de agosto de 2011 17:37
+Para: Koldo
+CC: Loganathan Ramasamy
+Asunto: Re: Basque CoNLL treebank
+
+Dear Koldo,
+
+could you please provide me with a list of the Basque tags, used in the=20
+treebank, with their brief explanation. I tried to find the info in the=20
+papers referenced from README but without success. I am potentially=20
+interested in the values of the CPOS, POS, FEAT and DEPREL columns,=20
+although CPOS interests me the most at this moment.
+
+Thank you very much
+Dan Zeman
+
+Dne 29.6.2011 17:37, Koldo napsal(a):
+> Dear Daniel,
+>
+> I send you a copy of the treebank in the CoNLL format. There are three
+> files, corresponding to our training, development and test sets. =
+However,
+> you can merge them any way you want.
+>
+> This is a reference that you should cite when using the treebank:
+>
+>     I. Aduriz, M. J. Aranzabe, J. M. Arriola, A. Atutxa, A. Diaz de
+Ilarraza,
+>
+>     A. Garmendia, and M. Oronoz. 2003. Construction of a Basque =
+dependency
+>     treebank. In Proc. of the 2nd Workshop on Treebanks and Linguistic
+>     Theories (TLT).
+>
+> And for parsing the Basque treebank, this paper has the latest results
+> (although you may reference it only if you think that it is adequate, =
+of
+> course):
+>
+>     Bengoetxea K., Gojenola K. 2010
+>     Application of Different Techniques to Dependency Parsing of =
+Basque
+>     First Workshop on Statistical Parsing of Morphologically Rich
+Languages
+>
+>     (SPMRL 2010), NAACL Workshop, Los Angeles
+>
+> I asked a colleague to pass me the license you will have to sign. I =
+will
+> send it to you when I have it.
+>
+> Please ask us any information you need.
+>
+> Best regards,
+> Koldo
+>
+>
+>
+> -----Mensaje original-----
+> De: Daniel Zeman [mailto:zeman@ufal.mff.cuni.cz]
+> Enviado el: mi=E9rcoles, 29 de junio de 2011 16:43
+> Para: Koldo
+> Asunto: Re: License for the Basque CoNLL treebank?
+>
+> Dear Koldo,
+>
+> thank you for the positive response! We would be definitely interested
+> in the newer version as well, to achieve hopefully better results,
+> although you are right that we will have to compare results on the =
+2007
+> set. I should be able to locate a copy of the 2007 data but if you can
+> provide me access to the larger set, that would be great.
+>
+> We will be happy to write you once we get some results. We want to to
+> compare different annotation styles vs. dependency parsing accuracy =
+for
+> as many languages as possible.
+>
+> Regards,
+>
+> Dan
+>
+>
+> Dne 29.6.2011 13:19, Koldo napsal(a):
+>> Dear Daniel,
+>>
+>> Yes, there is the possibility of using the Basque Treebank. I need =
+some
+> time
+>> to find the license, and then I will send it to you.
+>>
+>> Perhaps you already have a copy of the Basque treebank from the CoNLL
+2007
+>> shared task. This treebank is all right if you plan to compare your
+> results
+>> with those obtained by other systems. However, we also have a new =
+version
+> of
+>> the treebank (more than 150,000 tokens, which is more than 3 times
+> bigger).
+>> If you would like to use this new one, please tell us.
+>>
+>> We would also be very interested in knowing about the results you =
+obtain.
+>>
+>> Regards,
+>> Koldo Gojenola
+>>
+>>
+>>
+>> -----Mensaje original-----
+>> De: Daniel Zeman [mailto:zeman@ufal.mff.cuni.cz]
+>> Enviado el: mi=E9rcoles, 29 de junio de 2011 11:16
+>> Para: koldo.gojenola@ehu.es
+>> Asunto: License for the Basque CoNLL treebank?
+>>
+>> Dear Koldo Gojenola,
+>>
+>> I was wondering if there was a possibility to renew the research =
+license
+>> for the Basque treebank? I took part in the CoNLL 2007 shared task =
+and
+>> had the data then but unfortunately Basque was one of the few =
+languages
+>> whose license was limited only for the duration of the shared task. =
+If
+>> it is possible to renew it for other experiments, please let me know =
+the
+>> conditions.
+>>
+>> Thank you
+>> Best regards,
+>> Dan Zeman, Charles University in Prague
+>>
+
+--=20
+RNDr. Daniel Zeman, Ph.D.
+=DAFAL MFF, Univerzita Karlova, Praha
+http://ufal.mff.cuni.cz/~zeman/
