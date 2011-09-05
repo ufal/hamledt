@@ -1,5 +1,5 @@
 LANGUAGES=ar bg bn cs da de el grc hi la ro sl ta te 
-ALL_LANGUAGES=ar bn da el es eu grc hu it la nl pt ro sl sv te zh bg ca cs de en et fi hi is ja ru ta tr
+ALL_LANGUAGES=ar bg bn cs da de el en es et fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 
 train:
 	./train.pl --mcd --malt ${LANGUAGES}

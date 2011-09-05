@@ -40,7 +40,7 @@ foreach my $language (@ARGV) {
         my $deprel_attribute = $name =~ /000_orig/ ? 'conll/deprel' : 'afun';
         system "mkdir -p $dir/parsed";
         system "chmod -R g+wx $dir/parsed";
-        system "treex -p -j 20 Write::CoNLLX language=$language deprel_attribute=$deprel_attribute -- $dir/train/*.treex > $dir/parsed/train.conll";
+        system "treex -p -j 20 Write::CoNLLX language=$language deprel_attribute=$deprel_attribute -- $dir/train/*.treex.gz > $dir/parsed/train.conll";
         system "python $mcd_dir/bin/conll2mst.py $dir/parsed/train.conll > $dir/parsed/train.mst\n";
         if ($mcd) {
             print STDERR "Creating script for training McDonald's non-projective parser ($name).\n";

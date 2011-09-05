@@ -32,8 +32,8 @@ if ($help || !@ARGV) {
 foreach my $language (@ARGV) {
     foreach my $dir (glob "$data_dir/$language/treex/*") {
         next if (!-d $dir);
-        if (!-e "$dir/parsed/001.treex" || $new) {
-            system "cp $dir/test/*.treex $dir/parsed/";
+        if (!-e "$dir/parsed/001.treex.gz" || $new) {
+            system "cp $dir/test/*.treex.gz $dir/parsed/";
         }
         my $name = $dir;
         $name =~ s/^.+\///;
@@ -61,7 +61,7 @@ foreach my $language (@ARGV) {
         print STDERR "Creating script for parsing ($name).\n";
         open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
         print BASHSCRIPT "#!/bin/bash\n\n";
-        print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex > $dir/parsed/uas.txt";
+        print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex.gz > $dir/parsed/uas.txt";
         close BASHSCRIPT;
         system "qsub -l mf=3g -cwd parse-$name.sh";
     }
