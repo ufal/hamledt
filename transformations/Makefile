@@ -1,4 +1,6 @@
-PDT_READY= ar bg bn cs da de el grc hi la ro sl ta te
+#PDT_READY= ar bg bn cs da de el en es et
+PDT_READY= fi grc hi hu it ja la nl pt
+#PDT_READY= ro ru sl sv ta te tr
 
 SHELL=/bin/bash
 
@@ -14,7 +16,7 @@ runall:
 
 stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \
-	$(DATADIR)/*/treex/trans*/*/*treex \
+	$(DATADIR)/*/treex/trans*/*/*treex.gz \
 	> stats.raw
 
 resume_stats:
