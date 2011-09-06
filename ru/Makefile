@@ -6,7 +6,7 @@ DIR1     = $(DATADIR)/treex/001_pdtstyle
 TREEX    = treex -L$(LANGCODE) -p
 IMPORT   = Read::Syntagrus lines_per_doc=500
 WRITE0   = Write::Treex file_stem=''
-WRITE    = Write::Treex
+WRITE    = Write::Treex compress=1
 
 prepare_source:
 	mkdir -p $(DATADIR)
