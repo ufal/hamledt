@@ -10,13 +10,14 @@ my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_tree
 my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
 my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
 
-my ($help, $mcd, $mcdproj, $malt);
+my ($help, $mcd, $mcdproj, $malt, $new);
 
 GetOptions(
     "help|h"  => \$help,
     "mcd"     => \$mcd,
     "malt"    => \$malt,
-    "mcdproj" => \$mcdproj
+    "mcdproj" => \$mcdproj,
+    "new"     => \$new,
 );
 
 
@@ -26,6 +27,7 @@ if ($help || !@ARGV) {
     --mcd      - train McDonald's non-projective MST parser
     --mcdproj  - train McDonald's projective MST parser
     --malt     - train Malt parser
+    --new      - create training file if it does not exist
     -h,--help  - print this help
 ";
 }
@@ -40,7 +42,9 @@ foreach my $language (@ARGV) {
         my $deprel_attribute = $name =~ /000_orig/ ? 'conll/deprel' : 'afun';
         system "mkdir -p $dir/parsed";
         system "chmod -R g+wx $dir/parsed";
-        system "treex -p -j 20 Write::CoNLLX language=$language deprel_attribute=$deprel_attribute -- $dir/train/*.treex.gz > $dir/parsed/train.conll";
+        if ($new || !-e "$dir/parsed/train.conll") {
+            system "treex -p -j 20 Write::CoNLLX language=$language deprel_attribute=$deprel_attribute -- $dir/train/*.treex.gz > $dir/parsed/train.conll";
+        }
         system "python $mcd_dir/bin/conll2mst.py $dir/parsed/train.conll > $dir/parsed/train.mst\n";
         if ($mcd) {
             print STDERR "Creating script for training McDonald's non-projective parser ($name).\n";

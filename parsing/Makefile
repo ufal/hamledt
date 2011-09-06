@@ -22,3 +22,7 @@ rights:
 
 clean:
 	rm -r mcd-* mcdproj-* malt-* parse-* *-cluster-run-*
+
+clean_malt_dirs:
+	rm -r ${TMT_ROOT}/share/data/resources/normalized_treebanks/*/treex/*/parsed/malt_nivreeager
+

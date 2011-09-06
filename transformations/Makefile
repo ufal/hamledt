@@ -1,6 +1,6 @@
 #PDT_READY= ar bg bn cs da de el en es et
-PDT_READY= fi grc hi hu it ja la nl pt
-#PDT_READY= ro ru sl sv ta te tr
+#PDT_READY= fi grc hi hu it ja la nl pt
+PDT_READY= ro ru sl sv ta te tr
 
 SHELL=/bin/bash
 
