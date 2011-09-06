@@ -1,12 +1,12 @@
 SHELL=bash
-JOBS=5
+JOBS=50
 VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
 #LANGS={en,cs}
-LANGS=eu
+LANGS=*
 SETS={train,test}
-FILES=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGS)/treex/001_pdtstyle/$(SETS)/*treex
+FILES=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz
 
 validate:
 	treex -p --survive --jobs $(JOBS) -- $(FILES)  2>&1 | tee $(VALLOG)
