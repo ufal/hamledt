@@ -29,7 +29,7 @@ if ($help || !@ARGV) {
 ";
 }
 
-my $table = Text::Table->new('trans', @ARGV, 'better', 'worse', 'diff');
+my $table = Text::Table->new('trans', @ARGV, 'better', 'worse', 'avg.diff');
 my %value;
 
 
@@ -71,7 +71,7 @@ foreach my $trans (sort keys %value) {
         $cnt++;
     }
     $diff /= $cnt;
-    push @row, ($better, $worse, substr($diff,0,8));
+    push @row, ($better, $worse, substr($diff*100,0,5)."%");
     $table->add(@row);
 }
 
