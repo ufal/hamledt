@@ -29,7 +29,7 @@ if ($help || !@ARGV) {
 ";
 }
 
-my $table = Text::Table->new('trans', @ARGV, 'better', 'worse', 'avg.diff');
+my $table = Text::Table->new('trans', @ARGV, 'better', 'worse', 'average');
 my %value;
 
 
@@ -53,13 +53,7 @@ foreach my $language (@ARGV) {
                 $score -= $value{'001_pdtstyle'}{$language};
             }
 
-            if ($sys =~ /malt/ && $malt) {
-                $value{$trans}{$language} = round($score);
-            }
-            elsif ($sys =~ /mcdnonproj/ && $mcd) {
-                $value{$trans}{$language} = round($score);
-            }
-            elsif ($sys =~ /mcdproj/ && $mcdproj) {
+            if (($sys =~ /malt/ && $malt) || ($sys =~ /mcdnonproj/ && $mcd) || ($sys =~ /mcdproj/ && $mcdproj)) {
                 $value{$trans}{$language} = round($score);
             }
         }
@@ -83,13 +77,13 @@ foreach my $trans (sort keys %value) {
     foreach my $language (@ARGV) {
         push @row, $value{$trans}{$language};
         next if !$value{$trans}{$language} || !$value{'001_pdtstyle'}{$language};
-            $better++ if  $value{$trans}{$language} > 0;
-            $worse++ if  $value{$trans}{$language} < 0;
-            $diff += $value{$trans}{$language};
-            $cnt++;
-        }
-        $diff /= $cnt;
-        push @row, ($better, $worse, round($diff));
+        $better++ if  $value{$trans}{$language} > 0;
+        $worse++ if  $value{$trans}{$language} < 0;
+        $diff += $value{$trans}{$language};
+        $cnt++;
+    }
+    $diff /= $cnt;
+    push @row, ($better, $worse, round($diff));
     $table->add(@row);
 }
 
