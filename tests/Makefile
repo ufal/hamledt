@@ -31,7 +31,7 @@ tests:
 	Test::A::SubjectBelowVerb \
 	-- $(FILES) 2> test.err > $(TESTLOG)
 
-summarize_tests:
+table:
 	cat $(TESTLOG) | ./summarize_tests.pl
 
 

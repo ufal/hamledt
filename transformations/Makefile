@@ -19,7 +19,7 @@ stats:
 	$(DATADIR)/*/treex/trans*/*/*treex.gz \
 	> stats.raw
 
-resume_stats:
+table:
 	cat stats.raw | ./resume_stats.pl
 
 clean:
