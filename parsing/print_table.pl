@@ -64,14 +64,14 @@ foreach my $trans (sort keys %value) {
     my $cnt = 0;
     foreach my $language (@ARGV) {
         push @row, $value{$trans}{$language};
-        next if !$value{$trans}{$language};
-        $better++ if $value{'001_pdtstyle'}{$language} < $value{$trans}{$language};
-        $worse++ if $value{'001_pdtstyle'}{$language} > $value{$trans}{$language};
-        $diff += $value{$trans}{$language} - $value{'001_pdtstyle'}{$language};
-        $cnt++;
-    }
-    $diff /= $cnt;
-    push @row, ($better, $worse, substr($diff*100,0,5)."%");
+        next if !$value{$trans}{$language} || !$value{'001_pdtstyle'}{$language};
+            $better++ if $value{'001_pdtstyle'}{$language} < $value{$trans}{$language};
+            $worse++ if $value{'001_pdtstyle'}{$language} > $value{$trans}{$language};
+            $diff += $value{$trans}{$language} - $value{'001_pdtstyle'}{$language};
+            $cnt++;
+        }
+        $diff /= $cnt;
+        push @row, ($better, $worse, substr($diff*100,0,5)."%");
     $table->add(@row);
 }
 

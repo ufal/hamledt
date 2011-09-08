@@ -45,7 +45,7 @@ foreach my $language (@ARGV) {
         if ($new || !-e "$dir/parsed/train.conll") {
             system "treex -p -j 20 Write::CoNLLX language=$language deprel_attribute=$deprel_attribute -- $dir/train/*.treex.gz > $dir/parsed/train.conll";
         }
-        system "python $mcd_dir/bin/conll2mst.py $dir/parsed/train.conll > $dir/parsed/train.mst\n";
+        system "cat $dir/parsed/train.conll | ./conll2mst.pl > $dir/parsed/train.mst\n";
         if ($mcd) {
             print STDERR "Creating script for training McDonald's non-projective parser ($name).\n";
             open (BASHSCRIPT, ">:utf8", "mcd-$name.sh") or die;
