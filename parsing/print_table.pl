@@ -48,16 +48,23 @@ foreach my $language (@ARGV) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
             if ($sys =~ /malt/ && $malt) {
-                $value{$trans}{$language} = substr($score, 0, 6);
+                $value{$trans}{$language} = round($score);
             }
             elsif ($sys =~ /mcdnonproj/ && $mcd) {
-                $value{$trans}{$language} = substr($score, 0, 6);
+                $value{$trans}{$language} = round($score);
             }
             elsif ($sys =~ /mcdproj/ && $mcdproj) {
-                $value{$trans}{$language} = substr($score, 0, 6);
+                $value{$trans}{$language} = round($score);
             }
         }
     }
+}
+
+sub round {
+    my $score = shift;
+    return undef if not defined $score;
+    return sprintf("%.2f",100*$score);
+
 }
 
 foreach my $trans (sort keys %value) {
@@ -75,7 +82,7 @@ foreach my $trans (sort keys %value) {
             $cnt++;
         }
         $diff /= $cnt;
-        push @row, ($better, $worse, substr($diff*100,0,5)."%");
+        push @row, ($better, $worse, substr($diff,0,5)."%");
     $table->add(@row);
 }
 
