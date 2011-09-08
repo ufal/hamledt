@@ -5,7 +5,7 @@ DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle
 TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::CoNLLX lines_per_doc=500
-WRITE0   = Write::Treex file_stem=''
+WRITE0   = Write::Treex file_stem='' compress=1
 WRITE    = Write::Treex
 
 prepare_source:
@@ -34,10 +34,10 @@ to_treex:
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
-SCEN1 = A2A::BN::CoNLL2PDTStyle
+SCEN1 = A2A::BN::CoNLL2PDTStyle A2A::SetAfunCoordAboveMembers language=$(LANGCODE)
 to_pdt:
-	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex
-	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex
+	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
+	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
 test:
