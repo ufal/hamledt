@@ -47,6 +47,12 @@ foreach my $language (@ARGV) {
         while (<UAS>) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
+            $score = 100 * $score;
+
+            if ($trans !~ /00/ && defined $value{'001_pdtstyle'}{$language}) {
+                $score -= $value{'001_pdtstyle'}{$language};
+            }
+
             if ($sys =~ /malt/ && $malt) {
                 $value{$trans}{$language} = round($score);
             }
@@ -60,10 +66,11 @@ foreach my $language (@ARGV) {
     }
 }
 
+
 sub round {
     my $score = shift;
     return undef if not defined $score;
-    return sprintf("%.2f",100*$score);
+    return sprintf("%.2f", $score);
 
 }
 
@@ -76,13 +83,13 @@ foreach my $trans (sort keys %value) {
     foreach my $language (@ARGV) {
         push @row, $value{$trans}{$language};
         next if !$value{$trans}{$language} || !$value{'001_pdtstyle'}{$language};
-            $better++ if $value{'001_pdtstyle'}{$language} < $value{$trans}{$language};
-            $worse++ if $value{'001_pdtstyle'}{$language} > $value{$trans}{$language};
-            $diff += $value{$trans}{$language} - $value{'001_pdtstyle'}{$language};
+            $better++ if  $value{$trans}{$language} > 0;
+            $worse++ if  $value{$trans}{$language} < 0;
+            $diff += $value{$trans}{$language};
             $cnt++;
         }
         $diff /= $cnt;
-        push @row, ($better, $worse, substr($diff,0,5)."%");
+        push @row, ($better, $worse, round($diff));
     $table->add(@row);
 }
 
