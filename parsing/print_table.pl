@@ -38,7 +38,11 @@ foreach my $language (@ARGV) {
         next if (!-d $dir);
         my $trans = $dir;
         $trans =~ s/^.+\///;
-        $trans =~ s/002/001/;
+        # exception for Estonian, where 001_dep is treated as 000_orig and pdtstyle has number 002
+        if ($language eq 'et') {
+            $trans =~ s/002_pdtstyle/001_pdtstyle/;
+            $trans =~ s/001_dep/000_orig/;
+        }
         open (UAS, "<:utf8", "$dir/parsed/uas.txt") or next;
         while (<UAS>) {
             chomp;
