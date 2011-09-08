@@ -8,7 +8,7 @@ use Treex::Core::Config;
 
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
 
-my ($help, $mcd, $mcdproj, $malt, $new);
+my ($help, $mcd, $mcdproj, $malt, $new, $trans);
 
 GetOptions(
     "help|h"  => \$help,
