@@ -10,13 +10,14 @@ my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_tree
 my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
 my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
 
-my ($help, $mcd, $mcdproj, $malt, $new);
+my ($help, $mcd, $mcdproj, $malt, $trans, $new);
 
 GetOptions(
     "help|h"  => \$help,
     "mcd"     => \$mcd,
     "malt"    => \$malt,
     "mcdproj" => \$mcdproj,
+    "trans=s"   => \$trans,
     "new"     => \$new,
 );
 
@@ -28,13 +29,15 @@ if ($help || !@ARGV) {
     --mcdproj  - train McDonald's projective MST parser
     --malt     - train Malt parser
     --new      - create training file if it does not exist
+    --trans    - select transformation, all transformations are run otherwise
     -h,--help  - print this help
 ";
 }
 
 
 foreach my $language (@ARGV) {
-    foreach my $dir (glob "$data_dir/$language/treex/*") {
+    my $glob = $trans ? "$data_dir/$language/treex/$trans" : "$data_dir/$language/treex/*";
+    foreach my $dir (glob $glob) {
         next if (!-d $dir);
         my $name = $dir;
         $name =~ s/^.+\///;

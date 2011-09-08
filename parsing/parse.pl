@@ -16,6 +16,7 @@ GetOptions(
     "mcdproj" => \$mcdproj,
     "malt"    => \$malt,
     "new"     => \$new,
+    "trans=s"   => \$trans,
 );
 
 if ($help || !@ARGV) {
@@ -25,12 +26,14 @@ if ($help || !@ARGV) {
     --mcdproj  - run McDonald's MST projective parser
     --malt     - run Malt parser
     --new      - copy the testing file from 'test' directory
+    --trans    - select transformation, all transformations are run otherwise
     -h,--help  - print this help
 ";
 }
 
 foreach my $language (@ARGV) {
-    foreach my $dir (glob "$data_dir/$language/treex/*") {
+    my $glob = $trans ? "$data_dir/$language/treex/$trans" : "$data_dir/$language/treex/*";
+    foreach my $dir (glob $glob) {
         next if (!-d $dir);
         if (!-e "$dir/parsed/001.treex.gz" || $new) {
             system "cp $dir/test/*.treex.gz $dir/parsed/";
