@@ -19,6 +19,7 @@ GetOptions(
     "maltsmf" => \$maltsmf,
     "mcdproj" => \$mcdproj,
     "trans=s"   => \$trans,
+    "feat=s"  => \$feat,
     "new"     => \$new,
 );
 
