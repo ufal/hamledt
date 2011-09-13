@@ -10,7 +10,7 @@ my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_tree
 my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
 my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
 
-my ($help, $mcd, $mcdproj, $malt, $trans, $new);
+my ($help, $mcd, $mcdproj, $malt, $maltsmf, $trans, $new);
 
 GetOptions(
     "help|h"  => \$help,
