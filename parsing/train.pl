@@ -16,6 +16,7 @@ GetOptions(
     "help|h"  => \$help,
     "mcd"     => \$mcd,
     "malt"    => \$malt,
+    "maltsmf" => \$maltsmf,
     "mcdproj" => \$mcdproj,
     "trans=s"   => \$trans,
     "new"     => \$new,
@@ -28,6 +29,7 @@ if ($help || !@ARGV) {
     --mcd      - train McDonald's non-projective MST parser
     --mcdproj  - train McDonald's projective MST parser
     --malt     - train Malt parser
+    --maltsmf  - train Malt parser with stack algorithm and morph features
     --new      - create training file if it does not exist
     --trans    - select transformation, all transformations are run otherwise
     -h,--help  - print this help
@@ -74,6 +76,15 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "cd $dir/parsed/; java -Xmx9g -jar $malt_dir/malt.jar -i train.conll -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
             close BASHSCRIPT;
             system "qsub -l mf=10g -cwd malt-$name.sh";
+        }
+        if ($maltsmf) {
+            print STDERR "Creating script for training Malt parser with stack and morph features ($name).\n";
+            open (BASHSCRIPT, ">:utf8", "maltsmf-$name.sh") or die;
+            print BASHSCRIPT "#!/bin/bash\n\n";
+            my $features = '/net/work/people/zeman/parsing/malt-parser/marco-kuhlmann-czech-settings/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
+            print BASHSCRIPT "cd $dir/parsed/; java -Xmx29g -jar $malt_dir/malt.jar -i train.conll -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            close BASHSCRIPT;
+            system "qsub -l mf=31g -cwd maltsmf-$name.sh";
         }
     }
 }
