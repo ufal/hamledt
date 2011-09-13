@@ -10,7 +10,7 @@ my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_tree
 my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
 my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
 
-my ($help, $mcd, $mcdproj, $malt, $maltsmf, $trans, $new);
+my ($help, $mcd, $mcdproj, $malt, $maltsmf, $feat, $trans, $new);
 
 GetOptions(
     "help|h"  => \$help,
@@ -32,6 +32,7 @@ if ($help || !@ARGV) {
     --maltsmf  - train Malt parser with stack algorithm and morph features
     --new      - create training file if it does not exist
     --trans    - select transformation, all transformations are run otherwise
+    --feat     - select features conll|iset|_ (_ is default)
     -h,--help  - print this help
 ";
 }
@@ -48,7 +49,13 @@ foreach my $language (@ARGV) {
         system "mkdir -p $dir/parsed";
         system "chmod -R g+wx $dir/parsed";
         if ($new || !-e "$dir/parsed/train.conll") {
-            system "treex -p -j 20 Write::CoNLLX language=$language deprel_attribute=$deprel_attribute -- $dir/train/*.treex.gz > $dir/parsed/train.conll";
+            my $f = '';
+            if ( $feat eq 'conll' ) {
+                $f = 'feat_attribute=conll/feat';
+            } elsif ( $feat eq 'iset' ) {
+                $f = 'feat_attribute=iset';
+            }
+            system "treex -p -j 20 Write::CoNLLX language=$language $f deprel_attribute=$deprel_attribute -- $dir/train/*.treex.gz > $dir/parsed/train.conll";
         }
         system "cat $dir/parsed/train.conll | ./conll2mst.pl > $dir/parsed/train.mst\n";
         if ($mcd) {
