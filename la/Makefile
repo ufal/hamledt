@@ -36,8 +36,10 @@ source_xml_to_conll:
 	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.02.0066.xml > $(IN)/1999.02.0066.conll
 	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/2007.01.0001.xml > $(IN)/2007.01.0001.conll
 	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/2008.01.0002.xml > $(IN)/2008.01.0002.conll
-	cat $(IN)/*.conll > $(IN)/train.conll
+	# If test.conll has already been created before we definitely do not want to include it in train.conll!
+	cat $(IN)/1999.*.conll $(IN)/200[78].*.conll > $(IN)/train.conll
 	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/test.xml > $(IN)/test.conll
+
 # run a conversion of the original data into the treex format
 # and store the results in 000_orig/
 to_treex:
