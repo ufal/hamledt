@@ -9,13 +9,14 @@ use Text::Table;
 
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
 
-my ($help, $mcd, $mcdproj, $malt);
+my ($help, $mcd, $mcdproj, $malt, $maltsmf);
 
 GetOptions(
     "help|h"  => \$help,
     "mcd"     => \$mcd,
     "mcdproj" => \$mcdproj,
     "malt"    => \$malt,
+    "maltsmf" => \$maltsmf,
 );
 
 
@@ -25,6 +26,7 @@ if ($help || !@ARGV) {
     --mcd      - McDonald's MST non-projective parser
     --mcdproj  - McDonald's MST projective parser
     --malt     - Malt parser
+    --maltsmf  - Malt parser with stack algorithm and morph features
     -h,--help  - print this help
 ";
 }
@@ -53,7 +55,8 @@ foreach my $language (@ARGV) {
                 $score -= $value{'001_pdtstyle'}{$language};
             }
 
-            if (($sys =~ /malt/ && $malt) || ($sys =~ /mcdnonproj/ && $mcd) || ($sys =~ /mcdproj/ && $mcdproj)) {
+            if (($sys =~ /maltnivreeager/ && $malt) || ($sys =~ /maltstacklazy/ && $maltsmf) ||
+                ($sys =~ /mcdnonproj/ && $mcd)      || ($sys =~ /mcdproj/ && $mcdproj)) {
                 $value{$trans}{$language} = round($score);
             }
         }
@@ -82,11 +85,13 @@ foreach my $trans (sort keys %value) {
         $diff += $value{$trans}{$language};
         $cnt++;
     }
-    $diff /= $cnt;
+    # Warning: $cnt can be zero if we do not have $value for either this transformation or for 001_pdtstyle.
+    $diff /= $cnt if($cnt);
     push @row, ($better, $worse, round($diff));
     $table->add(@row);
 }
 
+###!!! The following will throw an exception unless we evaluated all languages!
 print $table->select(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17);
 print "\n";
 print $table->select(0,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33);

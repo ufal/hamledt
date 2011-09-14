@@ -8,15 +8,18 @@ use Treex::Core::Config;
 
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
 
-my ($help, $mcd, $mcdproj, $malt, $new, $trans);
+my ($help, $mcd, $mcdproj, $malt, $maltsmf, $new, $feat, $trans);
+$feat='_'; # default
 
 GetOptions(
     "help|h"  => \$help,
     "mcd"     => \$mcd,
     "mcdproj" => \$mcdproj,
     "malt"    => \$malt,
+    "maltsmf" => \$maltsmf,
     "new"     => \$new,
     "trans=s"   => \$trans,
+    "feat=s"  => \$feat,
 );
 
 if ($help || !@ARGV) {
@@ -25,8 +28,10 @@ if ($help || !@ARGV) {
     --mcd      - run McDonald's MST non-projective parser
     --mcdproj  - run McDonald's MST projective parser
     --malt     - run Malt parser
+    --maltsmf  - run Malt parser with stack algorithm and morph features
     --new      - copy the testing file from 'test' directory
     --trans    - select transformation, all transformations are run otherwise
+    --feat     - select features conll|iset|_ (_ is default)
     -h,--help  - print this help
 ";
 }
@@ -59,6 +64,12 @@ foreach my $language (@ARGV) {
             $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
             $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
             $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos ";
+        }
+        if ($maltsmf && -e "$dir/parsed/malt_stacklazy.mco") {
+            $scenario .= "Util::SetGlobal language=$language selector=maltstacklazy ";
+            $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
+            $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+            $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_stacklazy.mco pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat ";
         }
         $scenario .= "Eval::AtreeUAS selector='' ";
         print STDERR "Creating script for parsing ($name).\n";
