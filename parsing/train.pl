@@ -48,17 +48,24 @@ foreach my $language (@ARGV) {
         $name = "$language-$name";
         my $deprel_attribute = $name =~ /000_orig/ ? 'conll/deprel' : 'afun';
         system "mkdir -p $dir/parsed";
-        system "chmod -R g+wx $dir/parsed";
-        if ($new || !-e "$dir/parsed/train.conll") {
+        # Send error messages to /dev/null because it is quite probable that there are files
+        # that we do not own and thus cannot change their permissions although we have write access to them.
+        system "chmod -R g+wx $dir/parsed 2>/dev/null";
+        my $trainfilename = 'train.conll';
+        if ($new || !-e "$dir/parsed/$trainfilename") {
             my $f = '';
             if ( $feat eq 'conll' ) {
                 $f = 'feat_attribute=conll/feat';
+                $trainfilename = 'train-conllfeat.conll';
             } elsif ( $feat eq 'iset' ) {
                 $f = 'feat_attribute=iset';
+                $trainfilename = 'train-iset.conll';
             }
-            system "treex -p -j 20 Write::CoNLLX language=$language $f deprel_attribute=$deprel_attribute -- $dir/train/*.treex.gz > $dir/parsed/train.conll";
+            system "treex -p -j 20 Write::CoNLLX language=$language $f deprel_attribute=$deprel_attribute -- $dir/train/*.treex.gz > $dir/parsed/$trainfilename";
         }
-        system "cat $dir/parsed/train.conll | ./conll2mst.pl > $dir/parsed/train.mst\n";
+        if ($mcd || $mcdproj) {
+            system "cat $dir/parsed/$trainfilename | ./conll2mst.pl > $dir/parsed/train.mst\n";
+        }
         if ($mcd) {
             print STDERR "Creating script for training McDonald's non-projective parser ($name).\n";
             open (BASHSCRIPT, ">:utf8", "mcd-$name.sh") or die;
@@ -81,7 +88,7 @@ foreach my $language (@ARGV) {
             print STDERR "Creating script for training Malt parser ($name).\n";
             open (BASHSCRIPT, ">:utf8", "malt-$name.sh") or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
-            print BASHSCRIPT "cd $dir/parsed/; java -Xmx9g -jar $malt_dir/malt.jar -i train.conll -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
+            print BASHSCRIPT "cd $dir/parsed/; java -Xmx9g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
             close BASHSCRIPT;
             system "qsub -l mf=10g -cwd malt-$name.sh";
         }
@@ -90,7 +97,7 @@ foreach my $language (@ARGV) {
             open (BASHSCRIPT, ">:utf8", "maltsmf-$name.sh") or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
             my $features = '/net/work/people/zeman/parsing/malt-parser/marco-kuhlmann-czech-settings/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
-            print BASHSCRIPT "cd $dir/parsed/; java -Xmx29g -jar $malt_dir/malt.jar -i train.conll -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            print BASHSCRIPT "cd $dir/parsed/; java -Xmx29g -jar $malt_dir/malt.jar -i $trainfilename -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
             close BASHSCRIPT;
             system "qsub -l mf=31g -cwd maltsmf-$name.sh";
         }
