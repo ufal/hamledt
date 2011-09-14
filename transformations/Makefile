@@ -1,6 +1,7 @@
 #PDT_READY= ar bg bn cs ca da de el en es
 #PDT_READY= et fi grc hi hu it ja la nl pt
 PDT_READY= ro ru sl sv ta te tr
+TRANSFORMATIONS=PunctBelowPrevNode CoordChainRootFirst
 
 SHELL=/bin/bash
 
@@ -11,7 +12,7 @@ test:
 	./transform.pl -p cs PunctBelowPrevNode
 
 runall:
-	./transform.pl -p --allt $(PDT_READY) 2>&1 | tee runall.log
+	./transform.pl -p $(TRANSFORMATIONS) $(PDT_READY) 2>&1 | tee runall.log
 
 
 stats:
