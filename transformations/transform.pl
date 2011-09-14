@@ -132,7 +132,7 @@ foreach my $transformer (@transformers) {
         $current_task++;
 #        my $command_line = "treex A2A::Transform::$transformer -- $data_dir/$language/treex/001_pdtstyle/*/*treex";
 
-        my $command_line = 'treex '.($parallel?'-p --jobs 5 ':'')
+        my $command_line = 'treex --cleanup '.($parallel?'-p --jobs 5 ':'')
             . " Util::Eval bundle='\$bundle->remove_zone(qw($language),qw(orig))' " # remove the original trees (before PDT styling)
             . "A2A::CopyAtree source_language=$language language=$language selector=before " # storing trees before transformation
                 ."A2A::Transform::$transformer language=$language "
@@ -140,5 +140,6 @@ foreach my $transformer (@transformers) {
                         . " Write::Treex -- $data_dir/$language/treex/*_pdtstyle/*/*.treex.gz &";
         print STDERR "Executing task $current_task/$tasks\n $command_line\n\n";
         system $command_line;
+        sleep 5; # wait few secs, so the jobs can be send to the cluster
     }
 }
