@@ -11,6 +11,7 @@ my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
 my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
 
 my ($help, $mcd, $mcdproj, $malt, $maltsmf, $feat, $trans, $new);
+$feat = '_'; # default
 
 GetOptions(
     "help|h"  => \$help,
