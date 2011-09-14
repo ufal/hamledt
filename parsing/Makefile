@@ -2,26 +2,26 @@ LANGUAGES=ar bg bn cs da de el grc hi la ro sl ta te
 ALL_LANGUAGES=ar bg bn ca cs da de el en es et eu fi grc hi hu is it ja la nl pt ro ru sl sv ta te tr zh
 
 train_mcd:
-	./train.pl --mcd --malt ${LANGUAGES}
+	./train.pl --mcd --malt $(LANGUAGES)
 
 ###!!! WARNING! Currently all three training flavors rewrite the same train.conll file!
 train_smfconll:
-	./train.pl --feat conll --new --maltsmf --trans 001_pdtstyle ${LANGUAGES}
+	./train.pl --feat conll --new --maltsmf --trans 001_pdtstyle $(LANGUAGES)
 
 train_smfiset:
-	./train.pl --feat iset --new --maltsmf --trans 001_pdtstyle ${LANGUAGES}
+	./train.pl --feat iset --new --maltsmf --trans 001_pdtstyle $(LANGUAGES)
 
 parse_mcd:
 	./parse.pl --mcd --malt ${LANGUAGES}
 
 parse_smfconll:
-	./parse.pl --feat conll --maltsmf --trans 001_pdtstyle ${LANGUAGES}
+	./parse.pl --feat conll --maltsmf --trans 001_pdtstyle $(LANGUAGES)
 
 parse_smfiset:
-	./parse.pl --feat iset --maltsmf --trans 001_pdtstyle ${LANGUAGES}
+	./parse.pl --feat iset --maltsmf --trans 001_pdtstyle $(LANGUAGES)
 
 eval:
-	./eval.pl lt ${ALL_LANGUAGES}
+	./eval.pl $(ALL_LANGUAGES)
 
 table:
 	@./print_table.pl --malt $(ALL_LANGUAGES)
