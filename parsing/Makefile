@@ -24,10 +24,10 @@ eval:
 	./eval.pl lt ${ALL_LANGUAGES}
 
 table:
-	./print_table.pl --malt ar bg bn ca cs da de el en es et eu fi grc hi hu is it ja la nl pt ro ru sl sv ta te tr zh
-	./print_table.pl --maltsmf ar bg bn ca cs da de el en es et eu fi grc hi hu is it ja la nl pt ro ru sl sv ta te tr zh
-	./print_table.pl --mcd ar bg bn ca cs da de el en es et eu fi grc hi hu is it ja la nl pt ro ru sl sv ta te tr zh
-	./print_table.pl --mcdproj ar bg bn ca cs da de el en es et eu fi grc hi hu is it ja la nl pt ro ru sl sv ta te tr zh
+	./print_table.pl --malt $(ALL_LANGUAGES)
+	./print_table.pl --maltsmf $(ALL_LANGUAGES)
+	./print_table.pl --mcd $(ALL_LANGUAGES)
+	./print_table.pl --mcdproj $(ALL_LANGUAGES)
 
 rights:
 	chmod -R g+w ${TMT_ROOT}/share/data/resources/normalized_treebanks/*/treex/*/parsed

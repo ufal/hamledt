@@ -1,7 +1,5 @@
 #!/usr/bin/env perl
-
-use strict;
-use warnings;
+use Modern::Perl;
 
 use Getopt::Long;
 use Treex::Core::Config;
@@ -91,8 +89,10 @@ foreach my $trans (sort keys %value) {
     $table->add(@row);
 }
 
-###!!! The following will throw an exception unless we evaluated all languages!
-print $table->select(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17);
-print "\n";
-print $table->select(0,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33);
-print "\n";
+my $langs = @ARGV;
+if ($langs < 18){
+    say $table;
+} else {
+    say $table->select(0 .. ($langs/2)+1);
+    say $table->select(0,($langs/2)+2 .. $langs+3);
+}
