@@ -1,7 +1,8 @@
 #PDT_READY= ar bg bn cs ca da de el en es
 #PDT_READY= et fi grc hi hu it ja la nl pt
-PDT_READY= ro ru sl sv ta te tr
-TRANSFORMATIONS=PunctBelowPrevNode CoordChainRootFirst
+PDT_READY= ro ru sl ta te tr
+#PROBLEMS  sv  Invalid value 'CoordArg' in element <afun> of choice type 'afun.type'
+TRANSFORMATIONS=PunctBelowPrevNode ComplexVerb ComplexVerbRootFirst ComplexVerbRootLast
 
 SHELL=/bin/bash
 
