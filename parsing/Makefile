@@ -24,10 +24,10 @@ eval:
 	./eval.pl lt ${ALL_LANGUAGES}
 
 table:
-	./print_table.pl --malt $(ALL_LANGUAGES)
-	./print_table.pl --maltsmf $(ALL_LANGUAGES)
-	./print_table.pl --mcd $(ALL_LANGUAGES)
-	./print_table.pl --mcdproj $(ALL_LANGUAGES)
+	@./print_table.pl --malt $(ALL_LANGUAGES)
+	@./print_table.pl --maltsmf $(ALL_LANGUAGES)
+	@./print_table.pl --mcd $(ALL_LANGUAGES)
+	@./print_table.pl --mcdproj $(ALL_LANGUAGES)
 
 rights:
 	chmod -R g+w ${TMT_ROOT}/share/data/resources/normalized_treebanks/ 2>/dev/null || echo Done

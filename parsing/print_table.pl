@@ -29,6 +29,15 @@ if ($help || !@ARGV) {
 ";
 }
 
+my $parser_name =
+      $mcd     ? 'MST'
+    : $mcdproj ? 'MST-PROJECTIVE'
+    : $malt    ? 'MALT-ARC-EAGER'
+    : $maltsmf ? 'MALT-STACK-LAZY'
+    :            'OOPS';
+
+say '*' x 10 . "  $parser_name  " . '*' x 10;
+
 my $table = Text::Table->new('trans', @ARGV, 'better', 'worse', 'average');
 my %value;
 
