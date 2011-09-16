@@ -56,7 +56,7 @@ foreach my $language (@ARGV) {
         while (<UAS>) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
-            $score = 100 * $score;
+            $score = $score ? 100 * $score : 0;
 
             if ($trans !~ /00/ && defined $value{'001_pdtstyle'}{$language}) {
                 $score -= $value{'001_pdtstyle'}{$language};
