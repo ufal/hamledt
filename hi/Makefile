@@ -36,8 +36,8 @@ to_treex:
 # and store the result in 001_pdtstyle
 SCEN1 = A2A::HI::CoNLL2PDTStyle A2A::Transform::InvPrepositionDownward language=hi A2A::SetAfunCoordAboveMembers language=hi
 to_pdt:
-	$(TREEX) -p --jobs 12 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
-	$(TREEX) -p --jobs 3 $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
+	$(TREEX) -p -e ALL -E ALL --jobs 12 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
+	$(TREEX) -p -e ALL -E ALL --jobs 3 $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
 test:

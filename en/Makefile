@@ -38,8 +38,8 @@ to_treex:
 #SCEN1 = A2A::EN::CoNLL2PDTStyle
 SCEN1= en2pdt.scen
 to_pdt:
-	$(TREEX) -p --jobs 79 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
-	$(TREEX) -p --jobs 3 $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
+	$(TREEX) -p -e ALL -E ALL --jobs 79 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
+	$(TREEX) -p -e ALL -E ALL --jobs 3 $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
 test:
