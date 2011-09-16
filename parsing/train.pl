@@ -52,16 +52,18 @@ foreach my $language (@ARGV) {
         # Send error messages to /dev/null because it is quite probable that there are files
         # that we do not own and thus cannot change their permissions although we have write access to them.
         system "chmod -R g+wx $dir/parsed 2>/dev/null";
-        my $trainfilename = 'train.conll';
+        my ($trainfilename, $f);
+        if ( $feat =~ m/^conll/i ) {
+            $trainfilename = 'train-conllfeat.conll';
+            $f = 'feat_attribute=conll/feat';
+        } elsif ( $feat =~ m/^i(nter)?set/i ) {
+            $trainfilename = 'train-iset.conll';
+            $f = 'feat_attribute=iset';
+        } else {
+            $trainfilename = 'train.conll';
+            $f = '';
+        }
         if ($new || !-e "$dir/parsed/$trainfilename") {
-            my $f = '';
-            if ( $feat eq 'conll' ) {
-                $f = 'feat_attribute=conll/feat';
-                $trainfilename = 'train-conllfeat.conll';
-            } elsif ( $feat eq 'iset' ) {
-                $f = 'feat_attribute=iset';
-                $trainfilename = 'train-iset.conll';
-            }
             system "treex -p -j 20 Write::CoNLLX language=$language $f deprel_attribute=$deprel_attribute -- $dir/train/*.treex.gz > $dir/parsed/$trainfilename";
         }
         if ($mcd || $mcdproj) {

@@ -65,11 +65,17 @@ foreach my $language (@ARGV) {
             $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
             $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos ";
         }
-        if ($maltsmf && -e "$dir/parsed/malt_stacklazy.mco") {
-            $scenario .= "Util::SetGlobal language=$language selector=maltstacklazy ";
-            $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
-            $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-            $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_stacklazy.mco pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat ";
+        if ($maltsmf) {
+            my $model = "$dir/parsed/malt_stacklazy.mco";
+            if (-e $model) {
+                $scenario .= "Util::SetGlobal language=$language selector=maltstacklazy ";
+                $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
+                $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+                $scenario .= "W2A::ParseMalt model=$model pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat ";
+            } else {
+                print STDERR ("MaltSMF parser required but model $model not found.\n");
+                next;
+            }
         }
         $scenario .= "Eval::AtreeUAS selector='' ";
         print STDERR "Creating script for parsing ($name).\n";
