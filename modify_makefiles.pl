@@ -58,16 +58,15 @@ sub process_makefile
     while(<MAKEFILE>)
     {
         $i_line++;
-        if(m/chmod g\+w/)
+        if(m/^(\t\$\(TREEX\)\s-p)(.*)$/)
         {
-            $i_line--;
-        }
-        elsif(m/mkdir -p \$\(DIR1\)\/test/)
-        {
-            print STDERR (" ... hit -e data\n");
-            print MF1;
-            print MF1 ("\tchmod -R g+w data/. data/*\n");
-            $i_line++;
+            my $prefix = $1;
+            my $suffix = $2;
+            # The suffix has probably lost the line break but let's make sure.
+            $suffix =~ s/\r?\n$//;
+            print STDERR (" ... hit\n");
+            # Make sure that both the cluster and the local Treex output all infos and warnings.
+            print MF1 ($prefix.' -e ALL -E ALL'.$suffix."\n");
         }
         else
         {
@@ -77,7 +76,7 @@ sub process_makefile
     close(MAKEFILE);
     close(MF1);
     # Replace the original Makefile with the modified one.
-    mv($path1, $path);
+    #mv($path1, $path);
 }
 
 
