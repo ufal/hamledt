@@ -1,0 +1,58 @@
+'cs' => 'praha' =>
+'jablka , pomeranče a citróny',
+'4 4 4 0 4',
+'XXX_M AuxX XXX_M Coord XXX_M',
+
+'sl' => 'praha' =>
+'jabolka , pomaranče in limone',
+'4 4 4 0 4',
+'XXX AuxX XXX Coord XXX',
+
+'ar' => 'praha' =>
+'التفاح و البرتقال و الليمون',
+'4 4 4 0 4',
+'XXX AuxY XXX Coord XXX',
+
+'sv' => 'moskva' =>
+'äpplen , apelsiner och citroner',
+'0 3 1 5 3',
+'XXX IK CC ++ CC',
+
+'de' => 'moskva' =>
+'Äpfel , Orangen und Zitronen',
+'0 1 1 3 3',
+'XXX PUNC CJ CD CJ',
+
+'bg' => 'stanford' =>
+'ябълки , портокали и лимони',
+'0 1 1 1 1',
+'XXX punct conjarg conj conjarg',
+
+'da' => 'stanford2' =>
+'æbler , appelsiner og citroner',
+'0 1 1 1 4',
+'XXX pnct conj coord conj',
+
+en: apples, oranges and lemons
+eu: sagarrak, laranjak eta limoiak
+bn: আপেল, কমলা এবং লেবু
+zh: 蘋果，橙子和檸檬
+et: õunad, apelsinid ja sidrunid
+fi: omenat, appelsiinit ja sitruunat
+fr: pommes, oranges et citrons
+hi: सेब, संतरे और नींबू
+nl: appels, sinaasappels en citroenen
+is: epli, appelsínur og sítrónur
+it: mele, arance e limoni
+ja: リンゴ、オレンジとレモン
+ca: pomes, taronges i llimones
+la: pomis, oranges et lemons
+hu: alma, narancs és citrom
+pt: maçãs, laranjas e limões
+ro: mere, portocale şi lămâi
+ru: яблоки, апельсины и лимоны
+el: τα μήλα, τα πορτοκάλια και τα λεμόνια
+es: manzanas, naranjas y limones
+ta: ஆப்பிள், ஆரஞ்சு பழங்கள்
+te: ఆపిల్ల, నారింజ మరియు lemons
+tr: elma, portakal ve limon
