@@ -46,6 +46,9 @@ foreach my $language (@ARGV) {
         my $name = $dir;
         $name =~ s/^.+\///;
         $name = "$language-$name";
+        # Since MaltSMF is invoked separately, it must use a distinctive script name.
+        # Otherwise we could damage a script for the other parsers currently being run.
+        $name .= '-maltsmf' if ($maltsmf);
         my $scenario;
         if ($mcd && -e "$dir/parsed/mcd_nonproj_o2.model") {
             $scenario .= "Util::SetGlobal language=$language selector=mcdnonprojo2 ";
@@ -81,7 +84,7 @@ foreach my $language (@ARGV) {
         print STDERR "Creating script for parsing ($name).\n";
         open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
         print BASHSCRIPT "#!/bin/bash\n\n";
-        print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex.gz > $dir/parsed/uas.txt";
+        print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex.gz > $dir/parsed/uas.txt\n";
         close BASHSCRIPT;
         system "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -l mf=5g -cwd parse-$name.sh";
     }
