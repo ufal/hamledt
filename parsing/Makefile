@@ -3,8 +3,8 @@ ALL_LANGUAGES=ar bg bn ca cs da de el en es et eu fi grc hi hu is it ja la nl pt
 LANGUAGES=$(ALL_LANGUAGES)
 
 train:
-	./train.pl --mcd --malt $(LANGUAGES)
-	./train.pl --feat conll --maltsmf $(LANGUAGES)
+	./train.pl --new --mcd --malt $(LANGUAGES)
+	./train.pl --new --feat conll --maltsmf $(LANGUAGES)
 
 parse:
 	./parse.pl --mcd --malt $(LANGUAGES)

@@ -84,7 +84,7 @@ foreach my $language (@ARGV) {
         print STDERR "Creating script for parsing ($name).\n";
         open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
         print BASHSCRIPT "#!/bin/bash\n\n";
-        print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex.gz > $dir/parsed/uas.txt\n";
+        print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex.gz | tee $dir/parsed/uas.txt\n";
         close BASHSCRIPT;
         system "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -l mf=5g -cwd parse-$name.sh";
     }

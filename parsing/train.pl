@@ -32,7 +32,7 @@ if ($help || !@ARGV) {
     --mcdproj  - train McDonald's projective MST parser
     --malt     - train Malt parser
     --maltsmf  - train Malt parser with stack algorithm and morph features
-    --new      - create training file if it does not exist
+    --new      - recreate training file, don't reuse existing
     --trans    - select transformation, all transformations are run otherwise
     --feat     - select features conll|iset|_ (_ is default)
     -h,--help  - print this help
