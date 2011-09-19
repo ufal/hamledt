@@ -38,8 +38,8 @@ foreach my $langcode (sort keys %counts) {
 
             map {sprintf("%.1f",$_)} (
                 100 * ($counts{$langcode}{is_coord_head}||0) / $counts{$langcode}{toks},
-                100 * ($counts{$langcode}{is_member}||0) / $counts{$langcode}{toks},
-                100 * ($counts{$langcode}{is_shared_modif}||0) / $counts{$langcode}{toks},
+                ($counts{$langcode}{is_member}||0) / $counts{$langcode}{is_coord_head},
+                ($counts{$langcode}{is_shared_modif}||0) / $counts{$langcode}{is_coord_head},
             )
         );
     print "\n";
