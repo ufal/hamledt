@@ -80,7 +80,7 @@ foreach my $language (@ARGV) {
                 next;
             }
         }
-        $scenario .= "Eval::AtreeUAS selector='' ";
+        $scenario .= "Eval::AtreeUAS eval_is_member=1 selector='' ";
         print STDERR "Creating script for parsing ($name).\n";
         open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
         print BASHSCRIPT "#!/bin/bash\n\n";
