@@ -46,6 +46,8 @@ foreach my $language (@ARGV) {
         next if (!-d $dir);
         my $name = $dir;
         $name =~ s/^.+\///;
+        # Compress transformation names because qstat only shows 10 characters.
+        $name =~ s/^trans_/t/;
         $name = "$language-$name";
         my $deprel_attribute = $name =~ /000_orig/ ? 'conll/deprel' : 'afun';
         system "mkdir -p $dir/parsed";
@@ -70,37 +72,41 @@ foreach my $language (@ARGV) {
             system "cat $dir/parsed/$trainfilename | ./conll2mst.pl > $dir/parsed/train.mst\n";
         }
         if ($mcd) {
+            my $scriptname = "mcd-$name.sh";
             print STDERR "Creating script for training McDonald's non-projective parser ($name).\n";
-            open (BASHSCRIPT, ">:utf8", "mcd-$name.sh") or die;
+            open (BASHSCRIPT, ">:utf8", $scriptname) or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
             print BASHSCRIPT "java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n";
             print BASHSCRIPT "  train order:2 format:MST decode-type:non-proj train-file:$dir/parsed/train.mst model-name:$dir/parsed/mcd_nonproj_o2.model\n";
             close BASHSCRIPT;
-            system "qsub -l mf=10g -cwd mcd-$name.sh";
+            system "qsub -l mf=10g -cwd -j yes $scriptname";
         }
         if ($mcdproj) {
+            my $scriptname = "mcp-$name.sh";
             print STDERR "Creating script for training McDonald's projective parser ($name).\n";
-            open (BASHSCRIPT, ">:utf8", "mcdproj-$name.sh") or die;
+            open (BASHSCRIPT, ">:utf8", $scriptname) or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
             print BASHSCRIPT "java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n";
             print BASHSCRIPT "  train order:2 format:MST decode-type:proj train-file:$dir/parsed/train.mst model-name:$dir/parsed/mcd_proj_o2.model\n";
             close BASHSCRIPT;
-            system "qsub -l mf=10g -cwd mcdproj-$name.sh";
+            system "qsub -l mf=10g -cwd -j yes $scriptname";
         }
         if ($malt) {
+            my $scriptname = "mlt-$name.sh";
             print STDERR "Creating script for training Malt parser ($name).\n";
-            open (BASHSCRIPT, ">:utf8", "malt-$name.sh") or die;
+            open (BASHSCRIPT, ">:utf8", $scriptname) or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
             print BASHSCRIPT "cd $dir/parsed/;\n";
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print BASHSCRIPT "rm -rf malt_nivreeager\n";
             print BASHSCRIPT "java -Xmx9g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
             close BASHSCRIPT;
-            system "qsub -l mf=10g -cwd malt-$name.sh";
+            system "qsub -l mf=10g -cwd -j yes $scriptname";
         }
         if ($maltsmf) {
+            my $scriptname = "smf-$name.sh";
             print STDERR "Creating script for training Malt parser with stack and morph features ($name).\n";
-            open (BASHSCRIPT, ">:utf8", "maltsmf-$name.sh") or die;
+            open (BASHSCRIPT, ">:utf8", $scriptname) or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
             print BASHSCRIPT "cd $dir/parsed/;\n";
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
@@ -108,7 +114,7 @@ foreach my $language (@ARGV) {
             my $features = '/net/work/people/zeman/parsing/malt-parser/marco-kuhlmann-czech-settings/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
             print BASHSCRIPT "java -Xmx29g -jar $malt_dir/malt.jar -i $trainfilename -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
             close BASHSCRIPT;
-            system "qsub -l mf=31g -cwd maltsmf-$name.sh";
+            system "qsub -l mf=31g -cwd -j yes $scriptname";
         }
     }
 }
