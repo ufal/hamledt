@@ -91,7 +91,10 @@ foreach my $language (@ARGV) {
             print STDERR "Creating script for training Malt parser ($name).\n";
             open (BASHSCRIPT, ">:utf8", "malt-$name.sh") or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
-            print BASHSCRIPT "cd $dir/parsed/; java -Xmx9g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
+            print BASHSCRIPT "cd $dir/parsed/;\n";
+            # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
+            print BASHSCRIPT "rm -rf malt_nivreeager\n";
+            print BASHSCRIPT "java -Xmx9g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
             close BASHSCRIPT;
             system "qsub -l mf=10g -cwd malt-$name.sh";
         }
@@ -99,8 +102,11 @@ foreach my $language (@ARGV) {
             print STDERR "Creating script for training Malt parser with stack and morph features ($name).\n";
             open (BASHSCRIPT, ">:utf8", "maltsmf-$name.sh") or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
+            print BASHSCRIPT "cd $dir/parsed/;\n";
+            # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
+            print BASHSCRIPT "rm -rf malt_stacklazy\n";
             my $features = '/net/work/people/zeman/parsing/malt-parser/marco-kuhlmann-czech-settings/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
-            print BASHSCRIPT "cd $dir/parsed/; java -Xmx29g -jar $malt_dir/malt.jar -i $trainfilename -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            print BASHSCRIPT "java -Xmx29g -jar $malt_dir/malt.jar -i $trainfilename -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
             close BASHSCRIPT;
             system "qsub -l mf=31g -cwd maltsmf-$name.sh";
         }
