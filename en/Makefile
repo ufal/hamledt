@@ -36,7 +36,7 @@ to_treex:
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
 #SCEN1 = A2A::EN::CoNLL2PDTStyle
-SCEN1= en2pdt.scen
+SCEN1= en2pdt.scen A2A::SetSharedModifier
 to_pdt:
 	$(TREEX) -p -e ALL -E ALL --jobs 79 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
 	$(TREEX) -p -e ALL -E ALL --jobs 3 $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz

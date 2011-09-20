@@ -34,7 +34,7 @@ to_treex:
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
-SCEN1 = A2A::BN::CoNLL2PDTStyle A2A::SetAfunCoordAboveMembers language=$(LANGCODE)
+SCEN1 = A2A::BN::CoNLL2PDTStyle A2A::SetAfunCoordAboveMembers A2A::SetSharedModifier
 to_pdt:
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz

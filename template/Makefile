@@ -1,3 +1,4 @@
+SHELL=bash
 LANGCODE=en
 DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
 IN       = $(DATADIR)/source
@@ -18,12 +19,7 @@ prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
 	mkdir -p $(DATADIR)
 	if [ ! -e data ]; then ln -s $(DATADIR) data; fi
-	mkdir -p $(DIR0)
-	mkdir -p $(DIR0)/train
-	mkdir -p $(DIR0)/test
-	mkdir -p $(DIR1)
-	mkdir -p $(DIR1)/train
-	mkdir -p $(DIR1)/test
+	mkdir -p {$(DIR0),$(DIR1)}/{train,test}
 	chmod -R g+w data/. data/*
 
 # run a conversion of the original data into the treex format
@@ -34,7 +30,7 @@ to_treex:
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
-SCEN1 = A2A::TEMPLATE::CoNLL2PDTStyle
+SCEN1 = A2A::TEMPLATE::CoNLL2PDTStyle A2A::SetSharedModifier
 to_pdt:
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
