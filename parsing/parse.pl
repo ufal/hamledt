@@ -101,7 +101,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "#!/bin/bash\n\n";
             print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex.gz | tee $dir/parsed/uas.txt\n";
             close BASHSCRIPT;
-            system "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -l mf=5g -cwd parse-$name.sh";
+            system "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -l mf=5g -cwd -j yes parse-$name.sh";
         } else {
             print STDERR ("Nothing to do in $dir!\n");
         }
