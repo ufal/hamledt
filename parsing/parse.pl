@@ -50,23 +50,38 @@ foreach my $language (@ARGV) {
         # Otherwise we could damage a script for the other parsers currently being run.
         $name .= '-maltsmf' if ($maltsmf);
         my $scenario;
-        if ($mcd && -e "$dir/parsed/mcd_nonproj_o2.model") {
-            $scenario .= "Util::SetGlobal language=$language selector=mcdnonprojo2 ";
-            $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
-            $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-            $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos ";
+        if ($mcd) {
+            my $model = "$dir/parsed/mcd_nonproj_o2.model";
+            if (-e $model) {
+                $scenario .= "Util::SetGlobal language=$language selector=mcdnonprojo2 ";
+                $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
+                $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+                $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos ";
+            } else {
+                print STDERR ("MST nonprojective parser required but model $model not found.\n");
+            }
         }
-        if ($mcdproj && -e "$dir/parsed/mcd_proj_o2.model") {
-            $scenario .= "Util::SetGlobal language=$language selector=mcdprojo2 ";
-            $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
-            $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-            $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos ";
+        if ($mcdproj) {
+            my $model = "$dir/parsed/mcd_proj_o2.model";
+            if (-e $model) {
+                $scenario .= "Util::SetGlobal language=$language selector=mcdprojo2 ";
+                $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
+                $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+                $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos ";
+            } else {
+                print STDERR ("MST projective parser required but model $model not found.\n");
+            }
         }
-        if ($malt && -e "$dir/parsed/malt_nivreeager.mco") {
-            $scenario .= "Util::SetGlobal language=$language selector=maltnivreeager ";
-            $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
-            $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-            $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos ";
+        if ($malt) {
+            my $model = "$dir/parsed/malt_nivreeager.mco";
+            if (-e $model) {
+                $scenario .= "Util::SetGlobal language=$language selector=maltnivreeager ";
+                $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
+                $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+                $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos ";
+            } else {
+                print STDERR ("Malt parser required but model $model not found.\n");
+            }
         }
         if ($maltsmf) {
             my $model = "$dir/parsed/malt_stacklazy.mco";
@@ -77,15 +92,18 @@ foreach my $language (@ARGV) {
                 $scenario .= "W2A::ParseMalt model=$model pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat ";
             } else {
                 print STDERR ("MaltSMF parser required but model $model not found.\n");
-                next;
             }
         }
-        $scenario .= "Eval::AtreeUAS eval_is_member=1 selector='' ";
-        print STDERR "Creating script for parsing ($name).\n";
-        open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
-        print BASHSCRIPT "#!/bin/bash\n\n";
-        print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex.gz | tee $dir/parsed/uas.txt\n";
-        close BASHSCRIPT;
-        system "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -l mf=5g -cwd parse-$name.sh";
+        if ($scenario) {
+            $scenario .= "Eval::AtreeUAS eval_is_member=1 selector='' ";
+            print STDERR "Creating script for parsing ($name).\n";
+            open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
+            print BASHSCRIPT "#!/bin/bash\n\n";
+            print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex.gz | tee $dir/parsed/uas.txt\n";
+            close BASHSCRIPT;
+            system "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -l mf=5g -cwd parse-$name.sh";
+        } else {
+            print STDERR ("Nothing to do in $dir!\n");
+        }
     }
 }

@@ -7,8 +7,7 @@ train:
 	./train.pl --new --feat conll --maltsmf $(LANGUAGES)
 
 parse:
-	./parse.pl --mcd --malt $(LANGUAGES)
-	./parse.pl --feat conll --maltsmf $(LANGUAGES)
+	./parse.pl --mcd --malt --maltsmf --feat conll $(LANGUAGES)
 
 eval:
 	./eval.pl $(ALL_LANGUAGES)
