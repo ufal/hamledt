@@ -65,8 +65,15 @@ foreach my $language (@ARGV) {
             $trainfilename = 'train.conll';
             $f = '';
         }
+
+        # create training CoNLL file if needed.
+        # all afuns but 'Coord' are substituted by 'Atr' 
+
         if ($new || !-e "$dir/parsed/$trainfilename") {
-            system "treex -p -j 20 Write::CoNLLX language=$language $f deprel_attribute=$deprel_attribute is_member_within_afun=1 is_shared_modifier_within_afun=1 \\
+            system "treex -p -j 20 \\
+                    Util::SetGlobal language=$language \\
+                    Util::Eval anode='\$anode->set_afun(\"Atr\") if defined \$anode->afun && \$anode->afun ne \"Coord\";' \\
+                    Write::CoNLLX $f deprel_attribute=$deprel_attribute is_member_within_afun=1 is_shared_modifier_within_afun=1 \\
                     -- $dir/train/*.treex.gz > $dir/parsed/$trainfilename";
         }
         if ($mcd || $mcdproj) {
