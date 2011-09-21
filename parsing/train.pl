@@ -66,7 +66,8 @@ foreach my $language (@ARGV) {
             $f = '';
         }
         if ($new || !-e "$dir/parsed/$trainfilename") {
-            system "treex -p -j 20 Write::CoNLLX language=$language $f deprel_attribute=$deprel_attribute is_member_within_afun=1 -- $dir/train/*.treex.gz > $dir/parsed/$trainfilename";
+            system "treex -p -j 20 Write::CoNLLX language=$language $f deprel_attribute=$deprel_attribute is_member_within_afun=1 is_shared_modifier_within_afun=1 \\
+                    -- $dir/train/*.treex.gz > $dir/parsed/$trainfilename";
         }
         if ($mcd || $mcdproj) {
             system "cat $dir/parsed/$trainfilename | ./conll2mst.pl > $dir/parsed/train.mst\n";
