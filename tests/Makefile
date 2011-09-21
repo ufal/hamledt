@@ -1,5 +1,5 @@
 SHELL=bash
-JOBS=50
+JOBS=100
 VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)

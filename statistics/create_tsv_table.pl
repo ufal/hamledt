@@ -36,7 +36,7 @@ foreach my $langcode (sort keys %counts) {
                     100 * $counts{$langcode}{train} / $counts{$langcode}{toks},
                     100 * $counts{$langcode}{test} / $counts{$langcode}{toks} ),
 
-            map {sprintf("%.1f",$_)} (
+            map {sprintf("%.2f",$_)} (
                 100 * ($counts{$langcode}{is_coord_head}||0) / $counts{$langcode}{toks},
                 ($counts{$langcode}{is_member}||0) / $counts{$langcode}{is_coord_head},
                 ($counts{$langcode}{is_shared_modif}||0) / $counts{$langcode}{is_coord_head},
