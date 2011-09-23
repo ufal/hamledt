@@ -141,7 +141,7 @@ my @coord_sample = (
 'XXX PUNC CJT CO CJT',
 
 'es' => 'stanford' =>
-'manzanas, naranjas y limones',
+'manzanas , naranjas y limones',
 '0 1 1 1 1',
 'XXX f sn coord sn',
 
@@ -178,16 +178,23 @@ my @coord_sample = (
 
 
 my @samples = read_samples(@coord_sample);
-# Print trees in CoNLL format.
-foreach my $sample (@samples)
+if(@ARGV[0] eq 'latex')
 {
-    my $i = 0;
-    for($i = 0; $i<=$#{$sample->{forms}}; $i++)
+    latex(@samples);
+}
+else
+{
+    # Print trees in CoNLL format.
+    foreach my $sample (@samples)
     {
-        print($i+1, "\t$sample->{forms}[$i]\t_\t_\t_\t_\t$sample->{links}[$i]\t$sample->{afuns}[$i]\t_\t_\n");
+        my $i = 0;
+        for($i = 0; $i<=$#{$sample->{forms}}; $i++)
+        {
+            print($i+1, "\t$sample->{forms}[$i]\t_\t_\t_\t_\t$sample->{links}[$i]\t$sample->{afuns}[$i]\t_\t_\n");
+        }
+        print($i+1, "\t$sample->{language}\t_\t_\t_\t_\t0\t$sample->{style}\t_\t_\n");
+        print("\n");
     }
-    print($i+1, "\t$sample->{language}\t_\t_\t_\t_\t0\t$sample->{style}\t_\t_\n");
-    print("\n");
 }
 
 
@@ -230,10 +237,11 @@ sub latex
         unshift(@forms, '');
         my @links = @{$sample->{links}};
         unshift(@links, -1);
-        die if(scalar(@forms)!=scalar(@links));
+        die(scalar(@forms).'!='.scalar(@links)) if(scalar(@forms)!=scalar(@links));
         # Přepsat uzly do matice.
         # x-ová souřadnice uzlu je jeho pořadí ve větě.
         # y-ová souřadnice uzlu je jeho hloubka.
+        # Matici ale vyrobíme jako $matrix[$y][$x] kvůli vypisování.
         my @depths;
         my @matrix;
         for(my $i = 0; $i<=$#links; $i++)
@@ -248,24 +256,27 @@ sub latex
             # Vypsat slovo.
             if($i>0)
             {
-                $matrix[$i][$h] .= "\\K{$forms[$i]}";
+                $matrix[$h][$i] .= "\\K{$forms[$i]}";
                 # Víme, že rodič má hloubku o 1 nižší, můžeme tedy rovnou vygenerovat i hranu od něj k nám.
                 my $r = $links[$i];
                 my $arc = 'd';
                 # Jestliže je rodič napravo od nás, hrana povede doleva.
                 if($r>$i)
                 {
-                    $arc .= join('', map {'l'} (0..($r-$i)));
+                    $arc .= join('', 'l' x ($r-$i));
                 }
                 # Jestliže je rodič nalevo od nás, hrana povede doprava.
                 else
                 {
-                    $arc .= join('', map {'r'} (0..($i-$r)));
+                    $arc .= join('', 'r' x ($i-$r));
                 }
-                $matrix[$r][$h-1] .= "\\B{$arc}";
+                $matrix[$h-1][$r] .= "\\B{$arc}";
             }
         }
         # Matice je hotová, vypsat tabulku.
-        print(join(" \\\\\n", map {join(' & ', @{$_})} (@matrix)), "\n");
+        print("\\scalebox{\\treescalingfactor}{\\Treek[-0.8]{1.3}{\n");
+        print(join(" \\\\\n", map {join(' & ', @{$_})} (@matrix)), " \\\\\n");
+        print("}}\n");
     }
 }
+
