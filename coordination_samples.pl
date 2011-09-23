@@ -214,3 +214,58 @@ sub read_samples
     return @samples;
 }
 
+
+
+#------------------------------------------------------------------------------
+# Převede stromečky do LaTeXové notace.
+#------------------------------------------------------------------------------
+sub latex
+{
+    my @samples = @_;
+    foreach my $sample (@samples)
+    {
+        # Vzorek má n uzlů, chybí prvek pro kořen a museli bychom neustále přepočítávat indexy.
+        # Raději tedy nejdříve přidáme kořen s indexem 0.
+        my @forms = @{$sample->{forms}};
+        unshift(@forms, '');
+        my @links = @{$sample->{links}};
+        unshift(@links, -1);
+        die if(scalar(@forms)!=scalar(@links));
+        # Přepsat uzly do matice.
+        # x-ová souřadnice uzlu je jeho pořadí ve větě.
+        # y-ová souřadnice uzlu je jeho hloubka.
+        my @depths;
+        my @matrix;
+        for(my $i = 0; $i<=$#links; $i++)
+        {
+            # Zjistit hloubku i-tého uzlu.
+            my $h = 0;
+            for(my $j = $i; $j>0; $j = $links[$j])
+            {
+                $h++;
+            }
+            $depths[$i] = $h;
+            # Vypsat slovo.
+            if($i>0)
+            {
+                $matrix[$i][$h] .= "\\K{$forms[$i]}";
+                # Víme, že rodič má hloubku o 1 nižší, můžeme tedy rovnou vygenerovat i hranu od něj k nám.
+                my $r = $links[$i];
+                my $arc = 'd';
+                # Jestliže je rodič napravo od nás, hrana povede doleva.
+                if($r>$i)
+                {
+                    $arc .= join('', map {'l'} (0..($r-$i)));
+                }
+                # Jestliže je rodič nalevo od nás, hrana povede doprava.
+                else
+                {
+                    $arc .= join('', map {'r'} (0..($i-$r)));
+                }
+                $matrix[$r][$h-1] .= "\\B{$arc}";
+            }
+        }
+        # Matice je hotová, vypsat tabulku.
+        print(join(" \\\\\n", map {join(' & ', @{$_})} (@matrix)), "\n");
+    }
+}
