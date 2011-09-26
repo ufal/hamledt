@@ -110,6 +110,7 @@ foreach my $language (@languages) {
     foreach my $f (split /,/, $family) {
         foreach my $p (split /,/, $punctuation) {
             foreach my $c (split /,/, $conjunction) {
+                next if ($f eq 'Prague' && $c ne 'head') || ($f ne 'Prague' && $c eq 'head');
                 foreach my $h (split /,/, $head) {
                     foreach my $s (split /,/, $shared) {
                         my $name = 'f'.uc(substr($f,0,1)).'p'.uc(substr($p,0,1)).'c'.uc(substr($c,0,1)).'h'.uc(substr($h,0,1)).'s'.uc(substr($s,0,1));

@@ -1,8 +1,5 @@
-#PDT_READY= ar bg bn cs ca da de el en es
-#PDT_READY= et fi grc hi hu it ja la nl pt
-PDT_READY= ro ru sl ta te tr
+PDT_READY= ar bg bn cs da de el en es et eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 #PROBLEMS  sv  Invalid value 'CoordArg' in element <afun> of choice type 'afun.type'
-TRANSFORMATIONS=PunctBelowPrevNode ComplexVerb ComplexVerbRootFirst ComplexVerbRootLast
 
 SHELL=/bin/bash
 
@@ -13,8 +10,7 @@ test:
 	./transform.pl -p cs PunctBelowPrevNode
 
 runall:
-	./transform.pl -p --family Moscow --head left --punctuation previous --conjunction between --shared nearest bg bn nl pt 2>&1 | tee runall.log
-
+	./transform.pl -p --family Moscow $(PDT_READY) 2>&1 | tee runall.log
 
 stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \
