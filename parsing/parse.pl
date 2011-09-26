@@ -6,7 +6,7 @@ use warnings;
 use Getopt::Long;
 use Treex::Core::Config;
 
-my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
+my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks";
 
 my ($help, $mcd, $mcdproj, $malt, $maltsmf, $new, $feat, $trans);
 $feat='_'; # default
@@ -36,10 +36,17 @@ if ($help || !@ARGV) {
 ";
 }
 
+print STDERR ("Going to parse languages: ", join(', ', @ARGV), "\n");
 foreach my $language (@ARGV) {
     my $glob = $trans ? "$data_dir/$language/treex/$trans" : "$data_dir/$language/treex/*";
-    foreach my $dir (glob $glob) {
-        next if (!-d $dir);
+    my @glob = glob $glob;
+    die("No directories found: glob = $glob") unless(@glob);
+    foreach my $dir (@glob) {
+        if(!-d $dir)
+        {
+            print STDERR ("Directory $dir not found.\n");
+            next;
+        }
         if (!-e "$dir/parsed/001.treex.gz" || $new) {
             system "cp $dir/test/*.treex.gz $dir/parsed/";
         }
@@ -115,7 +122,9 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "#!/bin/bash\n\n";
             print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex.gz | tee $dir/parsed/uas.txt\n";
             close BASHSCRIPT;
-            system "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -l mf=5g -cwd -j yes parse-$name.sh";
+            my $qsub = "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -l mf=10g -cwd -j yes parse-$name.sh";
+            #print STDERR ("$qsub\n");
+            system $qsub;
         } else {
             print STDERR ("Nothing to do in $dir!\n");
         }
