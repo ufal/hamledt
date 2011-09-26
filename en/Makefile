@@ -3,7 +3,7 @@ DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
 IN       = $(DATADIR)/source
 DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle
-TREEX    = treex -L$(LANGCODE)
+TREEX    = treex -L$(LANGCODE) -p
 IMPORT   = Read::CoNLL2009 lines_per_doc=500
 WRITE0   = Write::Treex file_stem=''
 WRITE    = Write::Treex
@@ -38,8 +38,8 @@ to_treex:
 #SCEN1 = A2A::EN::CoNLL2PDTStyle
 SCEN1= en2pdt.scen A2A::SetSharedModifier
 to_pdt:
-	$(TREEX) -p -e ALL -E ALL --jobs 79 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
-	$(TREEX) -p -e ALL -E ALL --jobs 3 $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
+	$(TREEX) -e ALL -E ALL --jobs 79 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
+	$(TREEX) -e ALL -E ALL --jobs 3 $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
 test:

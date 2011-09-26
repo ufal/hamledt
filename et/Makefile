@@ -5,7 +5,7 @@ IN       = $(DATADIR)/source
 DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_dep
 DIR2     = $(DATADIR)/treex/002_pdtstyle
-TREEX    = treex -L$(LANGCODE)
+TREEX    = treex -L$(LANGCODE) -p
 IMPORT   = Read::Tiger
 WRITE0   = Write::Treex file_stem='et'
 WRITE    = Write::Treex

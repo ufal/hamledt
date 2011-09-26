@@ -101,21 +101,23 @@ if (not @languages) {
     error "Languages to be processed must be specified, either by listing them or by --alll or --all options.";
 }
 
-foreach my $f (split /,/, $family) {
-    foreach my $p (split /,/, $punctuation) {
-        foreach my $c (split /,/, $conjunction) {
-            foreach my $h (split /,/, $head) {
-                foreach my $s (split /,/, $shared) {
-                    my $name = 'f'.uc(substr($f,0,1)).'p'.uc(substr($p,0,1).'c'.uc(substr($c,0,1).'h'.uc(substr($h,0,1).'s'.uc(substr($s,0,1);
-                    my $command_line = 'treex '.($parallel?'-p --jobs 5 ':'')
-                                     . " Util::Eval bundle='\$bundle->remove_zone(qw($language),qw(orig))' " # remove the original trees (before PDT styling)
-                                     . "A2A::CopyAtree source_language=$language language=$language selector=before " # storing trees before transformation
-                                     . "A2A::Transform::CoordStyle family=$f punctuation=$p conjunction=$c head=$h shared=$s language=$language "
-                                     . "Util::Eval document='my \$path=\$document->path; \$path=~s/00._pdtstyle/trans_$name/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' "
-                                     . " Write::Treex -- $data_dir/$language/treex/*_pdtstyle/*/*.treex.gz &";
-                    print STDERR "Executing task $language,$name\n $command_line\n\n";
-                    system $command_line;
-                    sleep 2; # wait few secs, so the jobs can be send to the cluster
+foreach my $language (@languages) {
+    foreach my $f (split /,/, $family) {
+        foreach my $p (split /,/, $punctuation) {
+            foreach my $c (split /,/, $conjunction) {
+                foreach my $h (split /,/, $head) {
+                    foreach my $s (split /,/, $shared) {
+                        my $name = 'f'.uc(substr($f,0,1)).'p'.uc(substr($p,0,1)).'c'.uc(substr($c,0,1)).'h'.uc(substr($h,0,1)).'s'.uc(substr($s,0,1));
+                        my $command_line = 'treex '.($parallel?'-p --jobs 5 ':'')
+                                         . " Util::Eval bundle='\$bundle->remove_zone(qw($language),qw(orig))' " # remove the original trees (before PDT styling)
+                                         . "A2A::CopyAtree source_language=$language language=$language selector=before " # storing trees before transformation
+                                         . "A2A::Transform::CoordStyle family=$f punctuation=$p conjunction=$c head=$h shared=$s language=$language "
+                                         . "Util::Eval document='my \$path=\$document->path; \$path=~s/00._pdtstyle/trans_$name/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' "
+                                         . " Write::Treex -- $data_dir/$language/treex/*_pdtstyle/*/*.treex.gz &";
+                        print STDERR "Executing task $language,$name\n $command_line\n\n";
+                        system $command_line;
+                        sleep 2; # wait few secs, so the jobs can be send to the cluster
+                    }
                 }
             }
         }

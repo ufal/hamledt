@@ -13,7 +13,7 @@ test:
 	./transform.pl -p cs PunctBelowPrevNode
 
 runall:
-	./transform.pl -p $(TRANSFORMATIONS) $(PDT_READY) 2>&1 | tee runall.log
+	./transform.pl -p --family Moscow --head left --punctuation previous --conjunction between --shared nearest bg bn nl pt 2>&1 | tee runall.log
 
 
 stats:
