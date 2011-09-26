@@ -57,10 +57,6 @@ foreach my $language (@ARGV) {
         # the following variable indicates whether we are parsing a transformation or pdtstyle/orig file 
         my $is_transformation = $name =~ /trans_/ ? 1 : 0;
 
-        # Block that make the inverted tranformation
-        my $inv_block_name = $dir;
-        $inv_block_name =~ s/^.*trans_/Inv/;
-        
         # Since MaltSMF is invoked separately, it must use a distinctive script name.
         # Otherwise we could damage a script for the other parsers currently being run.
         $name .= '-maltsmf' if ($maltsmf);
@@ -72,7 +68,7 @@ foreach my $language (@ARGV) {
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
                 $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos ";
-                $scenario .= "A2A::Transform::$inv_block_name " if $is_transformation;
+                $scenario .= "A2A::Transform::Coord_fPhRsHcHpB " if $is_transformation;
             } else {
                 print STDERR ("MST nonprojective parser required but model $model not found.\n");
             }
@@ -84,7 +80,7 @@ foreach my $language (@ARGV) {
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
                 $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos ";
-                $scenario .= "A2A::Transform::$inv_block_name " if $is_transformation;
+                $scenario .= "A2A::Transform::Coord_fPhRsHcHpB " if $is_transformation;
             } else {
                 print STDERR ("MST projective parser required but model $model not found.\n");
             }
@@ -96,7 +92,7 @@ foreach my $language (@ARGV) {
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
                 $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos ";
-                $scenario .= "A2A::Transform::$inv_block_name " if $is_transformation;
+                $scenario .= "A2A::Transform::Coord_fPhRsHcHpB " if $is_transformation;
             } else {
                 print STDERR ("Malt parser required but model $model not found.\n");
             }
@@ -108,7 +104,7 @@ foreach my $language (@ARGV) {
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
                 $scenario .= "W2A::ParseMalt model=$model pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat ";
-                $scenario .= "A2A::Transform::$inv_block_name " if $is_transformation;
+                $scenario .= "A2A::Transform::Coord_fPhRsHcHpB " if $is_transformation;
             } else {
                 print STDERR ("MaltSMF parser required but model $model not found.\n");
             }
