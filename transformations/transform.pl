@@ -5,7 +5,12 @@ use warnings;
 use Getopt::Long;
 use Treex::Core::Config;
 
-my ($parallel, $help, $alll, $family, $punctuation, $conjunction, $head, $shared);
+my ($parallel, $help, $alll);
+my $family = 'Moscow';
+my $punctuation = 'previous';
+my $conjunction = 'between';
+my $head = 'left';
+my $shared = 'nearest';
 
 GetOptions(
     "help|h" => \$help,
@@ -111,7 +116,7 @@ foreach my $language (@languages) {
                         my $command_line = 'treex '.($parallel?'-p --jobs 5 ':'')
                                          . " Util::Eval bundle='\$bundle->remove_zone(qw($language),qw(orig))' " # remove the original trees (before PDT styling)
                                          . "A2A::CopyAtree source_language=$language language=$language selector=before " # storing trees before transformation
-                                         . "A2A::Transform::CoordStyle family=$f punctuation=$p conjunction=$c head=$h shared=$s language=$language "
+                                         . "A2A::Transform::CoordStyle family=$f head=$h shared=$s conjunction=$c punctuation=$p language=$language "
                                          . "Util::Eval document='my \$path=\$document->path; \$path=~s/00._pdtstyle/trans_$name/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' "
                                          . " Write::Treex -- $data_dir/$language/treex/*_pdtstyle/*/*.treex.gz &";
                         print STDERR "Executing task $language,$name\n $command_line\n\n";
