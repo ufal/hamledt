@@ -116,11 +116,16 @@ foreach my $language (@ARGV) {
             print STDERR "Creating script for training Malt parser with stack and morph features ($name).\n";
             open (BASHSCRIPT, ">:utf8", $scriptname) or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
+            # Debugging message: anyone here eating my memory?
+            print BASHSCRIPT "hostname -f\n";
+            print BASHSCRIPT "top -bn1 | head -20\n";
             print BASHSCRIPT "cd $dir/parsed/;\n";
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print BASHSCRIPT "rm -rf malt_stacklazy\n";
             my $features = '/net/work/people/zeman/parsing/malt-parser/marco-kuhlmann-czech-settings/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
-            print BASHSCRIPT "java -Xmx29g -jar $malt_dir/malt.jar -i $trainfilename -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            my $command = "java -Xmx29g -jar $malt_dir/malt.jar -i $trainfilename -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            print BASHSCRIPT "echo $command";
+            print BASHSCRIPT $command;
             close BASHSCRIPT;
             system "qsub -l mf=31g -cwd -j yes $scriptname";
         }
