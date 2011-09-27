@@ -71,8 +71,8 @@ foreach my $language (@ARGV) {
         if ($new || !-e "$dir/parsed/$trainfilename") {
             my $command =  "treex -p -j 20 ";
                $command .= "Util::SetGlobal language=$language ";
-               $command .= "Util::Eval anode='\$anode->set_afun(\"Atr\") if defined \$anode->afun && \$anode->afun !~ /(Coord|AuxX|AuxY)/;' ";
-               $command .= "Write::CoNLLX $f deprel_attribute=$deprel_attribute is_member_within_afun=1 is_shared_modifier_within_afun=1 ";
+               $command .= "Util::Eval anode='\$anode->set_afun(\"Atr\");' ";
+               $command .= "Write::CoNLLX $f deprel_attribute=$deprel_attribute is_member_within_afun=1 is_shared_modifier_within_afun=1 is_coord_conjunction_within_afun=1";
                $command .= "-- $dir/train/*.treex.gz > $dir/parsed/$trainfilename";
             system $command;   
         }
