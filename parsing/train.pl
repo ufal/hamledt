@@ -87,7 +87,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n";
             print BASHSCRIPT "  train order:2 format:MST decode-type:non-proj train-file:$dir/parsed/train.mst model-name:$dir/parsed/mcd_nonproj_o2.model\n";
             close BASHSCRIPT;
-            system "qsub -l mf=10g -cwd -j yes $scriptname";
+            system "qsub -hard -l mf=10g -l act_mem_free=10g -cwd -j yes $scriptname";
         }
         if ($mcdproj) {
             my $scriptname = "mcp-$name.sh";
@@ -97,7 +97,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n";
             print BASHSCRIPT "  train order:2 format:MST decode-type:proj train-file:$dir/parsed/train.mst model-name:$dir/parsed/mcd_proj_o2.model\n";
             close BASHSCRIPT;
-            system "qsub -l mf=10g -cwd -j yes $scriptname";
+            system "qsub -hard -l mf=10g -l act_mem_free=10g -cwd -j yes $scriptname";
         }
         if ($malt) {
             my $scriptname = "mlt-$name.sh";
@@ -109,7 +109,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "rm -rf malt_nivreeager\n";
             print BASHSCRIPT "java -Xmx19g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
             close BASHSCRIPT;
-            system "qsub -l mf=20g -cwd -j yes $scriptname";
+            system "qsub -hard -l mf=20g -l act_mem_free=20g -cwd -j yes $scriptname";
         }
         if ($maltsmf) {
             my $scriptname = "smf-$name.sh";
@@ -127,7 +127,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "echo $command";
             print BASHSCRIPT $command;
             close BASHSCRIPT;
-            system "qsub -l mf=31g -cwd -j yes $scriptname";
+            system "qsub -hard -l mf=31g -l act_mem_free=31g -cwd -j yes $scriptname";
         }
     }
 }
