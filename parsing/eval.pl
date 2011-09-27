@@ -28,6 +28,7 @@ foreach my $language (@ARGV) {
         my $name = $dir;
         $name =~ s/^.+\///;
         $name = "$language-$name";
+        my $selector_for_comparison = $name =~ /00[01]_/ ? 'before' : '';
         print STDERR "Creating script for evaluation ($name).\n";
         open (BASHSCRIPT, ">:utf8", "eval-$name.sh") or die;
         print BASHSCRIPT "#!/bin/bash\n\n";

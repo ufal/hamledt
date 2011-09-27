@@ -67,14 +67,14 @@ foreach my $language (@ARGV) {
         }
 
         # create training CoNLL file if needed.
-        # all afuns but 'Coord' are substituted by 'Atr' 
-
+        # all afuns but 'Coord', 'AuxX', and 'AuxY' are substituted by 'Atr' 
         if ($new || !-e "$dir/parsed/$trainfilename") {
-            system "treex -p -j 20 \\
-                    Util::SetGlobal language=$language \\
-                    Util::Eval anode='\$anode->set_afun(\"Atr\") if defined \$anode->afun && \$anode->afun !~ /(Coord|AuxX|AuxY)/;' \\
-                    Write::CoNLLX $f deprel_attribute=$deprel_attribute is_member_within_afun=1 is_shared_modifier_within_afun=1 \\
-                    -- $dir/train/*.treex.gz > $dir/parsed/$trainfilename";
+            my $command =  "treex -p -j 20 ";
+               $command .= "Util::SetGlobal language=$language ";
+               $command .= "Util::Eval anode='\$anode->set_afun(\"Atr\") if defined \$anode->afun && \$anode->afun !~ /(Coord|AuxX|AuxY)/;' ";
+               $command .= "Write::CoNLLX $f deprel_attribute=$deprel_attribute is_member_within_afun=1 is_shared_modifier_within_afun=1 ";
+               $command .= "-- $dir/train/*.treex.gz > $dir/parsed/$trainfilename";
+            system $command;   
         }
         if ($mcd || $mcdproj) {
             system "cat $dir/parsed/$trainfilename | ./conll2mst.pl > $dir/parsed/train.mst\n";
@@ -109,7 +109,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "rm -rf malt_nivreeager\n";
             print BASHSCRIPT "java -Xmx19g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
             close BASHSCRIPT;
-            system "qsub -hard -l mf=20g -l act_mem_free=20g -cwd -j yes $scriptname";
+            system "qsub -hard -l mf=31g -l act_mem_free=31g -cwd -j yes $scriptname";
         }
         if ($maltsmf) {
             my $scriptname = "smf-$name.sh";
