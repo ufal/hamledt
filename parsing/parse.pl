@@ -67,7 +67,7 @@ foreach my $language (@ARGV) {
                 $scenario .= "Util::SetGlobal language=$language selector=mcdnonprojo2 ";
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-                $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos ";
+                $scenario .= "W2A::ParseMST model=$model decodetype=non-proj pos_attribute=conll/pos ";
                 $scenario .= "A2A::Transform::Coord_fPhRsHcHpB " if $is_transformation;
             } else {
                 print STDERR ("MST nonprojective parser required but model $model not found.\n");
@@ -82,7 +82,7 @@ foreach my $language (@ARGV) {
                 $scenario .= "Util::SetGlobal language=$language selector=mcdprojo2 ";
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-                $scenario .= "W2A::ParseMST model=$dir/parsed/mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos ";
+                $scenario .= "W2A::ParseMST model=$model decodetype=proj pos_attribute=conll/pos ";
                 $scenario .= "A2A::Transform::Coord_fPhRsHcHpB " if $is_transformation;
             } else {
                 print STDERR ("MST projective parser required but model $model not found.\n");
@@ -97,7 +97,7 @@ foreach my $language (@ARGV) {
                 $scenario .= "Util::SetGlobal language=$language selector=maltnivreeager ";
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-                $scenario .= "W2A::ParseMalt model=$dir/parsed/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos ";
+                $scenario .= "W2A::ParseMalt model=$model pos_attribute=conll/pos cpos_attribute=conll/cpos ";
                 $scenario .= "A2A::Transform::Coord_fPhRsHcHpB " if $is_transformation;
             } else {
                 print STDERR ("Malt parser required but model $model not found.\n");
