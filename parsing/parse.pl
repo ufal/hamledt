@@ -36,6 +36,8 @@ if ($help || !@ARGV) {
 ";
 }
 
+die "Can't run two different models of one parser in the same scenario" if ($mcd && $mcdproj) || ($malt && $maltsmf);
+
 print STDERR ("Going to parse languages: ", join(', ', @ARGV), "\n");
 foreach my $language (@ARGV) {
     my $glob = $trans ? "$data_dir/$language/treex/$trans" : "$data_dir/$language/treex/*";
