@@ -1,4 +1,4 @@
-ALL_LANGUAGES=ar bg bn ca cs da de el en es et eu fi grc hi hu is it ja la nl pt ro ru sl sv ta te tr zh
+ALL_LANGUAGES=ar bg bn cs da de el en es et eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 #LANGUAGES=ar bg bn cs da de el grc hi la ro sl ta te
 LANGUAGES=$(ALL_LANGUAGES)
 
@@ -29,5 +29,5 @@ clean:
 	rm -r mcd-* mcdproj-* malt-* mlt-* parse-* eval-* *-cluster-run-*
 
 clean_malt_dirs:
-	rm -r ${TMT_ROOT}/share/data/resources/normalized_treebanks/*/treex/*/parsed/malt_nivreeager
-	rm -r ${TMT_ROOT}/share/data/resources/normalized_treebanks/*/treex/*/parsed/malt_stacklazy
+	rm -rf ${TMT_ROOT}/share/data/resources/normalized_treebanks/*/treex/*/parsed/malt_nivreeager
+	rm -rf ${TMT_ROOT}/share/data/resources/normalized_treebanks/*/treex/*/parsed/malt_stacklazy

@@ -132,7 +132,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "#!/bin/bash\n\n";
             print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex.gz | tee $dir/parsed/uas.txt\n";
             close BASHSCRIPT;
-            my $qsub = "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -l mf=10g -cwd -j yes parse-$name.sh";
+            my $qsub = "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -l mf=20g -cwd -j yes parse-$name.sh";
             #print STDERR ("$qsub\n");
             system $qsub;
         } else {

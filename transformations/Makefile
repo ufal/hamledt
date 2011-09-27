@@ -10,7 +10,7 @@ test:
 	./transform.pl -p cs PunctBelowPrevNode
 
 runall:
-	./transform.pl -p --family Moscow $(PDT_READY) 2>&1 | tee runall.log
+	./transform.pl -p --family Moscow,Stanford --head right,left $(PDT_READY) 2>&1 | tee runall.log
 
 stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \

@@ -72,7 +72,7 @@ foreach my $language (@ARGV) {
         if ($new || !-e "$dir/parsed/$trainfilename") {
             system "treex -p -j 20 \\
                     Util::SetGlobal language=$language \\
-                    Util::Eval anode='\$anode->set_afun(\"Atr\") if defined \$anode->afun && \$anode->afun ne \"Coord\";' \\
+                    Util::Eval anode='\$anode->set_afun(\"Atr\") if defined \$anode->afun && \$anode->afun !~ /(Coord|AuxX|AuxY)/;' \\
                     Write::CoNLLX $f deprel_attribute=$deprel_attribute is_member_within_afun=1 is_shared_modifier_within_afun=1 \\
                     -- $dir/train/*.treex.gz > $dir/parsed/$trainfilename";
         }
@@ -107,9 +107,9 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "cd $dir/parsed/;\n";
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print BASHSCRIPT "rm -rf malt_nivreeager\n";
-            print BASHSCRIPT "java -Xmx9g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
+            print BASHSCRIPT "java -Xmx19g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
             close BASHSCRIPT;
-            system "qsub -l mf=10g -cwd -j yes $scriptname";
+            system "qsub -l mf=20g -cwd -j yes $scriptname";
         }
         if ($maltsmf) {
             my $scriptname = "smf-$name.sh";
