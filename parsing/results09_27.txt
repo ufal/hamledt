@@ -1,0 +1,68 @@
+**********  MALT-ARC-EAGER  **********
+trans            ar    bg    bn    cs    da    de    el    en    es    et    eu    fi    grc   hi   
+000_orig         73.93 88.89 80.79 65.56 85.39 82.85 74.29 88.01 86.95       72.86 73.36       86.80
+001_pdtstyle     72.70 79.64 81.40 69.73 75.75 73.22 72.38 79.44 79.15       60.07 64.52 43.40 80.66
+trans_fMpPcBhLsN -1.76 -3.65 -7.14 -4.59 -3.42 -0.90 -2.27 -2.09 -1.31 25.79 -4.94 -2.33 -3.44 -4.04
+trans_fMpPcBhRsN -2.46 -3.54 -6.89 -4.98 -4.75 -1.14 -2.42 -2.08 -2.82 25.25 -4.78 -2.88 -3.31 -3.73
+trans_fSpPcBhLsN -3.13 -5.04 -8.00 -6.56 -5.40 -2.36 -3.54 -3.17 -3.12 25.74 -7.14 -3.69 -4.28 -5.31
+trans_fSpPcBhRsN -3.54 -4.83 -8.00 -6.97 -6.06 -2.51 -3.87 -3.20 -3.69 23.66 -7.24 -4.41 -4.50 -5.30
+
+trans            hu    it ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+000_orig         76.06    89.55 44.92 75.09 85.39 86.21 73.31 71.53 88.22 71.39 87.10 72.75 24      0    78.38  
+001_pdtstyle     71.50    76.83 43.93 70.56 79.05 85.57 85.86 70.00 77.71 72.80 88.44 71.50 25      0    73.03  
+trans_fMpPcBhLsN -2.25    -0.50 -1.96 -3.02 -0.70 -2.16 -3.15 -3.74 -5.57 -1.16 -5.36 -3.70  0     25    -3.01  
+trans_fMpPcBhRsN -2.15    -0.36 -3.46 -4.94 -3.08 -2.73 -4.80 -4.26 -6.33 -0.10 -3.52 -2.14  0     25    -3.35  
+trans_fSpPcBhLsN -2.91    -0.75 -4.49 -5.82 -2.57 -3.79 -4.37 -5.13 -7.77 -1.81 -6.03 -4.52  0     25    -4.43  
+trans_fSpPcBhRsN -3.00    -0.49 -7.01 -7.37 -3.82 -3.94 -5.87 -5.67       -0.65 -5.02 -3.63  0     24    -4.61  
+
+**********  MALT-STACK-LAZY  **********
+trans            ar    bg    bn    cs da    de el    en    es    et    eu fi grc hi   
+000_orig         79.41 84.50 86.82    88.93    69.55       81.20 13.55           91.92
+001_pdtstyle     79.04 78.21 74.63    76.08    64.78 80.82 81.84 54.88           86.07
+trans_fMpPcBhLsN -4.00 -4.85 -2.09    -5.20          -1.14 -1.81                 -5.14
+trans_fMpPcBhRsN -5.25 -5.19 -2.09    -5.83          -1.13 -1.89                 -4.84
+trans_fSpPcBhLsN -6.91 -6.67 -2.09    -7.47          -1.12 -1.79                 -6.66
+trans_fSpPcBhRsN -7.22 -6.79 -2.09    -7.69          -1.12 -1.88                 -6.65
+
+trans            hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+000_orig         74.22 85.24 84.94 44.16 82.45 77.83 86.06       76.78 86.95 71.54 92.29 81.79 20      0    77.01  
+001_pdtstyle     77.44 78.94 76.99 43.56 76.19 83.54 86.55 87.68 74.54 78.06 72.95 91.29 79.64 22      0    76.53  
+trans_fMpPcBhLsN             -0.28 -5.99             -2.35 -5.61 -4.93 -6.53 -1.41 -6.70 -4.35  0     16    -3.90  
+trans_fMpPcBhRsN             -0.26 -5.79             -2.88 -5.70 -5.28 -7.06 -1.31 -6.20 -3.86  0     16    -4.04  
+trans_fSpPcBhLsN             -0.51 -8.65             -4.09 -7.40 -6.84 -9.20 -2.16 -7.71 -5.25  0     16    -5.28  
+trans_fSpPcBhRsN             -0.45 -9.21             -4.09 -7.46 -7.18       -1.81 -7.71 -5.08  0     15    -5.10  
+
+**********  MST  **********
+trans            ar bg bn    cs da de el en es et eu fi grc hi
+000_orig               79.43                                  
+001_pdtstyle           79.93                                  
+trans_fMpPcBhLsN       -6.28                                  
+trans_fMpPcBhRsN       -5.79                                  
+trans_fSpPcBhLsN       -6.16                                  
+trans_fSpPcBhRsN       -5.05                                  
+
+trans            hu it ja la nl pt ro ru sl    sv    ta te tr better worse average
+000_orig                                 75.29 87.15          3      0     80.62  
+001_pdtstyle                             74.68 77.99          3      0     77.53  
+trans_fMpPcBhLsN                         -6.15 -5.87          0      3     -6.10  
+trans_fMpPcBhRsN                         -6.43 -6.24          0      3     -6.15  
+trans_fSpPcBhLsN                         -8.15 -8.47          0      3     -7.59  
+trans_fSpPcBhRsN                         -8.42                0      2     -6.73  
+
+**********  MST-PROJECTIVE  **********
+trans            ar bg bn cs da de el en es et eu fi grc hi
+000_orig                                                   
+001_pdtstyle                                               
+trans_fMpPcBhLsN                                           
+trans_fMpPcBhRsN                                           
+trans_fSpPcBhLsN                                           
+trans_fSpPcBhRsN                                           
+
+trans            hu it ja la nl pt ro ru sl    sv    ta te tr better worse average
+000_orig                                 74.85 86.67          2      0     80.76  
+001_pdtstyle                             67.46 78.27          2      0     72.86  
+trans_fMpPcBhLsN                         -2.53 -6.47          0      2     -4.50  
+trans_fMpPcBhRsN                         -2.61 -7.11          0      2     -4.86  
+trans_fSpPcBhLsN                         -2.36 -9.28          0      2     -5.82  
+trans_fSpPcBhRsN                         -2.72                0      1     -2.72  
+
