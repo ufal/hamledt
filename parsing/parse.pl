@@ -119,6 +119,9 @@ foreach my $language (@ARGV) {
             }
         }
         if ($scenario) {
+            # Note: the trees in 000_orig should be compared against the original gold tree.
+            # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
+            # so we do not select 'orig' here.
             my $selector_for_comparison = $is_transformation ? 'before' : '';
             $scenario .= "Eval::AtreeUAS eval_is_member=1 selector='$selector_for_comparison' ";
 
