@@ -28,11 +28,11 @@ foreach my $language (@ARGV) {
         my $name = $dir;
         $name =~ s/^.+\///;
         $name = "$language-$name";
-        my $selector_for_comparison = $name =~ /00[01]_/ ? 'before' : '';
+        my $selector_for_comparison = $name =~ /trans_/ ? '' : '';
         print STDERR "Creating script for evaluation ($name).\n";
         open (BASHSCRIPT, ">:utf8", "eval-$name.sh") or die;
         print BASHSCRIPT "#!/bin/bash\n\n";
-        print BASHSCRIPT "treex Eval::AtreeUAS eval_is_member=1 language=$language selector='' -- $dir/parsed/*.treex.gz > $dir/parsed/uas.txt";
+        print BASHSCRIPT "treex Eval::AtreeUAS eval_is_member=1 language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz > $dir/parsed/uas.txt";
         close BASHSCRIPT;
         system "qsub -cwd eval-$name.sh";
     }

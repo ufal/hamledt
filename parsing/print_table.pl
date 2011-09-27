@@ -47,27 +47,24 @@ foreach my $language (@ARGV) {
         next if (!-d $dir);
         my $trans = $dir;
         $trans =~ s/^.+\///;
-        # exception for Estonian, where 001_dep is treated as 000_orig and pdtstyle has number 002
-        if ($language eq 'et') {
-            $trans =~ s/002_pdtstyle/001_pdtstyle/;
-            $trans =~ s/001_dep/000_orig/;
-        }
         open (UAS, "<:utf8", "$dir/parsed/uas.txt") or next;
         while (<UAS>) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
+
+            next if !(($sys =~ /maltnivreeager/ && $malt) || ($sys =~ /maltstacklazy/ && $maltsmf) ||
+                      ($sys =~ /mcdnonproj/ && $mcd)      || ($sys =~ /mcdproj/ && $mcdproj));
+            next if $sys =~ m/-regardless-is_member/;
+
+#print "$language $trans $sys $score $value{'001_pdtstyle'}{$language}\n";
+
             $score = $score ? 100 * $score : 0;
 
             if ($trans !~ /00/ && defined $value{'001_pdtstyle'}{$language}) {
                 $score -= $value{'001_pdtstyle'}{$language};
             }
 
-            if ($sys && $sys !~ m/-regardless-is_member/) {
-                if (($sys =~ /maltnivreeager/ && $malt) || ($sys =~ /maltstacklazy/ && $maltsmf) ||
-                    ($sys =~ /mcdnonproj/ && $mcd)      || ($sys =~ /mcdproj/ && $mcdproj)) {
-                    $value{$trans}{$language} = round($score);
-                }
-            }
+            $value{$trans}{$language} = round($score);
         }
     }
 }
