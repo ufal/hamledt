@@ -2,9 +2,9 @@ SHELL:=/bin/bash
 LANGCODE=et
 DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
 IN       = $(DATADIR)/source
-DIR0     = $(DATADIR)/treex/000_orig
-DIR1     = $(DATADIR)/treex/001_dep
-DIR2     = $(DATADIR)/treex/002_pdtstyle
+DIR0     = $(DATADIR)/treex/0000_constituents
+DIR1     = $(DATADIR)/treex/000_orig
+DIR2     = $(DATADIR)/treex/001_pdtstyle
 TREEX    = treex -L$(LANGCODE) -p
 IMPORT   = Read::Tiger
 WRITE0   = Write::Treex file_stem='et'
