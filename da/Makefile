@@ -3,7 +3,7 @@ DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
 IN       = $(DATADIR)/source
 DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle
-TREEX    = treex -L$(LANGCODE) -p
+TREEX    = treex -L$(LANGCODE) -p -e ALL -E ALL
 IMPORT   = Read::CoNLLX lines_per_doc=500
 WRITE0   = Write::Treex file_stem=''
 WRITE    = Write::Treex

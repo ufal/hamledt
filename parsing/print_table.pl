@@ -62,7 +62,7 @@ foreach my $language (@ARGV) {
                 $score -= $value{'001_pdtstyle'}{$language};
             }
 
-            if ($sys) {
+            if ($sys && $sys !~ m/-regardless-is_member/) {
                 if (($sys =~ /maltnivreeager/ && $malt) || ($sys =~ /maltstacklazy/ && $maltsmf) ||
                     ($sys =~ /mcdnonproj/ && $mcd)      || ($sys =~ /mcdproj/ && $mcdproj)) {
                     $value{$trans}{$language} = round($score);

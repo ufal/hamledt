@@ -54,16 +54,16 @@ foreach my $language (@ARGV) {
         $name =~ s/^.+\///;
         $name = "$language-$name";
 
-        # the following variable indicates whether we are parsing a transformation or pdtstyle/orig file 
+        # the following variable indicates whether we are parsing a transformation or pdtstyle/orig file
         my $is_transformation = $name =~ /trans_/ ? 1 : 0;
 
-        # Since MaltSMF is invoked separately, it must use a distinctive script name.
-        # Otherwise we could damage a script for the other parsers currently being run.
-        $name .= '-maltsmf' if ($maltsmf);
         my $scenario;
         if ($mcd) {
             my $model = "$dir/parsed/mcd_nonproj_o2.model";
             if (-e $model) {
+                # Just in case each parser is invoked separately add the parser name(s) to the script name.
+                # Otherwise we could damage a script for the other parsers currently being run.
+                $name .= '-mcd';
                 $scenario .= "Util::SetGlobal language=$language selector=mcdnonprojo2 ";
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
@@ -76,6 +76,9 @@ foreach my $language (@ARGV) {
         if ($mcdproj) {
             my $model = "$dir/parsed/mcd_proj_o2.model";
             if (-e $model) {
+                # Just in case each parser is invoked separately add the parser name(s) to the script name.
+                # Otherwise we could damage a script for the other parsers currently being run.
+                $name .= '-mcp';
                 $scenario .= "Util::SetGlobal language=$language selector=mcdprojo2 ";
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
@@ -88,6 +91,9 @@ foreach my $language (@ARGV) {
         if ($malt) {
             my $model = "$dir/parsed/malt_nivreeager.mco";
             if (-e $model) {
+                # Just in case each parser is invoked separately add the parser name(s) to the script name.
+                # Otherwise we could damage a script for the other parsers currently being run.
+                $name .= '-mlt';
                 $scenario .= "Util::SetGlobal language=$language selector=maltnivreeager ";
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
@@ -100,6 +106,9 @@ foreach my $language (@ARGV) {
         if ($maltsmf) {
             my $model = "$dir/parsed/malt_stacklazy.mco";
             if (-e $model) {
+                # Just in case each parser is invoked separately add the parser name(s) to the script name.
+                # Otherwise we could damage a script for the other parsers currently being run.
+                $name .= '-smf';
                 $scenario .= "Util::SetGlobal language=$language selector=maltstacklazy ";
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
