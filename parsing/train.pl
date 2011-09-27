@@ -127,7 +127,8 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "echo $command";
             print BASHSCRIPT $command;
             close BASHSCRIPT;
-            system "qsub -hard -l mf=31g -l act_mem_free=31g -cwd -j yes $scriptname";
+            my $memory = '31g';
+            system "qsub -hard -l mf=$memory -l act_mem_free=$memory -cwd -j yes $scriptname";
         }
     }
 }

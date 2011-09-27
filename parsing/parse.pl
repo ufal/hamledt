@@ -130,9 +130,13 @@ foreach my $language (@ARGV) {
             print STDERR "Creating script for parsing ($name).\n";
             open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
             print BASHSCRIPT "#!/bin/bash\n\n";
+            # Debugging message: anyone here eating my memory?
+            print BASHSCRIPT "hostname -f\n";
+            print BASHSCRIPT "top -bn1 | head -20\n";
             print BASHSCRIPT "treex -s $scenario -- $dir/parsed/*.treex.gz | tee $dir/parsed/uas.txt\n";
             close BASHSCRIPT;
-            my $qsub = "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -hard -l mf=20g -l act_mem_free=20g -cwd -j yes parse-$name.sh";
+            my $memory = '20g';
+            my $qsub = "qsub -q \'*\@t*,*\@f*,*\@o*,*\@c*,*\@a*,*\@h*\' -hard -l mf=$memory -l act_mem_free=$memory -cwd -j yes parse-$name.sh";
             #print STDERR ("$qsub\n");
             system $qsub;
         } else {
