@@ -1,3 +1,4 @@
+SHELL:=/bin/bash
 LANGCODE=zh
 DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
 IN       = $(DATADIR)/source
@@ -34,7 +35,7 @@ to_treex:
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
-SCEN1 = A2A::TEMPLATE::CoNLL2PDTStyle A2A::SetSharedModifier A2A::SetCoordConjunction
+SCEN1 = A2A::ZH::CoNLL2PDTStyle A2A::SetSharedModifier A2A::SetCoordConjunction
 to_pdt:
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
