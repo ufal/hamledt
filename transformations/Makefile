@@ -10,7 +10,7 @@ test:
 	./transform.pl -p cs PunctBelowPrevNode
 
 runall:
-	./transform.pl -p --family Moscow,Stanford --head right,left $(PDT_READY) 2>&1 | tee runall.log
+	./transform.pl --family Moscow,Stanford --head right,left $(PDT_READY)
 
 stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \
@@ -19,6 +19,9 @@ stats:
 
 table:
 	cat stats.raw | ./resume_stats.pl
+
+clean:
+	rm tr-*
 
 real_clean_including_the_parsed_file_I_know_what_I_am_doing:
 	rm stats.raw  -rf

@@ -114,15 +114,17 @@ foreach my $language (@languages) {
                 foreach my $h (split /,/, $head) {
                     foreach my $s (split /,/, $shared) {
                         my $name = 'f'.uc(substr($f,0,1)).'p'.uc(substr($p,0,1)).'c'.uc(substr($c,0,1)).'h'.uc(substr($h,0,1)).'s'.uc(substr($s,0,1));
-                        my $command_line = 'treex '.($parallel?'-p --jobs 5 ':'')
-                                         . " Util::Eval bundle='\$bundle->remove_zone(qw($language),qw(orig))' " # remove the original trees (before PDT styling)
+                        my $command_line = 'treex '
+                                         . "Util::Eval bundle='\$bundle->remove_zone(qw($language),qw(orig))' " # remove the original trees (before PDT styling)
                                          . "A2A::CopyAtree source_language=$language language=$language selector=before " # storing trees before transformation
                                          . "A2A::Transform::CoordStyle family=$f head=$h shared=$s conjunction=$c punctuation=$p language=$language "
                                          . "Util::Eval document='my \$path=\$document->path; \$path=~s/00._pdtstyle/trans_$name/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' "
-                                         . " Write::Treex -- $data_dir/$language/treex/*_pdtstyle/*/*.treex.gz &";
-                        print STDERR "Executing task $language,$name\n $command_line\n\n";
-                        system $command_line;
-                        sleep 2; # wait few secs, so the jobs can be send to the cluster
+                                         . " Write::Treex -- $data_dir/$language/treex/*_pdtstyle/*/*.treex.gz";
+                        open(BS, ">:utf8", "tr-$language-$name.sh") or die;
+                        print BS "#!/bin/bash\n\n$command_line\n";
+                        close BS;
+                        system "qsub -hard -l mf=1g -l act_mem_free=1g -cwd -j yes tr-$language-$name.sh\n";
+                        #sleep 2; # wait few secs, so the jobs can be send to the cluster
                     }
                 }
             }
