@@ -16,7 +16,7 @@ GetOptions(
     "malt"    => \$malt,
     "maltsmf" => \$maltsmf,
 );
-
+my $signif_diff = 0.1; # TODO: Update this value (for each lang) as soon as Loganathan finishes the significance testing.
 
 if ($help || !@ARGV) {
     die "Usage: print_table.pl [OPTIONS] [LANGUAGES]
@@ -86,8 +86,8 @@ foreach my $trans (sort keys %value) {
     foreach my $language (@ARGV) {
         push @row, $value{$trans}{$language};
         next if !$value{$trans}{$language} || !$value{'001_pdtstyle'}{$language};
-        $better++ if  $value{$trans}{$language} > 0;
-        $worse++ if  $value{$trans}{$language} < 0;
+        $better++ if  $value{$trans}{$language} > $signif_diff;
+        $worse++ if  $value{$trans}{$language} < -$signif_diff;
         $diff += $value{$trans}{$language};
         $cnt++;
     }
