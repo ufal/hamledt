@@ -12,9 +12,17 @@ my %new_transf_names = (
     CoordTreeRootFirst => 'fS hL',
     CoordTreeRootLast => 'fS hR',
     SharedModifBelowNearestMember => 'sN',
+    
 );
 
-my @transformations = ('orig', 'pdt', grep {!/^(orig|pdt)$/} sort values %new_transf_names );
+# The result is significant if the difference between the results 
+# is the following number. It can be positive, negative or insignificant 
+my $signif = 0.5;
+
+#my @transformations = ('orig', 'pdt', grep {!/^(orig|pdt)$/} sort values %new_transf_names );
+my @transformations = ('orig', 'pdt');
+my %tr_hash = ('orig' => 1, 
+                'pdt' => 1);
 
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
 
@@ -38,8 +46,21 @@ foreach my $language (@languages) {
             $trans =~ s/001_dep/000_orig/;
         }
 
+        # Just to make sure that only the standard directories are explored
+        next if ($trans !~ /^(trans_|000_orig|001_pdtstyle)/);
+
         $trans =~ s/trans_//;
-        $trans = $new_transf_names{$trans};
+
+        $trans = 'orig' if ($trans =~ /^(000_orig)$/);
+        $trans = 'pdt' if ($trans =~ /^(001_pdtstyle)$/);
+
+        #$trans = $new_transf_names{$trans};
+
+        if (!exists $tr_hash{$trans}) {
+            $tr_hash{$trans} = 1;
+            push @transformations, $trans;
+        }
+
         next DIR unless $trans;
 
         open (UAS, "<:utf8", "$dir/parsed/uas.txt") or next;
@@ -52,17 +73,19 @@ foreach my $language (@languages) {
                 $score -= $value{'001_pdtstyle'}{$language};
             }
 
+
+
             my $parser;
-            if ($sys =~ /maltnivreeager/) {
+            if ($sys =~ /maltnivreeager$/) {
                 $parser = 'malt';
             }
-            elsif ($sys =~ /mcdproj/) {
+            elsif ($sys =~ /mcdprojo2$/) {
                 $parser = 'mst';
             }
 
             if ($parser) {
                 $value{$trans}{$language}{$parser} = $score;
-#                print "t=$trans l=$language s=$sys\n";
+#                print "t=$trans l=$language s=$sys score=$score\n";
             }
         }
     }
@@ -73,11 +96,10 @@ sub round {
     my $score = shift;
     return undef if not defined $score;
     return sprintf("\$%.2f\$", $score);
-
 }
 
 
-print " \\begin{tabular}{|p{6mm}|p{6mm}|p{12mm}||".(join "|",map{"p{7mm}"}(1..$#transformations-1))."|} \\hline \n";
+print " \\begin{tabular}{|p{6mm}|p{6mm}|p{12mm}||".(join "|",map{"p{1cm}"}(1..$#transformations-1))."|} \\hline \n";
 
 print join(' & ', ('Lang.', @transformations));
 print "\\\\ \\hline \\hline \n";
@@ -89,19 +111,86 @@ sub table_value {
         return round($value{$trans}{$language}{$parser}) || '?';
     }
     elsif ($trans eq 'pdt') {
-        return (round($value{$trans}{$language}{$parser}) || '?') .'$\pm$0.50';
+#        return (round($value{$trans}{$language}{$parser}) || '?') .'$\pm$0.50';
+        return (round($value{$trans}{$language}{$parser}) || '?');
     }
     else {
-        return round($value{$trans}{$language}{$parser} - $value{pdt}{$language}{$parser});
+        #return round($value{$trans}{$language}{$parser} - $value{pdt}{$language}{$parser});
+        if (defined($value{$trans}{$language}{$parser}) && defined($value{pdt}{$language}{$parser})) {
+            return round($value{$trans}{$language}{$parser} - $value{pdt}{$language}{$parser});
+        }
+        else {
+            return '?';
+        }
     }
 
 }
 
+my %diff;
+my %diff_label = (
+    'pos' => 'Significantly positive change',
+    'ins' => 'Insignificant change',
+    'neg' => 'Significantly negative change',
+);
+
 
 foreach my $language (@languages) {
-    print "$language & ".join(' & ', 
-                              map { table_value($_,$language,$parsers[0]) . " "
-                                        . table_value($_,$language,$parsers[1]) } @transformations);
+    print "$language  ";
+
+    foreach my $trs (@transformations) {
+
+        my $mstValue = table_value($trs,$language,$parsers[0]);
+        my $maltValue = table_value($trs,$language,$parsers[1]);
+
+        $mstValue =~ s/^\$(.+)\$$/$1/;
+        $maltValue =~ s/^\$(.+)\$$/$1/;
+        
+        if ($mstValue eq '?' && ($trs !~ /(orig|pdt)/)) {
+            print " &  " . $mstValue. " "; 
+            $diff{$trs}{'mst'}{'ins'}++;
+        }
+        elsif (($mstValue > $signif) && ($trs !~ /(orig|pdt)/)) {
+            $diff{$trs}{'mst'}{'pos'}++;
+            print " &  " . '{\bf' . " " . $mstValue . '}' . " ";            
+            #print " &  " . '{\bf' . " " . table_value($trs,$language,$parsers[0]) . '}' . " ";            
+        }
+        elsif (($mstValue < -($signif)) && ($trs !~ /(orig|pdt)/)) {
+            $diff{$trs}{'mst'}{'neg'}++;
+            #print " &  " . table_value($trs,$language,$parsers[0]). " ";
+            print " &  " . $mstValue. " ";
+        }
+        elsif (($mstValue >= -($signif)) && (($mstValue <= $signif)) && ($trs !~ /(orig|pdt)/)) {
+            $diff{$trs}{'mst'}{'ins'}++;
+            print " &  " . $mstValue . " ";
+        }
+        elsif ($trs =~ /(orig|pdt)/) {
+            print " &  " . $mstValue. " "; 
+        }
+
+        if ($maltValue eq '?' && ($trs !~ /(orig|pdt)/)) {
+            print $maltValue. " ";                    
+            $diff{$trs}{'malt'}{'ins'}++;
+        }
+        elsif (($maltValue > $signif) && ($trs !~ /(orig|pdt)/)) {
+            $diff{$trs}{'malt'}{'pos'}++;
+            #print '{\bf' . " " . table_value($trs,$language,$parsers[1]) . '}';
+            print '{\bf' . " " . $maltValue . '}';
+        }
+        elsif (($maltValue < -($signif)) && ($trs !~ /(orig|pdt)/)) {
+            $diff{$trs}{'malt'}{'neg'}++;
+            #print table_value($trs,$language,$parsers[1]);
+            print $maltValue;
+        }
+        elsif (($maltValue >= -($signif)) && (($maltValue <= $signif)) && ($trs !~ /(orig|pdt)/)) {
+            $diff{$trs}{'malt'}{'ins'}++;
+            print $maltValue;
+        }
+        elsif ($trs =~ /(orig|pdt)/) {
+            print $maltValue; 
+        }
+
+    }
+
     print "\\\\ \\hline \n";
 
 }
@@ -126,12 +215,6 @@ foreach my $trans (@transformations) {
 print "\\\\ \\hline\n";
 
 
-my %diff;
-my %diff_label = (
-    'pos' => 'Significantly positive change',
-    'ins' => 'Insignificant change',
-    'neg' => 'Significantly negative change',
-);
 
 
 foreach my $difference_type ('pos','ins','neg') {
@@ -139,7 +222,7 @@ foreach my $difference_type ('pos','ins','neg') {
     foreach my $trans (grep {$_ !~ /orig|pdt/} @transformations) {
         print ' & ';
         foreach my $parser (@parsers) {
-            print $diff{$trans}{$parser}{$difference_type} || '?';
+            print $diff{$trans}{$parser}{$difference_type}  || '?';
             print ' ';
         }
     }
