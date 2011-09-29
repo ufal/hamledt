@@ -35,6 +35,7 @@ foreach my $language (@ARGV) {
         open (BASHSCRIPT, ">:utf8", "eval-$name.sh") or die;
         print BASHSCRIPT "#!/bin/bash\n\n";
         print BASHSCRIPT "treex Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz  | tee $dir/parsed/uas.txt\n";
+        print BASHSCRIPT "treex Eval::AtreeUAStat language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz > $dir/parsed/uastat.txt\n";
         close BASHSCRIPT;
         system "qsub -cwd -j yes eval-$name.sh";
     }
