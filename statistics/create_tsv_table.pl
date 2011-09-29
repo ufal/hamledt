@@ -25,21 +25,24 @@ while (<>) {
 }
 
 foreach my $langcode (sort keys %counts) {
-
+    my $coords = $counts{$langcode}{is_coord_head} || 0;
+    my $toks = $counts{$langcode}{toks};
     print join "\t",
         (
             $langcode,
             $counts{$langcode}{sents},
-            $counts{$langcode}{toks},
+            $toks,
 
             sprintf("%.0f / %.0f",
-                    100 * $counts{$langcode}{train} / $counts{$langcode}{toks},
-                    100 * $counts{$langcode}{test} / $counts{$langcode}{toks} ),
+                    100 * $counts{$langcode}{train} / $toks,
+                    100 * $counts{$langcode}{test} / $toks),
 
             map {sprintf("%.2f",$_)} (
-                100 * ($counts{$langcode}{is_coord_head}||0) / $counts{$langcode}{toks},
-                ($counts{$langcode}{is_member}||0) / $counts{$langcode}{is_coord_head},
-                ($counts{$langcode}{is_shared_modif}||0) / $counts{$langcode}{is_coord_head},
+                100 * $coords / $toks,
+                ($counts{$langcode}{is_member}||0) / ($coords || 1),
+                ($counts{$langcode}{is_shared_modif}||0) / ($coords || 1),
+                ($counts{$langcode}{is_nested}||0) / ($coords || 1),
+                #($counts{$langcode}{is_coord_conjunction}||0) / ($coords || 1),
             )
         );
     print "\n";
