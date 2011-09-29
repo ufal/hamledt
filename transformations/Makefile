@@ -12,6 +12,9 @@ test:
 runall:
 	./transform.pl --family Moscow,Stanford --head right,left $(PDT_READY)
 
+pdt:
+	./transform.pl --family Prague --head right --shared head --conjunction head --punctuation between $(PDT_READY)
+
 stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \
 	$(DATADIR)/*/treex/trans*/*/*treex.gz \

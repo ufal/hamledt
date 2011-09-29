@@ -3,20 +3,20 @@ ALL_LANGUAGES=ar bg bn cs da de el en es et eu fi grc hi hu it ja la nl pt ro ru
 LANGUAGES=$(ALL_LANGUAGES)
 
 train:
-	./train.pl --new --mcd --malt $(LANGUAGES)
-	./train.pl --new --feat conll --maltsmf $(LANGUAGES)
+	./train.pl --new --mcd --mcdproj --malt $(ALL_LANGUAGES)
+#	./train.pl --new --feat conll --maltsmf $(LANGUAGES)
 
 parse:
-	./parse.pl --mcd --malt --maltsmf --feat conll $(LANGUAGES)
+	./parse.pl --malt --maltsmf --feat conll $(LANGUAGES)
 
 eval:
 	./eval.pl $(ALL_LANGUAGES)
 
 table:
-	@./print_table.pl --malt $(ALL_LANGUAGES)
-	@./print_table.pl --maltsmf $(ALL_LANGUAGES)
-	@./print_table.pl --mcd $(ALL_LANGUAGES)
-	@./print_table.pl --mcdproj $(ALL_LANGUAGES)
+	@./print_table.pl --malt --filename uas.txt $(ALL_LANGUAGES)
+	@./print_table.pl --maltsmf --filename uas.txt $(ALL_LANGUAGES)
+	@./print_table.pl --mcd --filename uas.txt $(ALL_LANGUAGES)
+	@./print_table.pl --mcdproj --filename uas.txt $(ALL_LANGUAGES)
 
 tex:
 	print_tex.pl > parsing_accuracy_table.tex

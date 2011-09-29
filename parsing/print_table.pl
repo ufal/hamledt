@@ -8,6 +8,7 @@ use Text::Table;
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
 
 my ($help, $mcd, $mcdproj, $malt, $maltsmf);
+my $filename = 'uas.txt';
 
 GetOptions(
     "help|h"  => \$help,
@@ -15,6 +16,7 @@ GetOptions(
     "mcdproj" => \$mcdproj,
     "malt"    => \$malt,
     "maltsmf" => \$maltsmf,
+    "filename=s"   => \$filename,
 );
 my $signif_diff = 0.1; # TODO: Update this value (for each lang) as soon as Loganathan finishes the significance testing.
 
@@ -41,19 +43,18 @@ say '*' x 10 . "  $parser_name  " . '*' x 10;
 my $table = Text::Table->new('trans', @ARGV, 'better', 'worse', 'average');
 my %value;
 
-
 foreach my $language (@ARGV) {
     foreach my $dir (glob "$data_dir/$language/treex/*") {
         next if (!-d $dir);
         my $trans = $dir;
         $trans =~ s/^.+\///;
-        open (UAS, "<:utf8", "$dir/parsed/uas.txt") or next;
+        open (UAS, "<:utf8", "$dir/parsed/$filename") or next;
         while (<UAS>) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
 
-            next if !(($sys =~ /maltnivreeager/ && $malt) || ($sys =~ /maltstacklazy/ && $maltsmf) ||
-                      ($sys =~ /mcdnonproj/ && $mcd)      || ($sys =~ /mcdproj/ && $mcdproj));
+            next if !(($sys =~ /maltnivreeager$/ && $malt) || ($sys =~ /maltstacklazy$/ && $maltsmf) ||
+                      ($sys =~ /mcdnonproj$/ && $mcd)      || ($sys =~ /mcdproj$/ && $mcdproj));
             next if $sys =~ m/-regardless-is_member/;
 
 #print "$language $trans $sys $score $value{'001_pdtstyle'}{$language}\n";
