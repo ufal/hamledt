@@ -1,4 +1,4 @@
-PDT_READY= ar bg bn cs da de el en es et eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
+PDT_READY= ar bg bn cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 #PROBLEMS  sv  Invalid value 'CoordArg' in element <afun> of choice type 'afun.type'
 
 SHELL=/bin/bash
@@ -13,7 +13,14 @@ runall:
 	./transform.pl --family Moscow,Stanford --head right,left $(PDT_READY)
 
 pdt:
-	./transform.pl --family Prague --head right --shared head --conjunction head --punctuation between $(PDT_READY)
+	./transform.pl --family Prague --head right --shared head,nearest --conjunction head --punctuation between $(PDT_READY)
+
+head_nearest:
+	./transform.pl --family Moscow,Stanford --head nearest $(PDT_READY)
+
+conj_prev:
+	./transform.pl --family Moscow --head right,left --conjunction previous --punctuation previous $(PDT_READY)
+
 
 stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \

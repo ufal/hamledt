@@ -119,7 +119,7 @@ foreach my $language (@languages) {
                                          . "A2A::CopyAtree source_language=$language language=$language selector=before " # storing trees before transformation
                                          . "A2A::Transform::CoordStyle family=$f head=$h shared=$s conjunction=$c punctuation=$p language=$language "
                                          . "Util::Eval document='my \$path=\$document->path; \$path=~s/00._pdtstyle/trans_$name/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' "
-                                         . " Write::Treex -- $data_dir/$language/treex/*_pdtstyle/*/*.treex.gz";
+                                         . " Write::Treex -- $data_dir/$language/treex/*_pdtstyle/t*/*.treex.gz";
                         open(BS, ">:utf8", "tr-$language-$name.sh") or die;
                         print BS "#!/bin/bash\n\n$command_line\n";
                         close BS;
