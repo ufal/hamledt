@@ -94,7 +94,7 @@ foreach my $language (@ARGV) {
             # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
             # so we do not select 'orig' here.
             my $selector_for_comparison = $is_transformation && $topdt ? 'before' : '';
-            $scenario .= "Eval::AtreeUAS eval_is_member=1 selector='$selector_for_comparison' ";
+            $scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='$selector_for_comparison' ";
 
             my $uas_file = $topdt ? 'uas-pdt.txt' : 'uas.txt';
 

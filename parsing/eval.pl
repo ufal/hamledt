@@ -8,10 +8,11 @@ use Treex::Core::Config;
 
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
 
-my ($help, $mcd, $mcdproj, $malt, $new);
+my ($help, $mcd, $mcdproj, $malt, $new, $topdt);
 
 GetOptions(
     "help|h"  => \$help,
+    "topdt"   => \$topdt,
 );
 
 if ($help || !@ARGV) {
@@ -28,12 +29,12 @@ foreach my $language (@ARGV) {
         my $name = $dir;
         $name =~ s/^.+\///;
         $name = "$language-$name";
-        my $selector_for_comparison = $name =~ m/trans_/ ? 'before' : '';
+        my $selector_for_comparison = $name =~ m/trans_/ && $topdt ? 'before' : '';
 #print STDERR "$selector_for_comparison\n";
         print STDERR "Creating script for evaluation ($name).\n";
         open (BASHSCRIPT, ">:utf8", "eval-$name.sh") or die;
         print BASHSCRIPT "#!/bin/bash\n\n";
-        print BASHSCRIPT "treex Eval::AtreeUAS eval_is_member=1 language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz  | tee $dir/parsed/uas.txt\n";
+        print BASHSCRIPT "treex Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz  | tee $dir/parsed/uas.txt\n";
         close BASHSCRIPT;
         system "qsub -cwd -j yes eval-$name.sh";
     }

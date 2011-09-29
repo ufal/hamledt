@@ -107,9 +107,9 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "cd $dir/parsed/;\n";
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print BASHSCRIPT "rm -rf malt_nivreeager\n";
-            print BASHSCRIPT "java -Xmx9g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
+            print BASHSCRIPT "java -Xmx15g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
             close BASHSCRIPT;
-            system "qsub -hard -l mf=10g -l act_mem_free=10g -cwd -j yes $scriptname";
+            system "qsub -hard -l mf=16g -l act_mem_free=16g -cwd -j yes $scriptname";
         }
         if ($maltsmf) {
             my $scriptname = "smf-$name.sh";
