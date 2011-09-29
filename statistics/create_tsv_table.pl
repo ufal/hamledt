@@ -7,10 +7,7 @@ my %counts;
 
 while (<>) {
     chomp;
-    my %feature;
-    my @columns = split;
-    my $language = shift @columns;
-    my $set = shift @columns;
+    my ($language, $set, @columns) = split;
 
     if (/is_root/) {
         $counts{$language}{sents}++
@@ -37,13 +34,14 @@ foreach my $langcode (sort keys %counts) {
                     100 * $counts{$langcode}{train} / $toks,
                     100 * $counts{$langcode}{test} / $toks),
 
-            map {sprintf("%.2f",$_)} (
+            (map {sprintf("%.2f",$_)} (
                 100 * $coords / $toks,
                 ($counts{$langcode}{is_member}||0) / ($coords || 1),
                 ($counts{$langcode}{is_shared_modif}||0) / ($coords || 1),
-                ($counts{$langcode}{is_nested}||0) / ($coords || 1),
                 #($counts{$langcode}{is_coord_conjunction}||0) / ($coords || 1),
-            )
+            )),
+            sprintf("%.1f", 100 * ($counts{$langcode}{is_nested}||0) / ($coords || 1)),
+
         );
     print "\n";
 }
