@@ -1,10 +1,13 @@
-ALL_LANGUAGES=ar bg bn cs da de el en es et eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
+ALL_LANGUAGES=ar bg bn cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 #LANGUAGES=ar bg bn cs da de el grc hi la ro sl ta te
 LANGUAGES=$(ALL_LANGUAGES)
 
 train:
 	./train.pl --new --mcd --mcdproj --malt $(ALL_LANGUAGES)
 #	./train.pl --new --feat conll --maltsmf $(LANGUAGES)
+
+train_new:
+	./train.pl --new --malt --trans trans_fSpPcBhNsN,trans_fMpPcBhNsN,trans_fMpPcPhLsN,trans_fMpPcPhRsN $(ALL_LANGUAGES)
 
 parse:
 	./parse.pl --malt --maltsmf --feat conll $(LANGUAGES)

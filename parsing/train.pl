@@ -12,6 +12,7 @@ my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
 
 my ($help, $mcd, $mcdproj, $malt, $maltsmf, $feat, $trans, $new);
 $feat = '_'; # default
+$trans = '';
 
 GetOptions(
     "help|h"  => \$help,
@@ -33,20 +34,22 @@ if ($help || !@ARGV) {
     --malt     - train Malt parser
     --maltsmf  - train Malt parser with stack algorithm and morph features
     --new      - recreate training file, don't reuse existing
-    --trans    - select transformation, all transformations are run otherwise
+    --trans    - select transformationis separated by comma. All transformations are run otherwise.
     --feat     - select features conll|iset|_ (_ is default)
     -h,--help  - print this help
 ";
 }
 
+my %transformation;
+map {$transformation{$_} = 1} split(/,/, $trans);
 
 foreach my $language (@ARGV) {
-    my $glob = $trans ? "$data_dir/$language/treex/$trans" : "$data_dir/$language/treex/*";
-    foreach my $dir (glob $glob) {
+    foreach my $dir (glob "$data_dir/$language/treex/*") {
         next if (!-d $dir);
         my $name = $dir;
         $name =~ s/^.+\///;
         # Compress transformation names because qstat only shows 10 characters.
+        next if $trans && !$transformation{$name};
         $name =~ s/^trans_/t/;
         $name = "$language-$name";
         my $deprel_attribute = $name =~ /000_orig/ ? 'conll/deprel' : 'afun';

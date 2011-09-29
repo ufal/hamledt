@@ -28,7 +28,7 @@ my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_tree
 
 my %value;
 
-my @parsers = ( 'mst', 'malt' );
+my @parsers = ( 'malt' );
 my @languages = grep {$_ =~ /^.{2,3}$/ and $_ !~/^(jp|zh|ca|et|is)$/}
     map {s/.+\///;$_}
     glob "$data_dir/*";
