@@ -220,6 +220,7 @@ foreach my $difference_type ('pos','ins','neg') {
         print ' & ';
         foreach my $parser (@parsers) {
             print $diff{$trans}{$parser}{$difference_type}  || '?';
+            print '\vfill' if $parser eq 'mst';
             print ' ';
         }
     }
