@@ -85,7 +85,7 @@ foreach my $language (@languages) {
             if ($sys =~ /maltnivreeager$/) {
                 $parser = 'malt';
             }
-            elsif ($sys =~ /mcdprojo2$/) {
+            elsif ($sys =~ /mcdnonprojo2$/) {
                 $parser = 'mst';
             }
 
