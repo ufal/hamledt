@@ -36,7 +36,7 @@ foreach my $language (@ARGV) {
         print BASHSCRIPT "#!/bin/bash\n\n";
         
         # Write UAS score
-        print BASHSCRIPT "treex Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz  | tee $dir/parsed/uas.txt\n";
+#        print BASHSCRIPT "treex Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz  | tee $dir/parsed/uas.txt\n";
         
         # Writes accuracy results with confidence interval
         print BASHSCRIPT "treex Eval::AtreeUASWithConfInterval eval_is_member=1 eval_is_shared_modifier=1 language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz  | tee $dir/parsed/uas_conf.txt\n";
