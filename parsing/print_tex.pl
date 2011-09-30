@@ -106,7 +106,7 @@ sub round {
 
 
 print " \\begin{tabular}{|p{6mm}|p{6mm}|p{8mm}||".(join "|",map{"p{0.6cm}"}(1..$#transformations-1))."|} \\hline \n";
-print join(' & ', ('Lang.', @transformations));
+print join(' & ', map {/pdt/ ? 'fP~~~~~(PDT)\vfill hR\vfill sH\vfill cH\vfill pB' : $_} ('Lang.', @transformations));
 print "\\\\ \\hline \\hline \n";
 
 sub table_value {
@@ -209,7 +209,7 @@ foreach my $trans (@transformations) {
                 $sum += $value{$trans}{$language}{$parser} - $value{pdt}{$language}{$parser};
             }
         }
-        print round($sum / scalar @languages)." ";
+        print '\mbox{' . round($sum / scalar @languages)."} ";
     }
 }
 print "\\\\ \\hline\n";
