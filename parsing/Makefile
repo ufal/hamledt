@@ -25,6 +25,10 @@ tex:
 	print_tex.pl > parsing_accuracy_table.tex
 	@echo parsing_accuracy_table.tex should be commited as publications/papers/2011_cl_tree_conventions
 
+tex_malt:
+	print_tex_malt.pl > parsing_accuracy_table.tex
+	@echo parsing_accuracy_table.tex should be commited as publications/papers/2011_cl_tree_conventions
+
 rights:
 	chmod -R g+w ${TMT_ROOT}/share/data/resources/normalized_treebanks/ 2>/dev/null || echo Done
 

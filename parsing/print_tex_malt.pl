@@ -29,9 +29,9 @@ my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_tree
 my %value;
 my %conf;
 
-my @parsers = ('mst', 'malt');
+my @parsers = ('malt');
 
-my @languages = grep {$_ =~ /^.{2,3}$/ and $_ !~/^(jp|zh|ca|et|is)$/}
+my @languages = grep {$_ =~ /^.{2,3}$/ and $_ !~/^(ja|jp|zh|ca|et|is)$/}
     map {s/.+\///;$_}
     glob "$data_dir/*";
 
@@ -53,14 +53,14 @@ foreach my $language (@languages) {
         # Just to make sure that only the standard directories are explored
         # next if ($trans !~ /^(trans_|000_orig|001_pdtstyle)/);
         next if (!exists $trans_hash{$trans});
-
-
+        
         #$trans =~ s/trans_//;
         #
-        #$trans = 'orig' if ($trans =~ /^(000_orig)$/);
-        #$trans = 'pdt' if ($trans =~ /^(001_pdtstyle)$/);
+        $trans = 'orig' if ($trans =~ /^(000_orig)$/);
+        $trans = 'pdt' if ($trans =~ /^(001_pdtstyle)$/);
         
-        $trans = $trans_hash{$trans};
+        $trans =~ s/\_/ /;
+        #$trans = $trans_hash{$trans};
         
         if (!exists $tr_hash{$trans}) {
             $tr_hash{$trans} = 1;
@@ -85,9 +85,9 @@ foreach my $language (@languages) {
             if ($sys =~ /maltnivreeager$/) {
                 $parser = 'malt';
             }
-            elsif ($sys =~ /mcdprojo2$/) {
-                $parser = 'mst';
-            }
+            #elsif ($sys =~ /mcdprojo2$/) {
+            #    $parser = 'mst';
+            #}
 
             if ($parser) {
                 $value{$trans}{$language}{$parser} = $score;
@@ -144,53 +144,53 @@ my %diff_label = (
 foreach my $language (@languages) {
     print "$language  ";
 
-    my $confmst = $conf{'pdt'}{$language}{'mst'};
+    #my $confmst = $conf{'pdt'}{$language}{'mst'};
     my $confmalt = $conf{'pdt'}{$language}{'malt'};
 
     foreach my $trs (@transformations) {
 
-        my $mstValue = table_value($trs,$language,$parsers[0]);
-        my $maltValue = table_value($trs,$language,$parsers[1]);
+        #my $mstValue = table_value($trs,$language,$parsers[0]);
+        my $maltValue = table_value($trs,$language,$parsers[0]);
         
 
-        if (($trs !~ /(orig|pdt)/) && $mstValue eq '?') {
-            print " &  " . $mstValue. " "; 
-            $diff{$trs}{'mst'}{'ins'}++;
-        }
-        elsif (($trs !~ /(orig|pdt)/) && ($mstValue > $confmst) ) {
-            $diff{$trs}{'mst'}{'pos'}++;
-            print " &  " . '{\bf' . " " . $mstValue . '}' . " ";
-        }
-        elsif (($trs !~ /(orig|pdt)/) && ($mstValue < -($confmst))) {
-            $diff{$trs}{'mst'}{'neg'}++;
-            print " &  " . $mstValue. " ";
-        }
-        elsif (($trs !~ /(orig|pdt)/) && ($mstValue >= -($confmst)) && (($mstValue <= $confmst))) {
-            $diff{$trs}{'mst'}{'ins'}++;
-            print " &  " . $mstValue . " ";
-        }
-        elsif ($trs =~ /(orig|pdt)/) {
-            print " &  " . $mstValue. " "; 
-        }
+        #if (($trs !~ /(orig|pdt)/) && $mstValue eq '?') {
+        #    print " &  " . $mstValue. " "; 
+        #    $diff{$trs}{'mst'}{'ins'}++;
+        #}
+        #elsif (($trs !~ /(orig|pdt)/) && ($mstValue > $confmst) ) {
+        #    $diff{$trs}{'mst'}{'pos'}++;
+        #    print " &  " . '{\bf' . " " . $mstValue . '}' . " ";
+        #}
+        #elsif (($trs !~ /(orig|pdt)/) && ($mstValue < -($confmst))) {
+        #    $diff{$trs}{'mst'}{'neg'}++;
+        #    print " &  " . $mstValue. " ";
+        #}
+        #elsif (($trs !~ /(orig|pdt)/) && ($mstValue >= -($confmst)) && (($mstValue <= $confmst))) {
+        #    $diff{$trs}{'mst'}{'ins'}++;
+        #    print " &  " . $mstValue . " ";
+        #}
+        #elsif ($trs =~ /(orig|pdt)/) {
+        #    print " &  " . $mstValue. " "; 
+        #}
 
         if (($trs !~ /(orig|pdt)/) && $maltValue eq '?' ) {
-            print $maltValue. " ";                    
+            print " &  " . $maltValue. " ";                    
             $diff{$trs}{'malt'}{'ins'}++;
         }
         elsif (($trs !~ /(orig|pdt)/) && ($maltValue > $confmalt)) {
             $diff{$trs}{'malt'}{'pos'}++;
-            print '{\bf' . " " . $maltValue . '}';
+            print " &  " .  '{\bf' . " " . $maltValue . '}';
         }
         elsif (($trs !~ /(orig|pdt)/) && ($maltValue < -($confmalt))) {
             $diff{$trs}{'malt'}{'neg'}++;
-            print $maltValue;
+            print " &  " .  $maltValue;
         }
         elsif (($trs !~ /(orig|pdt)/) && ($maltValue >= -($confmalt)) && (($maltValue <= $confmalt))) {
             $diff{$trs}{'malt'}{'ins'}++;
-            print $maltValue;
+            print " &  " .  $maltValue;
         }
         elsif ($trs =~ /(orig|pdt)/) {
-            print $maltValue; 
+            print " &  " .  $maltValue; 
         }
     }
     print "\\\\ \\hline \n";
@@ -200,13 +200,15 @@ print "\\hline\n Aver. ";
 foreach my $trans (@transformations) {
     print ' & ';
     foreach my $parser (@parsers) {
-        my $sum;
+        my $sum = 0.0;
         foreach my $language (@languages) {
             if ($trans =~ /orig|pdt/) {
                 $sum += ($value{$trans}{$language}{$parser} || 0);
             }
             else {
-                $sum += $value{$trans}{$language}{$parser} - $value{pdt}{$language}{$parser};
+                if (defined ($value{$trans}{$language}{$parser}) && $value{pdt}{$language}{$parser}) {
+                  $sum += ($value{$trans}{$language}{$parser} - $value{pdt}{$language}{$parser});  
+                }                
             }
         }
         print round($sum / scalar @languages)." ";
@@ -219,7 +221,7 @@ foreach my $difference_type ('pos','ins','neg') {
     foreach my $trans (grep {$_ !~ /orig|pdt/} @transformations) {
         print ' & ';
         foreach my $parser (@parsers) {
-            print $diff{$trans}{$parser}{$difference_type}  || '?';
+            print $diff{$trans}{$parser}{$difference_type}  || '0';
             print ' ';
         }
     }
