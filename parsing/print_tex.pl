@@ -31,7 +31,7 @@ my %conf;
 
 my @parsers = ('mst', 'malt');
 
-my @languages = grep {$_ =~ /^.{2,3}$/ and $_ !~/^(jp|zh|ca|et|is)$/}
+my @languages = grep {$_ =~ /^.{2,3}$/ and $_ !~/^(ja|zh|ca|et|is)$/}
     map {s/.+\///;$_}
     glob "$data_dir/*";
 
