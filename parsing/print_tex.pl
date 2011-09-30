@@ -6,19 +6,19 @@ use Treex::Core::Config;
 
 my %trans_hash = ('000_orig'          => 'orig',
                   '001_pdtstyle'      => 'pdt',
-                  'trans_fMpPcBhLsN'    =>       'A',
-                  #'trans_fMpPcBhMsN'    =>       'B',
-                  #'trans_fMpPcBhRsH'    =>       'C',
-                  'trans_fMpPcBhRsN'    =>       'D',
-                  'trans_fMpPcPhLsN'    =>       'E',
-                  'trans_fMpPcPhRsN'    =>       'F',
-                  'trans_fPpBcHhRsH'    =>       'G',
-                  #'trans_fPpBcHhRsN'    =>       'H',
-                  'trans_fSpPcBhLsN'    =>       'I',
-                  #'trans_fSpPcBhMsN'    =>       'J',
-                  #'trans_fSpPcBhRsH'    =>       'K',
-                  'trans_fSpPcBhRsN'    =>       'L'               
-                  );
+trans_fMpPcBhLsN => 'fM hL sN cB pP',
+trans_fMpPcBhMsN => 'fM hM sN cB pP',
+trans_fMpPcBhRsH => 'fM hR sH cB pP',
+trans_fMpPcBhRsN => 'fM hR sN cB pP',
+trans_fMpPcPhLsN => 'fM hL sN cP pP',
+trans_fMpPcPhRsN => 'fM hR sN cP pP',
+trans_fPpBcHhRsH => 'fP hR sH cH pB',
+trans_fPpBcHhRsN => 'fP hR sN cH pB',
+trans_fSpPcBhLsN => 'fS hL sN cB pP',
+trans_fSpPcBhMsN => 'fS hM sN cB pP',
+trans_fSpPcBhRsH => 'fS hR sH cB pP',
+trans_fSpPcBhRsN => 'fS hR sN cB pP',
+);
 
 my @transformations = ('orig', 'pdt');
 my %tr_hash = ('orig' => 1, 

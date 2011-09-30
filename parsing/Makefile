@@ -22,11 +22,11 @@ table:
 	@./print_table.pl --mcdproj --filename uas.txt $(ALL_LANGUAGES)
 
 tex:
-	print_tex.pl > parsing_accuracy_table.tex
+	./print_tex.pl > parsing_accuracy_table.tex
 	@echo parsing_accuracy_table.tex should be commited as publications/papers/2011_cl_tree_conventions
 
 tex_malt:
-	print_tex_malt.pl > parsing_accuracy_table.tex
+	./print_tex_malt.pl > parsing_accuracy_table.tex
 	@echo parsing_accuracy_table.tex should be commited as publications/papers/2011_cl_tree_conventions
 
 rights:
