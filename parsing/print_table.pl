@@ -54,7 +54,7 @@ foreach my $language (@ARGV) {
             my ($sys, $counts, $score) = split /\t/;
 
             next if !(($sys =~ /maltnivreeager$/ && $malt) || ($sys =~ /maltstacklazy$/ && $maltsmf) ||
-                      ($sys =~ /mcdnonproj$/ && $mcd)      || ($sys =~ /mcdproj$/ && $mcdproj));
+                      ($sys =~ /mcdnonprojo2$/ && $mcd)      || ($sys =~ /mcdprojo2$/ && $mcdproj));
             next if $sys =~ m/-regardless-is_member/;
 
 #print "$language $trans $sys $score $value{'001_pdtstyle'}{$language}\n";
