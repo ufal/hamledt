@@ -15,6 +15,16 @@ parse:
 eval:
 	./eval.pl $(ALL_LANGUAGES)
 
+eval_samples:
+	./eval_samples.pl $(ALL_LANGUAGES)
+	# Wait until all the jobs are finished, then run
+	# make significance
+
+significance:
+	./print_signif.pl > significance.tsv
+	# grep positive significance.tsv
+
+
 table:
 	@./print_table.pl --malt --filename uas.txt $(ALL_LANGUAGES)
 	@./print_table.pl --maltsmf --filename uas.txt $(ALL_LANGUAGES)
@@ -23,10 +33,6 @@ table:
 
 tex:
 	./print_tex.pl > parsing_accuracy_table.tex
-	@echo parsing_accuracy_table.tex should be commited as publications/papers/2011_cl_tree_conventions
-
-tex_malt:
-	./print_tex_malt.pl > parsing_accuracy_table.tex
 	@echo parsing_accuracy_table.tex should be commited as publications/papers/2011_cl_tree_conventions
 
 rights:
