@@ -41,9 +41,9 @@ foreach my $language (@ARGV) {
         # Writes accuracy results with confidence interval
         print BASHSCRIPT "treex Eval::AtreeUASWithConfInterval eval_is_member=1 eval_is_shared_modifier=1 language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz  | tee $dir/parsed/uas_conf.txt\n";
         
-        print BASHSCRIPT "treex Eval::AtreeUAStat language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz > $dir/parsed/uastat.txt\n";
+        #print BASHSCRIPT "treex Eval::AtreeUAStat language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz > $dir/parsed/uastat.txt\n";
         
         close BASHSCRIPT;
-        system "qsub -cwd -j yes eval-$name.sh";
+        system "qsub -hard -l mf=5g -l act_mem_free=5g -cwd -j yes -cwd eval-$name.sh";
     }
 }
