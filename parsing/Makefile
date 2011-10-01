@@ -10,7 +10,7 @@ train_new:
 	./train.pl --new --malt --trans trans_fSpPcBhNsN,trans_fMpPcBhNsN,trans_fMpPcPhLsN,trans_fMpPcPhRsN $(ALL_LANGUAGES)
 
 parse:
-	./parse.pl --malt --maltsmf --feat conll $(LANGUAGES)
+	./parse.pl --new --malt $(ALL_LANGUAGES)
 
 eval:
 	./eval.pl $(ALL_LANGUAGES)
@@ -27,9 +27,9 @@ significance:
 
 table:
 	@./print_table.pl --malt --filename uas.txt $(ALL_LANGUAGES)
-	@./print_table.pl --maltsmf --filename uas.txt $(ALL_LANGUAGES)
+#	@./print_table.pl --maltsmf --filename uas.txt $(ALL_LANGUAGES)
 	@./print_table.pl --mcd --filename uas.txt $(ALL_LANGUAGES)
-	@./print_table.pl --mcdproj --filename uas.txt $(ALL_LANGUAGES)
+#	@./print_table.pl --mcdproj --filename uas.txt $(ALL_LANGUAGES)
 
 tex:
 	./print_tex.pl > parsing_accuracy_table.tex

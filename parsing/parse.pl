@@ -10,6 +10,12 @@ my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_tree
 
 my ($help, $mcd, $mcdproj, $malt, $maltsmf, $new, $feat, $trans, $topdt);
 $feat='_'; # default
+$trans = '';
+$mcd=0;
+$malt=0;
+$mcdproj=0;
+$maltsmf=0;
+
 
 GetOptions(
     "help|h"  => \$help,
@@ -31,7 +37,7 @@ if ($help || !@ARGV) {
     --malt     - run Malt parser
     --maltsmf  - run Malt parser with stack algorithm and morph features
     --new      - copy the testing file from 'test' directory
-    --trans    - select transformation, all transformations are run otherwise
+    --trans    - select transformationis separated by comma. All transformations are run otherwise.
     --feat     - select features conll|iset|_ (_ is default)
     --topdt    - transform the resulting trees to PDT style
     -h,--help  - print this help
@@ -40,10 +46,12 @@ if ($help || !@ARGV) {
 
 die "Can't run more than one parser" if ($mcd && $mcdproj) || ($malt && $maltsmf);
 
+my %transformation;
+map {$transformation{$_} = 1} split(/,/, $trans);
 
 print STDERR ("Going to parse languages: ", join(', ', @ARGV), "\n");
 foreach my $language (@ARGV) {
-    my $glob = $trans ? "$data_dir/$language/treex/$trans" : "$data_dir/$language/treex/*";
+    my $glob = "$data_dir/$language/treex/*";
     my @glob = glob $glob;
     die("No directories found: glob = $glob") unless(@glob);
     foreach my $dir (@glob) {
@@ -54,9 +62,13 @@ foreach my $language (@ARGV) {
         }
         if (!-e "$dir/parsed/001.treex.gz" || $new) {
             system "cp $dir/test/*.treex.gz $dir/parsed/";
+            print STDERR "New file created!\n";
         }
         my $name = $dir;
         $name =~ s/^.+\///;
+
+        next if $trans && !$transformation{$name};
+        
         $name = "$language-$name";
 
         # the following variable indicates whether we are parsing a transformation or pdtstyle/orig file
@@ -77,7 +89,8 @@ foreach my $language (@ARGV) {
         );
         my %parser_name = ( mcd => '-mcd', mcdproj => '-mcp', malt => '-mlt', maltsmf => '-smf');
 
-        my $parser = $mcd ? 'mcd' : $mcdproj ? 'mcdproj' : $maltsmf ? 'maltsmf' : 'malt';
+        my $parser = $mcd ? 'mcd' : $mcdproj ? 'mcdproj' : $maltsmf ? 'maltsmf' : $malt ? 'malt' : '';
+        exit if !$parser;
         if (-e $parser_model{$parser}) {
             $name .= $parser_name{$parser};
             my $scenario  = "Util::SetGlobal language=$language selector=$parser_selector{$parser} ";
@@ -85,10 +98,10 @@ foreach my $language (@ARGV) {
                $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
                $scenario .= "$parser_block{$parser} ";
             if ($is_transformation) {
-                $scenario .= "Util::SetGlobal language=$language selector=$parser_selector{$parser}PDT ";
-                $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
-                $scenario .= "A2A::CopyAtree source_selector=$parser_selector{$parser} ";
-                $scenario .= "A2A::Transform::Coord_fPhRsHcHpB ";
+#                $scenario .= "Util::SetGlobal language=$language selector=$parser_selector{$parser}PDT ";
+#                $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
+#                $scenario .= "A2A::CopyAtree source_selector=$parser_selector{$parser} ";
+#                $scenario .= "A2A::Transform::Coord_fPhRsHcHpB ";
             }
             # Note: the trees in 000_orig should be compared against the original gold tree.
             # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
