@@ -33,11 +33,13 @@ foreach my $language (@ARGV) {
         print STDERR "Creating script for evaluation ($name).\n";
         open (BASHSCRIPT, ">:utf8", "eval-$name.sh") or die;
         print BASHSCRIPT "#!/bin/bash\n\n";
-        
+        print BASHSCRIPT "echo -n HOST=;hostname\n";
+
         # Write UAS score for each sample of 10 sentences
         print BASHSCRIPT "treex Eval::AtreeUAS sample_size=10 eval_is_member=1 eval_is_shared_modifier=1 language=$language selector='$selector_for_comparison' -- $dir/parsed/*.treex.gz > $dir/parsed/uas_samples.txt\n";
         
+        print BASHSCRIPT "echo SUCCESS\n";
         close BASHSCRIPT;
-        system "qsub -cwd -j yes eval-$name.sh";
+        system "qsub -hard -l mf=5g -l act_mem_free=5g -cwd -j yes -cwd eval-$name.sh";
     }
 }
