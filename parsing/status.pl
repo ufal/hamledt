@@ -13,6 +13,8 @@ sub usage
     $usage   .= "                 cluster jobs that failed because Java did not have enough memory will be resubmitted\n";
     $usage   .= "          --net-resubmit\n";
     $usage   .= "                 cluster jobs that failed because of IO/network problems, including sudden deaths, will be resubmitted\n";
+    $usage   .= "          --nojob-resubmit\n";
+    $usage   .= "                 scripts that were not even submitted (or no log found), will be submitted now\n";
     return $usage;
 }
 
@@ -28,11 +30,12 @@ use cluster;
 
 GetOptions
 (
-    'help|h'       => \$help,
-    'wdir=s'       => \$wdirroot,
-    'eqw-resubmit' => \$eqw_resubmit,
-    'mem-resubmit' => \$mem_resubmit,
-    'net-resubmit' => \$net_resubmit
+    'help|h'         => \$help,
+    'wdir=s'         => \$wdirroot,
+    'eqw-resubmit'   => \$eqw_resubmit,
+    'mem-resubmit'   => \$mem_resubmit,
+    'net-resubmit'   => \$net_resubmit,
+    'nojob-resubmit' => \$nojob_resubmit
 );
 
 if($help || !$wdirroot)
@@ -72,7 +75,7 @@ foreach my $lang (@languages)
         # Check that all parser models have been trained.
         my @models = qw(malt_nivreeager.mco malt_stacklazy.mco mcd_proj_o2.model mcd_nonproj_o2.model);
         my $scripttrans = $trans;
-        $scripttrans =~ s/^trans_//;
+        $scripttrans =~ s/^trans_/t/;
         my %scripts =
         (
             'malt_nivreeager.mco'  => "mlt-$lang-$scripttrans.sh",
@@ -179,6 +182,13 @@ foreach my $jobid (@my_jobs)
         print("Job $jobid still running: $jobs{$jobid}{spath}\n");
         $jobs{$jobid}{running} = 1;
     }
+    elsif($job->{state} eq 'qw')
+    {
+        # From the point of view of hope for success, this is as if it was running.
+        ###!!! We won't see it in statistics anyway because it has not produced a log yet, so we cannot bind it to a target.
+        ###!!! We could bind it using the job name, though.
+        $jobs{$jobid}{running} = 1;
+    }
     elsif($job->{state} eq 'Eqw')
     {
         # Even jobs that failed to start may have produced a log file that helps us to bind them to their experiment.
@@ -258,21 +268,29 @@ foreach my $mpath (@models)
                 $m_lost{$type}++;
                 if($job->{lowmem})
                 {
+                    print("LOWMEM $job->{opath}\n");
+                    print("   see $job->{lpath}\n");
                     $m_lowmem{$type}++;
                     resubmit($job) if($mem_resubmit);
                 }
                 elsif($job->{io})
                 {
+                    print("IO/NET $job->{opath}\n");
+                    print("   see $job->{lpath}\n");
                     $m_io{$type}++;
                     resubmit($job) if($net_resubmit);
                 }
                 elsif($job->{nullpointer})
                 {
+                    print("NULLPT $job->{opath}\n");
+                    print("   see $job->{lpath}\n");
                     $m_nullpointer{$type}++;
                     resubmit($job) if($net_resubmit);
                 }
                 elsif($job->{libsvm})
                 {
+                    print("LIBSVM $job->{opath}\n");
+                    print("   see $job->{lpath}\n");
                     $m_libsvm{$type}++;
                 }
                 else
@@ -280,7 +298,7 @@ foreach my $mpath (@models)
                     $m_sudden{$type}++;
                     print("-------------\n");
                     print("SUDDEN DEATH?\n");
-                    print("$job->{mpath}\n");
+                    print("$job->{opath}\n");
                     print("$job->{logtext}");
                     print("$job->{opath}\n");
                     resubmit($job) if($net_resubmit);
@@ -290,10 +308,27 @@ foreach my $mpath (@models)
         # No job found for the target!
         else
         {
+            print("NO JOB $mpath\n");
             $m_nojob{$type}++;
             if($models{$mpath}{spath})
             {
-                print("No job/log found for script $models{$mpath}{spath}.\n");
+                print(" rerun $models{$mpath}{spath}\n");
+                if($nojob_resubmit)
+                {
+                    my $spath = $models{$mpath}{spath};
+                    my ($path, $script);
+                    if($spath =~ m-^(.+)/([^/]+\.sh)$-)
+                    {
+                        $path = $1;
+                        $script = $2;
+                    }
+                    else
+                    {
+                        die("Cannot parse $spath.");
+                    }
+                    my %job = ('spath' => $spath, 'path' => $path, 'script' => $script);
+                    resubmit(\%job);
+                }
             }
         }
     }
@@ -303,6 +338,7 @@ foreach my $state (keys(%jobstates))
 {
     my $estate = $state;
     $estate = 'r (running)' if($estate eq 'r');
+    $estate = 'qw (waiting for machine)' if($estate eq 'qw');
     $estate = 'Eqw (failed to start)' if($estate eq 'Eqw');
     print("Number of jobs in state $estate = $jobstates{$state}\n");
 }
@@ -331,6 +367,7 @@ sub resubmit
     if(-f $job->{spath})
     {
         print("$job->{spath} will be resubmitted.\n");
+        update_script($job->{spath});
         # Go to the folder of the script so that the logs are written there again.
         print("Going back to $job->{path}.\n");
         chdir($job->{path}) or die("Cannot change to $job->{path}: $!\n");
@@ -347,6 +384,46 @@ sub resubmit
     {
         die("Cannot resubmit job $job->{id} because $job->{spath} does not exist.\n");
     }
+}
+
+
+
+#------------------------------------------------------------------------------
+# Modifies a shell script to be submitted as a cluster job.
+#------------------------------------------------------------------------------
+sub update_script
+{
+    my $spath = shift;
+    # Read and modify script.
+    open(SCRIPT, $spath) or die("Cannot read script $spath: $!\n");
+    my ($mem_free, $act_mem_free);
+    my $script = '';
+    while(<SCRIPT>)
+    {
+        ###!!! The operation here must be manually adjusted every time to the current needs!
+        # Current operation: Every script that calls java should report the current cluster sensors for memory so that we can confirm whether our request has been met.
+        $mem_free = 1 if(m-/mem_free\.sh-);
+        $act_mem_free = 1 if(m-/act_mem_free\.sh-);
+        if(m/java/)
+        {
+            if(!$mem_free)
+            {
+                $script .= "echo jednou | /net/projects/SGE/sensors/mem_free.sh\n";
+                $mem_free = 1;
+            }
+            if(!$act_mem_free)
+            {
+                $script .= "echo jednou | /net/projects/SGE/sensors/act_mem_free.sh\n";
+                $act_mem_free = 1;
+            }
+        }
+        $script .= $_;
+    }
+    close(SCRIPT);
+    # Write modified script.
+    open(SCRIPT, ">$spath") or die("Cannot write script $spath: $!\n");
+    print SCRIPT ($script);
+    close(SCRIPT);
 }
 
 

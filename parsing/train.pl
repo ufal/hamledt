@@ -96,7 +96,7 @@ foreach my $language (@ARGV) {
             $f = '';
         }
         # create training CoNLL file if needed.
-        # all afuns but 'Coord', 'AuxX', and 'AuxY' are substituted by 'Atr' 
+        # all afuns but 'Coord', 'AuxX', and 'AuxY' are substituted by 'Atr'
         if ($new || !-e $trainfilename) {
             my $command =  "treex -p -j 20 ";
                $command .= "Util::SetGlobal language=$language ";
@@ -148,6 +148,8 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "#!/bin/bash\n\n";
             # Debugging message: anyone here eating my memory?
             print BASHSCRIPT "hostname -f\n";
+            print BASHSCRIPT "echo jednou | /net/projects/SGE/sensors/mem_free.sh\n";
+            print BASHSCRIPT "echo jednou | /net/projects/SGE/sensors/act_mem_free.sh\n";
             print BASHSCRIPT "top -bn1 | head -20\n";
 #            print BASHSCRIPT "cd $wdir\n";
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.

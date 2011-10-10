@@ -7,6 +7,8 @@ TREEX    = treex -L$(LANGCODE) -p
 IMPORT   = Read::CoNLLX lines_per_doc=500
 WRITE0   = Write::Treex file_stem=''
 WRITE    = Write::Treex
+XML2CONLL = $(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl
+BETACODE  = $(TMT_ROOT)/tools/format_convertors/conll_to_conll/beta2unicode.pl
 
 prepare_source:
 	mkdir -p $(DATADIR)
@@ -15,20 +17,20 @@ prepare_source:
 	mv $(IN)/1999.01.0015.xml $(IN)/test.xml
 
 source_xml_to_conll:
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0003.xml > $(IN)/1999.01.0003.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0005.xml > $(IN)/1999.01.0005.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0007.xml > $(IN)/1999.01.0007.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0009.xml > $(IN)/1999.01.0009.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0011.xml > $(IN)/1999.01.0011.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0013.xml > $(IN)/1999.01.0013.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0127.xml > $(IN)/1999.01.0127.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0129.xml > $(IN)/1999.01.0129.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0131.xml > $(IN)/1999.01.0131.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0133.xml > $(IN)/1999.01.0133.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0135.xml > $(IN)/1999.01.0135.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/1999.01.0183.xml > $(IN)/1999.01.0183.conll	
+	$(XML2CONLL) -i $(IN)/1999.01.0003.xml | $(BETACODE) > $(IN)/1999.01.0003.conll
+	$(XML2CONLL) -i $(IN)/1999.01.0005.xml | $(BETACODE) > $(IN)/1999.01.0005.conll
+	$(XML2CONLL) -i $(IN)/1999.01.0007.xml | $(BETACODE) > $(IN)/1999.01.0007.conll
+	$(XML2CONLL) -i $(IN)/1999.01.0009.xml | $(BETACODE) > $(IN)/1999.01.0009.conll
+	$(XML2CONLL) -i $(IN)/1999.01.0011.xml | $(BETACODE) > $(IN)/1999.01.0011.conll
+	$(XML2CONLL) -i $(IN)/1999.01.0013.xml | $(BETACODE) > $(IN)/1999.01.0013.conll
+	$(XML2CONLL) -i $(IN)/1999.01.0127.xml | $(BETACODE) > $(IN)/1999.01.0127.conll
+	$(XML2CONLL) -i $(IN)/1999.01.0129.xml | $(BETACODE) > $(IN)/1999.01.0129.conll
+	$(XML2CONLL) -i $(IN)/1999.01.0131.xml | $(BETACODE) > $(IN)/1999.01.0131.conll
+	$(XML2CONLL) -i $(IN)/1999.01.0133.xml | $(BETACODE) > $(IN)/1999.01.0133.conll
+	$(XML2CONLL) -i $(IN)/1999.01.0135.xml | $(BETACODE) > $(IN)/1999.01.0135.conll
+	$(XML2CONLL) -i $(IN)/1999.01.0183.xml | $(BETACODE) > $(IN)/1999.01.0183.conll	
 	cat $(IN)/19*.conll > $(IN)/train.conll
-	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/test.xml > $(IN)/test.conll
+	$(XML2CONLL) -i $(IN)/test.xml | $(BETACODE) > $(IN)/test.conll
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
