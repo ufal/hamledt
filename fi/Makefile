@@ -13,7 +13,7 @@ WRITE    = Write::Treex
 prepare_source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	cat /net/data/finnish-dt/tdt-conll-dec2010-rev1/tdt-conll-dec2010-rev1.conll | perl -pe '$$_ = "" if(m/^\#/)' | /net/work/people/zeman/parsing/tools/split_conll.pl -phead 90 $(IN)/train.conll $(IN)/test.conll
+	cat /net/data/finnish-dt/tdt-conll-dec2010-rev1/tdt-conll-dec2010-rev1.conll | perl -pe '$$_ = "" if(m/^\#/)' | /net/data/finnish-dt/conll-restructure-finnish-tags.pl | /net/work/people/zeman/parsing/tools/split_conll.pl -phead 90 $(IN)/train.conll $(IN)/test.conll
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)

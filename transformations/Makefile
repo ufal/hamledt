@@ -1,5 +1,7 @@
+# Rerunning one language (e.g. because its normalization changed):
+# make LANGS=grc all
 PDT_READY= ar bg bn cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
-#PROBLEMS  sv  Invalid value 'CoordArg' in element <afun> of choice type 'afun.type'
+LANGS=$(PDT_READY)
 
 SHELL=/bin/bash
 
@@ -9,18 +11,19 @@ test:
 	@echo Test: a simple transformation applied on a single language
 	./transform.pl -p cs PunctBelowPrevNode
 
-runall:
-	./transform.pl --family Moscow,Stanford --head right,left $(PDT_READY)
+all: orig pdt head_nearest conj_prev
+
+orig:
+	./transform.pl --family Moscow,Stanford --head right,left $(LANGS)
 
 pdt:
-	./transform.pl --family Prague --head right --shared head,nearest --conjunction head --punctuation between $(PDT_READY)
+	./transform.pl --family Prague --head right --shared head,nearest --conjunction head --punctuation between $(LANGS)
 
 head_nearest:
-	./transform.pl --family Moscow,Stanford --head nearest $(PDT_READY)
+	./transform.pl --family Moscow,Stanford --head nearest $(LANGS)
 
 conj_prev:
-	./transform.pl --family Moscow --head right,left --conjunction previous --punctuation previous $(PDT_READY)
-
+	./transform.pl --family Moscow --head right,left --conjunction previous --punctuation previous $(LANGS)
 
 stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \

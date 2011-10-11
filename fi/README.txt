@@ -9,3 +9,5 @@ training size = 3877 sentences, 53151 tokens
 test size     =  430 sentences,  5425 tokens
 
 See also /net/data/finnish-dt/tdt-conll-dec2010-rev1/FILE-FORMAT.txt.
+For morphological tagset description: http://www2.lingsoft.fi/doc/fintwol/intro/tags.html
+
