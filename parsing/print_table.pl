@@ -40,7 +40,7 @@ if ($help || !@ARGV) {
 }
 # Lazy to enumerate all languages?
 if (scalar(@ARGV)==1 && $ARGV[0] eq 'all') {
-    @ARGV = qw(ar bg bn cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
+    @ARGV = qw(ar bg bn ca cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
 }
 
 my $parser_name =
@@ -56,6 +56,8 @@ my $table = Text::Table->new('trans', @ARGV, 'better', 'worse', 'average');
 my %value;
 
 foreach my $language (@ARGV) {
+    # Avoid warnings about undefined values in debugging messages.
+    $value{'001_pdtstyle'}{$language} = 0;
     foreach my $dir (glob "$data_dir/$language/treex/*") {
         next if (!-d $dir);
         # Get the name of the current transformation.
@@ -64,27 +66,35 @@ foreach my $language (@ARGV) {
         # Set the path to the folder where the training data and the trained model shall be.
         my $wdir = $wdirroot ? "$wdirroot/$language/$trans" : "$dir/parsed";
         if(!-d $wdir) {
-            print STDERR ("Directory $wdir not found.\n");
+            print("Directory $wdir not found.\n");
             next;
         }
-        open (UAS, "<:utf8", "$wdir/$filename") or next;
+        if(!open(UAS, "<:utf8", "$wdir/$filename"))
+        {
+            ###!!! DEBUG
+            print("Cannot read $wdir/$filename: $!");
+            next;
+        }
         while (<UAS>) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
-
-            next if !(($sys =~ /maltnivreeager$/ && $malt) || ($sys =~ /maltstacklazy$/ && $maltsmf) ||
-                      ($sys =~ /mcdnonprojo2$/ && $mcd)      || ($sys =~ /mcdprojo2$/ && $mcdproj));
+            next if !(
+                ($sys =~ /maltnivreeager$/ && $malt) ||
+                ($sys =~ /maltstacklazy$/ && $maltsmf) ||
+                ($sys =~ /mcdnonprojo2$/ && $mcd) ||
+                ($sys =~ /mcdprojo2$/ && $mcdproj));
             next if $sys =~ m/-regardless-is_member/;
-
-#print "$language $trans $sys $score $value{'001_pdtstyle'}{$language}\n";
-
+            print "$language $trans $sys $score $value{'001_pdtstyle'}{$language}\n";
             $score = $score ? 100 * $score : 0;
-
             if ($trans !~ /00/ && defined $value{'001_pdtstyle'}{$language}) {
                 $score -= $value{'001_pdtstyle'}{$language};
             }
-
             $value{$trans}{$language} = round($score);
+        }
+        if(!defined($value{$trans}{$language}))
+        {
+            ###!!! DEBUG
+            print("$parser_name score not found in $wdir/$filename.\n");
         }
     }
 }

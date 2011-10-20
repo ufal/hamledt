@@ -64,7 +64,7 @@ if ($wdirroot) {
 my $scriptdir = dzsys::get_script_path();
 # Lazy to enumerate all languages?
 if (scalar(@ARGV)==1 && $ARGV[0] eq 'all') {
-    @ARGV = qw(ar bg bn cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
+    @ARGV = qw(ar bg bn ca cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
 }
 
 print STDERR ("Going to parse languages: ", join(', ', @ARGV), "\n");
