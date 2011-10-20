@@ -12,7 +12,7 @@ use dzsys;
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks";
 
 my ($help, $mcd, $mcdproj, $malt, $maltsmf, $new, $feat, $trans, $topdt, $wdirroot);
-$feat='_'; # default
+$feat='conll'; # default
 $trans = '';
 $mcd=0;
 $malt=0;
@@ -42,7 +42,7 @@ if ($help || !@ARGV) {
     --maltsmf  - run Malt parser with stack algorithm and morph features
     --new      - copy the testing file from 'test' directory
     --trans    - select transformationis separated by comma. All transformations are run otherwise.
-    --feat     - select features conll|iset|_ (_ is default)
+    --feat     - select features conll|iset|_ (conll is default)
     --topdt    - transform the resulting trees to PDT style
     --wdir     - path to working folder
                  default: $data_dir\${LANGUAGE}/treex/\${TRANSFORMATION}/parsed
