@@ -5,9 +5,12 @@ use Getopt::Long;
 use Treex::Core::Config;
 use Text::Table;
 
+use lib '/home/zeman/lib';
+use dzsys;
+
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
 
-my ($help, $mcd, $mcdproj, $malt, $maltsmf);
+my ($help, $mcd, $mcdproj, $malt, $maltsmf, $wdirroot);
 my $filename = 'uas.txt';
 
 GetOptions(
@@ -17,6 +20,7 @@ GetOptions(
     "malt"    => \$malt,
     "maltsmf" => \$maltsmf,
     "filename=s"   => \$filename,
+    "wdir=s"  => \$wdirroot,
 );
 my $signif_diff = 0.1; # TODO: Update this value (for each lang) as soon as Loganathan finishes the significance testing.
 
@@ -27,8 +31,16 @@ if ($help || !@ARGV) {
     --mcdproj  - McDonald's MST projective parser
     --malt     - Malt parser
     --maltsmf  - Malt parser with stack algorithm and morph features
+    --wdir     - path to working folder
+                 default: $data_dir\${LANGUAGE}/treex/\${TRANSFORMATION}/parsed
+                 if --wdir \$WDIR set: \${WDIR}/\${LANGUAGE}/\${TRANSFORMATION}
+                 i.e. separately from the unparsed data and possibly from other experiments
     -h,--help  - print this help
 ";
+}
+# Lazy to enumerate all languages?
+if (scalar(@ARGV)==1 && $ARGV[0] eq 'all') {
+    @ARGV = qw(ar bg bn cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
 }
 
 my $parser_name =
@@ -46,9 +58,16 @@ my %value;
 foreach my $language (@ARGV) {
     foreach my $dir (glob "$data_dir/$language/treex/*") {
         next if (!-d $dir);
+        # Get the name of the current transformation.
         my $trans = $dir;
         $trans =~ s/^.+\///;
-        open (UAS, "<:utf8", "$dir/parsed/$filename") or next;
+        # Set the path to the folder where the training data and the trained model shall be.
+        my $wdir = $wdirroot ? "$wdirroot/$language/$trans" : "$dir/parsed";
+        if(!-d $wdir) {
+            print STDERR ("Directory $wdir not found.\n");
+            next;
+        }
+        open (UAS, "<:utf8", "$wdir/$filename") or next;
         while (<UAS>) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
