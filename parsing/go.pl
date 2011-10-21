@@ -182,7 +182,7 @@ sub create_conll_training_data
     close(SCR);
     chmod(0755, $scriptname) or die("Cannot chmod $scriptname: $!\n");
     # Send the job to the cluster. It will itself spawn 20 cluster jobs (via treex -p) but we do not want to wait here until they're all done.
-    return cluster::qsub('memory' => '1G', 'script' => $scriptname);
+    return cluster::qsub('priority' => -200, 'memory' => '1G', 'script' => $scriptname);
 }
 
 
@@ -239,7 +239,7 @@ sub train
             $memory = '31G';
         }
         close(SCR);
-        cluster::qsub('memory' => $memory, 'script' => $scriptname);
+        cluster::qsub('priority' => -300, 'memory' => $memory, 'script' => $scriptname);
     }
 }
 
@@ -291,6 +291,6 @@ sub parse
         print SCR ("top -bn1 | head -20\n");
         print SCR ("treex -s $scenario -- $parser-test/*.treex.gz | tee $uas_file\n");
         close(SCR);
-        cluster::qsub('memory' => $memory, 'script' => $scriptname);
+        cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname);
     }
 }
