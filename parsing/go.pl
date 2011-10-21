@@ -200,7 +200,7 @@ sub train
     foreach my $parser qw(mlt smf mcd mcp)
     {
         my $scriptname = "$parser-$language-$transformation.sh";
-        my $memory;
+        my ($memory, $priority);
         print STDERR ("Creating script $scriptname.\n");
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
         print SCR ("#!/bin/bash\n\n");
@@ -214,12 +214,14 @@ sub train
             print SCR ("java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n");
             print SCR ("  train order:2 format:MST decode-type:non-proj train-file:train.mst model-name:mcd_nonproj_o2.model\n");
             $memory = '10G';
+            $priority = -300;
         }
         elsif($parser eq 'mcp')
         {
             print SCR ("java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n");
             print SCR ("  train order:2 format:MST decode-type:proj train-file:train.mst model-name:mcd_proj_o2.model\n");
             $memory = '10G';
+            $priority = -300;
         }
         elsif($parser eq 'mlt')
         {
@@ -227,6 +229,7 @@ sub train
             print SCR ("rm -rf malt_nivreeager\n");
             print SCR ("java -Xmx15g -jar $malt_dir/malt.jar -i train.conll -c malt_nivreeager -a nivreeager -l liblinear -m learn\n");
             $memory = '16G';
+            $priority = -300;
         }
         elsif($parser eq 'smf')
         {
@@ -236,10 +239,12 @@ sub train
             my $command = "java -Xmx29g -jar $malt_dir/malt.jar -i train.conll -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
             print SCR ("echo $command");
             print SCR ($command);
+            # It is more difficult to get a machine with so much memory so we will be less generous with priority.
             $memory = '31G';
+            $priority = -100;
         }
         close(SCR);
-        cluster::qsub('priority' => -300, 'memory' => $memory, 'script' => $scriptname);
+        cluster::qsub('priority' => $priority, 'memory' => $memory, 'script' => $scriptname);
     }
 }
 
