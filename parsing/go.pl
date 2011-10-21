@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # Processes selected languages and transformations.
-# Copyright © 2011 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright Â© 2011 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 use utf8;
