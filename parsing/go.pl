@@ -113,7 +113,7 @@ sub get_action
     {
         $action = \&create_conll_training_data;
     }
-    elsif($action_name eq 'train)
+    elsif($action_name eq 'train')
     {
         $action = \&train;
     }
@@ -236,11 +236,12 @@ sub train
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print SCR ("rm -rf malt_stacklazy\n");
             my $features = '/net/work/people/zeman/parsing/malt-parser/marco-kuhlmann-czech-settings/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
-            my $command = "java -Xmx29g -jar $malt_dir/malt.jar -i train.conll -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            my $command = "java -Xmx28g -jar $malt_dir/malt.jar -i train.conll -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
             print SCR ("echo $command");
             print SCR ($command);
             # It is more difficult to get a machine with so much memory so we will be less generous with priority.
-            $memory = '31G';
+            # Often a machine lacks just a few hundred megabytes to be able to provide 31G. Asking for 30G increases our chances to get a machine.
+            $memory = '30G';
             $priority = -100;
         }
         close(SCR);
