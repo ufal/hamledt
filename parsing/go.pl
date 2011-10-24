@@ -276,6 +276,9 @@ sub parse
         my $scriptname = "p$parser-$language-$transformation.sh";
         my $memory = '12G';
         my $scenario;
+        # Util::SetGlobal language=$language should take care of the language zone selection but it currently does not work.
+        # Inserting -L$language should help.
+        $scenario .= "-L$language ";
         $scenario .= "Util::SetGlobal language=$language selector=$parser ";
         # If there is a tree with the same name, remove it first.
         $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
