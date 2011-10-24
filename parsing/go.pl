@@ -10,6 +10,7 @@ binmode(STDOUT, ":utf8");
 binmode(STDERR, ":utf8");
 use Getopt::Long;
 use Treex::Core::Config;
+use Text::Table;
 use lib '/home/zeman/lib';
 use dzsys;
 use cluster;
@@ -23,6 +24,7 @@ my $action = get_action($action_name);
 my $wdir = 'pokus'; ###!!!
 $wdir = dzsys::absolutize_path($wdir);
 loop($targets, $action, $wdir);
+print_table() if($action_name eq 'table');
 
 
 
@@ -76,6 +78,7 @@ sub sort_actions
         'pretrain' => 10, # prepare training data
         'train' => 20,
         'parse' => 40,
+        'table' => 60,
     );
     # Check that all action identifiers are known.
     my @unknown = grep {!exists($ordering{$_})} (@actions);
@@ -120,6 +123,10 @@ sub get_action
     elsif($action_name eq 'parse')
     {
         $action = \&parse;
+    }
+    elsif($action_name eq 'table')
+    {
+        $action = \&get_results;
     }
     else
     {
@@ -188,7 +195,7 @@ sub create_conll_training_data
 
 
 #------------------------------------------------------------------------------
-# Train all parsers.
+# Trains all parsers.
 #------------------------------------------------------------------------------
 sub train
 {
@@ -252,7 +259,7 @@ sub train
 
 
 #------------------------------------------------------------------------------
-# Parse using all parsers.
+# Parses using all parsers.
 #------------------------------------------------------------------------------
 sub parse
 {
@@ -301,5 +308,112 @@ sub parse
         print SCR ("treex -s $scenario -- $parser-test/*.treex.gz | tee $uas_file\n");
         close(SCR);
         cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname);
+    }
+}
+
+
+
+#------------------------------------------------------------------------------
+# Collects test results of all parsers.
+#------------------------------------------------------------------------------
+sub get_results
+{
+    my $language = shift;
+    my $transformation = shift;
+    foreach my $parser qw(mlt smf mcd mcp)
+    {
+        # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
+        my $uas_file = "uas-$parser.txt";
+        # Read the score from the UAS file. Store it in a global hash called %value.
+        if(!open(UAS, $uas_file))
+        {
+            print STDERR ("Cannot read $uas_file: $!");
+            next;
+        }
+        while (<UAS>)
+        {
+            chomp;
+            my ($sys, $counts, $score) = split /\t/;
+            next unless($sys eq $language.'_'.$parser);
+            print("$language $transformation $sys $score $value{$language}{'001_pdtstyle'}{$parser}\n");
+            $score = $score ? 100 * $score : 0;
+            # Store score differences instead of scores for transformed trees.
+            if($trans !~ /00/ && defined($value{$language}{'001_pdtstyle'}{$parser}))
+            {
+                $score -= $value{$language}{'001_pdtstyle'}{$parser};
+            }
+            $value{$language}{$transformation}{$parser} = round($score);
+        }
+        if(!defined($value{$language}{$transformation}{$parser}))
+        {
+            print("Parser $parser score not found in $uas_file.\n");
+        }
+    }
+}
+
+
+
+#------------------------------------------------------------------------------
+# Rounds a score to two decimal places.
+#------------------------------------------------------------------------------
+sub round
+{
+    my $score = shift;
+    return undef if(!defined($score));
+    return sprintf("%.2f", $score+0.005);
+}
+
+
+
+#------------------------------------------------------------------------------
+# Prints the table of results, found in the global hash %value.
+#------------------------------------------------------------------------------
+sub print_table
+{
+    my @languages = sort(keys(%value));
+    my %transformations;
+    foreach my $language (@languages)
+    {
+        foreach my $transformation (keys(%{$value{$language}}))
+        {
+            $transformations{$transformation}++;
+        }
+    }
+    foreach my $parser qw(mlt smf mcd mcp)
+    {
+        print("\n", '*' x 10 . "  $parser  " . '*' x 10, "\n\n");
+        my $table = Text::Table->new('trans', @languages, 'better', 'worse', 'average');
+        foreach my $trans (sort(keys(%transformations)))
+        {
+            my @row = $trans;
+            my $better = 0;
+            my $worse = 0;
+            my $diff = 0;
+            my $cnt = 0;
+            foreach my $language (@languages)
+            {
+                push(@row, $value{$language}{$trans}{$parser});
+                next if(!$value{$language}{$trans}{$parser} || !$value{$language}{'001_pdtstyle'}{$parser});
+                $better++ if($value{$language}{$trans}{$parser} > $signif_diff);
+                $worse++ if($value{$language}{$trans}{$parser} < -$signif_diff);
+                $diff += $value{$language}{$trans}{$parser};
+                $cnt++;
+            }
+            # Warning: $cnt can be zero if we do not have $value for either this transformation or for 001_pdtstyle.
+            $diff /= $cnt if($cnt);
+            push(@row, ($better, $worse, round($diff)));
+            $table->add(@row);
+        }
+        my $n_langs = scalar(@languages);
+        if($n_langs < 18)
+        {
+            print($table->table());
+        }
+        else
+        {
+            print($table->select(0 .. ($n_langs/2)+1)->table());
+            print("\n");
+            print($table->select(0,($n_langs/2)+2 .. $n_langs+3)->table());
+        }
     }
 }
