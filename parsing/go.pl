@@ -178,12 +178,20 @@ sub create_conll_training_data
     my $transformation = shift;
     my $filename1 = 'train.conll';
     my $filename2 = 'train.mst';
-    my $deprel_attribute = $transformation eq '000_orig' ? 'conll/deprel' : 'afun';
     my $scriptname = 'create_training_data.sh';
     open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
     print SCR ("treex -p -j 20 ");
     print SCR ("Util::SetGlobal language=$language ");
-    print SCR ("Write::CoNLLX feat_attribute=conll/feat deprel_attribute=$deprel_attribute is_member_within_afun=1 is_shared_modifier_within_afun=1 is_coord_conjunction_within_afun=1 ");
+    # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
+    my $writeparam;
+    $writeparam .= 'cpos_attribute=conll/cpos ';
+    $writeparam .= 'pos_attribute=conll/pos ';
+    $writeparam .= 'feat_attribute=conll/feat ';
+    $writeparam .= 'deprel_attribute='.($transformation eq '000_orig' ? 'conll/deprel' : 'afun').' ';
+    $writeparam .= 'is_member_within_afun=1 ';
+    $writeparam .= 'is_shared_modifier_within_afun=1 ';
+    $writeparam .= 'is_coord_conjunction_within_afun=1 ';
+    print SCR ("Write::CoNLLX $writeparam ");
     print SCR ("-- $data_dir/$language/treex/$transformation/train/*.treex.gz > $filename1\n");
     print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
     close(SCR);
@@ -267,8 +275,8 @@ sub parse
     my $transformation = shift;
     my %parser_block =
     (
-        mlt => "W2A::ParseMalt model=malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=conll/feat",
-        smf => "W2A::ParseMalt model=malt_stacklazy.mco  pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=conll/feat",
+        mlt => "W2A::ParseMalt model=malt_nivreeager.mco cpos_attribute=conll/cpos pos_attribute=conll/pos feat_attribute=conll/feat",
+        smf => "W2A::ParseMalt model=malt_stacklazy.mco  cpos_attribute=conll/cpos pos_attribute=conll/pos feat_attribute=conll/feat",
         mcd => "W2A::ParseMST model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
         mcp => "W2A::ParseMST model=mcd_proj_o2.model    decodetype=proj     pos_attribute=conll/pos",
     );
@@ -283,9 +291,6 @@ sub parse
         my $scriptname = "p$parser-$language-$transformation.sh";
         my $memory = '12G';
         my $scenario;
-        # Util::SetGlobal language=$language should take care of the language zone selection but it currently does not work.
-        # Inserting -L$language should help.
-        $scenario .= "-L$language ";
         $scenario .= "Util::SetGlobal language=$language selector=$parser ";
         # If there is a tree with the same name, remove it first.
         $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
@@ -294,7 +299,8 @@ sub parse
         # Note: the trees in 000_orig should be compared against the original gold tree.
         # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
         # so we do not select 'orig' here.
-        $scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='' ";
+###!!!        $scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='' ";
+        $scenario .= "Eval::AtreeUAS eval_is_member=0 eval_is_shared_modifier=0 selector='' ";
         # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
         my $uas_file = "uas-$parser.txt";
         print STDERR ("Creating script $scriptname.\n");
