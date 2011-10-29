@@ -1,0 +1,1640 @@
+ar 000_orig ar_mlt 0.739266198282592 
+ar 000_orig ar_smf 0.794106167056987 
+ar 000_orig ar_mcd 0.719750195160031 
+ar 000_orig ar_mcp 0.71448087431694 
+ar 001_pdtstyle ar_mlt 0.736924277907885 
+ar 001_pdtstyle ar_smf 0.792349726775956 
+ar 001_pdtstyle ar_mcd 0.723458235753318 
+ar 001_pdtstyle ar_mcp 0.717017954722873 
+ar trans_fMpPcBhLsN ar_mlt 0.773614363778298 73.70
+ar trans_fMpPcBhLsN ar_smf 0.824941451990632 79.24
+ar trans_fMpPcBhLsN ar_mcd 0.751170960187354 72.35
+ar trans_fMpPcBhLsN ar_mcp 0.74512099921936 71.71
+ar trans_fMpPcBhMsN ar_mlt 0.765612802498048 73.70
+ar trans_fMpPcBhMsN ar_smf 0.818110850897736 79.24
+ar trans_fMpPcBhMsN ar_mcd 0.750195160031226 72.35
+ar trans_fMpPcBhMsN ar_mcp 0.747267759562842 71.71
+ar trans_fMpPcBhRsH ar_mlt 0.743169398907104 73.70
+ar trans_fMpPcBhRsH ar_smf 0.800546448087432 79.24
+ar trans_fMpPcBhRsH ar_mcd 0.710382513661202 72.35
+ar trans_fMpPcBhRsH ar_mcp 0.710967993754879 71.71
+ar trans_fMpPcBhRsN ar_mlt 0.743364558938329 73.70
+ar trans_fMpPcBhRsN ar_smf 0.799375487900078 79.24
+ar trans_fMpPcBhRsN ar_mcd 0.711943793911007 72.35
+ar trans_fMpPcBhRsN ar_mcp 0.71623731459797 71.71
+ar trans_fMpPcPhLsN ar_mlt 0.761709601873536 73.70
+ar trans_fMpPcPhLsN ar_smf 0.810304449648712 79.24
+ar trans_fMpPcPhLsN ar_mcd 0.744145199063232 72.35
+ar trans_fMpPcPhLsN ar_mcp 0.732630757220921 71.71
+ar trans_fMpPcPhRsN ar_mlt 0.741803278688525 73.70
+ar trans_fMpPcPhRsN ar_smf 0.793130366900859 79.24
+ar trans_fMpPcPhRsN ar_mcd 0.714871194379391 72.35
+ar trans_fMpPcPhRsN ar_mcp 0.708040593286495 71.71
+ar trans_fPpBcHhRsH ar_mlt 0.728532396565183 73.70
+ar trans_fPpBcHhRsH ar_smf 0.78239656518345 79.24
+ar trans_fPpBcHhRsH ar_mcd 0.713505074160812 72.35
+ar trans_fPpBcHhRsH ar_mcp 0.706284153005464 71.71
+ar trans_fPpBcHhRsN ar_mlt 0.734777517564403 73.70
+ar trans_fPpBcHhRsN ar_smf 0.785128805620609 79.24
+ar trans_fPpBcHhRsN ar_mcd 0.713309914129586 72.35
+ar trans_fPpBcHhRsN ar_mcp 0.707259953161593 71.71
+ar trans_fSpPcBhLsN ar_mlt 0.750195160031226 73.70
+ar trans_fSpPcBhLsN ar_smf 0.804059328649493 79.24
+ar trans_fSpPcBhLsN ar_mcd 0.733801717408275 72.35
+ar trans_fSpPcBhLsN ar_mcp 0.726190476190476 71.71
+ar trans_fSpPcBhMsN ar_mlt 0.748048399687744 73.70
+ar trans_fSpPcBhMsN ar_smf 0.798594847775176 79.24
+ar trans_fSpPcBhMsN ar_mcd 0.735558157689305 72.35
+ar trans_fSpPcBhMsN ar_mcp 0.728142076502732 71.71
+ar trans_fSpPcBhRsH ar_mlt 0.744535519125683 73.70
+ar trans_fSpPcBhRsH ar_smf 0.784738485558158 79.24
+ar trans_fSpPcBhRsH ar_mcd 0.709016393442623 72.35
+ar trans_fSpPcBhRsH ar_mcp 0.703942232630757 71.71
+ar trans_fSpPcBhRsN ar_mlt 0.745316159250585 73.70
+ar trans_fSpPcBhRsN ar_smf 0.7903981264637 79.24
+ar trans_fSpPcBhRsN ar_mcd 0.707064793130367 72.35
+ar trans_fSpPcBhRsN ar_mcp 0.71135831381733 71.71
+bg 000_orig bg_mlt 0.888945062352545 
+bg 000_orig bg_smf 0.844961240310077 
+bg 000_orig bg_mcd 0.881530165149983 
+bg 000_orig bg_mcp 0.884057971014493 
+bg 001_pdtstyle bg_mlt 0.805695989214695 
+bg 001_pdtstyle bg_smf 0.850353892821031 
+bg 001_pdtstyle bg_mcd 0.802325581395349 
+bg 001_pdtstyle bg_mcp 0.780754971351533 
+bg trans_fMpPcBhLsN bg_mlt 0.828109201213347 80.57
+bg trans_fMpPcBhLsN bg_smf 0.858442871587462 85.04
+bg trans_fMpPcBhLsN bg_mcd 0.824401752612066 80.24
+bg trans_fMpPcBhLsN bg_mcp 0.795079204583755 78.08
+bg trans_fMpPcBhMsN bg_mlt 0.823727671048197 80.57
+bg trans_fMpPcBhMsN bg_smf 0.853387259858443 85.04
+bg trans_fMpPcBhMsN bg_mcd 0.815133131108864 80.24
+bg trans_fMpPcBhMsN bg_mcp 0.79221435793731 78.08
+bg trans_fMpPcBhRsH bg_mlt 0.809908998988878 80.57
+bg trans_fMpPcBhRsH bg_smf 0.855240984159083 85.04
+bg trans_fMpPcBhRsH bg_mcd 0.814459049544995 80.24
+bg trans_fMpPcBhRsH bg_mcp 0.797775530839232 78.08
+bg trans_fMpPcBhRsN bg_mlt 0.810751600943714 80.57
+bg trans_fMpPcBhRsN bg_smf 0.858948432760364 85.04
+bg trans_fMpPcBhRsN bg_mcd 0.815807212672733 80.24
+bg trans_fMpPcBhRsN bg_mcp 0.800640377485676 78.08
+bg trans_fMpPcPhLsN bg_mlt 0.824738793394001 80.57
+bg trans_fMpPcPhLsN bg_smf 0.856757667677789 85.04
+bg trans_fMpPcPhLsN bg_mcd 0.823053589484328 80.24
+bg trans_fMpPcPhLsN bg_mcp 0.800303336703741 78.08
+bg trans_fMpPcPhRsN bg_mlt 0.810583080552747 80.57
+bg trans_fMpPcPhRsN bg_smf 0.849005729693293 85.04
+bg trans_fMpPcPhRsN bg_mcd 0.809234917425008 80.24
+bg trans_fMpPcPhRsN bg_mcp 0.793394000674082 78.08
+bg trans_fPpBcHhRsH bg_mlt 0.802662622177283 80.57
+bg trans_fPpBcHhRsH bg_smf 0.843613077182339 85.04
+bg trans_fPpBcHhRsH bg_mcd 0.801145938658578 80.24
+bg trans_fPpBcHhRsH bg_mcp 0.77721604314122 78.08
+bg trans_fPpBcHhRsN bg_mlt 0.804853387259858 80.57
+bg trans_fPpBcHhRsN bg_smf 0.839568587799124 85.04
+bg trans_fPpBcHhRsN bg_mcd 0.80165149983148 80.24
+bg trans_fPpBcHhRsN bg_mcp 0.77283451297607 78.08
+bg trans_fSpPcBhLsN bg_mlt 0.815133131108864 80.57
+bg trans_fSpPcBhLsN bg_smf 0.853724300640378 85.04
+bg trans_fSpPcBhLsN bg_mcd 0.81850353892821 80.24
+bg trans_fSpPcBhLsN bg_mcp 0.792551398719245 78.08
+bg trans_fSpPcBhMsN bg_mlt 0.813447927199191 80.57
+bg trans_fSpPcBhMsN bg_smf 0.845129760701045 85.04
+bg trans_fSpPcBhMsN bg_mcd 0.815975733063701 80.24
+bg trans_fSpPcBhMsN bg_mcp 0.791708796764409 78.08
+bg trans_fSpPcBhRsH bg_mlt 0.811257162116616 80.57
+bg trans_fSpPcBhRsH bg_smf 0.84917425008426 85.04
+bg trans_fSpPcBhRsH bg_mcd 0.804179305695989 80.24
+bg trans_fSpPcBhRsH bg_mcp 0.785136501516684 78.08
+bg trans_fSpPcBhRsN bg_mlt 0.811762723289518 80.57
+bg trans_fSpPcBhRsN bg_smf 0.847152005392653 85.04
+bg trans_fSpPcBhRsN bg_mcd 0.808392315470172 80.24
+bg trans_fSpPcBhRsN bg_mcp 0.788675429726997 78.08
+bn 000_orig bn_mlt 0.807881773399015 
+bn 000_orig bn_smf 0.868226600985222 
+bn 000_orig bn_mcd 0.794334975369458 
+bn 000_orig bn_mcp 0.773399014778325 
+bn 001_pdtstyle bn_mlt 0.800492610837438 
+bn 001_pdtstyle bn_smf 0.868226600985222 
+bn 001_pdtstyle bn_mcd 0.800492610837438 
+bn 001_pdtstyle bn_mcp 0.778325123152709 
+bn trans_fMpPcBhLsN bn_mlt 0.800492610837438 80.05
+bn trans_fMpPcBhLsN bn_smf 0.868226600985222 86.83
+bn trans_fMpPcBhLsN bn_mcd 0.801724137931034 80.05
+bn trans_fMpPcBhLsN bn_mcp 0.783251231527094 77.84
+bn trans_fMpPcBhMsN bn_mlt 0.804187192118227 80.05
+bn trans_fMpPcBhMsN bn_smf 0.87807881773399 86.83
+bn trans_fMpPcBhMsN bn_mcd 0.805418719211823 80.05
+bn trans_fMpPcBhMsN bn_mcp 0.768472906403941 77.84
+bn trans_fMpPcBhRsH bn_mlt 0.810344827586207 80.05
+bn trans_fMpPcBhRsH bn_smf 0.875615763546798 86.83
+bn trans_fMpPcBhRsH bn_mcd 0.786945812807882 80.05
+bn trans_fMpPcBhRsH bn_mcp 0.775862068965517 77.84
+bn trans_fMpPcBhRsN bn_mlt 0.811576354679803 80.05
+bn trans_fMpPcBhRsN bn_smf 0.885467980295567 86.83
+bn trans_fMpPcBhRsN bn_mcd 0.78448275862069 80.05
+bn trans_fMpPcBhRsN bn_mcp 0.775862068965517 77.84
+bn trans_fMpPcPhLsN bn_mlt 0.805418719211823 80.05
+bn trans_fMpPcPhLsN bn_smf 0.874384236453202 86.83
+bn trans_fMpPcPhLsN bn_mcd 0.788177339901478 80.05
+bn trans_fMpPcPhLsN bn_mcp 0.785714285714286 77.84
+bn trans_fMpPcPhRsN bn_mlt 0.807881773399015 80.05
+bn trans_fMpPcPhRsN bn_smf 0.879310344827586 86.83
+bn trans_fMpPcPhRsN bn_mcd 0.804187192118227 80.05
+bn trans_fMpPcPhRsN bn_mcp 0.773399014778325 77.84
+bn trans_fPpBcHhRsH bn_mlt 0.799261083743842 80.05
+bn trans_fPpBcHhRsH bn_smf 0.873152709359606 86.83
+bn trans_fPpBcHhRsH bn_mcd 0.782019704433498 80.05
+bn trans_fPpBcHhRsH bn_mcp 0.769704433497537 77.84
+bn trans_fPpBcHhRsN bn_mlt 0.800492610837438 80.05
+bn trans_fPpBcHhRsN bn_smf 0.875615763546798 86.83
+bn trans_fPpBcHhRsN bn_mcd 0.779556650246305 80.05
+bn trans_fPpBcHhRsN bn_mcp 0.772167487684729 77.84
+bn trans_fSpPcBhLsN bn_mlt 0.802955665024631 80.05
+bn trans_fSpPcBhLsN bn_smf 0.870689655172414 86.83
+bn trans_fSpPcBhLsN bn_mcd 0.801724137931034 80.05
+bn trans_fSpPcBhLsN bn_mcp 0.78448275862069 77.84
+bn trans_fSpPcBhMsN bn_mlt 0.810344827586207 80.05
+bn trans_fSpPcBhMsN bn_smf 0.881773399014778 86.83
+bn trans_fSpPcBhMsN bn_mcd 0.788177339901478 80.05
+bn trans_fSpPcBhMsN bn_mcp 0.777093596059113 77.84
+bn trans_fSpPcBhRsH bn_mlt 0.810344827586207 80.05
+bn trans_fSpPcBhRsH bn_smf 0.870689655172414 86.83
+bn trans_fSpPcBhRsH bn_mcd 0.804187192118227 80.05
+bn trans_fSpPcBhRsH bn_mcp 0.78448275862069 77.84
+bn trans_fSpPcBhRsN bn_mlt 0.812807881773399 80.05
+bn trans_fSpPcBhRsN bn_smf 0.87192118226601 86.83
+bn trans_fSpPcBhRsN bn_mcd 0.805418719211823 80.05
+bn trans_fSpPcBhRsN bn_mcp 0.782019704433498 77.84
+ca 000_orig ca_mlt 0.90091706539075 
+ca 000_orig ca_smf 0.906499202551834 
+ca 000_orig ca_mcd 0.919856459330144 
+ca 000_orig ca_mcp 0.919457735247209 
+ca 001_pdtstyle ca_mlt 0.888556618819777 
+ca 001_pdtstyle ca_smf 0.90311004784689 
+ca 001_pdtstyle ca_mcd 0.915869218500797 
+ca 001_pdtstyle ca_mcp 0.915271132376396 
+cs 000_orig cs_mlt 0.715918712955123 
+cs 000_orig cs_smf 0.793607112616427 
+cs 000_orig cs_mcd 0.753598645215919 
+cs 000_orig cs_mcp 0.747883149872989 
+cs 001_pdtstyle cs_mlt 0.715495342929721 
+cs 001_pdtstyle cs_smf 0.79614733276884 
+cs 001_pdtstyle cs_mcd 0.753175275190517 
+cs 001_pdtstyle cs_mcp 0.745554614733277 
+cs trans_fMpPcBhLsN cs_mlt 0.755927180355631 71.55
+cs trans_fMpPcBhLsN cs_smf 0.815834038950042 79.62
+cs trans_fMpPcBhLsN cs_mcd 0.775613886536833 75.32
+cs trans_fMpPcBhLsN cs_mcp 0.766088060965284 74.56
+cs trans_fMpPcBhMsN cs_mlt 0.741532599491956 71.55
+cs trans_fMpPcBhMsN cs_smf 0.809060118543607 79.62
+cs trans_fMpPcBhMsN cs_mcd 0.772438611346317 75.32
+cs trans_fMpPcBhMsN cs_mcp 0.762066045723963 74.56
+cs trans_fMpPcBhRsH cs_mlt 0.722692633361558 71.55
+cs trans_fMpPcBhRsH cs_smf 0.80969517358171 79.62
+cs trans_fMpPcBhRsH cs_mcd 0.762066045723963 75.32
+cs trans_fMpPcBhRsH cs_mcp 0.752751905165114 74.56
+cs trans_fMpPcBhRsN cs_mlt 0.734758679085521 71.55
+cs trans_fMpPcBhRsN cs_smf 0.81350550381033 79.62
+cs trans_fMpPcBhRsN cs_mcd 0.776248941574937 75.32
+cs trans_fMpPcBhRsN cs_mcp 0.762489415749365 74.56
+cs trans_fMpPcPhLsN cs_mlt 0.690728196443692 71.55
+cs trans_fMpPcPhLsN cs_smf 0.736875529212532 79.62
+cs trans_fMpPcPhLsN cs_mcd 0.70956816257409 75.32
+cs trans_fMpPcPhLsN cs_mcp 0.696867061812024 74.56
+cs trans_fMpPcPhRsN cs_mlt 0.658975444538527 71.55
+cs trans_fMpPcPhRsN cs_smf 0.729889923793395 79.62
+cs trans_fMpPcPhRsN cs_mcd 0.69030482641829 75.32
+cs trans_fMpPcPhRsN cs_mcp 0.682260795935648 74.56
+cs trans_fPpBcHhRsH cs_mlt 0.689458086367485 71.55
+cs trans_fPpBcHhRsH cs_smf 0.751693480101609 79.62
+cs trans_fPpBcHhRsH cs_mcd 0.720999153259949 75.32
+cs trans_fPpBcHhRsH cs_mcp 0.716342082980525 74.56
+cs trans_fPpBcHhRsN cs_mlt 0.697290431837426 71.55
+cs trans_fPpBcHhRsN cs_smf 0.768416596104996 79.62
+cs trans_fPpBcHhRsN cs_mcd 0.729043183742591 75.32
+cs trans_fPpBcHhRsN cs_mcp 0.725867908552075 74.56
+cs trans_fSpPcBhLsN cs_mlt 0.736875529212532 71.55
+cs trans_fSpPcBhLsN cs_smf 0.800381033022862 79.62
+cs trans_fSpPcBhLsN cs_mcd 0.752116850127011 75.32
+cs trans_fSpPcBhLsN cs_mcp 0.746401354784081 74.56
+cs trans_fSpPcBhMsN cs_mlt 0.724386113463167 71.55
+cs trans_fSpPcBhMsN cs_smf 0.788103302286198 79.62
+cs trans_fSpPcBhMsN cs_mcd 0.744072819644369 75.32
+cs trans_fSpPcBhMsN cs_mcp 0.743437764606266 74.56
+cs trans_fSpPcBhRsH cs_mlt 0.720999153259949 71.55
+cs trans_fSpPcBhRsH cs_smf 0.793183742591025 79.62
+cs trans_fSpPcBhRsH cs_mcd 0.753386960203218 75.32
+cs trans_fSpPcBhRsH cs_mcp 0.745766299745978 74.56
+cs trans_fSpPcBhRsN cs_mlt 0.723751058425063 71.55
+cs trans_fSpPcBhRsN cs_smf 0.798264182895851 79.62
+cs trans_fSpPcBhRsN cs_mcd 0.756350550381033 75.32
+cs trans_fSpPcBhRsN cs_mcp 0.745131244707875 74.56
+da 000_orig da_mlt 0.853896103896104 
+da 000_orig da_smf 0.889268626110731 
+da 000_orig da_mcd 0.880724538619275 
+da 000_orig da_mcp 0.876281613123718 
+da 001_pdtstyle da_mlt 0.764695830485304 
+da 001_pdtstyle da_smf 0.815105946684894 
+da 001_pdtstyle da_mcd 0.816643882433356 
+da 001_pdtstyle da_mcp 0.811004784688995 
+da trans_fMpPcBhLsN da_mlt 0.791353383458647 76.47
+da trans_fMpPcBhLsN da_smf 0.836124401913876 81.52
+da trans_fMpPcBhLsN da_mcd 0.82758031442242 81.67
+da trans_fMpPcBhLsN da_mcp 0.821599453178401 81.11
+da trans_fMpPcBhMsN da_mlt 0.787593984962406 76.47
+da trans_fMpPcBhMsN da_smf 0.828092959671907 81.52
+da trans_fMpPcBhMsN da_mcd 0.825187969924812 81.67
+da trans_fMpPcBhMsN da_mcp 0.820915926179084 81.11
+da trans_fMpPcBhRsH da_mlt 0.765892002734108 76.47
+da trans_fMpPcBhRsH da_smf 0.816643882433356 81.52
+da trans_fMpPcBhRsH da_mcd 0.820915926179084 81.67
+da trans_fMpPcBhRsH da_mcp 0.811346548188653 81.11
+da trans_fMpPcBhRsN da_mlt 0.768626110731374 76.47
+da trans_fMpPcBhRsN da_smf 0.827238550922761 81.52
+da trans_fMpPcBhRsN da_mcd 0.820745044429255 81.67
+da trans_fMpPcBhRsN da_mcp 0.808270676691729 81.11
+da trans_fMpPcPhLsN da_mlt 0.78673957621326 76.47
+da trans_fMpPcPhLsN da_smf 0.830314422419686 81.52
+da trans_fMpPcPhLsN da_mcd 0.828092959671907 81.67
+da trans_fMpPcPhLsN da_mcp 0.816643882433356 81.11
+da trans_fMpPcPhRsN da_mlt 0.766746411483254 76.47
+da trans_fMpPcPhRsN da_smf 0.82177033492823 81.52
+da trans_fMpPcPhRsN da_mcd 0.817498291182502 81.67
+da trans_fMpPcPhRsN da_mcp 0.81203007518797 81.11
+da trans_fPpBcHhRsH da_mlt 0.747607655502392 76.47
+da trans_fPpBcHhRsH da_smf 0.803656869446343 81.52
+da trans_fPpBcHhRsH da_mcd 0.791011619958988 81.67
+da trans_fPpBcHhRsH da_mcp 0.785885167464115 81.11
+da trans_fPpBcHhRsN da_mlt 0.757177033492823 76.47
+da trans_fPpBcHhRsN da_smf 0.799555707450444 81.52
+da trans_fPpBcHhRsN da_mcd 0.799897470950103 81.67
+da trans_fPpBcHhRsN da_mcp 0.784688995215311 81.11
+da trans_fSpPcBhLsN da_mlt 0.774094326725906 76.47
+da trans_fSpPcBhLsN da_smf 0.824162679425837 81.52
+da trans_fSpPcBhLsN da_mcd 0.816814764183185 81.67
+da trans_fSpPcBhLsN da_mcp 0.81203007518797 81.11
+da trans_fSpPcBhMsN da_mlt 0.775974025974026 76.47
+da trans_fSpPcBhMsN da_smf 0.814935064935065 81.52
+da trans_fSpPcBhMsN da_mcd 0.814422419685578 81.67
+da trans_fSpPcBhMsN da_mcp 0.804853041695147 81.11
+da trans_fSpPcBhRsH da_mlt 0.769993164730007 76.47
+da trans_fSpPcBhRsH da_smf 0.818523581681476 81.52
+da trans_fSpPcBhRsH da_mcd 0.807587149692413 81.67
+da trans_fSpPcBhRsH da_mcp 0.804511278195489 81.11
+da trans_fSpPcBhRsN da_mlt 0.772385509227615 76.47
+da trans_fSpPcBhRsN da_smf 0.81784005468216 81.52
+da trans_fSpPcBhRsN da_mcd 0.811859193438141 81.67
+da trans_fSpPcBhRsN da_mcp 0.808783321941217 81.11
+de 000_orig de_mlt 0.82848937033684 
+de 000_orig de_smf 0.815502762775887 
+de 000_orig de_mcd 0.885805263322199 
+de 000_orig de_mcp 0.868978865544907 
+de 001_pdtstyle de_mlt 0.759716542315737 
+de 001_pdtstyle de_smf 0.826616301938626 
+de 001_pdtstyle de_mcd 0.832797427652733 
+de 001_pdtstyle de_mcp 0.795554584334905 
+de trans_fMpPcBhLsN de_mlt 0.778322355071333 75.98
+de trans_fMpPcBhLsN de_smf 0.836606000062436 82.67
+de trans_fMpPcBhLsN de_mcd 0.842724690163269 83.28
+de trans_fMpPcBhLsN de_mcp 0.806137420784816 79.56
+de trans_fMpPcBhMsN de_mlt 0.774482564854993 75.98
+de trans_fMpPcBhMsN de_smf 0.832110635906721 82.67
+de trans_fMpPcBhMsN de_mcd 0.837230356195174 83.28
+de trans_fMpPcBhMsN de_mcp 0.80145474978928 79.56
+de trans_fMpPcBhRsH de_mlt 0.767489776168326 75.98
+de trans_fMpPcBhRsH de_smf 0.834358317984578 82.67
+de trans_fMpPcBhRsH de_mcd 0.8371679205819 83.28
+de trans_fMpPcBhRsH de_mcp 0.800986482689726 79.56
+de trans_fMpPcBhRsN de_mlt 0.768707270627166 75.98
+de trans_fMpPcBhRsN de_smf 0.835981643929698 82.67
+de trans_fMpPcBhRsN de_mcd 0.838916117753567 83.28
+de trans_fMpPcBhRsN de_mcp 0.80326538257422 79.56
+de trans_fMpPcPhLsN de_mlt 0.777417038678862 75.98
+de trans_fMpPcPhLsN de_smf 0.836481128835888 82.67
+de trans_fMpPcPhLsN de_mcd 0.842193987450442 83.28
+de trans_fMpPcPhLsN de_mcp 0.805044797552524 79.56
+de trans_fMpPcPhRsN de_mlt 0.767271251521868 75.98
+de trans_fMpPcPhRsN de_smf 0.833359348172197 82.67
+de trans_fMpPcPhRsN de_mcd 0.835513376830144 83.28
+de trans_fMpPcPhRsN de_mcp 0.801048918303 79.56
+de trans_fPpBcHhRsH de_mlt 0.754378297380826 75.98
+de trans_fPpBcHhRsH de_smf 0.818967939312584 82.67
+de trans_fPpBcHhRsH de_mcd 0.82496175818687 83.28
+de trans_fPpBcHhRsH de_mcp 0.788717884681422 79.56
+de trans_fPpBcHhRsN de_mlt 0.754128554927731 75.98
+de trans_fPpBcHhRsN de_smf 0.816938781881185 82.67
+de trans_fPpBcHhRsN de_mcd 0.828801548403209 83.28
+de trans_fPpBcHhRsN de_mcp 0.793556644710143 79.56
+de trans_fSpPcBhLsN de_mlt 0.772640714263416 75.98
+de trans_fSpPcBhLsN de_smf 0.833047170105828 82.67
+de trans_fSpPcBhLsN de_mcd 0.838635157493834 83.28
+de trans_fSpPcBhLsN de_mcp 0.801798145662286 79.56
+de trans_fSpPcBhMsN de_mlt 0.766896637842225 75.98
+de trans_fSpPcBhMsN de_smf 0.828926419629757 82.67
+de trans_fSpPcBhMsN de_mcd 0.833890050885025 83.28
+de trans_fSpPcBhMsN de_mcp 0.79923828551806 79.56
+de trans_fSpPcBhRsH de_mlt 0.765148440670559 75.98
+de trans_fSpPcBhRsH de_smf 0.828614241563388 82.67
+de trans_fSpPcBhRsH de_mcd 0.834514407017763 83.28
+de trans_fSpPcBhRsH de_mcp 0.79752130615303 79.56
+de trans_fSpPcBhRsN de_mlt 0.766678113195767 75.98
+de trans_fSpPcBhRsN de_smf 0.827927449817376 82.67
+de trans_fSpPcBhRsN de_mcd 0.833983704304936 83.28
+de trans_fSpPcBhRsN de_mcp 0.800049948490619 79.56
+el 000_orig el_mlt 0.742922564529559 
+el 000_orig el_smf 0.780391340549542 
+el 000_orig el_mcd 0.73917568692756 
+el 000_orig el_mcp 0.731057452123231 
+el 001_pdtstyle el_mlt 0.742089925062448 
+el 001_pdtstyle el_smf 0.781640299750208 
+el 001_pdtstyle el_mcd 0.739800166527893 
+el 001_pdtstyle el_mcp 0.736053288925895 
+el trans_fMpPcBhLsN el_mlt 0.773105745212323 74.21
+el trans_fMpPcBhLsN el_smf 0.807035803497086 78.17
+el trans_fMpPcBhLsN el_mcd 0.7751873438801 73.99
+el trans_fMpPcBhLsN el_mcp 0.765611990008326 73.61
+el trans_fMpPcBhMsN el_mlt 0.765403830141549 74.21
+el trans_fMpPcBhMsN el_smf 0.800166527893422 78.17
+el trans_fMpPcBhMsN el_mcd 0.769983347210658 73.99
+el trans_fMpPcBhMsN el_mcp 0.76082431307244 73.61
+el trans_fMpPcBhRsH el_mlt 0.751248959200666 74.21
+el trans_fMpPcBhRsH el_smf 0.79496253122398 78.17
+el trans_fMpPcBhRsH el_mcd 0.759783513738551 73.99
+el trans_fMpPcBhRsH el_mcp 0.752289758534554 73.61
+el trans_fMpPcBhRsN el_mlt 0.757493755203997 74.21
+el trans_fMpPcBhRsN el_smf 0.807868442964196 78.17
+el trans_fMpPcBhRsN el_mcd 0.762697751873439 73.99
+el trans_fMpPcBhRsN el_mcp 0.760407993338884 73.61
+el trans_fMpPcPhLsN el_mlt 0.776644462947544 74.21
+el trans_fMpPcPhLsN el_smf 0.807243963363863 78.17
+el trans_fMpPcPhLsN el_mcd 0.765403830141549 73.99
+el trans_fMpPcPhLsN el_mcp 0.759783513738551 73.61
+el trans_fMpPcPhRsN el_mlt 0.749791840133222 74.21
+el trans_fMpPcPhRsN el_smf 0.784970857618651 78.17
+el trans_fMpPcPhRsN el_mcd 0.755828476269775 73.99
+el trans_fMpPcPhRsN el_mcp 0.743755203996669 73.61
+el trans_fPpBcHhRsH el_mlt 0.718984179850125 74.21
+el trans_fPpBcHhRsH el_smf 0.75895087427144 78.17
+el trans_fPpBcHhRsH el_mcd 0.731265611990008 73.99
+el trans_fPpBcHhRsH el_mcp 0.721273938384679 73.61
+el trans_fPpBcHhRsN el_mlt 0.726269775187344 74.21
+el trans_fPpBcHhRsN el_smf 0.771024146544546 78.17
+el trans_fPpBcHhRsN el_mcd 0.730432972522898 73.99
+el trans_fPpBcHhRsN el_mcp 0.726269775187344 73.61
+el trans_fSpPcBhLsN el_mlt 0.763322231473772 74.21
+el trans_fSpPcBhLsN el_smf 0.786219816819317 78.17
+el trans_fSpPcBhLsN el_mcd 0.753330557868443 73.99
+el trans_fSpPcBhLsN el_mcp 0.740632805995004 73.61
+el trans_fSpPcBhMsN el_mlt 0.75895087427144 74.21
+el trans_fSpPcBhMsN el_smf 0.784762697751873 78.17
+el trans_fSpPcBhMsN el_mcd 0.747710241465446 73.99
+el trans_fSpPcBhMsN el_mcp 0.742714404662781 73.61
+el trans_fSpPcBhRsH el_mlt 0.745420482930891 74.21
+el trans_fSpPcBhRsH el_smf 0.777268942547877 78.17
+el trans_fSpPcBhRsH el_mcd 0.747918401332223 73.99
+el trans_fSpPcBhRsH el_mcp 0.746669442131557 73.61
+el trans_fSpPcBhRsN el_mlt 0.74729392173189 74.21
+el trans_fSpPcBhRsN el_smf 0.790174854288093 78.17
+el trans_fSpPcBhRsN el_mcd 0.752289758534554 73.99
+el trans_fSpPcBhRsN el_mcp 0.749375520399667 73.61
+en 000_orig en_mlt 0.880124670342843 
+en 000_orig en_smf 0.897686406137617 
+en 000_orig en_mcd 0.911561975545433 
+en 000_orig en_mcp 0.911921601534404 
+en 001_pdtstyle en_mlt 0.815421961160393 
+en 001_pdtstyle en_smf 0.848597458643011 
+en 001_pdtstyle en_mcd 0.859236394150084 
+en 001_pdtstyle en_mcp 0.858397266842484 
+en trans_fMpPcBhLsN en_mlt 0.829657156557181 81.55
+en trans_fMpPcBhLsN en_smf 0.855280508271398 84.86
+en trans_fMpPcBhLsN en_mcd 0.864151282666027 85.93
+en trans_fMpPcBhLsN en_mcp 0.866039319108128 85.84
+en trans_fMpPcBhMsN en_mlt 0.825491488851594 81.55
+en trans_fMpPcBhMsN en_smf 0.852583313354112 84.86
+en trans_fMpPcBhMsN en_mcd 0.862922560537042 85.93
+en trans_fMpPcBhMsN en_mcp 0.862532965715656 85.84
+en trans_fMpPcBhRsH en_mlt 0.815481898825222 81.55
+en trans_fMpPcBhRsH en_smf 0.849526492447854 84.86
+en trans_fMpPcBhRsH en_mcd 0.862233277391513 85.93
+en trans_fMpPcBhRsH en_mcp 0.860075521457684 85.84
+en trans_fMpPcBhRsN en_mlt 0.815152241668665 81.55
+en trans_fMpPcBhRsN en_smf 0.850395588587869 84.86
+en trans_fMpPcBhRsN en_mcd 0.863162311196356 85.93
+en trans_fMpPcBhRsN en_mcp 0.85983577079837 85.84
+en trans_fMpPcPhLsN en_mlt 0.82441261088468 81.55
+en trans_fMpPcPhLsN en_smf 0.849586430112683 84.86
+en trans_fMpPcPhLsN en_mcd 0.861214337089427 85.93
+en trans_fMpPcPhLsN en_mcp 0.862323183888756 85.84
+en trans_fMpPcPhRsN en_mlt 0.812125389594821 81.55
+en trans_fMpPcPhRsN en_smf 0.84781826900024 84.86
+en trans_fMpPcPhRsN en_mcd 0.857288420043155 85.93
+en trans_fMpPcPhRsN en_mcp 0.855280508271398 85.84
+en trans_fPpBcHhRsH en_mlt 0.805262526971949 81.55
+en trans_fPpBcHhRsH en_smf 0.836130424358667 84.86
+en trans_fPpBcHhRsH en_mcd 0.84928674178854 85.93
+en trans_fPpBcHhRsH en_mcp 0.846289858547111 85.84
+en trans_fPpBcHhRsN en_mlt 0.804243586669863 81.55
+en trans_fPpBcHhRsN en_smf 0.834182450251738 84.86
+en trans_fPpBcHhRsN en_mcd 0.849406617118197 85.93
+en trans_fPpBcHhRsN en_mcp 0.845330855909854 85.84
+en trans_fSpPcBhLsN en_mlt 0.823034044593623 81.55
+en trans_fSpPcBhLsN en_smf 0.848177894989211 84.86
+en trans_fSpPcBhLsN en_mcd 0.861543994245984 85.93
+en trans_fSpPcBhLsN en_mcp 0.860555022776313 85.84
+en trans_fSpPcBhMsN en_mlt 0.800677295612563 81.55
+en trans_fSpPcBhMsN en_smf 0.802984895708463 84.86
+en trans_fSpPcBhMsN en_mcd 0.830136657875809 85.93
+en trans_fSpPcBhMsN en_mcp 0.82881802924958 85.84
+en trans_fSpPcBhRsH en_mlt 0.821775353632223 81.55
+en trans_fSpPcBhRsH en_smf 0.847368736514025 84.86
+en trans_fSpPcBhRsH en_mcd 0.859386238312155 85.93
+en trans_fSpPcBhRsH en_mcp 0.858307360345241 85.84
+en trans_fSpPcBhRsN en_mlt 0.821925197794294 81.55
+en trans_fSpPcBhRsN en_smf 0.847458643011268 84.86
+en trans_fSpPcBhRsN en_mcd 0.860375209781827 85.93
+en trans_fSpPcBhRsN en_mcp 0.858846799328698 85.84
+es 000_orig es_mlt 0.869500476493011 
+es 000_orig es_smf 0.90398665819568 
+es 000_orig es_mcd 0.881035578144854 
+es 000_orig es_mcp 0.887488087674714 
+es 001_pdtstyle es_mlt 0.816073697585769 
+es 001_pdtstyle es_smf 0.866165025412961 
+es 001_pdtstyle es_mcd 0.844405177890724 
+es 001_pdtstyle es_mcp 0.844504447268107 
+es trans_fMpPcBhLsN es_mlt 0.832810514612452 81.61
+es trans_fMpPcBhLsN es_smf 0.872716804320203 86.62
+es trans_fMpPcBhLsN es_mcd 0.856774142312579 84.45
+es trans_fMpPcBhLsN es_mcp 0.857548443456163 84.46
+es trans_fMpPcBhMsN es_mlt 0.828204415501906 81.61
+es trans_fMpPcBhMsN es_smf 0.867872458703939 86.62
+es trans_fMpPcBhMsN es_mcd 0.851612134688691 84.45
+es trans_fMpPcBhMsN es_mcp 0.850817979669631 84.46
+es trans_fMpPcBhRsH es_mlt 0.805690120711563 81.61
+es trans_fMpPcBhRsH es_smf 0.863941391359593 86.62
+es trans_fMpPcBhRsH es_mcd 0.845596410419314 84.45
+es trans_fMpPcBhRsH es_mcp 0.843253653113088 84.46
+es trans_fMpPcBhRsN es_mlt 0.806007782719187 81.61
+es trans_fMpPcBhRsN es_smf 0.864120076238882 86.62
+es trans_fMpPcBhRsN es_mcd 0.84561626429479 84.45
+es trans_fMpPcBhRsN es_mcp 0.843472045743329 84.46
+es trans_fMpPcPhLsN es_mlt 0.821096728081322 81.61
+es trans_fMpPcPhLsN es_smf 0.867574650571792 86.62
+es trans_fMpPcPhLsN es_mcd 0.85179081956798 84.45
+es trans_fMpPcPhLsN es_mcp 0.84793916772554 84.46
+es trans_fMpPcPhRsN es_mlt 0.806305590851334 81.61
+es trans_fMpPcPhRsN es_smf 0.857528589580686 86.62
+es trans_fMpPcPhRsN es_mcd 0.836145965692503 84.45
+es trans_fMpPcPhRsN es_mcp 0.837754129606099 84.46
+es trans_fPpBcHhRsH es_mlt 0.79693456162643 81.61
+es trans_fPpBcHhRsH es_smf 0.848653907242694 86.62
+es trans_fPpBcHhRsH es_mcd 0.832075921219822 84.45
+es trans_fPpBcHhRsH es_mcp 0.83237372935197 84.46
+es trans_fPpBcHhRsN es_mlt 0.799058926302414 81.61
+es trans_fPpBcHhRsN es_smf 0.852664390088945 86.62
+es trans_fPpBcHhRsN es_mcd 0.83531210292249 84.45
+es trans_fPpBcHhRsN es_mcp 0.83191709021601 84.46
+es trans_fSpPcBhLsN es_mlt 0.821950444726811 81.61
+es trans_fSpPcBhLsN es_smf 0.865668678526048 86.62
+es trans_fSpPcBhLsN es_mcd 0.846906766200762 84.45
+es trans_fSpPcBhLsN es_mcp 0.845139771283354 84.46
+es trans_fSpPcBhMsN es_mlt 0.817721569250318 81.61
+es trans_fSpPcBhMsN es_smf 0.861578780177891 86.62
+es trans_fSpPcBhMsN es_mcd 0.844305908513342 84.45
+es trans_fSpPcBhMsN es_mcp 0.842658036848793 84.46
+es trans_fSpPcBhRsH es_mlt 0.811884529860229 81.61
+es trans_fSpPcBhRsH es_smf 0.860546378653113 86.62
+es trans_fSpPcBhRsH es_mcd 0.84108958068615 84.45
+es trans_fSpPcBhRsH es_mcp 0.841069726810673 84.46
+es trans_fSpPcBhRsN es_mlt 0.812281607369759 81.61
+es trans_fSpPcBhRsN es_smf 0.861340533672173 86.62
+es trans_fSpPcBhRsN es_mcd 0.840613087674714 84.45
+es trans_fSpPcBhRsN es_mcp 0.841307973316391 84.46
+Parser mlt score not found in uas-mlt.txt.
+Parser smf score not found in uas-smf.txt.
+Parser mcd score not found in uas-mcd.txt.
+Parser mcp score not found in uas-mcp.txt.
+et 000_orig et_mlt 0.268869849041208 
+et 000_orig et_smf 0.135454916360669 
+et 000_orig et_mcd 0.467156262749898 
+et 000_orig et_mcp 0.445124439004488 
+et 001_pdtstyle et_mlt 0.499388004895961 
+et 001_pdtstyle et_smf 0.545083639330885 
+et 001_pdtstyle et_mcd 0.518971848225214 
+et 001_pdtstyle et_mcp 0.525091799265606 
+et trans_fMpPcBhLsN et_mlt 0.388820889432885 49.94
+et trans_fMpPcBhLsN et_smf 0.42860057119543 54.51
+et trans_fMpPcBhLsN et_mcd 0.476540187678499 51.90
+et trans_fMpPcBhLsN et_mcp 0.463076295389637 52.51
+et trans_fMpPcBhRsN et_mlt 0.385760913912689 49.94
+et trans_fMpPcBhRsN et_smf 0.441656466748266 54.51
+et trans_fMpPcBhRsN et_mcd 0.472052223582211 51.90
+et trans_fMpPcBhRsN et_mcp 0.461036311709506 52.51
+et trans_fPpBcHhRsH et_mlt 0.491636066911465 49.94
+et trans_fPpBcHhRsH et_smf 0.544267645858833 54.51
+et trans_fPpBcHhRsH et_mcd 0.521419828641371 51.90
+et trans_fPpBcHhRsH et_mcp 0.529579763361893 52.51
+et trans_fSpPcBhLsN et_mlt 0.385556915544676 49.94
+et trans_fSpPcBhLsN et_smf 0.42860057119543 54.51
+et trans_fSpPcBhLsN et_mcd 0.479600163198694 51.90
+et trans_fSpPcBhLsN et_mcp 0.44124847001224 52.51
+et trans_fSpPcBhRsN et_mlt 0.383720930232558 49.94
+et trans_fSpPcBhRsN et_smf 0.414932680538556 54.51
+et trans_fSpPcBhRsN et_mcd 0.481844145246838 51.90
+et trans_fSpPcBhRsN et_mcp 0.452672378620971 52.51
+eu 000_orig eu_mlt 0.728577429291515 
+eu 000_orig eu_smf 0.753150378045365 
+eu 000_orig eu_mcd 0.762811537384486 
+eu 000_orig eu_mcp 0.756860823298796 
+eu 001_pdtstyle eu_mlt 0.631475777093251 
+eu 001_pdtstyle eu_smf 0.726057126855223 
+eu 001_pdtstyle eu_mcd 0.660739288714646 
+eu 001_pdtstyle eu_mcp 0.650308036964436 
+eu trans_fMpPcBhLsN eu_mlt 0.629305516661999 63.15
+eu trans_fMpPcBhLsN eu_smf 0.713525623074769 72.61
+eu trans_fMpPcBhLsN eu_mcd 0.65758891066928 66.08
+eu trans_fMpPcBhLsN eu_mcp 0.647437692523103 65.04
+eu trans_fMpPcBhMsN eu_mlt 0.620484458134976 63.15
+eu trans_fMpPcBhMsN eu_smf 0.716676001120134 72.61
+eu trans_fMpPcBhMsN eu_mcd 0.652338280593671 66.08
+eu trans_fMpPcBhMsN eu_mcp 0.643937272472697 65.04
+eu trans_fMpPcBhRsH eu_mlt 0.635536264351722 63.15
+eu trans_fMpPcBhRsH eu_smf 0.738728647437693 72.61
+eu trans_fMpPcBhRsH eu_mcd 0.667390086810417 66.08
+eu trans_fMpPcBhRsH eu_mcp 0.654298515821899 65.04
+eu trans_fMpPcBhRsN eu_mlt 0.63637636516382 63.15
+eu trans_fMpPcBhRsN eu_smf 0.73585830299636 72.61
+eu trans_fMpPcBhRsN eu_mcd 0.665919910389247 66.08
+eu trans_fMpPcBhRsN eu_mcp 0.655908709045085 65.04
+eu trans_fMpPcPhLsN eu_mlt 0.601862223466816 63.15
+eu trans_fMpPcPhLsN eu_smf 0.697913749649958 72.61
+eu trans_fMpPcPhLsN eu_mcd 0.631545785494259 66.08
+eu trans_fMpPcPhLsN eu_mcp 0.61474376925231 65.04
+eu trans_fMpPcPhRsN eu_mlt 0.603542425091011 63.15
+eu trans_fMpPcPhRsN eu_smf 0.710655278633436 72.61
+eu trans_fMpPcPhRsN eu_mcd 0.638826659199104 66.08
+eu trans_fMpPcPhRsN eu_mcp 0.621674600952114 65.04
+eu trans_fPpBcHhRsH eu_mlt 0.597521702604312 63.15
+eu trans_fPpBcHhRsH eu_smf 0.694903388406609 72.61
+eu trans_fPpBcHhRsH eu_mcd 0.64120694483338 66.08
+eu trans_fPpBcHhRsH eu_mcp 0.62517502100252 65.04
+eu trans_fPpBcHhRsN eu_mlt 0.59948193783254 63.15
+eu trans_fPpBcHhRsN eu_smf 0.694553346401568 72.61
+eu trans_fPpBcHhRsN eu_mcd 0.645967516101932 66.08
+eu trans_fPpBcHhRsN eu_mcp 0.627625315037804 65.04
+eu trans_fSpPcBhLsN eu_mlt 0.615163819658359 63.15
+eu trans_fSpPcBhLsN eu_smf 0.702604312517502 72.61
+eu trans_fSpPcBhLsN eu_mcd 0.652618314197704 66.08
+eu trans_fSpPcBhLsN eu_mcp 0.636936432371885 65.04
+eu trans_fSpPcBhMsN eu_mlt 0.610333239988799 63.15
+eu trans_fSpPcBhMsN eu_smf 0.704144497339681 72.61
+eu trans_fSpPcBhMsN eu_mcd 0.654578549425931 66.08
+eu trans_fSpPcBhMsN eu_mcp 0.637076449173901 65.04
+eu trans_fSpPcBhRsH eu_mlt 0.624334920190423 63.15
+eu trans_fSpPcBhRsH eu_smf 0.722556706804817 72.61
+eu trans_fSpPcBhRsH eu_mcd 0.655698683842061 66.08
+eu trans_fSpPcBhRsH eu_mcp 0.64379725567068 65.04
+eu trans_fSpPcBhRsN eu_mlt 0.624404928591431 63.15
+eu trans_fSpPcBhRsN eu_smf 0.720806496779614 72.61
+eu trans_fSpPcBhRsN eu_mcd 0.65646877625315 66.08
+eu trans_fSpPcBhRsN eu_mcp 0.641697003640437 65.04
+fi 000_orig fi_mlt 0.71668202764977 
+fi 000_orig fi_smf 0.778064516129032 
+fi 000_orig fi_mcd 0.713917050691244 
+fi 000_orig fi_mcp 0.714285714285714 
+fi 001_pdtstyle fi_mlt 0.666359447004608 
+fi 001_pdtstyle fi_smf 0.731428571428571 
+fi 001_pdtstyle fi_mcd 0.677972350230415 
+fi 001_pdtstyle fi_mcp 0.68073732718894 
+fi trans_fMpPcBhLsN fi_mlt 0.697695852534562 66.64
+fi trans_fMpPcBhLsN fi_smf 0.741198156682028 73.15
+fi trans_fMpPcBhLsN fi_mcd 0.695115207373272 67.80
+fi trans_fMpPcBhLsN fi_mcp 0.680552995391705 68.08
+fi trans_fMpPcBhMsN fi_mlt 0.704516129032258 66.64
+Parser smf score not found in uas-smf.txt.
+fi trans_fMpPcBhMsN fi_mcd 0.696405529953917 67.80
+fi trans_fMpPcBhMsN fi_mcp 0.690322580645161 68.08
+fi trans_fMpPcBhRsH fi_mlt 0.685898617511521 66.64
+Parser smf score not found in uas-smf.txt.
+fi trans_fMpPcBhRsH fi_mcd 0.693640552995392 67.80
+fi trans_fMpPcBhRsH fi_mcp 0.686635944700461 68.08
+fi trans_fMpPcBhRsN fi_mlt 0.668755760368664 66.64
+fi trans_fMpPcBhRsN fi_smf 0.740276497695853 73.15
+fi trans_fMpPcBhRsN fi_mcd 0.687004608294931 67.80
+fi trans_fMpPcBhRsN fi_mcp 0.670599078341014 68.08
+fi trans_fMpPcPhLsN fi_mlt 0.697142857142857 66.64
+fi trans_fMpPcPhLsN fi_smf 0.730322580645161 73.15
+fi trans_fMpPcPhLsN fi_mcd 0.686082949308756 67.80
+fi trans_fMpPcPhLsN fi_mcp 0.68294930875576 68.08
+fi trans_fMpPcPhRsN fi_mlt 0.669308755760369 66.64
+fi trans_fMpPcPhRsN fi_smf 0.749493087557604 73.15
+fi trans_fMpPcPhRsN fi_mcd 0.68 67.80
+fi trans_fMpPcPhRsN fi_mcp 0.672811059907834 68.08
+fi trans_fPpBcHhRsH fi_mlt 0.656036866359447 66.64
+fi trans_fPpBcHhRsH fi_smf 0.723870967741935 73.15
+fi trans_fPpBcHhRsH fi_mcd 0.67963133640553 67.80
+fi trans_fPpBcHhRsH fi_mcp 0.672073732718894 68.08
+fi trans_fPpBcHhRsN fi_mlt 0.658433179723502 66.64
+fi trans_fPpBcHhRsN fi_smf 0.730138248847926 73.15
+fi trans_fPpBcHhRsN fi_mcd 0.675207373271889 67.80
+fi trans_fPpBcHhRsN fi_mcp 0.669677419354839 68.08
+fi trans_fSpPcBhLsN fi_mlt 0.686267281105991 66.64
+fi trans_fSpPcBhLsN fi_smf 0.729953917050691 73.15
+fi trans_fSpPcBhLsN fi_mcd 0.68331797235023 67.80
+fi trans_fSpPcBhLsN fi_mcp 0.687926267281106 68.08
+fi trans_fSpPcBhMsN fi_mlt 0.693640552995392 66.64
+Parser smf score not found in uas-smf.txt.
+fi trans_fSpPcBhMsN fi_mcd 0.679447004608295 67.80
+fi trans_fSpPcBhMsN fi_mcp 0.6836866359447 68.08
+fi trans_fSpPcBhRsH fi_mlt 0.68184331797235 66.64
+Parser smf score not found in uas-smf.txt.
+fi trans_fSpPcBhRsH fi_mcd 0.687557603686636 67.80
+fi trans_fSpPcBhRsH fi_mcp 0.680921658986175 68.08
+fi trans_fSpPcBhRsN fi_mlt 0.661935483870968 66.64
+fi trans_fSpPcBhRsN fi_smf 0.739907834101382 73.15
+fi trans_fSpPcBhRsN fi_mcd 0.67741935483871 67.80
+fi trans_fSpPcBhRsN fi_mcp 0.668202764976959 68.08
+grc 000_orig grc_mlt 0.428185654008439 
+grc 000_orig grc_smf 0.545316455696203 
+grc 000_orig grc_mcd 0.468860759493671 
+grc 000_orig grc_mcp 0.415189873417722 
+grc 001_pdtstyle grc_mlt 0.427679324894515 
+grc 001_pdtstyle grc_smf 0.541097046413502 
+grc 001_pdtstyle grc_mcd 0.464978902953587 
+grc 001_pdtstyle grc_mcp 0.416371308016878 
+grc trans_fMpPcBhLsN grc_mlt 0.480675105485232 42.77
+grc trans_fMpPcBhLsN grc_smf 0.53957805907173 54.11
+grc trans_fMpPcBhLsN grc_mcd 0.510210970464135 46.50
+grc trans_fMpPcBhLsN grc_mcp 0.474767932489451 41.64
+grc trans_fMpPcBhMsN grc_mlt 0.48814926878467 42.77
+grc trans_fMpPcBhMsN grc_smf 0.214657925701799 54.11
+grc trans_fMpPcBhMsN grc_mcd 0.600605143721634 46.50
+grc trans_fMpPcBhMsN grc_mcp 0.526475037821483 41.64
+grc trans_fMpPcBhRsH grc_mlt 0.485627836611195 42.77
+grc trans_fMpPcBhRsH grc_smf 0.203227433182047 54.11
+grc trans_fMpPcBhRsH grc_mcd 0.599092284417549 46.50
+grc trans_fMpPcBhRsH grc_mcp 0.534543620776601 41.64
+grc trans_fMpPcBhRsN grc_mlt 0.471729957805907 42.77
+grc trans_fMpPcBhRsN grc_smf 0.572489451476793 54.11
+grc trans_fMpPcBhRsN grc_mcd 0.504810126582279 46.50
+grc trans_fMpPcBhRsN grc_mcp 0.461097046413502 41.64
+grc trans_fMpPcPhLsN grc_mlt 0.470548523206751 42.77
+grc trans_fMpPcPhLsN grc_smf 0.534683544303797 54.11
+grc trans_fMpPcPhLsN grc_mcd 0.493164556962025 46.50
+grc trans_fMpPcPhLsN grc_mcp 0.435105485232067 41.64
+grc trans_fMpPcPhRsN grc_mlt 0.457215189873418 42.77
+grc trans_fMpPcPhRsN grc_smf 0.546329113924051 54.11
+grc trans_fMpPcPhRsN grc_mcd 0.483037974683544 46.50
+grc trans_fMpPcPhRsN grc_mcp 0.432067510548523 41.64
+grc trans_fPpBcHhRsH grc_mlt 0.415527426160338 42.77
+grc trans_fPpBcHhRsH grc_smf 0.516793248945148 54.11
+grc trans_fPpBcHhRsH grc_mcd 0.448945147679325 46.50
+grc trans_fPpBcHhRsH grc_mcp 0.406075949367089 41.64
+grc trans_fPpBcHhRsN grc_mlt 0.415189873417722 42.77
+grc trans_fPpBcHhRsN grc_smf 0.516286919831224 54.11
+grc trans_fPpBcHhRsN grc_mcd 0.452151898734177 46.50
+grc trans_fPpBcHhRsN grc_mcp 0.404556962025316 41.64
+grc trans_fSpPcBhLsN grc_mlt 0.478818565400844 42.77
+grc trans_fSpPcBhLsN grc_smf 0.552067510548523 54.11
+grc trans_fSpPcBhLsN grc_mcd 0.509535864978903 46.50
+grc trans_fSpPcBhLsN grc_mcp 0.446413502109705 41.64
+grc trans_fSpPcBhMsN grc_mlt 0.496890233652715 42.77
+grc trans_fSpPcBhMsN grc_smf 0.199865523617415 54.11
+grc trans_fSpPcBhMsN grc_mcd 0.596738947722306 46.50
+grc trans_fSpPcBhMsN grc_mcp 0.520759791561607 41.64
+grc trans_fSpPcBhRsH grc_mlt 0.486636409480585 42.77
+grc trans_fSpPcBhRsH grc_smf 0.197007900487477 54.11
+grc trans_fSpPcBhRsH grc_mcd 0.597075138678769 46.50
+grc trans_fSpPcBhRsH grc_mcp 0.527147419734409 41.64
+grc trans_fSpPcBhRsN grc_mlt 0.471898734177215 42.77
+grc trans_fSpPcBhRsN grc_smf 0.55831223628692 54.11
+grc trans_fSpPcBhRsN grc_mcd 0.502447257383966 46.50
+grc trans_fSpPcBhRsN grc_mcp 0.454683544303797 41.64
+hi 000_orig hi_mlt 0.868024730500951 
+hi 000_orig hi_smf 0.91922954977806 
+hi 000_orig hi_mcd 0.76926125554851 
+hi 000_orig hi_mcp 0.759908053265694 
+hi 001_pdtstyle hi_mlt 0.826886493341788 
+hi 001_pdtstyle hi_smf 0.879597336715282 
+hi 001_pdtstyle hi_mcd 0.733830057070387 
+hi 001_pdtstyle hi_mcp 0.726299936588459 
+hi trans_fMpPcBhLsN hi_mlt 0.836794546607483 82.69
+hi trans_fMpPcBhLsN hi_smf 0.875237793278377 87.96
+hi trans_fMpPcBhLsN hi_mcd 0.749445149017121 73.39
+hi trans_fMpPcBhLsN hi_mcp 0.751030437539632 72.63
+hi trans_fMpPcBhMsN hi_mlt 0.840678503487635 82.69
+hi trans_fMpPcBhMsN hi_smf 0.880469245402663 87.96
+hi trans_fMpPcBhMsN hi_mcd 0.759828788839569 73.39
+hi trans_fMpPcBhMsN hi_mcp 0.754835129993659 72.63
+hi trans_fMpPcBhRsH hi_mlt 0.840916296766011 82.69
+hi trans_fMpPcBhRsH hi_smf 0.88998097653773 87.96
+hi trans_fMpPcBhRsH hi_mcd 0.739854153455929 73.39
+hi trans_fMpPcBhRsH hi_mcp 0.74143944197844 72.63
+hi trans_fMpPcBhRsN hi_mlt 0.84147114774889 82.69
+hi trans_fMpPcBhRsN hi_smf 0.889426125554851 87.96
+hi trans_fMpPcBhRsN hi_mcd 0.73929930247305 73.39
+hi trans_fMpPcBhRsN hi_mcp 0.739140773620799 72.63
+hi trans_fMpPcPhLsN hi_mlt 0.83647748890298 82.69
+hi trans_fMpPcPhLsN hi_smf 0.877536461636018 87.96
+hi trans_fMpPcPhLsN hi_mcd 0.747701331642359 73.39
+hi trans_fMpPcPhLsN hi_mcp 0.749365884590996 72.63
+hi trans_fMpPcPhRsN hi_mlt 0.84147114774889 82.69
+hi trans_fMpPcPhRsN hi_smf 0.887999365884591 87.96
+hi trans_fMpPcPhRsN hi_mcd 0.213696892834496 73.39
+hi trans_fMpPcPhRsN hi_mcp 0.16138237159163 72.63
+hi trans_fPpBcHhRsH hi_mlt 0.817612555485098 82.69
+hi trans_fPpBcHhRsH hi_smf 0.867073557387445 87.96
+hi trans_fPpBcHhRsH hi_mcd 0.0851299936588459 73.39
+hi trans_fPpBcHhRsH hi_mcp 0.720672162333545 72.63
+hi trans_fPpBcHhRsN hi_mlt 0.818405199746354 82.69
+hi trans_fPpBcHhRsN hi_smf 0.866518706404566 87.96
+hi trans_fPpBcHhRsN hi_mcd 0.0781547241597971 73.39
+hi trans_fPpBcHhRsN hi_mcp 0.157656943563729 72.63
+hi trans_fSpPcBhLsN hi_mlt 0.835129993658846 82.69
+hi trans_fSpPcBhLsN hi_smf 0.87785351934052 87.96
+hi trans_fSpPcBhLsN hi_mcd 0.165345592897907 73.39
+hi trans_fSpPcBhLsN hi_mcp 0.151553582752061 72.63
+hi trans_fSpPcBhMsN hi_mlt 0.836318960050729 82.69
+hi trans_fSpPcBhMsN hi_smf 0.87714013950539 87.96
+hi trans_fSpPcBhMsN hi_mcd 0.746987951807229 73.39
+hi trans_fSpPcBhMsN hi_mcp 0.743896639188332 72.63
+hi trans_fSpPcBhRsH hi_mlt 0.833227647431833 82.69
+hi trans_fSpPcBhRsH hi_smf 0.878487634749524 87.96
+hi trans_fSpPcBhRsH hi_mcd 0.739220038046924 73.39
+hi trans_fSpPcBhRsH hi_mcp 0.738506658211795 72.63
+hi trans_fSpPcBhRsN hi_mlt 0.833386176284084 82.69
+hi trans_fSpPcBhRsN hi_smf 0.878883956880152 87.96
+hi trans_fSpPcBhRsN hi_mcd 0.739140773620799 73.39
+hi trans_fSpPcBhRsN hi_mcp 0.738744451490171 72.63
+hu 000_orig hu_mlt 0.76062091503268 
+hu 000_orig hu_smf 0.742238562091503 
+hu 000_orig hu_mcd 0.804193899782135 
+hu 000_orig hu_mcp 0.793572984749455 
+hu 001_pdtstyle hu_mlt 0.731345315904139 
+hu 001_pdtstyle hu_smf 0.780364923747277 
+hu 001_pdtstyle hu_mcd 0.772875816993464 
+hu 001_pdtstyle hu_mcp 0.751497821350762 
+hu trans_fMpPcBhLsN hu_mlt 0.727124183006536 73.14
+hu trans_fMpPcBhLsN hu_smf 0.77124183006536 78.04
+hu trans_fMpPcBhLsN hu_mcd 0.758169934640523 77.29
+hu trans_fMpPcBhLsN hu_mcp 0.743464052287582 75.15
+hu trans_fMpPcBhMsN hu_mlt 0.72208605664488 73.14
+hu trans_fMpPcBhMsN hu_smf 0.768246187363834 78.04
+hu trans_fMpPcBhMsN hu_mcd 0.758442265795207 77.29
+hu trans_fMpPcBhMsN hu_mcp 0.737200435729848 75.15
+hu trans_fMpPcBhRsH hu_mlt 0.719907407407407 73.14
+hu trans_fMpPcBhRsH hu_smf 0.773828976034858 78.04
+hu trans_fMpPcBhRsH hu_mcd 0.755855119825708 77.29
+hu trans_fMpPcBhRsH hu_mcp 0.737745098039216 75.15
+hu trans_fMpPcBhRsN hu_mlt 0.719498910675381 73.14
+hu trans_fMpPcBhRsN hu_smf 0.774373638344227 78.04
+hu trans_fMpPcBhRsN hu_mcd 0.758986928104575 77.29
+hu trans_fMpPcBhRsN hu_mcp 0.736928104575163 75.15
+hu trans_fMpPcPhLsN hu_mlt 0.722358387799564 73.14
+hu trans_fMpPcPhLsN hu_smf 0.771786492374728 78.04
+hu trans_fMpPcPhLsN hu_mcd 0.757761437908497 77.29
+hu trans_fMpPcPhLsN hu_mcp 0.726988017429194 75.15
+hu trans_fMpPcPhRsN hu_mlt 0.722494553376906 73.14
+hu trans_fMpPcPhRsN hu_smf 0.768654684095861 78.04
+hu trans_fMpPcPhRsN hu_mcd 0.749455337690632 77.29
+hu trans_fMpPcPhRsN hu_mcp 0.73406862745098 75.15
+hu trans_fPpBcHhRsH hu_mlt 0.715958605664488 73.14
+hu trans_fPpBcHhRsH hu_smf 0.758442265795207 78.04
+hu trans_fPpBcHhRsH hu_mcd 0.747821350762527 77.29
+hu trans_fPpBcHhRsH hu_mcp 0.725490196078431 75.15
+hu trans_fPpBcHhRsN hu_mlt 0.716911764705882 73.14
+hu trans_fPpBcHhRsN hu_smf 0.757625272331155 78.04
+hu trans_fPpBcHhRsN hu_mcd 0.750408496732026 77.29
+hu trans_fPpBcHhRsN hu_mcp 0.725898692810457 75.15
+hu trans_fSpPcBhLsN hu_mlt 0.723039215686274 73.14
+hu trans_fSpPcBhLsN hu_smf 0.764025054466231 78.04
+hu trans_fSpPcBhLsN hu_mcd 0.750272331154684 77.29
+hu trans_fSpPcBhLsN hu_mcp 0.727668845315904 75.15
+hu trans_fSpPcBhMsN hu_mlt 0.724809368191721 73.14
+hu trans_fSpPcBhMsN hu_smf 0.761165577342048 78.04
+hu trans_fSpPcBhMsN hu_mcd 0.756944444444444 77.29
+hu trans_fSpPcBhMsN hu_mcp 0.735566448801743 75.15
+hu trans_fSpPcBhRsH hu_mlt 0.72140522875817 73.14
+hu trans_fSpPcBhRsH hu_smf 0.765795206971678 78.04
+hu trans_fSpPcBhRsH hu_mcd 0.756127450980392 77.29
+hu trans_fSpPcBhRsH hu_mcp 0.735430283224401 75.15
+hu trans_fSpPcBhRsN hu_mlt 0.719226579520697 73.14
+hu trans_fSpPcBhRsN hu_smf 0.768110021786492 78.04
+hu trans_fSpPcBhRsN hu_mcd 0.760212418300654 77.29
+hu trans_fSpPcBhRsN hu_mcp 0.726579520697168 75.15
+it 000_orig it_mlt 0.831436420722135 
+it 000_orig it_smf 0.85243328100471 
+it 000_orig it_mcd 0.849686028257457 
+it 000_orig it_mcp 0.850863422291994 
+it 001_pdtstyle it_mlt 0.768053375196232 
+it 001_pdtstyle it_smf 0.788265306122449 
+it 001_pdtstyle it_mcd 0.790227629513344 
+it 001_pdtstyle it_mcp 0.794937205651491 
+it trans_fMpPcBhLsN it_mlt 0.783163265306122 76.81
+it trans_fMpPcBhLsN it_smf 0.810047095761381 78.83
+it trans_fMpPcBhLsN it_mcd 0.356750392464678 79.03
+it trans_fMpPcBhLsN it_mcp 0.376373626373626 79.50
+it trans_fMpPcBhMsN it_mlt 0.779631083202512 76.81
+it trans_fMpPcBhMsN it_smf 0.808281004709576 78.83
+it trans_fMpPcBhMsN it_mcd 0.808084772370487 79.03
+it trans_fMpPcBhMsN it_mcp 0.805926216640502 79.50
+it trans_fMpPcBhRsH it_mlt 0.767464678178964 76.81
+it trans_fMpPcBhRsH it_smf 0.79532967032967 78.83
+it trans_fMpPcBhRsH it_mcd 0.795722135007849 79.03
+it trans_fMpPcBhRsH it_mcp 0.793171114599686 79.50
+it trans_fMpPcBhRsN it_mlt 0.767072213500785 76.81
+it trans_fMpPcBhRsN it_smf 0.796899529042386 78.83
+it trans_fMpPcBhRsN it_mcd 0.79532967032967 79.03
+it trans_fMpPcBhRsN it_mcp 0.796507064364207 79.50
+it trans_fMpPcPhLsN it_mlt 0.782378335949764 76.81
+it trans_fMpPcPhLsN it_smf 0.811420722135008 78.83
+it trans_fMpPcPhLsN it_mcd 0.805533751962323 79.03
+it trans_fMpPcPhLsN it_mcp 0.809654631083202 79.50
+it trans_fMpPcPhRsN it_mlt 0.762951334379906 76.81
+it trans_fMpPcPhRsN it_smf 0.802786499215071 78.83
+it trans_fMpPcPhRsN it_mcd 0.790227629513344 79.03
+it trans_fMpPcPhRsN it_mcp 0.791993720565149 79.50
+it trans_fPpBcHhRsH it_mlt 0.756671899529042 76.81
+it trans_fPpBcHhRsH it_smf 0.785714285714286 78.83
+it trans_fPpBcHhRsH it_mcd 0.787284144427002 79.03
+it trans_fPpBcHhRsH it_mcp 0.788657770800628 79.50
+it trans_fPpBcHhRsN it_mlt 0.756671899529042 76.81
+it trans_fPpBcHhRsN it_smf 0.785321821036107 78.83
+it trans_fPpBcHhRsN it_mcd 0.785910518053375 79.03
+it trans_fPpBcHhRsN it_mcp 0.786695447409733 79.50
+it trans_fSpPcBhLsN it_mlt 0.778061224489796 76.81
+it trans_fSpPcBhLsN it_smf 0.793759811616955 78.83
+it trans_fSpPcBhLsN it_mcd 0.798861852433281 79.03
+it trans_fSpPcBhLsN it_mcp 0.795722135007849 79.50
+it trans_fSpPcBhMsN it_mlt 0.778061224489796 76.81
+it trans_fSpPcBhMsN it_smf 0.793956043956044 78.83
+it trans_fSpPcBhMsN it_mcd 0.800039246467818 79.03
+it trans_fSpPcBhMsN it_mcp 0.799843014128728 79.50
+it trans_fSpPcBhRsH it_mlt 0.77256671899529 76.81
+it trans_fSpPcBhRsH it_smf 0.790031397174254 78.83
+it trans_fSpPcBhRsH it_mcd 0.789835164835165 79.03
+it trans_fSpPcBhRsH it_mcp 0.790227629513344 79.50
+it trans_fSpPcBhRsN it_mlt 0.770604395604396 76.81
+it trans_fSpPcBhRsN it_smf 0.790031397174254 78.83
+it trans_fSpPcBhRsN it_mcd 0.791993720565149 79.03
+it trans_fSpPcBhRsN it_mcp 0.792974882260597 79.50
+ja 000_orig ja_mlt 0.89546489231308 
+ja 000_orig ja_smf 0.84941341271231 
+ja 000_orig ja_mcd 0.903869725091928 
+ja 000_orig ja_mcp 0.902819120994572 
+ja 001_pdtstyle ja_mlt 0.768341796533006 
+ja 001_pdtstyle ja_smf 0.769042199264577 
+ja 001_pdtstyle ja_mcd 0.777447032043425 
+ja 001_pdtstyle ja_mcp 0.771668709507967 
+ja trans_fMpPcBhLsN ja_mlt 0.76921729994747 76.84
+ja trans_fMpPcBhLsN ja_smf 0.768867098581684 76.91
+ja trans_fMpPcBhLsN ja_mcd 0.775871125897391 77.75
+ja trans_fMpPcBhLsN ja_mcp 0.771668709507967 77.17
+ja trans_fMpPcBhMsN ja_mlt 0.770618105410611 76.84
+ja trans_fMpPcBhMsN ja_smf 0.772894414288216 76.91
+ja trans_fMpPcBhMsN ja_mcd 0.775871125897391 77.75
+ja trans_fMpPcBhMsN ja_mcp 0.771668709507967 77.17
+ja trans_fMpPcBhRsH ja_mlt 0.771143407459289 76.84
+ja trans_fMpPcBhRsH ja_smf 0.772194011556645 76.91
+ja trans_fMpPcBhRsH ja_mcd 0.777271931360532 77.75
+ja trans_fMpPcBhRsH ja_mcp 0.77447032043425 77.17
+ja trans_fMpPcBhRsN ja_mlt 0.771493608825074 76.84
+ja trans_fMpPcBhRsN ja_smf 0.772719313605323 76.91
+ja trans_fMpPcBhRsN ja_mcd 0.77779723340921 77.75
+ja trans_fMpPcBhRsN ja_mcp 0.774995622482928 77.17
+ja trans_fMpPcPhLsN ja_mlt 0.769567501313255 76.84
+ja trans_fMpPcPhLsN ja_smf 0.76991770267904 76.91
+ja trans_fMpPcPhLsN ja_mcd 0.773945018385572 77.75
+ja trans_fMpPcPhLsN ja_mcp 0.772018910873752 77.17
+ja trans_fMpPcPhRsN ja_mlt 0.773244615654001 76.84
+ja trans_fMpPcPhRsN ja_smf 0.776221327263176 76.91
+ja trans_fMpPcPhRsN ja_mcd 0.779898441603922 77.75
+ja trans_fMpPcPhRsN ja_mcp 0.778322535457888 77.17
+ja trans_fPpBcHhRsH ja_mlt 0.76921729994747 76.84
+ja trans_fPpBcHhRsH ja_smf 0.768867098581684 76.91
+ja trans_fPpBcHhRsH ja_mcd 0.773594817019786 77.75
+ja trans_fPpBcHhRsH ja_mcp 0.771143407459289 77.17
+ja trans_fPpBcHhRsN ja_mlt 0.769042199264577 76.84
+ja trans_fPpBcHhRsN ja_smf 0.771668709507967 76.91
+ja trans_fPpBcHhRsN ja_mcd 0.774995622482928 77.75
+ja trans_fPpBcHhRsN ja_mcp 0.770793206093504 77.17
+ja trans_fSpPcBhLsN ja_mlt 0.768516897215899 76.84
+ja trans_fSpPcBhLsN ja_smf 0.769042199264577 76.91
+ja trans_fSpPcBhLsN ja_mcd 0.772194011556645 77.75
+ja trans_fSpPcBhLsN ja_mcp 0.771493608825074 77.17
+ja trans_fSpPcBhMsN ja_mlt 0.772194011556645 76.84
+ja trans_fSpPcBhMsN ja_smf 0.771493608825074 76.91
+ja trans_fSpPcBhMsN ja_mcd 0.776921729994747 77.75
+ja trans_fSpPcBhMsN ja_mcp 0.776046226580284 77.17
+ja trans_fSpPcBhRsH ja_mlt 0.773069514971108 76.84
+ja trans_fSpPcBhRsH ja_smf 0.775345823848713 76.91
+ja trans_fSpPcBhRsH ja_mcd 0.778147434774996 77.75
+ja trans_fSpPcBhRsH ja_mcp 0.776571528628962 77.17
+ja trans_fSpPcBhRsN ja_mlt 0.773945018385572 76.84
+ja trans_fSpPcBhRsN ja_smf 0.774120119068464 76.91
+ja trans_fSpPcBhRsN ja_mcd 0.778497636140781 77.75
+ja trans_fSpPcBhRsN ja_mcp 0.777271931360532 77.17
+la 000_orig la_mlt 0.44915431196492 
+la 000_orig la_smf 0.441637084986427 
+la 000_orig la_mcd 0.562956775944874 
+la 000_orig la_mcp 0.491125495928169 
+la 001_pdtstyle la_mlt 0.445813322196701 
+la 001_pdtstyle la_smf 0.451242430570056 
+la 001_pdtstyle la_mcd 0.567968260597202 
+la 001_pdtstyle la_mcp 0.500939653372311 
+la trans_fMpPcBhLsN la_mlt 0.507412821048235 44.59
+la trans_fMpPcBhLsN la_smf 0.463562330340363 45.13
+la trans_fMpPcBhLsN la_mcd 0.617874295259971 56.80
+la trans_fMpPcBhLsN la_mcp 0.538108164543746 50.10
+la trans_fMpPcBhMsN la_mlt 0.499269158488202 44.59
+la trans_fMpPcBhMsN la_smf 0.467947379411151 45.13
+la trans_fMpPcBhMsN la_mcd 0.608060137815828 56.80
+la trans_fMpPcBhMsN la_mcp 0.536228857799123 50.10
+la trans_fMpPcBhRsH la_mlt 0.498433911046147 44.59
+la trans_fMpPcBhRsH la_smf 0.504071831280017 45.13
+la trans_fMpPcBhRsH la_mcd 0.612653998747129 56.80
+la trans_fMpPcBhRsH la_mcp 0.520985591981625 50.10
+la trans_fMpPcBhRsN la_mlt 0.502610148256421 44.59
+la trans_fMpPcBhRsN la_smf 0.507830444769263 45.13
+la trans_fMpPcBhRsN la_mcd 0.625391522238463 56.80
+la trans_fMpPcBhRsN la_mcp 0.538943411985801 50.10
+la trans_fMpPcPhLsN la_mlt 0.475673418250157 44.59
+la trans_fMpPcPhLsN la_smf 0.412194612653999 45.13
+la trans_fMpPcPhLsN la_mcd 0.568803508039257 56.80
+la trans_fMpPcPhLsN la_mcp 0.523073710586761 50.10
+la trans_fMpPcPhRsN la_mlt 0.461265399874713 44.59
+la trans_fMpPcPhRsN la_smf 0.42305282940071 45.13
+la trans_fMpPcPhRsN la_mcd 0.55251618291919 56.80
+la trans_fMpPcPhRsN la_mcp 0.511797870119023 50.10
+la trans_fPpBcHhRsH la_mlt 0.427437878471497 44.59
+la trans_fPpBcHhRsH la_smf 0.42931718521612 45.13
+la trans_fPpBcHhRsH la_mcd 0.549175193150971 56.80
+la trans_fPpBcHhRsH la_mcp 0.493213614533305 50.10
+la trans_fPpBcHhRsN la_mlt 0.427646690332011 44.59
+la trans_fPpBcHhRsN la_smf 0.428273125913552 45.13
+la trans_fPpBcHhRsN la_mcd 0.567968260597202 56.80
+la trans_fPpBcHhRsN la_mcp 0.498851534767175 50.10
+la trans_fSpPcBhLsN la_mlt 0.493422426393819 44.59
+la trans_fSpPcBhLsN la_smf 0.460638964293172 45.13
+la trans_fSpPcBhLsN la_mcd 0.605763207350178 56.80
+la trans_fSpPcBhLsN la_mcp 0.521194403842138 50.10
+la trans_fSpPcBhMsN la_mlt 0.491125495928169 44.59
+la trans_fSpPcBhMsN la_smf 0.458759657548549 45.13
+la trans_fSpPcBhMsN la_mcd 0.591981624556275 56.80
+la trans_fSpPcBhMsN la_mcp 0.528294007099603 50.10
+la trans_fSpPcBhRsH la_mlt 0.467529755690123 44.59
+la trans_fSpPcBhRsH la_smf 0.471705992900397 45.13
+la trans_fSpPcBhRsH la_mcd 0.577991229901858 56.80
+la trans_fSpPcBhRsH la_mcp 0.509500939653372 50.10
+la trans_fSpPcBhRsN la_mlt 0.464188765921904 44.59
+la trans_fSpPcBhRsN la_smf 0.472958864063479 45.13
+la trans_fSpPcBhRsN la_mcd 0.587805387346001 56.80
+la trans_fSpPcBhRsN la_mcp 0.522656086865734 50.10
+nl 000_orig nl_mlt 0.750940017905103 
+nl 000_orig nl_smf 0.824529991047449 
+nl 000_orig nl_mcd 0.838316920322292 
+nl 000_orig nl_mcp 0.792837958818263 
+nl 001_pdtstyle nl_mlt 0.702775290957923 
+nl 001_pdtstyle nl_smf 0.774753804834378 
+nl 001_pdtstyle nl_mcd 0.792837958818263 
+nl 001_pdtstyle nl_mcp 0.738048343777977 
+nl trans_fMpPcBhLsN nl_mlt 0.720859444941808 70.28
+nl trans_fMpPcBhLsN nl_smf 0.785138764547896 77.48
+nl trans_fMpPcBhLsN nl_mcd 0.801790510295434 79.29
+nl trans_fMpPcBhLsN nl_mcp 0.757206803939123 73.81
+nl trans_fMpPcBhMsN nl_mlt 0.710653536257833 70.28
+nl trans_fMpPcBhMsN nl_smf 0.774932855863921 77.48
+nl trans_fMpPcBhMsN nl_mcd 0.800179051029543 79.29
+nl trans_fMpPcBhMsN nl_mcp 0.746105640107431 73.81
+nl trans_fMpPcBhRsH nl_mlt 0.708325872873769 70.28
+nl trans_fMpPcBhRsH nl_smf 0.766159355416294 77.48
+nl trans_fMpPcBhRsH nl_mcd 0.791942703670546 79.29
+nl trans_fMpPcBhRsH nl_mcp 0.741629364368845 73.81
+nl trans_fMpPcBhRsN nl_mlt 0.708863025962399 70.28
+nl trans_fMpPcBhRsN nl_smf 0.770993733213966 77.48
+nl trans_fMpPcBhRsN nl_mcd 0.791942703670546 79.29
+nl trans_fMpPcBhRsN nl_mcp 0.737332139659803 73.81
+nl trans_fMpPcPhLsN nl_mlt 0.718352730528201 70.28
+nl trans_fMpPcPhLsN nl_smf 0.775649059982095 77.48
+nl trans_fMpPcPhLsN nl_mcd 0.798746642793196 79.29
+nl trans_fMpPcPhLsN nl_mcp 0.752014324082363 73.81
+nl trans_fMpPcPhRsN nl_mlt 0.699731423455685 70.28
+nl trans_fMpPcPhRsN nl_smf 0.765085049239033 77.48
+nl trans_fMpPcPhRsN nl_mcd 0.78585496866607 79.29
+nl trans_fMpPcPhRsN nl_mcp 0.735362578334825 73.81
+nl trans_fPpBcHhRsH nl_mlt 0.685944494180842 70.28
+nl trans_fPpBcHhRsH nl_smf 0.757743957027753 77.48
+nl trans_fPpBcHhRsH nl_mcd 0.775649059982095 79.29
+nl trans_fPpBcHhRsH nl_mcp 0.718352730528201 73.81
+nl trans_fPpBcHhRsN nl_mlt 0.683437779767234 70.28
+nl trans_fPpBcHhRsN nl_smf 0.751656222023277 77.48
+nl trans_fPpBcHhRsN nl_mcd 0.771351835273053 79.29
+nl trans_fPpBcHhRsN nl_mcp 0.72408236347359 73.81
+nl trans_fSpPcBhLsN nl_mlt 0.705282005371531 70.28
+nl trans_fSpPcBhLsN nl_smf 0.770456580125336 77.48
+nl trans_fSpPcBhLsN nl_mcd 0.784243509400179 79.29
+nl trans_fSpPcBhLsN nl_mcp 0.735541629364369 73.81
+nl trans_fSpPcBhMsN nl_mlt 0.696508504923903 70.28
+nl trans_fSpPcBhMsN nl_smf 0.762578334825425 77.48
+nl trans_fSpPcBhMsN nl_mcd 0.776186213070725 79.29
+nl trans_fSpPcBhMsN nl_mcp 0.725514771709937 73.81
+nl trans_fSpPcBhRsH nl_mlt 0.707251566696508 70.28
+nl trans_fSpPcBhRsH nl_smf 0.775290957923008 77.48
+nl trans_fSpPcBhRsH nl_mcd 0.788719785138765 79.29
+nl trans_fSpPcBhRsH nl_mcp 0.740376007162041 73.81
+nl trans_fSpPcBhRsN nl_mlt 0.707072515666965 70.28
+nl trans_fSpPcBhRsN nl_smf 0.772963294538944 77.48
+nl trans_fSpPcBhRsN nl_mcd 0.787466427931961 79.29
+nl trans_fSpPcBhRsN nl_mcp 0.736794986571173 73.81
+pt 000_orig pt_mlt 0.853928754048065 
+pt 000_orig pt_smf 0.778251235725243 
+pt 000_orig pt_mcd 0.878131924322482 
+pt 000_orig pt_mcp 0.876597920572695 
+pt 001_pdtstyle pt_mlt 0.792568604056588 
+pt 001_pdtstyle pt_smf 0.838418271689109 
+pt 001_pdtstyle pt_mcd 0.821373785580365 
+pt 001_pdtstyle pt_mcp 0.815408215442304 
+pt trans_fMpPcBhLsN pt_mlt 0.801602181694222 79.26
+pt trans_fMpPcBhLsN pt_smf 0.839952275438896 83.85
+pt trans_fMpPcBhLsN pt_mcd 0.833134480995398 82.14
+pt trans_fMpPcBhLsN pt_mcp 0.831770922106698 81.55
+pt trans_fMpPcBhMsN pt_mlt 0.799215953638998 79.26
+pt trans_fMpPcBhMsN pt_smf 0.838418271689109 83.85
+pt trans_fMpPcBhMsN pt_mcd 0.83364581557866 82.14
+pt trans_fMpPcBhMsN pt_mcp 0.827168910857338 81.55
+pt trans_fMpPcBhRsH pt_mlt 0.791886824612238 79.26
+pt trans_fMpPcBhRsH pt_smf 0.833134480995398 83.85
+pt trans_fMpPcBhRsH pt_mcd 0.826487131412988 82.14
+pt trans_fMpPcBhRsH pt_mcp 0.815749105164479 81.55
+pt trans_fMpPcBhRsN pt_mlt 0.790523265723538 79.26
+pt trans_fMpPcBhRsN pt_smf 0.837566047383671 83.85
+pt trans_fMpPcBhRsN pt_mcd 0.826146241690813 82.14
+pt trans_fMpPcBhRsN pt_mcp 0.817794443497529 81.55
+pt trans_fMpPcPhLsN pt_mlt 0.79972728822226 79.26
+pt trans_fMpPcPhLsN pt_smf 0.837225157661497 83.85
+pt trans_fMpPcPhLsN pt_mcd 0.827509800579513 82.14
+pt trans_fMpPcPhLsN pt_mcp 0.826487131412988 81.55
+pt trans_fMpPcPhRsN pt_mlt 0.78046701891938 79.26
+pt trans_fMpPcPhRsN pt_smf 0.828191580023862 83.85
+pt trans_fMpPcPhRsN pt_mcd 0.816430884608829 82.14
+pt trans_fMpPcPhRsN pt_mcp 0.810806204192944 81.55
+pt trans_fPpBcHhRsH pt_mlt 0.770581216976308 79.26
+pt trans_fPpBcHhRsH pt_smf 0.820692006136015 83.85
+pt trans_fPpBcHhRsH pt_mcd 0.810976649054031 82.14
+pt trans_fPpBcHhRsH pt_mcp 0.796318391000511 81.55
+pt trans_fPpBcHhRsN pt_mlt 0.775353673086756 79.26
+pt trans_fPpBcHhRsN pt_smf 0.827850690301687 83.85
+pt trans_fPpBcHhRsN pt_mcd 0.812681097664905 82.14
+pt trans_fPpBcHhRsN pt_mcp 0.802113516277484 81.55
+pt trans_fSpPcBhLsN pt_mlt 0.802283961138572 79.26
+pt trans_fSpPcBhLsN pt_smf 0.83500937446736 83.85
+pt trans_fSpPcBhLsN pt_mcd 0.831259587523436 82.14
+pt trans_fSpPcBhLsN pt_mcp 0.826146241690813 81.55
+pt trans_fSpPcBhMsN pt_mlt 0.798022839611386 79.26
+pt trans_fSpPcBhMsN pt_smf 0.831941366967786 83.85
+pt trans_fSpPcBhMsN pt_mcd 0.828191580023862 82.14
+pt trans_fSpPcBhMsN pt_mcp 0.823078234191239 81.55
+pt trans_fSpPcBhRsH pt_mlt 0.790523265723538 79.26
+pt trans_fSpPcBhRsH pt_smf 0.831600477245611 83.85
+pt trans_fSpPcBhRsH pt_mcd 0.823248679052327 82.14
+pt trans_fSpPcBhRsH pt_mcp 0.81966933696949 81.55
+pt trans_fSpPcBhRsN pt_mlt 0.791205045167888 79.26
+pt trans_fSpPcBhRsN pt_smf 0.836543378217147 83.85
+pt trans_fSpPcBhRsN pt_mcd 0.822566899607977 82.14
+pt trans_fSpPcBhRsN pt_mcp 0.814215101414692 81.55
+ro 000_orig ro_mlt 0.862121212121212 
+ro 000_orig ro_smf 0.860606060606061 
+ro 000_orig ro_mcd 0.882954545454545 
+ro 000_orig ro_mcp 0.876136363636364 
+ro 001_pdtstyle ro_mlt 0.855681818181818 
+ro 001_pdtstyle ro_smf 0.865530303030303 
+ro 001_pdtstyle ro_mcd 0.885227272727273 
+ro 001_pdtstyle ro_mcp 0.882575757575758 
+ro trans_fMpPcBhLsN ro_mlt 0.8625 85.57
+ro trans_fMpPcBhLsN ro_smf 0.869318181818182 86.56
+ro trans_fMpPcBhLsN ro_mcd 0.891666666666667 88.53
+ro trans_fMpPcBhLsN ro_mcp 0.885227272727273 88.26
+ro trans_fMpPcBhMsN ro_mlt 0.859848484848485 85.57
+ro trans_fMpPcBhMsN ro_smf 0.86969696969697 86.56
+ro trans_fMpPcBhMsN ro_mcd 0.893560606060606 88.53
+ro trans_fMpPcBhMsN ro_mcp 0.884469696969697 88.26
+ro trans_fMpPcBhRsH ro_mlt 0.858333333333333 85.57
+ro trans_fMpPcBhRsH ro_smf 0.865151515151515 86.56
+ro trans_fMpPcBhRsH ro_mcd 0.885227272727273 88.53
+ro trans_fMpPcBhRsH ro_mcp 0.884090909090909 88.26
+ro trans_fMpPcBhRsN ro_mlt 0.858333333333333 85.57
+ro trans_fMpPcBhRsN ro_smf 0.865151515151515 86.56
+ro trans_fMpPcBhRsN ro_mcd 0.885227272727273 88.53
+ro trans_fMpPcBhRsN ro_mcp 0.884090909090909 88.26
+ro trans_fMpPcPhLsN ro_mlt 0.858712121212121 85.57
+ro trans_fMpPcPhLsN ro_smf 0.863636363636364 86.56
+ro trans_fMpPcPhLsN ro_mcd 0.879545454545455 88.53
+ro trans_fMpPcPhLsN ro_mcp 0.880681818181818 88.26
+ro trans_fMpPcPhRsN ro_mlt 0.85530303030303 85.57
+ro trans_fMpPcPhRsN ro_smf 0.859090909090909 86.56
+ro trans_fMpPcPhRsN ro_mcd 0.883333333333333 88.53
+ro trans_fMpPcPhRsN ro_mcp 0.874242424242424 88.26
+ro trans_fPpBcHhRsH ro_mlt 0.855681818181818 85.57
+ro trans_fPpBcHhRsH ro_smf 0.861742424242424 86.56
+ro trans_fPpBcHhRsH ro_mcd 0.883333333333333 88.53
+ro trans_fPpBcHhRsH ro_mcp 0.887878787878788 88.26
+ro trans_fPpBcHhRsN ro_mlt 0.855681818181818 85.57
+ro trans_fPpBcHhRsN ro_smf 0.861742424242424 86.56
+ro trans_fPpBcHhRsN ro_mcd 0.883333333333333 88.53
+ro trans_fPpBcHhRsN ro_mcp 0.887878787878788 88.26
+ro trans_fSpPcBhLsN ro_mlt 0.858712121212121 85.57
+ro trans_fSpPcBhLsN ro_smf 0.8625 86.56
+ro trans_fSpPcBhLsN ro_mcd 0.884469696969697 88.53
+ro trans_fSpPcBhLsN ro_mcp 0.878030303030303 88.26
+ro trans_fSpPcBhMsN ro_mlt 0.85719696969697 85.57
+ro trans_fSpPcBhMsN ro_smf 0.863636363636364 86.56
+ro trans_fSpPcBhMsN ro_mcd 0.882954545454545 88.53
+ro trans_fSpPcBhMsN ro_mcp 0.880681818181818 88.26
+ro trans_fSpPcBhRsH ro_mlt 0.861363636363636 85.57
+ro trans_fSpPcBhRsH ro_smf 0.860984848484848 86.56
+ro trans_fSpPcBhRsH ro_mcd 0.878030303030303 88.53
+ro trans_fSpPcBhRsH ro_mcp 0.873106060606061 88.26
+ro trans_fSpPcBhRsN ro_mlt 0.861363636363636 85.57
+ro trans_fSpPcBhRsN ro_smf 0.860984848484848 86.56
+ro trans_fSpPcBhRsN ro_mcd 0.878030303030303 88.53
+ro trans_fSpPcBhRsN ro_mcp 0.873106060606061 88.26
+ru 000_orig ru_mlt 0.781954887218045 
+ru 000_orig ru_smf 0.796414112203586 
+ru 000_orig ru_mcd 0.721226142278774 
+ru 000_orig ru_mcp 0.716599190283401 
+ru 001_pdtstyle ru_mlt 0.85801041064199 
+ru 001_pdtstyle ru_smf 0.873337189126663 
+ru 001_pdtstyle ru_mcd 0.812608444187392 
+ru 001_pdtstyle ru_mcp 0.801908617698091 
+ru trans_fMpPcBhLsN ru_mlt 0.870734528629265 85.81
+ru trans_fMpPcBhLsN ru_smf 0.868131868131868 87.34
+ru trans_fMpPcBhLsN ru_mcd 0.831983805668016 81.27
+ru trans_fMpPcBhLsN ru_mcp 0.829381145170619 80.20
+ru trans_fMpPcBhMsN ru_mlt 0.869577790630422 85.81
+ru trans_fMpPcBhMsN ru_smf 0.870734528629265 87.34
+ru trans_fMpPcBhMsN ru_mcd 0.828802776171197 81.27
+ru trans_fMpPcBhMsN ru_mcp 0.825621746674378 80.20
+ru trans_fMpPcBhRsH ru_mlt 0.852805089647195 85.81
+ru trans_fMpPcBhRsH ru_smf 0.870156159629844 87.34
+ru trans_fMpPcBhRsH ru_mcd 0.809716599190283 81.27
+ru trans_fMpPcBhRsH ru_mcp 0.784268363215732 80.20
+ru trans_fMpPcBhRsN ru_mlt 0.857432041642568 85.81
+ru trans_fMpPcBhRsN ru_smf 0.874783111625217 87.34
+ru trans_fMpPcBhRsN ru_mcd 0.805957200694043 81.27
+ru trans_fMpPcBhRsN ru_mcp 0.790052053209948 80.20
+ru trans_fMpPcPhLsN ru_mlt 0.872758820127241 85.81
+ru trans_fMpPcPhLsN ru_smf 0.876518218623482 87.34
+ru trans_fMpPcPhLsN ru_mcd 0.827067669172932 81.27
+ru trans_fMpPcPhLsN ru_mcp 0.817524580682475 80.20
+ru trans_fMpPcPhRsN ru_mlt 0.854251012145749 85.81
+ru trans_fMpPcPhRsN ru_smf 0.871602082128398 87.34
+ru trans_fMpPcPhRsN ru_mcd 0.81203007518797 81.27
+ru trans_fMpPcPhRsN ru_mcp 0.800173510699826 80.20
+ru trans_fPpBcHhRsH ru_mlt 0.854251012145749 85.81
+ru trans_fPpBcHhRsH ru_smf 0.873337189126663 87.34
+ru trans_fPpBcHhRsH ru_mcd 0.812319259687681 81.27
+ru trans_fPpBcHhRsH ru_mcp 0.807403123192597 80.20
+ru trans_fPpBcHhRsN ru_mlt 0.856564488143436 85.81
+ru trans_fPpBcHhRsN ru_smf 0.87593984962406 87.34
+ru trans_fPpBcHhRsN ru_mcd 0.814343551185656 81.27
+ru trans_fPpBcHhRsN ru_mcp 0.805957200694043 80.20
+ru trans_fSpPcBhLsN ru_mlt 0.868999421631001 85.81
+ru trans_fSpPcBhLsN ru_smf 0.875650665124349 87.34
+ru trans_fSpPcBhLsN ru_mcd 0.828224407171776 81.27
+ru trans_fSpPcBhLsN ru_mcp 0.814632735685367 80.20
+ru trans_fSpPcBhMsN ru_mlt 0.863215731636784 85.81
+ru trans_fSpPcBhMsN ru_smf 0.868999421631001 87.34
+ru trans_fSpPcBhMsN ru_mcd 0.818681318681319 81.27
+ru trans_fSpPcBhMsN ru_mcp 0.812319259687681 80.20
+ru trans_fSpPcBhRsH ru_mlt 0.855118565644881 85.81
+ru trans_fSpPcBhRsH ru_smf 0.867264314632736 87.34
+ru trans_fSpPcBhRsH ru_mcd 0.811740890688259 81.27
+ru trans_fSpPcBhRsH ru_mcp 0.79438982070561 80.20
+ru trans_fSpPcBhRsN ru_mlt 0.85801041064199 85.81
+ru trans_fSpPcBhRsN ru_smf 0.868131868131868 87.34
+ru trans_fSpPcBhRsN ru_mcd 0.8048004626952 81.27
+ru trans_fSpPcBhRsN ru_mcp 0.796124927703875 80.20
+sl 000_orig sl_mlt 0.715336463223787 
+sl 000_orig sl_smf 0.767762128325509 
+sl 000_orig sl_mcd 0.752895148669797 
+sl 000_orig sl_mcp 0.748513302034429 
+sl 001_pdtstyle sl_mlt 0.701408450704225 
+sl 001_pdtstyle sl_smf 0.749452269170579 
+sl 001_pdtstyle sl_mcd 0.743818466353678 
+sl 001_pdtstyle sl_mcp 0.720813771517997 
+sl trans_fMpPcBhLsN sl_mlt 0.735054773082942 70.15
+sl trans_fMpPcBhLsN sl_smf 0.776838810641628 74.95
+sl trans_fMpPcBhLsN sl_mcd 0.766666666666667 74.39
+sl trans_fMpPcBhLsN sl_mcp 0.745070422535211 72.09
+sl trans_fMpPcBhMsN sl_mlt 0.728951486697966 70.15
+sl trans_fMpPcBhMsN sl_smf 0.772769953051643 74.95
+sl trans_fMpPcBhMsN sl_mcd 0.757746478873239 74.39
+sl trans_fMpPcBhMsN sl_mcp 0.750391236306729 72.09
+sl trans_fMpPcBhRsH sl_mlt 0.71283255086072 70.15
+sl trans_fMpPcBhRsH sl_smf 0.77151799687011 74.95
+sl trans_fMpPcBhRsH sl_mcd 0.760719874804382 74.39
+sl trans_fMpPcBhRsH sl_mcp 0.735524256651017 72.09
+sl trans_fMpPcBhRsN sl_mlt 0.71283255086072 70.15
+sl trans_fMpPcBhRsN sl_smf 0.778560250391236 74.95
+sl trans_fMpPcBhRsN sl_mcd 0.758998435054773 74.39
+sl trans_fMpPcBhRsN sl_mcp 0.740219092331768 72.09
+sl trans_fMpPcPhLsN sl_mlt 0.732863849765258 70.15
+sl trans_fMpPcPhLsN sl_smf 0.774960876369327 74.95
+sl trans_fMpPcPhLsN sl_mcd 0.764006259780908 74.39
+sl trans_fMpPcPhLsN sl_mcp 0.744444444444444 72.09
+sl trans_fMpPcPhRsN sl_mlt 0.705946791862285 70.15
+sl trans_fMpPcPhRsN sl_smf 0.775743348982786 74.95
+sl trans_fMpPcPhRsN sl_mcd 0.751330203442879 74.39
+sl trans_fMpPcPhRsN sl_mcp 0.733333333333333 72.09
+sl trans_fPpBcHhRsH sl_mlt 0.685758998435055 70.15
+sl trans_fPpBcHhRsH sl_smf 0.736776212832551 74.95
+sl trans_fPpBcHhRsH sl_mcd 0.730046948356808 74.39
+sl trans_fPpBcHhRsH sl_mcp 0.70547730829421 72.09
+sl trans_fPpBcHhRsN sl_mlt 0.689045383411581 70.15
+sl trans_fPpBcHhRsN sl_smf 0.74773082942097 74.95
+sl trans_fPpBcHhRsN sl_mcd 0.742566510172144 74.39
+sl trans_fPpBcHhRsN sl_mcp 0.72018779342723 72.09
+sl trans_fSpPcBhLsN sl_mlt 0.723317683881064 70.15
+sl trans_fSpPcBhLsN sl_smf 0.768388106416275 74.95
+sl trans_fSpPcBhLsN sl_mcd 0.757902973395931 74.39
+sl trans_fSpPcBhLsN sl_mcp 0.737871674491393 72.09
+sl trans_fSpPcBhMsN sl_mlt 0.72112676056338 70.15
+sl trans_fSpPcBhMsN sl_smf 0.767762128325509 74.95
+sl trans_fSpPcBhMsN sl_mcd 0.749765258215962 74.39
+sl trans_fSpPcBhMsN sl_mcp 0.731768388106416 72.09
+sl trans_fSpPcBhRsH sl_mlt 0.709389671361502 70.15
+sl trans_fSpPcBhRsH sl_smf 0.763067292644757 74.95
+sl trans_fSpPcBhRsH sl_mcd 0.743661971830986 74.39
+sl trans_fSpPcBhRsH sl_mcp 0.72566510172144 72.09
+sl trans_fSpPcBhRsN sl_mlt 0.715492957746479 70.15
+sl trans_fSpPcBhRsN sl_smf 0.759154929577465 74.95
+sl trans_fSpPcBhRsN sl_mcd 0.751956181533646 74.39
+sl trans_fSpPcBhRsN sl_mcp 0.728794992175274 72.09
+sv 000_orig sv_mlt 0.882248939179632 
+sv 000_orig sv_smf 0.869519094766619 
+sv 000_orig sv_mcd 0.871463932107497 
+sv 000_orig sv_mcp 0.866690240452617 
+sv 001_pdtstyle sv_mlt 0.77492927864215 
+sv 001_pdtstyle sv_smf 0.775636492220651 
+sv 001_pdtstyle sv_mcd 0.782708628005658 
+sv 001_pdtstyle sv_mcp 0.778995756718529 
+sv trans_fMpPcBhLsN sv_mlt 0.793140028288543 77.50
+sv trans_fMpPcBhLsN sv_smf 0.799328147100424 77.57
+sv trans_fMpPcBhLsN sv_mcd 0.807461103253182 78.28
+sv trans_fMpPcBhLsN sv_mcp 0.797913719943423 77.90
+sv trans_fMpPcBhMsN sv_mlt 0.786775106082037 77.50
+sv trans_fMpPcBhMsN sv_smf 0.795261669024045 77.57
+sv trans_fMpPcBhMsN sv_mcd 0.798974540311174 78.28
+sv trans_fMpPcBhMsN sv_mcp 0.793493635077793 77.90
+sv trans_fMpPcBhRsH sv_mlt 0.781117397454031 77.50
+sv trans_fMpPcBhRsH sv_smf 0.785007072135785 77.57
+sv trans_fMpPcBhRsH sv_mcd 0.786775106082037 78.28
+sv trans_fMpPcBhRsH sv_mcp 0.786775106082037 77.90
+sv trans_fMpPcBhRsN sv_mlt 0.784476661951909 77.50
+sv trans_fMpPcBhRsN sv_smf 0.793316831683168 77.57
+sv trans_fMpPcBhRsN sv_mcd 0.791018387553041 78.28
+sv trans_fMpPcBhRsN sv_mcp 0.792079207920792 77.90
+sv trans_fMpPcPhLsN sv_mlt 0.797383309759547 77.50
+sv trans_fMpPcPhLsN sv_smf 0.79950495049505 77.57
+sv trans_fMpPcPhLsN sv_mcd 0.802864214992928 78.28
+sv trans_fMpPcPhLsN sv_mcp 0.798444130127298 77.90
+sv trans_fMpPcPhRsN sv_mlt 0.781824611032532 77.50
+sv trans_fMpPcPhRsN sv_smf 0.784123055162659 77.57
+sv trans_fMpPcPhRsN sv_mcd 0.784299858557284 78.28
+sv trans_fMpPcPhRsN sv_mcp 0.786244695898161 77.90
+sv trans_fPpBcHhRsH sv_mlt 0.762199434229137 77.50
+sv trans_fPpBcHhRsH sv_smf 0.75990099009901 77.57
+sv trans_fPpBcHhRsH sv_mcd 0.778465346534653 78.28
+sv trans_fPpBcHhRsH sv_mcp 0.771216407355021 77.90
+sv trans_fPpBcHhRsN sv_mlt 0.760785007072136 77.50
+sv trans_fPpBcHhRsN sv_smf 0.75990099009901 77.57
+sv trans_fPpBcHhRsN sv_mcd 0.773691654879774 78.28
+sv trans_fPpBcHhRsN sv_mcp 0.76538189533239 77.90
+sv trans_fSpPcBhLsN sv_mlt 0.778111739745403 77.50
+sv trans_fSpPcBhLsN sv_smf 0.779879773691655 77.57
+sv trans_fSpPcBhLsN sv_mcd 0.790841584158416 78.28
+sv trans_fSpPcBhLsN sv_mcp 0.781117397454031 77.90
+sv trans_fSpPcBhMsN sv_mlt 0.778288543140028 77.50
+sv trans_fSpPcBhMsN sv_smf 0.778111739745403 77.57
+sv trans_fSpPcBhMsN sv_mcd 0.791018387553041 78.28
+sv trans_fSpPcBhMsN sv_mcp 0.774222065063649 77.90
+sv trans_fSpPcBhRsH sv_mlt 0.77492927864215 77.50
+sv trans_fSpPcBhRsH sv_smf 0.769448373408769 77.57
+sv trans_fSpPcBhRsH sv_mcd 0.784653465346535 78.28
+sv trans_fSpPcBhRsH sv_mcp 0.773868458274399 77.90
+sv trans_fSpPcBhRsN sv_mlt 0.772454031117397 77.50
+sv trans_fSpPcBhRsN sv_smf 0.770862800565771 77.57
+sv trans_fSpPcBhRsN sv_mcd 0.781117397454031 78.28
+sv trans_fSpPcBhRsN sv_mcp 0.774398868458274 77.90
+ta 000_orig ta_mlt 0.728004022121669 
+ta 000_orig ta_smf 0.731523378582202 
+ta 000_orig ta_mcd 0.71342383107089 
+ta 000_orig ta_mcp 0.727501256913022 
+ta 001_pdtstyle ta_mlt 0.726495726495726 
+ta 001_pdtstyle ta_smf 0.730015082956259 
+ta 001_pdtstyle ta_mcd 0.710407239819005 
+ta 001_pdtstyle ta_mcp 0.711915535444947 
+ta trans_fMpPcBhLsN ta_mlt 0.741578682755153 72.65
+ta trans_fMpPcBhLsN ta_smf 0.748617395676219 73.01
+ta trans_fMpPcBhLsN ta_mcd 0.721468074409251 71.05
+ta trans_fMpPcBhLsN ta_mcp 0.711915535444947 71.20
+ta trans_fMpPcBhMsN ta_mlt 0.743589743589744 72.65
+ta trans_fMpPcBhMsN ta_smf 0.747611865258924 73.01
+ta trans_fMpPcBhMsN ta_mcd 0.728004022121669 71.05
+ta trans_fMpPcBhMsN ta_mcp 0.718954248366013 71.20
+ta trans_fMpPcBhRsH ta_mlt 0.741075917546506 72.65
+ta trans_fMpPcBhRsH ta_smf 0.748114630467572 73.01
+ta trans_fMpPcBhRsH ta_mcd 0.733031674208145 71.05
+ta trans_fMpPcBhRsH ta_mcp 0.727501256913022 71.20
+ta trans_fMpPcBhRsN ta_mlt 0.744595274007039 72.65
+ta trans_fMpPcBhRsN ta_smf 0.746103569632981 73.01
+ta trans_fMpPcBhRsN ta_mcd 0.722976370035194 71.05
+ta trans_fMpPcBhRsN ta_mcp 0.730517848164907 71.20
+ta trans_fMpPcPhLsN ta_mlt 0.739567621920563 72.65
+ta trans_fMpPcPhLsN ta_smf 0.751633986928105 73.01
+ta trans_fMpPcPhLsN ta_mcd 0.71744595274007 71.05
+ta trans_fMpPcPhLsN ta_mcp 0.711915535444947 71.20
+ta trans_fMpPcPhRsN ta_mlt 0.750628456510809 72.65
+ta trans_fMpPcPhRsN ta_smf 0.745098039215686 73.01
+ta trans_fMpPcPhRsN ta_mcd 0.723981900452489 71.05
+ta trans_fMpPcPhRsN ta_mcp 0.73805932629462 71.20
+ta trans_fPpBcHhRsH ta_mlt 0.721468074409251 72.65
+ta trans_fPpBcHhRsH ta_smf 0.723479135243841 73.01
+ta trans_fPpBcHhRsH ta_mcd 0.715937657114128 71.05
+ta trans_fPpBcHhRsH ta_mcp 0.719959778783308 71.20
+ta trans_fPpBcHhRsN ta_mlt 0.721970839617898 72.65
+ta trans_fPpBcHhRsN ta_smf 0.717948717948718 73.01
+ta trans_fPpBcHhRsN ta_mcd 0.718451483157366 71.05
+ta trans_fPpBcHhRsN ta_mcp 0.721970839617898 71.20
+ta trans_fSpPcBhLsN ta_mlt 0.733031674208145 72.65
+ta trans_fSpPcBhLsN ta_smf 0.746103569632981 73.01
+ta trans_fSpPcBhLsN ta_mcd 0.716440422322775 71.05
+ta trans_fSpPcBhLsN ta_mcp 0.716440422322775 71.20
+ta trans_fSpPcBhMsN ta_mlt 0.751131221719457 72.65
+ta trans_fSpPcBhMsN ta_smf 0.745600804424334 73.01
+ta trans_fSpPcBhMsN ta_mcd 0.73202614379085 71.05
+ta trans_fSpPcBhMsN ta_mcp 0.735545500251383 71.20
+ta trans_fSpPcBhRsH ta_mlt 0.750125691302162 72.65
+ta trans_fSpPcBhRsH ta_smf 0.739567621920563 73.01
+ta trans_fSpPcBhRsH ta_mcd 0.731020613373555 71.05
+ta trans_fSpPcBhRsH ta_mcp 0.71744595274007 71.20
+ta trans_fSpPcBhRsN ta_mlt 0.75465057817999 72.65
+ta trans_fSpPcBhRsN ta_smf 0.743086978381096 73.01
+ta trans_fSpPcBhRsN ta_mcd 0.714932126696833 71.05
+ta trans_fSpPcBhRsN ta_mcp 0.723479135243841 71.20
+te 000_orig te_mlt 0.871021775544389 
+te 000_orig te_smf 0.922948073701843 
+te 000_orig te_mcd 0.867671691792295 
+te 000_orig te_mcp 0.872696817420435 
+te 001_pdtstyle te_mlt 0.88107202680067 
+te 001_pdtstyle te_smf 0.921273031825796 
+te 001_pdtstyle te_mcd 0.85929648241206 
+te 001_pdtstyle te_mcp 0.867671691792295 
+te trans_fMpPcBhLsN te_mlt 0.906197654941373 88.11
+te trans_fMpPcBhLsN te_smf 0.917922948073702 92.13
+te trans_fMpPcBhLsN te_mcd 0.887772194304858 85.93
+te trans_fMpPcBhLsN te_mcp 0.877721943048576 86.77
+te trans_fMpPcBhMsN te_mlt 0.90787269681742 88.11
+te trans_fMpPcBhMsN te_smf 0.917922948073702 92.13
+te trans_fMpPcBhMsN te_mcd 0.877721943048576 85.93
+te trans_fMpPcBhMsN te_mcp 0.887772194304858 86.77
+te trans_fMpPcBhRsH te_mlt 0.899497487437186 88.11
+te trans_fMpPcBhRsH te_smf 0.919597989949749 92.13
+te trans_fMpPcBhRsH te_mcd 0.884422110552764 85.93
+te trans_fMpPcBhRsH te_mcp 0.879396984924623 86.77
+te trans_fMpPcBhRsN te_mlt 0.901172529313233 88.11
+te trans_fMpPcBhRsN te_smf 0.92964824120603 92.13
+te trans_fMpPcBhRsN te_mcd 0.884422110552764 85.93
+te trans_fMpPcBhRsN te_mcp 0.882747068676717 86.77
+te trans_fMpPcPhLsN te_mlt 0.90284757118928 88.11
+te trans_fMpPcPhLsN te_smf 0.926298157453936 92.13
+te trans_fMpPcPhLsN te_mcd 0.876046901172529 85.93
+te trans_fMpPcPhLsN te_mcp 0.864321608040201 86.77
+te trans_fMpPcPhRsN te_mlt 0.904522613065327 88.11
+te trans_fMpPcPhRsN te_smf 0.926298157453936 92.13
+te trans_fMpPcPhRsN te_mcd 0.884422110552764 85.93
+te trans_fMpPcPhRsN te_mcp 0.889447236180904 86.77
+te trans_fPpBcHhRsH te_mlt 0.88107202680067 88.11
+te trans_fPpBcHhRsH te_smf 0.922948073701843 92.13
+te trans_fPpBcHhRsH te_mcd 0.869346733668342 85.93
+te trans_fPpBcHhRsH te_mcp 0.865996649916248 86.77
+te trans_fPpBcHhRsN te_mlt 0.877721943048576 88.11
+te trans_fPpBcHhRsN te_smf 0.926298157453936 92.13
+te trans_fPpBcHhRsN te_mcd 0.874371859296482 85.93
+te trans_fPpBcHhRsN te_mcp 0.872696817420435 86.77
+te trans_fSpPcBhLsN te_mlt 0.906197654941373 88.11
+te trans_fSpPcBhLsN te_smf 0.921273031825796 92.13
+te trans_fSpPcBhLsN te_mcd 0.88107202680067 85.93
+te trans_fSpPcBhLsN te_mcp 0.887772194304858 86.77
+te trans_fSpPcBhMsN te_mlt 0.906197654941373 88.11
+te trans_fSpPcBhMsN te_smf 0.914572864321608 92.13
+te trans_fSpPcBhMsN te_mcd 0.882747068676717 85.93
+te trans_fSpPcBhMsN te_mcp 0.884422110552764 86.77
+te trans_fSpPcBhRsH te_mlt 0.90284757118928 88.11
+te trans_fSpPcBhRsH te_smf 0.916247906197655 92.13
+te trans_fSpPcBhRsH te_mcd 0.882747068676717 85.93
+te trans_fSpPcBhRsH te_mcp 0.882747068676717 86.77
+te trans_fSpPcBhRsN te_mlt 0.906197654941373 88.11
+te trans_fSpPcBhRsN te_smf 0.914572864321608 92.13
+te trans_fSpPcBhRsN te_mcd 0.889447236180904 85.93
+te trans_fSpPcBhRsN te_mcp 0.887772194304858 86.77
+tr 000_orig tr_mlt 0.727454021715045 
+tr 000_orig tr_smf 0.81785951695103 
+tr 000_orig tr_mcd 0.782627963660536 
+tr 000_orig tr_mcp 0.764901395967206 
+tr 001_pdtstyle tr_mlt 0.716374916906714 
+tr 001_pdtstyle tr_smf 0.794371814757368 
+tr 001_pdtstyle tr_mcd 0.768668291602039 
+tr 001_pdtstyle tr_mcp 0.749169067139375 
+tr trans_fMpPcBhLsN tr_mlt 0.711721692887215 71.64
+tr trans_fMpPcBhLsN tr_smf 0.791048083314868 79.44
+tr trans_fMpPcBhLsN tr_mcd 0.762463992909373 76.87
+tr trans_fMpPcBhLsN tr_mcp 0.747174828273875 74.92
+tr trans_fMpPcBhMsN tr_mlt 0.729226678484378 71.64
+tr trans_fMpPcBhMsN tr_smf 0.810768889873698 79.44
+tr trans_fMpPcBhMsN tr_mcd 0.77841790383337 76.87
+tr trans_fMpPcBhMsN tr_mcp 0.759583425659207 74.92
+tr trans_fMpPcBhRsH tr_mlt 0.729226678484378 71.64
+tr trans_fMpPcBhRsH tr_smf 0.809217815200532 79.44
+tr trans_fMpPcBhRsH tr_mcd 0.774429426102371 76.87
+tr trans_fMpPcBhRsH tr_mcp 0.761577664524706 74.92
+tr trans_fMpPcBhRsN tr_mlt 0.729005096388212 71.64
+tr trans_fMpPcBhRsN tr_smf 0.810768889873698 79.44
+tr trans_fMpPcBhRsN tr_mcd 0.779525814314203 76.87
+tr trans_fMpPcBhRsN tr_mcp 0.762907157101706 74.92
+tr trans_fMpPcPhLsN tr_mlt 0.713937513848881 71.64
+tr trans_fMpPcPhLsN tr_smf 0.793928650565034 79.44
+tr trans_fMpPcPhLsN tr_mcd 0.764015067582539 76.87
+tr trans_fMpPcPhLsN tr_mcp 0.746066917793042 74.92
+tr trans_fMpPcPhRsN tr_mlt 0.725681364945712 71.64
+tr trans_fMpPcPhRsN tr_smf 0.808109904719699 79.44
+tr trans_fMpPcPhRsN tr_mcd 0.773543097717704 76.87
+tr trans_fMpPcPhRsN tr_mcp 0.756702858409041 74.92
+tr trans_fPpBcHhRsH tr_mlt 0.707068468867715 71.64
+tr trans_fPpBcHhRsH tr_smf 0.797030799911367 79.44
+tr trans_fPpBcHhRsH tr_mcd 0.75936184356304 76.87
+tr trans_fPpBcHhRsH tr_mcp 0.745623753600709 74.92
+tr trans_fPpBcHhRsN tr_mlt 0.708619543540882 71.64
+tr trans_fPpBcHhRsN tr_smf 0.796809217815201 79.44
+tr trans_fPpBcHhRsN tr_mcd 0.758475515178374 76.87
+tr trans_fPpBcHhRsN tr_mcp 0.738533126523377 74.92
+tr trans_fSpPcBhLsN tr_mlt 0.708619543540882 71.64
+tr trans_fSpPcBhLsN tr_smf 0.801905606027033 79.44
+tr trans_fSpPcBhLsN tr_mcd 0.764236649678706 76.87
+tr trans_fSpPcBhLsN tr_mcp 0.735209395080877 74.92
+tr trans_fSpPcBhMsN tr_mlt 0.726346111234212 71.64
+tr trans_fSpPcBhMsN tr_smf 0.802791934411699 79.44
+tr trans_fSpPcBhMsN tr_mcd 0.777531575448704 76.87
+tr trans_fSpPcBhMsN tr_mcp 0.76135608242854 74.92
+tr trans_fSpPcBhRsH tr_mlt 0.725016618657212 71.64
+tr trans_fSpPcBhRsH tr_smf 0.804121426988699 79.44
+tr trans_fSpPcBhRsH tr_mcd 0.770662530467538 76.87
+tr trans_fSpPcBhRsH tr_mcp 0.763793485486373 74.92
+tr trans_fSpPcBhRsN tr_mlt 0.726346111234212 71.64
+tr trans_fSpPcBhRsN tr_smf 0.803899844892533 79.44
+tr trans_fSpPcBhRsN tr_mcd 0.772435187236871 76.87
+tr trans_fSpPcBhRsN tr_mcp 0.756038112120541 74.92
+
+**********  mlt  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et     eu    fi    grc   hi   
+0000_constituents                                                                                           
+000_orig          73.93 88.90 80.79 90.10 71.60 85.39 82.85 74.30 88.02 86.96  26.89 72.86 71.67 42.82 86.81
+001_pdtstyle      73.70 80.57 80.05 88.86 71.55 76.47 75.98 74.21 81.55 81.61  49.94 63.15 66.64 42.77 82.69
+trans_fMpPcBhLsN   3.67  2.25  0.00        4.05  2.67  1.86  3.11  1.42  1.68 -11.05 -0.21  3.13  5.30  0.99
+trans_fMpPcBhMsN   2.87  1.81  0.37        2.61  2.29  1.47  2.34  1.00  1.22        -1.10  3.82  6.05  1.38
+trans_fMpPcBhRsH   0.62  0.43  0.99        0.72  0.12  0.77  0.92  0.00 -1.04         0.41  1.95  5.80  1.41
+trans_fMpPcBhRsN   0.64  0.51  1.11        1.93  0.40  0.90  1.54 -0.03 -1.00 -11.36  0.49  0.24  4.41  1.46
+trans_fMpPcPhLsN   2.48  1.91  0.50       -2.47  2.21  1.77  3.46  0.90  0.50        -2.96  3.08  4.29  0.96
+trans_fMpPcPhRsN   0.49  0.49  0.74       -5.65  0.21  0.75  0.77 -0.33 -0.97        -2.79  0.30  2.96  1.46
+trans_fPpBcHhRsH  -0.84 -0.30 -0.12       -2.60 -1.70 -0.54 -2.31 -1.02 -1.91  -0.77 -3.39 -1.03 -1.21 -0.92
+trans_fPpBcHhRsN  -0.22 -0.08  0.00       -1.82 -0.75 -0.56 -1.58 -1.12 -1.70        -3.20 -0.79 -1.25 -0.84
+trans_fSpPcBhLsN   1.32  0.95  0.25        2.14  0.94  1.29  2.13  0.76  0.59 -11.38 -1.63  1.99  5.12  0.83
+trans_fSpPcBhMsN   1.11  0.78  0.99        0.89  1.13  0.71  1.69 -1.48  0.17        -2.11  2.73  6.92  0.95
+trans_fSpPcBhRsH   0.76  0.56  0.99        0.55  0.53  0.54  0.34  0.63 -0.42        -0.71  1.55  5.90  0.64
+trans_fSpPcBhRsN   0.84  0.61  1.24        0.83  0.77  0.69  0.52  0.65 -0.38 -11.56 -0.70 -0.44  4.42  0.65
+
+trans             hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                0      0     0.01  
+000_orig          76.07 83.15 89.55 44.92 75.10 85.40 86.22 78.20 71.54 88.23 72.81 87.11 72.75 28      0    76.25  
+001_pdtstyle      73.14 76.81 76.84 44.59 70.28 79.26 85.57 85.81 70.15 77.50 72.65 88.11 71.64 28      0    73.65  
+trans_fMpPcBhLsN  -0.42  1.51  0.09  6.16  1.81  0.91  0.69  1.27  3.36  1.82  1.51  2.51 -0.46 22      4     1.47  
+trans_fMpPcBhMsN  -0.93  1.16  0.23  5.34  0.79  0.67  0.42  1.15  2.75  1.18  1.71  2.68  1.29 24      2     1.72  
+trans_fMpPcBhRsH  -1.14 -0.06  0.28  5.26  0.56 -0.07  0.27 -0.52  1.14  0.62  1.46  1.84  1.29 20      5     0.93  
+trans_fMpPcBhRsN  -1.19 -0.10  0.31  5.68  0.61 -0.20  0.27 -0.06  1.14  0.95  1.81  2.01  1.27 20      7     0.51  
+trans_fMpPcPhLsN  -0.90  1.43  0.12  2.98  1.56  0.72  0.31  1.47  3.14  2.24  1.31  2.18 -0.24 22      4     1.27  
+trans_fMpPcPhRsN  -0.89 -0.51  0.49  1.54 -0.30 -1.21 -0.03 -0.38  0.45  0.69  2.42  2.35  0.93 16     10     0.16  
+trans_fPpBcHhRsH  -1.54 -1.14  0.09 -1.84 -1.68 -2.20  0.00 -0.38 -1.57 -1.28 -0.50  0.00 -0.93  1     24    -1.17  
+trans_fPpBcHhRsN  -1.44 -1.14  0.07 -1.82 -1.93 -1.72  0.00 -0.15 -1.24 -1.42 -0.45 -0.33 -0.77  1     23    -1.00  
+trans_fSpPcBhLsN  -0.83  1.00  0.02  4.76  0.25  0.97  0.31  1.09  2.19  0.32  0.66  2.51 -0.77 23      4     0.66  
+trans_fSpPcBhMsN  -0.65  1.00  0.38  4.53 -0.62  0.55  0.15  0.52  1.97  0.33  2.47  2.51  1.00 22      4     1.11  
+trans_fSpPcBhRsH  -0.99  0.45  0.47  2.17  0.45 -0.20  0.57 -0.29  0.79 -0.00  2.37  2.18  0.87 20      5     0.80  
+trans_fSpPcBhRsN  -1.21  0.26  0.56  1.83  0.43 -0.13  0.57 -0.00  1.40 -0.25  2.82  2.51  1.00 19      7     0.30  
+
+**********  smf  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et     eu    fi    grc    hi   
+0000_constituents                                                                                            
+000_orig          79.42 84.50 86.83 90.65 79.37 88.93 81.56 78.04 89.77 90.40  13.55 75.32 77.81  54.54 91.93
+001_pdtstyle      79.24 85.04 86.83 90.32 79.62 81.52 82.67 78.17 84.86 86.62  54.51 72.61 73.15  54.11 87.96
+trans_fMpPcBhLsN   3.26  0.81 -0.00        1.97  2.10  1.00  2.54  0.67  0.66 -11.64 -1.25  0.97  -0.15 -0.43
+trans_fMpPcBhMsN   2.58  0.30  0.98        1.29  1.29  0.55  1.85  0.40  0.17        -0.94       -32.64  0.09
+trans_fMpPcBhRsH   0.82  0.49  0.74        1.35  0.15  0.77  1.33  0.10 -0.22         1.27       -33.78  1.04
+trans_fMpPcBhRsN   0.70  0.86  1.72        1.74  1.21  0.93  2.62  0.18 -0.20 -10.34  0.98  0.88   3.14  0.99
+trans_fMpPcPhLsN   1.80  0.64  0.61       -5.93  1.52  0.98  2.56  0.10  0.14        -2.81 -0.11  -0.64 -0.20
+trans_fMpPcPhRsN   0.08 -0.13  1.11       -6.63  0.66  0.67  0.33 -0.07 -0.86        -1.54  1.80   0.53  0.84
+trans_fPpBcHhRsH  -1.00 -0.67  0.49       -4.45 -1.15 -0.77 -2.27 -1.24 -1.75  -0.08 -3.11 -0.76  -2.43 -1.25
+trans_fPpBcHhRsN  -0.72 -1.08  0.74       -2.77 -1.56 -0.97 -1.06 -1.44 -1.35        -3.15 -0.13  -2.48 -1.30
+trans_fSpPcBhLsN   1.17  0.34  0.24        0.42  0.90  0.64  0.46 -0.04 -0.05 -11.64 -2.34 -0.15   1.10 -0.17
+trans_fSpPcBhMsN   0.62 -0.52  1.35       -0.80 -0.02  0.23  0.31 -4.56 -0.46        -2.19       -34.12 -0.24
+trans_fSpPcBhRsH  -0.76 -0.12  0.24       -0.30  0.34  0.20 -0.44 -0.12 -0.56        -0.35       -34.40 -0.11
+trans_fSpPcBhRsN  -0.20 -0.32  0.37        0.21  0.27  0.13  0.85 -0.11 -0.48 -13.01 -0.52  0.85   1.73 -0.07
+
+trans             hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                0      0     0.01  
+000_orig          74.23 85.25 84.95 44.17 82.46 77.83 86.07 79.65 76.78 86.96 73.16 92.30 81.79 28      0    78.16  
+001_pdtstyle      78.04 78.83 76.91 45.13 77.48 83.85 86.56 87.34 74.95 77.57 73.01 92.13 79.44 28      0    78.16  
+trans_fMpPcBhLsN  -0.91  2.18 -0.02  1.23  1.04  0.15  0.38 -0.52  2.74  2.37  1.86 -0.33 -0.33 17      9     0.39  
+trans_fMpPcBhMsN  -1.21  2.00  0.38  1.67  0.02 -0.00  0.41 -0.26  2.33  1.96  1.76 -0.33  1.64 19      5    -0.54  
+trans_fMpPcBhRsH  -0.65  0.71  0.31  5.28 -0.86 -0.53 -0.04 -0.32  2.21  0.94  1.81 -0.17  1.49 17      8    -0.63  
+trans_fMpPcBhRsN  -0.60  0.86  0.37  5.66 -0.38 -0.09 -0.04  0.14  2.91  1.77  1.61  0.84  1.64 21      6     0.75  
+trans_fMpPcPhLsN  -0.86  2.32  0.09 -3.91  0.09 -0.12 -0.19  0.32  2.55  2.39  2.16  0.50 -0.04 16     10     0.16  
+trans_fMpPcPhRsN  -1.17  1.45  0.72 -2.82 -0.97 -1.03 -0.65 -0.17  2.63  0.85  1.50  0.50  1.38 15     11    -0.03  
+trans_fPpBcHhRsH  -2.19 -0.25 -0.02 -2.19 -1.70 -1.78 -0.38 -0.00 -1.27 -1.57 -0.66  0.17  0.27  3     23    -1.18  
+trans_fPpBcHhRsN  -2.27 -0.29  0.26 -2.30 -2.31 -1.06 -0.38  0.26 -0.17 -1.57 -1.21  0.50  0.25  5     21    -1.05  
+trans_fSpPcBhLsN  -1.63  0.55 -0.00  0.94 -0.43 -0.34 -0.31  0.23  1.89  0.42  1.61  0.00  0.76 15     10    -0.20  
+trans_fSpPcBhMsN  -1.92  0.57  0.24  0.75 -1.22 -0.65 -0.19 -0.44  1.83  0.25  1.56 -0.67  0.84 11     14    -1.57  
+trans_fSpPcBhRsH  -1.46  0.18  0.63  2.05  0.05 -0.68 -0.46 -0.61  1.36 -0.62  0.95 -0.50  0.98 10     15    -1.38  
+trans_fSpPcBhRsN  -1.22  0.18  0.51  2.17 -0.18 -0.19 -0.46 -0.52  0.97 -0.48  1.30 -0.67  0.95 13     14    -0.29  
+
+**********  mcd  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et    eu    fi    grc   hi    
+0000_constituents                                                                                           
+000_orig          71.98 88.16 79.44 91.99 75.36 88.08 88.59 73.92 91.16 88.11 46.72 76.29 71.40 46.89  76.93
+001_pdtstyle      72.35 80.24 80.05 91.59 75.32 81.67 83.28 73.99 85.93 84.45 51.90 66.08 67.80 46.50  73.39
+trans_fMpPcBhLsN   2.77  2.21  0.13        2.25  1.09  1.00  3.53  0.49  1.23 -4.24 -0.32  1.72  4.53   1.56
+trans_fMpPcBhMsN   2.67  1.28  0.50        1.93  0.85  0.45  3.01  0.37  0.72       -0.84  1.85 13.57   2.60
+trans_fMpPcBhRsH  -1.31  1.21 -1.35        0.89  0.43  0.44  1.99  0.30  0.11        0.66  1.57 13.41   0.60
+trans_fMpPcBhRsN  -1.15  1.35 -1.60        2.31  0.41  0.62  2.28  0.39  0.12 -4.69  0.52  0.91  3.99   0.54
+trans_fMpPcPhLsN   2.07  2.07 -1.23       -4.36  1.14  0.94  2.56  0.20  0.73       -2.92  0.81  2.82   1.39
+trans_fMpPcPhRsN  -0.86  0.69  0.37       -6.28  0.08  0.28  1.60 -0.20 -0.83       -2.19  0.21  1.81 -52.02
+trans_fPpBcHhRsH  -0.99 -0.12 -1.84       -3.22 -2.56 -0.78 -0.86 -1.00 -1.24  0.25 -1.95  0.17 -1.60 -64.87
+trans_fPpBcHhRsN  -1.01 -0.07 -2.09       -2.41 -1.68 -0.39 -0.94 -0.98 -0.91       -1.48 -0.27 -1.28 -65.57
+trans_fSpPcBhLsN   1.04  1.62  0.13       -0.10  0.02  0.59  1.35  0.23  0.25 -3.93 -0.81  0.54  4.46 -56.85
+trans_fSpPcBhMsN   1.21  1.36 -1.23       -0.91 -0.22  0.11  0.79 -2.91 -0.01       -0.62  0.15 13.18   1.31
+trans_fSpPcBhRsH  -1.44  0.18  0.37        0.02 -0.91  0.18  0.81  0.01 -0.34       -0.51  0.96 13.21   0.54
+trans_fSpPcBhRsN  -1.64  0.60  0.50        0.32 -0.48  0.12  1.24  0.11 -0.38 -3.71 -0.43 -0.05  3.75   0.53
+
+trans             hu    it     ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                 0      0     0.01  
+000_orig          80.42  84.97 90.39 56.30 83.84 87.82 88.30 72.13 75.29 87.15 71.35 86.77 78.27 28      0    78.51  
+001_pdtstyle      77.29  79.03 77.75 56.80 79.29 82.14 88.53 81.27 74.39 78.28 71.05 85.93 76.87 28      0    75.83  
+trans_fMpPcBhLsN  -1.47 -43.35 -0.16  4.99  0.89  1.18  0.64  1.93  2.28  2.47  1.10  2.85 -0.62 21      6    -0.34  
+trans_fMpPcBhMsN  -1.44   1.78 -0.16  4.01  0.73  1.23  0.83  1.62  1.39  1.62  1.76  1.85  0.98 23      3     1.74  
+trans_fMpPcBhRsH  -1.70   0.55 -0.02  4.47 -0.09  0.51 -0.00 -0.29  1.69  0.40  2.26  2.52  0.58 19      6     1.15  
+trans_fMpPcBhRsN  -1.39   0.51  0.03  5.74 -0.09  0.48 -0.00 -0.67  1.51  0.83  1.25  2.52  1.09 20      6     0.66  
+trans_fMpPcPhLsN  -1.51   1.53 -0.35  0.09  0.59  0.62 -0.57  1.44  2.02  2.01  0.70  1.68 -0.46 19      7     0.54  
+trans_fMpPcPhRsN  -2.34  -0.00  0.24 -1.54 -0.70 -0.49 -0.19 -0.06  0.75  0.15  1.35  2.52  0.49 13     12    -2.19  
+trans_fPpBcHhRsH  -2.50  -0.30 -0.39 -1.88 -1.72 -1.04 -0.19 -0.03 -1.38 -0.43  0.55  1.01 -0.93  4     23    -3.32  
+trans_fPpBcHhRsN  -2.24  -0.43 -0.25  0.00 -2.15 -0.87 -0.19  0.17 -0.13 -0.91  0.80  1.51 -1.02  3     22    -3.26  
+trans_fSpPcBhLsN  -2.26   0.86 -0.53  3.78 -0.86  0.99 -0.08  1.56  1.41  0.81  0.60  2.18 -0.44 18      9    -1.60  
+trans_fSpPcBhMsN  -1.59   0.98 -0.05  2.40 -1.67  0.68 -0.23  0.60  0.59  0.83  2.16  2.35  0.89 16     10     0.78  
+trans_fSpPcBhRsH  -1.67  -0.04  0.07  1.00 -0.41  0.19 -0.72 -0.09 -0.02  0.19  2.06  2.35  0.20 16     10     0.63  
+trans_fSpPcBhRsN  -1.26   0.17  0.10  1.99 -0.54  0.12 -0.72 -0.78  0.81 -0.16  0.45  3.02  0.38 16     11     0.16  
+
+**********  mcp  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et    eu    fi    grc   hi    
+0000_constituents                                                                                           
+000_orig          71.45 88.41 77.34 91.95 74.79 87.63 86.90 73.11 91.20 88.75 44.52 75.69 71.43 41.52  76.00
+001_pdtstyle      71.71 78.08 77.84 91.53 74.56 81.11 79.56 73.61 85.84 84.46 52.51 65.04 68.08 41.64  72.63
+trans_fMpPcBhLsN   2.81  1.43  0.49        2.05  1.05  1.06  2.96  0.77  1.30 -6.20 -0.29 -0.02  5.84   2.48
+trans_fMpPcBhMsN   3.02  1.15 -0.99        1.65  0.99  0.59  2.48  0.42  0.63       -0.64  0.96 11.01   2.86
+trans_fMpPcBhRsH  -0.61  1.70 -0.25        0.72  0.03  0.54  1.62  0.17 -0.13        0.39  0.59 11.82   1.52
+trans_fMpPcBhRsN  -0.08  1.99 -0.25        1.69 -0.28  0.77  2.44  0.15 -0.11 -6.40  0.56 -1.02  4.47   1.29
+trans_fMpPcPhLsN   1.56  1.96  0.74       -4.87  0.56  0.95  2.37  0.40  0.34       -3.56  0.22  1.88   2.31
+trans_fMpPcPhRsN  -0.90  1.26 -0.50       -6.33  0.10  0.55  0.77 -0.31 -0.68       -2.87 -0.79  1.57 -56.49
+trans_fPpBcHhRsH  -1.08 -0.35 -0.86       -2.92 -2.52 -0.68 -1.48 -1.21 -1.22  0.45 -2.52 -0.87 -1.03  -0.56
+trans_fPpBcHhRsN  -0.98 -0.79 -0.62       -1.97 -2.64 -0.20 -0.98 -1.30 -1.26       -2.27 -1.11 -1.18 -56.86
+trans_fSpPcBhLsN   0.91  1.18  0.61        0.09  0.10  0.62  0.46  0.22  0.06 -8.38 -1.34  0.72  3.01 -57.47
+trans_fSpPcBhMsN   1.11  1.10 -0.13       -0.21 -0.62  0.37  0.67 -2.95 -0.19       -1.33  0.29 10.44   1.76
+trans_fSpPcBhRsH  -1.31  0.44  0.61        0.02 -0.65  0.20  1.06 -0.00 -0.35       -0.66  0.02 11.08   1.23
+trans_fSpPcBhRsN  -0.57  0.79  0.37       -0.04 -0.23  0.45  1.33  0.05 -0.32 -7.24 -0.87 -1.25  3.83   1.25
+
+trans             hu    it     ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                 0      0     0.01  
+000_orig          79.36  85.09 90.29 49.12 79.29 87.66 87.62 71.66 74.86 86.67 72.76 87.27 76.50 28      0    77.46  
+001_pdtstyle      75.15  79.50 77.17 50.10 73.81 81.55 88.26 80.20 72.09 77.90 71.20 86.77 74.92 28      0    74.53  
+trans_fMpPcBhLsN  -0.80 -41.86  0.00  3.72  1.92  1.63  0.27  2.74  2.42  1.90 -0.00  1.01 -0.20 19      6    -0.42  
+trans_fMpPcBhMsN  -1.42   1.10  0.00  3.53  0.81  1.17  0.19  2.37  2.95  1.45  0.70  2.01  1.04 22      3     1.54  
+trans_fMpPcBhRsH  -1.37  -0.18  0.28  2.00  0.36  0.03  0.15 -1.77  1.47  0.78  1.56  1.17  1.24 20      6     0.92  
+trans_fMpPcBhRsN  -1.45   0.16  0.33  3.80 -0.07  0.23  0.15 -1.19  1.94  1.31  1.86  1.51  1.38 18      9     0.57  
+trans_fMpPcPhLsN  -2.45   1.47  0.04  2.21  1.40  1.10 -0.19  1.56  2.36  1.95 -0.00 -0.33 -0.31 19      6     0.53  
+trans_fMpPcPhRsN  -1.74  -0.30  0.67  1.08 -0.27 -0.46 -0.83 -0.18  1.25  0.73  2.61  2.18  0.76 12     14    -2.27  
+trans_fPpBcHhRsH  -2.60  -0.63 -0.05 -0.77 -1.97 -1.91  0.53  0.55 -1.54 -0.77  0.80 -0.17 -0.35  4     23    -0.95  
+trans_fPpBcHhRsN  -2.56  -0.83 -0.09 -0.21 -1.40 -1.33  0.53  0.40 -0.07 -1.36  1.00  0.50 -1.06  4     22    -3.02  
+trans_fSpPcBhLsN  -2.38   0.08 -0.02  2.02 -0.25  1.07 -0.45  1.27  1.70  0.22  0.45  2.01 -1.39 19      8    -2.03  
+trans_fSpPcBhMsN  -1.59   0.49  0.44  2.73 -1.25  0.76 -0.19  1.04  1.09 -0.47  2.36  1.68  1.22 16     10     0.72  
+trans_fSpPcBhRsH  -1.60  -0.47  0.49  0.86  0.23  0.42 -0.94 -0.76  0.48 -0.51  0.55  1.51  1.46 16      9     0.52  
+trans_fSpPcBhRsN  -2.49  -0.20  0.56  2.17 -0.13 -0.12 -0.94 -0.58  0.79 -0.46  1.15  2.01  0.69 13     14     0.01  

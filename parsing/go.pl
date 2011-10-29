@@ -3,6 +3,18 @@
 # Copyright © 2011 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
+sub usage
+{
+    print STDERR ("go.pl [OPTIONS] <ACTION>\n");
+    print STDERR ("\tActions: pretrain|train|parse|table\n");
+    print STDERR ("\tExperiment folder tree is created/expected at ./pokus (currently fixed).\n");
+    print STDERR ("\tSource data path is fixed at \$TMT_SHARED.\n");
+    print STDERR ("\tThe script knows the list of available languages.\n");
+    print STDERR ("\tThe list of transformations is created by scanning subfolders of the language.\n");
+    print STDERR ("\tOptions:\n");
+    print STDERR ("\t-languages en,cs,ar ... instead of all languages, process only those specified here.\n");
+}
+
 use utf8;
 use open ":utf8";
 binmode(STDIN, ":utf8");
@@ -14,6 +26,12 @@ use Text::Table;
 use lib '/home/zeman/lib';
 use dzsys;
 use cluster;
+
+# Read options.
+GetOptions
+(
+    'languages|langs=s' => \$konfig{languages}
+);
 
 my $scriptdir = dzsys::get_script_path();
 my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks";
@@ -33,7 +51,14 @@ print_table() if($action_name eq 'table');
 #------------------------------------------------------------------------------
 sub get_languages
 {
-    return qw(ar bg bn ca cs da de el en es et eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
+    if($konfig{languages})
+    {
+        return split(/,/, $konfig{languages});
+    }
+    else
+    {
+        return qw(ar bg bn ca cs da de el en es et eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
+    }
 }
 
 
