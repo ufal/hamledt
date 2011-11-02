@@ -1,7 +1,6 @@
 # Rerunning one language (e.g. because its normalization changed):
 # make LANGS=grc all
-PDT_READY= ar bg bn cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
-LANGS=$(PDT_READY)
+LANGS= ar bg bn cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 
 SHELL=/bin/bash
 
@@ -11,19 +10,17 @@ test:
 	@echo Test: a simple transformation applied on a single language
 	./transform.pl -p cs PunctBelowPrevNode
 
-all: orig pdt head_nearest conj_prev
+all: prague stanford moscow
 
-orig:
-	./transform.pl --family Moscow,Stanford --head right,left $(LANGS)
 
-pdt:
-	./transform.pl --family Prague --head right --shared head,nearest --conjunction head --punctuation between $(LANGS)
+prague:
+	./transform.pl --family Prague   --head right            --shared head    --conjunction head    --punctuation between  $(LANGS)
 
-head_nearest:
-	./transform.pl --family Moscow,Stanford --head nearest $(LANGS)
+stanford:
+	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous $(LANGS)
 
-conj_prev:
-	./transform.pl --family Moscow --head right,left --conjunction previous --punctuation previous $(LANGS)
+moscow:
+	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous $(LANGS)
 
 stats:
 	treex Print::AtreeTransformationStats -p --jobs 50 -- \
@@ -36,7 +33,7 @@ table:
 clean:
 	rm tr-*
 
-real_clean_including_the_parsed_file_I_know_what_I_am_doing:
+real_clean_including_the_parsed_files_I_know_what_I_am_doing:
 	rm stats.raw  -rf
 	rm *cluster-run* -rf
 	rm $(DATADIR)/*/*/trans* -rf

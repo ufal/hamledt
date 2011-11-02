@@ -114,10 +114,10 @@ foreach my $language (@languages) {
                 foreach my $h (split /,/, $head) {
                     foreach my $s (split /,/, $shared) {
                         my $name = 'f'.uc(substr($f,0,1)).'p'.uc(substr($p,0,1)).'c'.uc(substr($c,0,1)).'h'.uc(substr($h,0,1)).'s'.uc(substr($s,0,1));
-                        my $command_line = 'treex '
+                        my $command_line = "treex -L$language "
                                          . "Util::Eval bundle='\$bundle->remove_zone(qw($language),qw(orig))' " # remove the original trees (before PDT styling)
-                                         . "A2A::CopyAtree source_language=$language language=$language selector=before " # storing trees before transformation
-                                         . "A2A::Transform::CoordStyle family=$f head=$h shared=$s conjunction=$c punctuation=$p language=$language "
+                                         . "A2A::CopyAtree source_language=$language selector=before " # storing trees before transformation
+                                         . "A2A::Transform::CoordStyle2 family=$f head=$h shared=$s conjunction=$c punctuation=$p from_style=fPhRsHcHpB "
                                          . "Util::Eval document='my \$path=\$document->path; \$path=~s/00._pdtstyle/trans_$name/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' "
                                          . " Write::Treex -- $data_dir/$language/treex/*_pdtstyle/t*/*.treex.gz";
                         open(BS, ">:utf8", "tr-$language-$name.sh") or die;
