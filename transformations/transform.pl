@@ -107,19 +107,25 @@ if (not @languages) {
 }
 
 foreach my $language (@languages) {
+    my $jobs = '';
+    if ($language =~ /en|de|cs|ru/){ # these datasets are bigger, so more jobs make it faster # TODO more elegant
+        $jobs = '-p -j 5';
+    }
     foreach my $f (split /,/, $family) {
         foreach my $p (split /,/, $punctuation) {
             foreach my $c (split /,/, $conjunction) {
                 next if ($f eq 'Prague' && $c ne 'head') || ($f ne 'Prague' && $c eq 'head');
                 foreach my $h (split /,/, $head) {
                     foreach my $s (split /,/, $shared) {
-                        my $name = 'f'.uc(substr($f,0,1)).'p'.uc(substr($p,0,1)).'c'.uc(substr($c,0,1)).'h'.uc(substr($h,0,1)).'s'.uc(substr($s,0,1));
-                        my $command_line = "treex -L$language "
+                        my $name = 'f'.uc(substr($f,0,1)).'h'.uc(substr($h,0,1)).'s'.uc(substr($s,0,1)).'c'.uc(substr($c,0,1)).'p'.uc(substr($p,0,1));
+                        my $command_line = "treex $jobs -L$language "
                                          . "Util::Eval bundle='\$bundle->remove_zone(qw($language),qw(orig))' " # remove the original trees (before PDT styling)
-                                         . "A2A::CopyAtree source_language=$language selector=before " # storing trees before transformation
-                                         . "A2A::Transform::CoordStyle2 family=$f head=$h shared=$s conjunction=$c punctuation=$p from_style=fPhRsHcHpB "
+                                         . "A2A::CopyAtree selector=before "                                    # store the trees before transformation to zone "before"
+                                         . "A2A::Transform::CoordStyle2 style=$name from_style=fPhRsHcHpB "     # transform the zone with empty selector
+                                         #. "A2A::CopyAtree selector=inverse "                                   # copy the trees after transformation to zone "inverse"
+                                         #. "A2A::Transform::CoordStyle2 from_style=$name style=fPhRsHcHpB selector=inverse "  # make the inverse transformation in zone "inverse"
                                          . "Util::Eval document='my \$path=\$document->path; \$path=~s/00._pdtstyle/trans_$name/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' "
-                                         . " Write::Treex -- $data_dir/$language/treex/*_pdtstyle/t*/*.treex.gz";
+                                         . "Write::Treex -- $data_dir/$language/treex/*_pdtstyle/t*/*.treex.gz";
                         open(BS, ">:utf8", "tr-$language-$name.sh") or die;
                         print BS "#!/bin/bash\n\n$command_line\n";
                         close BS;

@@ -23,12 +23,12 @@ moscow:
 	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous $(LANGS)
 
 stats:
-	treex Print::AtreeTransformationStats -p --jobs 50 -- \
+	treex Print::AtreeTransformationStats -p --jobs 100 -- \
 	$(DATADIR)/*/treex/trans*/*/*treex.gz \
 	> stats.raw
 
 table:
-	cat stats.raw | ./resume_stats.pl
+	cat stats.raw | ./resume_stats.pl | tee stats_table.tsv
 
 clean:
 	rm tr-*
