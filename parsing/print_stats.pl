@@ -5,7 +5,7 @@ use Getopt::Long;
 use Treex::Core::Config;
 use Text::Table;
 
-my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
+my $data_dir = Treex::Core::Config->share_dir()."/data/resources/normalized_treebanks/";
 
 my ($help, $mcd, $mcdproj, $malt, $maltsmf);
 my $filename = 'uastat.txt';

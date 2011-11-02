@@ -4,7 +4,7 @@ use warnings;
 my $ALPHA = 0.1;
 
 use Treex::Core::Config;
-my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
+my $data_dir = Treex::Core::Config->share_dir()."/data/resources/normalized_treebanks/";
 my @languages = qw(ar bg bn cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
 #my @languages = qw(cs);
 

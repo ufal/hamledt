@@ -9,7 +9,7 @@ use Treex::Core::Config;
 use lib '/home/zeman/lib';
 use dzsys;
 
-my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks";
+my $data_dir = Treex::Core::Config->share_dir()."/data/resources/normalized_treebanks";
 
 my ($help, $mcd, $mcdproj, $malt, $maltsmf, $new, $feat, $trans, $topdt, $wdirroot);
 $feat='conll'; # default

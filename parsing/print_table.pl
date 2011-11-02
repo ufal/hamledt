@@ -8,7 +8,7 @@ use Text::Table;
 use lib '/home/zeman/lib';
 use dzsys;
 
-my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
+my $data_dir = Treex::Core::Config->share_dir()."/data/resources/normalized_treebanks/";
 
 my ($help, $mcd, $mcdproj, $malt, $maltsmf, $wdirroot);
 my $filename = 'uas.txt';

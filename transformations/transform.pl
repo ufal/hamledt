@@ -41,10 +41,10 @@ sub usage {
 ";
 }
 
-my $data_dir = Treex::Core::Config::share_dir()."/data/resources/normalized_treebanks/";
+my $data_dir = Treex::Core::Config->share_dir()."/data/resources/normalized_treebanks/";
 
 sub find_available_languages {
-    my $share_dir = Treex::Core::Config::share_dir();
+    my $share_dir = Treex::Core::Config->share_dir();
     my @languages = grep {/^.{2,3}$/}
         map {/(\w+)$/;$1}
             grep {
@@ -58,7 +58,7 @@ sub find_available_languages {
 }
 
 sub find_available_transformers {
-    my $transformer_dir = Treex::Core::Config::lib_core_dir()."/../Block/A2A/Transform/";
+    my $transformer_dir = Treex::Core::Config->lib_core_dir()."/../Block/A2A/Transform/";
     my @transformers = grep {not /^(Base|Inv)/}
         map {/(\w+).pm$/;$1}
             glob "$transformer_dir/*.pm";
