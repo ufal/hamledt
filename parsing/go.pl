@@ -358,7 +358,7 @@ sub get_results
         # Read the score from the UAS file. Store it in a global hash called %value.
         if(!open(UAS, $uas_file))
         {
-            print STDERR ("Cannot read $uas_file: $!");
+            print STDERR ("Cannot read $language/$transformation/$uas_file: $!\n");
             next;
         }
         while (<UAS>)
