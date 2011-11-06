@@ -1,0 +1,724 @@
+ar 000_orig ar_mlt 0.799180327868853 
+ar 000_orig ar_smf 0.851288056206089 
+ar 000_orig ar_mcd 0.770296643247463 
+ar 000_orig ar_mcp 0.766588602654176 
+ar 001_pdtstyle ar_mlt 0.797228727556596 
+ar 001_pdtstyle ar_smf 0.850117096018735 
+ar 001_pdtstyle ar_mcd 0.773809523809524 
+ar 001_pdtstyle ar_mcp 0.767954722872756 
+ar trans_fPhRsHcHpB ar_mlt 0.792154566744731 79.73
+ar trans_fPhRsHcHpB ar_smf 0.845238095238095 85.02
+ar trans_fPhRsHcHpB ar_mcd 0.765417642466823 77.39
+ar trans_fPhRsHcHpB ar_mcp 0.764246682279469 76.80
+ar trans_fShLsNcBpP ar_mlt 0.836065573770492 79.73
+ar trans_fShLsNcBpP ar_smf 0.867291178766589 85.02
+ar trans_fShLsNcBpP ar_mcd 0.788446526151444 77.39
+ar trans_fShLsNcBpP ar_mcp 0.784933645589383 76.80
+ar trans_fShMsNcBpP ar_mlt 0.831772053083529 79.73
+ar trans_fShMsNcBpP ar_smf 0.864754098360656 85.02
+ar trans_fShMsNcBpP ar_mcd 0.787665886026542 77.39
+ar trans_fShMsNcBpP ar_mcp 0.784738485558158 76.80
+ar trans_fShRsNcBpP ar_mlt 0.812256049960968 79.73
+ar trans_fShRsNcBpP ar_smf 0.850312256049961 85.02
+ar trans_fShRsNcBpP ar_mcd 0.759172521467603 77.39
+ar trans_fShRsNcBpP ar_mcp 0.759172521467603 76.80
+bg 000_orig bg_mlt 0.888270980788675 
+bg 000_orig bg_smf 0.844961240310077 
+bg 000_orig bg_mcd 0.881530165149983 
+bg 000_orig bg_mcp 0.884057971014493 
+bg 001_pdtstyle bg_mlt 0.86922817660937 
+bg 001_pdtstyle bg_smf 0.909336029659589 
+bg 001_pdtstyle bg_mcd 0.861981799797776 
+bg 001_pdtstyle bg_mcp 0.84041118975396 
+bg trans_fPhRsHcHpB bg_mlt 0.871418941691945 86.93
+bg trans_fPhRsHcHpB bg_smf 0.905123019885406 90.94
+bg trans_fPhRsHcHpB bg_mcd 0.86484664644422 86.20
+bg trans_fPhRsHcHpB bg_mcp 0.843950117964274 84.05
+bg trans_fShLsNcBpP bg_mlt 0.890630266262218 86.93
+bg trans_fShLsNcBpP bg_smf 0.916413886080216 90.94
+bg trans_fShLsNcBpP bg_mcd 0.878159757330637 86.20
+bg trans_fShLsNcBpP bg_mcp 0.860970677451972 84.05
+bg trans_fShMsNcBpP bg_mlt 0.884732052578362 86.93
+bg trans_fShMsNcBpP bg_smf 0.909336029659589 90.94
+bg trans_fShMsNcBpP bg_mcd 0.875294910684193 86.20
+bg trans_fShMsNcBpP bg_mcp 0.854061341422312 84.05
+bg trans_fShRsNcBpP bg_mlt 0.875800471857095 86.93
+bg trans_fShRsNcBpP bg_smf 0.911695315133131 90.94
+bg trans_fShRsNcBpP bg_mcd 0.867374452308729 86.20
+bg trans_fShRsNcBpP bg_mcp 0.851027974384901 84.05
+bn 000_orig bn_mlt 0.810344827586207 
+bn 000_orig bn_smf 0.868226600985222 
+bn 000_orig bn_mcd 0.794334975369458 
+bn 000_orig bn_mcp 0.773399014778325 
+bn 001_pdtstyle bn_mlt 0.804187192118227 
+bn 001_pdtstyle bn_smf 0.868226600985222 
+bn 001_pdtstyle bn_mcd 0.800492610837438 
+bn 001_pdtstyle bn_mcp 0.778325123152709 
+bn trans_fPhRsHcHpB bn_mlt 0.806650246305419 80.42
+bn trans_fPhRsHcHpB bn_smf 0.869458128078818 86.83
+bn trans_fPhRsHcHpB bn_mcd 0.788177339901478 80.05
+bn trans_fPhRsHcHpB bn_mcp 0.779556650246305 77.84
+bn trans_fShLsNcBpP bn_mlt 0.811576354679803 80.42
+bn trans_fShLsNcBpP bn_smf 0.87192118226601 86.83
+bn trans_fShLsNcBpP bn_mcd 0.810344827586207 80.05
+bn trans_fShLsNcBpP bn_mcp 0.788177339901478 77.84
+bn trans_fShMsNcBpP bn_mlt 0.820197044334975 80.42
+bn trans_fShMsNcBpP bn_smf 0.879310344827586 86.83
+bn trans_fShMsNcBpP bn_mcd 0.800492610837438 80.05
+bn trans_fShMsNcBpP bn_mcp 0.788177339901478 77.84
+bn trans_fShRsNcBpP bn_mlt 0.818965517241379 80.42
+bn trans_fShRsNcBpP bn_smf 0.881773399014778 86.83
+bn trans_fShRsNcBpP bn_mcd 0.801724137931034 80.05
+bn trans_fShRsNcBpP bn_mcp 0.775862068965517 77.84
+ca 000_orig ca_mlt 0.900318979266348 
+ca 000_orig ca_smf 0.906499202551834 
+ca 000_orig ca_mcd 0.919856459330144 
+ca 000_orig ca_mcp 0.919457735247209 
+ca 001_pdtstyle ca_mlt 0.888157894736842 
+ca 001_pdtstyle ca_smf 0.90311004784689 
+ca 001_pdtstyle ca_mcd 0.915869218500797 
+ca 001_pdtstyle ca_mcp 0.915271132376396 
+cs 000_orig cs_mlt 0.775190516511431 
+cs 000_orig cs_smf 0.849280270956816 
+cs 000_orig cs_mcd 0.809483488569009 
+cs 000_orig cs_mcp 0.802709568162574 
+cs 001_pdtstyle cs_mlt 0.775613886536833 
+cs 001_pdtstyle cs_smf 0.851820491109229 
+cs 001_pdtstyle cs_mcd 0.809483488569009 
+cs 001_pdtstyle cs_mcp 0.800381033022862 
+cs trans_fPhRsHcHpB cs_mlt 0.776672311600339 77.57
+cs trans_fPhRsHcHpB cs_smf 0.859441151566469 85.19
+cs trans_fPhRsHcHpB cs_mcd 0.806519898391194 80.95
+cs trans_fPhRsHcHpB cs_mcp 0.806096528365792 80.04
+cs trans_fShLsNcBpP cs_mlt 0.814563928873836 77.57
+cs trans_fShLsNcBpP cs_smf 0.870025402201524 85.19
+cs trans_fShLsNcBpP cs_mcd 0.835309060118544 80.95
+cs trans_fShLsNcBpP cs_mcp 0.8268416596105 80.04
+cs trans_fShMsNcBpP cs_mlt 0.806731583403895 77.57
+cs trans_fShMsNcBpP cs_smf 0.861134631668078 85.19
+cs trans_fShMsNcBpP cs_mcd 0.819432684165961 80.95
+cs trans_fShMsNcBpP cs_mcp 0.814987298899238 80.04
+cs trans_fShRsNcBpP cs_mlt 0.794665537679932 77.57
+cs trans_fShRsNcBpP cs_smf 0.863886536833192 85.19
+cs trans_fShRsNcBpP cs_mcd 0.830440304826418 80.95
+cs trans_fShRsNcBpP cs_mcp 0.81731583403895 80.04
+da 000_orig da_mlt 0.853212576896787 
+da 000_orig da_smf 0.889268626110731 
+da 000_orig da_mcd 0.880724538619275 
+da 000_orig da_mcp 0.876281613123718 
+da 001_pdtstyle da_mlt 0.819377990430622 
+da 001_pdtstyle da_smf 0.866541353383459 
+da 001_pdtstyle da_mcd 0.867737525632262 
+da 001_pdtstyle da_mcp 0.859535201640465 
+da trans_fPhRsHcHpB da_mlt 0.821257689678742 81.94
+da trans_fPhRsHcHpB da_smf 0.867566643882433 86.66
+da trans_fPhRsHcHpB da_mcd 0.864832535885168 86.78
+da trans_fPhRsHcHpB da_mcp 0.861073137388927 85.96
+da trans_fShLsNcBpP da_mlt 0.843301435406699 81.94
+da trans_fShLsNcBpP da_smf 0.876110731373889 86.66
+da trans_fShLsNcBpP da_mcd 0.871326042378674 86.78
+da trans_fShLsNcBpP da_mcp 0.864661654135338 85.96
+da trans_fShMsNcBpP da_mlt 0.842105263157895 81.94
+da trans_fShMsNcBpP da_smf 0.876281613123718 86.66
+da trans_fShMsNcBpP da_mcd 0.87200956937799 86.78
+da trans_fShMsNcBpP da_mcp 0.86244019138756 85.96
+da trans_fShRsNcBpP da_mlt 0.824504442925496 81.94
+da trans_fShRsNcBpP da_smf 0.8838004101162 86.66
+da trans_fShRsNcBpP da_mcd 0.859193438140807 86.78
+da trans_fShRsNcBpP da_mcp 0.854921394395079 85.96
+de 000_orig de_mlt 0.834295882371305 
+de 000_orig de_smf 0.81587737645553 
+de 000_orig de_mcd 0.889301657665532 
+de 000_orig de_mcp 0.872631348921425 
+de 001_pdtstyle de_mlt 0.820060562544876 
+de 001_pdtstyle de_smf 0.881372334779758 
+de 001_pdtstyle de_mcd 0.887990509786782 
+de 001_pdtstyle de_mcp 0.849811132269847 
+de trans_fPhRsHcHpB de_mlt 0.819685948865233 82.01
+de trans_fPhRsHcHpB de_smf 0.881060156713389 88.14
+de trans_fPhRsHcHpB de_mcd 0.887397371460681 88.80
+de trans_fPhRsHcHpB de_mcp 0.849967221303031 84.99
+de trans_fShLsNcBpP de_mlt 0.836855742515531 82.01
+de trans_fShLsNcBpP de_smf 0.892829269815503 88.14
+de trans_fShLsNcBpP de_mcd 0.895732525832735 88.80
+de trans_fShLsNcBpP de_mcp 0.86198607685824 84.99
+de trans_fShMsNcBpP de_mlt 0.833015952299191 82.01
+de trans_fShMsNcBpP de_smf 0.888302687853151 88.14
+de trans_fShMsNcBpP de_mcd 0.893141447881872 88.80
+de trans_fShMsNcBpP de_mcp 0.857678019542347 84.99
+de trans_fShRsNcBpP de_mlt 0.829644429182406 82.01
+de trans_fShRsNcBpP de_smf 0.888021727593419 88.14
+de trans_fShRsNcBpP de_mcd 0.893266319108419 88.80
+de trans_fShRsNcBpP de_mcp 0.858864296194549 84.99
+el 000_orig el_mlt 0.784970857618651 
+el 000_orig el_smf 0.819109075770192 
+el 000_orig el_mcd 0.77789342214821 
+el 000_orig el_mcp 0.76977518734388 
+el 001_pdtstyle el_mlt 0.782264779350541 
+el 001_pdtstyle el_smf 0.820358034970858 
+el 001_pdtstyle el_mcd 0.778726061615321 
+el 001_pdtstyle el_mcp 0.776019983347211 
+el trans_fPhRsHcHpB el_mlt 0.783930058284763 78.23
+el trans_fPhRsHcHpB el_smf 0.823480432972523 82.04
+el trans_fPhRsHcHpB el_mcd 0.782264779350541 77.88
+el trans_fPhRsHcHpB el_mcp 0.772273105745212 77.61
+el trans_fShLsNcBpP el_mlt 0.811615320566195 78.23
+el trans_fShLsNcBpP el_smf 0.833472106577852 82.04
+el trans_fShLsNcBpP el_mcd 0.802248126561199 77.88
+el trans_fShLsNcBpP el_mcp 0.793921731890092 77.61
+el trans_fShMsNcBpP el_mlt 0.801831806827644 78.23
+el trans_fShMsNcBpP el_smf 0.82639467110741 82.04
+el trans_fShMsNcBpP el_mcd 0.794129891756869 77.88
+el trans_fShMsNcBpP el_mcp 0.784762697751873 77.61
+el trans_fShRsNcBpP el_mlt 0.798293089092423 78.23
+el trans_fShRsNcBpP el_smf 0.836178184845962 82.04
+el trans_fShRsNcBpP el_mcd 0.801415487094088 77.88
+el trans_fShRsNcBpP el_mcp 0.794129891756869 77.61
+en 000_orig en_mlt 0.881952769120115 
+en 000_orig en_smf 0.897686406137617 
+en 000_orig en_mcd 0.911561975545433 
+en 000_orig en_mcp 0.911921601534404 
+en 001_pdtstyle en_mlt 0.855789978422441 
+en 001_pdtstyle en_smf 0.887317190122273 
+en 001_pdtstyle en_mcd 0.898375689283145 
+en 001_pdtstyle en_mcp 0.895768400863102 
+en trans_fPhRsHcHpB en_mlt 0.856389355070726 85.58
+en trans_fPhRsHcHpB en_smf 0.887976504435387 88.74
+en trans_fPhRsHcHpB en_mcd 0.898645408774874 89.84
+en trans_fPhRsHcHpB en_mcp 0.896607528170702 89.58
+en trans_fShLsNcBpP en_mlt 0.873052025893071 85.58
+en trans_fShLsNcBpP en_smf 0.888785662910573 88.74
+en trans_fShLsNcBpP en_mcd 0.902211699832175 89.84
+en trans_fShLsNcBpP en_mcp 0.898435626947974 89.58
+en trans_fShMsNcBpP en_mlt 0.872122992088228 85.58
+en trans_fShMsNcBpP en_smf 0.887347158954687 88.74
+en trans_fShMsNcBpP en_mcd 0.899124910093503 89.84
+en trans_fShMsNcBpP en_mcp 0.895978182690002 89.58
+en trans_fShRsNcBpP en_mlt 0.86549988012467 85.58
+en trans_fShRsNcBpP en_smf 0.886118436825701 88.74
+en trans_fShRsNcBpP en_mcd 0.900233756892831 89.84
+en trans_fShRsNcBpP en_mcp 0.897416686645888 89.58
+es 000_orig es_mlt 0.869202668360864 
+es 000_orig es_smf 0.90398665819568 
+es 000_orig es_mcd 0.881035578144854 
+es 000_orig es_mcp 0.887488087674714 
+es 001_pdtstyle es_mlt 0.849050984752224 
+es 001_pdtstyle es_smf 0.898685673443456 
+es 001_pdtstyle es_mcd 0.876985387547649 
+es 001_pdtstyle es_mcp 0.877084656925032 
+es trans_fPhRsHcHpB es_mlt 0.848495076238882 84.91
+es trans_fPhRsHcHpB es_smf 0.897415025412961 89.87
+es trans_fPhRsHcHpB es_mcd 0.875853716645489 87.70
+es trans_fPhRsHcHpB es_mcp 0.876052255400254 87.71
+es trans_fShLsNcBpP es_mlt 0.868448221092757 84.91
+es trans_fShLsNcBpP es_smf 0.904602128335451 89.87
+es trans_fShLsNcBpP es_mcd 0.885601969504447 87.70
+es trans_fShLsNcBpP es_mcp 0.886118170266836 87.71
+es trans_fShMsNcBpP es_mlt 0.864159783989835 84.91
+es trans_fShMsNcBpP es_smf 0.900512229987294 89.87
+es trans_fShMsNcBpP es_mcd 0.883140088945362 87.70
+es trans_fShMsNcBpP es_mcp 0.88145250952986 87.71
+es trans_fShRsNcBpP es_mlt 0.85026207115629 84.91
+es trans_fShRsNcBpP es_smf 0.898348157560356 89.87
+es trans_fShRsNcBpP es_mcd 0.880261277001271 87.70
+es trans_fShRsNcBpP es_mcp 0.881690756035578 87.71
+Parser mlt score not found in uas-mlt.txt.
+Parser smf score not found in uas-smf.txt.
+Parser mcd score not found in uas-mcd.txt.
+Parser mcp score not found in uas-mcp.txt.
+et 000_orig et_mlt 0.268869849041208 
+et 000_orig et_smf 0.135454916360669 
+et 000_orig et_mcd 0.467156262749898 
+et 000_orig et_mcp 0.445124439004488 
+et 001_pdtstyle et_mlt 0.498572011423909 
+et 001_pdtstyle et_smf 0.545491636066911 
+et 001_pdtstyle et_mcd 0.521419828641371 
+et 001_pdtstyle et_mcp 0.525091799265606 
+eu 000_orig eu_mlt 0.745379445533464 
+eu 000_orig eu_smf 0.759101092131056 
+eu 000_orig eu_mcd 0.777303276393167 
+eu 000_orig eu_mcp 0.769462335480258 
+eu 001_pdtstyle eu_mlt 0.703374404928591 
+eu 001_pdtstyle eu_smf 0.789414729767572 
+eu 001_pdtstyle eu_mcd 0.728577429291515 
+eu 001_pdtstyle eu_mcp 0.716395967516102 
+eu trans_fPhRsHcHpB eu_mlt 0.701694203304397 70.34
+eu trans_fPhRsHcHpB eu_smf 0.787034444133296 78.95
+eu trans_fPhRsHcHpB eu_mcd 0.730747689722767 72.86
+eu trans_fPhRsHcHpB eu_mcp 0.716535984318118 71.64
+eu trans_fShLsNcBpP eu_mlt 0.691683001960235 70.34
+eu trans_fShLsNcBpP eu_smf 0.777163259591151 78.95
+eu trans_fShLsNcBpP eu_mcd 0.728647437692523 72.86
+eu trans_fShLsNcBpP eu_mcp 0.70939512741529 71.64
+eu trans_fShMsNcBpP eu_mlt 0.688462615513862 70.34
+eu trans_fShMsNcBpP eu_smf 0.781573788854663 78.95
+eu trans_fShMsNcBpP eu_mcd 0.72801736208345 72.86
+eu trans_fShMsNcBpP eu_mcp 0.706874824978997 71.64
+eu trans_fShRsNcBpP eu_mlt 0.704284514141697 70.34
+eu trans_fShRsNcBpP eu_smf 0.794945393447214 78.95
+eu trans_fShRsNcBpP eu_mcd 0.730887706524783 72.86
+eu trans_fShRsNcBpP eu_mcp 0.715275833099972 71.64
+fi 000_orig fi_mlt 0.72 
+fi 000_orig fi_smf 0.778064516129032 
+fi 000_orig fi_mcd 0.713917050691244 
+fi 000_orig fi_mcp 0.714285714285714 
+fi 001_pdtstyle fi_mlt 0.727004608294931 
+fi 001_pdtstyle fi_smf 0.790414746543779 
+fi 001_pdtstyle fi_mcd 0.736958525345622 
+fi 001_pdtstyle fi_mcp 0.739723502304148 
+fi trans_fPhRsHcHpB fi_mlt 0.726820276497696 72.71
+fi trans_fPhRsHcHpB fi_smf 0.786728110599078 79.05
+fi trans_fPhRsHcHpB fi_mcd 0.736958525345622 73.70
+fi trans_fPhRsHcHpB fi_mcp 0.727741935483871 73.98
+fi trans_fShLsNcBpP fi_mlt 0.753179723502304 72.71
+fi trans_fShLsNcBpP fi_smf 0.792811059907834 79.05
+fi trans_fShLsNcBpP fi_mcd 0.746175115207373 73.70
+fi trans_fShLsNcBpP fi_mcp 0.735115207373272 73.98
+fi trans_fShMsNcBpP fi_mlt 0.749124423963134 72.71
+fi trans_fShMsNcBpP fi_smf 0.789124423963134 79.05
+fi trans_fShMsNcBpP fi_mcd 0.739723502304148 73.70
+fi trans_fShMsNcBpP fi_mcp 0.734746543778802 73.98
+fi trans_fShRsNcBpP fi_mlt 0.72331797235023 72.71
+fi trans_fShRsNcBpP fi_smf 0.80184331797235 79.05
+fi trans_fShRsNcBpP fi_mcd 0.744331797235023 73.70
+fi trans_fShRsNcBpP fi_mcp 0.732903225806452 73.98
+grc 000_orig grc_mlt 0.546329113924051 
+grc 000_orig grc_smf 0.636962025316456 
+grc 000_orig grc_mcd 0.564725738396624 
+grc 000_orig grc_mcp 0.508185654008439 
+grc 001_pdtstyle grc_mlt 0.546835443037975 
+grc 001_pdtstyle grc_smf 0.635611814345992 
+grc 001_pdtstyle grc_mcd 0.561181434599156 
+grc 001_pdtstyle grc_mcp 0.509029535864979 
+grc trans_fPhRsHcHpB grc_mlt 0.546160337552743 54.69
+grc trans_fPhRsHcHpB grc_smf 0.639324894514768 63.57
+grc trans_fPhRsHcHpB grc_mcd 0.55831223628692 56.12
+grc trans_fPhRsHcHpB grc_mcp 0.506666666666667 50.91
+grc trans_fShLsNcBpP grc_mlt 0.585316455696202 54.69
+grc trans_fShLsNcBpP grc_smf 0.67493670886076 63.57
+grc trans_fShLsNcBpP grc_mcd 0.600675105485232 56.12
+grc trans_fShLsNcBpP grc_mcp 0.54210970464135 50.91
+grc trans_fShMsNcBpP grc_mlt 0.588860759493671 54.69
+grc trans_fShMsNcBpP grc_smf 0.65957805907173 63.57
+grc trans_fShMsNcBpP grc_mcd 0.590717299578059 56.12
+grc trans_fShMsNcBpP grc_mcp 0.528945147679325 50.91
+grc trans_fShRsNcBpP grc_mlt 0.591223628691983 54.69
+grc trans_fShRsNcBpP grc_smf 0.674767932489451 63.57
+grc trans_fShRsNcBpP grc_mcd 0.596962025316456 56.12
+grc trans_fShRsNcBpP grc_mcp 0.546160337552743 50.91
+hi 000_orig hi_mlt 0.868975903614458 
+hi 000_orig hi_smf 0.919308814204185 
+hi 000_orig hi_mcd 0.76926125554851 
+hi 000_orig hi_mcp 0.759908053265694 
+hi 001_pdtstyle hi_mlt 0.86429930247305 
+hi 001_pdtstyle hi_smf 0.916613823715916 
+hi 001_pdtstyle hi_mcd 0.770925808497146 
+hi 001_pdtstyle hi_mcp 0.763237159162968 
+hi trans_fPhRsHcHpB hi_mlt 0.86429930247305 86.43
+hi trans_fPhRsHcHpB hi_smf 0.916613823715916 91.67
+hi trans_fPhRsHcHpB hi_mcd 0.770925808497146 77.10
+hi trans_fPhRsHcHpB hi_mcp 0.763237159162968 76.33
+hi trans_fShLsNcBpP hi_mlt 0.870640456563095 86.43
+hi trans_fShLsNcBpP hi_smf 0.916534559289791 91.67
+hi trans_fShLsNcBpP hi_mcd 0.785510462904249 77.10
+hi trans_fShLsNcBpP hi_mcp 0.784797083069119 76.33
+hi trans_fShMsNcBpP hi_mlt 0.87642675967026 86.43
+hi trans_fShMsNcBpP hi_smf 0.918595434369055 91.67
+hi trans_fShMsNcBpP hi_mcd 0.79422954977806 77.10
+hi trans_fShMsNcBpP hi_mcp 0.788126188966392 76.33
+hi trans_fShRsNcBpP hi_mlt 0.875317057704502 86.43
+hi trans_fShRsNcBpP hi_smf 0.91851616994293 91.67
+hi trans_fShRsNcBpP hi_mcd 0.775998731769182 77.10
+hi trans_fShRsNcBpP hi_mcp 0.777266962587191 76.33
+hu 000_orig hu_mlt 0.759803921568627 
+hu 000_orig hu_smf 0.742238562091503 
+hu 000_orig hu_mcd 0.804193899782135 
+hu 000_orig hu_mcp 0.793572984749455 
+hu 001_pdtstyle hu_mlt 0.786083877995643 
+hu 001_pdtstyle hu_smf 0.832516339869281 
+hu 001_pdtstyle hu_mcd 0.825435729847495 
+hu 001_pdtstyle hu_mcp 0.804193899782135 
+hu trans_fPhRsHcHpB hu_mlt 0.783632897603486 78.61
+hu trans_fPhRsHcHpB hu_smf 0.834286492374728 83.26
+hu trans_fPhRsHcHpB hu_mcd 0.824210239651416 82.55
+hu trans_fPhRsHcHpB hu_mcp 0.802015250544662 80.42
+hu trans_fShLsNcBpP hu_mlt 0.775326797385621 78.61
+hu trans_fShLsNcBpP hu_smf 0.825844226579521 83.26
+hu trans_fShLsNcBpP hu_mcd 0.811138344226579 82.55
+hu trans_fShLsNcBpP hu_mcp 0.788126361655773 80.42
+hu trans_fShMsNcBpP hu_mlt 0.778186274509804 78.61
+hu trans_fShMsNcBpP hu_smf 0.819716775599129 83.26
+hu trans_fShMsNcBpP hu_mcd 0.812227668845316 82.55
+hu trans_fShMsNcBpP hu_mcp 0.794253812636166 80.42
+hu trans_fShRsNcBpP hu_mlt 0.780909586056645 78.61
+hu trans_fShRsNcBpP hu_smf 0.826797385620915 83.26
+hu trans_fShRsNcBpP hu_mcd 0.811274509803922 82.55
+hu trans_fShRsNcBpP hu_mcp 0.793300653594771 80.42
+it 000_orig it_mlt 0.836538461538462 
+it 000_orig it_smf 0.855572998430141 
+it 000_orig it_mcd 0.852825745682888 
+it 000_orig it_mcp 0.854395604395604 
+it 001_pdtstyle it_mlt 0.824175824175824 
+it 001_pdtstyle it_smf 0.840659340659341 
+it 001_pdtstyle it_mcd 0.841248037676609 
+it 001_pdtstyle it_mcp 0.845957613814757 
+it trans_fPhRsHcHpB it_mlt 0.823390894819466 82.42
+it trans_fPhRsHcHpB it_smf 0.845172684458399 84.07
+it trans_fPhRsHcHpB it_mcd 0.846153846153846 84.13
+it trans_fPhRsHcHpB it_mcp 0.844191522762951 84.60
+it trans_fShLsNcBpP it_mlt 0.841640502354788 82.42
+it trans_fShLsNcBpP it_smf 0.852629513343799 84.07
+it trans_fShLsNcBpP it_mcd 0.854591836734694 84.13
+it trans_fShLsNcBpP it_mcp 0.857535321821036 84.60
+it trans_fShMsNcBpP it_mlt 0.840266875981162 82.42
+it trans_fShMsNcBpP it_smf 0.849293563579278 84.07
+it trans_fShMsNcBpP it_mcd 0.846938775510204 84.13
+it trans_fShMsNcBpP it_mcp 0.852040816326531 84.60
+it trans_fShRsNcBpP it_mlt 0.82967032967033 82.42
+it trans_fShRsNcBpP it_smf 0.839089481946625 84.07
+it trans_fShRsNcBpP it_mcd 0.847135007849294 84.13
+it trans_fShRsNcBpP it_mcp 0.84850863422292 84.60
+ja 000_orig ja_mlt 0.927158115916652 
+ja 000_orig ja_smf 0.802136228331291 
+ja 000_orig ja_mcd 0.938364559621783 
+ja 000_orig ja_mcp 0.939064962353353 
+ja 001_pdtstyle ja_mlt 0.924881807039047 
+ja 001_pdtstyle ja_smf 0.921729994746979 
+ja 001_pdtstyle ja_mcd 0.935037646646822 
+ja 001_pdtstyle ja_mcp 0.931535632988969 
+ja trans_fPhRsHcHpB ja_mlt 0.925407109087725 92.49
+ja trans_fPhRsHcHpB ja_smf 0.921905095429872 92.18
+ja trans_fPhRsHcHpB ja_mcd 0.931885834354754 93.51
+ja trans_fPhRsHcHpB ja_mcp 0.93293643845211 93.16
+ja trans_fShLsNcBpP ja_mlt 0.925757310453511 92.49
+ja trans_fShLsNcBpP ja_smf 0.923656102258799 92.18
+ja trans_fShLsNcBpP ja_mcd 0.932761337769217 93.51
+ja trans_fShLsNcBpP ja_mcp 0.931010330940291 93.16
+ja trans_fShMsNcBpP ja_mlt 0.928734022062686 92.49
+ja trans_fShMsNcBpP ja_smf 0.925757310453511 92.18
+ja trans_fShMsNcBpP ja_mcd 0.935212747329715 93.51
+ja trans_fShMsNcBpP ja_mcp 0.935212747329715 93.16
+ja trans_fShRsNcBpP ja_mlt 0.929784626160042 92.49
+ja trans_fShRsNcBpP ja_smf 0.928383820696901 92.18
+ja trans_fShRsNcBpP ja_mcd 0.935738049378393 93.51
+ja trans_fShRsNcBpP ja_mcp 0.937839257573104 93.16
+la 000_orig la_mlt 0.423888076842765 
+la 000_orig la_smf 0.525997076633953 
+la 000_orig la_mcd 0.505324702443099 
+la 000_orig la_mcp 0.458759657548549 
+la 001_pdtstyle la_mlt 0.422635205679683 
+la 001_pdtstyle la_smf 0.519941532679056 
+la 001_pdtstyle la_mcd 0.501774900814366 
+la 001_pdtstyle la_mcp 0.459594904990603 
+la trans_fPhRsHcHpB la_mlt 0.425976195447901 42.27
+la trans_fPhRsHcHpB la_smf 0.515138859887242 52.00
+la trans_fPhRsHcHpB la_mcd 0.505533514303612 50.18
+la trans_fPhRsHcHpB la_mcp 0.456253915222385 45.96
+la trans_fShLsNcBpP la_mlt 0.496972228022552 42.27
+la trans_fShLsNcBpP la_smf 0.562956775944874 52.00
+la trans_fShLsNcBpP la_mcd 0.541657966172479 50.18
+la trans_fShLsNcBpP la_mcp 0.489246189183546 45.96
+la trans_fShMsNcBpP la_mlt 0.486322823136354 42.27
+la trans_fShMsNcBpP la_smf 0.567133013155147 52.00
+la trans_fShMsNcBpP la_mcd 0.524326581749843 50.18
+la trans_fShMsNcBpP la_mcp 0.499269158488202 45.96
+la trans_fShRsNcBpP la_mlt 0.452912925454166 42.27
+la trans_fShRsNcBpP la_smf 0.550428064314053 52.00
+la trans_fShRsNcBpP la_mcd 0.515556483608269 50.18
+la trans_fShRsNcBpP la_mcp 0.476091041971184 45.96
+nl 000_orig nl_mlt 0.762041181736795 
+nl 000_orig nl_smf 0.825783348254252 
+nl 000_orig nl_mcd 0.8408236347359 
+nl 000_orig nl_mcp 0.798209489704566 
+nl 001_pdtstyle nl_mlt 0.75810205908684 
+nl 001_pdtstyle nl_smf 0.818979409131602 
+nl 001_pdtstyle nl_mcd 0.839212175470009 
+nl 001_pdtstyle nl_mcp 0.787466427931961 
+nl trans_fPhRsHcHpB nl_mlt 0.759355416293644 75.82
+nl trans_fPhRsHcHpB nl_smf 0.809310653536258 81.90
+nl trans_fPhRsHcHpB nl_mcd 0.837421665174575 83.93
+nl trans_fPhRsHcHpB nl_mcp 0.789615040286482 78.75
+nl trans_fShLsNcBpP nl_mlt 0.776365264100269 75.82
+nl trans_fShLsNcBpP nl_smf 0.817009847806625 81.90
+nl trans_fShLsNcBpP nl_mcd 0.840465532676813 83.93
+nl trans_fShLsNcBpP nl_mcp 0.787824529991047 78.75
+nl trans_fShMsNcBpP nl_mlt 0.769203222918532 75.82
+nl trans_fShMsNcBpP nl_smf 0.810922112802149 81.90
+nl trans_fShMsNcBpP nl_mcd 0.83348254252462 83.93
+nl trans_fShMsNcBpP nl_mcp 0.782273948075201 78.75
+nl trans_fShRsNcBpP nl_mlt 0.770277529095792 75.82
+nl trans_fShRsNcBpP nl_smf 0.821307072515667 81.90
+nl trans_fShRsNcBpP nl_mcd 0.84189794091316 83.93
+nl trans_fShRsNcBpP nl_mcp 0.796060877350045 78.75
+pt 000_orig pt_mlt 0.853417419464803 
+pt 000_orig pt_smf 0.778251235725243 
+pt 000_orig pt_mcd 0.878131924322482 
+pt 000_orig pt_mcp 0.876597920572695 
+pt 001_pdtstyle pt_mlt 0.840122720299983 
+pt 001_pdtstyle pt_smf 0.88426793932163 
+pt 001_pdtstyle pt_mcd 0.867223453212886 
+pt 001_pdtstyle pt_mcp 0.861257883074825 
+pt trans_fPhRsHcHpB pt_mlt 0.839781830577808 84.02
+pt trans_fPhRsHcHpB pt_smf 0.88426793932163 88.43
+pt trans_fPhRsHcHpB pt_mcd 0.865689449463099 86.73
+pt trans_fPhRsHcHpB pt_mcp 0.859212544741776 86.13
+pt trans_fShLsNcBpP pt_mlt 0.851031191409579 84.02
+pt trans_fShLsNcBpP pt_smf 0.885631498210329 88.43
+pt trans_fShLsNcBpP pt_mcd 0.877961479461394 86.73
+pt trans_fShLsNcBpP pt_mcp 0.871655019601159 86.13
+pt trans_fShMsNcBpP pt_mlt 0.851712970853929 84.02
+pt trans_fShMsNcBpP pt_smf 0.885461053349242 88.43
+pt trans_fShMsNcBpP pt_mcd 0.877620589739219 86.73
+pt trans_fShMsNcBpP pt_mcp 0.870802795295722 86.13
+pt trans_fShRsNcBpP pt_mlt 0.839100051133458 84.02
+pt trans_fShRsNcBpP pt_smf 0.877961479461394 88.43
+pt trans_fShRsNcBpP pt_mcd 0.869268791545935 86.73
+pt trans_fShRsNcBpP pt_mcp 0.867905232657235 86.13
+ro 000_orig ro_mlt 0.858712121212121 
+ro 000_orig ro_smf 0.860606060606061 
+ro 000_orig ro_mcd 0.882954545454545 
+ro 000_orig ro_mcp 0.876136363636364 
+ro 001_pdtstyle ro_mlt 0.854545454545454 
+ro 001_pdtstyle ro_smf 0.865530303030303 
+ro 001_pdtstyle ro_mcd 0.885227272727273 
+ro 001_pdtstyle ro_mcp 0.882575757575758 
+ro trans_fPhRsHcHpB ro_mlt 0.854545454545454 85.46
+ro trans_fPhRsHcHpB ro_smf 0.865530303030303 86.56
+ro trans_fPhRsHcHpB ro_mcd 0.885227272727273 88.53
+ro trans_fPhRsHcHpB ro_mcp 0.882575757575758 88.26
+ro trans_fShLsNcBpP ro_mlt 0.854924242424242 85.46
+ro trans_fShLsNcBpP ro_smf 0.856818181818182 86.56
+ro trans_fShLsNcBpP ro_mcd 0.876515151515151 88.53
+ro trans_fShLsNcBpP ro_mcp 0.879166666666667 88.26
+ro trans_fShMsNcBpP ro_mlt 0.858333333333333 85.46
+ro trans_fShMsNcBpP ro_smf 0.863257575757576 86.56
+ro trans_fShMsNcBpP ro_mcd 0.883333333333333 88.53
+ro trans_fShMsNcBpP ro_mcp 0.879166666666667 88.26
+ro trans_fShRsNcBpP ro_mlt 0.859848484848485 85.46
+ro trans_fShRsNcBpP ro_smf 0.860984848484848 86.56
+ro trans_fShRsNcBpP ro_mcd 0.876515151515151 88.53
+ro trans_fShRsNcBpP ro_mcp 0.874242424242424 88.26
+ru 000_orig ru_mlt 0.840659340659341 
+ru 000_orig ru_smf 0.860323886639676 
+ru 000_orig ru_mcd 0.728166570271833 
+ru 000_orig ru_mcp 0.728166570271833 
+ru 001_pdtstyle ru_mlt 0.8582995951417 
+ru 001_pdtstyle ru_smf 0.874204742625795 
+ru 001_pdtstyle ru_mcd 0.812608444187392 
+ru 001_pdtstyle ru_mcp 0.801908617698091 
+ru trans_fPhRsHcHpB ru_mlt 0.827935222672065 85.83
+ru trans_fPhRsHcHpB ru_smf 0.832562174667438 87.43
+ru trans_fPhRsHcHpB ru_mcd 0.793233082706767 81.27
+ru trans_fPhRsHcHpB ru_mcp 0.784268363215732 80.20
+ru trans_fShLsNcBpP ru_mlt 0.878542510121457 85.83
+ru trans_fShLsNcBpP ru_smf 0.879120879120879 87.43
+ru trans_fShLsNcBpP ru_mcd 0.820416425679584 81.27
+ru trans_fShLsNcBpP ru_mcp 0.814921920185078 80.20
+ru trans_fShMsNcBpP ru_mlt 0.87593984962406 85.83
+ru trans_fShMsNcBpP ru_smf 0.867842683632157 87.43
+ru trans_fShMsNcBpP ru_mcd 0.825621746674378 81.27
+ru trans_fShMsNcBpP ru_mcp 0.807113938692886 80.20
+ru trans_fShRsNcBpP ru_mlt 0.863215731636784 85.83
+ru trans_fShRsNcBpP ru_smf 0.87218045112782 87.43
+ru trans_fShRsNcBpP ru_mcd 0.814343551185656 81.27
+ru trans_fShRsNcBpP ru_mcp 0.796124927703875 80.20
+sl 000_orig sl_mlt 0.758841940532081 
+sl 000_orig sl_smf 0.807668231611894 
+sl 000_orig sl_mcd 0.793114241001565 
+sl 000_orig sl_mcp 0.78810641627543 
+sl 001_pdtstyle sl_mlt 0.76150234741784 
+sl 001_pdtstyle sl_smf 0.813458528951487 
+sl 001_pdtstyle sl_mcd 0.808137715179969 
+sl 001_pdtstyle sl_mcp 0.775117370892019 
+sl trans_fPhRsHcHpB sl_mlt 0.763223787167449 76.16
+sl trans_fPhRsHcHpB sl_smf 0.812050078247261 81.35
+sl trans_fPhRsHcHpB sl_mcd 0.813615023474178 80.82
+sl trans_fPhRsHcHpB sl_mcp 0.777151799687011 77.52
+sl trans_fShLsNcBpP sl_mlt 0.787323943661972 76.16
+sl trans_fShLsNcBpP sl_smf 0.837245696400626 81.35
+sl trans_fShLsNcBpP sl_mcd 0.826760563380282 80.82
+sl trans_fShLsNcBpP sl_mcp 0.787636932707355 77.52
+sl trans_fShMsNcBpP sl_mlt 0.785602503912363 76.16
+sl trans_fShMsNcBpP sl_smf 0.826291079812207 81.35
+sl trans_fShMsNcBpP sl_mcd 0.825821596244131 80.82
+sl trans_fShMsNcBpP sl_mcp 0.791549295774648 77.52
+sl trans_fShRsNcBpP sl_mlt 0.77151799687011 76.16
+sl trans_fShRsNcBpP sl_smf 0.825978090766823 81.35
+sl trans_fShRsNcBpP sl_mcd 0.823161189358372 80.82
+sl trans_fShRsNcBpP sl_mcp 0.788888888888889 77.52
+sv 000_orig sv_mlt 0.881541725601132 
+sv 000_orig sv_smf 0.869519094766619 
+sv 000_orig sv_mcd 0.871463932107497 
+sv 000_orig sv_mcp 0.866690240452617 
+sv 001_pdtstyle sv_mlt 0.834865629420085 
+sv 001_pdtstyle sv_smf 0.833804809052334 
+sv 001_pdtstyle sv_mcd 0.840876944837341 
+sv 001_pdtstyle sv_mcp 0.837340876944837 
+sv trans_fPhRsHcHpB sv_mlt 0.833628005657709 83.49
+sv trans_fPhRsHcHpB sv_smf 0.829031117397454 83.39
+sv trans_fPhRsHcHpB sv_mcd 0.841584158415842 84.09
+sv trans_fPhRsHcHpB sv_mcp 0.841230551626591 83.74
+sv trans_fShLsNcBpP sv_mlt 0.861032531824611 83.49
+sv trans_fShLsNcBpP sv_smf 0.853076379066478 83.39
+sv trans_fShLsNcBpP sv_mcd 0.859264497878359 84.09
+sv trans_fShLsNcBpP sv_mcp 0.850247524752475 83.74
+sv trans_fShMsNcBpP sv_mlt 0.853960396039604 83.49
+sv trans_fShMsNcBpP sv_smf 0.845473833097595 83.39
+sv trans_fShMsNcBpP sv_mcd 0.856966053748232 84.09
+sv trans_fShMsNcBpP sv_mcp 0.847949080622348 83.74
+sv trans_fShRsNcBpP sv_mlt 0.845650636492221 83.49
+sv trans_fShRsNcBpP sv_smf 0.84494342291372 83.39
+sv trans_fShRsNcBpP sv_mcd 0.850777934936351 84.09
+sv trans_fShRsNcBpP sv_mcp 0.847949080622348 83.74
+ta 000_orig ta_mlt 0.788335847159377 
+ta 000_orig ta_smf 0.791855203619909 
+ta 000_orig ta_mcd 0.773755656108597 
+ta 000_orig ta_mcp 0.787833081950729 
+ta 001_pdtstyle ta_mlt 0.786827551533434 
+ta 001_pdtstyle ta_smf 0.790346907993967 
+ta 001_pdtstyle ta_mcd 0.770236299648064 
+ta 001_pdtstyle ta_mcp 0.771744595274007 
+ta trans_fPhRsHcHpB ta_mlt 0.788838612368024 78.69
+ta trans_fPhRsHcHpB ta_smf 0.789844142785319 79.04
+ta trans_fPhRsHcHpB ta_mcd 0.772750125691302 77.03
+ta trans_fPhRsHcHpB ta_mcp 0.774761186525892 77.18
+ta trans_fShLsNcBpP ta_mlt 0.792357968828557 78.69
+ta trans_fShLsNcBpP ta_smf 0.805429864253394 79.04
+ta trans_fShLsNcBpP ta_mcd 0.772750125691302 77.03
+ta trans_fShLsNcBpP ta_mcp 0.776772247360483 77.18
+ta trans_fShMsNcBpP ta_mlt 0.812971342383107 78.69
+ta trans_fShMsNcBpP ta_smf 0.804424333836099 79.04
+ta trans_fShMsNcBpP ta_mcd 0.786827551533434 77.03
+ta trans_fShMsNcBpP ta_mcp 0.783810960281549 77.18
+ta trans_fShRsNcBpP ta_mlt 0.817496229260935 78.69
+ta trans_fShRsNcBpP ta_smf 0.804424333836099 79.04
+ta trans_fShRsNcBpP ta_mcd 0.783308195072901 77.03
+ta trans_fShRsNcBpP ta_mcp 0.789844142785319 77.18
+te 000_orig te_mlt 0.871021775544389 
+te 000_orig te_smf 0.922948073701843 
+te 000_orig te_mcd 0.867671691792295 
+te 000_orig te_mcp 0.872696817420435 
+te 001_pdtstyle te_mlt 0.88107202680067 
+te 001_pdtstyle te_smf 0.921273031825796 
+te 001_pdtstyle te_mcd 0.85929648241206 
+te 001_pdtstyle te_mcp 0.867671691792295 
+te trans_fPhRsHcHpB te_mlt 0.88107202680067 88.11
+te trans_fPhRsHcHpB te_smf 0.921273031825796 92.13
+te trans_fPhRsHcHpB te_mcd 0.85929648241206 85.93
+te trans_fPhRsHcHpB te_mcp 0.867671691792295 86.77
+te trans_fShLsNcBpP te_mlt 0.90787269681742 88.11
+te trans_fShLsNcBpP te_smf 0.921273031825796 92.13
+te trans_fShLsNcBpP te_mcd 0.879396984924623 85.93
+te trans_fShLsNcBpP te_mcp 0.882747068676717 86.77
+te trans_fShMsNcBpP te_mlt 0.899497487437186 88.11
+te trans_fShMsNcBpP te_smf 0.922948073701843 92.13
+te trans_fShMsNcBpP te_mcd 0.879396984924623 85.93
+te trans_fShMsNcBpP te_mcp 0.879396984924623 86.77
+te trans_fShRsNcBpP te_mlt 0.901172529313233 88.11
+te trans_fShRsNcBpP te_smf 0.931323283082077 92.13
+te trans_fShRsNcBpP te_mcd 0.884422110552764 85.93
+te trans_fShRsNcBpP te_mcp 0.886097152428811 86.77
+tr 000_orig tr_mlt 0.779968978506537 
+tr 000_orig tr_smf 0.847551517837359 
+tr 000_orig tr_mcd 0.812763128739198 
+tr 000_orig tr_mcp 0.792820740084201 
+tr 001_pdtstyle tr_mlt 0.769554619986705 
+tr 001_pdtstyle tr_smf 0.824728561932196 
+tr 001_pdtstyle tr_mcd 0.7994682029692 
+tr 001_pdtstyle tr_mcp 0.775315754487037 
+tr trans_fPhRsHcHpB tr_mlt 0.769554619986705 76.96
+tr trans_fPhRsHcHpB tr_smf 0.829824950144028 82.48
+tr trans_fPhRsHcHpB tr_mcd 0.7981387103922 79.95
+tr trans_fPhRsHcHpB tr_mcp 0.773764679813871 77.54
+tr trans_fShLsNcBpP tr_mlt 0.760469754043873 76.96
+tr trans_fShLsNcBpP tr_smf 0.829603368047862 82.48
+tr trans_fShLsNcBpP tr_mcd 0.793485486372701 79.95
+tr trans_fShLsNcBpP tr_mcp 0.765122978063372 77.54
+tr trans_fShMsNcBpP tr_mlt 0.778196321737204 76.96
+tr trans_fShMsNcBpP tr_smf 0.843341458010193 82.48
+tr trans_fShMsNcBpP tr_mcd 0.807445158431199 79.95
+tr trans_fShMsNcBpP tr_mcp 0.777309993352537 77.54
+tr trans_fShRsNcBpP tr_mlt 0.776645247064037 76.96
+tr trans_fShRsNcBpP tr_smf 0.839131398183027 82.48
+tr trans_fShRsNcBpP tr_mcd 0.810104143585198 79.95
+tr trans_fShRsNcBpP tr_mcp 0.779304232218037 77.54
+
+**********  mlt  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et    eu    fi    grc   hi   
+0000_constituents                                                                                          
+000_orig          79.92 88.83 81.04 90.04 77.52 85.33 83.43 78.50 88.20 86.93 26.89 74.54 72.00 54.64 86.90
+001_pdtstyle      79.73 86.93 80.42 88.82 77.57 81.94 82.01 78.23 85.58 84.91 49.86 70.34 72.71 54.69 86.43
+trans_fPhRsHcHpB  -0.51  0.22  0.25        0.10  0.19 -0.04  0.17  0.06 -0.06       -0.17 -0.02 -0.07  0.00
+trans_fShLsNcBpP   3.88  2.14  0.74        3.89  2.40  1.68  2.94  1.73  1.94       -1.17  2.61  3.85  0.64
+trans_fShMsNcBpP   3.45  1.55  1.60        3.11  2.28  1.30  1.96  1.64  1.51       -1.49  2.21  4.20  1.22
+trans_fShRsNcBpP   1.50  0.66  1.48        1.90  0.52  0.96  1.60  0.97  0.12        0.09 -0.37  4.44  1.11
+
+trans             hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                0      0     0.01  
+000_orig          75.99 83.66 92.72 42.39 76.21 85.35 85.88 84.07 75.89 88.16 78.84 87.11 78.00 28      0    78.18  
+001_pdtstyle      78.61 82.42 92.49 42.27 75.82 84.02 85.46 85.83 76.16 83.49 78.69 88.11 76.96 28      0    78.24  
+trans_fPhRsHcHpB  -0.24 -0.08  0.06  0.33  0.12 -0.04 -0.00 -3.03  0.17 -0.12  0.20  0.00  0.00 11     11    -0.09  
+trans_fShLsNcBpP  -1.07  1.75  0.09  7.43  1.82  1.09  0.04  2.03  2.58  2.62  0.55  2.68 -0.91 23      3     1.85  
+trans_fShMsNcBpP  -0.79  1.61  0.39  6.37  1.11  1.16  0.38  1.77  2.41  1.91  2.61  1.84  0.86 24      2     1.78  
+trans_fShRsNcBpP  -0.51  0.55  0.49  3.03  1.21 -0.10  0.53  0.50  1.00  1.08  3.06  2.01  0.71 23      3     1.10  
+
+**********  smf  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et    eu    fi    grc   hi   
+0000_constituents                                                                                          
+000_orig          85.13 84.50 86.83 90.65 84.93 88.93 81.59 81.92 89.77 90.40 13.55 75.92 77.81 63.70 91.94
+001_pdtstyle      85.02 90.94 86.83 90.32 85.19 86.66 88.14 82.04 88.74 89.87 54.55 78.95 79.05 63.57 91.67
+trans_fPhRsHcHpB  -0.49 -0.42  0.12        0.76  0.10 -0.03  0.31  0.06 -0.12       -0.24 -0.37  0.37 -0.00
+trans_fShLsNcBpP   1.71  0.71  0.37        1.82  0.96  1.15  1.31  0.14  0.60       -1.23  0.24  3.93 -0.01
+trans_fShMsNcBpP   1.46 -0.00  1.11        0.93  0.97  0.70  0.60 -0.00  0.19       -0.79 -0.13  2.39  0.19
+trans_fShRsNcBpP   0.02  0.23  1.35        1.20  1.73  0.67  1.58 -0.12 -0.03        0.55  1.14  3.91  0.19
+
+trans             hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                0      0     0.01  
+000_orig          74.23 85.56 80.22 52.60 82.58 77.83 86.07 86.04 80.77 86.96 79.19 92.30 84.76 28      0    79.89  
+001_pdtstyle      83.26 84.07 92.18 52.00 81.90 88.43 86.56 87.43 81.35 83.39 79.04 92.13 82.48 28      0    82.71  
+trans_fPhRsHcHpB   0.17  0.45  0.02 -0.48 -0.96  0.00 -0.00 -4.17 -0.14 -0.48 -0.05  0.00  0.51 10     12    -0.19  
+trans_fShLsNcBpP  -0.67  1.20  0.19  4.30 -0.19  0.14 -0.87  0.49  2.38  1.92  1.51  0.00  0.49 20      5     0.87  
+trans_fShMsNcBpP  -1.28  0.86  0.40  4.72 -0.80  0.12 -0.23 -0.64  1.28  1.16  1.41  0.17  1.86 18      6     0.65  
+trans_fShRsNcBpP  -0.58 -0.16  0.66  3.05  0.24 -0.63 -0.46 -0.21  1.25  1.11  1.41  1.01  1.44 19      7     0.80  
+
+**********  mcd  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et    eu    fi    grc   hi   
+0000_constituents                                                                                          
+000_orig          77.03 88.16 79.44 91.99 80.95 88.08 88.94 77.79 91.16 88.11 46.72 77.74 71.40 56.48 76.93
+001_pdtstyle      77.39 86.20 80.05 91.59 80.95 86.78 88.80 77.88 89.84 87.70 52.15 72.86 73.70 56.12 77.10
+trans_fPhRsHcHpB  -0.84  0.29 -1.23       -0.29 -0.29 -0.06  0.35  0.03 -0.11        0.22  0.00 -0.28 -0.00
+trans_fShLsNcBpP   1.46  1.62  0.99        2.59  0.36  0.78  2.35  0.39  0.87        0.01  0.92  3.95  1.46
+trans_fShMsNcBpP   1.38  1.33  0.00        1.00  0.43  0.52  1.54  0.08  0.62       -0.05  0.28  2.96  2.33
+trans_fShRsNcBpP  -1.47  0.54  0.13        2.10 -0.86  0.53  2.27  0.19  0.33        0.23  0.74  3.58  0.50
+
+trans             hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                0      0     0.01  
+000_orig          80.42 85.29 93.84 50.54 84.09 87.82 88.30 72.82 79.32 87.15 77.38 86.77 81.28 28      0    79.86  
+001_pdtstyle      82.55 84.13 93.51 50.18 83.93 86.73 88.53 81.27 80.82 84.09 77.03 85.93 79.95 28      0    79.92  
+trans_fPhRsHcHpB  -0.12  0.49 -0.32  0.38 -0.18 -0.16 -0.00 -1.94  0.55  0.07  0.25  0.00 -0.13  9     13    -0.12  
+trans_fShLsNcBpP  -1.43  1.33 -0.23  3.99  0.12  1.07 -0.87  0.78  1.86  1.84  0.25  2.01 -0.60 22      4     1.08  
+trans_fShMsNcBpP  -1.32  0.57  0.02  2.26 -0.58  1.04 -0.19  1.30  1.77  1.61  1.66  2.01  0.80 21      4     0.90  
+trans_fShRsNcBpP  -1.42  0.59  0.07  1.38  0.26  0.20 -0.87  0.17  1.50  0.99  1.31  2.52  1.07 22      4     0.64  
+
+**********  mcp  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et    eu    fi    grc   hi   
+0000_constituents                                                                                          
+000_orig          76.66 88.41 77.34 91.95 80.28 87.63 87.27 76.98 91.20 88.75 44.52 76.95 71.43 50.82 76.00
+001_pdtstyle      76.80 84.05 77.84 91.53 80.04 85.96 84.99 77.61 89.58 87.71 52.51 71.64 73.98 50.91 76.33
+trans_fPhRsHcHpB  -0.37  0.35  0.12        0.57  0.15  0.01 -0.38  0.09 -0.10        0.02 -1.20 -0.24 -0.00
+trans_fShLsNcBpP   1.70  2.05  0.98        2.65  0.51  1.21  1.79  0.27  0.91       -0.70 -0.46  3.31  2.15
+trans_fShMsNcBpP   1.68  1.36  0.98        1.46  0.29  0.78  0.87  0.02  0.44       -0.95 -0.50  1.99  2.49
+trans_fShRsNcBpP  -0.88  1.06 -0.25        1.70 -0.46  0.90  1.81  0.17  0.46       -0.11 -0.68  3.71  1.40
+
+trans             hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                0      0     0.01  
+000_orig          79.36 85.44 93.91 45.88 79.83 87.66 87.62 72.82 78.82 86.67 78.79 87.27 79.29 28      0    78.92  
+001_pdtstyle      80.42 84.60 93.16 45.96 78.75 86.13 88.26 80.20 77.52 83.74 77.18 86.77 77.54 28      0    78.64  
+trans_fPhRsHcHpB  -0.21 -0.18  0.14 -0.33  0.22 -0.20  0.00 -1.77  0.20  0.39  0.30  0.00 -0.16 12     11    -0.09  
+trans_fShLsNcBpP  -1.60  1.16 -0.05  2.97  0.04  1.04 -0.34  1.30  1.25  1.29  0.50  1.51 -1.02 20      6     0.94  
+trans_fShMsNcBpP  -0.99  0.61  0.37  3.97 -0.52  0.96 -0.34  0.52  1.64  1.06  1.21  1.17  0.20 21      5     0.80  
+trans_fShRsNcBpP  -1.08  0.26  0.63  1.65  0.86  0.67 -0.83 -0.58  1.37  1.06  1.81  1.84  0.40 18      8     0.65  
