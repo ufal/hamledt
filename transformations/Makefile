@@ -1,6 +1,6 @@
 # Rerunning one language (e.g. because its normalization changed):
 # make LANGS=grc all
-LANGS= ar bg bn cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
+LANGS= ar bg bn ca cs da de el en es et eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 
 SHELL=/bin/bash
 
