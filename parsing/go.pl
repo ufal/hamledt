@@ -6,11 +6,12 @@
 sub usage
 {
     print STDERR ("go.pl [OPTIONS] <ACTION>\n");
-    print STDERR ("\tActions: pretrain|train|parse|table\n");
+    print STDERR ("\tActions: pretrain|train|parse|table|clean\n");
     print STDERR ("\tExperiment folder tree is created/expected at ./pokus (currently fixed).\n");
     print STDERR ("\tSource data path is fixed at \$TMT_SHARED.\n");
     print STDERR ("\tThe script knows the list of available languages.\n");
     print STDERR ("\tThe list of transformations is created by scanning subfolders of the language.\n");
+    print STDERR ("\tThe 'clean' action currently only removes the cluster logs (.o123456 files).\n");
     print STDERR ("\tOptions:\n");
     print STDERR ("\t-languages en,cs,ar ... instead of all languages, process only those specified here.\n");
 }
@@ -41,6 +42,8 @@ my $action_name = sort_actions(@ARGV);
 my $action = get_action($action_name);
 my $wdir = 'pokus'; ###!!!
 $wdir = dzsys::absolutize_path($wdir);
+# We need to know what jobs are running if we are going to clean the disk.
+my %qjobs = cluster::qstat0();
 loop($targets, $action, $wdir);
 print_table() if($action_name eq 'table');
 
@@ -104,6 +107,7 @@ sub sort_actions
         'train' => 20,
         'parse' => 40,
         'table' => 60,
+        'clean' => 80,
     );
     # Check that all action identifiers are known.
     my @unknown = grep {!exists($ordering{$_})} (@actions);
@@ -152,6 +156,10 @@ sub get_action
     elsif($action_name eq 'table')
     {
         $action = \&get_results;
+    }
+    elsif($action_name eq 'clean')
+    {
+        $action = \&clean;
     }
     else
     {
@@ -445,6 +453,68 @@ sub print_table
             print($table->select(0 .. ($n_langs/2)+1)->table());
             print("\n");
             print($table->select(0,($n_langs/2)+2 .. $n_langs+3)->table());
+        }
+    }
+}
+
+
+
+#------------------------------------------------------------------------------
+# Removes temporary files and cluster job logs.
+#------------------------------------------------------------------------------
+sub clean
+{
+    my $language = shift;
+    my $transformation = shift;
+    # Scan the current folder for cluster logs.
+    opendir(DIR, '.') or die("Cannot read folder $language/$transformation: $!");
+    my @files = readdir(DIR);
+    closedir(DIR);
+    foreach my $file (@files)
+    {
+        # Does the file name look like a cluster log?
+        if($file =~ m/^(.*)\.o(\d+)$/)
+        {
+            my $script = $1;
+            my $jobid = $2;
+            # If the job is running or waiting in the queue we should not remove its files.
+            unless(exists($qjobs{$jobid}))
+            {
+                # Remove the log.
+                print STDERR ("Removing $language/$transformation/$file\n");
+                unlink($file) or print STDERR ("Warning: Cannot remove $language/$transformation/$file: $!\n");
+                ###!!!
+                # We do not know whether we can also remove the script.
+                # It could be reused by another job which could be still running.
+                # We would have to wait until we visit all logs of that script.
+            }
+            else
+            {
+                print STDERR ("Keeping $language/$transformation/$file because the job no. $jobid is still on the cluster.\n");
+            }
+        }
+        # Does it look like the name of the folder created for a parallelized Treex run?
+        elsif($file =~ m/^\d\d\d-cluster-run-[A-Za-z0-9]+$/)
+        {
+            my $removable = 1;
+            opendir(DIR, $file);
+            my @files1 = readdir(DIR);
+            closedir(DIR);
+            foreach my $file1 (@files1)
+            {
+                # Is this the reason why we cannot remove the whole folder?
+                if($file1 =~ m/\.o(\d+)$/ && exists($qjobs{$jobid}))
+                {
+                    print STDERR ("Keeping $language/$transformation/$file because the job no. $jobid is still on the cluster.\n");
+                    $removable = 0;
+                    last;
+                }
+            }
+            if($removable)
+            {
+                print STDERR ("Removing $language/$transformation/$file\n");
+                system("rm -rf $file");
+            }
         }
     }
 }
