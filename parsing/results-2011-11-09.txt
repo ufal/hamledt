@@ -1,0 +1,120 @@
+Parser mlt score not found in es/trans_fMhLsNcBpP/uas-mlt.txt.
+Parser smf score not found in es/trans_fMhLsNcBpP/uas-smf.txt.
+Parser mcd score not found in es/trans_fMhLsNcBpP/uas-mcd.txt.
+Parser mcp score not found in es/trans_fMhLsNcBpP/uas-mcp.txt.
+Parser mlt score not found in es/trans_fMhMsNcBpP/uas-mlt.txt.
+Parser smf score not found in es/trans_fMhMsNcBpP/uas-smf.txt.
+Parser mcd score not found in es/trans_fMhMsNcBpP/uas-mcd.txt.
+Parser mcp score not found in es/trans_fMhMsNcBpP/uas-mcp.txt.
+Parser mlt score not found in es/trans_fMhRsNcBpP/uas-mlt.txt.
+Parser smf score not found in es/trans_fMhRsNcBpP/uas-smf.txt.
+Parser mcd score not found in es/trans_fMhRsNcBpP/uas-mcd.txt.
+Parser mcp score not found in es/trans_fMhRsNcBpP/uas-mcp.txt.
+Parser mlt score not found in et/0000_constituents/uas-mlt.txt.
+Parser smf score not found in et/0000_constituents/uas-smf.txt.
+Parser mcd score not found in et/0000_constituents/uas-mcd.txt.
+Parser mcp score not found in et/0000_constituents/uas-mcp.txt.
+
+**********  mlt  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et    eu    fi    grc   hi   
+0000_constituents                                                                                          
+000_orig          79.92 88.83 81.04 90.04 77.52 85.33 83.43 78.50 88.20 86.93 26.89 74.54 72.00 54.64 86.90
+001_pdtstyle      79.73 86.93 80.42 88.82 77.57 81.94 82.01 78.23 85.58 84.90 49.86 70.34 72.71 54.69 86.43
+trans_fMhLsNcBpP                                                                                           
+trans_fMhMsNcBpP                                                                                           
+trans_fMhRsNcBpP                                                                                           
+trans_fPhRsHcHpB  -0.51  0.22  0.25        0.10  0.19 -0.04  0.17  0.06 -0.05       -0.17 -0.02 -0.07  0.00
+trans_fShLsNcBpP   3.88  2.14  0.74        3.89  2.40  1.68  2.94  1.73  1.95       -1.17  2.61  3.85  0.64
+trans_fShMsNcBpP   3.45  1.55  1.60        3.11  2.28  1.30  1.96  1.64  1.52       -1.49  2.21  4.20  1.22
+trans_fShRsNcBpP   1.50  0.66  1.48        1.90  0.52  0.96  1.60  0.97  0.13        0.09 -0.37  4.44  1.11
+
+trans             hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                0      0     0.01  
+000_orig          75.99 83.66 92.72 42.39 76.21 85.35 85.88 84.07 75.89 88.16 78.84 87.11 78.00 28      0    78.18  
+001_pdtstyle      78.61 82.42 92.49 42.27 75.82 84.02 85.46 85.83 76.16 83.49 78.69 88.11 76.96 28      0    78.24  
+trans_fMhLsNcBpP                                                                                 0      0     0.01  
+trans_fMhMsNcBpP                                                                                 0      0     0.01  
+trans_fMhRsNcBpP                                                                                 0      0     0.01  
+trans_fPhRsHcHpB  -0.24 -0.08  0.06  0.33  0.12 -0.04 -0.00 -3.03  0.17 -0.12  0.20  0.00  0.00 11     11    -0.09  
+trans_fShLsNcBpP  -1.07  1.75  0.09  7.43  1.82  1.09  0.04  2.03  2.58  2.62  0.55  2.68 -0.91 23      3     1.85  
+trans_fShMsNcBpP  -0.79  1.61  0.39  6.37  1.11  1.16  0.38  1.77  2.41  1.91  2.61  1.84  0.86 24      2     1.78  
+trans_fShRsNcBpP  -0.51  0.55  0.49  3.03  1.21 -0.10  0.53  0.50  1.00  1.08  3.06  2.01  0.71 23      3     1.10  
+
+**********  smf  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et    eu    fi    grc   hi   
+0000_constituents                                                                                          
+000_orig          85.13 84.50 86.83 90.65 84.93 88.93 81.59 81.92 89.77 90.40 13.55 75.92 77.81 63.70 91.94
+001_pdtstyle      85.02 90.94 86.83 90.32 85.19 86.66 88.14 82.04 88.74 89.87 54.55 78.95 79.05 63.57 91.67
+trans_fMhLsNcBpP                                                                                           
+trans_fMhMsNcBpP                                                                                           
+trans_fMhRsNcBpP                                                                                           
+trans_fPhRsHcHpB  -0.49 -0.42  0.12        0.76  0.10 -0.03  0.31  0.06 -0.12       -0.24 -0.37  0.37 -0.00
+trans_fShLsNcBpP   1.71  0.71  0.37        1.82  0.96  1.15  1.31  0.14  0.60       -1.23  0.24  3.93 -0.01
+trans_fShMsNcBpP   1.46 -0.00  1.11        0.93  0.97  0.70  0.60 -0.00  0.19       -0.79 -0.13  2.39  0.19
+trans_fShRsNcBpP   0.02  0.23  1.35        1.20  1.73  0.67  1.58 -0.12 -0.03        0.55  1.14  3.91  0.19
+
+trans             hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                0      0     0.01  
+000_orig          74.23 85.56 80.22 52.60 82.58 77.83 86.07 86.04 80.77 86.96 79.19 92.30 84.76 28      0    79.89  
+001_pdtstyle      83.26 84.07 92.18 52.00 81.90 88.43 86.56 87.43 81.35 83.39 79.04 92.13 82.48 28      0    82.71  
+trans_fMhLsNcBpP                                                                                 0      0     0.01  
+trans_fMhMsNcBpP                                                                                 0      0     0.01  
+trans_fMhRsNcBpP                                                                                 0      0     0.01  
+trans_fPhRsHcHpB   0.17  0.45  0.02 -0.48 -0.96  0.00 -0.00 -4.17 -0.14 -0.48 -0.05  0.00  0.51 10     12    -0.19  
+trans_fShLsNcBpP  -0.67  1.20  0.19  4.30 -0.19  0.14 -0.87  0.49  2.38  1.92  1.51  0.00  0.49 20      5     0.87  
+trans_fShMsNcBpP  -1.28  0.86  0.40  4.72 -0.80  0.12 -0.23 -0.64  1.28  1.16  1.41  0.17  1.86 18      6     0.65  
+trans_fShRsNcBpP  -0.58 -0.16  0.66  3.05  0.24 -0.63 -0.46 -0.21  1.25  1.11  1.41  1.01  1.44 19      7     0.80  
+
+**********  mcd  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et    eu    fi    grc   hi   
+0000_constituents                                                                                          
+000_orig          77.03 88.16 79.44 91.99 80.95 88.08 88.94 77.79 91.16 88.11 46.72 77.74 71.40 56.48 76.93
+001_pdtstyle      77.39 86.20 80.05 91.59 80.95 86.78 88.80 77.88 89.84 87.70 52.15 72.86 73.70 56.12 77.10
+trans_fMhLsNcBpP                                                                                           
+trans_fMhMsNcBpP                                                                                           
+trans_fMhRsNcBpP                                                                                           
+trans_fPhRsHcHpB  -0.84  0.29 -1.23       -0.29 -0.29 -0.06  0.35  0.03 -0.11        0.22  0.00 -0.28 -0.00
+trans_fShLsNcBpP   1.46  1.62  0.99        2.59  0.36  0.78  2.35  0.39  0.87        0.01  0.92  3.95  1.46
+trans_fShMsNcBpP   1.38  1.33  0.00        1.00  0.43  0.52  1.54  0.08  0.62       -0.05  0.28  2.96  2.33
+trans_fShRsNcBpP  -1.47  0.54  0.13        2.10 -0.86  0.53  2.27  0.19  0.33        0.23  0.74  3.58  0.50
+
+trans             hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                0      0     0.01  
+000_orig          80.42 85.29 93.84 50.54 84.09 87.82 88.30 72.82 79.32 87.15 77.38 86.77 81.28 28      0    79.86  
+001_pdtstyle      82.55 84.13 93.51 50.18 83.93 86.73 88.53 81.27 80.82 84.09 77.03 85.93 79.95 28      0    79.92  
+trans_fMhLsNcBpP                                                                                 0      0     0.01  
+trans_fMhMsNcBpP                                                                                 0      0     0.01  
+trans_fMhRsNcBpP                                                                                 0      0     0.01  
+trans_fPhRsHcHpB  -0.12  0.49 -0.32  0.38 -0.18 -0.16 -0.00 -1.94  0.55  0.07  0.25  0.00 -0.13  9     13    -0.12  
+trans_fShLsNcBpP  -1.43  1.33 -0.23  3.99  0.12  1.07 -0.87  0.78  1.86  1.84  0.25  2.01 -0.60 22      4     1.08  
+trans_fShMsNcBpP  -1.32  0.57  0.02  2.26 -0.58  1.04 -0.19  1.30  1.77  1.61  1.66  2.01  0.80 21      4     0.90  
+trans_fShRsNcBpP  -1.42  0.59  0.07  1.38  0.26  0.20 -0.87  0.17  1.50  0.99  1.31  2.52  1.07 22      4     0.64  
+
+**********  mcp  **********
+
+trans             ar    bg    bn    ca    cs    da    de    el    en    es    et    eu    fi    grc   hi   
+0000_constituents                                                                                          
+000_orig          76.66 88.41 77.34 91.95 80.28 87.63 87.27 76.98 91.20 88.75 44.52 76.95 71.43 50.82 76.00
+001_pdtstyle      76.80 84.05 77.84 91.53 80.04 85.96 84.99 77.61 89.58 87.71 52.51 71.64 73.98 50.91 76.33
+trans_fMhLsNcBpP                                                                                           
+trans_fMhMsNcBpP                                                                                           
+trans_fMhRsNcBpP                                                                                           
+trans_fPhRsHcHpB  -0.37  0.35  0.12        0.57  0.15  0.01 -0.38  0.09 -0.10        0.02 -1.20 -0.24 -0.00
+trans_fShLsNcBpP   1.70  2.05  0.98        2.65  0.51  1.21  1.79  0.27  0.91       -0.70 -0.46  3.31  2.15
+trans_fShMsNcBpP   1.68  1.36  0.98        1.46  0.29  0.78  0.87  0.02  0.44       -0.95 -0.50  1.99  2.49
+trans_fShRsNcBpP  -0.88  1.06 -0.25        1.70 -0.46  0.90  1.81  0.17  0.46       -0.11 -0.68  3.71  1.40
+
+trans             hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr    better worse average
+0000_constituents                                                                                0      0     0.01  
+000_orig          79.36 85.44 93.91 45.88 79.83 87.66 87.62 72.82 78.82 86.67 78.79 87.27 79.29 28      0    78.92  
+001_pdtstyle      80.42 84.60 93.16 45.96 78.75 86.13 88.26 80.20 77.52 83.74 77.18 86.77 77.54 28      0    78.64  
+trans_fMhLsNcBpP                                                                                 0      0     0.01  
+trans_fMhMsNcBpP                                                                                 0      0     0.01  
+trans_fMhRsNcBpP                                                                                 0      0     0.01  
+trans_fPhRsHcHpB  -0.21 -0.18  0.14 -0.33  0.22 -0.20  0.00 -1.77  0.20  0.39  0.30  0.00 -0.16 12     11    -0.09  
+trans_fShLsNcBpP  -1.60  1.16 -0.05  2.97  0.04  1.04 -0.34  1.30  1.25  1.29  0.50  1.51 -1.02 20      6     0.94  
+trans_fShMsNcBpP  -0.99  0.61  0.37  3.97 -0.52  0.96 -0.34  0.52  1.64  1.06  1.21  1.17  0.20 21      5     0.80  
+trans_fShRsNcBpP  -1.08  0.26  0.63  1.65  0.86  0.67 -0.83 -0.58  1.37  1.06  1.81  1.84  0.40 18      8     0.65  
