@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
-# Processes selected languages and transformations.
+# Processes selected languages and transformations (train, parse, eval, clean etc.)
+# Provides the unified necessary infrastructure for looping through all the sub-experiment subfolders.
 # Copyright © 2011 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
@@ -332,8 +333,7 @@ sub parse
         # Note: the trees in 000_orig should be compared against the original gold tree.
         # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
         # so we do not select 'orig' here.
-###!!!        $scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='' ";
-        $scenario .= "Eval::AtreeUAS eval_is_member=0 eval_is_shared_modifier=0 selector='' ";
+        $scenario .= "Eval::AtreeUAS selector='' ";
         # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
         my $uas_file = "uas-$parser.txt";
         print STDERR ("Creating script $scriptname.\n");
@@ -373,19 +373,22 @@ sub get_results
         {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
-            next unless($sys eq $language.'_'.$parser);
-            print("$language $transformation $sys $score $value{$language}{'001_pdtstyle'}{$parser}\n");
-            $score = $score ? 100 * $score : 0;
-            # Store score differences instead of scores for transformed trees.
-            if($trans !~ /00/ && defined($value{$language}{'001_pdtstyle'}{$parser}))
+            if($sys =~ m/^UAS(pm?s?)\(${language}_${parser}\)$/)
             {
-                $score -= $value{$language}{'001_pdtstyle'}{$parser};
+                my $uasparams = $1;
+                #print("$language $transformation $sys $score $value{$language}{'001_pdtstyle'}{$parser}\n");
+                $score = $score ? 100 * $score : 0;
+                # Store score differences instead of scores for transformed trees.
+                if($trans !~ /00/ && defined($value{$language}{'001_pdtstyle'}{$parser}{$uasparams}))
+                {
+                    $score -= $value{$language}{'001_pdtstyle'}{$parser}{$uasparams};
+                }
+                $value{$language}{$transformation}{$parser}{$uasparams} = round($score);
             }
-            $value{$language}{$transformation}{$parser} = round($score);
         }
-        if(!defined($value{$language}{$transformation}{$parser}))
+        if(!defined($value{$language}{$transformation}{$parser}{p}))
         {
-            print("Parser $parser score not found in $uas_file.\n");
+            print("Parser $parser score not found in $language/$transformation/$uas_file.\n");
         }
     }
 }
@@ -431,11 +434,13 @@ sub print_table
             my $cnt = 0;
             foreach my $language (@languages)
             {
-                push(@row, $value{$language}{$trans}{$parser});
-                next if(!$value{$language}{$trans}{$parser} || !$value{$language}{'001_pdtstyle'}{$parser});
-                $better++ if($value{$language}{$trans}{$parser} > $signif_diff);
-                $worse++ if($value{$language}{$trans}{$parser} < -$signif_diff);
-                $diff += $value{$language}{$trans}{$parser};
+                my $out = $value{$language}{$trans}{$parser}{p};
+                #$out .= '/'.$value{$language}{$trans}{$parser}{pms};
+                push(@row, $out);
+                next if(!$value{$language}{$trans}{$parser}{p} || !$value{$language}{'001_pdtstyle'}{$parser}{p});
+                $better++ if($value{$language}{$trans}{$parser}{p} > $signif_diff);
+                $worse++ if($value{$language}{$trans}{$parser}{p} < -$signif_diff);
+                $diff += $value{$language}{$trans}{$parser}{p};
                 $cnt++;
             }
             # Warning: $cnt can be zero if we do not have $value for either this transformation or for 001_pdtstyle.
