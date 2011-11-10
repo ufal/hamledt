@@ -221,10 +221,12 @@ sub create_conll_training_data
     $writeparam .= 'cpos_attribute=conll/cpos ';
     $writeparam .= 'pos_attribute=conll/pos ';
     $writeparam .= 'feat_attribute=conll/feat ';
-    $writeparam .= 'deprel_attribute='.($transformation eq '000_orig' ? 'conll/deprel' : 'afun').' ';
-    $writeparam .= 'is_member_within_afun=1 ';
-    $writeparam .= 'is_shared_modifier_within_afun=1 ';
-    $writeparam .= 'is_coord_conjunction_within_afun=1 ';
+    # Jednorázový pokus: odstranit z trénovacích dat všechny syntaktické značky.
+    #$writeparam .= 'deprel_attribute='.($transformation eq '000_orig' ? 'conll/deprel' : 'afun').' ';
+    $writeparam .= 'deprel_attribute=_ ';
+    #$writeparam .= 'is_member_within_afun=1 ';
+    #$writeparam .= 'is_shared_modifier_within_afun=1 ';
+    #$writeparam .= 'is_coord_conjunction_within_afun=1 ';
     print SCR ("Write::CoNLLX $writeparam ");
     print SCR ("-- $data_dir/$language/treex/$transformation/train/*.treex.gz > $filename1\n");
     print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");

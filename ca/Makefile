@@ -4,15 +4,15 @@ IN       = $(DATADIR)/source
 DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle
 TREEX    = treex -L$(LANGCODE) -p
-IMPORT   = Read::CoNLLX lines_per_doc=500
+IMPORT   = Read::CoNLL2009 lines_per_doc=500
 WRITE0   = Write::Treex file_stem=''
 WRITE    = Write::Treex
 
 prepare_source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	ln -s /net/data/conll/2007/ca/train.conll $(IN)/train.conll
-	ln -s /net/data/conll/2007/ca/test.conll $(IN)/test.conll
+	ln -s /net/data/conll/2009/ca/train.conll $(IN)/train.conll
+	ln -s /net/data/conll/2009/ca/dev.conll $(IN)/test.conll
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
