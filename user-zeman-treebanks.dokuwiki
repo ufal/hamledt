@@ -1,0 +1,1173 @@
+====== Treebanks for Various Languages ======
+
+===== Arabic (ar) =====
+
+[[http://ufal.mff.cuni.cz/padt/|Prague Arabic Dependency Treebank]] (PADT)
+
+==== Versions ====
+
+  * Original PADT 1.0 as distributed by the LDC
+  * CoNLL 2006
+  * CoNLL 2007
+
+The CoNLL 2007 version reportedly improves over CoNLL 2006 in quality of morphological annotation. Both CoNLL versions miss important parts of the original PADT annotation (see below).
+
+==== Obtaining and License ====
+
+The original PADT 1.0 is distributed by the LDC under the catalogue number [[http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC2004T23|LDC2004T23]]. It is free for LDC members 2004, price for non-members is unknown (contact LDC). The [[http://ufal.mff.cuni.cz/corp-lic/padt10-ord.html|license]] in short:
+
+  * non-commercial research usage
+  * no redistribution
+  * cite [[http://ufal.mff.cuni.cz/padt/PADT_1.0/#refs|one publication]] in publications; also include: “The PADT 1.0 has been developed by the Institute of Formal and Applied Linguistics and the Center for Computational Linguistics (see http://ufal.mff.cuni.cz/).”
+
+The CoNLL 2006 and 2007 versions are obtainable upon request under similar license terms. Their publication in the LDC together with the other CoNLL treebanks is being prepared.
+
+PADT was created by members of the [[http://ufal.mff.cuni.cz/|Institute of Formal and Applied Linguistics]] (Ústav formální a aplikované lingvistiky, ÚFAL), Faculty of Mathematics and Physics (Matematicko-fyzikální fakulta), Charles University in Prague (Univerzita Karlova v&nbsp;Praze), Malostranské náměstí 25, Praha, CZ-11800, Czechia. The CoNLL conversion of the treebank was prepared by Otakar Smrž, one of the key authors of the original PADT.
+
+==== References ====
+
+  * Website
+    * http://ufal.mff.cuni.cz/padt/
+  * Data
+    * Jan Hajič, Otakar Smrž, Petr Zemánek, Petr Pajas, Jan Šnaidauf, Emanuel Beška, Jakub Kráčmar, Kamila Hassanová: //Prague Arabic Dependency Treebank 1.0// (LDC2004T23). Linguistic Data Consortium, Philadelphia, USA, 2004. ISBN 1-58563-319-4.
+  * Principal publications
+    * Jan Hajič, Otakar Smrž, Petr Zemánek, Jan Šnaidauf, Emanuel Beška: [[http://ufal.mff.cuni.cz/padt/PADT_1.0/docs/papers/2004-nemlar-padt.pdf|Prague Arabic Dependency Treebank: Development in Data and Tools]]. In: //Proceedings of the NEMLAR International Conference on Arabic Language Resources and Tools//, pages 110-117, Cairo, Egypt, 2004.
+
+==== Domain ====
+
+Newswire text from press agencies (Agence France Presse, Ummah, Al Hayat, An Nahar, Xinhua 2001-2003).
+
+==== Size ====
+
+According to their website, the original PADT 1.0 contains 113,500 tokens annotated analytically. The CoNLL 2006 version contains 59752 tokens in 1606 sentences, yielding 37.21 tokens per sentence on average (CoNLL 2006 data split: 54379 tokens / 1460 sentences training, 5373 tokens / 146 sentences test). The CoNLL 2007 version contains 116,793 tokens in 3043 sentences, yielding 38.38 tokens per sentence on average (CoNLL 2007 data split: 111,669 tokens / 2912 sentences training, 5124 tokens / 131 sentences test).
+
+As noted in (Nivre et al., 2007), “the parsing units in this treebank are in many cases larger than conventional sentences, which partly explains the high average number of tokens per sentence.”
+
+==== Inside ====
+
+The original PADT 1.0 is distributed in the [[:format-fs|FS format]]. The CoNLL versions are distributed in the [[:format-conll|CoNLL-X format]]. The original PADT contains more information than the CoNLL version. There is morphological annotation (tags and lemmas) both manual and by a tagger (while only manual is in CoNLL data), glosses etc. However, the most important piece of information that got lost during the conversion to CoNLL is the FS attribute called ''parallel''. It distinguishes conjuncts from shared modifiers of coordination and thus the syntactic structure is incomplete without it.
+
+Word forms and lemmas are vocalized, i.e. they contain diacritics for short vowels as well as consonant gemination and a few other things. The CoNLL 2006 version includes [[http://www.qamus.org/transliteration.htm|Buckwalter transliteration]] of the Arabic script (in the same column as Arabic, attached to the Arabic form/lemma with an underscore character).
+
+Note that tokenization of Arabic typically includes splitting original words (inserting spaces between letters), not just separating punctuation from words. Example: وبالفالوجة = wabiālfālūjah = wa/CONJ + bi/PREP + AlfAlwjp/NOUN_PROP = and in al-Falujah. In PADT, conjunctions and prepositions are separate tokens and nodes.
+
+The original PADT 1.0 uses 10-character positional morphological tags whose documentation is hard to find. The CoNLL 2006 version converts the tags to the three CoNLL columns, CPOS, POS and FEAT, most of the information being encoded as pipe-separated attribute-value assignments in FEAT. There //should// be a 1-1 mapping between the PADT positional tags and the CoNLL 2006 annotation. The CoNLL 2007 version uses a tag conversion different from CoNLL 2006. Both CoNLL distributions contain a README file with a brief description of the parts of speech and features. Use [[http://quest.ms.mff.cuni.cz/cgi-bin/interset/index.pl?tagset=ar::conll|DZ Interset]] to inspect the two CoNLL tagsets. Also look at the [[http://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi|Elixir FM online interface]] for a later development of the morphological analyzer created along with PADT.
+
+The guidelines for syntactic annotation are documented in the [[http://ufal.mff.cuni.cz/padt/PADT_1.0/docs/guides/PADT_Analytical.pdf|PADT annotation manual]] (only peculiarities of Arabic are documented, otherwise it is referenced to the annotation manual for the Czech treebank). The list and brief description of syntactic tags (dependency relation labels) can be found in [[http://ufal.mff.cuni.cz/padt/PADT_1.0/docs/papers/2002-flm-padt.pdf|(Smrž, Šnaidauf and Zemánek, 2002)]].
+
+==== Sample ====
+
+The first two sentences of the CoNLL 2006 training data:
+
+| 1 | غِيابُ_giyAbu | غِياب_giyAb | N | N | case=1<nowiki>|</nowiki>def=R | 0 | ExD | _ | _ |
+| 2 | فُؤاد_fu&Ad | فُؤاد_fu&Ad | Z | Z | _ | 3 | Atr | _ | _ |
+| 3 | كَنْعان_kanoEAn | كَنْعان_kanoEAn | Z | Z | _ | 1 | Atr | _ | _ |
+| ||||||||||
+| 1 | فُؤاد_fu&Ad | فُؤاد_fu&Ad | Z | Z | _ | 2 | Atr | _ | _ |
+| 2 | كَنْعان_kanoEAn | كَنْعان_kanoEAn | Z | Z | _ | 9 | Sb | _ | _ |
+| 3 | ،_, | ،_, | G | G | _ | 2 | AuxG | _ | _ |
+| 4 | رائِد_rA}id | رائِد_rA}id | N | N | _ | 2 | Atr | _ | _ |
+| 5 | القِصَّة_AlqiS~ap | قِصَّة_qiS~ap | N | N | gen=F<nowiki>|</nowiki>num=S<nowiki>|</nowiki>def=D | 4 | Atr | _ | _ |
+| 6 | القَصِيرَةِ_AlqaSiyrapi | قَصِير_qaSiyr | A | A | gen=F<nowiki>|</nowiki>num=S<nowiki>|</nowiki>case=2<nowiki>|</nowiki>def=D | 5 | Atr | _ | _ |
+| 7 | فِي_fiy | فِي_fiy | P | P | _ | 4 | AuxP | _ | _ |
+| 8 | لُبْنانِ_lubonAni | لُبْنان_lubonAn | Z | Z | case=2<nowiki>|</nowiki>def=R | 7 | Atr | _ | _ |
+| 9 | رَحَلَ_raHala | رَحَل-َ_raHal-a | V | VP | pers=3<nowiki>|</nowiki>gen=M<nowiki>|</nowiki>num=S | 0 | Pred | _ | _ |
+| 10 | مَساءَ_masA'a | مَساء_masA' | D | D | _ | 9 | Adv | _ | _ |
+| 11 | أَمْسِ_>amosi | أَمْسِ_>amosi | D | D | _ | 10 | Atr | _ | _ |
+| 12 | عَن_Ean | عَن_Ean | P | P | _ | 9 | AuxP | _ | _ |
+| 13 | 81_81 | 81_81 | Q | Q | _ | 12 | Adv | _ | _ |
+| 14 | عاماً_EAmAF | عام_EAm | N | N | gen=M<nowiki>|</nowiki>num=S<nowiki>|</nowiki>case=4<nowiki>|</nowiki>def=I | 13 | Atr | _ | _ |
+| 15 | ._. | ._. | G | G | _ | 0 | AuxK | _ | _ |
+
+The first sentence of the CoNLL 2006 test data:
+
+| 1 | اِتِّفاقٌ_Ait~ifAqN | اِتِّفاق_Ait~ifAq | N | N | case=1<nowiki>|</nowiki>def=I | 0 | ExD | _ | _ |
+| 2 | بَيْنَ_bayona | بَيْنَ_bayona | P | P | _ | 1 | AuxP | _ | _ |
+| 3 | لُبْنانِ_lubonAni | لُبْنان_lubonAn | Z | Z | case=2<nowiki>|</nowiki>def=R | 4 | Atr | _ | _ |
+| 4 | وَ_wa | وَ_wa | C | C | _ | 2 | Coord | _ | _ |
+| 5 | سُورِيَّةٍ_suwriy~apK | سُورِيا_suwriyA | Z | Z | gen=F<nowiki>|</nowiki>num=S<nowiki>|</nowiki>case=2<nowiki>|</nowiki>def=I | 4 | Atr | _ | _ |
+| 6 | عَلَى_EalaY | عَلَى_EalaY | P | P | _ | 1 | AuxP | _ | _ |
+| 7 | رَفْعِ_rafoEi | رَفْع_rafoE | N | N | case=2<nowiki>|</nowiki>def=R | 6 | Atr | _ | _ |
+| 8 | مُسْتَوَى_musotawaY | مُسْتَوَى_musotawaY | N | N | _ | 7 | Atr | _ | _ |
+| 9 | التَبادُلِ_AltabAduli | تَبادُل_tabAdul | N | N | case=2<nowiki>|</nowiki>def=D | 8 | Atr | _ | _ |
+| 10 | التِجارِيِّ_AltijAriy~i | تِجارِيّ_tijAriy~ | A | A | case=2<nowiki>|</nowiki>def=D | 9 | Atr | _ | _ |
+| 11 | إِلَى_<ilaY | إِلَى_<ilaY | P | P | _ | 7 | AuxP | _ | _ |
+| 12 | 500_500 | 500_500 | Q | Q | _ | 11 | Atr | _ | _ |
+| 13 | مِلْيُونِ_miloyuwni | مِلْيُون_miloyuwn | N | N | case=2<nowiki>|</nowiki>def=R | 12 | Atr | _ | _ |
+| 14 | دُولارٍ_duwlArK | دُولار_duwlAr | N | N | case=2<nowiki>|</nowiki>def=I | 13 | Atr | _ | _ |
+
+The first sentence of the CoNLL 2007 training data:
+
+| 1 | تَعْدادُ | تَعْداد_1 | N | N- | Case=1<nowiki>|</nowiki>Defin=R | 7 | Sb | _ | _ |
+| 2 | سُكّانِ | ساكِن_1 | N | N- | Case=2<nowiki>|</nowiki>Defin=R | 1 | Atr | _ | _ |
+| 3 | 22 | [DEFAULT] | Q | Q- | _ | 2 | Atr | _ | _ |
+| 4 | دَوْلَةً | دَوْلَة_1 | N | N- | Gender=F<nowiki>|</nowiki>Number=S<nowiki>|</nowiki>Case=4<nowiki>|</nowiki>Defin=I | 3 | Atr | _ | _ |
+| 5 | عَرَبِيَّةً | عَرَبِيّ_1 | A | A- | Gender=F<nowiki>|</nowiki>Number=S<nowiki>|</nowiki>Case=4<nowiki>|</nowiki>Defin=I | 4 | Atr | _ | _ |
+| 6 | سَ | سَ_FUT | F | F- | _ | 7 | AuxM | _ | _ |
+| 7 | يَرْتَفِعُ | اِرْتَفَع_1 | V | VI | Mood=I<nowiki>|</nowiki>Voice=A<nowiki>|</nowiki>Person=3<nowiki>|</nowiki>Gender=M<nowiki>|</nowiki>Number=S | 0 | Pred | _ | _ |
+| 8 | إِلَى | إِلَى_1 | P | P- | _ | 7 | AuxP | _ | _ |
+| 9 | 654 | [DEFAULT] | Q | Q- | _ | 8 | Adv | _ | _ |
+| 10 | مِلْيُونَ | مِلْيُون_1 | N | N- | Case=4<nowiki>|</nowiki>Defin=R | 9 | Atr | _ | _ |
+| 11 | نَسَمَةٍ | نَسَمَة_1 | N | N- | Gender=F<nowiki>|</nowiki>Number=S<nowiki>|</nowiki>Case=2<nowiki>|</nowiki>Defin=I | 10 | Atr | _ | _ |
+| 12 | فِي | فِي_1 | P | P- | _ | 7 | AuxP | _ | _ |
+| 13 | مُنْتَصَفِ | مُنْتَصَف_1 | N | N- | Case=2<nowiki>|</nowiki>Defin=R | 12 | Adv | _ | _ |
+| 14 | القَرْنِ | قَرْن_1 | N | N- | Case=2<nowiki>|</nowiki>Defin=D | 13 | Atr | _ | _ |
+
+The first sentence of the CoNLL 2007 test data:
+
+| 1 | مُقاوَمَةُ | مُقاوَمَة_1 | N | N- | Gender=F<nowiki>|</nowiki>Number=S<nowiki>|</nowiki>Case=1<nowiki>|</nowiki>Defin=R | 0 | ExD | _ | _ |
+| 2 | زَواجِ | زَواج_1 | N | N- | Case=2<nowiki>|</nowiki>Defin=R | 1 | Atr | _ | _ |
+| 3 | الطُلّابِ | طالِب_1 | N | N- | Case=2<nowiki>|</nowiki>Defin=D | 2 | Atr | _ | _ |
+| 4 | العُرْفِيِّ | عُرْفِيّ_1 | A | A- | Case=2<nowiki>|</nowiki>Defin=D | 2 | Atr | _ | _ |
+
+==== Parsing ====
+
+Nonprojectivities in PADT are rare. Only 431 of the 116,793 tokens in the CoNLL 2007 version are attached nonprojectively (0.37%).
+
+The results of the CoNLL 2006 shared task are [[http://ilk.uvt.nl/conll/results.html|available online]]. They have been published in [[http://aclweb.org/anthology-new/W/W06/W06-2920.pdf|(Buchholz and Marsi, 2006)]]. The evaluation procedure was non-standard because it excluded punctuation tokens. These are the best results for Arabic:
+
+^ Parser (Authors) ^ LAS ^ UAS ^
+| MST (McDonald et al.) | 66.91 | 79.34 |
+| Basis (O'Neil) | 66.71 | 78.54 |
+| Malt (Nivre et al.) | 66.71 | 77.52 |
+| Edinburgh (Riedel et al.) | 66.65 | 78.62 |
+
+The results of the CoNLL 2007 shared task are [[http://nextens.uvt.nl/depparse-wiki/AllScores|available online]]. They have been published in [[http://aclweb.org/anthology-new/D/D07/D07-1096.pdf|(Nivre et al., 2007)]]. The evaluation procedure was changed to include punctuation tokens. These are the best results for Arabic:
+
+^ Parser (Authors) ^ LAS ^ UAS ^
+| Malt (Nilsson et al.) | 76.52 | 85.81 |
+| Nakagawa | 75.08 | 86.09 |
+| Malt (Hall et al.) | 74.75 | 84.21 |
+| Sagae | 74.71 | 84.04 |
+| Chen | 74.65 | 83.49 |
+| Titov et al. | 74.12 | 83.18 |
+
+The two Malt parser results of 2007 (single malt and blended) are described in [[http://aclweb.org/anthology-new/D/D07/D07-1097.pdf|(Hall et al., 2007)]] and the details about the parser configuration are described [[http://w3.msi.vxu.se/users/jha/conll07/|here]].
+
+===== Bulgarian (bg) =====
+
+[[http://www.bultreebank.org/indexBTB.html|BulTreeBank]] (BTB)
+
+==== Versions ====
+
+  * Original BTB in native format
+  * CoNLL 2006 (BulTreeBank-DP)
+
+The original BTB is based on HPSG (head-driven phrase-structure grammar). The CoNLL version contains only the dependency information encoded in HPSG BulTreeBank.
+
+==== Obtaining and License ====
+
+Only the CoNLL version seems to be distributed but you may ask the creators about the HPSG version. For the dependency version, print the [[http://www.bultreebank.org/dpbtb/dp-btb-license.htm|license]], sign, scan, send to Kiril Simov (kivs (at) bultreebank (dot) org) and wait for the data. The license in short:
+
+  * research usage
+  * no redistribution
+  * cite [[http://www.bultreebank.org/dpbtb/dp-btb-license.htm|one publication]] in publications
+
+BTB was created by members of the [[http://lml.bas.bg/|Linguistic Modelling Department]] (Секция Лингвистично моделиране), Bulgarian Academy of Sciences (Българска академия на науките), Ул. Акад. Г. Бончев, Бл. 25 А, 1113 София, Bulgaria.
+
+==== References ====
+
+  * Website
+    * http://www.bultreebank.org/indexBTB.html
+  * Data
+    * //no separate citation//
+  * Principal publications
+    * Kiril Simov, Petya Osenova, Alexander Simov, Milen Kouylekov: //Design and Implementation of the Bulgarian HPSG-based Treebank.// In: Erhard Hinrichs, Kiril Simov (eds.): Journal of Research on Language and Computation, Special Issue, vol. 2, no. 4, pp. 495–522, Kluwer Academic Publishers, ISSN 1570-7075. 2004.
+  * Documentation
+    * Kiril Simov, Petya Osenova, Milena Slavcheva: [[http://www.bultreebank.org/TechRep/BTB-TR03.pdf|BTB-TR03: BulTreeBank Morphosyntactic Tagset]]. Technical report, 2004.
+    * Petya Osenova, Kiril Simov: [[http://www.bultreebank.org/TechRep/BTB-TR05.pdf|BTB-TR05: BulTreeBank Stylebook]]. Technical report, 2004.
+    * http://www.bultreebank.org/dpbtb/ provides the list of dependency relation labels (s-tags) with brief description.
+
+==== Domain ====
+
+Unknown (“A set of Bulgarian sentences marked-up with detailed syntactic information. These sentences are mainly extracted from authentic Bulgarian texts. They are chosen with regards two criteria. First, they cover the variety of syntactic structures of Bulgarian. Second, they show the statistical distribution of these phenomena in real texts.”) At least part of it is probably news (Novinar, Sega, Standart).
+
+==== Size ====
+
+The CoNLL 2006 version contains 196,151 tokens in 13221 sentences, yielding 14.84 tokens per sentence on average (CoNLL 2006 data split: 190,217 tokens / 12823 sentences training, 5934 tokens / 398 sentences test).
+
+==== Inside ====
+
+The original morphosyntactic tags have been converted to fit into the three columns (CPOS, POS and FEAT) columns of the CoNLL format. There //should// be a 1-1 mapping between the [[http://www.bultreebank.org/TechRep/BTB-TR03.pdf|BTB positional tags]] and the CoNLL 2006 annotation. Use [[http://quest.ms.mff.cuni.cz/cgi-bin/interset/index.pl?tagset=bg::conll|DZ Interset]] to inspect the two CoNLL tagsets.
+
+The morphological analysis does not include lemmas. The morphosyntactic tags have been assigned (probably) manually.
+
+The guidelines for syntactic annotation are documented in the other [[http://www.bultreebank.org/TechRep/BTB-TR05.pdf|technical report]]. The CoNLL distribution contains the BulTreeBankReadMe.html file with a brief description of the syntactic tags (dependency relation labels).
+
+==== Sample ====
+
+The first three sentences of the CoNLL 2006 training data:
+
+| 1 | Глава | _ | N | Nc | _ | 0 | ROOT | 0 | ROOT |
+| 2 | трета | _ | M | Mo | gen=f<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 1 | mod | 1 | mod |
+| ||||||||||
+| 1 | НАРОДНО | _ | A | An | gen=n<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 2 | mod | 2 | mod |
+| 2 | СЪБРАНИЕ | _ | N | Nc | gen=n<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 0 | ROOT | 0 | ROOT |
+| ||||||||||
+| 1 | Народното | _ | A | An | gen=n<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=d | 2 | mod | 2 | mod |
+| 2 | събрание | _ | N | Nc | gen=n<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 3 | subj | 3 | subj |
+| 3 | осъществява | _ | V | Vpi | trans=t<nowiki>|</nowiki>mood=i<nowiki>|</nowiki>tense=r<nowiki>|</nowiki>pers=3<nowiki>|</nowiki>num=s | 0 | ROOT | 0 | ROOT |
+| 4 | законодателната | _ | A | Af | gen=f<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=d | 5 | mod | 5 | mod |
+| 5 | власт | _ | N | Nc | _ | 3 | obj | 3 | obj |
+| 6 | и | _ | C | Cp | _ | 3 | conj | 3 | conj |
+| 7 | упражнява | _ | V | Vpi | trans=t<nowiki>|</nowiki>mood=i<nowiki>|</nowiki>tense=r<nowiki>|</nowiki>pers=3<nowiki>|</nowiki>num=s | 3 | conjarg | 3 | conjarg |
+| 8 | парламентарен | _ | A | Am | gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 9 | mod | 9 | mod |
+| 9 | контрол | _ | N | Nc | gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 7 | obj | 7 | obj |
+| 10 | . | _ | Punct | Punct | _ | 3 | punct | 3 | punct |
+
+The first three sentences of the CoNLL 2006 test data:
+
+| 1 | Единственото | _ | A | An | gen=n<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=d | 2 | mod | 2 | mod |
+| 2 | решение | _ | N | Nc | gen=n<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 0 | ROOT | 0 | ROOT |
+| ||||||||||
+| 1 | Ерик | _ | N | Np | gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 0 | ROOT | 0 | ROOT |
+| 2 | Франк | _ | N | Np | gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 1 | mod | 1 | mod |
+| 3 | Ръсел | _ | H | Hm | gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 2 | mod | 2 | mod |
+| ||||||||||
+| 1 | Пълен | _ | A | Am | gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 2 | mod | 2 | mod |
+| 2 | мрак | _ | N | Nc | gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 0 | ROOT | 0 | ROOT |
+| 3 | и | _ | C | Cp | _ | 2 | conj | 2 | conj |
+| 4 | пълна | _ | A | Af | gen=f<nowiki>|</nowiki>num=s<nowiki>|</nowiki>def=i | 5 | mod | 5 | mod |
+| 5 | самота | _ | N | Nc | _ | 2 | conjarg | 2 | conjarg |
+| 6 | . | _ | Punct | Punct | _ | 2 | punct | 2 | punct |
+
+==== Parsing ====
+
+Nonprojectivities in BTB are rare. Only 747 of the 196,151 tokens in the CoNLL 2006 version are attached nonprojectively (0.38%).
+
+The results of the CoNLL 2006 shared task are [[http://ilk.uvt.nl/conll/results.html|available online]]. They have been published in [[http://aclweb.org/anthology-new/W/W06/W06-2920.pdf|(Buchholz and Marsi, 2006)]]. The evaluation procedure was non-standard because it excluded punctuation tokens. These are the best results for Bulgarian:
+
+^ Parser (Authors) ^ LAS ^ UAS ^
+| MST (McDonald et al.) | 87.57 | 92.04 |
+| Malt (Nivre et al.) | 87.41 | 91.72 |
+| Nara (Yuchang Cheng) | 86.34 | 91.30 |
+
+===== Bengali (bn) =====
+
+Hyderabad Dependency Treebank (HyDT-Bangla)
+
+==== Versions ====
+
+  * ICON 2009
+    * [[http://ltrc.iiit.ac.in/nlptools2010/files/documents/SSF.pdf|Shakti Standard Format]] (SSF; native)
+    * CoNLL format
+  * ICON 2010
+    * Shakti Standard Format (SSF; native)
+    * CoNLL format
+
+There has been no official release of the treebank yet. There have been two as-is sample releases for the purposes of the NLP tools contests in parsing Indian languages, attached to the [[http://ltrc.iiit.ac.in/nlptools2009/|ICON 2009]] and [[http://ltrc.iiit.ac.in/nlptools2010/|2010]] conferences.
+
+==== Obtaining and License ====
+
+There is no standard distribution channel for the treebank after the ICON 2010 evaluation period. Inquire at the LTRC (ltrc (at) iiit (dot) ac (dot) in) about the possibility of getting the data. The ICON 2010 license in short:
+
+  * non-commercial research usage
+  * no redistribution
+
+HyDT-Bangla is being created by members of the [[http://ltrc.iiit.ac.in/|Language Technologies Research Centre]], International Institute of Information Technology, Gachibowli, Hyderabad, 500032, India.
+
+==== References ====
+
+  * Website
+    * //no website dedicated to the treebank//
+    * [[http://ltrc.iiit.ac.in/nlptools2009/papers.php|ICON 2009 NLP Tools Contest On-Line Proceedings]]
+    * [[http://ltrc.iiit.ac.in/nlptools2010/files/documents/toolscontest10-workshoppaper-final.pdf|ICON 2010 NLP Tools Contest On-Line Proceedings]]
+  * Data
+    * //no separate citation//
+  * Principal publications
+    * Samar Husain: [[http://ltrc.iiit.ac.in/nlptools2009/CR/intro-husain.pdf|Dependency Parsers for Indian Languages]]. In: Proceedings of ICON-2009 NLP Tools Contest, Hyderabad, India, 2009.
+    * Samar Husain, Prashanth Mannem, Bharat Ambati, Phani Gadde: //The ICON-2010 tools contest on Indian language dependency parsing.// In: [[http://ltrc.iiit.ac.in/nlptools2010/files/documents/toolscontest10-workshoppaper-final.pdf|Proceedings of ICON-2010 NLP Tools Contest]], pp. 1–8, Kharagpur, India, 2010.
+  * Documentation
+    * http://ltrc.iiit.ac.in/nlptools2010/documentation.php
+
+==== Domain ====
+
+Unknown.
+
+==== Size ====
+
+HyDT-Bangla shows dependencies between chunks, not words. The node/tree ratio is thus much lower than in other treebanks. The ICON 2009 version came with a data split into three parts: training, development and test:
+
+^ Part ^ Sentences ^ Chunks ^ Ratio ^
+| Training | 980 | 6449 | 6.58 |
+| Development | 150 | 811 | 5.41 |
+| Test | 150 | 961 | 6.41 |
+| TOTAL | 1280 | 8221 | 6.42 |
+
+The ICON 2010 version came with a data split into three parts: training, development and test:
+
+^ Part ^ Sentences ^ Chunks ^ Ratio ^ Words ^ Ratio ^
+| Training | 979 | 6440 | 6.58 | 10305 | 10.52 |
+| Development | 150 | 812 | 5.41 | 1196 | 7.97 |
+| Test | 150 | 961 | 6.41 | 1350 | 9.00 |
+| TOTAL | 1279 | 8213 | 6.42 | 12851 | 10.04 |
+
+I have counted the sentences and chunks. The number of words comes from (Husain et al., 2010). Note that the paper gives the number of training sentences as 980 (instead of 979), which is a mistake. The last training sentence has the id 980 but there is no sentence with id 418.
+
+Apparently the training-development-test data split was more or less identical in both years, except for the minor discrepancies (number of training sentences and development chunks).
+
+==== Inside ====
+
+The text uses the [[http://ltrc.iiit.ac.in/nlptools2010/files/documents/map.pdf|WX encoding]] of Indian letters. If we know what the original script is (Bengali in this case) we can map the WX encoding to the original characters in UTF-8. WX uses English letters so if there was embedded English (or other string using Latin letters) it will probably get lost during the conversion.
+
+The CoNLL format contains only the chunk heads. The native SSF format shows the other words in the chunk, too, but it does not capture intra-chunk dependency relations. This is an example of a multi-word chunk:
+
+<code>3       ((      NP      <fs af='rumAla,n,,sg,,d,0,0' head="rumAla" drel=k2:VGF name=NP3>
+3.1     ekatA   QC      <fs af='eka,num,,,,,,'>
+3.2     ledisa  JJ      <fs af='ledisa,unk,,,,,,'>
+3.3     rumAla  NN      <fs af='rumAla,n,,sg,,d,0,0' name="rumAla">
+        ))</code>
+
+In the CoNLL format, the CPOS column contains the [[http://ltrc.iiit.ac.in/nlptools2010/files/documents/Chunk-Tag-List.pdf|chunk label]] (e.g. ''NP'' = //noun phrase//) and the POS column contains the [[http://ltrc.iiit.ac.in/nlptools2010/files/documents/POS-Tag-List.pdf|part of speech]] of the chunk head.
+
+Occasionally there are ''NULL'' nodes that do not correspond to any surface chunk or token. They represent ellided participants.
+
+The [[http://ltrc.iiit.ac.in/nlptools2010/files/documents/dep-tagset.pdf|syntactic tags]] (dependency relation labels) are //karaka// relations, i.e. deep syntactic roles according to the Pāṇinian grammar. There are separate versions of the treebank with [[http://ltrc.iiit.ac.in/nlptools2010/files/documents/mapping_fine-to-coarse.pdf|fine-grained and coarse-grained]] syntactic tags.
+
+According to [[http://ltrc.iiit.ac.in/nlptools2010/files/documents/toolscontest10-workshoppaper-final.pdf|(Husain et al., 2010)]], in the ICON 2010 version, the chunk tags, POS tags and inter-chunk dependencies (topology + tags) were annotated manually. The rest (lemma, morphosyntactic features, headword of chunk) was marked automatically.
+
+Note: There have been cycles in the Hindi part of HyDT but no such problem occurs in the Bengali part.
+
+==== Sample ====
+
+The first sentence of the ICON 2010 training data (with fine-grained syntactic tags) in the Shakti format:
+
+<code xml><document id="">			
+<head>
+<annotated-resource name="HyDT-Bangla" version="0.5" type="dep-interchunk-only" layers="morph,pos,chunk,dep-interchunk-only" language="ben" date-of-release="20100831">
+    <annotation-standard>
+        <morph-standard name="Anncorra-morph" version="1.31" date="20080920" />
+        <pos-standard name="Anncorra-pos" version="" date="20061215" />
+        <chunk-standard name="Anncorra-chunk" version="" date="20061215" />
+        <dependency-standard name="Anncorra-dep" version="2.0" date="" dep-tagset-granularity="6" />
+    </annotation-standard>
+</annotated-resource>		
+</head>			
+<Sentence id="1">
+1	((	NP	<fs af='Age,adv,,,,,,' head="Agei" drel=k7t:VGF name=NP>
+1.1	mudZira	NN	<fs af='mudZi,n,,sg,,o,era,era'>
+1.2	Agei	NST	<fs af='Age,adv,,,,,,' name="Agei">
+	))		
+2	((	NP	<fs af='cA,n,,sg,,d,0,0' head="cA" drel=k1:VGF name=NP2>
+2.1	praWama	QO	<fs af='praWama,num,,,,,,'>
+2.2	kApa	NN	<fs af='kApa,unk,,,,,,'>
+2.3	cA	NN	<fs af='cA,n,,sg,,d,0,0' name="cA">
+	))		
+3	((	VGF	<fs af='As,v,,,5,,A_yA+Ce,A' head="ese" name=VGF>
+3.1	ese	VM	<fs af='As,v,,,7,,A,A' name="ese">
+3.2	.	SYM	<fs af='.,punc,,,,,,'>
+	))		
+</Sentence></code>
+
+And in the CoNLL format:
+
+| 1 | Agei | Age | NP | NST | lex-Age<nowiki>|</nowiki>cat-adv<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-Agei<nowiki>|</nowiki>name-NP | 3 | k7t | _ | _ |
+| 2 | cA | cA | NP | NN | lex-cA<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-sg<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-d<nowiki>|</nowiki>vib-0<nowiki>|</nowiki>tam-0<nowiki>|</nowiki>head-cA<nowiki>|</nowiki>name-NP2 | 3 | k1 | _ | _ |
+| 3 | ese | As | VGF | VM | lex-As<nowiki>|</nowiki>cat-v<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-5<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-A_yA+Ce<nowiki>|</nowiki>tam-A<nowiki>|</nowiki>head-ese<nowiki>|</nowiki>name-VGF | 0 | main | _ | _ |
+
+And after conversion of the WX encoding to the Bengali script in UTF-8:
+
+| 1 | আগেই | আগে | NP | NST | lex-Age<nowiki>|</nowiki>cat-adv<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-Agei<nowiki>|</nowiki>name-NP | 3 | k7t | _ | _ |
+| 2 | চা | চা | NP | NN | lex-cA<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-sg<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-d<nowiki>|</nowiki>vib-0<nowiki>|</nowiki>tam-0<nowiki>|</nowiki>head-cA<nowiki>|</nowiki>name-NP2 | 3 | k1 | _ | _ |
+| 3 | এসে | আস্ | VGF | VM | lex-As<nowiki>|</nowiki>cat-v<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-5<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-A_yA+Ce<nowiki>|</nowiki>tam-A<nowiki>|</nowiki>head-ese<nowiki>|</nowiki>name-VGF | 0 | main | _ | _ |
+
+The first sentence of the ICON 2010 development data (with fine-grained syntactic tags) in the Shakti format:
+
+<code xml><document id="">
+<head>
+<annotated-resource name="HyDT-Bangla" version="0.5" type="dep-interchunk-only" layers="morph,pos,chunk,dep-interchunk-only" language="ben" date-of-release="20100831">
+    <annotation-standard>
+        <morph-standard name="Anncorra-morph" version="1.31" date="20080920" />
+        <pos-standard name="Anncorra-pos" version="" date="20061215" />
+        <chunk-standard name="Anncorra-chunk" version="" date="20061215" />
+        <dependency-standard name="Anncorra-dep" version="2.0" date="" dep-tagset-granularity="6" />
+    </annotation-standard>
+</annotated-resource>
+</head>
+<Sentence id="1">
+1	((	NP	<fs af='parabarwIkAle,adv,,,,,,' head="parabarwIkAle" drel=k7t:VGF name=NP>
+1.1	parabarwIkAle	NN	<fs af='parabarwIkAle,adv,,,,,,' name="parabarwIkAle">
+	))		
+2	((	NP	<fs af='aPisa-biyArAraxera,unk,,,,,,' head="aPisa-biyArAraxera" drel=r6:NP3 name=NP2>
+2.1	aPisa-biyArAraxera	NN	<fs af='aPisa-biyArAraxera,unk,,,,,,' name="aPisa-biyArAraxera">
+	))		
+3	((	NP	<fs af='nAma,n,,sg,,d,0,0' head="nAma" drel=k2:VGNN name=NP3>
+3.1	nAma	NN	<fs af='nAma,n,,sg,,d,0,0' name="nAma">
+	))		
+4	((	NP	<fs af='GoRaNA,unk,,,,,,' head="GoRaNA" drel=pof:VGNN name=NP4>
+4.1	GoRaNA	NN	<fs af='GoRaNA,unk,,,,,,' name="GoRaNA">
+	))		
+5	((	VGNN	<fs af='kar,n,,,any,,,' head="karAra" drel=r6:NP5 name=VGNN>
+5.1	karAra	VM	<fs af='kar,n,,,any,,,' name="karAra">
+	))		
+6	((	NP	<fs af='samay,unk,,,,,,' head="samay" drel=k7t:VGF name=NP5>
+6.1	samay	NN	<fs af='samay,unk,,,,,,' name="samay">
+	))		
+7	((	NP	<fs af='animeRake,unk,,,,,,' head="animeRake" drel=k2:VGF name=NP6>
+7.1	animeRake	NNP	<fs af='animeRake,unk,,,,,,' name="animeRake">
+	))		
+8	((	VGF	<fs af='sariye,unk,,,5,,0_rAKA+ka_ha+la,' head="sariye" name=VGF>
+8.1	sariye	VM	<fs af='sariye,unk,,,,,,' name="sariye">
+8.2	.	SYM	<fs af='.,punc,,,,,,'>
+	))		
+</Sentence></code>
+
+And in the CoNLL format:
+
+| 1 | parabarwIkAle | parabarwIkAle | NP | NN | lex-parabarwIkAle<nowiki>|</nowiki>cat-adv<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-parabarwIkAle<nowiki>|</nowiki>name-NP | 8 | k7t | _ | _ |
+| 2 | aPisa-biyArAraxera | aPisa-biyArAraxera | NP | NN | lex-aPisa-biyArAraxera<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-aPisa-biyArAraxera<nowiki>|</nowiki>name-NP2 | 3 | r6 | _ | _ |
+| 3 | nAma | nAma | NP | NN | lex-nAma<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-sg<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-d<nowiki>|</nowiki>vib-0<nowiki>|</nowiki>tam-0<nowiki>|</nowiki>head-nAma<nowiki>|</nowiki>name-NP3 | 5 | k2 | _ | _ |
+| 4 | GoRaNA | GoRaNA | NP | NN | lex-GoRaNA<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-GoRaNA<nowiki>|</nowiki>name-NP4 | 5 | pof | _ | _ |
+| 5 | karAra | kar | VGNN | VM | lex-kar<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-any<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-karAra<nowiki>|</nowiki>name-VGNN | 6 | r6 | _ | _ |
+| 6 | samay | samay | NP | NN | lex-samay<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-samay<nowiki>|</nowiki>name-NP5 | 8 | k7t | _ | _ |
+| 7 | animeRake | animeRake | NP | NNP | lex-animeRake<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-animeRake<nowiki>|</nowiki>name-NP6 | 8 | k2 | _ | _ |
+| 8 | sariye | sariye | VGF | VM | lex-sariye<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-5<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-0_rAKA+ka_ha+la<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-sariye<nowiki>|</nowiki>name-VGF | 0 | main | _ | _ |
+
+And after conversion of the WX encoding to the Bengali script in UTF-8:
+
+| 1 | পরবর্তীকালে | পরবর্তীকালে | NP | NN | lex-parabarwIkAle<nowiki>|</nowiki>cat-adv<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-parabarwIkAle<nowiki>|</nowiki>name-NP | 8 | k7t | _ | _ |
+| 2 | অফিস-বিযারারদের | অফিস-বিযারারদের | NP | NN | lex-aPisa-biyArAraxera<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-aPisa-biyArAraxera<nowiki>|</nowiki>name-NP2 | 3 | r6 | _ | _ |
+| 3 | নাম | নাম | NP | NN | lex-nAma<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-sg<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-d<nowiki>|</nowiki>vib-0<nowiki>|</nowiki>tam-0<nowiki>|</nowiki>head-nAma<nowiki>|</nowiki>name-NP3 | 5 | k2 | _ | _ |
+| 4 | ঘোষণা | ঘোষণা | NP | NN | lex-GoRaNA<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-GoRaNA<nowiki>|</nowiki>name-NP4 | 5 | pof | _ | _ |
+| 5 | করার | কর্ | VGNN | VM | lex-kar<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-any<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-karAra<nowiki>|</nowiki>name-VGNN | 6 | r6 | _ | _ |
+| 6 | সময্ | সময্ | NP | NN | lex-samay<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-samay<nowiki>|</nowiki>name-NP5 | 8 | k7t | _ | _ |
+| 7 | অনিমেষকে | অনিমেষকে | NP | NNP | lex-animeRake<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-animeRake<nowiki>|</nowiki>name-NP6 | 8 | k2 | _ | _ |
+| 8 | সরিযে | সরিযে | VGF | VM | lex-sariye<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-5<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-0_rAKA+ka_ha+la<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-sariye<nowiki>|</nowiki>name-VGF | 0 | main | _ | _ |
+
+The first sentence of the ICON 2010 test data (with fine-grained syntactic tags) in the Shakti format:
+
+<code xml><document id="">
+<head>
+<annotated-resource name="HyDT-Bangla" version="0.5" type="dep-interchunk-only" layers="morph,pos,chunk,dep-interchunk-only" language="ben" date-of-release="20101013">
+    <annotation-standard>
+        <morph-standard name="Anncorra-morph" version="1.31" date="20080920" />
+	<pos-standard name="Anncorra-pos" version="" date="20061215" />
+	<chunk-standard name="Anncorra-chunk" version="" date="20061215" />
+	<dependency-standard name="Anncorra-dep" version="2.0" date="" dep-tagset-granularity="6" />
+    </annotation-standard>
+<annotated-resource>
+</head>
+<Sentence id="1">
+1	((	NP	<fs af='mAXabIlawA,n,,sg,,d,0,0' head="mAXabIlawA" drel=k1:VGF name=NP>
+1.1	mAXabIlawA	NNP	<fs af='mAXabIlawA,n,,sg,,d,0,0' name="mAXabIlawA">
+	))		
+2	((	NP	<fs af='waKana,pn,,,,d,0,0' head="waKana" drel=k7t:VGF name=NP2>
+2.1	waKana	PRP	<fs af='waKana,pn,,,,d,0,0' name="waKana">
+	))		
+3	((	NP	<fs af='hAwa,n,,sg,,o,era,era' head="hAwera" drel=r6:NP4 name=NP3>
+3.1	hAwera	NN	<fs af='hAwa,n,,sg,,o,era,era' name="hAwera">
+	))		
+4	((	NP	<fs af='GadZi,unk,,,,,,' head="GadZi" drel=k2:VGNF name=NP4>
+4.1	GadZi	NN	<fs af='GadZi,unk,,,,,,' name="GadZi">
+	))		
+5	((	VGNF	<fs af='Kul,v,,,5,,ne,ne' head="Kule" drel=vmod:VGF name=VGNF>
+5.1	Kule	VM	<fs af='Kul,v,,,5,,ne,ne' name="Kule">
+	))		
+6	((	NP	<fs af='tebila,n,,sg,,d,me,me' head="tebile" drel=k7p:VGF name=NP5>
+6.1	tebile	NN	<fs af='tebila,n,,sg,,d,me,me' name="tebile">
+	))		
+7	((	VGF	<fs af='rAK,v,,,5,,Cila,Cila' head="rAKaCila" name=VGF>
+7.1	rAKaCila	VM	<fs af='rAK,v,,,5,,Cila,Cila' name="rAKaCila">
+7.2	।	SYM	
+	))		
+</Sentence></code>
+
+And in the CoNLL format:
+
+| 1 | mAXabIlawA | mAXabIlawA | NP | NNP | lex-mAXabIlawA<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-sg<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-d<nowiki>|</nowiki>vib-0<nowiki>|</nowiki>tam-0<nowiki>|</nowiki>head-mAXabIlawA<nowiki>|</nowiki>name-NP | 7 | k1 | _ | _ |
+| 2 | waKana | waKana | NP | PRP | lex-waKana<nowiki>|</nowiki>cat-pn<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-d<nowiki>|</nowiki>vib-0<nowiki>|</nowiki>tam-0<nowiki>|</nowiki>head-waKana<nowiki>|</nowiki>name-NP2 | 7 | k7t | _ | _ |
+| 3 | hAwera | hAwa | NP | NN | lex-hAwa<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-sg<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-o<nowiki>|</nowiki>vib-era<nowiki>|</nowiki>tam-era<nowiki>|</nowiki>head-hAwera<nowiki>|</nowiki>name-NP3 | 4 | r6 | _ | _ |
+| 4 | GadZi | GadZi | NP | NN | lex-GadZi<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-GadZi<nowiki>|</nowiki>name-NP4 | 5 | k2 | _ | _ |
+| 5 | Kule | Kul | VGNF | VM | lex-Kul<nowiki>|</nowiki>cat-v<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-5<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-ne<nowiki>|</nowiki>tam-ne<nowiki>|</nowiki>head-Kule<nowiki>|</nowiki>name-VGNF | 7 | vmod | _ | _ |
+| 6 | tebile | tebila | NP | NN | lex-tebila<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-sg<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-d<nowiki>|</nowiki>vib-me<nowiki>|</nowiki>tam-me<nowiki>|</nowiki>head-tebile<nowiki>|</nowiki>name-NP5 | 7 | k7p | _ | _ |
+| 7 | rAKaCila | rAK | VGF | VM | lex-rAK<nowiki>|</nowiki>cat-v<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-5<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-Cila<nowiki>|</nowiki>tam-Cila<nowiki>|</nowiki>head-rAKaCila<nowiki>|</nowiki>name-VGF | 0 | main | _ | _ |
+
+And after conversion of the WX encoding to the Bengali script in UTF-8:
+
+| 1 | মাধবীলতা | মাধবীলতা | NP | NNP | lex-mAXabIlawA<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-sg<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-d<nowiki>|</nowiki>vib-0<nowiki>|</nowiki>tam-0<nowiki>|</nowiki>head-mAXabIlawA<nowiki>|</nowiki>name-NP | 7 | k1 | _ | _ |
+| 2 | তখন | তখন | NP | PRP | lex-waKana<nowiki>|</nowiki>cat-pn<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-d<nowiki>|</nowiki>vib-0<nowiki>|</nowiki>tam-0<nowiki>|</nowiki>head-waKana<nowiki>|</nowiki>name-NP2 | 7 | k7t | _ | _ |
+| 3 | হাতের | হাত | NP | NN | lex-hAwa<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-sg<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-o<nowiki>|</nowiki>vib-era<nowiki>|</nowiki>tam-era<nowiki>|</nowiki>head-hAwera<nowiki>|</nowiki>name-NP3 | 4 | r6 | _ | _ |
+| 4 | ঘড়ি | ঘড়ি | NP | NN | lex-GadZi<nowiki>|</nowiki>cat-unk<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-<nowiki>|</nowiki>tam-<nowiki>|</nowiki>head-GadZi<nowiki>|</nowiki>name-NP4 | 5 | k2 | _ | _ |
+| 5 | খুলে | খুল্ | VGNF | VM | lex-Kul<nowiki>|</nowiki>cat-v<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-5<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-ne<nowiki>|</nowiki>tam-ne<nowiki>|</nowiki>head-Kule<nowiki>|</nowiki>name-VGNF | 7 | vmod | _ | _ |
+| 6 | টেবিলে | টেবিল | NP | NN | lex-tebila<nowiki>|</nowiki>cat-n<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-sg<nowiki>|</nowiki>pers-<nowiki>|</nowiki>case-d<nowiki>|</nowiki>vib-me<nowiki>|</nowiki>tam-me<nowiki>|</nowiki>head-tebile<nowiki>|</nowiki>name-NP5 | 7 | k7p | _ | _ |
+| 7 | রাখছিল | রাখ্ | VGF | VM | lex-rAK<nowiki>|</nowiki>cat-v<nowiki>|</nowiki>gend-<nowiki>|</nowiki>num-<nowiki>|</nowiki>pers-5<nowiki>|</nowiki>case-<nowiki>|</nowiki>vib-Cila<nowiki>|</nowiki>tam-Cila<nowiki>|</nowiki>head-rAKaCila<nowiki>|</nowiki>name-VGF | 0 | main | _ | _ |
+
+==== Parsing ====
+
+Nonprojectivities in HyDT-Bangla are not frequent. Only 78 of the 7252 chunks in the training+development ICON 2010 version are attached nonprojectively (1.08%).
+
+The results of the ICON 2009 NLP tools contest have been published in [[http://ltrc.iiit.ac.in/nlptools2009/CR/intro-husain.pdf|(Husain, 2009)]]. There were two evaluation rounds, the first with the coarse-grained syntactic tags, the second with the fine-grained syntactic tags. To reward language independence, only systems that parsed all three languages were officially ranked. The following table presents the Bengali/coarse-grained results of the four officially ranked systems, and the best Bengali-only* system.
+
+^ Parser (Authors) ^ LAS ^ UAS ^
+| Kolkata (De et al.)* | 84.29 | 90.32 |
+| Hyderabad (Ambati et al.) | 78.25 | 90.22 |
+| Malt (Nivre) | 76.07 | 88.97 |
+| Malt+MST (Zeman) | 71.49 | 86.89 |
+| Mannem | 70.34 | 83.56 |
+
+The results of the ICON 2010 NLP tools contest have been published in [[http://ltrc.iiit.ac.in/nlptools2010/files/documents/toolscontest10-workshoppaper-final.pdf|(Husain et al., 2010)]], page 6. These are the best results for Bengali with fine-grained syntactic tags:
+
+^ Parser (Authors) ^ LAS ^ UAS ^
+| Attardi et al. | 70.66 | 87.41 |
+| Kosaraju et al. | 70.55 | 86.16 |
+| Kolachina et al. | 70.14 | 87.10 |
+
+===== Catalan (ca) =====
+
+There is [[http://clic.ub.edu/corpus/|one treebank]] versions of which were known in different times under different names:
+  * CESS-Cat
+  * Cat3LB
+  * AnCora-CA
+
+==== Versions ====
+
+  * CoNLL 2007 (CESS-Cat)
+  * CoNLL 2009 (AnCora-CA)
+
+The dependency treebank Cat3LB was extracted automatically from an earlier constituent-based annotation (see Montserrat Civit, Ma. Antònia Martí, Núria Bufí: [[http://www.springerlink.com/content/978-3-540-37334-6/#section=474512&page=8&locus=86|Cat3LB and Cast3LB: From Constituents to Dependencies]]. In: T. Salakoski et al. (eds.): FinTAL 2006, LNAI 4139, pp. 141–152, 2006, Springer, Berlin / Heidelberg)
+
+==== Obtaining and License ====
+
+The AnCora-CA corpus ought to be freely downloadable from [[http://clic.ub.edu/corpus/en/ancora-descarregues|its website]]. The download will not work for unregistered and not signed in users. The website offers creating new account but it is not automatic, one has to wait for approval.
+
+Republication of the two CoNLL versions in LDC is planned but it has not happenned yet.
+
+The CoNLL 2007 license in short:
+
+  * research and demonstrative usage
+  * no redistribution
+  * cite in publications
+    * The original CoNLL 2007 license required a reference to the CESS-ECE //project//, not a publication: M. Antònia Martí Antonín, Mariona Taulé Delor, Lluís Màrquez, Manuel Bertran (2007) CESS-ECE: A Multilingual and Multilevel Annotated Corpus.
+    * Later there was [[http://www.lrec-conf.org/proceedings/lrec2008/summaries/35.html|the LREC paper]], which is now the required reference for the AnCora corpus.
+
+AnCora-CA was created by members of the [[http://clic.ub.edu/|Centre de Llenguatge i Computació (CLiC)]], Universitat de Barcelona, Gran Via de les Corts Catalanes 585, E-08007 Barcelona, Spain.
+
+==== References ====
+
+  * Website
+    * http://clic.ub.edu/corpus/
+  * Data
+    * //no separate citation//
+  * Principal publications
+    * Mariona Taulé, M. Antònia Martí, Marta Recasens: [[http://www.lrec-conf.org/proceedings/lrec2008/summaries/35.html|AnCora: Multilevel Annotated Corpora for Catalan and Spanish]]. In: Proceedings of the Sixth International Conference on Language Resources and Evaluation (LREC'08), Marrakech, Morocco, 2008. ISBN 2-9517408-4-0
+  * Documentation
+    * Maria Antònia Martí, Mariona Taulé, Manu Bertran, Lluís Màrquez: [[http://clic.ub.edu/corpus/webfm_send/13|AnCora: Multilingual and Multilevel Annotated Corpora]]. Draft Technical report, online.
+    * [[http://clic.ub.edu/corpus/webfm_send/18|Morphology]]
+    * [[http://clic.ub.edu/corpus/webfm_send/17|Syntactic guidelines]]
+
+==== Domain ====
+
+Mostly newswire (EFE news, ACN Catalan news, Catalan version of El Periódico, 2000).
+
+==== Size ====
+
+The CoNLL 2007 version contains 435,860 tokens in 15125 sentences, yielding 28.82 tokens per sentence on average (CoNLL 2007 data split: 430,844 tokens / 14958 sentences training, 5016 tokens / 167 sentences test).
+
+The CoNLL 2009 version contains 496,672 tokens in 16786 sentences, yielding 29.59 tokens per sentence on average (CoNLL 2009 data split: 390,302 tokens / 13200 sentences training, 53015 tokens / 1724 sentences development, 53355 tokens / 1862 sentences test).
+
+==== Inside ====
+
+The original morphosyntactic tags (EAGLES?) have been converted to fit into the three columns (CPOS, POS and FEAT) columns of the CoNLL 2006/7 format, resp. the two columns (POS and FEAT) of the CoNLL 2009 format. Note that the missing CPOS column is not the only difference between the two conversion schemes. [[http://clic.ub.edu/corpus/webfm_send/18|Feature names and values]] in the FEAT column are different, too.
+
+The morphosyntactic tags have been disambiguated manually. The CoNLL 2009 version also contains automatically disambiguated tags.
+
+Multi-word expressions have been collapsed into one token, using underscore as the joining character. This includes named entities (e.g. La_Garrotxa, Ajuntament_de_Manresa, dilluns_4_de_juny) and prepositional compounds (pel_que_fa_al, d'_acord_amb, la_seva, a_més_de). Empty (underscore) tokens have been inserted to represent missing subjects (Catalan is a pro-drop language).
+
+==== Sample ====
+
+The first sentence of the CoNLL 2007 training data:
+
+| 1 | L' | el | d | da | num=s<nowiki>|</nowiki>gen=c | 2 | ESPEC | _ | _ |
+| 2 | Ajuntament_de_Manresa | Ajuntament_de_Manresa | n | np | _ | 4 | SUJ | _ | _ |
+| 3 | ha | haver | v | va | num=s<nowiki>|</nowiki>per=3<nowiki>|</nowiki>mod=i<nowiki>|</nowiki>ten=p | 4 | AUX | _ | _ |
+| 4 | posat_en_funcionament | posar_en_funcionament | v | vm | num=s<nowiki>|</nowiki>mod=p<nowiki>|</nowiki>gen=m | 0 | S | _ | _ |
+| 5 | tot | tot | d | di | num=s<nowiki>|</nowiki>gen=m | 7 | ESPEC | _ | _ |
+| 6 | un_seguit_de | un_seguit_de | d | di | num=p<nowiki>|</nowiki>gen=c | 5 | DET | _ | _ |
+| 7 | mesures | mesura | n | nc | num=p<nowiki>|</nowiki>gen=f | 4 | CD | _ | _ |
+| 8 | , | , | F | Fc | _ | 10 | PUNC | _ | _ |
+| 9 | la | el | d | da | num=s<nowiki>|</nowiki>gen=f | 10 | ESPEC | _ | _ |
+| 10 | majoria | majoria | n | nc | num=s<nowiki>|</nowiki>gen=f | 7 | _ | _ | _ |
+| 11 | informatives | informatiu | a | aq | num=p<nowiki>|</nowiki>gen=f | 10 | _ | _ | _ |
+| 12 | , | , | F | Fc | _ | 10 | PUNC | _ | _ |
+| 13 | que | que | p | pr | num=n<nowiki>|</nowiki>gen=c | 14 | SUJ | _ | _ |
+| 14 | tenen | tenir | v | vm | num=p<nowiki>|</nowiki>per=3<nowiki>|</nowiki>mod=i<nowiki>|</nowiki>ten=p | 7 | SF | _ | _ |
+| 15 | com_a | com_a | s | sp | for=s | 14 | CPRED | _ | _ |
+| 16 | finalitat | finalitat | n | nc | num=s<nowiki>|</nowiki>gen=f | 15 | SN | _ | _ |
+| 17 | minimitzar | minimitzar | v | vm | mod=n | 14 | CD | _ | _ |
+| 18 | els | el | d | da | num=p<nowiki>|</nowiki>gen=m | 19 | ESPEC | _ | _ |
+| 19 | efectes | efecte | n | nc | num=p<nowiki>|</nowiki>gen=m | 17 | SN | _ | _ |
+| 20 | de | de | s | sp | for=s | 19 | SP | _ | _ |
+| 21 | la | el | d | da | num=s<nowiki>|</nowiki>gen=f | 22 | ESPEC | _ | _ |
+| 22 | vaga | vaga | n | nc | num=s<nowiki>|</nowiki>gen=f | 20 | SN | _ | _ |
+| 23 | . | . | F | Fp | _ | 4 | PUNC | _ | _ |
+
+The first sentence of the CoNLL 2007 test data:
+
+| 1 | Tot_i_que | tot_i_que | c | cs | _ | 5 | SUBORD | _ | _ |
+| 2 | ahir | ahir | r | rg | _ | 5 | CC | _ | _ |
+| 3 | hi | hi | p | pp | num=n<nowiki>|</nowiki>per=3<nowiki>|</nowiki>gen=c | 5 | MORF | _ | _ |
+| 4 | va | anar | v | va | num=s<nowiki>|</nowiki>per=3<nowiki>|</nowiki>mod=i<nowiki>|</nowiki>ten=p | 5 | AUX | _ | _ |
+| 5 | haver | haver | v | va | mod=n | 15 | AO | _ | _ |
+| 6 | una | un | d | di | num=s<nowiki>|</nowiki>gen=f | 7 | ESPEC | _ | _ |
+| 7 | reunió | reunió | n | nc | num=s<nowiki>|</nowiki>gen=f | 5 | CD | _ | _ |
+| 8 | de | de | s | sp | for=s | 7 | SP | _ | _ |
+| 9 | darrera | darrer | a | ao | num=s<nowiki>|</nowiki>gen=f | 10 | SADJ | _ | _ |
+| 10 | hora | hora | n | nc | num=s<nowiki>|</nowiki>gen=f | 8 | SN | _ | _ |
+| 11 | , | , | F | Fc | _ | 5 | PUNC | _ | _ |
+| 12 | no | no | r | rn | _ | 15 | MOD | _ | _ |
+| 13 | es | es | p | p0 | _ | 15 | PASS | _ | _ |
+| 14 | va | anar | v | va | num=s<nowiki>|</nowiki>per=3<nowiki>|</nowiki>mod=i<nowiki>|</nowiki>ten=p | 15 | AUX | _ | _ |
+| 15 | aconseguir | aconseguir | v | vm | mod=n | 0 | S | _ | _ |
+| 16 | acostar | acostar | v | vm | mod=n | 15 | SUJ | _ | _ |
+| 17 | posicions | posició | n | nc | num=p<nowiki>|</nowiki>gen=f | 16 | SN | _ | _ |
+| 18 | , | , | F | Fc | _ | 23 | PUNC | _ | _ |
+| 19 | de_manera_que | de_manera_que | c | cs | _ | 23 | SUBORD | _ | _ |
+| 20 | els | el | d | da | num=p<nowiki>|</nowiki>gen=m | 21 | ESPEC | _ | _ |
+| 21 | treballadors | treballador | n | nc | num=p<nowiki>|</nowiki>gen=m | 23 | SUJ | _ | _ |
+| 22 | han | haver | v | va | num=p<nowiki>|</nowiki>per=3<nowiki>|</nowiki>mod=i<nowiki>|</nowiki>ten=p | 23 | AUX | _ | _ |
+| 23 | decidit | decidir | v | vm | num=s<nowiki>|</nowiki>mod=p<nowiki>|</nowiki>gen=m | 15 | AO | _ | _ |
+| 24 | anar | anar | v | vm | mod=n | 23 | CD | _ | _ |
+| 25 | a | a | s | sp | for=s | 24 | CREG | _ | _ |
+| 26 | la | el | d | da | num=s<nowiki>|</nowiki>gen=f | 27 | ESPEC | _ | _ |
+| 27 | vaga | vaga | n | nc | num=s<nowiki>|</nowiki>gen=f | 25 | SN | _ | _ |
+| 28 | . | . | F | Fp | _ | 15 | PUNC | _ | _ |
+
+The first sentence of the CoNLL 2009 training data:
+
+| 1 | El | el | el | d | d | postype=article<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | postype=article<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | 2 | 2 | spec | spec | _ | _ | _ | _ | _ | _ |
+| 2 | Tribunal_Suprem | Tribunal_Suprem | Tribunal_Suprem | n | n | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 7 | 7 | suj | suj | _ | _ | arg0-agt | _ | _ | _ |
+| 3 | ( | ( | ( | f | f | punct=bracket<nowiki>|</nowiki>punctenclose=open | punct=bracket<nowiki>|</nowiki>punctenclose=open | 4 | 4 | f | f | _ | _ | _ | _ | _ | _ |
+| 4 | TS | TS | TS | n | n | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 2 | 2 | sn | sn | _ | _ | _ | _ | _ | _ |
+| 5 | ) | ) | ) | f | f | punct=bracket<nowiki>|</nowiki>punctenclose=close | punct=bracket<nowiki>|</nowiki>punctenclose=close | 4 | 4 | f | f | _ | _ | _ | _ | _ | _ |
+| 6 | ha | haver | haver | v | v | postype=auxiliary<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s<nowiki>|</nowiki>person=3<nowiki>|</nowiki>mood=indicative<nowiki>|</nowiki>tense=present | postype=auxiliary<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s<nowiki>|</nowiki>person=3<nowiki>|</nowiki>mood=indicative<nowiki>|</nowiki>tense=present | 7 | 7 | v | v | _ | _ | _ | _ | _ | _ |
+| 7 | confirmat | confirmar | confirmar | v | v | postype=main<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>mood=pastparticiple | postype=main<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>mood=pastparticiple | 0 | 0 | sentence | sentence | Y | confirmar.a32 | _ | _ | _ | _ |
+| 8 | la | el | el | d | d | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | 9 | 9 | spec | spec | _ | _ | _ | _ | _ | _ |
+| 9 | condemna | condemna | condemna | n | n | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | 7 | 7 | cd | cd | _ | _ | arg1-pat | _ | _ | _ |
+| 10 | a | a | a | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 9 | 9 | sp | sp | _ | _ | _ | _ | _ | _ |
+| 11 | quatre | quatre | quatre | d | d | postype=numeral<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p | postype=numeral<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p | 12 | 12 | spec | spec | _ | _ | _ | _ | _ | _ |
+| 12 | anys | any | any | n | n | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | 10 | 10 | sn | sn | _ | _ | _ | _ | _ | _ |
+| 13 | d' | de | de | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 12 | 12 | sp | sp | _ | _ | _ | _ | _ | _ |
+| 14 | inhabilitació | inhabilitació | inhabilitació | n | n | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | 13 | 13 | sn | sn | _ | _ | _ | _ | _ | _ |
+| 15 | especial | especial | especial | a | a | postype=qualificative<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | postype=qualificative<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | 14 | 14 | s.a | s.a | _ | _ | _ | _ | _ | _ |
+| 16 | i | i | i | c | c | postype=coordinating | postype=coordinating | 12 | 9 | coord | coord | _ | _ | _ | _ | _ | _ |
+| 17 | una | un | un | d | d | postype=indefinite<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | postype=numeral<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | 18 | 18 | spec | spec | _ | _ | _ | _ | _ | _ |
+| 18 | multa | multa | multa | n | n | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | 12 | 9 | sn | sn | _ | _ | _ | _ | _ | _ |
+| 19 | de | de | de | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 18 | 18 | sp | sp | _ | _ | _ | _ | _ | _ |
+| 20 | 3,6 | 3.6 | 3,6 | z | n | _ | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 21 | 21 | spec | spec | _ | _ | _ | _ | _ | _ |
+| 21 | milions | milió | milió | n | n | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | 19 | 19 | sn | sn | _ | _ | _ | _ | _ | _ |
+| 22 | de | de | de | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 21 | 21 | sp | sp | _ | _ | _ | _ | _ | _ |
+| 23 | pessetes | pesseta | pesseta | z | n | postype=currency | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | 22 | 22 | sn | sn | _ | _ | _ | _ | _ | _ |
+| 24 | per | per | per | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 9 | 9 | sp | sp | _ | _ | _ | _ | _ | _ |
+| 25 | a | a | a | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 24 | 24 | sp | sp | _ | _ | _ | _ | _ | _ |
+| 26 | quatre | quatre | quatre | d | d | postype=numeral<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p | postype=numeral<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p | 27 | 27 | spec | spec | _ | _ | _ | _ | _ | _ |
+| 27 | veterinaris | veterinari | veterinari | n | n | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | 25 | 25 | sn | sn | _ | _ | _ | _ | _ | _ |
+| 28 | gironins | gironí | gironí | a | a | postype=qualificative<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | postype=qualificative<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | 27 | 27 | s.a | s.a | _ | _ | _ | _ | _ | _ |
+| 29 | , | , | , | f | f | punct=comma | punct=comma | 30 | 30 | f | f | _ | _ | _ | _ | _ | _ |
+| 30 | per | per | per | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 9 | 7 | sp | cc | _ | _ | _ | _ | _ | _ |
+| 31 | haver | haver | haver | v | n | postype=auxiliary<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c<nowiki>|</nowiki>mood=infinitive | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | 33 | 33 | v | v | _ | _ | _ | _ | _ | _ |
+| 32 | -se | ell | ell | p | p | gen=c<nowiki>|</nowiki>num=c<nowiki>|</nowiki>person=3 | gen=c<nowiki>|</nowiki>num=c<nowiki>|</nowiki>person=3 | 33 | 33 | morfema.pronominal | morfema.pronominal | _ | _ | _ | _ | _ | _ |
+| 33 | beneficiat | beneficiar | beneficiat | v | a | postype=main<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>mood=pastparticiple | postype=qualificative<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>posfunction=participle | 42 | 30 | S | S | Y | beneficiar.a2 | _ | _ | _ | _ |
+| 34 | dels | del | dels | s | s | postype=preposition<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p<nowiki>|</nowiki>contracted=yes | postype=preposition<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p<nowiki>|</nowiki>contracted=yes | 33 | 33 | creg | creg | _ | _ | _ | arg1-null | _ | _ |
+| 35 | càrrecs | càrrec | càrrec | n | n | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | 34 | 34 | sn | sn | _ | _ | _ | _ | _ | _ |
+| 36 | públics | públic | públic | a | a | postype=qualificative<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | postype=qualificative<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | 35 | 35 | s.a | s.a | _ | _ | _ | _ | _ | _ |
+| 37 | que | que | que | p | p | postype=relative<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=relative<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 39 | 39 | cd | cd | _ | _ | _ | _ | arg1-pat | _ |
+| 38 | _ | _ | _ | p | p | _ | _ | 39 | 39 | suj | suj | _ | _ | _ | _ | arg0-agt | _ |
+| 39 | desenvolupaven | desenvolupar | desenvolupar | v | v | postype=main<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p<nowiki>|</nowiki>person=3<nowiki>|</nowiki>mood=indicative<nowiki>|</nowiki>tense=imperfect | postype=main<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p<nowiki>|</nowiki>person=3<nowiki>|</nowiki>mood=indicative<nowiki>|</nowiki>tense=imperfect | 35 | 35 | S | S | Y | desenvolupar.a2 | _ | _ | _ | _ |
+| 40 | i | i | i | c | c | postype=coordinating | postype=coordinating | 42 | 33 | coord | coord | _ | _ | _ | _ | _ | _ |
+| 41 | la_seva | el_seu | el_seu | d | d | postype=possessive<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s<nowiki>|</nowiki>person=3 | postype=possessive<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s<nowiki>|</nowiki>person=3 | 42 | 42 | spec | spec | _ | _ | _ | _ | _ | _ |
+| 42 | relació | relació | relació | n | n | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | 30 | 33 | sn | cd | _ | _ | _ | _ | _ | _ |
+| 43 | amb | amb | amb | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 42 | 42 | sp | sp | _ | _ | _ | _ | _ | _ |
+| 44 | les | el | el | d | d | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | 45 | 45 | spec | spec | _ | _ | _ | _ | _ | _ |
+| 45 | empreses | empresa | empresa | n | n | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | 43 | 43 | sn | sn | _ | _ | _ | _ | _ | _ |
+| 46 | càrniques | càrnic | càrnic | a | a | postype=qualificative<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | postype=qualificative<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | 45 | 45 | s.a | s.a | _ | _ | _ | _ | _ | _ |
+| 47 | de | de | de | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 45 | 45 | sp | sp | _ | _ | _ | _ | _ | _ |
+| 48 | la | el | el | d | d | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | 49 | 49 | spec | spec | _ | _ | _ | _ | _ | _ |
+| 49 | zona | zona | zona | n | n | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | 47 | 47 | sn | sn | _ | _ | _ | _ | _ | _ |
+| 50 | en | en | en | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 42 | 42 | sp | sp | _ | _ | _ | _ | _ | _ |
+| 51 | oferir | oferir | oferir | v | v | postype=main<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c<nowiki>|</nowiki>mood=infinitive | postype=main<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c<nowiki>|</nowiki>mood=infinitive | 50 | 50 | S | S | Y | oferir.a32 | _ | _ | _ | _ |
+| 52 | -los | ell | ell | p | p | postype=personal<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p<nowiki>|</nowiki>person=3 | postype=personal<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p<nowiki>|</nowiki>person=3 | 51 | 51 | ci | ci | _ | _ | _ | _ | _ | arg2-ben |
+| 53 | serveis | servei | servei | n | n | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | 51 | 51 | cd | cd | _ | _ | _ | _ | _ | arg1-pat |
+| 54 | particulars | particular | particular | a | a | postype=qualificative<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p | postype=qualificative<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p | 53 | 53 | s.a | s.a | _ | _ | _ | _ | _ | _ |
+| 55 | . | . | . | f | f | punct=period | punct=period | 7 | 7 | f | f | _ | _ | _ | _ | _ | _ |
+
+The first sentence of the CoNLL 2009 development data:
+
+| 1 | Fundació_Privada_Fira_de_Manresa | Fundació_Privada_Fira_de_Manresa | Fundació_Privada_Fira_de_Manresa | n | n | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 3 | 3 | suj | suj | _ | _ | arg0-agt |
+| 2 | ha | haver | haver | v | v | postype=auxiliary<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s<nowiki>|</nowiki>person=3<nowiki>|</nowiki>mood=indicative<nowiki>|</nowiki>tense=present | postype=auxiliary<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s<nowiki>|</nowiki>person=3<nowiki>|</nowiki>mood=indicative<nowiki>|</nowiki>tense=present | 3 | 3 | v | v | _ | _ | _ |
+| 3 | fet | fer | fer | v | v | postype=main<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>mood=pastparticiple | postype=main<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>mood=pastparticiple | 0 | 0 | sentence | sentence | Y | fer.a2 | _ |
+| 4 | un | un | un | d | d | postype=numeral<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | postype=numeral<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | 5 | 5 | spec | spec | _ | _ | _ |
+| 5 | balanç | balanç | balanç | n | n | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | 3 | 3 | cd | cd | _ | _ | arg1-pat |
+| 6 | de | de | de | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 5 | 5 | sp | sp | _ | _ | _ |
+| 7 | l' | el | el | d | d | postype=article<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | postype=article<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | 8 | 8 | spec | spec | _ | _ | _ |
+| 8 | activitat | activitat | activitat | n | n | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | 6 | 6 | sn | sn | _ | _ | _ |
+| 9 | del | del | del | s | s | postype=preposition<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>contracted=yes | postype=preposition<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s<nowiki>|</nowiki>contracted=yes | 8 | 8 | sp | sp | _ | _ | _ |
+| 10 | Palau_Firal | Palau_Firal | Palau_Firal | n | n | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 9 | 9 | sn | sn | _ | _ | _ |
+| 11 | durant | durant | durant | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 8 | 3 | sp | cc | _ | _ | _ |
+| 12 | els | el | el | d | d | postype=article<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | postype=article<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | 15 | 15 | spec | spec | _ | _ | _ |
+| 13 | primers | primer | primer | a | a | postype=ordinal<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | postype=ordinal<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | 12 | 12 | a | a | _ | _ | _ |
+| 14 | cinc | cinc | cinc | d | d | postype=numeral<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p | postype=numeral<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=p | 12 | 12 | d | d | _ | _ | _ |
+| 15 | mesos | mes | mes | n | n | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=p | 11 | 11 | sn | sn | _ | _ | _ |
+| 16 | de | de | de | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | 15 | 15 | sp | sp | _ | _ | _ |
+| 17 | l' | el | el | d | d | postype=article<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | postype=article<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | 18 | 18 | spec | spec | _ | _ | _ |
+| 18 | any | any | any | n | n | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | 16 | 16 | sn | sn | _ | _ | _ |
+| 19 | . | . | . | f | f | punct=period | punct=period | 3 | 3 | f | f | _ | _ | _ |
+
+The first sentence of the CoNLL 2009 test data:
+
+| 1 | El | el | el | d | d | postype=article<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | postype=article<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | _ | _ | _ | _ | _ |
+| 2 | darrer | darrer | darrer | a | a | postype=ordinal<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | postype=ordinal<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | _ | _ | _ | _ | _ |
+| 3 | número | número | número | n | n | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | _ | _ | _ | _ | _ |
+| 4 | de | de | de | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | _ | _ | _ | _ | _ |
+| 5 | l' | el | el | d | d | postype=article<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | postype=article<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | _ | _ | _ | _ | _ |
+| 6 | Observatori_del_Mercat_de_Treball_d'_Osona | Observatori_del_Mercat_de_Treball_d'_Osona | Observatori_del_Mercat_de_Treball_d'_Osona | n | n | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | _ | _ | _ | _ | _ |
+| 7 | inclou | incloure | incloure | v | v | postype=main<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s<nowiki>|</nowiki>person=3<nowiki>|</nowiki>mood=indicative<nowiki>|</nowiki>tense=present | postype=main<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s<nowiki>|</nowiki>person=3<nowiki>|</nowiki>mood=indicative<nowiki>|</nowiki>tense=present | _ | _ | _ | _ | Y |
+| 8 | un | un | un | d | d | postype=numeral<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | postype=numeral<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | _ | _ | _ | _ | _ |
+| 9 | informe | informe | informe | n | n | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | _ | _ | _ | _ | _ |
+| 10 | especial | especial | especial | a | a | postype=qualificative<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | postype=qualificative<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | _ | _ | _ | _ | _ |
+| 11 | sobre | sobre | sobre | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | _ | _ | _ | _ | _ |
+| 12 | la | el | el | d | d | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | _ | _ | _ | _ | _ |
+| 13 | contractació | contractació | contractació | n | n | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=s | _ | _ | _ | _ | _ |
+| 14 | a_través_de | a_través_de | a_través_de | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | _ | _ | _ | _ | _ |
+| 15 | les | el | el | d | d | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | _ | _ | _ | _ | _ |
+| 16 | empreses | empresa | empresa | n | n | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | postype=common<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | _ | _ | _ | _ | _ |
+| 17 | de | de | de | s | s | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=preposition<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | _ | _ | _ | _ | _ |
+| 18 | treball | treball | treball | n | n | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | postype=common<nowiki>|</nowiki>gen=m<nowiki>|</nowiki>num=s | _ | _ | _ | _ | _ |
+| 19 | temporal | temporal | temporal | a | a | postype=qualificative<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | postype=qualificative<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=s | _ | _ | _ | _ | _ |
+| 20 | , | , | , | f | f | punct=comma | punct=comma | _ | _ | _ | _ | _ |
+| 21 | les | el | el | d | d | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | postype=article<nowiki>|</nowiki>gen=f<nowiki>|</nowiki>num=p | _ | _ | _ | _ | _ |
+| 22 | ETT | ETT | ETT | n | n | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | postype=proper<nowiki>|</nowiki>gen=c<nowiki>|</nowiki>num=c | _ | _ | _ | _ | _ |
+| 23 | . | . | . | f | f | punct=period | punct=period | _ | _ | _ | _ | _ |
+
+==== Parsing ====
+
+Nonprojectivities in AnCora-CA are very rare. Only 487 of the 435,860 tokens in the CoNLL 2007 version are attached nonprojectively (0.11%). In the CoNLL 2009 version, there are no nonprojectivities at all.
+
+The results of the CoNLL 2007 shared task are [[http://nextens.uvt.nl/depparse-wiki/AllScores|available online]]. They have been published in [[http://aclweb.org/anthology-new/D/D07/D07-1096.pdf|(Nivre et al., 2007)]]. The evaluation procedure was changed to include punctuation tokens. These are the best results for Catalan:
+
+^ Parser (Authors) ^ LAS ^ UAS ^
+| Titov et al. | 87.40 | 93.40 |
+| Sagae | 88.16 | 93.34 |
+| Malt (Nilsson et al.) | 88.70 | 93.12 |
+| Nakagawa | 87.90 | 92.86 |
+| Carreras | 87.60 | 92.46 |
+| Malt (Hall et al.) | 87.74 | 92.20 |
+
+The two Malt parser results of 2007 (single malt and blended) are described in [[http://aclweb.org/anthology-new/D/D07/D07-1097.pdf|(Hall et al., 2007)]] and the details about the parser configuration are described [[http://w3.msi.vxu.se/users/jha/conll07/|here]].
+
+The results of the CoNLL 2009 shared task are [[http://ufal.mff.cuni.cz/conll2009-st/results/results.php|available online]]. They have been published in [[http://aclweb.org/anthology/W/W09/W09-1201.pdf|(Hajič et al., 2009)]]. Unlabeled attachment score was not published. These are the best results for Catalan:
+
+^ Parser (Authors) ^ LAS ^
+| Merlo | 87.86 |
+| Che | 86.56 |
+| Bohnet | 86.35 |
+| Chen | 85.88 |
+
+===== Czech (cs) =====
+
+[[http://ufal.mff.cuni.cz/pdt2.0/|Prague Dependency Treebank]] (PDT)
+
+==== Versions ====
+
+  * PDT 0.5 (1998)
+  * PDT 1.0 (2001)
+  * PDT 2.0 (2006)
+  * CoNLL 2006
+  * CoNLL 2007
+  * CoNLL 2009
+
+The CoNLL 2006 version is based on PDT 1.0. The CoNLL 2007 and 2009 versions are based on PDT 2.0.
+
+==== Obtaining and License ====
+
+The original PDT 1.0 and 2.0 is distributed by the LDC under the catalogue numbers [[http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC2001T10|LDC2001T10]] and [[http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC2006T01|LDC2006T01]]. It is free for LDC members 2001 and 2006, price for non-members is unknown (contact LDC). The [[http://ufal.mff.cuni.cz/corp-lic/pdt20-ord.html|license]] in short:
+
+  * non-commercial research usage
+  * no redistribution
+  * include in publications: “The Prague Dependency Treebank, version 2.0 has been developed by the Institute of Formal and Applied Linguistics, http://ufal.mff.cuni.cz/.”
+
+The CoNLL 2006, 2007 and 2009 versions are obtainable upon request under similar license terms. Their publication in the LDC together with the other CoNLL treebanks is being prepared.
+
+PDT was created by members of the [[http://ufal.mff.cuni.cz/|Institute of Formal and Applied Linguistics]] (Ústav formální a aplikované lingvistiky, ÚFAL), Faculty of Mathematics and Physics (Matematicko-fyzikální fakulta), Charles University in Prague (Univerzita Karlova v&nbsp;Praze), Malostranské náměstí 25, Praha, CZ-11800, Czechia. The CoNLL 2006 conversion of the treebank was prepared by Yuval Krymolowski; the CoNLL 2007 and 2009 conversions were prepared by ÚFAL (Zdeněk Žabokrtský and Jan Štěpánek).
+
+==== References ====
+
+  * Website
+    * http://ufal.mff.cuni.cz/pdt2.0/
+  * Data
+    * Jan Hajič, Eva Hajičová, Petr Pajas, Jarmila Panevová, Petr Sgall: //Prague Dependency Treebank 1.0// ([[http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC2001T10|LDC2001T10]]). Linguistic Data Consortium, Philadelphia, USA, 2001. ISBN 1-58563-212-0.
+    * Jan Hajič, Eva Hajičová, Jarmila Panevová, Petr Sgall, Petr Pajas, Jan Štěpánek, Jiří Havelka, Marie Mikulová: //Prague Dependency Treebank 2.0// ([[http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC2006T01|LDC2006T01]]). Linguistic Data Consortium, Philadelphia, USA, 2006. ISBN 1-58563-370-4.
+  * Principal publications
+    * Jan Hajič, Alena Böhmová, Eva Hajičová, Barbora Hladká: [[http://ufal.mff.cuni.cz/pdt2.0/publications/HajicHajicovaAl2000.pdf|The Prague Dependency Treebank: A Three-Level Annotation Scenario]]. In: Anne Abeillé (ed.): //Treebanks: Building and Using Parsed Corpora//, pages 103-127, Kluwer, Amsterdam, The Netherlands, 2000.
+  * Documentation
+    * Jiří Hana, Daniel Zeman: [[http://ufal.mff.cuni.cz/pdt2.0/doc/manuals/en/m-layer/pdf/m-man-en.pdf|Manual for Morphological Annotation]], Revision for the Prague Dependency Treebank 2.0, ÚFAL Technical Report No. 2005-27, Praha, Czechia, 2005.
+    * Jan Hajič, Jarmila Panevová, Eva Buráňová, Zdeňka Urešová, Alla Bémová: [[http://ufal.mff.cuni.cz/pdt2.0/doc/manuals/en/a-layer/html/index.html|Annotations at Analytical Level]], Instructions for annotators, ÚFAL MFF UK, Praha, Czechia, 1999.
+
+==== Domain ====
+
+Newswire text (Lidové noviny, Mladá fronta Dnes), business weekly (Českomoravský Profit) and a scientific magazine (Vesmír).
+
+==== Size ====
+
+All distributions of PDT are officially split to training, development (d-test) and test (e-test) data sets. PDT 2.0 contains data that are annotated only morphologically (M-layer), those that are annotated both morphologically and analytically (surface syntax; M+A layers), and the smallest subset is also annotated tectogrammatically (M+A+T layers). The statistics in this section cover the M+A subset, which is relevant for surface dependency parsing.
+
+Size of CoNLL 2007 data was limited because some teams of CoNLL 2006 complained that they did not have enough time and resources to train the larger models. For CoNLL 2009, only that part of PDT was selected that contained also tectogrammatical annotation, because the 2009 task included semantic learning.
+
+Parts of the following table have been taken from [[http://ufal.mff.cuni.cz/~zeman/publikace/disertace/thesis.pdf|(Zeman 2004, page 21)]]. Only non-empty sentences counted (e.g. PDT 1.0 had 81614 sentence tags but only 73088 non-empty ones).
+
+^ Version ^ Train Sentences ^ Train Tokens ^ D-test Sentences ^ D-test Tokens ^ E-test Sentences ^ E-test Tokens ^ Total Sentences ^ Total Tokens ^ Sentence Length ^
+| PDT 0.5 |     19126 |    327,597 |  3697 |    63718 |   3787 |    65390 |  26610 |    456,705 |  17.16 |
+| PDT 1.0 |     73088 |  1,255,590 |  7319 |  126,030 |   7507 |  125,713 |  87914 |  1,489,748 |  16.95 |
+| PDT 2.0 |     68562 |  1,172,299 |  9270 |  158,962 |  10148 |  173,586 |  87980 |  1,504,847 |  17.10 |
+| CoNLL 2006 |  72703 |  1,249,408 |   365 |     5853 |        |          |  73068 |  1,255,261 |  17.18 |
+| CoNLL 2007 |  25364 |    432,296 |   286 |     4724 |        |          |  25650 |    437,020 |  17.04 |
+| CoNLL 2009 |  38727 |    652,544 |  5228 |    87988 |   4213 |    70348 |  48168 |    810,880 |  16.83 |
+
+==== Inside ====
+
+PDT 1.0 is distributed in the [[::format-csts|CSTS format]]. PDT 2.0 uses the [[::format-pml|PML format]]. CoNLL 2006 and 2007 uses the [[:format-conll|CoNLL-X format]]; CoNLL 2009 format is slightly different (number and meaning of columns). Unlike the other formats, the CSTS format used the ISO-8859-2 character encoding.
+
+The CSTS format (PDT 0.5 and 1.0) contains morphological annotation (lemmas and tags) both manual and by two taggers. The CoNLL 2009 version contains manual and one automatic disambiguation. The official distribution of PDT 2.0 and the CoNLL 2006 and 2007 versions contain only manual morphology.
+
+The original PDT uses 15-character positional morphological tags. The CoNLL versions convert the tags to the two/three CoNLL columns, CPOS, POS and FEAT. In addition, the CoNLL versions contain the Sem feature, which is derived from the tags attached to lemma in PDT (see [[http://ufal.mff.cuni.cz/pdt2.0/doc/manuals/en/m-layer/pdf/m-man-en.pdf|Hana and Zeman, 2005]]).
+
+See above for documentation of the morphological tags. All CoNLL distributions contain a README file with a brief description of the parts of speech and features. Use [[http://quest.ms.mff.cuni.cz/cgi-bin/interset/index.pl?tagset=cs::pdt|DZ Interset]] to inspect the PDT and the CoNLL tagsets.
+
+The guidelines for syntactic annotation are documented in the [[http://ufal.mff.cuni.cz/pdt2.0/doc/manuals/en/a-layer/html/index.html|PDT annotation manual]].
+
+==== Sample ====
+
+The first sentence of the PDT 1.0 training data:
+
+<code xml><csts lang=cs>
+<h>
+<source>Českomoravský profit</source>
+<markup>
+<mauth>js
+<mdate>1996-2000
+<mdesc>Manual analytical annotation
+</markup>
+<markup>
+<mauth>kk,lk
+<mdate>1996-2000
+<mdesc>Manual morphological annotation
+</markup>
+</h>
+<doc file="s/inf/j/1994/cmpr9406" id="001">
+<a>
+<mod>s
+<txtype>inf
+<genre>mix
+<med>j
+<temp>1994
+<authname>y
+<opus>cmpr9406
+<id>001
+</a>
+<c>
+<p n=1>
+<s id="cmpr9406:001-p1s1">
+<p n=2>
+<s id="cmpr9406:001-p2s1">
+<f cap>Třikrát<l>třikrát`3<t>Cv-------------<MDl src="a">třikrát`3<MDt src="a">Cv-------------<MDl src="b">třikrát`3<MDt src="b">Cv-------------<A>Adv<r>1<g>2
+<f>rychlejší<l>rychlý<t>AAFS1----2A----<MDl src="a">rychlý<MDt src="a">AANS1----2A----<MDl src="b">rychlý<MDt src="b">AAFS1----2A----<A>ExD<r>2<g>0
+<f>než<l>než-2<t>J,-------------<MDl src="a">než-2<MDt src="a">J,-------------<MDl src="b">než-2<MDt src="b">J,-------------<A>AuxC<r>3<g>2
+<f>slovo<l>slovo<t>NNNS1-----A----<MDl src="a">slovo<MDt src="a">NNNS4-----A----<MDl src="b">slovo<MDt src="b">NNNS1-----A----<A>ExD<r>4<g>3</code>
+
+The first two sentences of the PDT 1.0 d-test data:
+
+<code xml><csts lang=cs>
+<h>
+<source>Lidové noviny</source>
+<markup>
+<mauth>zu
+<mdate>1996-2000
+<mdesc>Manual analytical annotation
+</markup>
+</h>
+<doc file="s/pub/nws/1994/ln94206" id="1">
+<a>
+<mod>s
+<txtype>pub
+<genre>mix
+<med>nws
+<temp>1994
+<authname>y
+<opus>ln94206
+<id>1
+</a>
+<c>
+<p n=1>
+<s id="ln94206:1-p1s1">
+<i>ti
+<f cap>Lidé<MDl src="a">člověk<MDt src="a">NNMP1-----A---1<MDl src="b">člověk<MDt src="b">NNMP1-----A---1<A>ExD<r>1<g>0
+<p n=2>
+<s id="ln94206:1-p2s1">
+<f upper.abbr>ING<MDl src="a">Ing-1_:B_^(inženýr)<MDt src="a">NNMXX-----A---8<MDl src="b">Ing-1_:B_^(inženýr)<MDt src="b">NNMXX-----A---8<A>Atr<r>1<g>4
+<D>
+<d>.<MDl src="a">.<MDt src="a">Z:-------------<MDl src="b">.<MDt src="b">Z:-------------<A>AuxG<r>2<g>1
+<f upper>PETR<MDl src="a">Petr_;Y<MDt src="a">NNMS1-----A----<MDl src="b">Petr_;Y<MDt src="b">NNMS1-----A----<A>Atr<r>3<g>4
+<f upper>KARAS<MDl src="a">karas<MDt src="a">NNMS1-----A----<MDl src="b">karas<MDt src="b">NNMS1-----A----<A>Sb_Ap<r>4<g>11
+<D>
+<d>,<MDl src="a">,<MDt src="a">Z:-------------<MDl src="b">,<MDt src="b">Z:-------------<A>AuxX<r>5<g>6
+<f mixed>CSc<MDl src="a">CSc-1_:B_^(kandidát_věd)<MDt src="a">NNMXX-----A---8<MDl src="b">CSc-1_:B_^(kandidát_věd)<MDt src="b">NNMXX-----A---8<A>Atr<r>6<g>4
+<D>
+<d>.<MDl src="a">.<MDt src="a">Z:-------------<MDl src="b">.<MDt src="b">Z:-------------<A>AuxG<r>7<g>6
+<d>(<MDl src="a">(<MDt src="a">Z:-------------<MDl src="b">(<MDt src="b">Z:-------------<A>ExD<r>8<g>4
+<D>
+<f num>53<MDl src="a">53<MDt src="a">C=-------------<MDl src="b">53<MDt src="b">C=-------------<A>ExD_Pa<r>9<g>4
+<D>
+<d>)<MDl src="a">)<MDt src="a">Z:-------------<MDl src="b">)<MDt src="b">Z:-------------<A>ExD<r>10<g>4
+<D>
+<d>,<MDl src="a">,<MDt src="a">Z:-------------<MDl src="b">,<MDt src="b">Z:-------------<A>Apos<r>11<g>20
+<f>generální<MDl src="a">generální<MDt src="a">AAMS1----1A----<MDl src="b">generální<MDt src="b">AAMS1----1A----<A>Atr<r>12<g>13
+<f>ředitel<MDl src="a">ředitel<MDt src="a">NNMS1-----A----<MDl src="b">ředitel<MDt src="b">NNMS1-----A----<A>Sb_Co<r>13<g>15
+<f upper>ČEZ<MDl src="a">ČEZ-1_:B_;K_^(České_energetické_závody)<MDt src="a">NNIPX-----A---8<MDl src="b">ČEZ-1_:B_;K_^(České_energetické_závody)<MDt src="b">NNIPX-----A---8<A>Atr<r>14<g>13
+<f>a<MDl src="a">a-1<MDt src="a">J^-------------<MDl src="b">a-1<MDt src="b">J^-------------<A>Coord_Ap<r>15<g>11
+<f>předseda<MDl src="a">předseda<MDt src="a">NNMS1-----A----<MDl src="b">předseda<MDt src="b">NNMS1-----A----<A>Sb_Co<r>16<g>15
+<f>jeho<MDl src="a">jeho_^(přivlast.)<MDt src="a">PSXXXZS3-------<MDl src="b">jeho_^(přivlast.)<MDt src="b">PSXXXZS3-------<A>Atr<r>17<g>18
+<f>představenstva<MDl src="a">představenstvo<MDt src="a">NNNS2-----A----<MDl src="b">představenstvo<MDt src="b">NNNS2-----A----<A>Atr<r>18<g>16
+<D>
+<d>,<MDl src="a">,<MDt src="a">Z:-------------<MDl src="b">,<MDt src="b">Z:-------------<A>AuxX<r>19<g>11
+<f>je<MDl src="a">být<MDt src="a">VB-S---3P-AA---<MDl src="b">být<MDt src="b">VB-S---3P-AA---<A>Pred<r>20<g>0
+<f>absolventem<MDl src="a">absolvent<MDt src="a">NNMS7-----A----<MDl src="b">absolvent<MDt src="b">NNMS7-----A----<A>Pnom<r>21<g>20
+<f>elektrotechnické<MDl src="a">elektrotechnický<MDt src="a">AAFS2----1A----<MDl src="b">elektrotechnický<MDt src="b">AAFS2----1A----<A>Atr<r>22<g>23
+<f>fakulty<MDl src="a">fakulta<MDt src="a">NNFS2-----A----<MDl src="b">fakulta<MDt src="b">NNFS2-----A----<A>Atr_Co<r>23<g>25
+<f upper>ČVUT<MDl src="a">ČVUT-1_:B_;K_^(České_vysoké_učení_technické)<MDt src="a">NNNXX-----A---8<MDl src="b">ČVUT-1_:B_;K_^(České_vysoké_učení_technické)<MDt src="b">NNNXX-----A---8<A>Atr<r>24<g>23
+<f>a<MDl src="a">a-1<MDt src="a">J^-------------<MDl src="b">a-1<MDt src="b">J^-------------<A>Coord<r>25<g>21
+<f>postgraduálního<MDl src="a">postgraduální<MDt src="a">AANS2----1A----<MDl src="b">postgraduální<MDt src="b">AANS2----1A----<A>Atr<r>26<g>27
+<f>studia<MDl src="a">studium<MDt src="a">NNNS2-----A----<MDl src="b">studium<MDt src="b">NNNS2-----A----<A>Atr_Co<r>27<g>25
+<f>v<MDl src="a">v-1<MDt src="a">RR--6----------<MDl src="b">v-1<MDt src="b">RR--6----------<A>AuxP<r>28<g>29
+<f>oboru<MDl src="a">obor_^(lidské_činnosti)<MDt src="a">NNIS6-----A----<MDl src="b">obor_^(lidské_činnosti)<MDt src="b">NNIS6-----A----<A>AuxP<r>29<g>27
+<f>metod<MDl src="a">metoda<MDt src="a">NNFP2-----A----<MDl src="b">metoda<MDt src="b">NNFP2-----A----<A>Atr<r>30<g>29
+<f>operační<MDl src="a">operační<MDt src="a">AAFS2----1A----<MDl src="b">operační<MDt src="b">AAFS2----1A----<A>Atr<r>31<g>32
+<f>analýzy<MDl src="a">analýza<MDt src="a">NNFS2-----A----<MDl src="b">analýza<MDt src="b">NNFS2-----A----<A>Atr<r>32<g>30
+<D>
+<d>.<MDl src="a">.<MDt src="a">Z:-------------<MDl src="b">.<MDt src="b">Z:-------------<A>AuxK<r>33<g>0</code>
+
+The first sentence of the PDT 1.0 e-test data:
+
+<code xml><csts lang=cs>
+<h>
+<source>Lidové noviny</source>
+<markup>
+<mauth>zu
+<mdate>1996-2000
+<mdesc>Manual analytical annotation
+</markup>
+</h>
+<doc file="s/pub/nws/1994/ln94209" id="1">
+<a>
+<mod>s
+<txtype>pub
+<genre>mix
+<med>nws
+<temp>1994
+<authname>y
+<opus>ln94209
+<id>1
+</a>
+<c>
+<p n=1>
+<s id="ln94209:1-p1s1">
+<f cap>Přádelny<MDl src="a">přádelna<MDt src="a">NNFP1-----A----<MDl src="b">přádelna<MDt src="b">NNFP1-----A----<A>Sb<r>1<g>2
+<f>mají<MDl src="a">mít<MDt src="a">VB-P---3P-AA---<MDl src="b">mít<MDt src="b">VB-P---3P-AA---<A>Pred<r>2<g>0
+<f>dvojnásob<MDl src="a">dvojnásob<MDt src="a">Db-------------<MDl src="b">dvojnásob<MDt src="b">Db-------------<A>Obj<r>3<g>2
+<f>vad<MDl src="a">vada<MDt src="a">NNFP2-----A----<MDl src="b">vada<MDt src="b">NNFP2-----A----<A>Atr<r>4<g>3</code>
+
+Morphological annotation of the first amw training file of the PDT 2.0:
+
+<code xml><mdata xmlns="http://ufal.mff.cuni.cz/pdt/pml/">
+ <head>
+  <schema href="mdata_schema.xml" />
+  <references>
+   <reffile id="w" name="wdata" href="cmpr9406_001.w.gz" />
+  </references>
+ </head>
+ <meta>
+  <lang>cs</lang>
+  <annotation_info id="manual">
+   <desc>Manual annotation</desc>
+  </annotation_info>
+ </meta>
+ <s id="m-cmpr9406-001-p2s1">
+  <m id="m-cmpr9406-001-p2s1w1">
+   <src.rf>manual</src.rf>
+   <w.rf>w#w-cmpr9406-001-p2s1w1</w.rf>
+   <form>Třikrát</form>
+   <lemma>třikrát`3</lemma>
+   <tag>Cv-------------</tag>
+  </m>
+  <m id="m-cmpr9406-001-p2s1w2">
+   <src.rf>manual</src.rf>
+   <w.rf>w#w-cmpr9406-001-p2s1w2</w.rf>
+   <form>rychlejší</form>
+   <lemma>rychlý</lemma>
+   <tag>AAFS1----2A----</tag>
+  </m>
+  <m id="m-cmpr9406-001-p2s1w3">
+   <src.rf>manual</src.rf>
+   <w.rf>w#w-cmpr9406-001-p2s1w3</w.rf>
+   <form>než</form>
+   <lemma>než-2</lemma>
+   <tag>J,-------------</tag>
+  </m>
+  <m id="m-cmpr9406-001-p2s1w4">
+   <src.rf>manual</src.rf>
+   <w.rf>w#w-cmpr9406-001-p2s1w4</w.rf>
+   <form>slovo</form>
+   <lemma>slovo</lemma>
+   <tag>NNNS1-----A----</tag>
+  </m>
+ </s></code>
+
+Analytical (surface-syntactic) annotation of the first amw training file of the PDT 2.0:
+
+<code xml><adata xmlns="http://ufal.mff.cuni.cz/pdt/pml/">
+ <head>
+  <schema href="adata_schema.xml" />
+  <references>
+   <reffile id="m" name="mdata" href="cmpr9406_001.m.gz" />
+   <reffile id="w" name="wdata" href="cmpr9406_001.w.gz" />
+  </references>
+ </head>
+ <meta>
+  <annotation_info>
+   <desc>Manual annotation</desc>
+  </annotation_info>
+ </meta>
+ <trees>
+  <LM id="a-cmpr9406-001-p2s1">
+   <s.rf>m#m-cmpr9406-001-p2s1</s.rf>
+   <ord>0</ord>
+   <children>
+    <LM id="a-cmpr9406-001-p2s1w2">
+     <m.rf>m#m-cmpr9406-001-p2s1w2</m.rf>
+     <afun>ExD</afun>
+     <ord>2</ord>
+     <children>
+      <LM id="a-cmpr9406-001-p2s1w1">
+       <m.rf>m#m-cmpr9406-001-p2s1w1</m.rf>
+       <afun>Adv</afun>
+       <ord>1</ord>
+      </LM>
+      <LM id="a-cmpr9406-001-p2s1w3">
+       <m.rf>m#m-cmpr9406-001-p2s1w3</m.rf>
+       <afun>AuxC</afun>
+       <ord>3</ord>
+       <children>
+        <LM id="a-cmpr9406-001-p2s1w4">
+         <m.rf>m#m-cmpr9406-001-p2s1w4</m.rf>
+         <afun>ExD</afun>
+         <ord>4</ord>
+        </LM>
+       </children>
+      </LM>
+     </children>
+    </LM>
+   </children>
+  </LM></code>
+
+The first two sentences of the CoNLL 2006 and 2007 training data:
+
+| 1 | Třikrát | třikrát`3 | C | v | _ | 2 | Adv | _ | _ |
+| 2 | rychlejší | rychlý | A | A | Gen=F<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Gra=2<nowiki>|</nowiki>Neg=A | 0 | ExD | _ | _ |
+| 3 | než | než-2 | J | , | _ | 2 | AuxC | _ | _ |
+| 4 | slovo | slovo | N | N | Gen=N<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Neg=A | 3 | ExD | _ | _ |
+| ||||||||||
+| 1 | Faxu | fax | N | N | Gen=I<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=3<nowiki>|</nowiki>Neg=A | 2 | Obj | _ | _ |
+| 2 | škodí | škodit | V | B | Num=P<nowiki>|</nowiki>Per=3<nowiki>|</nowiki>Ten=P<nowiki>|</nowiki>Neg=A<nowiki>|</nowiki>Voi=A | 0 | Pred | _ | _ |
+| 3 | především | především | D | b | _ | 6 | AuxZ | _ | _ |
+| 4 | přetížené | přetížený | A | A | Gen=F<nowiki>|</nowiki>Num=P<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Gra=1<nowiki>|</nowiki>Neg=A | 6 | Atr | _ | _ |
+| 5 | telefonní | telefonní | A | A | Gen=F<nowiki>|</nowiki>Num=P<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Gra=1<nowiki>|</nowiki>Neg=A | 6 | Atr | _ | _ |
+| 6 | linky | linka | N | N | Gen=F<nowiki>|</nowiki>Num=P<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Neg=A | 2 | Sb | _ | _ |
+| 7 | * | * | Z | : | _ | 2 | AuxG | _ | _ |
+
+The first sentence of the CoNLL 2006 test data:
+
+| 1 | Podobně | podobně | D | g | Gra=1<nowiki>|</nowiki>Neg=A | 5 | Adv | _ | _ |
+| 2 | , | , | Z | : | _ | 3 | AuxX | _ | _ |
+| 3 | myslím | myslit | V | B | Num=S<nowiki>|</nowiki>Per=1<nowiki>|</nowiki>Ten=P<nowiki>|</nowiki>Neg=A<nowiki>|</nowiki>Voi=A | 5 | Pred_Pa | _ | _ |
+| 4 | , | , | Z | : | _ | 3 | AuxX | _ | _ |
+| 5 | postupuje | postupovat | V | B | Num=S<nowiki>|</nowiki>Per=3<nowiki>|</nowiki>Ten=P<nowiki>|</nowiki>Neg=A<nowiki>|</nowiki>Voi=A | 0 | Pred | _ | _ |
+| 6 | většina | většina | N | N | Gen=F<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Neg=A | 5 | Sb | _ | _ |
+| 7 | českých | český | A | A | Gen=F<nowiki>|</nowiki>Num=P<nowiki>|</nowiki>Cas=2<nowiki>|</nowiki>Gra=1<nowiki>|</nowiki>Neg=A | 8 | Atr | _ | _ |
+| 8 | bank | banka | N | N | Gen=F<nowiki>|</nowiki>Num=P<nowiki>|</nowiki>Cas=2<nowiki>|</nowiki>Neg=A | 6 | Atr | _ | _ |
+| 9 | , | , | Z | : | _ | 11 | AuxX | _ | _ |
+| 10 | zejména | zejména | D | b | _ | 12 | AuxZ | _ | _ |
+| 11 | v | v-1 | R | R | Cas=6 | 5 | AuxP | _ | _ |
+| 12 | případech | případ | N | N | Gen=I<nowiki>|</nowiki>Num=P<nowiki>|</nowiki>Cas=6<nowiki>|</nowiki>Neg=A | 11 | Adv | _ | _ |
+| 13 | , | , | Z | : | _ | 17 | AuxX | _ | _ |
+| 14 | kdy | kdy | D | b | _ | 17 | Adv | _ | _ |
+| 15 | by | být | V | c | Num=X<nowiki>|</nowiki>Per=3 | 17 | AuxV | _ | _ |
+| 16 | se | se | P | 7 | Num=X<nowiki>|</nowiki>Cas=4 | 18 | AuxT | _ | _ |
+| 17 | mělo | mít | V | p | Gen=N<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Per=X<nowiki>|</nowiki>Ten=R<nowiki>|</nowiki>Neg=A<nowiki>|</nowiki>Voi=A | 12 | Atr | _ | _ |
+| 18 | jednat | jednat | V | f | Neg=A | 17 | Obj | _ | _ |
+| 19 | o | o-1 | R | R | Cas=4 | 18 | AuxP | _ | _ |
+| 20 | větší | velký | A | A | Gen=F<nowiki>|</nowiki>Num=P<nowiki>|</nowiki>Cas=4<nowiki>|</nowiki>Gra=2<nowiki>|</nowiki>Neg=A | 21 | Atr | _ | _ |
+| 21 | částky | částka | N | N | Gen=F<nowiki>|</nowiki>Num=P<nowiki>|</nowiki>Cas=4<nowiki>|</nowiki>Neg=A | 19 | Obj | _ | _ |
+| 22 | . | . | Z | : | _ | 0 | AuxK | _ | _ |
+
+The first sentence of the CoNLL 2007 test data:
+
+| 1 | Proč | proč | D | b | _ | 2 | Adv | _ | _ |
+| 2 | mají | mít | V | B | Num=P<nowiki>|</nowiki>Per=3<nowiki>|</nowiki>Ten=P<nowiki>|</nowiki>Neg=A<nowiki>|</nowiki>Voi=A | 0 | Pred | _ | _ |
+| 3 | každý | každý | A | A | Gen=I<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=4<nowiki>|</nowiki>Gra=1<nowiki>|</nowiki>Neg=A | 4 | Atr | _ | _ |
+| 4 | rok | rok | N | N | Gen=I<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=4<nowiki>|</nowiki>Neg=A | 5 | Adv | _ | _ |
+| 5 | fasovat | fasovat | V | f | Neg=A | 2 | Obj | _ | _ |
+| 6 | speciální | speciální | A | A | Gen=F<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=4<nowiki>|</nowiki>Gra=1<nowiki>|</nowiki>Neg=A | 7 | Atr | _ | _ |
+| 7 | taxu | taxa | N | N | Gen=F<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=4<nowiki>|</nowiki>Neg=A | 5 | Obj | _ | _ |
+| 8 | na | na | R | R | Cas=4 | 7 | AuxP | _ | _ |
+| 9 | oblečení | oblečení | N | N | Gen=N<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=4<nowiki>|</nowiki>Neg=A | 8 | AtrAdv | _ | _ |
+| 10 | ? | ? | Z | : | _ | 0 | AuxK | _ | _ |
+
+The first sentence of the CoNLL 2009 training data:
+
+| 1 | Celní | celní | celní | A | A | SubPOS=A<nowiki>|</nowiki>Gen=F<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Gra=1<nowiki>|</nowiki>Neg=A | SubPOS=A<nowiki>|</nowiki>Gen=F<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Gra=1<nowiki>|</nowiki>Neg=A | 2 | 2 | Atr | Atr | Y | celní | _ | RSTR | _ |
+| 2 | unie | unie | unie | N | N | SubPOS=N<nowiki>|</nowiki>Gen=F<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Neg=A | SubPOS=N<nowiki>|</nowiki>Gen=F<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Neg=A | 0 | 0 | ExD | ExD | Y | unie | _ | _ | _ |
+| 3 | v | v | v | R | R | SubPOS=R<nowiki>|</nowiki>Cas=6 | SubPOS=R<nowiki>|</nowiki>Cas=6 | 2 | 2 | AuxP | AuxP | _ | _ | _ | _ | _ |
+| 4 | ohrožení | ohrožení | ohrožení | N | N | SubPOS=N<nowiki>|</nowiki>Gen=N<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=6<nowiki>|</nowiki>Neg=A | SubPOS=N<nowiki>|</nowiki>Gen=N<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=6<nowiki>|</nowiki>Neg=A | 3 | 3 | Atr | Atr | Y | v-w3017f1 | _ | _ | _ |
+
+The first sentence of the CoNLL 2009 development data:
+
+| 1 | <nowiki>|</nowiki> | <nowiki>|</nowiki> | <nowiki>|</nowiki> | Z | Z | SubPOS=: | SubPOS=: | 0 | 3 | ExD | AuxG | _ | _ | _ | _ |
+| 2 | Daňový | daňový | daňový | A | A | SubPOS=A<nowiki>|</nowiki>Gen=M<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Gra=1<nowiki>|</nowiki>Neg=A | SubPOS=A<nowiki>|</nowiki>Gen=M<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Gra=1<nowiki>|</nowiki>Neg=A | 3 | 3 | Atr | Atr | Y | daňový | _ | RSTR |
+| 3 | poradce | poradce | poradce | N | N | SubPOS=N<nowiki>|</nowiki>Gen=M<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Neg=A | SubPOS=N<nowiki>|</nowiki>Gen=M<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Neg=A | 0 | 0 | ExD | ExD | Y | poradce | _ | _ |
+| 4 | <nowiki>|</nowiki> | <nowiki>|</nowiki> | <nowiki>|</nowiki> | Z | Z | SubPOS=: | SubPOS=: | 0 | 3 | AuxK | AuxG | _ | _ | _ | _ |
+
+The first sentence of the CoNLL 2009 test data:
+
+| 1 | Názor | názor | názor | N | N | SubPOS=N<nowiki>|</nowiki>Gen=I<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Neg=A | SubPOS=N<nowiki>|</nowiki>Gen=I<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=1<nowiki>|</nowiki>Neg=A | _ | _ | _ | _ | Y |
+| 2 | experta | expert | expert | N | N | SubPOS=N<nowiki>|</nowiki>Gen=M<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=2<nowiki>|</nowiki>Neg=A | SubPOS=N<nowiki>|</nowiki>Gen=M<nowiki>|</nowiki>Num=S<nowiki>|</nowiki>Cas=2<nowiki>|</nowiki>Neg=A | _ | _ | _ | _ | Y |
+
+==== Parsing ====
+
+PDT is a mildly nonprojective treebank. 8351 of the 437,020 tokens in the CoNLL 2007 version are attached nonprojectively (1.91%).
+
+There is an [[http://ufal.mff.cuni.cz/czech-parsing/|online summary]] of known results in Czech parsing.
+
+The results of the CoNLL 2006 shared task are [[http://ilk.uvt.nl/conll/results.html|available online]]. They have been published in [[http://aclweb.org/anthology-new/W/W06/W06-2920.pdf|(Buchholz and Marsi, 2006)]]. The evaluation procedure was non-standard because it excluded punctuation tokens. These are the best results for Czech:
+
+^ Parser (Authors) ^ LAS ^ UAS ^
+| MST (McDonald et al.) | 80.18 | 87.30 |
+| Basis (O'Neil) | 76.60 | 85.58 |
+| Malt (Nivre et al.) | 78.42 | 84.80 |
+| Nara (Yuchang Cheng) | 76.24 | 83.40 |
+
+The results of the CoNLL 2007 shared task are [[http://nextens.uvt.nl/depparse-wiki/AllScores|available online]]. They have been published in [[http://aclweb.org/anthology-new/D/D07/D07-1096.pdf|(Nivre et al., 2007)]]. The evaluation procedure was changed to include punctuation tokens. These are the best results for Czech:
+
+^ Parser (Authors) ^ LAS ^ UAS ^
+| Nakagawa | 80.19 | 86.28 |
+| Carreras | 78.60 | 85.16 |
+| Titov et al. | 77.94 | 84.19 |
+| Malt (Nilsson et al.) | 77.98 | 83.59 |
+| Attardi et al. | 77.37 | 83.40 |
+| Malt (Hall et al.) | 77.22 | 82.35 |
+
+The two Malt parser results of 2007 (single malt and blended) are described in [[http://aclweb.org/anthology-new/D/D07/D07-1097.pdf|(Hall et al., 2007)]] and the details about the parser configuration are described [[http://w3.msi.vxu.se/users/jha/conll07/|here]].
+
+The results of the CoNLL 2009 shared task are [[http://ufal.mff.cuni.cz/conll2009-st/results/results.php|available online]]. They have been published in [[http://aclweb.org/anthology/W/W09/W09-1201.pdf|(Hajič et al., 2009)]]. Unlabeled attachment score was not published. These are the best results for Czech:
+
+^ Parser (Authors) ^ LAS ^
+| Merlo (Gesmundo et al.) | 80.38 |
+| Bohnet | 80.11 |
+| Che et al. | 80.01 |
