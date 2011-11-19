@@ -188,7 +188,7 @@ The CoNLL 2006 version contains 196,151 tokens in 13221 sentences, yielding 14.8
 
 ==== Inside ====
 
-The original morphosyntactic tags have been converted to fit into the three columns (CPOS, POS and FEAT) columns of the CoNLL format. There //should// be a 1-1 mapping between the [[http://www.bultreebank.org/TechRep/BTB-TR03.pdf|BTB positional tags]] and the CoNLL 2006 annotation. Use [[http://quest.ms.mff.cuni.cz/cgi-bin/interset/index.pl?tagset=bg::conll|DZ Interset]] to inspect the two CoNLL tagsets.
+The original morphosyntactic tags have been converted to fit into the three columns (CPOS, POS and FEAT) of the CoNLL format. There //should// be a 1-1 mapping between the [[http://www.bultreebank.org/TechRep/BTB-TR03.pdf|BTB positional tags]] and the CoNLL 2006 annotation. Use [[http://quest.ms.mff.cuni.cz/cgi-bin/interset/index.pl?tagset=bg::conll|DZ Interset]] to inspect the CoNLL tagset.
 
 The morphological analysis does not include lemmas. The morphosyntactic tags have been assigned (probably) manually.
 
@@ -1171,3 +1171,492 @@ The results of the CoNLL 2009 shared task are [[http://ufal.mff.cuni.cz/conll200
 | Merlo (Gesmundo et al.) | 80.38 |
 | Bohnet | 80.11 |
 | Che et al. | 80.01 |
+
+===== Danish (da) =====
+
+[[http://www.buch-kromann.dk/matthias/treebank/|Danish Dependency Treebank]] (DDT)
+
+==== Versions ====
+
+  * Original DDT 1.0 in the [[http://www.tei-c.org/index.xml|TEI-based]] [[http://www.buch-kromann.dk/matthias/dtag/|DTAG]] or [[http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERSearch/doc/html/TigerXML.html|Tiger-XML]] format
+  * CoNLL 2006
+
+The original DDT is based on [[http://www.buch-kromann.dk/matthias/files/diss-Dec05.pdf|Discontinuous Grammar]]. It natively encodes dependencies and other relations such as anaphora. The CoNLL version contains only the dependency relations.
+
+==== Obtaining and License ====
+
+DDT is available under the [[http://www.gnu.org/licenses/gpl-2.0.html|GNU General Public License version 2]]. Download the original distribution (DTAG + TIGER-XML formats) from http://www.buch-kromann.dk/matthias/treebank/. Download the CoNLL 2006 conversion from http://ilk.uvt.nl/conll/free_data.html. The license in short:
+
+  * any usage, commercial or not
+  * modification and redistribution under same license permitted
+  * citation in publications not required (but it is common decency)
+
+DDT was created by members of the [[http://www.cbs.dk/en/Research/Departments-Centres/Institutter/ISV|Department of International Language Studies and Computational Linguistics]], Copenhagen Business School (Handelshøjskolen i København), Dalgas Have 15, DK-2000 Frederiksberg, Denmark. The underlying [[http://korpus.dsl.dk/e-resurser/vilkaar.php?lang=|PAROLE]] corpus (morphologically annotated) was created by the [[http://www.dsl.dk/|Society for Danish Language and Literature]] (Det Danske Sprog- og Litteraturselskab), Christians Brygge 1, DK-1219 København K, Denmark.
+
+==== References ====
+
+  * Website
+    * http://www.buch-kromann.dk/matthias/treebank/ (the old and no longer accessible website from <nowiki>http://www.id.cbs.dk/~mtk/</nowiki> has been moved here)
+  * Data
+    * //no separate citation//
+  * Principal publications
+    * Matthias Trautner Kromann: [[http://www.buch-kromann.dk/matthias/files/030730-tlt-norfa.pdf|The Danish Dependency Treebank and the DTAG Treebank Tool]]. In: Proceedings of Treebanks and Linguistic Theories, Växjö, Sweden, 2003.
+  * Documentation
+    * //see the left-hand-side links at the treebank website, eg.://
+    * [[http://www.buch-kromann.dk/matthias/treebank/theory.html|Dependency theory and list of dependency relation labels]]
+    * Britt Keson: [[http://www.buch-kromann.dk/matthias/treebank/PAROLE-manual.pdf|Vejledning til det danske morfosyntaktisk taggede PAROLE-korpus]] (morphosyntactic tags). Det Danske Sprog- og Litteraturselskab (DSL)
+
+==== Domain ====
+
+Unknown (the underlying PAROLE corpus “consists of quotations of 150-250 words from a wide range of randomly selected linguistically representative Danish texts from 1983-1992.”)
+
+==== Size ====
+
+The CoNLL 2006 version contains 100,238 tokens in 5512 sentences, yielding 18.19 tokens per sentence on average (CoNLL 2006 data split: 94386 tokens / 5190 sentences training, 5852 tokens / 322 sentences test).
+
+==== Inside ====
+
+The original morphosyntactic tags have been converted to fit into the three columns (CPOS, POS and FEAT) of the CoNLL format. There //should// be a 1-1 mapping between the [[http://www.buch-kromann.dk/matthias/treebank/PAROLE-manual.pdf|DDT positional tags]] and the CoNLL 2006 annotation. Use [[http://quest.ms.mff.cuni.cz/cgi-bin/interset/index.pl?tagset=da::conll|DZ Interset]] to inspect the CoNLL tagset.
+
+The morphological analysis in the CoNLL 2006 version does not include lemmas (the original DTAG version does contain them). The morphosyntactic tags have been assigned (probably) manually.
+
+Some multi-word expressions have been collapsed into one token, using underscore as the joining character. This includes adverbially used prepositional phrases (e.g. i_lørdags = on Saturdays) but not named entities.
+
+==== Sample ====
+
+The first sentence of DDT 1.0 in the DTAG format:
+
+<code xml><tei.2>
+  <teiHeader type=text>
+    <fileDesc>
+      <titleStmt>
+        <title>Tagged sample of: 'Jeltsins skæbnetime'</title>
+      </titleStmt>
+      <extent words=158>158 running words</extent>
+      <publicationStmt>
+         <distributor>PAROLE-DK</distributor>
+         <address><addrline>Christians Brygge 1,1., DK-1219 Copenhagen K.</address>
+         <date>1998-06-02</date>
+         <availability status=restricted><p>by agreement with distributor</availability>
+      </publicationStmt>
+      <sourceDesc>
+        <biblStruct>
+          <analytic>
+            <title>Jeltsins skæbnetime</title>
+            <author gender=m born=1925>Nikulin, Leon</author>
+          </analytic>
+          <monogr>
+            <imprint><pubPlace>Denmark</pubPlace>
+              <publisher>Det Fri Aktuelt</publisher>
+              <date>1992-12-01</date>
+            </imprint>
+          </monogr>
+        </biblStruct>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <creation>1992-12-01</creation>
+      <langUsage><language>Danish</langUsage>
+      <textClass>
+        <catRef target="P.M2">
+        <catRef target="P.G4.8">
+        <catRef target="P.T9.3">
+      </textClass>
+    </profileDesc>
+  </teiHeader>
+<text id=AJK>
+<body>
+<div1 type=main>
+<p>
+<s>
+<W lemma="to" msd="AC---U=--" in="9:subj" out="1:mod|2:mod|3:nobj|5:appr">To</W>
+<W lemma="kendt" msd="ANP[CN]PU=[DI]U" in="-1:mod" out="">kendte</W>
+<W lemma="russisk" msd="ANP[CN]PU=[DI]U" in="-2:mod" out="">russiske</W>
+<W lemma="historiker" msd="NCCPU==I" in="-3:nobj" out="">historikere</W>
+<W lemma="Andronik" msd="NP--U==-" in="1:namef" out="">Andronik</W>
+<W lemma="Mirganjan" msd="NP--U==-" in="-5:appr" out="-1:namef|1:coord">Mirganjan</W>
+<W lemma="og" msd="CC" in="-1:coord" out="2:conj">og</W>
+<W lemma="Igor" msd="NP--U==-" in="1:namef" out="">Igor</W>
+<W lemma="Klamkin" msd="NP--U==-" in="-2:conj" out="-1:namef">Klamkin</W>
+<W lemma="tro" msd="VADR=----A-" in="" out="-9:subj|1:mod|2:pnct|3:dobj|12:pnct">tror</W>
+<W lemma="ikke" msd="RGU" in="-1:mod" out="">ikke</W>
+<W lemma="," msd="XP" in="-2:pnct" out="">,</W>
+<W lemma="at" msd="CS" in="-3:dobj" out="2:vobj">at</W>
+<W lemma="Rusland" msd="NP--U==-" in="1:subj|2:[subj]" out="">Rusland</W>
+<W lemma="kunne" msd="VADR=----A-" in="-2:vobj" out="-1:subj|1:vobj|2:mod">kan</W>
+<W lemma="udvikle" msd="VAF-=----P-" in="-1:vobj" out="-2:[subj]">udvikles</W>
+<W lemma="uden" msd="SP" in="-2:mod" out="1:nobj">uden</W>
+<W lemma="en" msd="PI-CSU--U" in="-1:nobj" out="2:nobj">en</W>
+<W lemma="&quot;" msd="XP" in="1:pnct" out="">"</W>
+<W lemma="jernnæve" msd="NCCSU==I" in="-2:nobj" out="-1:pnct|1:pnct">jernnæve</W>
+<W lemma="&quot;" msd="XP" in="-1:pnct" out="">"</W>
+<W lemma="." msd="XP" in="-12:pnct" out="">.</W>
+</s></code>
+
+The first sentence of the CoNLL 2006 training data:
+
+| 1 | Samme | _ | A | AN | degree=pos<nowiki>|</nowiki>gender=common/neuter<nowiki>|</nowiki>number=sing/plur<nowiki>|</nowiki>case=unmarked<nowiki>|</nowiki>def=def/indef<nowiki>|</nowiki>transcat=unmarked | 0 | ROOT | _ | _ |
+| 2 | cifre | _ | N | NC | gender=neuter<nowiki>|</nowiki>number=plur<nowiki>|</nowiki>case=unmarked<nowiki>|</nowiki>def=indef | 1 | nobj | _ | _ |
+| 3 | , | _ | X | XP | _ | 1 | pnct | _ | _ |
+| 4 | de | _ | P | PD | gender=common/neuter<nowiki>|</nowiki>number=plur<nowiki>|</nowiki>case=unmarked<nowiki>|</nowiki>register=unmarked | 7 | subj | _ | _ |
+| 5 | norske | _ | A | AN | degree=pos<nowiki>|</nowiki>gender=common/neuter<nowiki>|</nowiki>number=plur<nowiki>|</nowiki>case=unmarked<nowiki>|</nowiki>def=def/indef<nowiki>|</nowiki>transcat=unmarked | 4 | mod | _ | _ |
+| 6 | piger | _ | N | NC | gender=common<nowiki>|</nowiki>number=plur<nowiki>|</nowiki>case=unmarked<nowiki>|</nowiki>def=indef | 4 | nobj | _ | _ |
+| 7 | tabte | _ | V | VA | mood=indic<nowiki>|</nowiki>tense=past<nowiki>|</nowiki>voice=active | 1 | rel | _ | _ |
+| 8 | med | _ | SP | SP | _ | 7 | pobj | _ | _ |
+| 9 | i_lørdags | _ | RG | RG | degree=unmarked | 7 | mod | _ | _ |
+| 10 | mod | _ | SP | SP | _ | 7 | pobj | _ | _ |
+| 11 | VMs | _ | N | NP | case=gen | 10 | nobj | _ | _ |
+| 12 | værtsnation | _ | N | NC | gender=common<nowiki>|</nowiki>number=sing<nowiki>|</nowiki>case=unmarked<nowiki>|</nowiki>def=indef | 11 | possd | _ | _ |
+| 13 | . | _ | X | XP | _ | 1 | pnct | _ | _ |
+
+The first sentence of the CoNLL 2006 test data:
+
+| 1 | To | _ | A | AC | case=unmarked | 10 | subj | _ | _ |
+| 2 | kendte | _ | A | AN | degree=pos<nowiki>|</nowiki>gender=common/neuter<nowiki>|</nowiki>number=plur<nowiki>|</nowiki>case=unmarked<nowiki>|</nowiki>def=def/indef<nowiki>|</nowiki>transcat=unmarked | 1 | mod | _ | _ |
+| 3 | russiske | _ | A | AN | degree=pos<nowiki>|</nowiki>gender=common/neuter<nowiki>|</nowiki>number=plur<nowiki>|</nowiki>case=unmarked<nowiki>|</nowiki>def=def/indef<nowiki>|</nowiki>transcat=unmarked | 1 | mod | _ | _ |
+| 4 | historikere | _ | N | NC | gender=common<nowiki>|</nowiki>number=plur<nowiki>|</nowiki>case=unmarked<nowiki>|</nowiki>def=indef | 1 | nobj | _ | _ |
+| 5 | Andronik | _ | N | NP | case=unmarked | 6 | namef | _ | _ |
+| 6 | Mirganjan | _ | N | NP | case=unmarked | 1 | appr | _ | _ |
+| 7 | og | _ | C | CC | _ | 6 | coord | _ | _ |
+| 8 | Igor | _ | N | NP | case=unmarked | 9 | namef | _ | _ |
+| 9 | Klamkin | _ | N | NP | case=unmarked | 7 | conj | _ | _ |
+| 10 | tror | _ | V | VA | mood=indic<nowiki>|</nowiki>tense=present<nowiki>|</nowiki>voice=active | 0 | ROOT | _ | _ |
+| 11 | ikke | _ | RG | RG | degree=unmarked | 10 | mod | _ | _ |
+| 12 | , | _ | X | XP | _ | 10 | pnct | _ | _ |
+| 13 | at | _ | C | CS | _ | 10 | dobj | _ | _ |
+| 14 | Rusland | _ | N | NP | case=unmarked | 15 | subj | _ | _ |
+| 15 | kan | _ | V | VA | mood=indic<nowiki>|</nowiki>tense=present<nowiki>|</nowiki>voice=active | 13 | vobj | _ | _ |
+| 16 | udvikles | _ | V | VA | mood=infin<nowiki>|</nowiki>voice=passive | 15 | vobj | _ | _ |
+| 17 | uden | _ | SP | SP | _ | 15 | mod | _ | _ |
+| 18 | en | _ | P | PI | gender=common<nowiki>|</nowiki>number=sing<nowiki>|</nowiki>case=unmarked<nowiki>|</nowiki>register=unmarked | 17 | nobj | _ | _ |
+| 19 | " | _ | X | XP | _ | 20 | pnct | _ | _ |
+| 20 | jernnæve | _ | N | NC | gender=common<nowiki>|</nowiki>number=sing<nowiki>|</nowiki>case=unmarked<nowiki>|</nowiki>def=indef | 18 | nobj | _ | _ |
+| 21 | " | _ | X | XP | _ | 20 | pnct | _ | _ |
+| 22 | . | _ | X | XP | _ | 10 | pnct | _ | _ |
+
+==== Parsing ====
+
+Nonprojectivities in DDT are not frequent. Only 988 of the 100,238 tokens in the CoNLL 2006 version are attached nonprojectively (0.99%).
+
+The results of the CoNLL 2006 shared task are [[http://ilk.uvt.nl/conll/results.html|available online]]. They have been published in [[http://aclweb.org/anthology-new/W/W06/W06-2920.pdf|(Buchholz and Marsi, 2006)]]. The evaluation procedure was non-standard because it excluded punctuation tokens. These are the best results for Danish:
+
+^ Parser (Authors) ^ LAS ^ UAS ^
+| MST (McDonald et al.) | 84.79 | 90.58 |
+| Malt (Nivre et al.) | 84.77 | 89.80 |
+| Riedel et al. | 83.63 | 89.66 |
+
+===== German (de) =====
+
+[[http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERCorpus/|TIGER Treebank]]
+
+==== Versions ====
+
+  * TIGER Treebank 1 (2003)
+  * TIGER Treebank 2 (2005)
+  * TIGER Treebank 2.1 (2007) in [[http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERSearch/doc/html/TigerXML.html|TIGER-XML]] or Negra export (text) format
+  * CoNLL 2006
+  * CoNLL 2009
+
+==== Obtaining and License ====
+
+The TIGER Treebank is freely downloadable after you accept the [[http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERCorpus/license/htmllicense.shtml|license terms]] by pressing a button.
+
+Republication of the two CoNLL versions in LDC is planned but it has not happenned yet.
+
+The license in short:
+
+  * non-commercial research and evaluation usage by academic or educational institutions
+  * no redistribution
+  * acknowledge the use of the corpus in publications
+
+The TIGER Treebank was created by members of three institutes:
+  * [[http://www.coli.uni-saarland.de/|Department of Computational Linguistics and Phonetics]] (Computerlinguistik, CoLi), Saarland University (Universität des Saarlandes), Postfach 151150, D-66041 Saarbrücken, Germany.
+  * [[http://www.ims.uni-stuttgart.de/|Institute for Natural Language Processing]] (Institut für Maschinelle Sprachverarbeitung, IMS), University of Stuttgart (Universität Stuttgart), Azenbergstraße 12, D-70174 Stuttgart, Germany.
+  * [[http://www.uni-potsdam.de/germanistik/|German Department]] (Institut für Germanistik), Philosophische Fakultät, Universität Potsdam, Am Neuen Palais 10, Haus 05, D-14469 Potsdam, Germany.
+
+==== References ====
+
+  * Website
+    * http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERCorpus/
+  * Data
+    * //no separate citation//
+  * Principal publications
+    * Sabine Brants, Stefanie Dipper, Silvia Hansen, Wolfgang Lezius, George Smith: [[http://www.ims.uni-stuttgart.de/projekte/TIGER/paper/treeling2002.pdf|The TIGER Treebank]]. In: Proceedings of the Workshop on Treebanks and Linguistic Theories (TLT), Sozopol, Bulgaria, 2002.
+    * [[http://www.ims.uni-stuttgart.de/projekte/TIGER/paper/|List of publications]]
+  * [[http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERCorpus/annotation/|Documentation]]
+    * [[http://www.ims.uni-stuttgart.de/projekte/corplex/TagSets/stts-table.html|Stuttgart-Tübingen Tagset]] (part of speech)
+    * Berthold Crysmann, Silvia Hansen-Schirra, George Smith, Dorothea Ziegler-Eisele: [[http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERCorpus/annotation/tiger_scheme-morph.pdf|TIGER Morphologie-Annotationsschema]], 2005.
+    * Stefanie Albert, Jan Anderssen, Regine Bader, Stephanie Becker, Tobias Bracht, Sabine Brants, Thorsten Brants, Vera Demberg, Stefanie Dipper, Peter Eisenberg, Silvia Hansen, Hagen Hirschmann, Juliane Janitzek, Carolin Kirstein, Robert Langner, Lukas Michelbacher, Oliver Plaehn, Cordula Preis, Marcus Pußel, Marco Rower, Bettina Schrader, Anne Schwartz, George Smith, Hans Uszkoreit: [[http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERCorpus/annotation/tiger_scheme-syntax.pdf|TIGER Annotationsschema]] //(syntax)//, 2003.
+    * The header of the XML version of the TIGER Treebank contains lists of various sorts of tags with brief explanation.
+
+==== Domain ====
+
+Mostly newswire (Frankfurter Rundschau).
+
+==== Size ====
+
+According to their website, the TIGER Treebank version 1 contains approximately 700,000 tokens in 40,000 sentences. Version 2.1 contains approximately 900,000 tokens in 50,000 sentences.
+
+The CoNLL 2006 version contains 705,304 tokens in 39573 sentences, yielding 17.82 tokens per sentence on average (CoNLL 2006 data split: 699,610 tokens / 39216 sentences training, 5694 tokens / 357 sentences test).
+
+The CoNLL 2009 version contains 712,332 tokens in 40020 sentences, yielding 17.80 tokens per sentence on average (CoNLL 2009 data split: 648,677 tokens / 36020 sentences training, 32033 tokens / 2000 sentences development, 31622 tokens / 2000 sentences test).
+
+==== Inside ====
+
+All versions contain //semi-automatic// part of speech tags ([[http://www.ims.uni-stuttgart.de/projekte/corplex/TagSets/stts-table.html|Stuttgart-Tübingen Tagset]], STTS) and syntactic structure. Lemmas and morphosyntactic features are available only for newer versions (TIGER Treebank version 2 and onwards, and CoNLL 2009). The parts of speech are heavily context-dependent, e.g. many words can be used both substantively (pronouns) and attributively (determiners), which is distinguished by different POS tags.
+
+It is not clear what the //semi-automatic// annotation means (probably first auto-tagging, then manual correction?) and whether it also applies to the morphosyntactic annotation. The CoNLL 2009 version also contains automatically disambiguated lemmas, tags and features.
+
+The original treebank is phrase-based. The dependencies in the CoNLL versions must have thus been drawn using a head-selection procedure. Besides CoNLL data, the TIGER project also provides a subset of the TIGER Treebank in a dependency format.
+
+==== Sample ====
+
+The first sentence of TIGER Treebank 2.1 in the TIGER-XML format:
+
+<code xml><s id="s1">
+  <graph root="s1_VROOT">
+    <terminals>
+      <t id="s1_1" word="``" lemma="--" pos="$(" morph="--" case="--" number="--" gender="--" person="--" degree="--" tense="--" mood="--" />
+      <t id="s1_2" word="Ross" lemma="Ross" pos="NE" morph="Nom.Sg.Masc" case="Nom" number="Sg" gender="Masc" person="--" degree="--" tense="--" mood="--" />
+      <t id="s1_3" word="Perot" lemma="Perot" pos="NE" morph="Nom.Sg.Masc" case="Nom" number="Sg" gender="Masc" person="--" degree="--" tense="--" mood="--" />
+      <t id="s1_4" word="wäre" lemma="sein" pos="VAFIN" morph="3.Sg.Past.Subj" case="--" number="Sg" gender="--" person="3" degree="--" tense="Past" mood="Subj" />
+      <t id="s1_5" word="vielleicht" lemma="vielleicht" pos="ADV" morph="--" case="--" number="--" gender="--" person="--" degree="--" tense="--" mood="--" />
+      <t id="s1_6" word="ein" lemma="ein" pos="ART" morph="Nom.Sg.Masc" case="Nom" number="Sg" gender="Masc" person="--" degree="--" tense="--" mood="--" />
+      <t id="s1_7" word="prächtiger" lemma="prächtig" pos="ADJA" morph="Pos.Nom.Sg.Masc" case="Nom" number="Sg" gender="Masc" person="--" degree="Pos" tense="--" mood="--" />
+      <t id="s1_8" word="Diktator" lemma="Diktator" pos="NN" morph="Nom.Sg.Masc" case="Nom" number="Sg" gender="Masc" person="--" degree="--" tense="--" mood="--" />
+      <t id="s1_9" word="''" lemma="--" pos="$(" morph="--" case="--" number="--" gender="--" person="--" degree="--" tense="--" mood="--" />
+    </terminals>
+    <nonterminals>
+      <nt id="s1_500" cat="PN">
+        <edge label="PNC" idref="s1_2" />
+        <edge label="PNC" idref="s1_3" />
+      </nt>
+      <nt id="s1_501" cat="NP">
+        <edge label="NK" idref="s1_6" />
+        <edge label="NK" idref="s1_7" />
+        <edge label="NK" idref="s1_8" />
+      </nt>
+      <nt id="s1_502" cat="S">
+        <edge label="SB" idref="s1_500" />
+        <edge label="HD" idref="s1_4" />
+        <edge label="MO" idref="s1_5" />
+        <edge label="PD" idref="s1_501" />
+      </nt>
+      <nt id="s1_VROOT" cat="VROOT">
+        <edge label="--" idref="s1_1" />
+        <edge label="--" idref="s1_502" />
+        <edge label="--" idref="s1_9" />
+      </nt>
+    </nonterminals>
+  </graph>
+</s></code>
+
+The first sentence of the CoNLL 2006 training data:
+
+| 1 | `` | _ | $( | $( | _ | 4 | PUNC | 4 | PUNC |
+| 2 | Ross | _ | NE | NE | _ | 4 | SB | 4 | SB |
+| 3 | Perot | _ | NE | NE | _ | 2 | PNC | 2 | PNC |
+| 4 | wäre | _ | VAFIN | VAFIN | _ | 0 | ROOT | 0 | ROOT |
+| 5 | vielleicht | _ | ADV | ADV | _ | 4 | MO | 4 | MO |
+| 6 | ein | _ | ART | ART | _ | 8 | NK | 8 | NK |
+| 7 | prächtiger | _ | ADJA | ADJA | _ | 8 | NK | 8 | NK |
+| 8 | Diktator | _ | NN | NN | _ | 4 | PD | 4 | PD |
+| 9 | <nowiki>''</nowiki> | _ | $( | $( | _ | 4 | PUNC | 4 | PUNC |
+
+The first sentence of the CoNLL 2006 test data:
+
+| 1 | Zwei | _ | CARD | CARD | _ | 2 | NK | 2 | NK |
+| 2 | Themen | _ | NN | NN | _ | 14 | SB | 14 | SB |
+| 3 | , | _ | $, | $, | _ | 2 | PUNC | 2 | PUNC |
+| 4 | die | _ | PRELS | PRELS | _ | 8 | OA | 8 | OA |
+| 5 | Perot | _ | NE | NE | _ | 8 | SB | 8 | SB |
+| 6 | immer | _ | ADV | ADV | _ | 7 | MO | 7 | MO |
+| 7 | wieder | _ | ADV | ADV | _ | 8 | MO | 8 | MO |
+| 8 | anspricht | _ | VVFIN | VVFIN | _ | 2 | RC | 2 | RC |
+| 9 | , | _ | $, | $, | _ | 2 | PUNC | 2 | PUNC |
+| 10 | Rezession | _ | NN | NN | _ | 2 | APP | 2 | APP |
+| 11 | und | _ | KON | KON | _ | 10 | CD | 10 | CD |
+| 12 | Bürokratie | _ | NN | NN | _ | 10 | CJ | 10 | CJ |
+| 13 | , | _ | $, | $, | _ | 14 | PUNC | 14 | PUNC |
+| 14 | machen | _ | VVFIN | VVFIN | _ | 0 | ROOT | 0 | ROOT |
+| 15 | ihnen | _ | PPER | PPER | _ | 18 | DA | 18 | DA |
+| 16 | besonders | _ | ADV | ADV | _ | 18 | MO | 18 | MO |
+| 17 | zu | _ | PTKZU | PTKZU | _ | 18 | PM | 18 | PM |
+| 18 | schaffen | _ | VVINF | VVINF | _ | 14 | OC | 14 | OC |
+| 19 | . | _ | $. | $. | _ | 14 | PUNC | 14 | PUNC |
+
+The first sentence of the CoNLL 2009 training data:
+
+| 1 | `` | _ | `` | $( | $( | _ | _ | 4 | 4 | PUNC | PUNC | _ | _ |
+| 2 | Ross | Ross | Roß | NE | NN | Nom<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Masc | _ | 3 | 3 | PNC | PNC | _ | _ |
+| 3 | Perot | Perot | Perot | NE | NE | Nom<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Masc | _ | 4 | 4 | SB | SB | _ | _ |
+| 4 | wäre | sein | sein | VAFIN | VAFIN | 3<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Past<nowiki>|</nowiki>Subj | *<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Past<nowiki>|</nowiki>Subj | 0 | 0 | ROOT | ROOT | _ | _ |
+| 5 | vielleicht | vielleicht | vielleicht | ADV | ADV | _ | _ | 4 | 4 | MO | MO | _ | _ |
+| 6 | ein | ein | ein | ART | ART | Nom<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Masc | *<nowiki>|</nowiki>Sg<nowiki>|</nowiki>* | 8 | 8 | NK | NK | _ | _ |
+| 7 | prächtiger | prächtig | prächtig | ADJA | ADJA | Pos<nowiki>|</nowiki>Nom<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Masc | *<nowiki>|</nowiki>*<nowiki>|</nowiki>*<nowiki>|</nowiki>* | 8 | 8 | NK | NK | _ | _ |
+| 8 | Diktator | Diktator | Diktator | NN | NN | Nom<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Masc | *<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Masc | 4 | 4 | PD | PD | _ | _ |
+| 9 | <nowiki>''</nowiki> | _ | <nowiki>''</nowiki> | $( | $( | _ | _ | 4 | 4 | PUNC | PUNC | _ | _ |
+
+The first sentence of the CoNLL 2009 development data:
+
+| 1 | Maschinenbau | Maschinenbau | Maschinenbau | NN | NN | Nom<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Masc | *<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Masc | 0 | 4 | ROOT | NK | _ | _ |
+| 2 | / | _ | / | $( | $( | _ | _ | 0 | 1 | PUNC | PUNC | _ | _ |
+| 3 | ( | _ | ( | $( | $( | _ | _ | 0 | 4 | PUNC | PUNC | _ | _ |
+| 4 | Zusammenfassung | Zusammenfassung | Zusammenfassung | NN | NN | Nom<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | *<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | 0 | 0 | ROOT | ROOT | _ | _ |
+| 5 | ) | _ | ) | $( | $( | _ | _ | 0 | 1 | PUNC | PUNC | _ | _ |
+
+The first sentence of the CoNLL 2009 test data:
+
+| 1 | Gegen | gegen | gegen | APPR | APPR | _ | _ | _ | _ | _ | _ | _ |
+| 2 | eine | ein | ein | ART | ART | Acc<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | *<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | _ | _ | _ | _ | _ |
+| 3 | Erweiterung | Erweiterung | Erweiterung | NN | NN | Acc<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | *<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | _ | _ | _ | _ | _ |
+| 4 | ihrer | ihr | ihr | PPOSAT | PPOSAT | Gen<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | *<nowiki>|</nowiki>*<nowiki>|</nowiki>* | _ | _ | _ | _ | _ |
+| 5 | Organisation | Organisation | Organisation | NN | NN | Gen<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | *<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | _ | _ | _ | _ | _ |
+| 6 | zu | zu | zu | APPR | APPR | _ | _ | _ | _ | _ | _ | _ |
+| 7 | einem | ein | ein | ART | ART | Dat<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Neut | Dat<nowiki>|</nowiki>Sg<nowiki>|</nowiki>* | _ | _ | _ | _ | _ |
+| 8 | sicherheitspolitischen | sicherheitspolitisch | sicherheitspolitisch | ADJA | ADJA | Pos<nowiki>|</nowiki>Dat<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Neut | Pos<nowiki>|</nowiki>*<nowiki>|</nowiki>*<nowiki>|</nowiki>* | _ | _ | _ | _ | _ |
+| 9 | Forum | Forum | Forum | NN | NN | Dat<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Neut | *<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Neut | _ | _ | _ | _ | _ |
+| 10 | sprachen | sprechen | sprechen | VVFIN | VVFIN | 3<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Past<nowiki>|</nowiki>Ind | *<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Past<nowiki>|</nowiki>Ind | _ | _ | _ | _ | Y |
+| 11 | sich | sich | er<nowiki>|</nowiki>es<nowiki>|</nowiki>sie<nowiki>|</nowiki>Sie | PRF | PRF | 3<nowiki>|</nowiki>Acc<nowiki>|</nowiki>Pl | *<nowiki>|</nowiki>*<nowiki>|</nowiki>* | _ | _ | _ | _ | _ |
+| 12 | die | der | d | ART | ART | Nom<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Masc | *<nowiki>|</nowiki>*<nowiki>|</nowiki>* | _ | _ | _ | _ | _ |
+| 13 | meisten | meister | meist | PIAT | PIAT | Nom<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Masc | *<nowiki>|</nowiki>*<nowiki>|</nowiki>* | _ | _ | _ | _ | _ |
+| 14 | Staaten | Staat | Staat | NN | NN | Nom<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Masc | *<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Masc | _ | _ | _ | _ | _ |
+| 15 | beim | bei | beim | APPRART | APPRART | Dat<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Neut | Dat<nowiki>|</nowiki>Sg<nowiki>|</nowiki>* | _ | _ | _ | _ | _ |
+| 16 | Gipfeltreffen | Gipfeltreffen | Gipfeltreffen | NN | NN | Dat<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Neut | *<nowiki>|</nowiki>*<nowiki>|</nowiki>Neut | _ | _ | _ | _ | _ |
+| 17 | für | für | für | APPR | APPR | _ | _ | _ | _ | _ | _ | _ |
+| 18 | Asiatisch-Pazifische | asiatisch-pazifisch | Asiatisch-Pazifische | ADJA | NN | Pos<nowiki>|</nowiki>Acc<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | *<nowiki>|</nowiki>*<nowiki>|</nowiki>* | _ | _ | _ | _ | _ |
+| 19 | Wirtschaftskooperation | Wirtschaftskooperation | Wirtschaftskooperation | NN | NN | Acc<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | *<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | _ | _ | _ | _ | _ |
+| 20 | ( | _ | ( | $( | $( | _ | _ | _ | _ | _ | _ | _ |
+| 21 | Apec | Apec | _ | NE | NE | Nom<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Fem | _ | _ | _ | _ | _ | _ |
+| 22 | ) | _ | ) | $( | $( | _ | _ | _ | _ | _ | _ | _ |
+| 23 | in | in | in | APPR | APPR | _ | _ | _ | _ | _ | _ | _ |
+| 24 | Osaka | Osaka | Osaka | NE | NE | Dat<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Neut | *<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Neut | _ | _ | _ | _ | _ |
+| 25 | aus | aus | aus | PTKVZ | PTKVZ | _ | _ | _ | _ | _ | _ | _ |
+| 26 | . | _ | . | $. | $. | _ | _ | _ | _ | _ | _ | _ |
+
+==== Parsing ====
+
+TIGER is a mildly nonprojective treebank. 15875 of the 680,710 tokens in the CoNLL 2009 training+development datasets are attached nonprojectively (2.33%).
+
+The results of the CoNLL 2006 shared task are [[http://ilk.uvt.nl/conll/results.html|available online]]. They have been published in [[http://aclweb.org/anthology-new/W/W06/W06-2920.pdf|(Buchholz and Marsi, 2006)]]. The evaluation procedure was non-standard because it excluded punctuation tokens. These are the best results for German:
+
+^ Parser (Authors) ^ LAS ^ UAS ^
+| MST (McDonald et al.) | 87.34 | 90.38 |
+| Riedel et al. | 86.24 | 89.76 |
+| Basis (O'Neil) | 85.36 | 89.16 |
+| Malt (Nivre et al.) | 85.82 | 88.76 |
+
+The results of the CoNLL 2009 shared task are [[http://ufal.mff.cuni.cz/conll2009-st/results/results.php|available online]]. They have been published in [[http://aclweb.org/anthology/W/W09/W09-1201.pdf|(Hajič et al., 2009)]]. Unlabeled attachment score was not published. These are the best results for German:
+
+^ Parser (Authors) ^ LAS ^
+| Bohnet | 87.48 |
+| Merlo | 87.29 |
+| Chen | 86.24 |
+| Che | 86.19 |
+
+===== Greek (el) =====
+
+Greek Dependency Treebank (GDT)
+
+==== Versions ====
+
+  * CoNLL 2007
+
+==== Obtaining and License ====
+
+There does not seem to be any regular distribution channel for the Greek Dependency Treebank. The CoNLL 2007 version had a restricted license for the duration of the shared task only. Republication of the CoNLL version in LDC is planned but it has not happenned yet. In the meantime, one can ask Prokopis Prokopidis (prokopis (at) ilsp (dot) gr) about availability of the corpus.
+
+GDT was created by members of the [[http://www.ilsp.gr/|Institute for Language and Speech Processing]] (Ινστιτούτο Επεξεργασίας του Λόγου, ILSP/ΙΕΛ), Επιδαύρου & Αρτέμιδος 6, Παράδεισος Αμαρουσίου, GR-15125 Αθήνα, Greece.
+
+==== References ====
+
+  * Website
+    * //no website dedicated to the treebank//
+  * Data
+    * //no separate citation//
+  * Principal publications
+    * Prokopis Prokopidis, Elina Desipri, Maria Koutsombogera, Harris Papageorgiou, Stelios Piperidis: [[http://www.ilsp.gr/homepages/prokopidis/documents/gdt_tlt2005.pdf|Theoretical and Practical Issues in the Construction of a Greek Dependency Corpus]] In: Montserrat Civit, Sandra Kübler, Ma. Antònia Martí (eds.), Proceedings of The Fourth Workshop on Treebanks and Linguistic Theories (TLT 2005), pp. 149-160, Barcelona, Spain, 2005.
+  * Documentation
+    * Description of tags and feature values is provided in the ''doc/README'' file in the CoNLL 2007 data distribution.
+
+==== Domain ====
+
+Mixed (“GDT consists of randomly selected textual fragments and texts in three domains: politics (current affairs, manual transcripts and minutes of European parliamentary sessions), health, and travel.”)
+
+==== Size ====
+
+The CoNLL 2007 version contains 70223 tokens in 2902 sentences, yielding 24.20 tokens per sentence on average (CoNLL 2007 data split: 65419 tokens / 2705 sentences training, 4804 tokens / 197 sentences test).
+
+==== Inside ====
+
+The syntactic annotation style and the tagset for dependency relations (analytical functions) in GDT has been modeled after the [[http://ufal.mff.cuni.cz/pdt2.0/doc/manuals/en/a-layer/html/index.html|Prague Dependency Treebank]].
+
+==== Sample ====
+
+The first sentence of the CoNLL 2007 training data:
+
+| 1 | " | " | PUNCT | PUNCT | _ | 10 | AuxG | _ | _ |
+| 2 | Τα | ο | At | AtDf | Ne<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Nm | 3 | Atr | _ | _ |
+| 3 | αντισώματα | αντίσωμα | No | NoCm | Ne<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Nm | 5 | Sb | _ | _ |
+| 4 | IgG | IgG | Rg | RgFwOr | _ | 3 | Atr | _ | _ |
+| 5 | είναι | είμαι | Vb | VbMn | Id<nowiki>|</nowiki>Pr<nowiki>|</nowiki>03<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Xx<nowiki>|</nowiki>Ip<nowiki>|</nowiki>Pv<nowiki>|</nowiki>Xx | 10 | Obj_Co | _ | _ |
+| 6 | σαν | σαν | Ad | Ad | Ba | 5 | Adv | _ | _ |
+| 7 | μακροπρόθεσμη | μακροπρόθεσμος | Aj | Aj | Ba<nowiki>|</nowiki>Fe<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Nm | 8 | Atr | _ | _ |
+| 8 | μνήμη | μνήμη | No | NoCm | Fe<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Nm | 6 | Adv | _ | _ |
+| 9 | , | , | PUNCT | PUNCT | _ | 10 | AuxX | _ | _ |
+| 10 | ενώ | ενώ | Cj | CjCo | _ | 26 | Coord | _ | _ |
+| 11 | το | ο | At | AtDf | Ne<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Nm | 12 | Atr | _ | _ |
+| 12 | IgA | IgA | Rg | RgFwOr | _ | 15 | Sb | _ | _ |
+| 13 | πιστεύεται | πιστεύεται | Vb | VbMn | Id<nowiki>|</nowiki>Pr<nowiki>|</nowiki>03<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Xx<nowiki>|</nowiki>Ip<nowiki>|</nowiki>Pv<nowiki>|</nowiki>Xx | 10 | Obj_Co | _ | _ |
+| 14 | ότι | ότι | Cj | CjSb | _ | 13 | AuxC | _ | _ |
+| 15 | είναι | είμαι | Vb | VbMn | Id<nowiki>|</nowiki>Pr<nowiki>|</nowiki>03<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Xx<nowiki>|</nowiki>Ip<nowiki>|</nowiki>Pv<nowiki>|</nowiki>Xx | 14 | Sb | _ | _ |
+| 16 | ένας | ένας | At | AtId | Ma<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Nm | 18 | Atr | _ | _ |
+| 17 | συγκεκριμένος | συγκεκριμένος | Aj | Aj | Ba<nowiki>|</nowiki>Ma<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Nm | 18 | Atr | _ | _ |
+| 18 | δείκτης | δείκτης | No | NoCm | Ma<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Nm | 15 | Pnom | _ | _ |
+| 19 | για | για | AsPp | AsPpSp | _ | 18 | AuxP | _ | _ |
+| 20 | πρόσφατες | πρόσφατος | Aj | Aj | Ba<nowiki>|</nowiki>Fe<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Ac | 21 | Atr_Co | _ | _ |
+| 21 | ή | ή | Cj | CjCo | _ | 23 | Coord | _ | _ |
+| 22 | χρόνιες | χρόνιος | Aj | Aj | Ba<nowiki>|</nowiki>Fe<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Ac | 21 | Atr_Co | _ | _ |
+| 23 | λοιμώξεις | λοίμωξη | No | NoCm | Fe<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Ac | 19 | Atr | _ | _ |
+| 24 | " | " | PUNCT | PUNCT | _ | 10 | AuxG | _ | _ |
+| 25 | , | , | PUNCT | PUNCT | _ | 10 | AuxX | _ | _ |
+| 26 | εξηγεί | εξηγώ | Vb | VbMn | Id<nowiki>|</nowiki>Pr<nowiki>|</nowiki>03<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Xx<nowiki>|</nowiki>Ip<nowiki>|</nowiki>Av<nowiki>|</nowiki>Xx | 0 | Pred | _ | _ |
+| 27 | η | ο | At | AtDf | Fe<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Nm | 28 | Atr | _ | _ |
+| 28 | Δρ | Δρ | Rg | RgFwTr | _ | 26 | Sb | _ | _ |
+| 29 | Αρκάρι | Αρκάρι | No | NoCm | Ne<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Nm | 28 | Atr | _ | _ |
+| 30 | . | . | PUNCT | PUNCT | _ | 0 | AuxK | _ | _ |
+
+The first sentence of the CoNLL 2007 test data:
+
+| 1 | Η | ο | At | AtDf | Fe<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Nm | 2 | Atr | _ | _ |
+| 2 | Σίφνος | Σίφνος | No | NoPr | Fe<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Nm | 3 | Sb | _ | _ |
+| 3 | φημίζεται | φημίζομαι | Vb | VbMn | Id<nowiki>|</nowiki>Pr<nowiki>|</nowiki>03<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Xx<nowiki>|</nowiki>Ip<nowiki>|</nowiki>Pv<nowiki>|</nowiki>Xx | 0 | Pred | _ | _ |
+| 4 | και | και | Cj | CjCo | _ | 5 | AuxY | _ | _ |
+| 5 | για | για | AsPp | AsPpSp | _ | 3 | AuxP | _ | _ |
+| 6 | τα | ο | At | AtDf | Ne<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Ac | 8 | Atr | _ | _ |
+| 7 | καταγάλανα | καταγάλανος | Aj | Aj | Ba<nowiki>|</nowiki>Ne<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Ac | 8 | Atr | _ | _ |
+| 8 | νερά | νερό | No | NoCm | Ne<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Ac | 5 | Obj | _ | _ |
+| 9 | των | ο | At | AtDf | Fe<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Ge | 11 | Atr | _ | _ |
+| 10 | πανέμορφων | πανέμορφος | Aj | Aj | Ba<nowiki>|</nowiki>Fe<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Ge | 11 | Atr | _ | _ |
+| 11 | ακτών | ακτή | No | NoCm | Fe<nowiki>|</nowiki>Pl<nowiki>|</nowiki>Ge | 8 | Atr | _ | _ |
+| 12 | της | μου | Pn | PnPo | Fe<nowiki>|</nowiki>03<nowiki>|</nowiki>Sg<nowiki>|</nowiki>Ge<nowiki>|</nowiki>Xx | 11 | Atr | _ | _ |
+| 13 | . | . | PUNCT | PUNCT | _ | 0 | AuxK | _ | _ |
+
+==== Parsing ====
+
+Nonprojectivities in GDT are not frequent. Only 823 of the 70223 tokens in the CoNLL 2007 version are attached nonprojectively (1.17%).
+
+The results of the CoNLL 2007 shared task are [[http://nextens.uvt.nl/depparse-wiki/AllScores|available online]]. They have been published in [[http://aclweb.org/anthology-new/D/D07/D07-1096.pdf|(Nivre et al., 2007)]]. The evaluation procedure was changed to include punctuation tokens. These are the best results for Greek:
+
+^ Parser (Authors) ^ LAS ^ UAS ^
+| Nakagawa | 76.31 | 84.08 |
+| Keith Hall et al. | 74.21 | 82.04 |
+| Carreras | 73.56 | 81.37 |
+| Malt (Nilsson et al.) | 74.65 | 81.22 |
+| Titov et al. | 73.52 | 81.20 |
+| Chen | 74.42 | 81.16 |
+| Duan | 74.29 | 80.77 |
+| Attardi et al. | 73.92 | 80.75 |
+| Malt (J. Hall et al.) | 74.21 | 80.66 |
+
+The two Malt parser results of 2007 (single malt and blended) are described in [[http://aclweb.org/anthology-new/D/D07/D07-1097.pdf|(Hall et al., 2007)]] and the details about the parser configuration are described [[http://w3.msi.vxu.se/users/jha/conll07/|here]].
