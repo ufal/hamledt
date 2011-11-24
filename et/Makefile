@@ -18,10 +18,10 @@ prepare_source:
 	( echo '<corpus><body>'; \
 	for file in /net/data/estonian-treebank/{piialaused,ratsepalaused,sul}.xml ; do \
 		$(EXTRACT_BODY) $$file ; \
-	done ; echo '</body></corpus>' ) > $(IN)/train.xml
+	done ; echo '</body></corpus>' ) | ./repair_encoding.pl > $(IN)/train.xml
 	( echo '<corpus><body>' ; \
 	$(EXTRACT_BODY) /net/data/estonian-treebank/arborest.xml; \
-	echo '</body></corpus>' ) > $(IN)/test.xml
+	echo '</body></corpus>' ) | ./repair_encoding.pl > $(IN)/test.xml
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
