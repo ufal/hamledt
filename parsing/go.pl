@@ -222,11 +222,19 @@ sub create_conll_training_data
     $writeparam .= 'pos_attribute=conll/pos ';
     $writeparam .= 'feat_attribute=conll/feat ';
     # Jednorázový pokus: odstranit z trénovacích dat všechny syntaktické značky.
-    #$writeparam .= 'deprel_attribute='.($transformation eq '000_orig' ? 'conll/deprel' : 'afun').' ';
-    $writeparam .= 'deprel_attribute=_ ';
-    #$writeparam .= 'is_member_within_afun=1 ';
-    #$writeparam .= 'is_shared_modifier_within_afun=1 ';
-    #$writeparam .= 'is_coord_conjunction_within_afun=1 ';
+    # (Skončil katastrofou pro parser smf, ostatní z něj vyšly bez větších šrámů, ale zatím se mi nepodařilo zjistit příčinu, proto ponechávám možnost pokus znova zapnout.)
+    my $pokus = 0;
+    if($pokus)
+    {
+        $writeparam .= 'deprel_attribute=_ ';
+    }
+    else
+    {
+        $writeparam .= 'deprel_attribute='.($transformation eq '000_orig' ? 'conll/deprel' : 'afun').' ';
+        $writeparam .= 'is_member_within_afun=1 ';
+        $writeparam .= 'is_shared_modifier_within_afun=1 ';
+        $writeparam .= 'is_coord_conjunction_within_afun=1 ';
+    }
     print SCR ("Write::CoNLLX $writeparam ");
     print SCR ("-- $data_dir/$language/treex/$transformation/train/*.treex.gz > $filename1\n");
     print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
