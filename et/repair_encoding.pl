@@ -15,7 +15,9 @@ while(<>)
     # However, it contains wrong characters, perhaps because of previous conversions from other encodings.
     # The following occurs in the file piialaused.xml:
     # ð (\x{F0}) should be š (\x{161})
-    # Examples: šatään, maršruut, dušš
+    # Elsewhere, there is "ts^" instead of "tš".
+    # Examples: šatään, maršruut, dušš, tšuktši
     s/\x{F0}/\x{161}/g;
+    s/s^/\x{161}/g;
     print;
 }
