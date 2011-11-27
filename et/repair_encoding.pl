@@ -18,11 +18,16 @@ while(<>)
     # Elsewhere, there is "ts^" instead of "tš".
     # Examples: šatään, maršruut, dušš, tšuktši
     s/\x{F0}/\x{161}/g;
-    s/S^/\x{160}/g;
-    s/s^/\x{161}/g;
+    s/S\^/\x{160}/g;
+    s/s\^/\x{161}/g;
     # Similarly, loanwords may contain "ž".
     # Examples: žiletid, žurnalistika, žürii, žanr, žargoon
-    s/Z^/\x{17D}/g;
-    s/z^/\x{17E}/g;
+    s/Z\^/\x{17D}/g;
+    s/z\^/\x{17E}/g;
+    # Some instances are also encoded using entities (which underwent a second encoding when wrapped in the TIGER-XML).
+    s/&amp;Scaron;/\x{160}/g;
+    s/&amp;scaron;/\x{161}/g;
+    s/&amp;Zcaron;/\x{17D}/g;
+    s/&amp;zcaron;/\x{17E}/g;
     print;
 }
