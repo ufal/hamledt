@@ -5,7 +5,7 @@ IN       = $(DATADIR)/source
 DIR0     = $(DATADIR)/treex/0000_constituents
 DIR1     = $(DATADIR)/treex/000_orig
 DIR2     = $(DATADIR)/treex/001_pdtstyle
-TREEX    = treex -L$(LANGCODE) -p
+TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::Tiger
 WRITE0   = Write::Treex file_stem='001'
 WRITE    = Write::Treex
@@ -16,12 +16,9 @@ prepare_source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
 	( echo '<corpus><body>'; \
-	for file in /net/data/estonian-treebank/{piialaused,ratsepalaused,sul}.xml ; do \
+	for file in /net/data/estonian-treebank/{arborest,piialaused,ratsepalaused,sul}.xml ; do \
 		$(EXTRACT_BODY) $$file ; \
-	done ; echo '</body></corpus>' ) | ./repair_encoding.pl > $(IN)/train.xml
-	( echo '<corpus><body>' ; \
-	$(EXTRACT_BODY) /net/data/estonian-treebank/arborest.xml; \
-	echo '</body></corpus>' ) | ./repair_encoding.pl > $(IN)/test.xml
+	done ; echo '</body></corpus>' ) | ./repair_encoding.pl > $(IN)/corpus.xml
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
@@ -35,10 +32,10 @@ prepare_dirs:
 	chmod -R g+w data/. data/*
 
 # run a conversion of the original data into the treex format
-# and store the results in 000_orig/
+# and store the results in 0000_constituents/
 to_treex:
-	$(TREEX) $(IMPORT) from=$(IN)/train.xml $(WRITE0) path=$(DIR0)/train/
-	$(TREEX) $(IMPORT) from=$(IN)/test.xml  $(WRITE0) path=$(DIR0)/test/
+	$(TREEX) $(IMPORT) from=$(IN)/corpus.xml Filter::NthSentence n=10 keep=0 $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORT) from=$(IN)/corpus.xml Filter::NthSentence n=10 keep=1 $(WRITE0) path=$(DIR0)/test/
 
 # converts trees from phrase to dependency style
 SCEN1 = P2A::TigerET
