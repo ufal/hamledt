@@ -3,6 +3,7 @@ DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
 IN       = $(DATADIR)/source
 DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle
+WX2UTF   = perl -I /home/zeman/lib $(TMT_ROOT)/tools/format_convertors/conll_to_conll/conll_wx2utf.pl -l $(LANGCODE)
 TREEX    = treex -L$(LANGCODE) -p
 IMPORT   = Read::CoNLLX lines_per_doc=500
 WRITE0   = Write::Treex file_stem=''
@@ -11,8 +12,8 @@ WRITE    = Write::Treex
 prepare_source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	perl -I /home/zeman/lib /net/work/people/zeman/parsing/projects/icon2009/conll_wx2utf.pl -l $(LANGCODE) < /net/data/icon2010/hi/fine-grained/training/hindi_training.conll | ../conll_break_cycles.pl > $(IN)/train.conll
-	perl -I /home/zeman/lib /net/work/people/zeman/parsing/projects/icon2009/conll_wx2utf.pl -l $(LANGCODE) < /net/data/icon2010/hi/fine-grained/development/hindi_development.conll | ../conll_break_cycles.pl > $(IN)/test.conll
+	perl -pe 's/\t-JOIN/\t-/g' < /net/data/icon2010/hi/training/hindi_training.conll | $(WX2UTF) | ../conll_break_cycles.pl > $(IN)/train.conll
+	perl -pe 's/\t-JOIN/\t-/g' < /net/data/icon2010/hi/development/hindi_development.conll | $(WX2UTF) | ../conll_break_cycles.pl > $(IN)/test.conll
 
 prepare_dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
