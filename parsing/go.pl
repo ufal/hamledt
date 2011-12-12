@@ -32,8 +32,10 @@ use cluster;
 # Read options.
 GetOptions
 (
-    'languages|langs=s' => \$konfig{languages}
+    'languages|langs=s' => \$konfig{languages},
+    'help' => \$konfig{help}
 );
+exit(usage()) if($konfig{help});
 
 my $scriptdir = dzsys::get_script_path();
 my $data_dir = Treex::Core::Config->share_dir()."/data/resources/normalized_treebanks";
