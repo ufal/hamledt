@@ -121,10 +121,11 @@ foreach my $language (@languages) {
                         my $command_line = "treex $jobs -L$language "
                                          . "Util::Eval bundle='\$bundle->remove_zone(qw($language),qw(orig))' " # remove the original trees (before PDT styling)
                                          . "A2A::CopyAtree selector=before "                                    # store the trees before transformation to zone "before"
+                                         . "A2A::DeleteAfunCoordWithoutMembers "                                # TODO this should be done already within the normalization
                                          . "A2A::Transform::CoordStyle2 style=$name from_style=fPhRsHcHpB "     # transform the zone with empty selector
-                                         #. "A2A::CopyAtree selector=inverse "                                   # copy the trees after transformation to zone "inverse"
-                                         #. "A2A::Transform::CoordStyle2 from_style=$name style=fPhRsHcHpB selector=inverse "  # make the inverse transformation in zone "inverse"
-                                         . "Util::Eval document='my \$path=\$document->path; \$path=~s/00._pdtstyle/trans_$name/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' "
+                                         . "A2A::CopyAtree selector=inverse "                                   # copy the trees after transformation to zone "inverse"
+                                         . "A2A::Transform::CoordStyle2 from_style=$name style=fPhRsHcHpB selector=inverse "  # make the inverse transformation in zone "inverse"
+                                         . "Util::Eval document='my \$path=\$document->path; \$path=~s/00._pdtstyle/NEWtrans_$name/;use File::Path qw(mkpath); mkpath(\$path);\$document->set_path(\$path);' "
                                          . "Write::Treex -- $data_dir/$language/treex/*_pdtstyle/t*/*.treex.gz";
                         open(BS, ">:utf8", "tr-$language-$name.sh") or die;
                         print BS "#!/bin/bash\n\n$command_line\n";

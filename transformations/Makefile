@@ -14,7 +14,7 @@ all: prague stanford moscow
 
 
 prague:
-	./transform.pl --family Prague   --head right            --shared head    --conjunction head    --punctuation between  $(LANGS)
+	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  $(LANGS)
 
 stanford:
 	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous $(LANGS)
