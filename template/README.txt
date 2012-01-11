@@ -1,3 +1,0 @@
-basic info about the given treebank is to be collected here,
-
-e.g. pointers to documentation, license,...
