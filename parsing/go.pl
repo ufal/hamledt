@@ -323,8 +323,8 @@ sub parse
     (
         mlt => "W2A::ParseMalt model=malt_nivreeager.mco cpos_attribute=conll/cpos pos_attribute=conll/pos feat_attribute=conll/feat",
         smf => "W2A::ParseMalt model=malt_stacklazy.mco  cpos_attribute=conll/cpos pos_attribute=conll/pos feat_attribute=conll/feat",
-        mcd => "W2A::ParseMST model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
-        mcp => "W2A::ParseMST model=mcd_proj_o2.model    decodetype=proj     pos_attribute=conll/pos",
+        mcd => "W2A::ParseMST  model_dir=. model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
+        mcp => "W2A::ParseMST  model_dir=. model=mcd_proj_o2.model    decodetype=proj     pos_attribute=conll/pos",
     );
     # Prepare the training script and submit the job to the cluster.
     foreach my $parser qw(mlt smf mcd mcp)
