@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # Processes selected languages and transformations (train, parse, eval, clean etc.)
 # Provides the unified necessary infrastructure for looping through all the sub-experiment subfolders.
-# Copyright © 2011 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2011, 2012 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 sub usage
@@ -63,7 +63,7 @@ sub get_languages
     }
     else
     {
-        return qw(ar bg bn ca cs da de el en es et eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
+        return qw(ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
     }
 }
 
