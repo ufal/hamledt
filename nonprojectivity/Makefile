@@ -1,4 +1,4 @@
-LANGUAGES = ar bg bn ca cs da de el en es et eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
+LANGUAGES = ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 
 all:
 	$(foreach lang,$(LANGUAGES),make LANG=$(lang) nonproj ; )
