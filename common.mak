@@ -42,8 +42,11 @@ pdt:
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
+# Smaller data are processed faster.
+# $(TREEX) is not used because we do not wall to parallelize the task on the cluster.
+# (By default, copies of logs from parallel jobs lack the TREEX-INFO level.)
 test:
-	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/ -- $(DIR0)/test/*.treex.gz
+	treex -L$(LANGCODE) $(SCEN1) $(WRITE) path=$(DIR1)/test/ -- $(DIR0)/test/*.treex.gz
 
 clean:
 	rm -rf $(DATADIR)/treex
