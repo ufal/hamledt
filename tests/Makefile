@@ -29,6 +29,7 @@ tests:
 	Test::A::NonleafAuxC \
 	Test::A::NonleafAuxP \
 	Test::A::SubjectBelowVerb \
+	Test::A::AfunKnown \
 	-- $(FILES) 2> test.err > $(TESTLOG)
 
 table:
