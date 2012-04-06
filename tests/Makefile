@@ -4,7 +4,7 @@ VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
 #LANGS={en,cs}
-LANGS=bg
+LANGS=*
 SETS={train,test}
 FILES=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz
 
