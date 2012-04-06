@@ -4,12 +4,12 @@ VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
 #LANGS={en,cs}
-LANGS=*
+LANGS=bg
 SETS={train,test}
 FILES=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz
 
 validate:
-	treex -p --survive --jobs $(JOBS) -- $(FILES)  2>&1 | tee $(VALLOG)
+	treex --survive -- $(FILES)  2>&1 | tee $(VALLOG)
 	@echo
 	@echo Output of the validation test stored in $(VALLOG)
 
@@ -20,7 +20,7 @@ summarize_validation:
 	grep -v TREEX $(VALLOG) || exit 0
 
 tests:
-	treex -p --survive --jobs $(JOBS) \
+	treex  --survive \
 	Util::SetGlobal language=mul \
 	Test::A::CoApAboveEveryMember \
 	Test::A::LeafAux \
@@ -30,6 +30,8 @@ tests:
 	Test::A::NonleafAuxP \
 	Test::A::SubjectBelowVerb \
 	Test::A::AfunKnown \
+	Test::A::AfunDefined \
+	Test::A::PredUnderRoot \
 	-- $(FILES) 2> test.err > $(TESTLOG)
 
 table:
