@@ -4,7 +4,7 @@ DATADIR  = $(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
 IN       = $(DATADIR)/source
 DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle
-TREEX    = treex -L$(LANGCODE) -p
+TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::CoNLLX lines_per_doc=500
 WRITE0   = Write::Treex file_stem=''
 WRITE    = Write::Treex clobber=1
@@ -46,7 +46,7 @@ pdt:
 # $(TREEX) is not used because we do not wall to parallelize the task on the cluster.
 # (By default, copies of logs from parallel jobs lack the TREEX-INFO level.)
 test:
-	treex -L$(LANGCODE) $(SCEN1) $(WRITE) path=$(DIR1)/test/ -- $(DIR0)/test/*.treex.gz
+	treex -L$(LANGCODE) $(SCEN1) $(WRITE) path=$(DIR1)/test -- $(DIR0)/test/*.treex.gz
 
 clean:
 	rm -rf $(DATADIR)/treex
