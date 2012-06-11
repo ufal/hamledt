@@ -4,7 +4,7 @@ LANGS= ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru 
 
 SHELL=/bin/bash
 
-DATADIR=$(TMT_ROOT)/share/data/resources/normalized_treebanks/
+DATADIR=$(TMT_ROOT)/share/data/resources/hamledt/
 
 test:
 	@echo Test: a simple transformation applied on a single language

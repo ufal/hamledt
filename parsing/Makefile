@@ -36,11 +36,11 @@ tex:
 	@echo parsing_accuracy_table.tex should be commited as publications/papers/2011_cl_tree_conventions
 
 rights:
-	chmod -R g+w ${TMT_ROOT}/share/data/resources/normalized_treebanks/ 2>/dev/null || echo Done
+	chmod -R g+w ${TMT_ROOT}/share/data/resources/hamledt/ 2>/dev/null || echo Done
 
 clean:
 	rm -r mcd-* mcp-* mlt-* smf-* parse-* eval-* *-cluster-run-*
 
 clean_malt_dirs:
-	rm -rf ${TMT_ROOT}/share/data/resources/normalized_treebanks/*/treex/*/parsed/malt_nivreeager
-	rm -rf ${TMT_ROOT}/share/data/resources/normalized_treebanks/*/treex/*/parsed/malt_stacklazy
+	rm -rf ${TMT_ROOT}/share/data/resources/hamledt/*/treex/*/parsed/malt_nivreeager
+	rm -rf ${TMT_ROOT}/share/data/resources/hamledt/*/treex/*/parsed/malt_stacklazy

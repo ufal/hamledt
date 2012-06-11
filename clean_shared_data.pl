@@ -11,7 +11,7 @@ binmode(STDERR, ":utf8");
 use lib '/home/zeman/lib';
 use find;
 
-find::go('/ha/projects/tectomt_shared/data/resources/normalized_treebanks', \&clean);
+find::go('/net/projects/tectomt_shared/data/resources/hamledt', \&clean);
 find::go('.', \&clean_cluster_run);
 
 sub clean

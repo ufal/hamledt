@@ -5,7 +5,7 @@ help:
 
 collect:
 	#TODO: after normalization is redone, SetSharedModifier block will not be needed here
-	treex -p --jobs=100 A2A::SetSharedModifier language=mul Print::CoordStats --survive -- /net/projects/tectomt_shared/data/resources/normalized_treebanks/*/treex/*_pdtstyle/t*/*.treex.gz > $(TMP)
+	treex -p --jobs=100 A2A::SetSharedModifier language=mul Print::CoordStats --survive -- /net/projects/tectomt_shared/data/resources/hamledt/*/treex/*_pdtstyle/t*/*.treex.gz > $(TMP)
 
 table:
 	cat $(TMP) | ./create_tsv_table.pl > table.tsv

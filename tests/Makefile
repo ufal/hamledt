@@ -6,7 +6,7 @@ TESTLOG=test.log
 #LANGS={en,cs}
 LANGS=*
 SETS={train,test}
-FILES=$(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz
+FILES=$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz
 
 validate:
 	treex --survive -- $(FILES)  2>&1 | tee $(VALLOG)

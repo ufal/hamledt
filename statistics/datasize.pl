@@ -5,7 +5,7 @@ use warnings;
 use Treex;
 use Treex::Core::Document;
 
-my $main_data_dir = "$ENV{TMT_ROOT}/share/data/resources/normalized_treebanks";
+my $main_data_dir = "$ENV{TMT_ROOT}/share/data/resources/hamledt";
 
 foreach my $lang_data_dir (sort glob "$main_data_dir/*") {
     my ($lang_code) = reverse split /\//,$lang_data_dir;

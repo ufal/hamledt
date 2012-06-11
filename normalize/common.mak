@@ -1,6 +1,6 @@
 # To be included from the language-specific makefiles like this:
 # include ../common.mak
-DATADIR  = $(TMT_ROOT)/share/data/resources/normalized_treebanks/$(LANGCODE)
+DATADIR  = $(TMT_ROOT)/share/data/resources/hamledt/$(LANGCODE)
 IN       = $(DATADIR)/source
 DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle

@@ -41,7 +41,7 @@ sub usage {
 ";
 }
 
-my $data_dir = Treex::Core::Config->share_dir()."/data/resources/normalized_treebanks/";
+my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt/";
 
 sub find_available_languages {
     my $share_dir = Treex::Core::Config->share_dir();

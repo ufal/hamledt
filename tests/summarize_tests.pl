@@ -9,7 +9,7 @@ while (<>) {
     next if !/^Test/;
     chomp;
     my ($test,$file) = split;
-    $file =~ /normalized_treebanks\/([a-z]+)/
+    $file =~ /hamledt\/([a-z]+)/
         or die "file doesn't match expected pattern: $file";
     my $language = $1;
     $count{$language}{$test}++;

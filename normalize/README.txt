@@ -26,7 +26,7 @@ annotation scheme into the PDT style
 
 # How to create folders for a new language, say, Finnish:
 LANG=fi
-cd $TMT_ROOT/treex/devel/normalize_treebanks
+cd $TMT_ROOT/treex/devel/hamledt
 svn cp template $LANG
 cd $LANG
 # Describe the treebank (you can first copy the README.txt file from another language).

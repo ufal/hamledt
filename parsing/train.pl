@@ -9,7 +9,7 @@ use Treex::Core::Config;
 use lib '/home/zeman/lib';
 use dzsys;
 
-my $data_dir = Treex::Core::Config->share_dir()."/data/resources/normalized_treebanks";
+my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
 my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
 my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
 

@@ -38,7 +38,7 @@ GetOptions
 exit(usage()) if($konfig{help});
 
 my $scriptdir = dzsys::get_script_path();
-my $data_dir = Treex::Core::Config->share_dir()."/data/resources/normalized_treebanks";
+my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
 $data_dir =~ s-//-/-;
 my $targets = get_languages_and_transformations();
 my $action_name = sort_actions(@ARGV);

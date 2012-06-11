@@ -24,7 +24,7 @@ my @transformations = ('orig', 'pdt');
 my %tr_hash = ('orig' => 1, 
                 'pdt' => 1);
 
-my $data_dir = Treex::Core::Config->share_dir()."/data/resources/normalized_treebanks/";
+my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt/";
 
 my %value;
 my %conf;

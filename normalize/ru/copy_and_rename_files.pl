@@ -11,8 +11,8 @@ binmode(STDOUT, ":utf8");
 binmode(STDERR, ":utf8");
 use Encode;
 
-$srcdir = "$ENV{TMT_ROOT}/treex/devel/normalize_treebanks/ru/data/source/syntagrus";
-$tgtdir = "$ENV{TMT_ROOT}/treex/devel/normalize_treebanks/ru/data/source";
+$srcdir = "$ENV{TMT_ROOT}/treex/devel/hamledt/normalize/ru/data/source/syntagrus";
+$tgtdir = "$ENV{TMT_ROOT}/treex/devel/hamledt/normalize/ru/data/source";
 @src_subdirs = qw(2003 2004 2005 2006 2007 2008 Uppsala news);
 # File renaming pattern. Note that the mapping is not reversible.
 @latin = qw(
