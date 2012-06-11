@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 # To be included from the language-specific makefiles like this:
 # include ../common.mak
 DATADIR  = $(TMT_ROOT)/share/data/resources/hamledt/$(LANGCODE)
@@ -15,12 +17,7 @@ dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
 	mkdir -p $(DATADIR)
 	if [ ! -e data ]; then ln -s $(DATADIR) data; fi
-	mkdir -p $(DIR0)
-	mkdir -p $(DIR0)/train
-	mkdir -p $(DIR0)/test
-	mkdir -p $(DIR1)
-	mkdir -p $(DIR1)/train
-	mkdir -p $(DIR1)/test
+	mkdir -p {$(DIR0),$(DIR1)}/{train,test}
 	chmod -R g+w data/. data/*
 
 # Run a conversion of the original data into the treex format
