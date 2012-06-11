@@ -43,7 +43,7 @@ pdt:
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
 # Smaller data are processed faster.
-# $(TREEX) is not used because we do not wall to parallelize the task on the cluster.
+# $(TREEX) is not used because we do not want to parallelize the task on the cluster.
 # (By default, copies of logs from parallel jobs lack the TREEX-INFO level.)
 test:
 	treex -L$(LANGCODE) $(SCEN1) $(WRITE) path=$(DIR1)/test -- $(DIR0)/test/*.treex.gz
