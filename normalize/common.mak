@@ -8,10 +8,15 @@ DIR0     = $(DATADIR)/treex/000_orig
 DIR1     = $(DATADIR)/treex/001_pdtstyle
 TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::CoNLLX lines_per_doc=500
-WRITE0   = Write::Treex file_stem=''
+WRITE0   = Write::Treex file_stem='' clobber=1
 WRITE    = Write::Treex clobber=1
 TRAIN    = $(IN)/train.conll
 TEST     = $(IN)/test.conll
+TO_PDT_TRAIN_OPT :=
+TO_PDT_TEST_OPT  :=
+
+check-source:
+	[ -d $(IN) ] || (echo new $(LANGCODE) && make source)
 
 dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
@@ -35,8 +40,8 @@ conll_to_treex:
 UCLANG = $(shell perl -e 'print uc "$(LANGCODE)"')
 SCEN1  = A2A::$(UCLANG)::CoNLL2PDTStyle A2A::SetSharedModifier A2A::SetCoordConjunction
 pdt:
-	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
-	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
+	$(TREEX) $(TO_PDT_TRAIN_OPT) $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
+	$(TREEX) $(TO_PDT_TEST_OPT)  $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
 # Smaller data are processed faster.

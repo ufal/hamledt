@@ -8,3 +8,6 @@ source:
 	cp /net/data/basque-dt/testdataunificado2.conll $(IN)/test.conll
 
 treex: conll_to_treex
+
+TO_PDT_TRAIN_OPT := -p --jobs 11
+TO_PDT_TEST_OPT  := -p --jobs 2

@@ -9,7 +9,7 @@ help:
 	@echo '# Inspect the Makefile for details'
 
 # Non-parallel
-all: source treex to_pdt
+all: source treex pdt
 
 source: $(foreach l,$(LANGS),source-$(l))
 source-%:
@@ -19,11 +19,11 @@ treex: $(foreach l,$(LANGS),treex-$(l))
 treex-%:
 	cd $* && make dirs treex
 
-to_pdt: $(foreach l,$(LANGS),to_pdt-$(l))
-to_pdt-%:
-	cd $* && make to_pdt
+pdt: $(foreach l,$(LANGS),pdt-$(l))
+pdt-%:
+	cd $* && make pdt
 
 # Parallel
 qall: $(foreach l,$(LANGS),qall-$(l))
 qall-%:
-	/home/bojar/tools/shell/qsubmit --jobname=$*-normalize "cd $* && make source dirs treex to_pdt"
+	/home/bojar/tools/shell/qsubmit --jobname=$*-normalize "cd $* && make check-source dirs treex pdt"
