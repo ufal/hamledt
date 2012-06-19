@@ -27,3 +27,6 @@ pdt-%:
 qall: $(foreach l,$(LANGS),qall-$(l))
 qall-%:
 	/home/bojar/tools/shell/qsubmit --jobname=$*-normalize "cd $* && make check-source dirs treex pdt"
+
+clean:
+	rm -f *-normalize.o* .qsubmit*

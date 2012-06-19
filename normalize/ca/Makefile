@@ -1,6 +1,8 @@
 LANGCODE=ca
 include ../common.mak
 
+IMPORT = Read::CoNLL2009 lines_per_doc=500
+
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
