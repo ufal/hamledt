@@ -9,7 +9,7 @@ SETS={train,test}
 FILES=$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz
 
 validate:
-	treex --survive -- $(FILES)  2>&1 | tee $(VALLOG)
+	treex -p --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
 	@echo
 	@echo Output of the validation test stored in $(VALLOG)
 
@@ -20,7 +20,7 @@ summarize_validation:
 	grep -v TREEX $(VALLOG) || exit 0
 
 tests:
-	treex  --survive \
+	treex  -p --jobs=$(JOBS) --survive \
 	Util::SetGlobal language=mul \
 	Test::A::CoApAboveEveryMember \
 	Test::A::LeafAux \
@@ -39,4 +39,4 @@ table:
 
 
 clean:
-	rm *.log
+	rm -rf *.log ???-cluster-run-*

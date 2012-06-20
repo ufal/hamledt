@@ -30,3 +30,4 @@ qall-%:
 
 clean:
 	rm -f *-normalize.o* .qsubmit*
+	rm -rf */???-cluster-run-*
