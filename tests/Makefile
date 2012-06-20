@@ -39,4 +39,4 @@ table:
 
 
 clean:
-	rm -rf *.log ???-cluster-run-*
+	rm -rf *.log ???-cluster-run-* test.err
