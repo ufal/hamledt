@@ -2,7 +2,8 @@ A2A::CopyAtree selector=orig
 
 #set is_member and is_coord_conjunction
 Util::Eval anode='
-  if ($anode->conll_deprel eq "COORD"){
+  $anode->set_is_member(0);
+  if ($anode->conll_deprel =~ /COORD|CONJ/){
     if ($anode->tag eq "CC"){
       $anode->wild->{is_coord_conjunction} = 1;
     } else {
@@ -14,14 +15,15 @@ Util::Eval anode='
 Util::Eval anode='
 if ($anode->conll_deprel eq "COORD"
   && $anode->get_parent->conll_deprel ne "COORD"
-  && my @siblings = grep {$_->conll_deprel ne "P"} $anode->get_siblings()
+  && (my @siblings = grep {$_->conll_deprel ne "P"} $anode->get_siblings())
  ){
    foreach my $sibling (@siblings){ $sibling->set_is_shared_modifier(1); }
   }'
 
-A2A::Transform::CoordStyle style=fPhRsHcHpB from_style=fMhLsHcBpB
+#Write::Treex to=beforeTrans.streex clobber=1
+A2A::Transform::CoordStyle style=fPhRsHcHpB from_style=fMhLsHcBpB guess_nested=0
 
-W2A::EN::RehangConllToPdtStyle
+#W2A::EN::RehangConllToPdtStyle
 #W2A::EN::FixNominalGroups
 W2A::EN::FixIsMember
 W2A::EN::FixAtree

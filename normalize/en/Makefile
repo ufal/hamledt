@@ -14,7 +14,7 @@ treex: conll_to_treex
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
 #SCEN1 = A2A::EN::CoNLL2PDTStyle
-SCEN1= en2pdt.scen A2A::SetSharedModifier A2A::SetCoordConjunction
+SCEN1= en2pdt.scen
 
 TO_PDT_TRAIN_OPT := -p --jobs 40
 TO_PDT_TEST_OPT  := -p --jobs 2
