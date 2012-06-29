@@ -20,10 +20,9 @@ if ($anode->conll_deprel eq "COORD"
    foreach my $sibling (@siblings){ $sibling->set_is_shared_modifier(1); }
   }'
 
-#Write::Treex to=beforeTrans.streex clobber=1
 A2A::Transform::CoordStyle style=fPhRsHcHpB from_style=fMhLsHcBpB guess_nested=0
 
-#W2A::EN::RehangConllToPdtStyle
+W2A::EN::RehangConllToPdtStyle
 #W2A::EN::FixNominalGroups
 W2A::EN::FixIsMember
 W2A::EN::FixAtree
