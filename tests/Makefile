@@ -29,8 +29,9 @@ tests:
 	Test::A::NonleafAuxC \
 	Test::A::NonleafAuxP \
 	Test::A::SubjectBelowVerb \
-	Test::A::AfunKnown \
 	Test::A::AfunDefined \
+	Test::A::AfunKnown \
+	Test::A::AfunNotNR \
 	Test::A::PredUnderRoot \
 	-- $(FILES) 2> test.err > $(TESTLOG)
 
