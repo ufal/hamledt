@@ -1,33 +1,20 @@
 A2A::CopyAtree selector=orig
 
-#set is_member and is_coord_conjunction
-Util::Eval anode='
-  $anode->set_is_member(0);
-  if ($anode->conll_deprel =~ /COORD|CONJ/){
-    if ($anode->tag eq "CC"){
-      $anode->wild->{is_coord_conjunction} = 1;
-    } else {
-      $anode->set_is_member(1);
-    }
-  }'
+# CoNLL2007 English data have no lemma (underscore is filled in the column)
+W2A::EN::Lemmatize
 
-#set is_shared_modifier
-Util::Eval anode='
-if ($anode->conll_deprel eq "COORD"
-  && $anode->get_parent->conll_deprel ne "COORD"
-  && (my @siblings = grep {$_->conll_deprel ne "P"} $anode->get_siblings())
- ){
-   foreach my $sibling (@siblings){ $sibling->set_is_shared_modifier(1); }
-  }'
-
-A2A::Transform::CoordStyle style=fPhRsHcHpB from_style=fMhLsHcBpB guess_nested=0
+W2A::EN::SetIsMemberFromDeprel
+A2A::SetSharedModifier
+A2A::SetCoordConjunction
 
 W2A::EN::RehangConllToPdtStyle
-#W2A::EN::FixNominalGroups
+A2A::CopyAtree selector=afterRehang
 W2A::EN::FixIsMember
 W2A::EN::FixAtree
+A2A::CopyAtree selector=afterFixAtree
 W2A::EN::FixMultiwordPrepAndConj
+A2A::CopyAtree selector=afterFixMulti
 W2A::EN::FixDicendiVerbs
 W2A::EN::SetAfunAuxCPCoord
 W2A::EN::SetAfun
-A2A::Tag2Interset language=en tagset=conll2009
+A2A::Tag2Interset language=en tagset=conll
