@@ -14,3 +14,4 @@ W2A::EN::FixMultiwordPrepAndConj
 W2A::EN::SetAfunAuxCPCoord
 W2A::EN::SetAfun
 A2A::Tag2Interset language=en tagset=conll
+W2A::FixAuxLeaves
