@@ -8,13 +8,9 @@ A2A::SetSharedModifier
 A2A::SetCoordConjunction
 
 W2A::EN::RehangConllToPdtStyle
-A2A::CopyAtree selector=afterRehang
 W2A::EN::FixIsMember
 W2A::EN::FixAtree
-A2A::CopyAtree selector=afterFixAtree
 W2A::EN::FixMultiwordPrepAndConj
-A2A::CopyAtree selector=afterFixMulti
-W2A::EN::FixDicendiVerbs
 W2A::EN::SetAfunAuxCPCoord
 W2A::EN::SetAfun
 A2A::Tag2Interset language=en tagset=conll
