@@ -13,4 +13,4 @@ treex: conll_to_treex
 # and store the result in 001_pdtstyle
 SCEN1= en2pdt.scen
 
-TO_PDT_TRAIN_OPT := -p --jobs 19
+TO_PDT_TRAIN_OPT := -p --jobs 20
