@@ -1,2 +1,1 @@
-ro	10390/36150	0.287413554633472
-ro_orig	10390/36150	0.287413554633472
+No zone visited, no nonprojectivity found.

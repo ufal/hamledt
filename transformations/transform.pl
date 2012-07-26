@@ -125,6 +125,7 @@ foreach my $language (@languages) {
                                          . "A2A::Transform::CoordStyle style=$name from_style=fPhRsHcHpB "      # transform the zone with empty selector
                                          . "A2A::CopyAtree selector=inverse "                                   # copy the trees after transformation to zone "inverse"
                                          . "A2A::Transform::CoordStyle from_style=$name style=fPhRsHcHpB selector=inverse "  # make the inverse transformation in zone "inverse"
+                                         . "Align::AlignSameSentence to_selector=before "                       # and align it to the normalized tree
                                          . "Write::Treex clobber=1 substitute={00._pdtstyle}{trans_$name} -- $data_dir/$language/treex/*_pdtstyle/t*/*.treex.gz";
                         open(BS, ">:utf8", "tr-$language-$name.sh") or die;
                         print BS "#!/bin/bash\n\n$command_line\n";

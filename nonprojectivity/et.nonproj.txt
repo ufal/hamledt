@@ -1,2 +1,1 @@
-et	2827/9491	0.297861131598356
-et_orig	4094/9491	0.431356021494047
+No zone visited, no nonprojectivity found.

@@ -1,2 +1,1 @@
-eu	57671/151593	0.38043313345603
-eu_orig	46851/151593	0.309057806099226
+No zone visited, no nonprojectivity found.

@@ -1,2 +1,1 @@
-ru	185813/497465	0.373519745107696
-ru_orig	180194/497465	0.362224478103987
+No zone visited, no nonprojectivity found.
