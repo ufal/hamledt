@@ -17,7 +17,7 @@ sub usage
     print STDERR ("\t0=ord 1=form 2=lemma 3=cpos 4=pos 5=feat 6=head 7=deprel 8=phead 9=pdeprel\n");
 }
 
-my $column = scalar(@ARGV) ? $ARGV[0] : 1;
+my $column = scalar(@ARGV) ? shift(@ARGV) : 1;
 if($column !~ m/^\d+$/)
 {
     usage();
