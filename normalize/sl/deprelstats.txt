@@ -1,0 +1,27 @@
+Atr	5276
+Adv	3822
+AuxV	3320
+Obj	2850
+AuxP	2579
+Pred	2517
+AuxX	2482
+Sb	2070
+AuxK	1870
+Coord	1515
+AuxC	1314
+ExD	1247
+AuxG	1113
+Pnom	851
+AuxY	715
+AuxZ	571
+Atv	363
+AuxT	312
+Apos	86
+AtvV	76
+AtrAdv	69
+AdvAtr	51
+ObjAtr	29
+AuxR	23
+AtrAtr	10
+AtrObj	9
+TOTAL 26 TYPES
