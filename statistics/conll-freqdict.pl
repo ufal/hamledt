@@ -12,12 +12,12 @@ binmode(STDERR, ':utf8');
 sub usage
 {
     print STDERR ("Usage: conll-freqdict.pl <column>\n");
-    print STDERR ("\tDefault column is 0, i.e. the word forms.\n");
+    print STDERR ("\tDefault column is 1, i.e. the word forms.\n");
     print STDERR ("\tNames of columns in the CoNLL 2006 format:\n");
-    print STDERR ("\t0=form 1=lemma 2=cpos 3=pos 4=feat 5=head 6=deprel 7=phead 8=pdeprel\n");
+    print STDERR ("\t0=ord 1=form 2=lemma 3=cpos 4=pos 5=feat 6=head 7=deprel 8=phead 9=pdeprel\n");
 }
 
-my $column = scalar(@ARGV) ? $ARGV[0] : 0;
+my $column = scalar(@ARGV) ? $ARGV[0] : 1;
 if($column !~ m/^\d+$/)
 {
     usage();
