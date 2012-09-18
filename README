@@ -1,0 +1,29 @@
+lang.	CoNLL	license         	name                                        	web
+ar   	2007 	LDC             	Prague Arabic Dependency Treebank           	http://ufal.mff.cuni.cz/padt
+cs   	2007 	CC BY-NC-SA 3.0 	Prague Dependency Treebank                  	http://ufal.mff.cuni.cz/pdt2.5
+da   	2006 	GPL 3           	Copenhagen Dependency Treebank              	http://code.google.com/p/copenhagen-dependency-treebank
+nl   	2006 	GPL             	Alpino Treebank                             	http://odur.let.rug.nl/~vannoord/trees/
+fi   	     	CC BY-SA 3.0    	Turku Dependency Treebank                   	http://bionlp.utu.fi/fintreebank.html
+de   	2009 	Tiger           	Tiger Treebank                              	http://www.ims.uni-stuttgart.de/projekte/TIGER/
+grc  	     	CC BY-NC-SA 2.5 	Ancient Greek and Latin Dependency Treebanks	http://nlp.perseus.tufts.edu/syntax/treebank/greek.html
+la   	     	CC BY-NC-SA 2.5 	Ancient Greek and Latin Dependency Treebanks	http://nlp.perseus.tufts.edu/syntax/treebank/greek.html
+fa   	     	GPL 3           	Persian Dependency Treebank                 	http://dadegan.ir/en/persiandependencytreebank
+pt   	2006 	CC BY-NC-SA 3.0 	Floresta Sintá(c)tica                       	http://www.linguateca.pt/floresta/info_floresta_English.html
+ro   	     	free download   	Romanian Dependency Treebank                	http://www.phobos.ro/roric/texts/xml/
+ru
+sv
+ta
+
+de ============ Tiger License Excerpt
+* to use the corpus only for non-commercial, non-profit research purposes;
+* to make no changes to the corpus;
+* and to acknowledge the use of the corpus in all publications reporting on results produced with the help of the TIGER Treebank.
+
+The TIGER Treebank and its documentation will be held in confidence by Licensee and will not be disclosed by Licensee to third parties, except for those parts of the corpus or its documentation that are explicitly marked for public use, and except for example sentences in scientific publications.
+Licensee shall and will employ all necessary precautions to ensure that no persons or institutions other than persons as are in the employ of Licensee or in the same research project as Licensee will get access to the TIGER Treebank or parts thereof. Other persons or institutions desiring access to the corpus should be directed to Licenser to obtain separate licence agreements.
+
+
+fa ============ Persian Dependency Treebank
+The download page contains "I will use the treebank for research purposes only."
+The "Readme and Licence.txt" contains "only  non-commercially".
+However, the included license is the standard GPL 3 (without any restrictions).
