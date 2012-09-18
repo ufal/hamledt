@@ -1,0 +1,20 @@
+mod	42706
+punct	28134
+prepcomp	27254
+comp	18043
+subj	14064
+ROOT	13221
+adjunct	12009
+obj	7248
+conjarg	7005
+conj	6342
+xcomp	4651
+indobj	4232
+marked	2650
+clitic	2263
+xmod	2219
+xadjunct	1826
+pragadjunct	1612
+xsubj	504
+xprepcomp	168
+TOTAL 19 TYPES
