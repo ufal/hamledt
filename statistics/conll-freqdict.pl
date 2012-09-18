@@ -15,6 +15,8 @@ sub usage
     print STDERR ("\tDefault column is 1, i.e. the word forms.\n");
     print STDERR ("\tNames of columns in the CoNLL 2006 format:\n");
     print STDERR ("\t0=ord 1=form 2=lemma 3=cpos 4=pos 5=feat 6=head 7=deprel 8=phead 9=pdeprel\n");
+    print STDERR ("\tNames of columns in the CoNLL 2009 format:\n");
+    print STDERR ("\t0=ord 1=form 2=lemma 3=plemma 4=pos 5=ppos 6=feat 7=pfeat 8=head 9=phead 10=deprel 11=pdeprel +=semframe\n");
 }
 
 my $column = scalar(@ARGV) ? shift(@ARGV) : 1;
