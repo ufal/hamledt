@@ -2,6 +2,8 @@ SHELL=/bin/bash
 
 # remainig langs: is zh
 LANGS= ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
+LANGS_PATTERN={$(shell echo $(LANGS) | tr ' ' ,)}
+JOBS=20
 
 help:
 	@echo 'make qall                              # normalize everything using SGE'
@@ -31,3 +33,9 @@ qall-%:
 clean:
 	rm -f *-normalize.o* .qsubmit*
 	rm -rf */???-cluster-run-*
+
+
+# TODO: -p -j $(JOBS)
+# Parallel processing with client-server leads to saving all files to the current dir
+treex-to-conll:
+	treex Write::CoNLLX language=mul substitute={treex/001_pdtstyle}{conll} compress=1 to=. -- '!$(LANGS_PATTERN)/data/treex/001_pdtstyle/{train,test}/*.treex.gz'
