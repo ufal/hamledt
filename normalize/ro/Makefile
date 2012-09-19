@@ -16,11 +16,10 @@ $(IN)/%.xml: $(ORIG_TREEBANK)/*.xml
         done
 	echo '</DGAdoc>' >> $@
 
-treex: conll_to_treex
+treex:
+	$(TREEX) $(IMPORT) from=$(IN)/test.xml  $(WRITE0) path=$(DIR0)/test/
+	$(TREEX) $(IMPORT) from=$(IN)/train.xml $(WRITE0) path=$(DIR0)/train/
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
 SCEN1 = A2A::RO::RDT2PDTStyle A2A::SetSharedModifier A2A::SetCoordConjunction
-pdt:
-	$(TREEX) -p -e ALL -E ALL --jobs 8 $(SCEN1) $(WRITE) path=$(DIR1)/train/ -- $(DIR0)/train/*.treex.gz
-	$(TREEX) -p -e ALL -E ALL --jobs 1 $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
