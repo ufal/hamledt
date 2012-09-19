@@ -36,7 +36,7 @@ clean:
 	rm -rf */???-cluster-run-*
 
 
-TO_CONLL_SCEN=Write::CoNLLX language=mul deprel_attribute=afun substitute={treex/001_pdtstyle}{conll} compress=1 to=.
+TO_CONLL_SCEN=Write::CoNLLX language=mul deprel_attribute=afun pos_attribute=tag substitute={treex/001_pdtstyle}{conll} compress=1 to=.
 # TODO: 
 # treex -p -j $(JOBS) $(TO_CONLL_SCEN) -- '!$(LANGS_PATTERN)/data/treex/001_pdtstyle/{train,test}/*.treex.gz'
 # Parallel processing with client-server leads to saving all files to the current dir
