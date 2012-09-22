@@ -1,0 +1,23 @@
+mod	22926
+prep	11256
+punc	10023
+det	5985
+ROOT	4163
+sogg	3844
+con	3163
+ogg_d	2680
+cong	2621
+aux	1633
+pred	1346
+arg	1295
+mod_rel	929
+cong_sub	855
+obl	716
+clit	698
+concat	625
+modal	465
+ogg_i	409
+comp	401
+dis	136
+disg	126
+TOTAL 22 TYPES
