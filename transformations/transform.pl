@@ -5,7 +5,7 @@ use warnings;
 use Getopt::Long;
 use Treex::Core::Config;
 
-my ($parallel, $help, $alll);
+my ($help, $alll);
 my $family = 'Moscow';
 my $punctuation = 'previous';
 my $conjunction = 'between';
@@ -14,8 +14,6 @@ my $shared = 'nearest';
 
 GetOptions(
     "help|h" => \$help,
-    "parallel|p" => \$parallel,
-    "alll" => \$alll,
     "family=s" => \$family,
     "punctuation=s" => \$punctuation,
     "conjunction=s" => \$conjunction,
@@ -32,12 +30,12 @@ Run transform.pl --help to see its correct usage.
 
 sub usage {
     die "Usage:
-  transform.pl [OPTIONS] [LANGUAGES] [TRANSFORMERS]
+  transform.pl [OPTIONS] [LANGUAGES]
      LANGUAGES     - list of ISO codes of languages to be processed
-     --alll        - apply the listed transformations on all languages
-     -a,--all      - apply all transformations on all languages (implies --alll and --allt)
-     -p,--parallel - submit transformations to the cluster
-     -h,--help  -  print this help.
+     -a,--all      - apply the transformations on all languages
+     -h,--help     - print this help.
+     See Treex::Block::A2A::Transform::CoordStyle for details on options
+     --family, --punctuation, --conjunction, --head, --shared.
 ";
 }
 
@@ -55,15 +53,6 @@ sub find_available_languages {
 
     print STDERR scalar(@languages)," languages with available PDT-styled data: ",(join " ",sort @languages),"\n\n";
     return @languages;
-}
-
-sub find_available_transformers {
-    my $transformer_dir = Treex::Core::Config->lib_core_dir()."/../Block/A2A/Transform/";
-    my @transformers = grep {not /^(Base|Inv)/}
-        map {/(\w+).pm$/;$1}
-            glob "$transformer_dir/*.pm";
-    print (STDERR scalar(@transformers)," available transformers: ",(join " ",sort @transformers),"\n\n");
-    return @transformers;
 }
 
 if ($help) {
@@ -116,12 +105,12 @@ foreach my $f (split /,/, $family) {
             foreach my $h (split /,/, $head) {
                 foreach my $s (split /,/, $shared) {
                     my $name = 'f'.uc(substr($f,0,1)).'h'.uc(substr($h,0,1)).'s'.uc(substr($s,0,1)).'c'.uc(substr($c,0,1)).'p'.uc(substr($p,0,1));
-                    my $command_line = "treex -p -j $JOBS -Lmul "
+                    my $command_line = "treex -p -j $JOBS "
                                      . "Util::Eval zone='\$zone->get_bundle()->remove_zone(\$zone->language,qw(orig))' " # remove the original trees (before PDT styling)
-                                     . "A2A::CopyAtree selector=before "                                                 # store the trees before transformation to zone "before"
+                                     . "A2A::BackupTree to_selector=before "                                             # store the trees before transformation to zone "before"
                                      . "A2A::DeleteAfunCoordWithoutMembers "                                             # TODO this should be done already within the normalization
                                      . "A2A::Transform::CoordStyle style=$name from_style=fPhRsHcHpB "                   # transform the zone with empty selector
-                                     . "A2A::CopyAtree selector=inverse "                                                # copy the trees after transformation to zone "inverse"
+                                     . "A2A::BackupTree to_selector=inverse "                                            # copy the trees after transformation to zone "inverse"
                                      . "A2A::Transform::CoordStyle from_style=$name style=fPhRsHcHpB selector=inverse "  # make the inverse transformation in zone "inverse"
                                      . "Align::AlignSameSentence selector=inverse to_selector=before "                   # and align it to the normalized tree
                                      . "Write::Treex substitute={00._pdtstyle}{trans_$name} -- '!$data_dir/$langs_wildcard/treex/*_pdtstyle/t*/*.treex.gz'";
