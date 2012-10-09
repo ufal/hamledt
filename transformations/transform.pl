@@ -114,8 +114,8 @@ foreach my $f (split /,/, $family) {
                                      . "Util::SetGlobal selector=inverse "                              # The rest of the scenario operates on this "inverse" zone.
                                      . "A2A::Transform::CoordStyle from_style=$name style=fPhRsHcHpB "  # Make the inverse transformation in zone "inverse"
                                      . "Align::AlignSameSentence to_selector=before "                   # and align it to the normalized tree.
-                                     . "Print::EvalAlignedAtrees report_errors=0 "                      # Compute UAS.
                                      . "Write::Treex substitute={00._pdtstyle}{trans_$name} "           # Save the resulting treex files to a new directory.      
+                                     . "Print::EvalAlignedAtrees report_errors=0 "                      # Compute UAS (output contains the new filename)
                                      . "-- '!$data_dir/$langs_wildcard/treex/*_pdtstyle/t*/*.treex.gz'" # Input files.
                                      . " > round_trip_$name.txt";                                       # Output round-trip statistics
                     open(BS, ">:utf8", "tr-$name.sh") or die;

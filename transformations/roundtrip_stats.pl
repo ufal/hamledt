@@ -22,7 +22,7 @@ sub round {
 while(<>){
     next if !/^file/;
     my ($file, $err_sents, $all_sents, $err_nodes, $all_nodes, $score) = map {/=(.+)/;$1} split;
-    my ($lang, $trans) = ($file =~ m{([^/]+)/.*trans_([^/]+)});
+    my ($lang, $trans) = ($file =~ m{/([^/]+)/treex/trans_([^/]+)});
     $data{$trans}{$lang}{all} += $all_nodes;
     $data{$trans}{$lang}{err} += $err_nodes;
     $data{average}{$lang}{all} += $all_nodes;
@@ -32,9 +32,8 @@ while(<>){
 
 my @langs = sort keys %languages;
 my $table = Text::Table->new('trans', @langs, 'average');
-my @transformations = grep {$_ ne 'any'} sort keys %data;
 
-foreach my $trans (@transformations, 'average'){
+foreach my $trans (sort keys %data){
     my @row = map {uas($trans, $_)} @langs;
     my @numbers = grep {!/-/} @row;
     my $avg = sum(@numbers) / @numbers;
