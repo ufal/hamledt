@@ -44,5 +44,5 @@ if (@langs < 18){
     say $table;
 } else {
     say $table->select(0 .. (@langs/2)+1);
-    say $table->select(0,(@langs/2)+2 .. @langs+3);
+    say $table->select(0,(@langs/2)+2 .. @langs+1);
 }

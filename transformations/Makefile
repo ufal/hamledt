@@ -21,6 +21,9 @@ moscow:
 roundtrip:
 	./roundtrip_stats.pl round_trip_*.txt | tee table_roundtrip.tsv
 
+worst_roundtrip:
+	cat round_trip*.txt | perl -nple 's/file=([^ ]+ ).*UAS=(.*)/\2\t\1/' | sort | head
+
 changes:
 	treex -p --jobs 100 Print::AtreeTransformationStats -- '!$(DATADIR)/*/treex/trans*/*/*treex.gz' > changes.raw
 	cat changes.raw | ./resume_stats.pl | tee table_changes.tsv
