@@ -18,17 +18,18 @@ stanford:
 moscow:
 	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous $(LANGS)
 
-stats:
-	treex Print::AtreeTransformationStats -p --jobs 100 -- '!$(DATADIR)/*/treex/trans*/*/*treex.gz' > stats.raw
+roundtrip:
+	./roundtrip_stats.pl round_trip_*.txt | tee table_roundtrip.tsv
 
-table:
-	cat stats.raw | ./resume_stats.pl | tee stats_table.tsv
+changes:
+	treex -p --jobs 100 Print::AtreeTransformationStats -- '!$(DATADIR)/*/treex/trans*/*/*treex.gz' > changes.raw
+	cat changes.raw | ./resume_stats.pl | tee table_changes.tsv
 
 clean:
-	rm -rf *cluster-run* tr-*
+	rm -rf *cluster-run* tr-* changes.raw
 
 real_clean_including_the_parsed_files_I_know_what_I_am_doing:
-	rm -f stats.raw tr-*
+	rm -f changes.raw tr-*
 	rm -rf *cluster-run*
 	rm -rf $(DATADIR)/*/*/trans_*
 

@@ -106,14 +106,18 @@ foreach my $f (split /,/, $family) {
                 foreach my $s (split /,/, $shared) {
                     my $name = 'f'.uc(substr($f,0,1)).'h'.uc(substr($h,0,1)).'s'.uc(substr($s,0,1)).'c'.uc(substr($c,0,1)).'p'.uc(substr($p,0,1));
                     my $command_line = "treex -p -j $JOBS "
-                                     . "Util::Eval zone='\$zone->get_bundle()->remove_zone(\$zone->language,qw(orig))' " # remove the original trees (before PDT styling)
-                                     . "A2A::BackupTree to_selector=before "                                             # store the trees before transformation to zone "before"
-                                     . "A2A::DeleteAfunCoordWithoutMembers "                                             # TODO this should be done already within the normalization
-                                     . "A2A::Transform::CoordStyle style=$name from_style=fPhRsHcHpB "                   # transform the zone with empty selector
-                                     . "A2A::BackupTree to_selector=inverse "                                            # copy the trees after transformation to zone "inverse"
-                                     . "A2A::Transform::CoordStyle from_style=$name style=fPhRsHcHpB selector=inverse "  # make the inverse transformation in zone "inverse"
-                                     . "Align::AlignSameSentence selector=inverse to_selector=before "                   # and align it to the normalized tree
-                                     . "Write::Treex substitute={00._pdtstyle}{trans_$name} -- '!$data_dir/$langs_wildcard/treex/*_pdtstyle/t*/*.treex.gz'";
+                                     . "Util::Eval zone='\$zone->get_bundle()->remove_zone(\$zone->language,qw(orig))' " # Remove the original trees (before PDT styling).
+                                     . "A2A::BackupTree to_selector=before "                            # Store the trees before transformation to zone "before".
+                                     . "A2A::DeleteAfunCoordWithoutMembers "                            # TODO this should be done already within the normalization.
+                                     . "A2A::Transform::CoordStyle style=$name from_style=fPhRsHcHpB "  # Transform the zone with empty selector.
+                                     . "A2A::BackupTree to_selector=inverse "                           # Copy the trees after transformation to zone "inverse".
+                                     . "Util::SetGlobal selector=inverse "                              # The rest of the scenario operates on this "inverse" zone.
+                                     . "A2A::Transform::CoordStyle from_style=$name style=fPhRsHcHpB "  # Make the inverse transformation in zone "inverse"
+                                     . "Align::AlignSameSentence to_selector=before "                   # and align it to the normalized tree.
+                                     . "Print::EvalAlignedAtrees report_errors=0 "                      # Compute UAS.
+                                     . "Write::Treex substitute={00._pdtstyle}{trans_$name} "           # Save the resulting treex files to a new directory.      
+                                     . "-- '!$data_dir/$langs_wildcard/treex/*_pdtstyle/t*/*.treex.gz'" # Input files.
+                                     . " > round_trip_$name.txt";                                       # Output round-trip statistics
                     open(BS, ">:utf8", "tr-$name.sh") or die;
                     print BS "#!/bin/bash\n\n$command_line\n";
                     close BS;
@@ -123,5 +127,3 @@ foreach my $f (split /,/, $family) {
         }
     }
 }
-
-
