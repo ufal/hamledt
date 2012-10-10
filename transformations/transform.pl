@@ -39,10 +39,9 @@ sub usage {
 ";
 }
 
-my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt/";
+my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
 
 sub find_available_languages {
-    my $share_dir = Treex::Core::Config->share_dir();
     my @languages = grep {/^.{2,3}$/}
         map {/(\w+)$/;$1}
             grep {
@@ -109,9 +108,12 @@ foreach my $f (split /,/, $family) {
                                      . "Util::Eval zone='\$zone->get_bundle()->remove_zone(\$zone->language,qw(orig))' " # Remove the original trees (before PDT styling).
                                      . "A2A::BackupTree to_selector=before "                            # Store the trees before transformation to zone "before".
                                      . "A2A::DeleteAfunCoordWithoutMembers "                            # TODO this should be done already within the normalization.
+                                     . "A2A::SetSharedModifier "                                        # Attributes is_shared_modifier and wild->is_coord_conjunction
+                                     . "A2A::SetCoordConjunction "                                      # must be filled before running the transformation.
                                      . "A2A::Transform::CoordStyle style=$name from_style=fPhRsHcHpB "  # Transform the zone with empty selector.
                                      . "A2A::BackupTree to_selector=inverse "                           # Copy the trees after transformation to zone "inverse".
                                      . "Util::SetGlobal selector=inverse "                              # The rest of the scenario operates on this "inverse" zone.
+                                     #. "A2A::SetCoordConjunction " # is this needed?
                                      . "A2A::Transform::CoordStyle from_style=$name style=fPhRsHcHpB "  # Make the inverse transformation in zone "inverse"
                                      . "Align::AlignSameSentence to_selector=before "                   # and align it to the normalized tree.
                                      . "Write::Treex substitute={00._pdtstyle}{trans_$name} "           # Save the resulting treex files to a new directory.      
