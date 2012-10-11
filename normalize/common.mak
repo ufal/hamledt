@@ -38,7 +38,8 @@ conll_to_treex:
 # Make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle.
 UCLANG = $(shell perl -e 'print uc "$(LANGCODE)"')
-SCEN1  = A2A::$(UCLANG)::CoNLL2PDTStyle A2A::SetSharedModifier A2A::SetCoordConjunction
+#TODO: skip the A2A::DeleteAfunCoordWithoutMembers block, check the cases when it had to be applied (Test::A::MemberInEveryCoAp) and fix it properly
+SCEN1  = A2A::$(UCLANG)::CoNLL2PDTStyle A2A::SetSharedModifier A2A::SetCoordConjunction A2A::DeleteAfunCoordWithoutMembers
 pdt:
 	$(TREEX) $(TO_PDT_TRAIN_OPT) $(SCEN1) Write::Treex clobber=1 substitute={000_orig}{001_pdtstyle} -- $(DIR0)/{train,test}/*.treex.gz
 

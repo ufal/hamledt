@@ -6,22 +6,19 @@ TESTLOG=test.log
 #LANGS={en,cs}
 LANGS=*
 SETS={train,test}
-FILES=$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz
+FILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz'
 
 validate:
 	treex -p --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
 	@echo
 	@echo Output of the validation test stored in $(VALLOG)
 
-filelist:
-	echo $(FILES) | tr " " "\n"
-
 summarize_validation:
 	grep -v TREEX $(VALLOG) || exit 0
 
 tests:
 	treex  -p --jobs=$(JOBS) --survive \
-	Util::SetGlobal language=mul \
+	Util::SetGlobal \
 	Test::A::CoApAboveEveryMember \
 	Test::A::LeafAux \
 	Test::A::MemberInEveryCoAp \

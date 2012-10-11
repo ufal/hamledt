@@ -4,6 +4,11 @@ XML2CONLL = $(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl
 BETACODE  = $(TMT_ROOT)/tools/format_convertors/conll_to_conll/beta2unicode.pl
 DECYCLE   = ../conll_break_cycles.pl
 
+# grc data contains is_member with Apositions which should be deleted for our experiments with coordinations
+# grc data may adhere to the original PDT style of is_member with autosemantic words only (TODO check it)
+# TODO: grc trees sometimes have conjunct1, coordination, conjunct2 as siblings. We should fix it, but meanwhile we just delete afun=Coord from the coordination.
+SCEN1 = A2A::GRC::CoNLL2PDTStyle A2A::Pdt2TreexIsMemberConversion A2A::SetSharedModifier A2A::SetCoordConjunction Util::Eval anode='$$node->set_is_member(0) if $$node->parent->afun eq "Apos"' A2A::DeleteAfunCoordWithoutMembers
+
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
