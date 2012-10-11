@@ -41,14 +41,14 @@ UCLANG = $(shell perl -e 'print uc "$(LANGCODE)"')
 #TODO: skip the A2A::DeleteAfunCoordWithoutMembers block, check the cases when it had to be applied (Test::A::MemberInEveryCoAp) and fix it properly
 SCEN1  = A2A::$(UCLANG)::CoNLL2PDTStyle A2A::SetSharedModifier A2A::SetCoordConjunction A2A::DeleteAfunCoordWithoutMembers
 pdt:
-	$(TREEX) $(TO_PDT_TRAIN_OPT) $(SCEN1) Write::Treex clobber=1 substitute={000_orig}{001_pdtstyle} -- $(DIR0)/{train,test}/*.treex.gz
+	$(TREEX) $(TO_PDT_TRAIN_OPT) $(SCEN1) Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
 
 # This goal serves development and debugging of the CoNLL2PDTStyle block.
 # Smaller data are processed faster.
 # $(TREEX) is not used because we do not want to parallelize the task on the cluster.
 # (By default, copies of logs from parallel jobs lack the TREEX-INFO level.)
 test:
-	treex -L$(LANGCODE) $(SCEN1) $(WRITE) path=$(DIR1)/test -- $(DIR0)/test/*.treex.gz
+	treex -L$(LANGCODE) $(SCEN1) $(WRITE) path=$(DIR1)/test -- '!$(DIR0)/test/*.treex.gz'
 
 clean:
 	rm -rf $(DATADIR)/treex
