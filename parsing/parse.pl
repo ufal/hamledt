@@ -11,7 +11,7 @@ use dzsys;
 
 my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
 
-my ($help, $mcd, $mcdproj, $malt, $maltsmf, $new, $feat, $trans, $topdt, $wdirroot);
+my ($help, $mcd, $mcdproj, $malt, $maltsmf, $new, $feat, $trans, $wdirroot);
 $feat='conll'; # default
 $trans = '';
 $mcd=0;
@@ -29,7 +29,6 @@ GetOptions(
     "new"     => \$new,
     "trans=s"   => \$trans,
     "feat=s"  => \$feat,
-    "topdt"   => \$topdt,
     "wdir=s"  => \$wdirroot,
 );
 
@@ -43,7 +42,6 @@ if ($help || !@ARGV) {
     --new      - copy the testing file from 'test' directory
     --trans    - select transformations separated by comma. All transformations are run otherwise.
     --feat     - select features conll|iset|_ (conll is default)
-    --topdt    - transform the resulting trees to PDT style
     --wdir     - path to working folder
                  default: $data_dir\${LANGUAGE}/treex/\${TRANSFORMATION}/parsed
                  if --wdir \$WDIR set: \${WDIR}/\${LANGUAGE}/\${TRANSFORMATION}
@@ -131,10 +129,11 @@ foreach my $language (@ARGV) {
             # Note: the trees in 000_orig should be compared against the original gold tree.
             # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
             # so we do not select 'orig' here.
-            my $selector_for_comparison = $is_transformation && $topdt ? 'before' : '';
-            $scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='$selector_for_comparison' ";
-
-            my $uas_file = $topdt ? 'uas-pdt.txt' : 'uas.txt';
+            $scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='' ";
+            # We evaluate the transformation against 'before' selector, if they are convertyed back to PDT style
+            if ($is_transformation) {
+                $scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='before' ";
+            }
 
             print STDERR "Creating script for parsing ($name).\n";
             open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
@@ -142,7 +141,7 @@ foreach my $language (@ARGV) {
             # Debugging message: anyone here eating my memory?
             print BASHSCRIPT "hostname -f\n";
             print BASHSCRIPT "top -bn1 | head -20\n";
-            print BASHSCRIPT "treex -s $scenario -- *.treex.gz | tee $uas_file\n";
+            print BASHSCRIPT "treex -s $scenario -- *.treex.gz | tee uas.txt\n";
             close BASHSCRIPT;
             my $memory = '12g';
             my $qsub = "qsub -hard -l mf=$memory -l act_mem_free=$memory -cwd -j yes parse-$name.sh";

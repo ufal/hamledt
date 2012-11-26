@@ -10,8 +10,8 @@ use dzsys;
 
 my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt/";
 
-my ($help, $mcd, $mcdproj, $malt, $maltsmf, $wdirroot);
-my $filename = 'uas.txt';
+my ($help, $mcd, $mcdproj, $malt, $maltsmf, $wdirroot, $topdt);
+my $filename;
 
 GetOptions(
     "help|h"  => \$help,
@@ -19,6 +19,7 @@ GetOptions(
     "mcdproj" => \$mcdproj,
     "malt"    => \$malt,
     "maltsmf" => \$maltsmf,
+    "topdt"   => \$topdt,
     "filename=s"   => \$filename,
     "wdir=s"  => \$wdirroot,
 );
@@ -31,6 +32,7 @@ if ($help || !@ARGV) {
     --mcdproj  - McDonald's MST projective parser
     --malt     - Malt parser
     --maltsmf  - Malt parser with stack algorithm and morph features
+    --topdt    - converted back to PDT style
     --wdir     - path to working folder
                  default: $data_dir\${LANGUAGE}/treex/\${TRANSFORMATION}/parsed
                  if --wdir \$WDIR set: \${WDIR}/\${LANGUAGE}/\${TRANSFORMATION}
@@ -41,6 +43,10 @@ if ($help || !@ARGV) {
 # Lazy to enumerate all languages?
 if (scalar(@ARGV)==1 && $ARGV[0] eq 'all') {
     @ARGV = qw(ar bg bn ca cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
+}
+
+if (!$filename) {
+    $filename = 'uas.txt';
 }
 
 my $parser_name =
@@ -63,6 +69,7 @@ foreach my $language (@ARGV) {
         # Get the name of the current transformation.
         my $trans = $dir;
         $trans =~ s/^.+\///;
+        my $is_trans = $trans =~ /^trans_/ ? 1 : 0;
         # Set the path to the folder where the training data and the trained model shall be.
         my $wdir = $wdirroot ? "$wdirroot/$language/$trans" : "$dir/parsed";
         if(!-d $wdir) {
@@ -75,18 +82,18 @@ foreach my $language (@ARGV) {
             print("Cannot read $wdir/$filename: $!");
             next;
         }
+        my $REF = $is_trans =~ /^trans_/ ? '_before' : '';
+        my $PDT = $topdt && $is_trans ? 'PDT' : '';
         while (<UAS>) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
             next if !(
-                ($sys =~ /maltnivreeager$/ && $malt) ||
-                ($sys =~ /maltstacklazy$/ && $maltsmf) ||
-                ($sys =~ /mcdnonprojo2$/ && $mcd) ||
-                ($sys =~ /mcdprojo2$/ && $mcdproj));
-            next if $sys =~ m/-regardless-is_member/;
-            print "$language $trans $sys $score $value{'001_pdtstyle'}{$language}\n";
+                ($sys =~ /UASpms\($language\_maltnivreeager$PDT,$language$REF\)$/ && $malt) ||
+                ($sys =~ /UASpms\($language\_maltstacklazy$PDT,$language$REF\)$/ && $maltsmf) ||
+                ($sys =~ /UASpms\($language\_mcdnonprojo2$PDT,$language$REF\)$/ && $mcd) ||
+                ($sys =~ /UASpms\($language\_mcdprojo2$PDT,$language$REF\_$/ && $mcdproj));
             $score = $score ? 100 * $score : 0;
-            if ($trans !~ /00/ && defined $value{'001_pdtstyle'}{$language}) {
+            if ($is_trans && defined $value{'001_pdtstyle'}{$language}) {
                 $score -= $value{'001_pdtstyle'}{$language};
             }
             $value{$trans}{$language} = round($score);
