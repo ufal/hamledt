@@ -41,7 +41,7 @@ if ($help || !@ARGV) {
     --malt     - run Malt parser
     --maltsmf  - run Malt parser with stack algorithm and morph features
     --new      - copy the testing file from 'test' directory
-    --trans    - select transformationis separated by comma. All transformations are run otherwise.
+    --trans    - select transformations separated by comma. All transformations are run otherwise.
     --feat     - select features conll|iset|_ (conll is default)
     --topdt    - transform the resulting trees to PDT style
     --wdir     - path to working folder
@@ -92,6 +92,8 @@ foreach my $language (@ARGV) {
             print STDERR "New file created!\n";
         }
 
+        my $tr_style = $name;
+        $tr_style =~ s/^trans_//;
         $name = "$language-$name";
 
         # the following variable indicates whether we are parsing a transformation or pdtstyle/orig file
@@ -105,8 +107,8 @@ foreach my $language (@ARGV) {
             maltsmf => "$wdir/malt_stacklazy.mco",
         );
         my %parser_block = (
-            mcd     => "W2A::ParseMST model=$wdir/mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
-            mcdproj => "W2A::ParseMST model=$wdir/mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos",
+            mcd     => "W2A::ParseMST model_dir=$wdir model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
+            mcdproj => "W2A::ParseMST model_dir=$wdir model=mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos",
             malt    => "W2A::ParseMalt model=$wdir/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos",
             maltsmf => "W2A::ParseMalt model=$wdir/malt_stacklazy.mco pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat",
         );
@@ -121,10 +123,10 @@ foreach my $language (@ARGV) {
                $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
                $scenario .= "$parser_block{$parser} ";
             if ($is_transformation) {
-#                $scenario .= "Util::SetGlobal language=$language selector=$parser_selector{$parser}PDT ";
-#                $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
-#                $scenario .= "A2A::CopyAtree source_selector=$parser_selector{$parser} ";
-#                $scenario .= "A2A::Transform::Coord_fPhRsHcHpB ";
+                $scenario .= "Util::SetGlobal language=$language selector=$parser_selector{$parser}PDT ";
+                $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
+                $scenario .= "A2A::CopyAtree source_selector=$parser_selector{$parser} ";
+                $scenario .= "A2A::Transform::CoordStyle from_style=$tr_style style=fPhRsHcHpB ";
             }
             # Note: the trees in 000_orig should be compared against the original gold tree.
             # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
