@@ -50,8 +50,6 @@ if ($help || !@ARGV) {
 ";
 }
 
-die "Can't run more than one parser" if ($mcd && $mcdproj) || ($malt && $maltsmf);
-
 my %transformation;
 map {$transformation{$_} = 1} split(/,/, $trans);
 # We will be repeatedly changing dir to $wdirroot/something so we need $wdiroot to be absolute path
@@ -110,46 +108,52 @@ foreach my $language (@ARGV) {
             malt    => "W2A::ParseMalt model=$wdir/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos",
             maltsmf => "W2A::ParseMalt model=$wdir/malt_stacklazy.mco pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat",
         );
-        my %parser_name = ( mcd => '-mcd', mcdproj => '-mcp', malt => '-mlt', maltsmf => '-smf');
-
-        my $parser = $mcd ? 'mcd' : $mcdproj ? 'mcdproj' : $maltsmf ? 'maltsmf' : $malt ? 'malt' : '';
-        exit if !$parser;
-        if (-e $parser_model{$parser}) {
-            $name .= $parser_name{$parser};
-            my $scenario  = "Util::SetGlobal language=$language selector=$parser_selector{$parser} ";
-               $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
-               $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-               $scenario .= "$parser_block{$parser} ";
-            if ($is_transformation) {
-                $scenario .= "Util::SetGlobal language=$language selector=$parser_selector{$parser}PDT ";
-                $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
-                $scenario .= "A2A::CopyAtree source_selector=$parser_selector{$parser} ";
-                $scenario .= "A2A::Transform::CoordStyle from_style=$tr_style style=fPhRsHcHpB ";
+        my %run_parser  = ( mcd => $mcd,   mcdproj => $mcdproj, malt => $malt,  maltsmf => $maltsmf);
+        my @scenarios;
+        foreach my $parser (qw(mcd mcdproj malt maltsmf)) {
+            if (!$run_parser{$parser}) {
+                next;
             }
-            # Note: the trees in 000_orig should be compared against the original gold tree.
-            # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
-            # so we do not select 'orig' here.
-            $scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='' ";
-            # We evaluate the transformation against 'before' selector, if they are convertyed back to PDT style
-            if ($is_transformation) {
-                $scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='before' ";
+            elsif (!-e $parser_model{$parser}) {
+                print STDERR ("Model for $parser parser not found.\n");
+                next;
             }
-
-            print STDERR "Creating script for parsing ($name).\n";
-            open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
-            print BASHSCRIPT "#!/bin/bash\n\n";
-            # Debugging message: anyone here eating my memory?
-            print BASHSCRIPT "hostname -f\n";
-            print BASHSCRIPT "top -bn1 | head -20\n";
-            print BASHSCRIPT "treex -s $scenario -- *.treex.gz | tee uas.txt\n";
-            close BASHSCRIPT;
-            my $memory = '12g';
-            my $qsub = "qsub -hard -l mf=$memory -l act_mem_free=$memory -cwd -j yes parse-$name.sh";
-            #print STDERR ("$qsub\n");
-            system $qsub;
+            else {
+                my $scenario  = "Util::SetGlobal language=$language selector=$parser_selector{$parser} ";
+                $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
+                $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+                $scenario .= "$parser_block{$parser} ";
+                if ($is_transformation) {
+                    $scenario .= "Util::SetGlobal language=$language selector=$parser_selector{$parser}PDT ";
+                    $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
+                    $scenario .= "A2A::CopyAtree source_selector=$parser_selector{$parser} ";
+                    $scenario .= "A2A::Transform::CoordStyle from_style=$tr_style style=fPhRsHcHpB ";
+                }
+                push @scenarios, $scenario;
+            }
         }
-        else {
-            print STDERR ("Model for $parser parser not found.\n");
+        # Note: the trees in 000_orig should be compared against the original gold tree.
+        # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
+        # so we do not select 'orig' here.
+        my $eval_scenario = "Util::SetGlobal language=$language ";
+        $eval_scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='' ";
+        # We evaluate the transformation against 'before' selector, if they are convertyed back to PDT style
+        if ($is_transformation) {
+            $eval_scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='before' ";
         }
+        print STDERR "Creating script for parsing.\n";
+        open (BASHSCRIPT, ">:utf8", "parse-$name.sh") or die;
+        print BASHSCRIPT "#!/bin/bash\n\n";
+        # Debugging message: anyone here eating my memory?
+        print BASHSCRIPT "hostname -f\n";
+        print BASHSCRIPT "top -bn1 | head -20\n";
+        foreach my $scenario (@scenarios) {
+            print BASHSCRIPT "treex -s $scenario -- *.treex.gz\n";
+        }
+        print BASHSCRIPT "treex $eval_scenario -- *.treex.gz | tee uas.txt\n";
+        close BASHSCRIPT;
+        my $memory = '12g';
+        my $qsub = "qsub -hard -l mf=$memory -l act_mem_free=$memory -cwd -j yes parse-$name.sh";
+        system $qsub;
     }
 }

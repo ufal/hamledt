@@ -1,16 +1,16 @@
 ALL_LANGUAGES=ar bg bn cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
-LANGUAGES=bg cs de en es nl pt
-#LANGUAGES=$(ALL_LANGUAGES)
+#LANGUAGES=bg
+LANGUAGES=$(ALL_LANGUAGES)
 
 train:
-	./train.pl --new --mcd --mcdproj --malt $(LANGUAGES)
-#	./train.pl --new --feat conll --maltsmf $(LANGUAGES)
+	#./train.pl --new --mcd --mcdproj --malt $(LANGUAGES)
+	./train.pl --new --feat conll --maltsmf $(ALL_LANGUAGES)
 
 train_new:
 	./train.pl --new --malt --trans trans_fSpPcBhNsN,trans_fMpPcBhNsN,trans_fMpPcPhLsN,trans_fMpPcPhRsN $(ALL_LANGUAGES)
 
 parse:
-	./parse.pl --mcd $(LANGUAGES)
+	./parse.pl --new --mcd --mcdproj --malt $(LANGUAGES)
 
 eval:
 	./eval.pl $(ALL_LANGUAGES)
@@ -30,9 +30,9 @@ table:
 	#@./print_table.pl --maltsmf --filename uas.txt $(ALL_LANGUAGES)
 	#@./print_table.pl --mcd --filename uas-pdt.txt $(ALL_LANGUAGES)
 	@echo "Evaluation for different transformations:"
-	@./print_table.pl --mcd $(LANGUAGES)
+	@./print_table.pl --malt $(LANGUAGES)
 	@echo "Evaluation after conversion back to the HAMLEDT style:"
-	@./print_table.pl --mcd -topdt $(LANGUAGES)
+	@./print_table.pl --malt -topdt $(LANGUAGES)
 
 tex:
 	./print_tex.pl > parsing_accuracy_table.tex
