@@ -19,7 +19,6 @@ GetOptions(
     "mcdproj" => \$mcdproj,
     "malt"    => \$malt,
     "maltsmf" => \$maltsmf,
-    "topdt"   => \$topdt,
     "filename=s"   => \$filename,
     "wdir=s"  => \$wdirroot,
 );
@@ -32,7 +31,6 @@ if ($help || !@ARGV) {
     --mcdproj  - McDonald's MST projective parser
     --malt     - Malt parser
     --maltsmf  - Malt parser with stack algorithm and morph features
-    --topdt    - converted back to PDT style
     --wdir     - path to working folder
                  default: $data_dir\${LANGUAGE}/treex/\${TRANSFORMATION}/parsed
                  if --wdir \$WDIR set: \${WDIR}/\${LANGUAGE}/\${TRANSFORMATION}
@@ -55,6 +53,13 @@ my $parser_name =
     : $malt    ? 'MALT-ARC-EAGER'
     : $maltsmf ? 'MALT-STACK-LAZY'
     :            'OOPS';
+    
+my $parser_selector =
+      $mcd     ? 'mcdnonprojo2'
+    : $mcdproj ? 'mcdprojo2'
+    : $malt    ? 'maltnivreeager'
+    : $maltsmf ? 'maltstacklazy'
+    :            'OOPS';
 
 say '*' x 10 . "  $parser_name  " . '*' x 10;
 
@@ -63,7 +68,6 @@ my %value;
 
 foreach my $language (@ARGV) {
     # Avoid warnings about undefined values in debugging messages.
-    $value{'001_pdtstyle'}{$language} = 0;
     foreach my $dir (glob "$data_dir/$language/treex/*") {
         next if (!-d $dir);
         # Get the name of the current transformation.
@@ -82,21 +86,23 @@ foreach my $language (@ARGV) {
             print("Cannot read $wdir/$filename: $!");
             next;
         }
-        my $REF = $is_trans =~ /^trans_/ ? '_before' : '';
-        my $PDT = $topdt && $is_trans ? 'PDT' : '';
+        my $my_score;
+        my $base_score;
         while (<UAS>) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
-            next if !(
-                ($sys =~ /UASpms\($language\_maltnivreeager$PDT,$language$REF\)$/ && $malt) ||
-                ($sys =~ /UASpms\($language\_maltstacklazy$PDT,$language$REF\)$/ && $maltsmf) ||
-                ($sys =~ /UASpms\($language\_mcdnonprojo2$PDT,$language$REF\)$/ && $mcd) ||
-                ($sys =~ /UASpms\($language\_mcdprojo2$PDT,$language$REF\_$/ && $mcdproj));
-            $score = $score ? 100 * $score : 0;
-            if ($is_trans && defined $value{'001_pdtstyle'}{$language}) {
-                $score -= $value{'001_pdtstyle'}{$language};
+            if ($is_trans && $sys eq "UASpms(".$language."_".$parser_selector."PDT,".$language."_before)") {
+                $value{$trans}{$language} += $score ? 100 * $score : 0;
             }
-            $value{$trans}{$language} = round($score);
+            elsif ($is_trans && $sys eq "UASpms(".$language."_".$parser_selector."BASE,".$language."_before)") {
+                $value{$trans}{$language} -= $score ? 100 * $score : 0;
+            }
+            elsif ($trans eq "001_pdtstyle" && $sys eq "UASpms(".$language."_".$parser_selector.",".$language.")") {
+                $value{$trans}{$language} = $score ? 100 * $score : 0;
+            }
+            elsif ($trans eq "000_orig" && $sys eq "UASpms(".$language."_".$parser_selector.",".$language.")") {
+                $value{$trans}{$language} = $score ? 100 * $score : 0;
+            }
         }
         if(!defined($value{$trans}{$language}))
         {
@@ -121,7 +127,7 @@ foreach my $trans (sort keys %value) {
     my $diff = 0;
     my $cnt = 0;
     foreach my $language (@ARGV) {
-        push @row, $value{$trans}{$language};
+        push @row, round($value{$trans}{$language});
         next if !$value{$trans}{$language} || !$value{'001_pdtstyle'}{$language};
         $better++ if  $value{$trans}{$language} > $signif_diff;
         $worse++ if  $value{$trans}{$language} < -$signif_diff;

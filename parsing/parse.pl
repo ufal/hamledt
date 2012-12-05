@@ -151,7 +151,6 @@ foreach my $language (@ARGV) {
         $eval_scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='' ";
         # We evaluate the transformation against 'before' selector, if they are convertyed back to PDT style
         if ($is_transformation) {
-            $eval_scenario .= "A2A::Transform::CoordStyle from_style=fPhRsHcHpB style=fPhRsHcHpB ";
             $eval_scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='before' ";
         }
         print STDERR "Creating script for parsing.\n";
