@@ -34,6 +34,10 @@ table:
 	@echo "Evaluation after conversion back to the HAMLEDT style:"
 	@./print_table.pl --malt -topdt $(LANGUAGES)
 
+view:
+	@treex -Lcs Print::ListMostDifferentTrees selector=maltnivreeagerBASE selector2=maltnivreeagerPDT threshold=0.9 -- ~/tectomt/share/data/resources/hamledt/cs/treex/trans_fMhLsNcBpP/parsed/001.treex.gz > diff.txt
+	@ttred -l diff.txt
+
 tex:
 	./print_tex.pl > parsing_accuracy_table.tex
 	@echo parsing_accuracy_table.tex should be commited as publications/papers/2011_cl_tree_conventions

@@ -108,7 +108,14 @@ foreach my $language (@ARGV) {
             malt    => "W2A::ParseMalt model=$wdir/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos",
             maltsmf => "W2A::ParseMalt model=$wdir/malt_stacklazy.mco pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat",
         );
-        my %run_parser  = ( mcd => $mcd,   mcdproj => $mcdproj, malt => $malt,  maltsmf => $maltsmf);
+        my %base_parser_block = (
+            mcd     => "W2A::ParseMST model_dir=$wdir/../../001_pdtstyle/parsed model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
+            mcdproj => "W2A::ParseMST model_dir=$wdir/../../001_pdtstyle/parsed model=mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos",
+            malt    => "W2A::ParseMalt model=$wdir/../../001_pdtstyle/parsed/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos",
+            maltsmf => "W2A::ParseMalt model=$wdir/../../001_pdtstyle/parsed/malt_stacklazy.mco pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat",
+        );
+
+        my %run_parser = ( mcd => $mcd, mcdproj => $mcdproj, malt => $malt, maltsmf => $maltsmf);
         my @scenarios;
         foreach my $parser (qw(mcd mcdproj malt maltsmf)) {
             if (!$run_parser{$parser}) {
@@ -131,6 +138,11 @@ foreach my $language (@ARGV) {
                 }
                 push @scenarios, $scenario;
             }
+            my $base_scenario  = "Util::SetGlobal language=$language selector=$parser_selector{$parser}BASE ";
+            $base_scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
+            $base_scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+            $base_scenario .= "$base_parser_block{$parser} ";
+            push @scenarios, $base_scenario;
         }
         # Note: the trees in 000_orig should be compared against the original gold tree.
         # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
@@ -139,6 +151,7 @@ foreach my $language (@ARGV) {
         $eval_scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='' ";
         # We evaluate the transformation against 'before' selector, if they are convertyed back to PDT style
         if ($is_transformation) {
+            $eval_scenario .= "A2A::Transform::CoordStyle from_style=fPhRsHcHpB style=fPhRsHcHpB ";
             $eval_scenario .= "Eval::AtreeUAS eval_is_member=1 eval_is_shared_modifier=1 selector='before' ";
         }
         print STDERR "Creating script for parsing.\n";
