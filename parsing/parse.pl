@@ -126,7 +126,7 @@ foreach my $language (@ARGV) {
                 next;
             }
             else {
-                my $scenario  = "Util::SetGlobal language=$language selector=$parser_selector{$parser} ";
+                my $scenario = "Util::SetGlobal language=$language selector=$parser_selector{$parser} ";
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
                 $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
                 $scenario .= "$parser_block{$parser} ";

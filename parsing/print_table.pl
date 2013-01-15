@@ -10,27 +10,28 @@ use dzsys;
 
 my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt/";
 
-my ($help, $mcd, $mcdproj, $malt, $maltsmf, $wdirroot, $topdt);
-my $filename;
+my $help;
+my $wdirroot;
+my $eval = 'pms';
+my $parser = 'malt';
+my $filename = 'uas.txt';
+my $transform = 'there-and-back';
 
 GetOptions(
     "help|h"  => \$help,
-    "mcd"     => \$mcd,
-    "mcdproj" => \$mcdproj,
-    "malt"    => \$malt,
-    "maltsmf" => \$maltsmf,
-    "filename=s"   => \$filename,
+    "parser=s"  => \$parser,
+    "transform=s" => \$transform,
+    "eval=s"  => \$eval,
     "wdir=s"  => \$wdirroot,
+    "filename=s" => \$filename,
 );
 my $signif_diff = 0.1; # TODO: Update this value (for each lang) as soon as Loganathan finishes the significance testing.
 
 if ($help || !@ARGV) {
     die "Usage: print_table.pl [OPTIONS] [LANGUAGES]
     LANGUAGES  - list of ISO codes of languages to be processed
-    --mcd      - McDonald's MST non-projective parser
-    --mcdproj  - McDonald's MST projective parser
-    --malt     - Malt parser
-    --maltsmf  - Malt parser with stack algorithm and morph features
+    --parser   - parser: 'mcd', 'mcdproj', 'malt', or 'maltsmf'. Default is 'malt'.
+    --eval     - type o evaluation: p (parent), pm (parent, is_member), pms (parent, is_member, is_shared_modifier). Default is 'pms'.
     --wdir     - path to working folder
                  default: $data_dir\${LANGUAGE}/treex/\${TRANSFORMATION}/parsed
                  if --wdir \$WDIR set: \${WDIR}/\${LANGUAGE}/\${TRANSFORMATION}
@@ -43,25 +44,10 @@ if (scalar(@ARGV)==1 && $ARGV[0] eq 'all') {
     @ARGV = qw(ar bg bn ca cs da de el en es eu fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
 }
 
-if (!$filename) {
-    $filename = 'uas.txt';
-}
+my %parser_name = (mcd => 'MST', mcdproj => 'MST-PROJECTIVE', malt => 'MALT-ARC-EAGER', maltsmf => 'MALT-STACK-LAZY');
+my %parser_selector = (mcd => 'mcdnonprojo2', mcdproj => 'mcdprojo2', malt => 'maltnivreeager', maltsmf => 'maltstacklazy');
 
-my $parser_name =
-      $mcd     ? 'MST'
-    : $mcdproj ? 'MST-PROJECTIVE'
-    : $malt    ? 'MALT-ARC-EAGER'
-    : $maltsmf ? 'MALT-STACK-LAZY'
-    :            'OOPS';
-    
-my $parser_selector =
-      $mcd     ? 'mcdnonprojo2'
-    : $mcdproj ? 'mcdprojo2'
-    : $malt    ? 'maltnivreeager'
-    : $maltsmf ? 'maltstacklazy'
-    :            'OOPS';
-
-say '*' x 10 . "  $parser_name  " . '*' x 10;
+print "********** $parser_name{$parser} **********\n";
 
 my $table = Text::Table->new('trans', @ARGV, 'better', 'worse', 'average');
 my %value;
@@ -91,23 +77,29 @@ foreach my $language (@ARGV) {
         while (<UAS>) {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
-            if ($is_trans && $sys eq "UASpms(".$language."_".$parser_selector."PDT,".$language."_before)") {
+            if ($is_trans && $transform ne 'there-only' && $sys eq "UAS$eval(".$language."_".$parser_selector{$parser}."PDT,".$language."_before)") {
                 $value{$trans}{$language} += $score ? 100 * $score : 0;
             }
-            elsif ($is_trans && $sys eq "UASpms(".$language."_".$parser_selector."BASE,".$language."_before)") {
+            elsif ($is_trans && $transform ne 'there-only' && $sys eq "UAS$eval(".$language."_".$parser_selector{$parser}."BASE,".$language."_before)") {
                 $value{$trans}{$language} -= $score ? 100 * $score : 0;
             }
-            elsif ($trans eq "001_pdtstyle" && $sys eq "UASpms(".$language."_".$parser_selector.",".$language.")") {
+            elsif ($is_trans && $transform eq 'there-only' && $sys eq "UAS$eval($language"."_$parser_selector{$parser},$language)") {
+                $value{$trans}{$language} += $score ? 100 * $score : 0;
+            }
+            elsif ($is_trans && $transform eq 'there-only' && $sys eq "UAS$eval(".$language."_".$parser_selector{$parser}."BASE,".$language."_before)") {
+                $value{$trans}{$language} -= $score ? 100 * $score : 0;
+            }
+            elsif ($trans eq "001_pdtstyle" && $sys eq "UAS$eval(".$language."_".$parser_selector{$parser}.",".$language.")") {
                 $value{$trans}{$language} = $score ? 100 * $score : 0;
             }
-            elsif ($trans eq "000_orig" && $sys eq "UASpms(".$language."_".$parser_selector.",".$language.")") {
+            elsif ($trans eq "000_orig" && $sys eq "UAS$eval(".$language."_".$parser_selector{$parser}.",".$language.")") {
                 $value{$trans}{$language} = $score ? 100 * $score : 0;
             }
         }
         if(!defined($value{$trans}{$language}))
         {
             ###!!! DEBUG
-            print("$parser_name score not found in $wdir/$filename.\n");
+            #print("$parser_name{$parser} score not found in $wdir/$filename.\n");
         }
     }
 }
