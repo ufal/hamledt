@@ -31,14 +31,14 @@ significance:
 
 
 table:
-	@./print_table.pl --parser mcd --transform there-only $(LANGUAGES)
-	@./print_table.pl --parser mcdproj --transform there-only $(LANGUAGES)
-	@./print_table.pl --parser malt --transform there-only $(LANGUAGES)
-	@./print_table.pl --parser maltsmf --transform there-only $(LANGUAGES)
-	@./print_table.pl --parser mcd $(LANGUAGES)
-	@./print_table.pl --parser mcdproj $(LANGUAGES)
-	@./print_table.pl --parser malt $(LANGUAGES)
-	@./print_table.pl --parser maltsmf $(LANGUAGES)
+	./print_table.pl --parser mcd --transform there-only $(LANGUAGES) > RESULTS-there-only.txt
+	./print_table.pl --parser mcdproj --transform there-only $(LANGUAGES) >> RESULTS-there-only.txt
+	./print_table.pl --parser malt --transform there-only $(LANGUAGES) >> RESULTS-there-only.txt
+	./print_table.pl --parser maltsmf --transform there-only $(LANGUAGES) >> RESULTS-there-only.txt
+	./print_table.pl --parser mcd $(LANGUAGES) > RESULTS.txt
+	./print_table.pl --parser mcdproj $(LANGUAGES) >> RESULTS.txt
+	./print_table.pl --parser malt $(LANGUAGES) >> RESULTS.txt
+	./print_table.pl --parser maltsmf $(LANGUAGES) >> RESULTS.txt
 
 
 view:
