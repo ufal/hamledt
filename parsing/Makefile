@@ -1,14 +1,17 @@
-ALL_LANGUAGES=ar bg bn cs da de el en es fi hi hu it nl pt ro ru sl sv ta te tr
-#LANGUAGES=ar en eu grc la
+#ALL_LANGUAGES=ar bg bn cs da de el en es fi hi hu it nl pt ro ru sl sv ta te tr
+ALL_LANGUAGES=ar    bg    bn    ca    cs    da    de    el    en    es    et    eu    fi    grc   hi hu    it    ja    la    nl    pt    ro    ru    sl    sv    ta    te    tr
 LANGUAGES=$(ALL_LANGUAGES)
 
 train:
-	#./train.pl --new --mcd --mcdproj --malt $(LANGUAGES)
-	./train.pl --new --feat conll --maltsmf $(LANGUAGES)
+	#./train.pl --mcdproj --malt ar
+	./train.pl --feat conll --maltsmf ar 
 
 train_smf:
 	#./train.pl --new --mcd --mcdproj --malt $(LANGUAGES)
 	./train.pl --new --feat conll --maltsmf $(LANGUAGES)
+
+mytrain:
+	./train.pl --new --feat conll --maltsmf --trans 000_orig cs
 
 train_new:
 	./train.pl --new --malt --trans trans_fSpPcBhNsN,trans_fMpPcBhNsN,trans_fMpPcPhLsN,trans_fMpPcPhRsN $(ALL_LANGUAGES)
@@ -16,6 +19,9 @@ train_new:
 parse:
 	./parse.pl --new --mcd --mcdproj --malt --maltsmf $(LANGUAGES)
 	#./parse.pl --new --maltsmf $(LANGUAGES)
+
+myparse:
+	./parse.pl --maltsmf --trans 000_orig cs
 
 eval:
 	./eval.pl $(ALL_LANGUAGES)
@@ -52,13 +58,11 @@ tex:
 rights:
 	chmod -R g+w ${TMT_ROOT}/share/data/resources/hamledt/ 2>/dev/null || echo Done
 
-clean_temp_files:
-	rm -r /net/projects/tectomt_shared/data/resources/hamledt/*/treex/*/parsed/*-cluster-run-*
-	rm /net/projects/tectomt_shared/data/resources/hamledt/*/treex/*/parsed/parse-*.sh.o*
-	rm /net/projects/tectomt_shared/data/resources/hamledt/*/treex/*/parsed/mlt*.sh.o*
-	rm /net/projects/tectomt_shared/data/resources/hamledt/*/treex/*/parsed/mcd*.sh.o*
-	rm /net/projects/tectomt_shared/data/resources/hamledt/*/treex/*/parsed/mcp*.sh.o*
-
-clean_malt_dirs:
-	rm -rf /net/projects/tectomt_shared/data/resources/hamledt/*/treex/*/parsed/malt_nivreeager
-	rm -rf /net/projects/tectomt_shared/data/resources/hamledt/*/treex/*/parsed/malt_stacklazy
+clean:
+	rm -rf /net/cluster/TMP/marecek/hamledt_parsing/*/*/*-cluster-run-*
+	rm -f /net/cluster/TMP/marecek/hamledt_parsing/*/*/parsed/mlt*.sh.*
+	rm -f /net/cluster/TMP/marecek/hamledt_parsing/*/*/parsed/smf*.sh.*
+	rm -f /net/cluster/TMP/marecek/hamledt_parsing/*/*/parsed/mcd*.sh.*
+	rm -f /net/cluster/TMP/marecek/hamledt_parsing/*/*/parsed/mcp*.sh.*
+	rm -rf /net/cluster/TMP/marecek/hamledt_parsing/*/*/parsed/malt_nivreeager
+	rm -rf /net/cluster/TMP/marecek/hamledt_parsing/*/*/parsed/malt_stacklazy
