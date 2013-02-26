@@ -17,7 +17,7 @@ train_new:
 	./train.pl --new --malt --trans trans_fSpPcBhNsN,trans_fMpPcBhNsN,trans_fMpPcPhLsN,trans_fMpPcPhRsN $(ALL_LANGUAGES)
 
 parse:
-	./parse.pl --new --mcd --mcdproj --malt --maltsmf $(LANGUAGES)
+	./parse.pl --new --malt ar
 	#./parse.pl --new --maltsmf $(LANGUAGES)
 
 myparse:
@@ -46,6 +46,8 @@ table:
 	./print_table.pl --parser malt $(LANGUAGES) >> RESULTS.txt
 	./print_table.pl --parser maltsmf $(LANGUAGES) >> RESULTS.txt
 
+mytable:
+	./print_table.pl --parser malt --transform there-only ar
 
 view:
 	@treex -Lcs Print::ListMostDifferentTrees selector=maltnivreeagerBASE selector2=maltnivreeagerPDT threshold=0.9 -- /home/marecek/tectomt/share/data/resources/hamledt/cs/treex/trans_fMhLsNcBpP/parsed/001.treex.gz > diff.txt
