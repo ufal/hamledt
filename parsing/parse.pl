@@ -150,6 +150,6 @@ foreach my $language (@ARGV) {
         print BASHSCRIPT "treex $eval_scenario -- *.treex.gz | tee uas.txt\n";
         close BASHSCRIPT;
         my $memory = '15g';
-        system "qsub -hard -l mf=$memory -l act_mem_free=$memory -cwd -j yes p-$language-$shortname.sh";
+        system "qsub -p -100 -hard -l mf=$memory -l act_mem_free=$memory -cwd -j yes p-$language-$shortname.sh";
     }
 }

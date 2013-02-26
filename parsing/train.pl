@@ -109,7 +109,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "java -cp $mcd_dir/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n";
             print BASHSCRIPT "  train order:2 format:MST decode-type:non-proj train-file:train.mst model-name:mcd_nonproj_o2.model\n";
             close BASHSCRIPT;
-            system "qsub -hard -l mf=10g -l act_mem_free=10g -cwd -j yes $scriptname";
+            system "qsub -p -100 -hard -l mf=10g -l act_mem_free=10g -cwd -j yes $scriptname";
         }
         if ($mcdproj) {
             my $scriptname = "mcp-$language-$shortname.sh";
@@ -119,7 +119,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "java -cp $mcd_dir/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n";
             print BASHSCRIPT "  train order:2 format:MST decode-type:proj train-file:train.mst model-name:mcd_proj_o2.model\n";
             close BASHSCRIPT;
-            system "qsub -hard -l mf=10g -l act_mem_free=10g -cwd -j yes $scriptname";
+            system "qsub -p -100 -hard -l mf=10g -l act_mem_free=10g -cwd -j yes $scriptname";
         }
         if ($malt) {
             my $scriptname = "mlt-$language-$shortname.sh";
@@ -130,7 +130,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "rm -rf malt_nivreeager\n";
             print BASHSCRIPT "java -Xmx15g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
             close BASHSCRIPT;
-            system "qsub -hard -l mf=16g -l act_mem_free=16g -cwd -j yes $scriptname";
+            system "qsub -p -100 -hard -l mf=16g -l act_mem_free=16g -cwd -j yes $scriptname";
         }
         if ($maltsmf) {
             my $scriptname = "smf-$language-$shortname.sh";
@@ -150,7 +150,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT $command;
             close BASHSCRIPT;
             my $memory = '31g';
-            system "qsub -hard -l mf=$memory -l act_mem_free=$memory -cwd -j yes $scriptname";
+            system "qsub -p -100 -hard -l mf=$memory -l act_mem_free=$memory -cwd -j yes $scriptname";
         }
     }
 }
