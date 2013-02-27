@@ -1,12 +1,20 @@
 ALL_LANGUAGES=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
-LANGUAGES=ar bg bn ca cs da de
+#LANGUAGES=ar bg bn ca cs da de
+#LANGUAGES=hi hu it ja la nl pt ro ru sl sv ta te tr
+LANGUAGES=$(ALL_LANGUAGES)
 
 train:
 	./train.pl --new --mcd --mcdproj --malt $(LANGUAGES)
 	./train.pl --new --feat conll --maltsmf $(LANGUAGES) 
 
 parse:
-	./parse.pl --new --mcd --mcdproj --malt --maltsmf $(LANGUAGES) 
+	./parse.pl --new --mcd --mcdproj --malt --maltsmf $(LANGUAGES)
+
+mytrain:
+	./train.pl --new --mcd --trans ooo zh 
+
+myparse:
+	./parse.pl --new --mcd --mcdproj --malt $(LANGUAGES)
 
 
 eval_samples:
@@ -30,10 +38,10 @@ table:
 	./print_table.pl --parser maltsmf $(LANGUAGES) >> RESULTS.txt
 
 mytable:
-	./print_table.pl --parser malt --transform there-only bn 
-	./print_table.pl --parser maltsmf --transform there-only bn 
-	./print_table.pl --parser mcd --transform there-only bn 
-	./print_table.pl --parser mcdproj --transform there-only bn 
+	./print_table.pl --parser malt --transform there-only $(LANGUAGES) 
+	./print_table.pl --parser maltsmf --transform there-only $(LANGUAGES) 
+	./print_table.pl --parser mcd --transform there-only $(LANGUAGES)  
+	./print_table.pl --parser mcdproj --transform there-only $(LANGUAGES) 
 
 view:
 	@treex -Lcs Print::ListMostDifferentTrees selector=maltnivreeagerBASE selector2=maltnivreeagerPDT threshold=0.9 -- /home/marecek/tectomt/share/data/resources/hamledt/cs/treex/trans_fMhLsNcBpP/parsed/001.treex.gz > diff.txt
