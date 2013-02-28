@@ -1,21 +1,37 @@
 ALL_LANGUAGES=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
-#LANGUAGES=ar bg bn ca cs da de
-#LANGUAGES=hi hu it ja la nl pt ro ru sl sv ta te tr
-LANGUAGES=$(ALL_LANGUAGES)
+#LANGUAGES=$(ALL_LANGUAGES)
+LANGUAGES=es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 
 train:
-	./train.pl --new --mcd --mcdproj --malt $(LANGUAGES)
-	./train.pl --new --feat conll --maltsmf $(LANGUAGES) 
+	#./train.pl --mcd --mcdproj --malt $(LANGUAGES)
+	./train.pl --feat conll --maltsmf $(LANGUAGES) 
 
 parse:
 	./parse.pl --new --mcd --mcdproj --malt --maltsmf $(LANGUAGES)
 
 mytrain:
-	./train.pl --new --mcd --trans ooo zh 
+	./train.pl --malt --mcd --mcdproj eu fa fi grc hi hu it ja la nl pt ro ru sl 
 
 myparse:
-	./parse.pl --new --mcd --mcdproj --malt $(LANGUAGES)
-
+	#./parse.pl --malt --mcd --mcdproj --trans trans_fShLsNcBpP,trans_fShRsNcBpP ca
+	#./parse.pl --malt --mcd --mcdproj --trans trans_fPhRsHcHpB da
+	#./parse.pl --malt --mcd --mcdproj --trans trans_fMhRsNcBpP,trans_fPhMsHcHpB,trans_fPhRsHcHpB,trans_fShRsNcBpP el
+	./parse.pl --malt --trans 000_orig,001_pdtstyle,trans_fShLsNcBpP cs
+	./parse.pl --malt --trans trans_fShRsNcBpP de
+	./parse.pl --malt --trans trans_fMhRsNcBpP,trans_fPhRsHcHpB es
+	./parse.pl --malt --trans trans_fPhRsHcHpB eu
+	./parse.pl --malt --trans trans_fPhMsHcHpB,trans_fShRsNcBpP fa
+	./parse.pl --malt --trans trans_fMhMsNcBpP grc
+	./parse.pl --malt --trans 000_orig,trans_fMhRsNcBpP,trans_fPhMsHcHpB hu
+	./parse.pl --malt --trans trans_fMhLsNcBpP,trans_fMhRsNcBpP,trans_fPhMsHcHpB,trans_fPhRsHcHpB it
+	./parse.pl --malt --trans trans_fPhLsHcHpB,trans_fShLsNcBpP ja
+	./parse.pl --malt --trans trans_fPhMsHcHpB la 
+	./parse.pl --malt --trans trans_fMhRsNcBpP,trans_fPhRsHcHpB,trans_fShMsNcBpP nl
+	./parse.pl --malt --trans trans_fPhMsHcHpB,trans_fShMsNcBpP pt
+	./parse.pl --malt --trans trans_fPhMsHcHpB ru
+	./parse.pl --malt --trans 001_pdtstyle sv
+	./parse.pl --malt --trans trans_fPhMsHcHpB te
+	./parse.pl --malt --trans trans_fShRsNcBpP tr
 
 eval_samples:
 	./eval_samples.pl $(ALL_LANGUAGES)

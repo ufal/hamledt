@@ -12,7 +12,7 @@ my $mcd_dir  = "$share_dir/installed_tools/parser/mst/0.4.3b";
 my $malt_dir = "$share_dir/installed_tools/malt_parser/malt-1.5";
 my $script_dir = "/home/marecek/treex/devel/hamledt/parsing";
 
-my ($help, $mcd, $mcdproj, $malt, $maltsmf, $feat, $transformations, $new, $wdirroot);
+my ($help, $mcd, $mcdproj, $malt, $maltsmf, $feat, $transformations, $new, $wdirroot, $retrain);
 
 # defaults
 $feat = '_';
@@ -27,7 +27,8 @@ GetOptions(
     "mcdproj" => \$mcdproj,
     "trans=s" => \$transformations,
     "feat=s"  => \$feat,
-    "new"     => \$new,
+    "newdata" => \$new,
+    "retrain" => \$retrain,
     "wdir=s"  => \$wdirroot,
 );
 
@@ -38,7 +39,8 @@ if ($help || !@ARGV) {
     --mcdproj  - train McDonald's projective MST parser
     --malt     - train Malt parser
     --maltsmf  - train Malt parser with stack algorithm and morph features
-    --new      - recreate training file, don't reuse existing
+    --newdata  - recreate training file, don't reuse existing
+    --retrain  - retrain already existing models
     --trans    - select transformationis separated by comma. All transformations are run otherwise.
     --feat     - select features conll|iset|_ (_ is default)
     --wdir     - path to working folder
@@ -86,7 +88,7 @@ foreach my $language (@ARGV) {
 
         # Create training CoNLL file if needed.
         # All deprels are substituted by 'Atr'
-        if ($new || !-e $trainfilename) {
+        if ($new || !-s "$wdir/$trainfilename") {
             my $command =  "treex -p -j 20 ";
                $command .= "Util::SetGlobal language=$language ";
                $command .= "Util::Eval anode='\$anode->set_attr(\"conll/deprel\", \"Atr\");' ";
@@ -96,12 +98,12 @@ foreach my $language (@ARGV) {
         }
 
         # Create training data in MST format
-        if ($mcd || $mcdproj) {
+        if (($mcd || $mcdproj) && ($new || !-s "$wdir/train.mst")) {
             system "cat $trainfilename | $script_dir/conll2mst.pl > train.mst\n";
         }
 
         # Prepare the training script and submit the job to the cluster.
-        if ($mcd) {
+        if ($mcd && ($retrain || !-e "$wdir/mcd_nonproj_o2.model")) {
             my $scriptname = "mcd-$language-$shortname.sh";
             print STDERR "Creating script for training McDonald's non-projective parser ($scriptname).\n";
             open (BASHSCRIPT, ">:utf8", $scriptname) or die;
@@ -111,7 +113,7 @@ foreach my $language (@ARGV) {
             close BASHSCRIPT;
             system "qsub -p -100 -hard -l mf=10g -l act_mem_free=10g -cwd -j yes $scriptname";
         }
-        if ($mcdproj) {
+        if ($mcdproj && ($retrain || !-e "$wdir/mcd_proj_o2.model")) {
             my $scriptname = "mcp-$language-$shortname.sh";
             print STDERR "Creating script for training McDonald's projective parser ($scriptname).\n";
             open (BASHSCRIPT, ">:utf8", $scriptname) or die;
@@ -121,7 +123,7 @@ foreach my $language (@ARGV) {
             close BASHSCRIPT;
             system "qsub -p -100 -hard -l mf=10g -l act_mem_free=10g -cwd -j yes $scriptname";
         }
-        if ($malt) {
+        if ($malt && ($retrain || !-e "$wdir/malt_nivreeager.mco" || -s "$wdir/malt_nivreeager.mco" < 10000)) {
             my $scriptname = "mlt-$language-$shortname.sh";
             print STDERR "Creating script for training Malt parser ($scriptname).\n";
             open (BASHSCRIPT, ">:utf8", $scriptname) or die;
@@ -132,7 +134,7 @@ foreach my $language (@ARGV) {
             close BASHSCRIPT;
             system "qsub -p -100 -hard -l mf=16g -l act_mem_free=16g -cwd -j yes $scriptname";
         }
-        if ($maltsmf) {
+        if ($maltsmf && ($retrain || !-e "$wdir/malt_stacklazy.mco" || -s "$wdir/malt_stacklazy.mco" < 10000)) {
             my $scriptname = "smf-$language-$shortname.sh";
             print STDERR "Creating script for training Malt parser with stack and morph features ($scriptname).\n";
             open (BASHSCRIPT, ">:utf8", $scriptname) or die;

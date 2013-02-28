@@ -18,9 +18,9 @@ my $transform = 'there-and-back';
 my $transformations = '000_orig,001_pdtstyle,trans_fMhLsNcBpP,trans_fMhMsNcBpP,trans_fMhRsNcBpP,trans_fPhLsHcHpB,trans_fPhMsHcHpB,trans_fPhRsHcHpB,trans_fShLsNcBpP,trans_fShMsNcBpP,trans_fShRsNcBpP';
 
 my %state_of_the_art = ( ar => '85.81', eu => '82.84', bn => '87.41', bg => '92.04', ca => '93.4*', cs => '86.28', da => '90.58',
-                         nl => '83.57', en => '90.63*', de => '90.38*', el => '84.08', hi => '94.78', hu => 83.55, it => '87.91',
-                         ja => '93.16', fa => '86.84', pt => '91.36', ru => '89.1', sl => '83.17', es => '87.64+', sv => '89.54',
-                         ta => '75.03', te => '91.82', tr => '86.22');
+                         nl => '83.57', en => '90.6*', de => '90.4*', el => '84.08', hi => '94.78', hu => 83.55, it => '87.91',
+                         ja => '93.16', fa => '86.84', pt => '91.36', ru => '89.1', sl => '83.17', es => '87.6+', sv => '89.54',
+                         ta => '75.03', te => '91.82', tr => '86.22', fi => '----', grc => '----', la => '----', ro => '----');
 
 
 GetOptions(
