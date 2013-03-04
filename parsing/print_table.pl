@@ -22,6 +22,10 @@ my %state_of_the_art = ( ar => '85.81', eu => '82.84', bn => '87.41', bg => '92.
                          ja => '93.16', fa => '86.84', pt => '91.36', ru => '89.1', sl => '83.17', es => '87.6+', sv => '89.54',
                          ta => '75.03', te => '91.82', tr => '86.22', fi => '----', grc => '----', la => '----', ro => '----');
 
+my %orig_style = ( grc => 'fPhR', ar => 'fPhL', eu => 'fPhR', bn => 'fPhR', bg => 'fShL', cs => 'fPhR', da => 'fS*hL', nl => 'fPhR',
+                   en => 'fMhL', fi => 'fShL', de => 'fMhL', el => 'fPhR', hi => 'fPhR', hu => 'fThX', it => 'fShL', la => 'fPhR',
+                   fa => 'fM*hM', pt => 'fSihL', ro => 'fP*hR', ru => 'fMhL', sl => 'fPhR', es => 'fShL', sv => 'fMhL', ta => 'fPhR',
+                   te => 'fPhR', tr => 'fMhR', ca => '----', ja => '----');
 
 GetOptions(
     "help|h"  => \$help,
@@ -52,7 +56,9 @@ print "********** $parser_name{$parser} **********\n";
 
 my $table = Text::Table->new('trans', @ARGV, 'better', 'worse', 'average');
 my @best_scores = map {$state_of_the_art{$_} || ''} @ARGV;
-$table->add('best', @best_scores, '', '', '');
+my @orig_style = map {$orig_style{$_} || ''} @ARGV; 
+$table->add('state-of-the-art', @best_scores, '', '', '');
+$table->add('original style', @orig_style, '', '', '');
 
 my %value;
 

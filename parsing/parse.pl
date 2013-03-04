@@ -28,7 +28,7 @@ GetOptions(
     "malt"    => \$malt,
     "maltsmf" => \$maltsmf,
     "new"     => \$new,
-    "trans=s"   => \$transformations,
+    "trans=s" => \$transformations,
     "feat=s"  => \$feat,
     "wdir=s"  => \$wdirroot,
 );
