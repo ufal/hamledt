@@ -91,6 +91,7 @@ foreach my $language (@ARGV) {
         if ($new || !-s "$wdir/$trainfilename") {
             my $command =  "treex -p -j 20 ";
                $command .= "Util::SetGlobal language=$language ";
+               if ($language eq 'cs') { $command .= "Util::Eval anode='\$d=\$anode->get_attr(\"conll/deprel\"); \$d =~ s/_M//; \$anode->set_attr(\"conll/deprel\", \$d)' "; }
                if (!$feature_option) { $command .= "Util::Eval anode='\$anode->set_attr(\"conll/deprel\", \"Atr\");' "; }
                $command .= "Write::CoNLLX $feature_option deprel_attribute=conll/deprel is_member_within_afun=1 is_shared_modifier_within_afun=1 is_coord_conjunction_within_afun=1 ";
                $command .= "-- $ddir/train/*.treex.gz > $trainfilename";

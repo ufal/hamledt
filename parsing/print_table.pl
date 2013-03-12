@@ -23,7 +23,7 @@ my %state_of_the_art = ( ar => '85.81', eu => '82.84', bn => '87.41', bg => '92.
                          ta => '75.03', te => '91.82', tr => '86.22', fi => '----', grc => '----', la => '----', ro => '----');
 
 my %orig_style = ( grc => 'fPhR', ar => 'fPhL', eu => 'fPhR', bn => 'fPhR', bg => 'fShL', cs => 'fPhR', da => 'fS*hL', nl => 'fPhR',
-                   en => 'fMhL', fi => 'fShL', de => 'fMhL', el => 'fPhR', hi => 'fPhR', hu => 'fThX', it => 'fShL', la => 'fPhR',
+                   en => 'fPhR', fi => 'fShL', de => 'fMhL', el => 'fPhR', hi => 'fPhR', hu => 'fThX', it => 'fShL', la => 'fPhR',
                    fa => 'fM*hM', pt => 'fSihL', ro => 'fP*hR', ru => 'fMhL', sl => 'fPhR', es => 'fShL', sv => 'fMhL', ta => 'fPhR',
                    te => 'fPhR', tr => 'fMhR', ca => '----', ja => '----');
 
