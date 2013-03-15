@@ -7,6 +7,8 @@ TESTLOG=test.log
 LANGS=*
 SETS={train,test}
 FILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz'
+TRANSFFILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/trans*/$(SETS)/*.treex.gz'
+
 
 validate:
 	treex -p --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
@@ -38,3 +40,8 @@ table:
 
 clean:
 	rm -rf *.log ???-cluster-run-* test.err
+
+transftest:
+	treex  -p --jobs=$(JOBS) --survive  \
+	Test::A::CoordStyle stylefrompath=1 \
+	-- $(TRANSFFILES) 2> transftest.err > transftest.log
