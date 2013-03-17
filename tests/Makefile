@@ -45,3 +45,12 @@ transftest:
 	treex  -p --jobs=$(JOBS) --survive  \
 	Test::A::CoordStyle stylefrompath=1 \
 	-- $(TRANSFFILES) 2> transftest.err > transftest.log
+
+# TLNG=hi TEST=SubjectBelowVerb make ttred
+#TLNG=hi
+#TEST=LeafAux
+FILELIST=ttred.$(TLNG).$(TEST).filelist
+ttred:
+	grep hamledt/$(TLNG)/treex $(TESTLOG) | grep $(TEST) | cut -f2 > $(FILELIST)
+	ttred -l $(FILELIST)
+
