@@ -32,6 +32,7 @@ tests:
 	Test::A::AfunKnown \
 	Test::A::AfunNotNR \
 	Test::A::PredUnderRoot \
+	Test::A::NounGovernsDet \
 	-- $(FILES) 2> test.err > $(TESTLOG)
 
 table:
