@@ -1,6 +1,8 @@
 LANGCODE=ar
 include ../common.mak
 
+POSTPROCESS_SCEN_OPT:=A2A::Transform::CoordStyle from_style=fPhLsHcHpB style=fPhRsHcHpB
+
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
@@ -8,3 +10,5 @@ source:
 	ln -s /net/data/conll/2007/ar/test.conll $(TEST)
 
 treex: conll_to_treex
+
+
