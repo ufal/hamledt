@@ -33,6 +33,7 @@ tests:
 	Test::A::AfunNotNR \
 	Test::A::PredUnderRoot \
 	Test::A::NounGovernsDet \
+	Test::A::FinalPunctuation \
 	-- $(FILES) 2> test.err > $(TESTLOG)
 
 table:
