@@ -1,6 +1,8 @@
 LANGCODE=la
 include ../common.mak
 
+POSTPROCESS1_SCEN_OPT:=A2A::Pdt2TreexIsMemberConversion selector=""
+
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)

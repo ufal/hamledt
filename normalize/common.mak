@@ -14,7 +14,8 @@ TRAIN    = $(IN)/train.conll
 TEST     = $(IN)/test.conll
 TO_PDT_TRAIN_OPT :=
 TO_PDT_TEST_OPT  :=
-POSTPROCESS_SCEN_OPT :=
+POSTPROCESS1_SCEN_OPT :=
+POSTPROCESS2_SCEN_OPT :=
 
 check-source:
 	[ -d $(IN) ] || (echo new $(LANGCODE) && make source)
@@ -40,7 +41,8 @@ conll_to_treex:
 # and store the result in 001_pdtstyle.
 UCLANG = $(shell perl -e 'print uc "$(LANGCODE)"')
 #TODO: skip the A2A::DeleteAfunCoordWithoutMembers block, check the cases when it had to be applied (Test::A::MemberInEveryCoAp) and fix it properly
-SCEN1  = A2A::$(UCLANG)::CoNLL2PDTStyle A2A::SetSharedModifier A2A::SetCoordConjunction A2A::DeleteAfunCoordWithoutMembers $(POSTPROCESS_SCEN_OPT)
+SCEN1  = A2A::$(UCLANG)::CoNLL2PDTStyle $(POSTPROCESS1_SCEN_OPT) A2A::SetSharedModifier A2A::SetCoordConjunction A2A::DeleteAfunCoordWithoutMembers $(POSTPROCESS2_SCEN_OPT)
+
 pdt:
 	$(TREEX) $(TO_PDT_TRAIN_OPT) $(SCEN1)  Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
 

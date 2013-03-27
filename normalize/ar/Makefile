@@ -1,7 +1,7 @@
 LANGCODE=ar
 include ../common.mak
 
-POSTPROCESS_SCEN_OPT:=A2A::Transform::CoordStyle from_style=fPhLsHcHpB style=fPhRsHcHpB
+POSTPROCESS2_SCEN_OPT:=A2A::Transform::CoordStyle from_style=fPhLsHcHpB style=fPhRsHcHpB
 
 source:
 	mkdir -p $(DATADIR)
