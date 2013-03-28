@@ -24,6 +24,7 @@ tests:
 	Test::A::CoApAboveEveryMember \
 	Test::A::LeafAux \
 	Test::A::MemberInEveryCoAp \
+        Test::A::MemberInEveryCoord \
 	Test::A::NonemptyAttr \
 	Test::A::NonleafAuxC \
 	Test::A::NonleafAuxP \
