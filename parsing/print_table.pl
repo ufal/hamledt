@@ -49,8 +49,8 @@ if ($help || !@ARGV) {
 ";
 }
 
-my %parser_name = (mcd => 'MST', mcdproj => 'MST-PROJECTIVE', malt => 'MALT-ARC-EAGER', maltsmf => 'MALT-STACK-LAZY');
-my %parser_selector = (mcd => 'mcd', mcdproj => 'mcdproj', malt => 'malt', maltsmf => 'maltsmf');
+my %parser_name = (mcd => 'MST', mcdproj => 'MST-PROJECTIVE', malt => 'MALT-ARC-EAGER', maltsmf => 'MALT-STACK-LAZY', maltsmfndr => 'MALT-STACK-LAZY-NODEPREL');
+my %parser_selector = (mcd => 'mcd', mcdproj => 'mcdproj', malt => 'malt', maltsmf => 'maltsmf', maltsmfndr => 'maltsmfndr');
 
 print "********** $parser_name{$parser} **********\n";
 

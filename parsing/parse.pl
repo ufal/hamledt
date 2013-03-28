@@ -10,16 +10,17 @@ my $share_dir = Treex::Core::Config->share_dir();
 my $data_dir = "$share_dir/data/resources/hamledt";
 my $script_dir = "/home/marecek/treex/devel/hamledt/parsing";
 
-my ($help, $mcd, $mcdproj, $malt, $maltsmf, $feat, $transformations, $new, $wdirroot);
+my ($help, $feat, $transformations, $new, $wdirroot);
 
 # defaults
 $feat = '_';
 $transformations = '000_orig,001_pdtstyle,trans_fMhLsNcBpP,trans_fMhMsNcBpP,trans_fMhRsNcBpP,trans_fPhLsHcHpB,trans_fPhMsHcHpB,trans_fPhRsHcHpB,trans_fShLsNcBpP,trans_fShMsNcBpP,trans_fShRsNcBpP';
 $wdirroot = '/net/cluster/TMP/marecek/hamledt_parsing';
-$mcd=0;
-$malt=0;
-$mcdproj=0;
-$maltsmf=0;
+my $mcd = 0;
+my $mcdproj = 0;
+my $malt = 0;
+my $maltsmf = 0;
+my $maltsmfndr = 0;
 
 GetOptions(
     "help|h"  => \$help,
@@ -27,6 +28,7 @@ GetOptions(
     "mcdproj" => \$mcdproj,
     "malt"    => \$malt,
     "maltsmf" => \$maltsmf,
+    "maltsmfndr" => \$maltsmfndr,
     "new"     => \$new,
     "trans=s" => \$transformations,
     "feat=s"  => \$feat,
@@ -40,6 +42,7 @@ if ($help || !@ARGV) {
     --mcdproj  - run McDonald's MST projective parser
     --malt     - run Malt parser
     --maltsmf  - run Malt parser with stack algorithm and morph features
+    --maltsmfndr  - run Malt parser with stack algorithm and morph features, but without dependency relations
     --new      - copy the testing file from 'test' directory
     --trans    - select transformations separated by comma. All transformations are run otherwise.
     --feat     - select features conll|iset|_ (conll is default)
@@ -79,29 +82,34 @@ foreach my $language (@ARGV) {
         # the following variable indicates whether we are parsing a transformation or pdtstyle/orig file
         my $is_transformation = $trans =~ /trans_/ ? 1 : 0;
 
-        my %parser_selector = (mcd => 'mcd', mcdproj => 'mcdproj', malt => 'malt', maltsmf => 'maltsmf');
+        my $rel_wdir = "../../../$wdir";
+
+        my %parser_selector = (mcd => 'mcd', mcdproj => 'mcdproj', malt => 'malt', maltsmf => 'maltsmf', maltsmfndr => 'maltsmfndr');
         my %parser_model = (
             mcd     => "$wdir/mcd_nonproj_o2.model",
             mcdproj => "$wdir/mcd_proj_o2.model",
             malt    => "$wdir/malt_nivreeager.mco",
             maltsmf => "$wdir/malt_stacklazy.mco",
+            maltsmfndr => "$wdir/malt_stacklazy_ndr.mco",
         );
         my %parser_block = (
-            mcd     => "W2A::ParseMST model_dir=$wdir model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
-            mcdproj => "W2A::ParseMST model_dir=$wdir model=mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos",
+            mcd     => "W2A::ParseMST model_dir=$rel_wdir model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
+            mcdproj => "W2A::ParseMST model_dir=$rel_wdir model=mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos",
             malt    => "W2A::ParseMalt model=$wdir/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos",
             maltsmf => "W2A::ParseMalt model=$wdir/malt_stacklazy.mco pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat",
+            maltsmfndr => "W2A::ParseMalt model=$wdir/malt_stacklazy_ndr.mco pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat",
         );
         my %base_parser_block = (
-            mcd     => "W2A::ParseMST model_dir=$wdir/../001_pdtstyle model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
-            mcdproj => "W2A::ParseMST model_dir=$wdir/../001_pdtstyle model=mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos",
+            mcd     => "W2A::ParseMST model_dir=$rel_wdir/../001_pdtstyle model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
+            mcdproj => "W2A::ParseMST model_dir=$rel_wdir/../001_pdtstyle model=mcd_proj_o2.model decodetype=proj pos_attribute=conll/pos",
             malt    => "W2A::ParseMalt model=$wdir/../001_pdtstyle/malt_nivreeager.mco pos_attribute=conll/pos cpos_attribute=conll/cpos",
             maltsmf => "W2A::ParseMalt model=$wdir/../001_pdtstyle/malt_stacklazy.mco pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat",
+            maltsmf => "W2A::ParseMalt model=$wdir/../001_pdtstyle/malt_stacklazy_ndr.mco pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=$feat",
         );
-        my %run_parser = ( mcd => $mcd, mcdproj => $mcdproj, malt => $malt, maltsmf => $maltsmf);
+        my %run_parser = ( mcd => $mcd, mcdproj => $mcdproj, malt => $malt, maltsmf => $maltsmf, maltsmfndr => $maltsmfndr);
 
         my @scenarios;
-        foreach my $parser (qw(mcd mcdproj malt maltsmf)) {
+        foreach my $parser (qw(mcd mcdproj malt maltsmf, maltsmfndr)) {
             if (!$run_parser{$parser}) {
                 next;
             }

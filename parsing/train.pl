@@ -12,7 +12,7 @@ my $mcd_dir  = "$share_dir/installed_tools/parser/mst/0.4.3b";
 my $malt_dir = "$share_dir/installed_tools/malt_parser/malt-1.5";
 my $script_dir = "/home/marecek/treex/devel/hamledt/parsing";
 
-my ($help, $mcd, $mcdproj, $malt, $maltsmf, $feat, $transformations, $new, $wdirroot, $retrain);
+my ($help, $mcd, $mcdproj, $malt, $maltsmf, $maltsmfndr, $feat, $transformations, $new, $wdirroot, $retrain);
 
 # defaults
 $feat = '_';
@@ -24,6 +24,7 @@ GetOptions(
     "mcd"     => \$mcd,
     "malt"    => \$malt,
     "maltsmf" => \$maltsmf,
+    "maltsmfndr" => \$maltsmfndr,
     "mcdproj" => \$mcdproj,
     "trans=s" => \$transformations,
     "feat=s"  => \$feat,
@@ -39,6 +40,7 @@ if ($help || !@ARGV) {
     --mcdproj  - train McDonald's projective MST parser
     --malt     - train Malt parser
     --maltsmf  - train Malt parser with stack algorithm and morph features
+    --maltsmfndr  - train Malt parser with stack algorithm and morph features, but without dependency relations
     --newdata  - recreate training file, don't reuse existing
     --retrain  - retrain already existing models
     --trans    - select transformationis separated by comma. All transformations are run otherwise.
@@ -72,35 +74,33 @@ foreach my $language (@ARGV) {
         chdir($wdir) or die("Cannot change to $wdir: $!");
 
         # Select the train filename and feature options based on the features used
-        my ($trainfilename, $feature_option);
-        if ( $feat =~ m/^conll/i ) {
-            $trainfilename = 'train-conllfeat.conll';
-            $feature_option = 'feat_attribute=conll/feat';
-        }
-        elsif ( $feat =~ m/^i(nter)?set/i ) {
+        my ($trainfilename, $trainfilename_nodeprels, $feature_option);
+        if ( $feat =~ m/^i(nter)?set/i ) {
             $trainfilename = 'train-iset.conll';
+            $trainfilename_nodeprels = 'train-iset-nodeprels.conll';
             $feature_option = 'feat_attribute=iset';
         }
         else {
-            $trainfilename = 'train.conll';
-            $feature_option = '';
+            $trainfilename = 'train-conllfeat.conll';
+            $trainfilename_nodeprels = 'train-conllfeat-nodeprels.conll';
+            $feature_option = 'feat_attribute=conll/feat';
         }
 
         # Create training CoNLL file if needed.
-        # All deprels are substituted by 'Atr'
         if ($new || !-s "$wdir/$trainfilename") {
             my $command =  "treex -p -j 20 ";
                $command .= "Util::SetGlobal language=$language ";
-               if ($language eq 'cs') { $command .= "Util::Eval anode='\$d=\$anode->get_attr(\"conll/deprel\"); \$d =~ s/_M//; \$anode->set_attr(\"conll/deprel\", \$d)' "; }
-               if (!$feature_option) { $command .= "Util::Eval anode='\$anode->set_attr(\"conll/deprel\", \"Atr\");' "; }
+               #if ($language eq 'cs') { $command .= "Util::Eval anode='my \$d=\$anode->get_attr(\"conll/deprel\"); \$d =~ s/_M//; \$anode->set_attr(\"conll/deprel\", \$d)' "; }
                $command .= "Write::CoNLLX $feature_option deprel_attribute=conll/deprel is_member_within_afun=1 is_shared_modifier_within_afun=1 is_coord_conjunction_within_afun=1 ";
                $command .= "-- $ddir/train/*.treex.gz > $trainfilename";
             system $command;
+            # Create a version without dependency relations
+            system "cat $trainfilename | $script_dir/remove_deprels.pl > $trainfilename_nodeprels";
         }
 
         # Create training data in MST format
         if (($mcd || $mcdproj) && ($new || !-s "$wdir/train.mst")) {
-            system "cat $trainfilename | $script_dir/conll2mst.pl > train.mst\n";
+            system "cat $trainfilename_nodeprels | $script_dir/conll2mst.pl > train.mst\n";
         }
 
         # Prepare the training script and submit the job to the cluster.
@@ -131,7 +131,7 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "#!/bin/bash\n\n";
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print BASHSCRIPT "rm -rf malt_nivreeager\n";
-            print BASHSCRIPT "java -Xmx15g -jar $malt_dir/malt.jar -i $trainfilename -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
+            print BASHSCRIPT "java -Xmx15g -jar $malt_dir/malt.jar -i $trainfilename_nodeprels -c malt_nivreeager -a nivreeager -l liblinear -m learn\n";
             close BASHSCRIPT;
             system "qsub -p -100 -hard -l mf=16g -l act_mem_free=16g -cwd -j yes $scriptname";
         }
@@ -149,6 +149,26 @@ foreach my $language (@ARGV) {
             print BASHSCRIPT "rm -rf malt_stacklazy\n";
             my $features = '/net/work/people/zeman/parsing/malt-parser/marco-kuhlmann-czech-settings/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
             my $command = "java -Xmx29g -jar $malt_dir/malt.jar -i $trainfilename -c malt_stacklazy -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            print BASHSCRIPT "echo $command";
+            print BASHSCRIPT $command;
+            close BASHSCRIPT;
+            my $memory = '31g';
+            system "qsub -p -100 -hard -l mf=$memory -l act_mem_free=$memory -cwd -j yes $scriptname";
+        }
+        if ($maltsmfndr && ($retrain || !-e "$wdir/malt_stacklazy_ndr.mco" || -s "$wdir/malt_stacklazy_ndr.mco" < 10000)) {
+            my $scriptname = "ndr-$language-$shortname.sh";
+            print STDERR "Creating script for training Malt parser with stack and morph features ($scriptname).\n";
+            open (BASHSCRIPT, ">:utf8", $scriptname) or die;
+            print BASHSCRIPT "#!/bin/bash\n\n";
+            # Debugging message: anyone here eating my memory?
+            print BASHSCRIPT "hostname -f\n";
+            print BASHSCRIPT "echo jednou | /net/projects/SGE/sensors/mem_free.sh\n";
+            print BASHSCRIPT "echo jednou | /net/projects/SGE/sensors/act_mem_free.sh\n";
+            print BASHSCRIPT "top -bn1 | head -20\n";
+            # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
+            print BASHSCRIPT "rm -rf malt_stacklazy_ndr\n";
+            my $features = '/net/work/people/zeman/parsing/malt-parser/marco-kuhlmann-czech-settings/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
+            my $command = "java -Xmx29g -jar $malt_dir/malt.jar -i $trainfilename_nodeprels -c malt_stacklazy_ndr -a stacklazy -F $features -grl Pred -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
             print BASHSCRIPT "echo $command";
             print BASHSCRIPT $command;
             close BASHSCRIPT;

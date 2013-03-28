@@ -1,20 +1,21 @@
 ALL_LANGUAGES=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
-LANGUAGES=$(ALL_LANGUAGES)
-#LANGUAGES=es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
+#LANGUAGES=$(ALL_LANGUAGES)
+LANGUAGES=ar bg
 WDIR=/net/cluster/TMP/marecek/hamledt_parsing
 
 train:
-	./train.pl --mcd --mcdproj --malt $(LANGUAGES)
-	./train.pl --feat conll --maltsmf $(LANGUAGES) 
+	./train.pl --feat conll --mcd --mcdproj --malt --maltsmf --maltsmfndr $(LANGUAGES)
 
 parse:
-	./parse.pl --new --mcd --mcdproj --malt --maltsmf $(LANGUAGES)
+	./parse.pl --new --feat conll --mcd --mcdproj --malt --maltsmf --maltsmfndr $(LANGUAGES)
 
 mytrain:
-	./train.pl --new --retrain --feat conll --maltsmf --trans 000_orig de grc ru 
+	./train.pl --new --retrain --feat conll --maltsmf $(LANGUAGES) 
+	./train.pl --new --retrain --malt --mcd -- mcdproj $(LANGUAGES) 
 
 myparse:
-	./parse.pl --feat conll --maltsmf --trans 000_orig de 
+	./parse.pl --feat conll --maltsmf bg 
+
 
 eval_samples:
 	./eval_samples.pl $(ALL_LANGUAGES)
@@ -37,17 +38,18 @@ table:
 	./print_table.pl --parser maltsmf $(LANGUAGES) >> RESULTS.txt
 
 mytable:
-	./print_table.pl --parser malt --transform there-only $(LANGUAGES) 
-	./print_table.pl --parser maltsmf --transform there-only $(LANGUAGES) 
-	./print_table.pl --parser mcd --transform there-only $(LANGUAGES)  
-	./print_table.pl --parser mcdproj --transform there-only $(LANGUAGES) 
+	#./print_table.pl --parser malt --transform there-only $(LANGUAGES) 
+	#./print_table.pl --parser maltsmf --transform there-only $(LANGUAGES) 
+	#./print_table.pl --parser mcd --transform there-only $(LANGUAGES)  
+	#./print_table.pl --parser mcdproj --transform there-only $(LANGUAGES) 
 	./print_table.pl --parser malt $(LANGUAGES) 
 	./print_table.pl --parser maltsmf $(LANGUAGES) 
+	./print_table.pl --parser maltsmfndr $(LANGUAGES) 
 	./print_table.pl --parser mcd $(LANGUAGES)  
 	./print_table.pl --parser mcdproj $(LANGUAGES) 
 
 view:
-	@treex -Lcs Print::ListMostDifferentTrees selector=maltnivreeagerBASE selector2=maltnivreeagerPDT threshold=0.9 -- /home/marecek/tectomt/share/data/resources/hamledt/cs/treex/trans_fMhLsNcBpP/parsed/001.treex.gz > diff.txt
+	@treex -Len Print::ListMostDifferentTrees selector=maltsmfBASE selector2=maltsmfPDT threshold=0.9 -- /net/cluster/TMP/marecek/hamledt_parsing/en/trans_fMhLsNcBpP/001.treex.gz > diff.txt
 	@ttred -l diff.txt
 
 tex:
