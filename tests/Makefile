@@ -28,6 +28,7 @@ tests:
 	Test::A::NonemptyAttr \
 	Test::A::NonleafAuxC \
 	Test::A::NonleafAuxP \
+	Test::A::PrepIsAuxP \
 	Test::A::SubjectBelowVerb \
 	Test::A::AfunDefined \
 	Test::A::AfunKnown \
