@@ -1,6 +1,8 @@
 #!/usr/bin/env perl
+
 use strict;
 use warnings;
+use File::stat;
 
 use Getopt::Long;
 use Treex::Core::Config;
@@ -54,6 +56,7 @@ sub find_available_languages {
     return @languages;
 }
 
+
 if ($help) {
     usage('');
 }
@@ -93,6 +96,10 @@ else {
 if (not @languages) {
     error "Languages to be processed must be specified, either by listing them or by --alll or --all options.";
 }
+
+# process language only if the 001_pdtstyle is newer than trans_*
+@languages = grep {stat("$data_dir/$_/treex/001_pdtstyle/test/001.treex.gz")->mtime > stat("$data_dir/$_/treex/trans_fMhLsNcBpP/test/001.treex.gz")->mtime} @languages;
+print STDERR "Languages to be processed: " . join(", ", @languages) . "\n";
 
 my $langs_wildcard = '{' . join(',', @languages) . '}';
 my $JOBS= 5 * @languages;
