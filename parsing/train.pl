@@ -5,6 +5,7 @@ use warnings;
 
 use Getopt::Long;
 use Treex::Core::Config;
+use File::stat;
 
 my $share_dir = Treex::Core::Config->share_dir();
 my $data_dir = "$share_dir/data/resources/hamledt";
@@ -85,13 +86,16 @@ foreach my $language (@ARGV) {
             $trainfilename_nodeprels = 'train-conllfeat-nodeprels.conll';
             $feature_option = 'feat_attribute=conll/feat';
         }
+        my $deprel_attribute = $trans eq "000_orig" ? "conll/deprel" : "afun";
 
+        my $train_file_was_altered = 0;
         # Create training CoNLL file if needed.
-        if ($new || !-s "$wdir/$trainfilename") {
+        if ($new || !-s "$wdir/$trainfilename" || stat("$ddir/train/001.treex.gz")->mtime > stat("$wdir/$trainfilename")->mtime) {
+            $train_file_was_altered = 1;
             my $command =  "treex -p -j 20 ";
                $command .= "Util::SetGlobal language=$language ";
                #if ($language eq 'cs') { $command .= "Util::Eval anode='my \$d=\$anode->get_attr(\"conll/deprel\"); \$d =~ s/_M//; \$anode->set_attr(\"conll/deprel\", \$d)' "; }
-               $command .= "Write::CoNLLX $feature_option deprel_attribute=conll/deprel is_member_within_afun=1 is_shared_modifier_within_afun=1 is_coord_conjunction_within_afun=1 ";
+               $command .= "Write::CoNLLX $feature_option deprel_attribute=$deprel_attribute is_member_within_afun=1 is_shared_modifier_within_afun=1 is_coord_conjunction_within_afun=1 ";
                $command .= "-- $ddir/train/*.treex.gz > $trainfilename";
             system $command;
             # Create a version without dependency relations
@@ -104,7 +108,7 @@ foreach my $language (@ARGV) {
         }
 
         # Prepare the training script and submit the job to the cluster.
-        if ($mcd && ($retrain || !-e "$wdir/mcd_nonproj_o2.model")) {
+        if ($mcd && ($retrain || $train_file_was_altered || !-e "$wdir/mcd_nonproj_o2.model")) {
             my $scriptname = "mcd-$language-$shortname.sh";
             print STDERR "Creating script for training McDonald's non-projective parser ($scriptname).\n";
             open (BASHSCRIPT, ">:utf8", $scriptname) or die;
@@ -114,7 +118,7 @@ foreach my $language (@ARGV) {
             close BASHSCRIPT;
             system "qsub -p -100 -hard -l mf=10g -l act_mem_free=10g -cwd -j yes $scriptname";
         }
-        if ($mcdproj && ($retrain || !-e "$wdir/mcd_proj_o2.model")) {
+        if ($mcdproj && ($retrain || $train_file_was_altered || !-e "$wdir/mcd_proj_o2.model")) {
             my $scriptname = "mcp-$language-$shortname.sh";
             print STDERR "Creating script for training McDonald's projective parser ($scriptname).\n";
             open (BASHSCRIPT, ">:utf8", $scriptname) or die;
@@ -124,7 +128,7 @@ foreach my $language (@ARGV) {
             close BASHSCRIPT;
             system "qsub -p -100 -hard -l mf=10g -l act_mem_free=10g -cwd -j yes $scriptname";
         }
-        if ($malt && ($retrain || !-e "$wdir/malt_nivreeager.mco" || -s "$wdir/malt_nivreeager.mco" < 10000)) {
+        if ($malt && ($retrain || $train_file_was_altered || !-e "$wdir/malt_nivreeager.mco" || -s "$wdir/malt_nivreeager.mco" < 10000)) {
             my $scriptname = "mlt-$language-$shortname.sh";
             print STDERR "Creating script for training Malt parser ($scriptname).\n";
             open (BASHSCRIPT, ">:utf8", $scriptname) or die;
@@ -135,7 +139,7 @@ foreach my $language (@ARGV) {
             close BASHSCRIPT;
             system "qsub -p -100 -hard -l mf=16g -l act_mem_free=16g -cwd -j yes $scriptname";
         }
-        if ($maltsmf && ($retrain || !-e "$wdir/malt_stacklazy.mco" || -s "$wdir/malt_stacklazy.mco" < 10000)) {
+        if ($maltsmf && ($retrain || $train_file_was_altered || !-e "$wdir/malt_stacklazy.mco" || -s "$wdir/malt_stacklazy.mco" < 10000)) {
             my $scriptname = "smf-$language-$shortname.sh";
             print STDERR "Creating script for training Malt parser with stack and morph features ($scriptname).\n";
             open (BASHSCRIPT, ">:utf8", $scriptname) or die;
@@ -155,7 +159,7 @@ foreach my $language (@ARGV) {
             my $memory = '31g';
             system "qsub -p -100 -hard -l mf=$memory -l act_mem_free=$memory -cwd -j yes $scriptname";
         }
-        if ($maltsmfndr && ($retrain || !-e "$wdir/malt_stacklazy_ndr.mco" || -s "$wdir/malt_stacklazy_ndr.mco" < 10000)) {
+        if ($maltsmfndr && ($retrain || $train_file_was_altered || !-e "$wdir/malt_stacklazy_ndr.mco" || -s "$wdir/malt_stacklazy_ndr.mco" < 10000)) {
             my $scriptname = "ndr-$language-$shortname.sh";
             print STDERR "Creating script for training Malt parser with stack and morph features ($scriptname).\n";
             open (BASHSCRIPT, ">:utf8", $scriptname) or die;

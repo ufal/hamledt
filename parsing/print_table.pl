@@ -91,10 +91,14 @@ foreach my $language (@ARGV) {
                 $value{$trans}{$language} += $score ? 100 * $score : 0;
             }
             elsif ($is_trans && $sys eq "UAS$eval(".$language."_".$parser_selector{$parser}."BASE,".$language."_before)") {
-                $value{$trans}{$language} -= $score ? 100 * $score : 0;
+                my $new_value = $score ? 100 * $score : 0;
+                print "Warning: different UAS for the same models.\n" if $value{"001_pdtstyle"}{$language} && $new_value != $value{"001_pdtstyle"}{$language};
+                $value{"001_pdtstyle"}{$language} = $new_value;
+                $value{$trans}{$language} -= $value{"001_pdtstyle"}{$language};
             }
             elsif ($trans eq "001_pdtstyle" && $sys eq "UAS$eval(".$language."_".$parser_selector{$parser}.",".$language.")") {
-                $value{$trans}{$language} = $score ? 100 * $score : 0;
+                my $new_value = $score ? 100 * $score : 0;
+                print "Warning: different UAS for the same models.\n" if $value{$trans}{$language} && $new_value != $value{$trans}{$language};
             }
             elsif ($trans eq "000_orig" && $sys eq "UAS$eval(".$language."_".$parser_selector{$parser}.",".$language.")") {
                 $value{$trans}{$language} = $score ? 100 * $score : 0;

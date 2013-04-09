@@ -1,20 +1,20 @@
 ALL_LANGUAGES=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 #LANGUAGES=$(ALL_LANGUAGES)
-LANGUAGES=ar bg
+#LANGUAGES=la nl pt ro ru sl sv ta te tr
+LANGUAGES=bg da de en fa hi hu it ja nl ro ru sv ta te 
 WDIR=/net/cluster/TMP/marecek/hamledt_parsing
 
 train:
-	./train.pl --feat conll --mcd --mcdproj --malt --maltsmf --maltsmfndr $(LANGUAGES)
+	./train.pl --feat conll --mcd --mcdproj --malt --maltsmf $(LANGUAGES)
 
 parse:
-	./parse.pl --new --feat conll --mcd --mcdproj --malt --maltsmf --maltsmfndr $(LANGUAGES)
+	./parse.pl --new --feat conll --mcd --mcdproj --malt --maltsmf $(LANGUAGES)
 
 mytrain:
-	./train.pl --new --retrain --feat conll --maltsmf $(LANGUAGES) 
-	./train.pl --new --retrain --malt --mcd -- mcdproj $(LANGUAGES) 
+	./train.pl --feat conll --mcd --mcdproj --malt --maltsmf da
 
 myparse:
-	./parse.pl --feat conll --maltsmf bg 
+	./parse.pl --new --feat conll --mcd --mcdproj --malt --maltsmf da
 
 
 eval_samples:
@@ -44,7 +44,7 @@ mytable:
 	#./print_table.pl --parser mcdproj --transform there-only $(LANGUAGES) 
 	./print_table.pl --parser malt $(LANGUAGES) 
 	./print_table.pl --parser maltsmf $(LANGUAGES) 
-	./print_table.pl --parser maltsmfndr $(LANGUAGES) 
+	#./print_table.pl --parser maltsmfndr $(LANGUAGES) 
 	./print_table.pl --parser mcd $(LANGUAGES)  
 	./print_table.pl --parser mcdproj $(LANGUAGES) 
 
