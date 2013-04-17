@@ -19,8 +19,7 @@ summarize_validation:
 	grep -v TREEX $(VALLOG) || exit 0
 
 tests:
-	#treex  -p --jobs=$(JOBS) --survive
-	treex \
+	treex  -p --jobs=$(JOBS) --survive \
 	Util::SetGlobal \
 	Test::A::CoApAboveEveryMember \
 	Test::A::LeafAux \
