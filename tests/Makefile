@@ -21,21 +21,12 @@ summarize_validation:
 tests:
 	treex  -p --jobs=$(JOBS) --survive \
 	Util::SetGlobal \
-	Test::A::CoApAboveEveryMember \
-	Test::A::LeafAux \
-	Test::A::MemberInEveryCoAp \
-        Test::A::MemberInEveryCoord \
-	Test::A::NonemptyAttr \
-	Test::A::NonleafAuxC \
-	Test::A::NonleafAuxP \
-	Test::A::PrepIsAuxP \
-	Test::A::SubjectBelowVerb \
-	Test::A::AfunDefined \
-	Test::A::AfunKnown \
-	Test::A::AfunNotNR \
-	Test::A::PredUnderRoot \
-	Test::A::NounGovernsDet \
-	Test::A::FinalPunctuation \
+	Test::A::AfunDefined            Test::A::AfunKnown           Test::A::AfunNotNR \
+	Test::A::CoApAboveEveryMember   Test::A::MemberInEveryCoAp   Test::A::MemberInEveryCoord \
+	Test::A::NonleafAuxC            Test::A::NonleafAuxP         Test::A::PrepIsAuxP \
+	Test::A::LeafAux                Test::A::FinalPunctuation \
+	Test::A::NonemptyAttr           Test::A::NounGovernsDet \
+	Test::A::PredUnderRoot          Test::A::SubjectBelowVerb \
 	-- $(FILES) 2> test.err > $(TESTLOG)
 
 table:
