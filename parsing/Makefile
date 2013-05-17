@@ -1,6 +1,5 @@
 ALL_LANGUAGES=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 #LANGUAGES=$(ALL_LANGUAGES)
-#LANGUAGES=la nl pt ro ru sl sv ta te tr
 LANGUAGES=bg da de en fa hi hu it ja nl ro ru sv ta te 
 WDIR=/net/cluster/TMP/marecek/hamledt_parsing
 
@@ -9,12 +8,6 @@ train:
 
 parse:
 	./parse.pl --new --feat conll --mcd --mcdproj --malt --maltsmf $(LANGUAGES)
-
-mytrain:
-	./train.pl --feat conll --mcd --mcdproj --malt --maltsmf da
-
-myparse:
-	./parse.pl --new --feat conll --mcd --mcdproj --malt --maltsmf da
 
 
 eval_samples:
@@ -26,8 +19,13 @@ significance:
 	./print_signif.pl > significance.tsv
 	# grep positive significance.tsv
 
-
 table:
+	./print_table.pl --eval p --parser malt $(LANGUAGES) 
+	./print_table.pl --eval p --parser maltsmf $(LANGUAGES) 
+	./print_table.pl --eval p --parser mcd $(LANGUAGES)  
+	./print_table.pl --eval p --parser mcdproj $(LANGUAGES) 
+
+all_tables:
 	./print_table.pl --parser mcd --transform there-only $(LANGUAGES) > RESULTS-there-only.txt
 	./print_table.pl --parser mcdproj --transform there-only $(LANGUAGES) >> RESULTS-there-only.txt
 	./print_table.pl --parser malt --transform there-only $(LANGUAGES) >> RESULTS-there-only.txt
@@ -37,27 +35,13 @@ table:
 	./print_table.pl --parser malt $(LANGUAGES) >> RESULTS.txt
 	./print_table.pl --parser maltsmf $(LANGUAGES) >> RESULTS.txt
 
-mytable:
-	#./print_table.pl --parser malt --transform there-only $(LANGUAGES) 
-	#./print_table.pl --parser maltsmf --transform there-only $(LANGUAGES) 
-	#./print_table.pl --parser mcd --transform there-only $(LANGUAGES)  
-	#./print_table.pl --parser mcdproj --transform there-only $(LANGUAGES) 
-	./print_table.pl --parser malt $(LANGUAGES) 
-	./print_table.pl --parser maltsmf $(LANGUAGES) 
-	#./print_table.pl --parser maltsmfndr $(LANGUAGES) 
-	./print_table.pl --parser mcd $(LANGUAGES)  
-	./print_table.pl --parser mcdproj $(LANGUAGES) 
-
-view:
-	@treex -Len Print::ListMostDifferentTrees selector=maltsmfBASE selector2=maltsmfPDT threshold=0.9 -- /net/cluster/TMP/marecek/hamledt_parsing/en/trans_fMhLsNcBpP/001.treex.gz > diff.txt
+diff:
+	@treex -L$(L) Print::ListMostDifferentTrees selector=maltsmfBASE selector2=maltsmfPDT selector3=before hreshold=0.9 -- /net/cluster/TMP/marecek/hamledt_parsing/$(L)/trans_fMhLsNcBpP/001.treex.gz > diff.txt
 	@ttred -l diff.txt
 
 tex:
 	./print_tex.pl > parsing_accuracy_table.tex
 	@echo parsing_accuracy_table.tex should be commited as publications/papers/2011_cl_tree_conventions
-
-rights:
-	chmod -R g+w ${TMT_ROOT}/share/data/resources/hamledt/ 2>/dev/null || echo Done
 
 clean:
 	rm -rf $(WDIR)/*/*/*-cluster-run-*
