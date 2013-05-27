@@ -36,7 +36,7 @@ all_tables:
 	./print_table.pl --parser maltsmf $(LANGUAGES) >> RESULTS.txt
 
 diff:
-	@treex -L$(L) Print::ListMostDifferentTrees selector=maltsmfBASE selector2=maltsmfPDT selector3=before hreshold=0.9 -- /net/cluster/TMP/marecek/hamledt_parsing/$(L)/trans_fMhLsNcBpP/001.treex.gz > diff.txt
+	@treex -L$(L) Print::ListMostDifferentTrees selector=maltsmfBASE selector2=maltsmfPDT selector3=before threshold=0.9 -- /net/cluster/TMP/marecek/hamledt_parsing/$(L)/trans_fMhLsNcBpP/001.treex.gz > diff.txt
 	@ttred -l diff.txt
 
 tex:

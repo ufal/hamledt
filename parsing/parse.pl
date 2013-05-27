@@ -126,6 +126,9 @@ foreach my $language (@ARGV) {
                     $scenario .= "Util::SetGlobal language=$language selector=$parser_selector{$parser}PDT ";
                     $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
                     $scenario .= "A2A::CopyAtree source_selector=$parser_selector{$parser} ";
+                    #$scenario .= "A2A::DeleteAfunCoordWithoutMembers ";
+                    #$scenario .= "A2A::SetSharedModifier ";
+                    #$scenario .= "A2A::SetCoordConjunction ";
                     $scenario .= "A2A::Transform::CoordStyle from_style=$tr_style style=fPhRsHcHpB ";
                 }
                 push @scenarios, $scenario;
