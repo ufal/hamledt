@@ -15,6 +15,7 @@ my $head   = 'left';
 my $shared = 'nearest';
 my $prefix = 'trans';
 my $from   = '001_pdtstyle';
+my $recompute = 0;
 
 GetOptions(
     "help|h" => \$help,
@@ -25,6 +26,7 @@ GetOptions(
     "shared=s" => \$shared,
     "prefix=s" => \$prefix,
     "from=s"   => \$from,
+    "recompute" => \$recompute,
 );
 
 sub error {
@@ -102,7 +104,7 @@ if (not @languages) {
 }
 
 # process language only if the 001_pdtstyle is newer than trans_*
-@languages = grep {!-e "$data_dir/$_/treex/$prefix"."_fMhLsNcBpP/test/001.treex.gz" || stat("$data_dir/$_/treex/$from/test/001.treex.gz")->mtime > stat("$data_dir/$_/treex/$prefix"."_fMhLsNcBpP/test/001.treex.gz")->mtime} @languages;
+@languages = grep {$recompute || !-e "$data_dir/$_/treex/$prefix"."_fMhLsNcBpP/test/001.treex.gz" || stat("$data_dir/$_/treex/$from/test/001.treex.gz")->mtime > stat("$data_dir/$_/treex/$prefix"."_fMhLsNcBpP/test/001.treex.gz")->mtime} @languages;
 print STDERR "Languages to be processed: " . join(", ", @languages) . "\n";
 
 my $langs_wildcard = '{' . join(',', @languages) . '}';

@@ -22,7 +22,7 @@ sub round {
 while(<>){
     next if !/^file/;
     my ($file, $err_sents, $all_sents, $err_nodes, $all_nodes, $score) = map {/=(.+)/;$1} split;
-    my ($lang, $trans) = ($file =~ m{/([^/]+)/treex/trans_([^/]+)});
+    my ($lang, $trans) = ($file =~ m{/([^/]+)/treex/[a-z]+_([^/]+)});
     $data{$trans}{$lang}{all} += $all_nodes;
     $data{$trans}{$lang}{err} += $err_nodes;
     $data{average}{$lang}{all} += $all_nodes;

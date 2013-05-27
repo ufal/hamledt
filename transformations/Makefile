@@ -12,18 +12,18 @@ base:
 all: prague stanford moscow
 
 prague:
-	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  --from 002_base --prefix tr $(LANGS)
+	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  --recompute --from 002_base --prefix tr $(LANGS)
 
 stanford:
-	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous --from 002_base --prefix tr $(LANGS)
+	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 002_base --prefix tr $(LANGS)
 
 moscow:
-	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --from 002_base --prefix tr $(LANGS)
+	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 002_base --prefix tr $(LANGS)
 
 all_hamledt:
-	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  --from 001_pdtstyle --prefix trans $(LANGS)
-	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous --from 001_pdtstyle --prefix trans $(LANGS)
-	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --from 001_pdtstyle --prefix trans $(LANGS)
+	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  --recompute --from 001_pdtstyle --prefix trans $(LANGS)
+	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 001_pdtstyle --prefix trans $(LANGS)
+	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 001_pdtstyle --prefix trans $(LANGS)
 
 roundtrip:
 	./roundtrip_stats.pl round_trip_*.txt | tee table_roundtrip.tsv
@@ -44,7 +44,7 @@ real_clean_including_the_parsed_files_I_know_what_I_am_doing:
 	rm -rf $(DATADIR)/*/*/trans_*
 
 diff:
-	@treex -L$(L) Print::ListMostDifferentTrees selector='' selector2=hamledt selector3=hamledt threshold=1 -- /home/marecek/tectomt/share/data/resources/hamledt/$(L)/treex/002_base/test/001.treex.gz > diff.txt
+	@treex -L$(L) Print::ListMostDifferentTrees selector='' selector2=hamledt selector3='' threshold=1 -- /home/marecek/tectomt/share/data/resources/hamledt/$(L)/treex/002_base/test/001.treex.gz > diff.txt
 	@ttred -l diff.txt
 
 
