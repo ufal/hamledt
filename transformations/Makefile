@@ -1,22 +1,29 @@
 # Rerunning one language (e.g. because its normalization changed):
 # make LANGS=grc all
-LANGS= ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
-# not ready: et eu
+#LANGS=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
+LANGS=bg da de en fa hi hu it ja nl ro ru sv ta te
 SHELL=/bin/bash
 
 DATADIR=${TMT_ROOT}/share/data/resources/hamledt/
 
+base:
+	./transform_to_base.pl $(LANGS)
+	
 all: prague stanford moscow
 
-
 prague:
-	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  $(LANGS)
+	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  --from 002_base --prefix tr $(LANGS)
 
 stanford:
-	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous $(LANGS)
+	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous --from 002_base --prefix tr $(LANGS)
 
 moscow:
-	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous $(LANGS)
+	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --from 002_base --prefix tr $(LANGS)
+
+all_hamledt:
+	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  --from 001_pdtstyle --prefix trans $(LANGS)
+	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous --from 001_pdtstyle --prefix trans $(LANGS)
+	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --from 001_pdtstyle --prefix trans $(LANGS)
 
 roundtrip:
 	./roundtrip_stats.pl round_trip_*.txt | tee table_roundtrip.tsv
@@ -35,4 +42,9 @@ real_clean_including_the_parsed_files_I_know_what_I_am_doing:
 	rm -f changes.raw tr-*
 	rm -rf *cluster-run*
 	rm -rf $(DATADIR)/*/*/trans_*
+
+diff:
+	@treex -L$(L) Print::ListMostDifferentTrees selector='' selector2=hamledt selector3=hamledt threshold=1 -- /home/marecek/tectomt/share/data/resources/hamledt/$(L)/treex/002_base/test/001.treex.gz > diff.txt
+	@ttred -l diff.txt
+
 

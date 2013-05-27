@@ -11,8 +11,10 @@ my ($help, $alll);
 my $family = 'Moscow';
 my $punctuation = 'previous';
 my $conjunction = 'between';
-my $head = 'left';
+my $head   = 'left';
 my $shared = 'nearest';
+my $prefix = 'trans';
+my $from   = '001_pdtstyle';
 
 GetOptions(
     "help|h" => \$help,
@@ -21,6 +23,8 @@ GetOptions(
     "conjunction=s" => \$conjunction,
     "head=s" => \$head,
     "shared=s" => \$shared,
+    "prefix=s" => \$prefix,
+    "from=s"   => \$from,
 );
 
 sub error {
@@ -47,7 +51,7 @@ sub find_available_languages {
     my @languages = grep {/^.{2,3}$/}
         map {/(\w+)$/;$1}
             grep {
-                 my @files = glob "$_/treex/*_pdtstyle/*/*.treex.gz";
+                 my @files = glob "$_/treex/$from/*/*.treex.gz";
                  @files > 0;
             }
             glob "$data_dir/*";
@@ -98,7 +102,7 @@ if (not @languages) {
 }
 
 # process language only if the 001_pdtstyle is newer than trans_*
-@languages = grep {stat("$data_dir/$_/treex/001_pdtstyle/test/001.treex.gz")->mtime > stat("$data_dir/$_/treex/trans_fMhLsNcBpP/test/001.treex.gz")->mtime} @languages;
+@languages = grep {!-e "$data_dir/$_/treex/$prefix"."_fMhLsNcBpP/test/001.treex.gz" || stat("$data_dir/$_/treex/$from/test/001.treex.gz")->mtime > stat("$data_dir/$_/treex/$prefix"."_fMhLsNcBpP/test/001.treex.gz")->mtime} @languages;
 print STDERR "Languages to be processed: " . join(", ", @languages) . "\n";
 
 my $langs_wildcard = '{' . join(',', @languages) . '}';
@@ -112,7 +116,7 @@ foreach my $f (split /,/, $family) {
                 foreach my $s (split /,/, $shared) {
                     my $name = 'f'.uc(substr($f,0,1)).'h'.uc(substr($h,0,1)).'s'.uc(substr($s,0,1)).'c'.uc(substr($c,0,1)).'p'.uc(substr($p,0,1));
                     my $command_line = "treex -p -j $JOBS "
-                                     . "Util::Eval zone='\$zone->get_bundle()->remove_zone(\$zone->language,qw(orig))' " # Remove the original trees (before PDT styling).
+                                     . "Util::Eval zone='\$zone->get_bundle()->remove_zone(\$zone->language,qw(orig hamledt))' " # Remove the original trees (before PDT styling).
                                      . "A2A::BackupTree to_selector=before "                            # Store the trees before transformation to zone "before".
                                      . "A2A::DeleteAfunCoordWithoutMembers "                            # TODO this should be done already within the normalization.
                                      . "A2A::SetSharedModifier "                                        # Attributes is_shared_modifier and wild->is_coord_conjunction
@@ -123,9 +127,9 @@ foreach my $f (split /,/, $family) {
                                      #. "A2A::SetCoordConjunction " # is this needed?
                                      . "A2A::Transform::CoordStyle from_style=$name style=fPhRsHcHpB "  # Make the inverse transformation in zone "inverse"
                                      . "Align::AlignSameSentence to_selector=before "                   # and align it to the normalized tree.
-                                     . "Write::Treex substitute={00._pdtstyle}{trans_$name} "           # Save the resulting treex files to a new directory.      
+                                     . "Write::Treex substitute={$from}{$prefix"."_$name} "             # Save the resulting treex files to a new directory.      
                                      . "Print::EvalAlignedAtrees report_errors=0 "                      # Compute UAS (output contains the new filename)
-                                     . "-- '!$data_dir/$langs_wildcard/treex/*_pdtstyle/t*/*.treex.gz'" # Input files.
+                                     . "-- '!$data_dir/$langs_wildcard/treex/$from/t*/*.treex.gz'"      # Input files.
                                      . " > round_trip_$name.txt";                                       # Output round-trip statistics
                     open(BS, ">:utf8", "tr-$name.sh") or die;
                     print BS "#!/bin/bash\n\n$command_line\n";
