@@ -17,7 +17,7 @@ my $command_line = "treex -p -j $JOBS "
      . "A2A::Transform::CoordStyle from_style=fPhRsHcHpB style=fMhLsNcBpP " # Transform the zone with empty selector.
      . "A2A::Transform::CoordStyle from_style=fMhLsNcBpP style=fPhRsHcHpB " # Transform the zone with empty selector.
 #     . "A2A::Transform::CoordStyle from_style=fPhRsHcHpB style=fPhRsHcHpB " # Transform the zone with empty selector.
-     . "Write::Treex substitute={001_pdtstyle}{003_baseA} "                 # Save the resulting treex files to a new directory.      
+     . "Write::Treex substitute={001_pdtstyle}{002_base} "                 # Save the resulting treex files to a new directory.      
      . "-- '!$data_dir/$langs_wildcard/treex/001_pdtstyle/t*/*.treex.gz'";  # Input files.
 
 system $command_line;

@@ -44,7 +44,7 @@ real_clean_including_the_parsed_files_I_know_what_I_am_doing:
 	rm -rf $(DATADIR)/*/*/trans_*
 
 diff:
-	@treex -L$(L) Print::ListMostDifferentTrees selector='' selector2=hamledt selector3='' threshold=1 -- /home/marecek/tectomt/share/data/resources/hamledt/$(L)/treex/002_base/test/001.treex.gz > diff.txt
+	@treex -L$(L) Print::ListMostDifferentTrees selector='before' selector2='inverse' selector3='before' threshold=1 -- /home/marecek/tectomt/share/data/resources/hamledt/$(L)/treex/trans_fMhL*/test/001.treex.gz > diff.txt
 	@ttred -l diff.txt
 
 
