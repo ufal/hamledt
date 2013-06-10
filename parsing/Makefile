@@ -1,14 +1,14 @@
 ALL_LANGUAGES=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 #LANGUAGES=$(ALL_LANGUAGES)
-LANGUAGES=bg da de en fa hi hu it ja nl ro ru sv ta te 
+LANGUAGES=ar bg ca da de en es fa hi hu it ja nl pt ro ru sv ta te
 WDIR=/net/cluster/TMP/marecek/hamledt_parsing
+L=en
 
 train:
-	./train.pl --feat conll --mcd --mcdproj --malt --maltsmf $(LANGUAGES)
+	./train.pl --feat conll --mcd --mcdproj --malt --maltsmf --wdir $(WDIR) $(LANGUAGES)
 
 parse:
-	./parse.pl --new --feat conll --mcd --mcdproj --malt --maltsmf $(LANGUAGES)
-
+	./parse.pl --new --feat conll --mcd --mcdproj --malt --maltsmf --wdir $(WDIR) $(LANGUAGES)
 
 eval_samples:
 	./eval_samples.pl $(ALL_LANGUAGES)
@@ -22,8 +22,8 @@ significance:
 table:
 	./print_table.pl --eval p --parser malt $(LANGUAGES) 
 	./print_table.pl --eval p --parser maltsmf $(LANGUAGES) 
-	./print_table.pl --eval p --parser mcd $(LANGUAGES)  
-	./print_table.pl --eval p --parser mcdproj $(LANGUAGES) 
+	#./print_table.pl --eval p --parser mcd $(LANGUAGES)  
+	#./print_table.pl --eval p --parser mcdproj $(LANGUAGES) 
 
 all_tables:
 	./print_table.pl --parser mcd --transform there-only $(LANGUAGES) > RESULTS-there-only.txt

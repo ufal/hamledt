@@ -1,29 +1,29 @@
 # Rerunning one language (e.g. because its normalization changed):
 # make LANGS=grc all
-#LANGS=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
-LANGS=bg da de en fa hi hu it ja nl ro ru sv ta te
+LANGS=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 SHELL=/bin/bash
+L=en
 
 DATADIR=${TMT_ROOT}/share/data/resources/hamledt/
 
-base:
-	./transform_to_base.pl $(LANGS)
-	
 all: prague stanford moscow
 
 prague:
-	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  --recompute --from 002_base --prefix tr $(LANGS)
+	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  --from 001_pdtstyle --prefix trans $(LANGS)
 
 stanford:
-	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 002_base --prefix tr $(LANGS)
+	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous --from 001_pdtstyle --prefix trans $(LANGS)
 
 moscow:
-	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 002_base --prefix tr $(LANGS)
+	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --from 001_pdtstyle --prefix trans $(LANGS)
 
-all_hamledt:
-	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  --recompute --from 001_pdtstyle --prefix trans $(LANGS)
-	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 001_pdtstyle --prefix trans $(LANGS)
-	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 001_pdtstyle --prefix trans $(LANGS)
+condolisate:
+	./transform_to_base.pl $(LANGS)
+	
+transform condolisated:
+	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  --recompute --from 002_base --prefix tr $(LANGS)
+	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 002_base --prefix tr $(LANGS)
+	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 002_base --prefix tr $(LANGS)
 
 roundtrip:
 	./roundtrip_stats.pl round_trip_*.txt | tee table_roundtrip.tsv
