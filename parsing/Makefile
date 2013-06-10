@@ -20,8 +20,8 @@ significance:
 	# grep positive significance.tsv
 
 table:
-	./print_table.pl --eval p --parser malt $(LANGUAGES) 
-	./print_table.pl --eval p --parser maltsmf $(LANGUAGES) 
+	./print_table.pl --eval p --parser malt --wdir $(WDIR) $(LANGUAGES) 
+	./print_table.pl --eval p --parser maltsmf --wdir $(WDIR) $(LANGUAGES) 
 	#./print_table.pl --eval p --parser mcd $(LANGUAGES)  
 	#./print_table.pl --eval p --parser mcdproj $(LANGUAGES) 
 
