@@ -17,10 +17,10 @@ stanford:
 moscow:
 	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --from 001_pdtstyle --prefix trans $(LANGS)
 
-condolisate:
+consolidate:
 	./transform_to_base.pl $(LANGS)
 	
-transform condolisated:
+transform consolidated:
 	./transform.pl --family Prague   --head right,left,mixed --shared head    --conjunction head    --punctuation between  --recompute --from 002_base --prefix tr $(LANGS)
 	./transform.pl --family Stanford --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 002_base --prefix tr $(LANGS)
 	./transform.pl --family Moscow   --head right,left,mixed --shared nearest --conjunction between --punctuation previous --recompute --from 002_base --prefix tr $(LANGS)
