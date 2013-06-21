@@ -41,12 +41,12 @@ conll_to_treex:
 # and store the result in 001_pdtstyle.
 UCLANG = $(shell perl -e 'print uc "$(LANGCODE)"')
 #TODO: skip the A2A::DeleteAfunCoordWithoutMembers block, check the cases when it had to be applied (Test::A::MemberInEveryCoAp) and fix it properly
-SCEN1  = A2A::$(UCLANG)::CoNLL2PDTStyle $(POSTPROCESS1_SCEN_OPT) A2A::SetSharedModifier A2A::SetCoordConjunction A2A::DeleteAfunCoordWithoutMembers $(POSTPROCESS2_SCEN_OPT)
+SCEN1  = A2A::$(UCLANG)::Harmonize $(POSTPROCESS1_SCEN_OPT) A2A::SetSharedModifier A2A::SetCoordConjunction A2A::DeleteAfunCoordWithoutMembers $(POSTPROCESS2_SCEN_OPT)
 
 pdt:
 	$(TREEX) $(TO_PDT_TRAIN_OPT) $(SCEN1)  Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
 
-# This goal serves development and debugging of the CoNLL2PDTStyle block.
+# This goal serves development and debugging of the Harmonize block.
 # Smaller data are processed faster.
 # $(TREEX) is not used because we do not want to parallelize the task on the cluster.
 # (By default, copies of logs from parallel jobs lack the TREEX-INFO level.)
