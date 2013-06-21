@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # Processes selected languages and transformations (train, parse, eval, clean etc.)
 # Provides the unified necessary infrastructure for looping through all the sub-experiment subfolders.
-# Copyright © 2011, 2012 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2011, 2012, 2013 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 sub usage
@@ -385,7 +385,10 @@ sub get_results
         {
             chomp;
             my ($sys, $counts, $score) = split /\t/;
-            if($sys =~ m/^UAS(pm?s?)\(${language}_${parser}\)$/)
+            # UASp ... parent match
+            # UASpm ... parent and is_member match
+            # UASpms ... parent, is_member and is_shared_modifier match
+            if($sys =~ m/^UAS(p(?:ms?)?)\(${language}_${parser},${language}\)$/)
             {
                 my $uasparams = $1;
                 #print("$language $transformation $sys $score $value{$language}{'001_pdtstyle'}{$parser}\n");
@@ -398,7 +401,7 @@ sub get_results
                 $value{$language}{$transformation}{$parser}{$uasparams} = round($score);
             }
         }
-        if(!defined($value{$language}{$transformation}{$parser}{p}))
+        if(!defined($value{$language}{$transformation}{$parser}{pms}))
         {
             print("Parser $parser score not found in $language/$transformation/$uas_file.\n");
         }
@@ -446,13 +449,13 @@ sub print_table
             my $cnt = 0;
             foreach my $language (@languages)
             {
-                my $out = $value{$language}{$trans}{$parser}{p};
+                my $out = $value{$language}{$trans}{$parser}{pms};
                 #$out .= '/'.$value{$language}{$trans}{$parser}{pms};
                 push(@row, $out);
-                next if(!$value{$language}{$trans}{$parser}{p} || !$value{$language}{'001_pdtstyle'}{$parser}{p});
-                $better++ if($value{$language}{$trans}{$parser}{p} > $signif_diff);
-                $worse++ if($value{$language}{$trans}{$parser}{p} < -$signif_diff);
-                $diff += $value{$language}{$trans}{$parser}{p};
+                next if(!$value{$language}{$trans}{$parser}{pms} || !$value{$language}{'001_pdtstyle'}{$parser}{pms});
+                $better++ if($value{$language}{$trans}{$parser}{pms} > $signif_diff);
+                $worse++ if($value{$language}{$trans}{$parser}{pms} < -$signif_diff);
+                $diff += $value{$language}{$trans}{$parser}{pms};
                 $cnt++;
             }
             # Warning: $cnt can be zero if we do not have $value for either this transformation or for 001_pdtstyle.
