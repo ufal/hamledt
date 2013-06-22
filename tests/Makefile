@@ -29,7 +29,7 @@ tests:
 	Test::A::CoApAboveEveryMember   Test::A::MemberInEveryCoAp   Test::A::MemberInEveryCoord \
 	Test::A::NonleafAuxC            Test::A::NonleafAuxP         Test::A::PrepIsAuxP \
 	Test::A::LeafAux                Test::A::FinalPunctuation \
-	Test::A::NonemptyAttr           Test::A::NounGovernsDet \
+	Test::A::NonemptyAttr           Test::A::NounGovernsDet      Test::A::NoNewNonProj \
 	Test::A::PredUnderRoot          Test::A::SubjectBelowVerb    Test::A::MaxOneSubject \
 	-- $(FILES) 2> test.err > $(TESTLOG)
 
