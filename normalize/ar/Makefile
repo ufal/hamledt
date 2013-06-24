@@ -1,23 +1,24 @@
 LANGCODE=ar
 include ../common.mak
 
-PADTDIR=/net/projects/padt/data/Prague/{AEP,ASB,EAT,HYT,NHR,XIN}
+PADTDIR=/net/projects/padt/data/Prague
+PADTSUBDIRS={AEP,ASB,EAT,HYT,NHR,XIN}
 POSTPROCESS2_SCEN_OPT:=A2A::Transform::CoordStyle from_style=fPhLsHcHpB style=fPhRsHcHpB
 
-source:
+source_old:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
 	ln -s /net/data/conll/2007/ar/train.conll $(TRAIN)
 	ln -s /net/data/conll/2007/ar/test.conll $(TEST)
 
-treex: conll_to_treex
+treex_old: conll_to_treex
 
-source2:
+source:
 	mkdir -p $(DATADIR)
-	mkdir -p $(IN)
-	###!!! We have yet to decide what part will be held out for evaluation.
-	for i in $(PADTDIR)/*.pml ; do ln -s $i $(IN) ; done
+	mkdir -p data/source/{train,test}
+	for i in `cat $(PADTDIR)/testfilelist.txt` ; do ln -s $(PADTDIR)/$$i.*.pml data/source/test ; done
+	for i in $(PADTDIR)/$(PADTSUBDIRS)/*.pml ; do if [[ ! -e data/source/test/`basename $$i` ]] ; then ln -s $$i data/source/train ; fi ; done
 
-treex2:
-	treex Read::PADT 'from=!$(IN)/*.syntax.pml' $(WRITE0) path=$(DIR0)/train/
-	###!!!treex Read::PADT 'from=!$(IN)/*.syntax.pml' $(WRITE0) path=$(DIR0)/test/
+treex:
+	treex Read::PADT 'from=!$(IN)/train/*.syntax.pml' Write::Treex path=$(DIR0)/train clobber=1
+	treex Read::PADT 'from=!$(IN)/test/*.syntax.pml'  Write::Treex path=$(DIR0)/test  clobber=1

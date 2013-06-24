@@ -3,9 +3,12 @@ SHELL=/bin/bash
 # To be included from the language-specific makefiles like this:
 # include ../common.mak
 DATADIR  = $(TMT_ROOT)/share/data/resources/hamledt/$(LANGCODE)
-IN       = $(DATADIR)/source
-DIR0     = $(DATADIR)/treex/000_orig
-DIR1     = $(DATADIR)/treex/001_pdtstyle
+SUBDIRIN = source
+SUBDIR0  = treex/000_orig
+SUBDIR1  = treex/001_pdtstyle
+IN       = $(DATADIR)/$(SUBDIRIN)
+DIR0     = $(DATADIR)/$(SUBDIR0)
+DIR1     = $(DATADIR)/$(SUBDIR1)
 TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::CoNLLX lines_per_doc=500
 WRITE0   = Write::Treex file_stem='' clobber=1
@@ -24,7 +27,8 @@ dirs:
 	@echo The root data directory for $(LANGCODE): $(DATADIR)
 	mkdir -p $(DATADIR)
 	if [ ! -e data ]; then ln -s $(DATADIR) data; fi
-	mkdir -p {$(DIR0),$(DIR1)}/{train,test}
+	mkdir -p data/$(SUBDIRIN)
+	mkdir -p data/{$(SUBDIR0),$(SUBDIR1)}/{train,test}
 	chmod -R g+w data/. data/*
 
 # Run a conversion of the original data into the treex format
