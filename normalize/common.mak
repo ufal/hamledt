@@ -43,9 +43,11 @@ conll_to_treex:
 
 # Make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle.
-UCLANG = $(shell perl -e 'print uc "$(LANGCODE)"')
-#TODO: skip the A2A::DeleteAfunCoordWithoutMembers block, check the cases when it had to be applied (Test::A::MemberInEveryCoAp) and fix it properly
-SCEN1  = A2A::$(UCLANG)::Harmonize $(POSTPROCESS1_SCEN_OPT) A2A::SetSharedModifier A2A::SetCoordConjunction A2A::DeleteAfunCoordWithoutMembers $(POSTPROCESS2_SCEN_OPT)
+UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
+#TODO: Skip the A2A::DeleteAfunCoordWithoutMembers and similar blocks, check the cases when they had to be applied (Test::A::MemberInEveryCoAp) and fix it properly.
+#TODO: Do not even use the POSTPROCESS[12]_SCEN_OPT blocks. They also may contain transformations of coordination that would obscure the effect of Harmonize.
+#SCEN1  = A2A::$(UCLANG)::Harmonize $(POSTPROCESS1_SCEN_OPT) A2A::SetSharedModifier A2A::SetCoordConjunction A2A::DeleteAfunCoordWithoutMembers $(POSTPROCESS2_SCEN_OPT)
+SCEN1 = A2A::$(UCLANG)::Harmonize
 
 pdt:
 	$(TREEX) $(TO_PDT_TRAIN_OPT) $(SCEN1)  Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
