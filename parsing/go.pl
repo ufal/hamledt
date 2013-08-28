@@ -340,7 +340,7 @@ sub parse
         $scenario .= "Util::SetGlobal language=$language selector=$parser ";
         # If there is a tree with the same name, remove it first.
         $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
-        $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+        $scenario .= "HamleDT::CopyAtree source_selector='' flatten=1 ";
         $scenario .= "$parser_block{$parser} ";
         # Note: the trees in 000_orig should be compared against the original gold tree.
         # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),

@@ -120,22 +120,22 @@ foreach my $language (@ARGV) {
             else {
                 my $scenario = "Util::SetGlobal language=$language selector=$parser_selector{$parser} ";
                 $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
-                $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+                $scenario .= "HamleDT::CopyAtree source_selector='' flatten=1 ";
                 $scenario .= "$parser_block{$parser} ";
                 if ($is_transformation) {
                     $scenario .= "Util::SetGlobal language=$language selector=$parser_selector{$parser}PDT ";
                     $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' " ;
-                    $scenario .= "A2A::CopyAtree source_selector=$parser_selector{$parser} ";
-                    #$scenario .= "A2A::DeleteAfunCoordWithoutMembers ";
-                    #$scenario .= "A2A::SetSharedModifier ";
-                    #$scenario .= "A2A::SetCoordConjunction ";
-                    $scenario .= "A2A::Transform::CoordStyle from_style=$tr_style style=fPhRsHcHpB ";
+                    $scenario .= "HamleDT::CopyAtree source_selector=$parser_selector{$parser} ";
+                    #$scenario .= "HamleDT::DeleteAfunCoordWithoutMembers ";
+                    #$scenario .= "HamleDT::SetSharedModifier ";
+                    #$scenario .= "HamleDT::SetCoordConjunction ";
+                    $scenario .= "HamleDT::Transform::CoordStyle from_style=$tr_style style=fPhRsHcHpB ";
                 }
                 push @scenarios, $scenario;
             }
             my $base_scenario  = "Util::SetGlobal language=$language selector=$parser_selector{$parser}BASE ";
             $base_scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
-            $base_scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+            $base_scenario .= "HamleDT::CopyAtree source_selector='' flatten=1 ";
             $base_scenario .= "$base_parser_block{$parser} ";
             push @scenarios, $base_scenario;
         }

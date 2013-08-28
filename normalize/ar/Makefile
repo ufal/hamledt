@@ -3,7 +3,7 @@ include ../common.mak
 
 PADTDIR=/net/projects/padt/data/Prague
 PADTSUBDIRS={AEP,ASB,EAT,HYT,NHR,XIN}
-POSTPROCESS2_SCEN_OPT:=A2A::Transform::CoordStyle from_style=fPhLsHcHpB style=fPhRsHcHpB
+POSTPROCESS2_SCEN_OPT:=HamleDT::Transform::CoordStyle from_style=fPhLsHcHpB style=fPhRsHcHpB
 
 source_old:
 	mkdir -p $(DATADIR)

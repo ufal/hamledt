@@ -25,12 +25,12 @@ summarize_validation:
 tests:
 	treex  -p --jobs=$(JOBS) \
 	Util::SetGlobal \
-	Test::A::AfunDefined            Test::A::AfunKnown           Test::A::AfunNotNR \
-	Test::A::CoApAboveEveryMember   Test::A::MemberInEveryCoAp   Test::A::MemberInEveryCoord \
-	Test::A::NonleafAuxC            Test::A::NonleafAuxP         Test::A::PrepIsAuxP \
-	Test::A::LeafAux                Test::A::FinalPunctuation \
-	Test::A::NonemptyAttr           Test::A::NounGovernsDet      Test::A::NoNewNonProj \
-	Test::A::PredUnderRoot          Test::A::SubjectBelowVerb    Test::A::MaxOneSubject \
+	HamleDT::Test::AfunDefined            HamleDT::Test::AfunKnown           HamleDT::Test::AfunNotNR \
+	HamleDT::Test::CoApAboveEveryMember   HamleDT::Test::MemberInEveryCoAp   HamleDT::Test::MemberInEveryCoord \
+	HamleDT::Test::NonleafAuxC            HamleDT::Test::NonleafAuxP         HamleDT::Test::PrepIsAuxP \
+	HamleDT::Test::LeafAux                HamleDT::Test::FinalPunctuation \
+	HamleDT::Test::NonemptyAttr           HamleDT::Test::NounGovernsDet      HamleDT::Test::NoNewNonProj \
+	HamleDT::Test::PredUnderRoot          HamleDT::Test::SubjectBelowVerb    HamleDT::Test::MaxOneSubject \
 	-- $(FILES) 2> test.err > $(TESTLOG)
 
 table:
@@ -42,7 +42,7 @@ clean:
 
 transftest:
 	treex  -p --jobs=$(JOBS) --survive  \
-	Test::A::CoordStyle stylefrompath=1 \
+	HamleDT::Test::CoordStyle stylefrompath=1 \
 	-- $(TRANSFFILES) 2> transftest.err > transftest.log
 
 # TLNG=hi TEST=SubjectBelowVerb make ttred

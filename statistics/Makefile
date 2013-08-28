@@ -9,7 +9,7 @@ help:
 
 collect:
 	#TODO: after normalization is redone, SetSharedModifier block will not be needed here
-	treex -p --jobs=$(JOBS) A2A::SetSharedModifier Print::CoordStats --survive -- /net/projects/tectomt_shared/data/resources/hamledt/$(LANGS)/treex/*_pdtstyle/t*/*.treex.gz > $(TMP)
+	treex -p --jobs=$(JOBS) HamleDT::SetSharedModifier Print::CoordStats --survive -- /net/projects/tectomt_shared/data/resources/hamledt/$(LANGS)/treex/*_pdtstyle/t*/*.treex.gz > $(TMP)
 
 table:
 	cat $(TMP) | ./create_tsv_table.pl > table.tsv
