@@ -1,9 +1,27 @@
-COMP	65735
-ROOT	25889
-ADJ	22710
-PUNCT	18240
-MRK	12943
-SBJ	5712
-HD	3474
--	2469
-TOTAL 8 TYPES
+23580 adjunct
+13495 comp
+12384 punct
+7613 pred
+5938 subj
+5010 conjunct
+4067 obj
+1708 refl
+1149 neg
+1108 comp_inf
+1067 comp_fin
+965 pd
+796 ne
+665 obj_th
+657 complm
+645 aglt
+555 aux
+553 mwe
+514 coord_punct
+425 app
+280 coord
+190 abbrev_punct
+167 cond
+19 imp
+18 pre_coord
+2 interp       # lines 3312 and 5568; should be 'punct'
+1 ne_          # line 13573; should be 'ne'
