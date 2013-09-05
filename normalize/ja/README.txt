@@ -1,9 +1,7 @@
-Verbmobil Treebank for Japanese
-as prepared for the CoNLL 2006 shared task
+Składnica zależnościowa - dependency treebank for Polish
 
-License: non-profit research, cite article, do not distribute, signed by Dan after the shared task (i.e. not limited to shared task)
+License: GPLv3
 
-training size = 17044 sentences, 151461 tokens
-test size     =   709 sentences,   5711 tokens
+total size = 8227 sentences, 83571 tokens
 
-See the README file in /net/data/conll/2006/ja/doc.
+See the README file in /a/LRC_TMP/hamledt/data_translations/not_yet_hamledt_treebanks/pl (originally from /net/projects/tectomt_shared/data/resources/treebanks/pl)
