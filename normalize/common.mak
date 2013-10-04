@@ -69,11 +69,12 @@ pokus:
 
 # TODO: coordinations and other structure changes
 # (now only converts the afuns)
-TO_STANFORD=HamleDT::ToStanfordTypes
+TO_STANFORD=HamleDT::Transform::StanfordPunct HamleDT::Transform::StanfordTypes
 
 WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIR_STAN)} clobber=1 \
 	Write::Treex \
-	Write::CoNLLX deprel_attribute=conll/deprel pos_attribute=tag cpos_attribute=iset/pos feat_attribute=iset to=.
+	Write::CoNLLX deprel_attribute=conll/deprel pos_attribute=tag cpos_attribute=iset/pos feat_attribute=iset to=. \
+	Write::Stanford type_attribute=conll/deprel to=.
 
 STANFORD=$(TO_STANFORD) $(WRITE_STANFORD)
 
