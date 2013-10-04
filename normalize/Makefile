@@ -44,3 +44,7 @@ treex-to-conll:
 	echo $(LANGS_PATTERN)/data/treex/001_pdtstyle/{train,test}/*.treex.gz | tr " " "\n" |\
 	$(QCMD) --jobs=$(JOBS) --sync "while read file; do treex $(TO_CONLL_SCEN) -- \$$file; done"
 
+treex_to_stanford: $(foreach l,$(LANGS),treex_to_stanford_$(l))
+treex_to_stanford_%:
+	cd $* && make treex_to_stanford
+

@@ -6,9 +6,11 @@ DATADIR  = $(TMT_ROOT)/share/data/resources/hamledt/$(LANGCODE)
 SUBDIRIN = source
 SUBDIR0  = treex/000_orig
 SUBDIR1  = treex/001_pdtstyle
+SUBDIR_STAN = stanford
 IN       = $(DATADIR)/$(SUBDIRIN)
 DIR0     = $(DATADIR)/$(SUBDIR0)
 DIR1     = $(DATADIR)/$(SUBDIR1)
+DIR_STAN = $(DATADIR)/$(SUBDIR_STAN)
 TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::CoNLLX lines_per_doc=500
 WRITE0   = Write::Treex file_stem='' clobber=1
@@ -64,3 +66,21 @@ clean:
 
 pokus:
 	echo $(SCEN1)
+
+# TODO: coordinations and other structure changes
+# (now only converts the afuns)
+TO_STANFORD=HamleDT::ToStanfordTypes
+
+WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIR_STAN)} clobber=1 \
+	Write::Treex \
+	Write::CoNLLX deprel_attribute=conll/deprel pos_attribute=tag cpos_attribute=iset/pos feat_attribute=iset to=.
+
+STANFORD=$(TO_STANFORD) $(WRITE_STANFORD)
+
+treex_to_stanford:
+	treex -L$(LANGCODE) $(STANFORD) -- $(DIR1)/train/*.treex.gz
+	treex -L$(LANGCODE) $(STANFORD) -- $(DIR1)/test/*.treex.gz
+
+treex_to_stanford_test:
+	treex -L$(LANGCODE) $(STANFORD) -- $(DIR1)/test/*.treex.gz
+
