@@ -67,9 +67,15 @@ clean:
 pokus:
 	echo $(SCEN1)
 
-# TODO: coordinations and other structure changes
-# (now only converts the afuns)
+# TODO: debug new version with coordinations
+# TODO: other structure changes
 TO_STANFORD=HamleDT::Transform::StanfordPunct HamleDT::Transform::StanfordTypes
+TO_STANFORD_NEW=\
+			HamleDT::SetSharedModifier \
+			HamleDT::SetCoordConjunction \
+			HamleDT::Transform::CoordStyle from_style=fPhRsHcHpB style=fShLsHcBpB \
+			HamleDT::Transform::StanfordPunct \
+			HamleDT::Transform::StanfordTypes
 
 WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIR_STAN)} clobber=1 \
 	Write::Treex \
