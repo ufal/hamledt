@@ -67,15 +67,17 @@ clean:
 pokus:
 	echo $(SCEN1)
 
-# TODO: debug new version with coordinations
-# TODO: other structure changes
-TO_STANFORD=HamleDT::Transform::StanfordPunct HamleDT::Transform::StanfordTypes
-TO_STANFORD_NEW=\
+# TODO: other structure changes (compound verbs)
+TO_STANFORD=\
+			A2A::CopyAtree source_selector='' selector=pdt \
+			HamleDT::Transform::SubordConjDownward \
 			HamleDT::SetSharedModifier \
 			HamleDT::SetCoordConjunction \
 			HamleDT::Transform::CoordStyle from_style=fPhRsHcHpB style=fShLsHcBpB \
 			HamleDT::Transform::StanfordPunct \
-			HamleDT::Transform::StanfordTypes
+			HamleDT::Transform::StanfordTypes \
+			Util::Eval anode='$$anode->set_afun('');'
+# This is for TrEd to display the newly set conll/deprels instead of afuns.
 
 WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIR_STAN)} clobber=1 \
 	Write::Treex \
