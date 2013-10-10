@@ -68,6 +68,7 @@ pokus:
 	echo $(SCEN1)
 
 # TODO: other structure changes (compound verbs)
+# TODO: often fails because there remain some punct nodes with children
 TO_STANFORD=\
 			A2A::CopyAtree source_selector='' selector=pdt \
 			HamleDT::Transform::SubordConjDownward \
