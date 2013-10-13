@@ -71,10 +71,12 @@ pokus:
 # TODO: often fails because there remain some punct nodes with children
 TO_STANFORD=\
 			A2A::CopyAtree source_selector='' selector=pdt \
+			Util::Eval anode='$$anode->set_conll_deprel('');' \
 			HamleDT::Transform::SubordConjDownward \
 			HamleDT::SetSharedModifier \
 			HamleDT::SetCoordConjunction \
 			HamleDT::Transform::CoordStyle from_style=fPhRsHcHpB style=fShLsHcBpB \
+			HamleDT::Transform::MarkPunct \
 			HamleDT::Transform::StanfordPunct \
 			HamleDT::Transform::StanfordTypes \
 			HamleDT::Transform::StanfordCopulas \
