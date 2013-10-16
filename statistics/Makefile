@@ -2,7 +2,7 @@ TMP=tmp.txt
 LANGS=*
 JOBS=10
 
-HAMLEDT_TREEX_FILES=/a/osh/zabokrtsky/tectomt/devel/share/data/resources/hamledt/*/treex/001_pdtstyle/t*/*.treex.gz
+HAMLEDT_TREEX_FILES=/net/projects/tectomt_shared/data/resources/hamledt/*/treex/001_pdtstyle/t*/*.treex.gz
 
 help:
 	# check the Makefile
@@ -20,3 +20,7 @@ afunsprepare:
 
 afunsfinish:
 	cat prac | ./most_frequent_afuns_to_tex.pl > afuns_freq_table.tex
+
+deprel2afun:
+	treex -pj$(JOBS) Util::Eval anode='say join("\t",$$.language,$$.conll_deprel,$$.afun)'  -- '!$(HAMLEDT_TREEX_FILES)' > lang_deprel_afun.tsv
+	cat lang_deprel_afun.tsv | ./mapping.pl > deprel_stat.txt
