@@ -5,6 +5,7 @@ use warnings;
 
 my %count;
 my %total;
+my %avg;
 
 my %language_name = ( # and also a filter whether to include a given language
     ar => q(Arabic),
@@ -50,6 +51,7 @@ while (<>) {
 #        print "$language $afun\n";
         $count{$language}{$afun}++;
         $total{$language}++;
+        $avg{$afun}++ if $language_name{$language};
     }
     else {
         print STDERR "Unexpected input: $_";
@@ -61,16 +63,21 @@ print '{\footnotesize
 \setlength{\tabcolsep}{4pt}
 ';
 
-print '\begin{longtable}{|l|'. join '',map{'r|'} @afuns;
+print '\begin{longtable}{|l|r|'. join '',map{'r|'} @afuns;
 print  "}\n \\hline \n";
 
-print join ' & ',('Language',@afuns);
+print join ' & ',('Language',@afuns,'rest');
 print '\\\\ \hline \hline';
 print " \n";
 
 foreach my $language (sort {$language_name{$a} cmp $language_name{$b}} grep {$language_name{$_}} keys %count) {
+    my $sum = 0;
+    foreach my $afun (@afuns){
+        $sum += $count{$language}{$afun}||0;
+    }
+    $count{$language}{rest} = $total{$language} - $sum;
     print "$language_name{$language} ($language)",
-        " &  ", join " & ", map {sprintf("%.1f",100*($count{$language}{$_}||0)/$total{$language}) } @afuns;
+        " &  ", join " & ", map {sprintf("%.1f",100*($count{$language}{$_}||0)/$total{$language}) } (@afuns, 'rest');
     print '\\\\ \hline';
     print "\n";
 }

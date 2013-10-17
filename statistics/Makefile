@@ -16,7 +16,7 @@ table:
 	@echo Updated table.tsv is supposed to be committed as https://svn.ms.mff.cuni.cz/svn/publications/papers/2011_cl_tree_conventions/generated_stats
 
 afunsprepare:
-	zgrep -H afun /a/osh/zabokrtsky/tectomt/devel/share/data/resources/hamledt/*/treex/001_pdtstyle/*/*.treex.gz > prac
+	zgrep -H '<afun>.*</afun>' /a/osh/zabokrtsky/tectomt/devel/share/data/resources/hamledt/*/treex/001_pdtstyle/*/*.treex.gz > prac
 
 afunsfinish:
 	cat prac | ./most_frequent_afuns_to_tex.pl > afuns_freq_table.tex
