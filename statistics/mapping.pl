@@ -8,26 +8,57 @@ my %c;
 while (<>) {
     chomp;
     my ($lang, $deprel, $afun) = split /\t/, $_;
-    $afun ||= 'undef';
     $c{$lang}{$deprel}{$afun}++; 
-    $c{$lang}{$deprel}{_}++; 
+    $c{$lang}{$deprel}{_}++;
+    $c{$lang}{_all}++;
+}
+
+sub print_line {
+    my ($h, $c_deprel) = @_;
+    my @afuns = sort {$h->{$b} <=> $h->{$a}} keys %{$h};       
+    while (@afuns){
+        my $afun = shift @afuns;
+        my $c_afun = $h->{$afun};
+        my $p_afun = sprintf("%.0f",100*$c_afun/$c_deprel);
+        last if $p_afun < 2; ####################
+        print " $afun=$p_afun%";
+    }
+    if (@afuns){
+        my $c_rest = 0;
+        foreach my $afun (@afuns){
+            $c_rest += $h->{$afun}
+        }
+        my $p_rest = 100*$c_rest/$c_deprel;
+        if ($p_rest >= 0.5){
+            printf(" REST=%.0f%%", $p_rest);
+        } else {
+            print " REST<0.5%";
+        }
+    }
+    print "\n";
 }
 
 foreach my $lang (sort keys %c) {
+    my $total = delete $c{$lang}{_all}; 
     my @deprels = sort {$c{$lang}{$b}{_} <=> $c{$lang}{$a}{_}} keys %{$c{$lang}};
     print "=== $lang =======================================\n";
-    foreach my $deprel (@deprels) {
-        my $c_deprel = $c{$lang}{$deprel}{_};
-        next if $c_deprel < $MIN_DEPREL_COUNT;
-
-        my @afuns = sort {$c{$lang}{$deprel}{$b} <=> $c{$lang}{$deprel}{$a}} grep {$_ ne '_'} keys %{$c{$lang}{$deprel}};       
+    while (@deprels) {
+        my $deprel = shift @deprels;
+        my $c_deprel = delete $c{$lang}{$deprel}{_};
+        last if $c_deprel < $MIN_DEPREL_COUNT; ######################
         print "$deprel=$c_deprel:";
-        foreach my $afun (@afuns){
-            my $c_afun = $c{$lang}{$deprel}{$afun};
-            my $p_afun = sprintf("%.0f",100*$c_afun/$c_deprel);
-            #print " $afun=$c_afun ($p_afun%)";
-            print " $afun=$p_afun%";
-        }
-        print "\n";
+        print_line($c{$lang}{$deprel}, $c_deprel);
     }
+    next if !@deprels;
+    my %t;
+    my $c_other = 0;
+    foreach my $deprel (@deprels){
+        $c_other += delete $c{$lang}{$deprel}{_};
+        foreach my $afun (keys %{$c{$lang}{$deprel}}){
+            $t{$afun} += $c{$lang}{$deprel}{$afun};
+        }
+    }
+    
+    print "OTHER=$c_other:";
+    print_line(\%t,$c_other)
 }
