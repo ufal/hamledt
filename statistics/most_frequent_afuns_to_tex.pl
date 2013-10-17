@@ -5,7 +5,6 @@ use warnings;
 
 my %count;
 my %total;
-my %avg;
 
 my %language_name = ( # and also a filter whether to include a given language
     ar => q(Arabic),
@@ -51,7 +50,8 @@ while (<>) {
 #        print "$language $afun\n";
         $count{$language}{$afun}++;
         $total{$language}++;
-        $avg{$afun}++ if $language_name{$language};
+        $count{avg}{$afun}++ if $language_name{$language};
+        $total{avg}++;
     }
     else {
         print STDERR "Unexpected input: $_";
@@ -70,16 +70,20 @@ print join ' & ',('Language',@afuns,'rest');
 print '\\\\ \hline \hline';
 print " \n";
 
-foreach my $language (sort {$language_name{$a} cmp $language_name{$b}} grep {$language_name{$_}} keys %count) {
+foreach my $language ((sort {$language_name{$a} cmp $language_name{$b}} grep {$language_name{$_}} keys %count), 'avg') {
     my $sum = 0;
     foreach my $afun (@afuns){
         $sum += $count{$language}{$afun}||0;
     }
     $count{$language}{rest} = $total{$language} - $sum;
-    print "$language_name{$language} ($language)",
-        " &  ", join " & ", map {sprintf("%.1f",100*($count{$language}{$_}||0)/$total{$language}) } (@afuns, 'rest');
+    if ($language_name{$language}){
+        print "$language_name{$language} ($language)";
+    } else {
+        print "\\hline\nAverage";
+    }
+    print " &  ", join " & ", map {sprintf("%.1f",100*($count{$language}{$_}||0)/$total{$language}) } (@afuns, 'rest');
     print '\\\\ \hline';
-    print "\n";
+    print "\n";   
 }
 
 #print '\end{longtable} }'; # because the table's caption is stored in the main latex file
