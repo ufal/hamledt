@@ -20,8 +20,8 @@ sub print_line {
         my $afun = shift @afuns;
         my $c_afun = $h->{$afun};
         my $p_afun = sprintf("%.0f",100*$c_afun/$c_deprel);
-        last if $p_afun < 2; ####################
-        print " $afun=$p_afun%";
+        last if $p_afun < 1; ####################
+        print " $afun=$p_afun\\%";
     }
     if (@afuns){
         my $c_rest = 0;
@@ -30,35 +30,39 @@ sub print_line {
         }
         my $p_rest = 100*$c_rest/$c_deprel;
         if ($p_rest >= 0.5){
-            printf(" REST=%.0f%%", $p_rest);
+            printf(" \\textit{rest}=%.0f\\%%", $p_rest);
         } else {
-            print " REST<0.5%";
+            print " \\textit{rest}\$<\$0.5\\%";
         }
     }
-    print "\n";
+    print "\\\\ \\hline\n";
 }
 
 foreach my $lang (sort keys %c) {
     my $total = delete $c{$lang}{_all}; 
     my @deprels = sort {$c{$lang}{$b}{_} <=> $c{$lang}{$a}{_}} keys %{$c{$lang}};
     print "=== $lang =======================================\n";
+    print '\begin{longtable}{|l|r|p{9cm}|}\hline'."\n";
     while (@deprels) {
         my $deprel = shift @deprels;
         my $c_deprel = delete $c{$lang}{$deprel}{_};
         last if $c_deprel < $MIN_DEPREL_COUNT; ######################
-        print "$deprel=$c_deprel:";
+        my $dep = $deprel; $dep =~ s/_/\\_/g;
+        print "$dep & $c_deprel & ";
         print_line($c{$lang}{$deprel}, $c_deprel);
     }
-    next if !@deprels;
-    my %t;
-    my $c_other = 0;
-    foreach my $deprel (@deprels){
-        $c_other += delete $c{$lang}{$deprel}{_};
-        foreach my $afun (keys %{$c{$lang}{$deprel}}){
-            $t{$afun} += $c{$lang}{$deprel}{$afun};
+    if (@deprels){
+        my %t;
+        my $c_other = 0;
+        foreach my $deprel (@deprels){
+            $c_other += delete $c{$lang}{$deprel}{_};
+            foreach my $afun (keys %{$c{$lang}{$deprel}}){
+                $t{$afun} += $c{$lang}{$deprel}{$afun};
+            }
         }
+
+        print '\hline\textit{other} & ' . "$c_other & ";
+        print_line(\%t,$c_other);
     }
-    
-    print "OTHER=$c_other:";
-    print_line(\%t,$c_other)
+    print '\end{longtable}'."\n";
 }
