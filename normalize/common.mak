@@ -80,16 +80,14 @@ TO_STANFORD=\
 			HamleDT::Transform::StanfordPunct \
 			HamleDT::Transform::StanfordTypes \
 			HamleDT::Transform::StanfordCopulas \
-			Util::Eval anode='$$anode->set_afun('');'
+			Util::Eval anode='$$anode->set_afun('');' \
+			Util::Eval anode='use tagset::google; $$anode->set_conll_cpos(tagset::google::encode($$anode->get_iset_structure));'
 # This is for TrEd to display the newly set conll/deprels instead of afuns.
-
-SET_PRON_POS=Util::Eval anode='$$anode->set_iset("pos", "pron") if $$anode->get_iset("prontype") ne ""'
 
 WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIR_STAN)} clobber=1 \
 	Write::Treex \
 	Write::Stanford type_attribute=conll/deprel to=. \
-	$(SET_PRON_POS) \
-	Write::CoNLLX deprel_attribute=conll/deprel pos_attribute=tag cpos_attribute=iset/pos feat_attribute=iset to=.
+	Write::CoNLLX deprel_attribute=conll/deprel pos_attribute=tag cpos_attribute=conll/cpos feat_attribute=iset to=.
 
 STANFORD=$(TO_STANFORD) $(WRITE_STANFORD)
 
