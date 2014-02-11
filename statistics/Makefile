@@ -20,3 +20,57 @@ afunsprepare:
 
 afunsfinish:
 	cat prac | ./most_frequent_afuns_to_tex.pl > afuns_freq_table.tex
+
+
+#########################################################################
+
+
+DATADIR   = $(TMT_ROOT)/share/data/resources/hamledt
+LANGUAGES = $(shell ls $(DATADIR))
+#LANGUAGES = fi ta te tr
+SUBDIR    = treex/001_pdtstyle
+TREEX     = treex
+
+langs:
+	echo $(LANGUAGES)
+
+AFUNS_OPS = Util::SetGlobal if_missing_bundles=ignore
+AFUNS_BLOCKS = HamleDT::Test::Statistical::Afuns
+AFUNS_DIR = ./afuns
+AFUNS_STATS_FILE = afuns.txt
+
+afuns: clean_afuns $(foreach l,$(LANGUAGES),afuns-$(l)) aggregate_afuns
+afuns-%:
+	echo $* >> $(AFUNS_DIR)/$*-$(AFUNS_STATS_FILE)
+	$(TREEX) -L$* $(AFUNS_OPS) $(BLOCKS) -- $(DATADIR)/$*/$(SUBDIR)/t*/*.treex.gz | sort | uniq -c >> $(AFUNS_DIR)/$*-$(AFUNS_STATS_FILE)
+
+test_afuns: clean_afuns $(foreach l,$(LANGUAGES),test_afuns-$(l)) aggregate
+test_afuns-%:
+	echo $* >> $(AFUNS_DIR)/$*-$(AFUNS_STATS_FILE)
+	$(TREEX) -L$* $(AFUNS_OPS) $(BLOCKS) -- $(DATADIR)/$*/$(SUBDIR)/test/*.treex.gz | sort | uniq -c >> $(AFUNS_DIR)/$*-$(AFUNS_STATS_FILE)
+
+clean_afuns:
+	rm -f $(AFUNS_DIR)/??-$(AFUNS_STATS_FILE)
+	rm -f $(AFUNS_DIR)/???-$(AFUNS_STATS_FILE) # for grc
+
+aggregate_afuns: 
+	cat $(AFUNS_DIR)/*-$(AFUNS_STATS_FILE) > $(AFUNS_DIR)/$(AFUNS_STATS_FILE)
+
+process_afuns:
+	@ $(AFUNS_DIR)/process_afuns.pl $(AFUNS_DIR)/$(AFUNS_STATS_FILE)
+
+INCONSISTENCIES_DIR = ./inconsistencies
+INCONSISTENCIES_BLOCKS = HamleDT::Test::Statistical::ExtractTrees
+TREES_FILE = trees.txt
+INCONSISTENCIES_FILE = inconsistencies.txt
+INCONSISTENCIES_OPS = 
+
+test_inconsistencies:
+	$(TREEX) -Lcs $(INCONSISTENCIES_OPS) $(INCONSISTENCIES_BLOCKS) -- $(DATADIR)/cs/$(SUBDIR)/train/01?.treex.gz > $(INCONSISTENCIES_DIR)/cs-$(INCONSISTENCIES_FILE)
+
+trees: $(foreach l,$(LANGUAGES),trees-$(l))
+trees-%:
+	$(TREEX) -L$* $(INCONSISTENCIES_OPS) $(INCONSISTENCIES_BLOCKS) -- $(DATADIR)/$*/$(SUBDIR)/t*/???.treex.gz > $(INCONSISTENCIES_DIR)/$*-$(TREES_FILE)
+
+process_inconsistencies:
+	./find_inconsistencies.pl *$(INCONSISTENCIES_FILE)
