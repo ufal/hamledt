@@ -3,7 +3,6 @@
 # Copyright 2014 Jan Mašek <masek@ufal.mff.cuni.cz>
 # License: GNU GPLv2 or any later version
 
-
 use strict;
 use warnings;
 
