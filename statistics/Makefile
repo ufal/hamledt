@@ -65,10 +65,12 @@ TREES_FILE = trees.txt
 INCONSISTENCIES_FILE = inconsistencies.txt
 INCONSISTENCIES_OPS = 
 
-test_inconsistencies:
+check_dir:
+	[ -d $(INCONSISTENCIES_DIR) ] || mkdir -p $(INCONSISTENCIES_DIR)
+test_inconsistencies: check_dir
 	$(TREEX) -Lcs $(INCONSISTENCIES_OPS) $(INCONSISTENCIES_BLOCKS) -- $(DATADIR)/cs/$(SUBDIR)/train/01?.treex.gz > $(INCONSISTENCIES_DIR)/cs-$(INCONSISTENCIES_FILE)
 
-trees: $(foreach l,$(LANGUAGES),trees-$(l))
+trees: check_dir $(foreach l,$(LANGUAGES),trees-$(l))
 trees-%:
 	$(TREEX) -L$* $(INCONSISTENCIES_OPS) $(INCONSISTENCIES_BLOCKS) -- $(DATADIR)/$*/$(SUBDIR)/t*/???.treex.gz > $(INCONSISTENCIES_DIR)/$*-$(TREES_FILE)
 
