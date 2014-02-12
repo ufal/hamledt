@@ -9,7 +9,7 @@ POSTPROCESS1_SCEN_OPT:=HamleDT::Pdt2TreexIsMemberConversion selector=""
 # grc data contains is_member with Apositions which should be deleted for our experiments with coordinations
 # grc data may adhere to the original PDT style of is_member with autosemantic words only (TODO check it)
 # TODO: grc trees sometimes have conjunct1, coordination, conjunct2 as siblings. We should fix it, but meanwhile we just delete afun=Coord from the coordination.
-SCEN1 = HamleDT::GRC::CoNLL2PDTStyle HamleDT::Pdt2TreexIsMemberConversion HamleDT::SetSharedModifier HamleDT::SetCoordConjunction HamleDT::Pdt2HamledtApos
+SCEN1 = HamleDT::GRC::Harmonize HamleDT::Pdt2TreexIsMemberConversion HamleDT::SetSharedModifier HamleDT::SetCoordConjunction HamleDT::Pdt2HamledtApos
 TO_PDT_TRAIN_OPT := -p --jobs 21
 
 source:
