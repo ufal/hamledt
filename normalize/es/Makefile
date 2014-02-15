@@ -11,5 +11,6 @@ source:
 
 treex: conll_to_treex
 
-TO_PDT_TRAIN_OPT := -p --jobs 15
-TO_PDT_TEST_OPT  := -p --jobs 2
+# Parallel Treex is buggy. Restarting it several times would not make the process any faster.
+#TO_PDT_TRAIN_OPT := -p --jobs 15
+#TO_PDT_TEST_OPT  := -p --jobs 2

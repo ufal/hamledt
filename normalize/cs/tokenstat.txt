@@ -1,0 +1,29 @@
+OTH	$	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/046.treex.gz##129.a_tree-cs-s129-n2620
+OTH	%	241	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/001.treex.gz##29.a_tree-cs-s29-n571
+OTH	&	21	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/002.treex.gz##138.a_tree-cs-s138-n2093
+OTH	'	84	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/002.treex.gz##84.a_tree-cs-s84-n1297
+OTH	*	142	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/001.treex.gz##2.a_tree-cs-s2-n11
+OTH	+	28	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/001.treex.gz##126.a_tree-cs-s126-n1991
+OTH	-	3328	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/001.treex.gz##18.a_tree-cs-s18-n325
+OTH	-000	7	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/015.treex.gz##352.a_tree-cs-s352-n5904
+OTH	-000.000	2	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/002.treex.gz##219.a_tree-cs-s219-n3392
+OTH	/	203	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/001.treex.gz##129.a_tree-cs-s129-n2051
+OTH	000%	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/035.treex.gz##360.a_tree-cs-s360-n5610
+OTH	000.000	911	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/001.treex.gz##6.a_tree-cs-s6-n42
+OTH	=	6	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/016.treex.gz##204.a_tree-cs-s204-n3834
+OTH	>	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/040.treex.gz##48.a_tree-cs-s48-n926
+OTH	[	11	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/016.treex.gz##395.a_tree-cs-s395-n6661
+OTH	]	5	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/026.treex.gz##150.a_tree-cs-s150-n2460
+OTH	^	3	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/045.treex.gz##364.a_tree-cs-s364-n6280
+OTH	`	2	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/007.treex.gz##376.a_tree-cs-s376-n6260
+OTH	nemusej'	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/022.treex.gz##88.a_tree-cs-s88-n1475
+OTH	|	20	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/001.treex.gz##407.a_tree-cs-s407-n5951
+OTH	§	10	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/cs/data/treex/001_pdtstyle/train/005.treex.gz##426.a_tree-cs-s426-n7343
+TOTAL TOKENS                      	437020
+TOTAL LETTER TOKENS               	364034 (83.3 %)
+TOTAL DIGIT TOKENS                	  7722 (1.8 %)
+TOTAL COMMON PUNCTUATION          	 60236 (13.8 %)
+TOTAL NULL TOKENS                 	     0 (0.0 %)
+TOTAL OTHER TOKENS                	  5028 (1.2 %)
+TOTAL OTHER TYPES (NUMBERS ZEROED)	    21
+  out of that:  (0.0 %) MNE,  (0.0 %) MWE,  (0.0 %) HYP,  (0.0 %) ABR and 21 (100.0 %) OTH

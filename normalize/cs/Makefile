@@ -14,5 +14,6 @@ treex: conll_to_treex
 
 SCEN1 = A2A::CS::Harmonize A2A::Pdt2TreexIsMemberConversion A2A::SetSharedModifier A2A::SetCoordConjunction A2A::Pdt2HamledtApos
 
-TO_PDT_TRAIN_OPT := -p --jobs 26
+# Parallel Treex is buggy. Restarting it several times would not make the process any faster.
+#TO_PDT_TRAIN_OPT := -p --jobs 26
 

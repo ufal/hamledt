@@ -1,0 +1,24 @@
+OTH	%	36	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/001.treex.gz##5.a_tree-ar-s5-n129
+OTH	&	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/002.treex.gz##418.a_tree-ar-s418-n18025
+OTH	+	2	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/002.treex.gz##25.a_tree-ar-s25-n816
+OTH	-	381	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/001.treex.gz##221.a_tree-ar-s221-n8779
+OTH	/	407	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/001.treex.gz##17.a_tree-ar-s17-n588
+OTH	000,000	53	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/001.treex.gz##242.a_tree-ar-s242-n9446
+OTH	000.000	130	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/001.treex.gz##5.a_tree-ar-s5-n128
+OTH	000،000	5	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/002.treex.gz##184.a_tree-ar-s184-n7529
+OTH	<	5	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/004.treex.gz##21.a_tree-ar-s21-n795
+OTH	{	2	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/002.treex.gz##199.a_tree-ar-s199-n7957
+OTH	 	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/003.treex.gz##231.a_tree-ar-s231-n13524
+OTH	«	645	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/002.treex.gz##118.a_tree-ar-s118-n3757
+OTH	»	649	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/002.treex.gz##118.a_tree-ar-s118-n3754
+OTH	،	1995	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/001.treex.gz##3.a_tree-ar-s3-n67
+OTH	؛	3	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/002.treex.gz##481.a_tree-ar-s481-n22033
+OTH	؟	47	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/001.treex.gz##25.a_tree-ar-s25-n968
+OTH	❊	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ar/data/treex/001_pdtstyle/train/002.treex.gz##154.a_tree-ar-s154-n5934
+TOTAL TOKENS                      	116793
+TOTAL LETTER TOKENS               	104984 (89.9 %)
+TOTAL DIGIT TOKENS                	  1890 (1.6 %)
+TOTAL COMMON PUNCTUATION          	  5556 (4.8 %)
+TOTAL OTHER TOKENS                	  4363 (3.7 %)
+TOTAL OTHER TYPES (NUMBERS ZEROED)	    17
+  out of that:  (0.0 %) MNE,  (0.0 %) MWE,  (0.0 %) HYP,  (0.0 %) ABR and 17 (100.0 %) OTH

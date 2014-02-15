@@ -1,0 +1,57 @@
+HYP	Aeg-ajalt	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/test/001.treex.gz##18.a_tree-et-s180-n227
+HYP	Ann-Leena	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##177.a_tree-et-s196-n2353
+HYP	Ida-Virumaa	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##37.a_tree-et-s41-n516
+HYP	Kaabel-TV	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##124.a_tree-et-s137-n1710
+HYP	Kahe-kolme	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##246.a_tree-et-s273-n2794
+HYP	Knacke-Sommer	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/test/001.treex.gz##30.a_tree-et-s300-n319
+HYP	Lennarti-lood	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##20.a_tree-et-s22-n274
+HYP	NKVD-lased	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##747.a_tree-et-s829-n5803
+HYP	Rootsi-meelsuses	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##109.a_tree-et-s121-n1536
+HYP	TV-kaableid	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##92.a_tree-et-s102-n1293
+HYP	Toompea-poliitikute	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##51.a_tree-et-s56-n730
+HYP	Võib-olla	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##792.a_tree-et-s879-n6079
+HYP	Zavod-bei	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##581.a_tree-et-s645-n4850
+HYP	edasi-tagasi	4	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##308.a_tree-et-s342-n3214
+HYP	ette-taha	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##931.a_tree-et-s1034-n6948
+HYP	kaabel-TVsse	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##133.a_tree-et-s147-n1817
+HYP	kaabel-tv	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##71.a_tree-et-s78-n1009
+HYP	mauh-ja-mauh	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##643.a_tree-et-s714-n5216
+HYP	muna-banaanisegu	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##216.a_tree-et-s239-n2601
+HYP	musta-valgeruudulise	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##210.a_tree-et-s233-n2555
+HYP	parkett-tahvlid	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/test/001.treex.gz##92.a_tree-et-s920-n726
+HYP	pekimägi-käskijanna	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##523.a_tree-et-s581-n4532
+HYP	päiksekuumale-valusvalgele	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##397.a_tree-et-s441-n3763
+HYP	soomlasi-rootslasi	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##119.a_tree-et-s132-n1645
+HYP	üles-alla	2	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##592.a_tree-et-s657-n4912
+OTH	$,	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##783.a_tree-et-s869-n6031
+OTH	'	35	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##8.a_tree-et-s8-n72
+OTH	-	13	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##9.a_tree-et-s9-n98
+OTH	--	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/test/001.treex.gz##131.a_tree-et-s1310-n956
+OTH	...	2	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##8.a_tree-et-s8-n92
+OTH	000-aastane	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##160.a_tree-et-s177-n2237
+OTH	000.	8	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##17.a_tree-et-s18-n236
+OTH	000.-000.	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##130.a_tree-et-s144-n1780
+OTH	000.000	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##258.a_tree-et-s286-n2863
+OTH	000.000,000-ga	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##871.a_tree-et-s967-n6582
+OTH	000_000	4	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##79.a_tree-et-s87-n1114
+OTH	000protsendiline	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##132.a_tree-et-s146-n1804
+OTH	Anne'i	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/test/001.treex.gz##51.a_tree-et-s510-n466
+OTH	Bordeaux'	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##527.a_tree-et-s585-n4561
+OTH	Coopers&Lybrand	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##121.a_tree-et-s134-n1669
+OTH	Jeannette'i	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##236.a_tree-et-s262-n2740
+OTH	LaManche'i	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##159.a_tree-et-s176-n2235
+OTH	Telia/Starmani	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##75.a_tree-et-s83-n1061
+OTH	Watergate'iks	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##33.a_tree-et-s36-n457
+OTH	hommikusÃ¶Ã¶gi	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##1106.a_tree-et-s1228-n8008
+OTH	km/h	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##510.a_tree-et-s566-n4439
+OTH	mÃ¶Ã¶da	2	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##1101.a_tree-et-s1223-n7966
+OTH	ta-	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##1176.a_tree-et-s1306-n8459
+OTH	viis-	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/et/data/treex/001_pdtstyle/train/001.treex.gz##1177.a_tree-et-s1307-n8466
+TOTAL TOKENS                      	  9491
+TOTAL LETTER TOKENS               	  7904 (83.3 %)
+TOTAL DIGIT TOKENS                	    16 (0.2 %)
+TOTAL COMMON PUNCTUATION          	  1460 (15.4 %)
+TOTAL NULL TOKENS                 	     0 (0.0 %)
+TOTAL OTHER TOKENS                	   111 (1.2 %)
+TOTAL OTHER TYPES (NUMBERS ZEROED)	    49
+  out of that:  (0.0 %) MNE,  (0.0 %) MWE, 25 (51.0 %) HYP,  (0.0 %) ABR and 24 (49.0 %) OTH

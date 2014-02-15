@@ -6,9 +6,11 @@ DATADIR  = $(TMT_ROOT)/share/data/resources/hamledt/$(LANGCODE)
 SUBDIRIN = source
 SUBDIR0  = treex/000_orig
 SUBDIR1  = treex/001_pdtstyle
+SUBDIRC  = conll
 IN       = $(DATADIR)/$(SUBDIRIN)
 DIR0     = $(DATADIR)/$(SUBDIR0)
 DIR1     = $(DATADIR)/$(SUBDIR1)
+CONLLDIR = $(DATADIR)/$(SUBDIRC)
 TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::CoNLLX lines_per_doc=500
 WRITE0   = Write::Treex file_stem='' clobber=1
@@ -46,8 +48,9 @@ conll_to_treex:
 UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
 #TODO: Skip the A2A::DeleteAfunCoordWithoutMembers and similar blocks, check the cases when they had to be applied (Test::A::MemberInEveryCoAp) and fix it properly.
 #TODO: Do not even use the POSTPROCESS[12]_SCEN_OPT blocks. They also may contain transformations of coordination that would obscure the effect of Harmonize.
-#SCEN1  = A2A::$(UCLANG)::Harmonize $(POSTPROCESS1_SCEN_OPT) A2A::SetSharedModifier A2A::SetCoordConjunction A2A::DeleteAfunCoordWithoutMembers $(POSTPROCESS2_SCEN_OPT)
-SCEN1 = A2A::$(UCLANG)::Harmonize
+#TODO: DZ: For the purpose of generating the 1.5 release, I am switching the correcting blocks on again (temporarily).
+SCEN1  = A2A::$(UCLANG)::Harmonize $(POSTPROCESS1_SCEN_OPT) A2A::SetSharedModifier A2A::SetCoordConjunction A2A::DeleteAfunCoordWithoutMembers $(POSTPROCESS2_SCEN_OPT)
+#SCEN1 = A2A::$(UCLANG)::Harmonize
 
 pdt:
 	$(TREEX) $(TO_PDT_TRAIN_OPT) $(SCEN1)  Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
@@ -58,6 +61,12 @@ pdt:
 # (By default, copies of logs from parallel jobs lack the TREEX-INFO level.)
 test:
 	treex -L$(LANGCODE) $(SCEN1) $(WRITE) path=$(DIR1)/test -- '!$(DIR0)/test/*.treex.gz'
+
+# This goal exports the harmonized trees in CoNLL format, which is more useful for ordinary users.
+CONLL_ATTRIBUTES = selector= deprel_attribute=afun is_member_within_afun=1 pos_attribute=tag feat_attribute=iset
+export_conll:
+	treex -L$(LANGCODE) Read::Treex from='!$(DIR1)/train/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/train clobber=1 compress=1
+	treex -L$(LANGCODE) Read::Treex from='!$(DIR1)/test/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/test clobber=1 compress=1
 
 clean:
 	rm -rf $(DATADIR)/treex
