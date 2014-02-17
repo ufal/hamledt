@@ -17,18 +17,10 @@ my $total_afuns_in;
 my $count_of;
 my $total_count_of;
 
-my $language = '';
-
 LINE:
 while ( defined( my $line = <> )) {
     chomp $line;
-    $line =~ s/^\s+//;
-    next LINE if ( $line eq '' ); # skip empty lines
-    if ( $line =~ /^...?$/ ) {    # if there is just a two or three letter word on the line, it is a language code
-        $language = $line;
-        next LINE;
-    }
-    my ($count, $afun) = split /\s+/, $line;
+    my ($language, $count, $afun) = split /\s+/, $line;
     $afuns_in->{$language}->{$afun} += $count;
     $total_afuns_in->{$language}    += $count;
     $count_of->{$afun}->{$language} += $count;

@@ -10,7 +10,7 @@ my %tags;
 while ( defined (my $line = <> )) {
     chomp $line;
     next if ($line eq '');
-    my ($tokens,$tree,$tags) = split /\t/, $line;
+    my ($language,$tokens,$tree,$tags) = split /\t/, $line;
     $cnt{$tokens}{$tree}++;
     $tags{$tokens}=$tags;
     #  print "$tokens xxxxx $tree\n";
