@@ -17,9 +17,10 @@ A_BLOCKS = HamleDT::Test::Statistical::Afuns
 A_DIR = ./afuns
 A_FILE = afuns.txt
 A_FILE_SORTED = afuns_sorted.txt
-A_TABLE = afuns_table.txt
+A_TABLE_RAW = afuns_table_raw.txt
+A_TABLE_NORM = afuns_table_normalized.txt
 
-afuns_all: qafuns asort asplit aprocess
+afuns_all: qafuns asort asplit atable
 
 check_adir:
 	[ -d $(A_DIR) ] || mkdir -p $(A_DIR)
@@ -39,8 +40,12 @@ asplit: $(foreach l,$(LANGUAGES), asplit-$(l))
 asplit-%:
 	cat $(A_DIR)/$(A_FILE_SORTED) | grep -e '^$*' > $(A_DIR)/$*-$(A_FILE)
 
-atable:
-	cat $(A_DIR)/$(A_FILE_SORTED) | $(SCRIPTS)/process_afuns.pl > $(A_DIR)/$(A_TABLE)
+atable: atable_raw atable_norm
+atable_raw:
+	cat $(A_DIR)/$(A_FILE_SORTED) | $(SCRIPTS)/process_afuns.pl > $(A_DIR)/$(A_TABLE_RAW)
+
+atable_norm:
+	cat $(A_DIR)/$(A_FILE_SORTED) | $(SCRIPTS)/process_afuns.pl -n > $(A_DIR)/$(A_TABLE_NORM)
 
 #######
 
@@ -68,7 +73,8 @@ incons: $(foreach l,$(LANGUAGES), incons-$(l))
 incons-%:
 	cat $(I_DIR)/$*-$(T_FILE) | $(SCRIPTS)/find_inconsistencies.pl > $(I_DIR)/$*-$(I_FILE)
 
-
+total_incons:
+	cat $(I_DIR)/*-$(T_FILE) | $(SCRIPTS)/find_inconsistencies.pl > $(I_DIR)/total_$(I_FILE)
 
 test:
 	grep -e '^a' test.t
