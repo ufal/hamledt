@@ -11,7 +11,8 @@ source:
 
 treex: conll_to_treex
 
-SCEN1 = HamleDT::DE::Harmonize HamleDT::DE::RehangJunctors HamleDT::DE::RehangAuxc
+#SCEN1 = HamleDT::DE::Harmonize HamleDT::DE::RehangJunctors HamleDT::DE::RehangAuxc
+# the block are now called from within HamleDT::DE::Harmonize
 
 TO_PDT_TRAIN_OPT := -p --jobs 37
 TO_PDT_TEST_OPT  := -p --jobs 2
