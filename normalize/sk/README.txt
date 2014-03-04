@@ -1,13 +1,27 @@
 Slovak National Corpus (SNK)
-data that we got access to during visit of Daniela Majchráková, for experiments with Slovak t-layer and SloValLex
 
-License: no agreement at the moment; so: research only, do not distribute, contact authors if you intend to publish any results
-The treebank has not been released yet. The data we have often contain two independent annotations of the same file, unmerged.
+We got this data on request, directly from the authors, for two purposes:
+experiments with Slovak t-layer and Slovallex (Jan-Feb 2014 visit of Daniela Majchráková at ÚFAL, working with Eda
+    Bejček and Ondra Dušek)
+experiments with HamleDT (Zdeněk Žabokrtský asked Radovan Garabík, the main contact person, about this)
+
+License: no agreement at the moment; so: research only, do not distribute, cite their paper in publications.
+The treebank has not been released yet. The data we have often contain two independent annotations of the same file,
+unmerged. In these cases we take always "Annotator 1". Some texts have just one annotation.
+
 https://svn.ms.mff.cuni.cz/svn/slovallex/trunk/
 /ha/home/zeman/network/slovallex
 
 training size = ...
 test size     = sentences, tokens
+
+
+
+Morphology (lemmas and tags) seems to be mostly annotated manually. Agáta Karčová (see copy of her message below) has
+confirmed this for seven texts. Dan Zeman inspected sample files of all texts and found only one (BallekPomocnik) that
+apparently was tagged automatically. One other text (DominoForum) seemed to have manual morphology but severely
+damaged sentence segmentation. Provided that one file is good representative of all other files in the same folder,
+all texts but these two seem to be reasonably trustworthy.
 
 
 

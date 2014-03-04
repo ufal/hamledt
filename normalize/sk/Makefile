@@ -1,16 +1,17 @@
 LANGCODE=sk
 include ../common.mak
 
+SOURCEDIR=/net/work/people/zeman/slovallex
+# Currently we select only a subset of the available documents.
+SOURCEDOCS=Orwell1984 MojaPrvaLaska Mucska MilosFerko MilosFerko2 Patmos PsiaKoza Wikipedia
+AFILES=$(foreach doc,$(SOURCEDOCS),$(wildcard $(SOURCEDIR)/$(doc)/anotator1/*.a))
+MFILES=$(addsuffix .m,$(basename $(AFILES)))
+WFILES=$(addsuffix .w,$(basename $(AFILES)))
 source:
-	mkdir -p $(DATADIR)
-	mkdir -p $(IN)
-	cp /net/data/ancient-greek-dt/1.2/data/1999.*.xml $(IN)
-	mv $(IN)/1999.01.0015.xml $(IN)/test.xml
-	$(XML2CONLL) -i $(IN)/1999.01.0003.xml | $(BETACODE) | $(DECYCLE) > $(IN)/1999.01.0003.conll
-	$(XML2CONLL) -i $(IN)/1999.01.0183.xml | $(BETACODE) | $(DECYCLE) > $(IN)/1999.01.0183.conll	
-	cat $(IN)/19*.conll > $(IN)/train.conll
-	$(XML2CONLL) -i $(IN)/test.xml | $(BETACODE) | $(DECYCLE) > $(IN)/test.conll
+	./get_source_data.pl
 
+SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
 treex:
-	treex -Lsk Read::PDT schema_dir=/net/projects/pdt/pdt20/data/schemas t_layer=0 from=/net/work/people/zeman/slovallex/Wikipedia/anotator1/wiki-30_kandracova_dok.a Write::Treex clobber=1 to=data/treex/000_orig/train/wiki-30_kandracova_dok.treex.gz
+	$(TREEX) Read::PDT schema_dir=$(SCHEMADIR) t_layer=0 from='!$(IN)/train/*.a' Write::Treex clobber=1 path=$(DIR0)/train/ compress=1
+	$(TREEX) Read::PDT schema_dir=$(SCHEMADIR) t_layer=0 from='!$(IN)/test/*.a'  Write::Treex clobber=1 path=$(DIR0)/test/  compress=1
 
