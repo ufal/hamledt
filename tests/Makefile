@@ -23,7 +23,7 @@ summarize_validation:
 # Sometimes a job fails to produce .stderr, treex does not know what to do (it is supposed to pass the stderrs in the original order)
 # but it does not kill the jobs because of the --survive flag.
 tests:
-	treex  -p --jobs=$(JOBS) \
+	treex -p --jobs=$(JOBS) --memory=4G \
 	Util::SetGlobal \
 	Test::A::AfunDefined            Test::A::AfunKnown           Test::A::AfunNotNR \
 	Test::A::CoApAboveEveryMember   Test::A::MemberInEveryCoAp   Test::A::MemberInEveryCoord \

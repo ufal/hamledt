@@ -1,4 +1,4 @@
-ALL_LANGUAGES=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
+ALL_LANGUAGES=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sk sl sv ta te tr
 #LANGUAGES=$(ALL_LANGUAGES)
 LANGUAGES=ar bg ca da de en es fa hi hu it ja nl pt ro ru sv ta te
 WDIR=/net/cluster/TMP/marecek/hamledt_parsing
