@@ -12,8 +12,11 @@ unmerged. In these cases we take always "Annotator 1". Some texts have just one 
 https://svn.ms.mff.cuni.cz/svn/slovallex/trunk/
 /ha/home/zeman/network/slovallex
 
-training size = ...
-test size     = sentences, tokens
+As there is no official training/test data split, we designed our own. Every tenth file goes to test, the rest goes
+to train.
+
+training size = 51967 sentences, 816533 tokens
+test size     =  5498 sentences,  86152 tokens
 
 
 
