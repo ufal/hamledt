@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # Processes selected languages and transformations (train, parse, eval, clean etc.)
 # Provides the unified necessary infrastructure for looping through all the sub-experiment subfolders.
-# Copyright © 2011, 2012, 2013 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2011, 2012, 2013, 2014 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 sub usage
@@ -18,10 +18,10 @@ sub usage
 }
 
 use utf8;
-use open ":utf8";
-binmode(STDIN, ":utf8");
-binmode(STDOUT, ":utf8");
-binmode(STDERR, ":utf8");
+use open ':utf8';
+binmode(STDIN, ':utf8');
+binmode(STDOUT, ':utf8');
+binmode(STDERR, ':utf8');
 use Getopt::Long;
 use Treex::Core::Config;
 use Text::Table;
@@ -76,7 +76,8 @@ sub get_languages
 sub get_transformations_for_language
 {
     my $language = shift;
-    return map {s-^.+/--; $_} (grep {-d $_} (glob("$data_dir/$language/treex/*")));
+    ###!!! We have suspended experiments with transformations until normalization is perfect.
+#    return map {s-^.+/--; $_} (grep {-d $_} (glob("$data_dir/$language/treex/*")));
 }
 
 
