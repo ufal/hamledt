@@ -77,7 +77,7 @@ sub get_transformations_for_language
 {
     my $language = shift;
     ###!!! We have suspended experiments with transformations until normalization is perfect.
-#    return map {s-^.+/--; $_} (grep {-d $_} (glob("$data_dir/$language/treex/*")));
+    return grep {m/^00[01]_/} (map {s-^.+/--; $_} (grep {-d $_} (glob("$data_dir/$language/treex/*"))));
 }
 
 
