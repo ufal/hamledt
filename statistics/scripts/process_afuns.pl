@@ -41,8 +41,11 @@ while ( defined( my $line = <> )) {
     $total_count_of->{$afun}        += $count;
 }
 
+my @languages = sort keys %$afuns_in;
+my @afuns = sort keys %$count_of;
+
 # get the remaining afun statistics
-for my $afun (keys %$count_of) {
+for my $afun (@afuns) {
     $lang_count_of->{$afun} = scalar keys %{ $count_of->{$afun} };
     for my $language (keys %{ $count_of->{$afun} }) {
         $proportion_of->{$afun}->{$language} = $count_of->{$afun}->{$language} / $total_afuns_in->{$language}; # the same numbers as in %$afun_proportion_in
@@ -51,13 +54,31 @@ for my $afun (keys %$count_of) {
 }
 
 # get the remaining language statistics
-for my $language (sort keys %$afuns_in) {
+for my $language (@languages) {
     $afun_types_in->{$language} = scalar keys %{ $afuns_in->{$language} };
     for my $afun (keys %{ $afuns_in->{$language} }) {
         $afun_proportion_in->{$language}->{$afun} = $afuns_in->{$language}->{$afun} / $total_afuns_in->{$language};
         $norm_afun_proportion_in->{$language}->{$afun} = $afun_proportion_in->{$language}->{$afun} / $average_proportion_of->{$afun};
     }
 }
+
+# output
+use Text::Table;
+
+my $tb = Text::Table->new(
+        'Afun / Language', sort keys %$afuns_in,
+    );
+
+$tb->load(
+    map {
+        my $afun = $_;
+        [$_, map {$afuns_in->{$_}->{$afun} || 0} sort keys %$afuns_in]
+    } sort keys %$count_of
+);
+
+print $tb;
+
+__END__
 
 # output
 say join "\t", '', sort keys %$count_of; # header (names of afuns)
@@ -86,3 +107,4 @@ if (!$opt_n) {
     }
     print "\n";
 }
+
