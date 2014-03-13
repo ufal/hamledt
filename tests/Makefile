@@ -1,11 +1,11 @@
 SHELL=bash
-JOBS=31
+JOBS=100
 VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
+LANGS=*
+#LANGS=ca
 #LANGS={en,cs}
-#LANGS=*
-LANGS=ca
 SETS={train,test}
 FILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz'
 TRANSFFILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/trans*/$(SETS)/*.treex.gz'
