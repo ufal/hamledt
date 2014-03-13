@@ -23,7 +23,7 @@ summarize_validation:
 # Sometimes a job fails to produce .stderr, treex does not know what to do (it is supposed to pass the stderrs in the original order)
 # but it does not kill the jobs because of the --survive flag.
 tests:
-	date
+	@date
 	treex -p --jobs=$(JOBS) --memory=4G \
 	Util::SetGlobal \
 	Test::A::AfunDefined            Test::A::AfunKnown           Test::A::AfunNotNR \
@@ -33,7 +33,7 @@ tests:
 	Test::A::NonemptyAttr           Test::A::NounGovernsDet      Test::A::NoNewNonProj \
 	Test::A::PredUnderRoot          Test::A::SubjectBelowVerb    Test::A::MaxOneSubject \
 	-- $(FILES) 2> test.err > $(TESTLOG)
-	date
+	@date
 
 table:
 	cat $(TESTLOG) | ./summarize_tests.pl
