@@ -6,10 +6,12 @@ DATADIR  = $(TMT_ROOT)/share/data/resources/hamledt/$(LANGCODE)
 SUBDIRIN = source
 SUBDIR0  = treex/000_orig
 SUBDIR1  = treex/001_pdtstyle
+SUBDIRC  = conll
 SUBDIR_STAN = stanford
 IN       = $(DATADIR)/$(SUBDIRIN)
 DIR0     = $(DATADIR)/$(SUBDIR0)
 DIR1     = $(DATADIR)/$(SUBDIR1)
+CONLLDIR = $(DATADIR)/$(SUBDIRC)
 DIR_STAN = $(DATADIR)/$(SUBDIR_STAN)
 TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::CoNLLX lines_per_doc=500
@@ -61,11 +63,11 @@ pdt:
 test:
 	treex -L$(LANGCODE) $(SCEN1) $(WRITE) path=$(DIR1)/test -- '!$(DIR0)/test/*.treex.gz'
 
-clean:
-	rm -rf $(DATADIR)/treex
-
-pokus:
-	echo $(SCEN1)
+# This goal exports the harmonized trees in CoNLL format, which is more useful for ordinary users.
+CONLL_ATTRIBUTES = selector= deprel_attribute=afun is_member_within_afun=1 pos_attribute=tag feat_attribute=iset
+export_conll:
+                treex -L$(LANGCODE) Read::Treex from='!$(DIR1)/train/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/train clobber=1 compress=1
+                treex -L$(LANGCODE) Read::Treex from='!$(DIR1)/test/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/test clobber=1 compress=1
 
 # TODO: other structure changes (compound verbs)
 # TODO: often fails because there remain some punct nodes with children
@@ -98,3 +100,8 @@ treex_to_stanford:
 treex_to_stanford_test:
 	treex -L$(LANGCODE) $(STANFORD) -- $(DIR1)/test/*.treex.gz
 
+clean:
+                rm -rf $(DATADIR)/treex
+
+pokus:
+                echo $(SCEN1)
