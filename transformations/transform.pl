@@ -42,7 +42,7 @@ sub usage {
      LANGUAGES     - list of ISO codes of languages to be processed
      -a,--all      - apply the transformations on all languages
      -h,--help     - print this help.
-     See Treex::Block::A2A::Transform::CoordStyle for details on options
+     See Treex::Block::HamleDT::Transform::CoordStyle for details on options
      --family, --punctuation, --conjunction, --head, --shared.
 ";
 }
@@ -119,15 +119,15 @@ foreach my $f (split /,/, $family) {
                     my $name = 'f'.uc(substr($f,0,1)).'h'.uc(substr($h,0,1)).'s'.uc(substr($s,0,1)).'c'.uc(substr($c,0,1)).'p'.uc(substr($p,0,1));
                     my $command_line = "treex -p -j $JOBS "
                                      . "Util::Eval zone='\$zone->get_bundle()->remove_zone(\$zone->language,qw(orig hamledt))' " # Remove the original trees (before PDT styling).
-                                     . "A2A::BackupTree to_selector=before "                            # Store the trees before transformation to zone "before".
-                                     . "A2A::DeleteAfunCoordWithoutMembers "                            # TODO this should be done already within the normalization.
-                                     . "A2A::SetSharedModifier "                                        # Attributes is_shared_modifier and wild->is_coord_conjunction
-                                     . "A2A::SetCoordConjunction "                                      # must be filled before running the transformation.
-                                     . "A2A::Transform::CoordStyle style=$name from_style=fPhRsHcHpB "  # Transform the zone with empty selector.
-                                     . "A2A::BackupTree to_selector=inverse "                           # Copy the trees after transformation to zone "inverse".
+                                     . "HamleDT::BackupTree to_selector=before "                            # Store the trees before transformation to zone "before".
+                                     . "HamleDT::DeleteAfunCoordWithoutMembers "                            # TODO this should be done already within the normalization.
+                                     . "HamleDT::SetSharedModifier "                                        # Attributes is_shared_modifier and wild->is_coord_conjunction
+                                     . "HamleDT::SetCoordConjunction "                                      # must be filled before running the transformation.
+                                     . "HamleDT::Transform::CoordStyle style=$name from_style=fPhRsHcHpB "  # Transform the zone with empty selector.
+                                     . "HamleDT::BackupTree to_selector=inverse "                           # Copy the trees after transformation to zone "inverse".
                                      . "Util::SetGlobal selector=inverse "                              # The rest of the scenario operates on this "inverse" zone.
-                                     #. "A2A::SetCoordConjunction " # is this needed?
-                                     . "A2A::Transform::CoordStyle from_style=$name style=fPhRsHcHpB "  # Make the inverse transformation in zone "inverse"
+                                     #. "HamleDT::SetCoordConjunction " # is this needed?
+                                     . "HamleDT::Transform::CoordStyle from_style=$name style=fPhRsHcHpB "  # Make the inverse transformation in zone "inverse"
                                      . "Align::AlignSameSentence to_selector=before "                   # and align it to the normalized tree.
                                      . "Write::Treex substitute={$from}{$prefix"."_$name} "             # Save the resulting treex files to a new directory.      
                                      . "Print::EvalAlignedAtrees report_errors=0 "                      # Compute UAS (output contains the new filename)
