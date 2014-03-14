@@ -1,0 +1,62 @@
+HYP	অতিবেগুনি-রশ্মির	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##390.a_tree-bn-s390-n2776
+HYP	অপিস-বিযারারদের	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/test/001.treex.gz##14.a_tree-bn-s14-n101
+HYP	অফিস-বিযারারদের	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/test/001.treex.gz##1.a_tree-bn-s1-n2
+HYP	আজিম-উস-শাহের	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##272.a_tree-bn-s272-n1906
+HYP	আমদানি-রপ্তানি	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##259.a_tree-bn-s259-n1791
+HYP	উত্তর-পশ্চিমের	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##163.a_tree-bn-s163-n968
+HYP	এ-বাড়ির	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##211.a_tree-bn-s211-n1386
+HYP	এ-ব্যাপারে	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##63.a_tree-bn-s63-n442
+HYP	এ-যুগে	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##3.a_tree-bn-s3-n14
+HYP	এ-লাইন	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##71.a_tree-bn-s71-n507
+HYP	ওয়েল-উইশার	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##54.a_tree-bn-s54-n359
+HYP	কথা-তো	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##353.a_tree-bn-s353-n2512
+HYP	কাঁদতে-কাঁদতে	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##184.a_tree-bn-s184-n1222
+HYP	খ্রী-র	2	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##177.a_tree-bn-s177-n1113
+HYP	গা-এলানো	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/test/001.treex.gz##17.a_tree-bn-s17-n117
+HYP	গেষ্ট-হাউস	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##198.a_tree-bn-s198-n1313
+HYP	চে-গুযোভারা	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/test/001.treex.gz##12.a_tree-bn-s12-n84
+HYP	জয়-পরাজয়ের	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##90.a_tree-bn-s90-n520
+HYP	জলপাই-এর	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##161.a_tree-bn-s161-n952
+HYP	জৈব-অণুসহ	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##470.a_tree-bn-s470-n3359
+HYP	জৈব-গ্যাস	2	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##460.a_tree-bn-s460-n3298
+HYP	টি-উ-প	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/test/001.treex.gz##28.a_tree-bn-s28-n189
+HYP	ট্রাঙ্ক-টেলিফোনে	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##150.a_tree-bn-s150-n991
+HYP	দক্ষিণ-পশ্চিমে	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##162.a_tree-bn-s162-n960
+HYP	দলিল-দস্তাবেজ	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##287.a_tree-bn-s287-n2019
+HYP	দার্জিলিং-এর	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##392.a_tree-bn-s392-n2327
+HYP	ধোপা-নাপিত	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##415.a_tree-bn-s415-n2478
+HYP	ন্যায়-অন্যায়ের	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##71.a_tree-bn-s71-n504
+HYP	পুড়ে-পুড়ে	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##172.a_tree-bn-s172-n1128
+HYP	প্রকৃতি-প্রেম	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##213.a_tree-bn-s213-n1411
+HYP	বাপ-ঠাকুর্দার	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##203.a_tree-bn-s203-n1343
+HYP	বাপ-মা	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##77.a_tree-bn-s77-n539
+HYP	বিল্ডিং-এর	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##330.a_tree-bn-s330-n2352
+HYP	বোম্বাই-এর	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##420.a_tree-bn-s420-n3014
+HYP	ভাই-ই	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##29.a_tree-bn-s29-n167
+HYP	যাওযা-আসার	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/test/001.treex.gz##70.a_tree-bn-s70-n388
+HYP	যে-কাজই	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##134.a_tree-bn-s134-n901
+HYP	রং-এর	2	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##457.a_tree-bn-s457-n3284
+HYP	রাই-শষ্য	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##156.a_tree-bn-s156-n920
+HYP	রিভেরা-র	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##172.a_tree-bn-s172-n1062
+HYP	লড়াই-এ	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##193.a_tree-bn-s193-n1254
+HYP	লৌহ-আকর	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##151.a_tree-bn-s151-n875
+HYP	শিল্প-বাণিজ্যের	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##168.a_tree-bn-s168-n1018
+HYP	শ্রমিক-কৃষকেরাও	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##195.a_tree-bn-s195-n1270
+HYP	সমুদ্র-বন্দর	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##168.a_tree-bn-s168-n1016
+HYP	সিং-এর	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##230.a_tree-bn-s230-n1494
+HYP	সুরে-বেসুরো	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##102.a_tree-bn-s102-n604
+HYP	সে-কাজ	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##134.a_tree-bn-s134-n903
+HYP	সে-তুঙ	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/test/001.treex.gz##12.a_tree-bn-s12-n82
+HYP	হাই-সোসাইটিতে	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##3.a_tree-bn-s3-n15
+HYP	হাত-পা	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##196.a_tree-bn-s196-n1303
+HYP	হাসতে-হাসতে	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##184.a_tree-bn-s184-n1223
+OTH	-	13	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/001.treex.gz##12.a_tree-bn-s12-n81
+OTH	-এ	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/bn/data/treex/001_pdtstyle/train/002.treex.gz##211.a_tree-bn-s211-n1396
+TOTAL TOKENS                      	  7252
+TOTAL LETTER TOKENS               	  6828 (94.2 %)
+TOTAL DIGIT TOKENS                	     6 (0.1 %)
+TOTAL COMMON PUNCTUATION          	   136 (1.9 %)
+TOTAL NULL TOKENS                 	   213 (2.9 %)
+TOTAL OTHER TOKENS                	    69 (1.0 %)
+TOTAL OTHER TYPES (NUMBERS ZEROED)	    54
+  out of that:  (0.0 %) MNE,  (0.0 %) MWE, 52 (96.3 %) HYP,  (0.0 %) ABR and 2 (3.7 %) OTH
