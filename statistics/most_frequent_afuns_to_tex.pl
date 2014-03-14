@@ -50,6 +50,8 @@ while (<>) {
 #        print "$language $afun\n";
         $count{$language}{$afun}++;
         $total{$language}++;
+        $count{avg}{$afun}++ if $language_name{$language};
+        $total{avg}++;
     }
     else {
         print STDERR "Unexpected input: $_";
@@ -61,18 +63,27 @@ print '{\footnotesize
 \setlength{\tabcolsep}{4pt}
 ';
 
-print '\begin{longtable}{|l|'. join '',map{'r|'} @afuns;
+print '\begin{longtable}{|l|r|'. join '',map{'r|'} @afuns;
 print  "}\n \\hline \n";
 
-print join ' & ',('Language',@afuns);
+print join ' & ',('Language',@afuns,'rest');
 print '\\\\ \hline \hline';
 print " \n";
 
-foreach my $language (sort {$language_name{$a} cmp $language_name{$b}} grep {$language_name{$_}} keys %count) {
-    print "$language_name{$language} ($language)",
-        " &  ", join " & ", map {sprintf("%.1f",100*($count{$language}{$_}||0)/$total{$language}) } @afuns;
+foreach my $language ((sort {$language_name{$a} cmp $language_name{$b}} grep {$language_name{$_}} keys %count), 'avg') {
+    my $sum = 0;
+    foreach my $afun (@afuns){
+        $sum += $count{$language}{$afun}||0;
+    }
+    $count{$language}{rest} = $total{$language} - $sum;
+    if ($language_name{$language}){
+        print "$language_name{$language} ($language)";
+    } else {
+        print "\\hline\nAverage";
+    }
+    print " &  ", join " & ", map {sprintf("%.1f",100*($count{$language}{$_}||0)/$total{$language}) } (@afuns, 'rest');
     print '\\\\ \hline';
-    print "\n";
+    print "\n";   
 }
 
 #print '\end{longtable} }'; # because the table's caption is stored in the main latex file
