@@ -1,0 +1,13 @@
+HYP	Sprengel-Museum	2	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ja/data/treex/001_pdtstyle/train/015.treex.gz##470.a_tree-ja-s470-n6851
+HYP	Sprengel-bijutsukaN	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ja/data/treex/001_pdtstyle/train/015.treex.gz##472.a_tree-ja-s472-n6875
+HYP	Wilhelm-Busch-Museum	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ja/data/treex/001_pdtstyle/train/015.treex.gz##469.a_tree-ja-s469-n6829
+HYP	busshu-hakubutsukaN	1	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ja/data/treex/001_pdtstyle/train/015.treex.gz##468.a_tree-ja-s468-n6801
+OTH	$I-$C-$E	5	/ha/work/people/zeman/tectomt/treex/devel/hamledt/normalize/ja/data/treex/001_pdtstyle/train/015.treex.gz##405.a_tree-ja-s405-n5885
+TOTAL TOKENS                      	157172
+TOTAL LETTER TOKENS               	138916 (88.4 %)
+TOTAL DIGIT TOKENS                	     0 (0.0 %)
+TOTAL COMMON PUNCTUATION          	 18246 (11.6 %)
+TOTAL NULL TOKENS                 	     0 (0.0 %)
+TOTAL OTHER TOKENS                	    10 (0.0 %)
+TOTAL OTHER TYPES (NUMBERS ZEROED)	     5
+  out of that:  (0.0 %) MNE,  (0.0 %) MWE, 4 (80.0 %) HYP,  (0.0 %) ABR,  (0.0 %) ZWN and 1 (20.0 %) OTH
