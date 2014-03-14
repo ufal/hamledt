@@ -3,9 +3,9 @@ JOBS=100
 VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
-#LANGS={en,cs}
 LANGS=*
 #LANGS=nl
+#LANGS={en,cs}
 SETS={train,test}
 FILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz'
 TRANSFFILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/trans*/$(SETS)/*.treex.gz'
@@ -23,7 +23,8 @@ summarize_validation:
 # Sometimes a job fails to produce .stderr, treex does not know what to do (it is supposed to pass the stderrs in the original order)
 # but it does not kill the jobs because of the --survive flag.
 tests:
-	treex  -p --jobs=$(JOBS) \
+	@date
+	treex -p --jobs=$(JOBS) --memory=4G \
 	Util::SetGlobal \
 	HamleDT::Test::AfunDefined            HamleDT::Test::AfunKnown           HamleDT::Test::AfunNotNR \
 	HamleDT::Test::CoApAboveEveryMember   HamleDT::Test::MemberInEveryCoAp   HamleDT::Test::MemberInEveryCoord \
@@ -32,6 +33,7 @@ tests:
 	HamleDT::Test::NonemptyAttr           HamleDT::Test::NounGovernsDet      HamleDT::Test::NoNewNonProj \
 	HamleDT::Test::PredUnderRoot          HamleDT::Test::SubjectBelowVerb    HamleDT::Test::MaxOneSubject \
 	-- $(FILES) 2> test.err > $(TESTLOG)
+	@date
 
 table:
 	cat $(TESTLOG) | ./summarize_tests.pl
