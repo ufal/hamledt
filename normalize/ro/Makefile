@@ -22,4 +22,5 @@ treex:
 
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
-SCEN1 = A2A::RO::Harmonize A2A::SetSharedModifier A2A::SetCoordConjunction
+# SCEN1 = HamleDT::RO::Harmonize HamleDT::SetSharedModifier HamleDT::SetCoordConjunction
+# the block are now called from within HamleDT::RO::Harmonize
