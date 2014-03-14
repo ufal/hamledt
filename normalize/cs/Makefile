@@ -12,8 +12,8 @@ treex: conll_to_treex
 # make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle
 
-SCEN1 = A2A::CS::Harmonize A2A::Pdt2TreexIsMemberConversion A2A::SetSharedModifier A2A::SetCoordConjunction A2A::Pdt2HamledtApos
+# SCEN1 = HamleDT::CS::Harmonize HamleDT::Pdt2TreexIsMemberConversion HamleDT::SetSharedModifier HamleDT::SetCoordConjunction HamleDT::Pdt2HamledtApos
+# the blocks are now called from within HamleDT::CS::Harmonize
 
-# Parallel Treex is buggy. Restarting it several times would not make the process any faster.
-#TO_PDT_TRAIN_OPT := -p --jobs 26
+TO_PDT_TRAIN_OPT := -p --jobs 26
 

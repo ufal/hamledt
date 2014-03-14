@@ -28,7 +28,7 @@ dep:
 	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test/  -- $(DIR0)/test/*.treex.gz
 
 # converts dependencies to pdt style dependencies
-SCEN2 = A2A::ET::Harmonize A2A::SetSharedModifier A2A::SetCoordConjunction
+SCEN2 = HamleDT::ET::Harmonize HamleDT::SetSharedModifier HamleDT::SetCoordConjunction
 pdt:
 	$(TREEX) $(SCEN2) $(WRITE) path=$(DIR2)/train/ -- $(DIR1)/train/*.treex.gz
 	$(TREEX) $(SCEN2) $(WRITE) path=$(DIR2)/test/  -- $(DIR1)/test/*.treex.gz

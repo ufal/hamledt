@@ -11,8 +11,8 @@ source:
 
 treex: conll_to_treex
 
-# Temporarily add two specialized blocks; what they do should be solved directly in Harmonize.
-POSTPROCESS2_SCEN_OPT := A2A::DE::RehangJunctors A2A::DE::RehangAuxc
-# Parallel Treex is buggy. Restarting it several times would not make the process any faster.
-#TO_PDT_TRAIN_OPT := -p --jobs 37
-#TO_PDT_TEST_OPT  := -p --jobs 2
+#SCEN1 = HamleDT::DE::Harmonize HamleDT::DE::RehangJunctors HamleDT::DE::RehangAuxc
+# the block are now called from within HamleDT::DE::Harmonize
+
+TO_PDT_TRAIN_OPT := -p --jobs 37
+TO_PDT_TEST_OPT  := -p --jobs 2
