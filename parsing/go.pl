@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # Processes selected languages and transformations (train, parse, eval, clean etc.)
 # Provides the unified necessary infrastructure for looping through all the sub-experiment subfolders.
-# Copyright © 2011, 2012, 2013 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2011, 2012, 2013, 2014 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 sub usage
@@ -18,10 +18,10 @@ sub usage
 }
 
 use utf8;
-use open ":utf8";
-binmode(STDIN, ":utf8");
-binmode(STDOUT, ":utf8");
-binmode(STDERR, ":utf8");
+use open ':utf8';
+binmode(STDIN, ':utf8');
+binmode(STDOUT, ':utf8');
+binmode(STDERR, ':utf8');
 use Getopt::Long;
 use Treex::Core::Config;
 use Text::Table;
@@ -63,7 +63,7 @@ sub get_languages
     }
     else
     {
-        return qw(ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr);
+        return qw(ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sk sl sv ta te tr);
     }
 }
 
@@ -76,7 +76,8 @@ sub get_languages
 sub get_transformations_for_language
 {
     my $language = shift;
-    return map {s-^.+/--; $_} (grep {-d $_} (glob("$data_dir/$language/treex/*")));
+    ###!!! We have suspended experiments with transformations until normalization is perfect.
+    return grep {m/^00[01]_/} (map {s-^.+/--; $_} (grep {-d $_} (glob("$data_dir/$language/treex/*"))));
 }
 
 
@@ -340,7 +341,7 @@ sub parse
         $scenario .= "Util::SetGlobal language=$language selector=$parser ";
         # If there is a tree with the same name, remove it first.
         $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
-        $scenario .= "HamleDT::CopyAtree source_selector='' flatten=1 ";
+        $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
         $scenario .= "$parser_block{$parser} ";
         # Note: the trees in 000_orig should be compared against the original gold tree.
         # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
