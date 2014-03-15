@@ -61,13 +61,13 @@ pdt:
 # $(TREEX) is not used because we do not want to parallelize the task on the cluster.
 # (By default, copies of logs from parallel jobs lack the TREEX-INFO level.)
 test:
-	treex -L$(LANGCODE) $(SCEN1) $(WRITE) path=$(DIR1)/test -- '!$(DIR0)/test/*.treex.gz'
+	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test -- '!$(DIR0)/test/*.treex.gz'
 
 # This goal exports the harmonized trees in CoNLL format, which is more useful for ordinary users.
 CONLL_ATTRIBUTES = selector= deprel_attribute=afun is_member_within_afun=1 pos_attribute=tag feat_attribute=iset
 export_conll:
-                treex -L$(LANGCODE) Read::Treex from='!$(DIR1)/train/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/train clobber=1 compress=1
-                treex -L$(LANGCODE) Read::Treex from='!$(DIR1)/test/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/test clobber=1 compress=1
+	$(TREEX) Read::Treex from='!$(DIR1)/train/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/train clobber=1 compress=1
+	$(TREEX) Read::Treex from='!$(DIR1)/test/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/test clobber=1 compress=1
 
 # TODO: other structure changes (compound verbs)
 # TODO: often fails because there remain some punct nodes with children
@@ -94,14 +94,17 @@ WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIR_STAN)} clobber=1
 STANFORD=$(TO_STANFORD) $(WRITE_STANFORD)
 
 treex_to_stanford:
-	treex -L$(LANGCODE) $(STANFORD) -- $(DIR1)/train/*.treex.gz
-	treex -L$(LANGCODE) $(STANFORD) -- $(DIR1)/test/*.treex.gz
+	$(TREEX) $(STANFORD) -- $(DIR1)/train/*.treex.gz
+	$(TREEX) $(STANFORD) -- $(DIR1)/test/*.treex.gz
 
 treex_to_stanford_test:
-	treex -L$(LANGCODE) $(STANFORD) -- $(DIR1)/test/*.treex.gz
+	$(TREEX) $(STANFORD) -- $(DIR1)/test/*.treex.gz
+
+deprelstats:
+	$(TREEX) Read::Treex from='!$(DIR0)/{train,test}/*.treex.gz' Print::DeprelStats to=deprelstats.txt
 
 clean:
-                rm -rf $(DATADIR)/treex
+	rm -rf $(DATADIR)/treex
 
 pokus:
-                echo $(SCEN1)
+	echo $(SCEN1)
