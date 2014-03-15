@@ -101,7 +101,7 @@ treex_to_stanford_test:
 	$(TREEX) $(STANFORD) -- $(DIR1)/test/*.treex.gz
 
 deprelstats:
-	$(TREEX) Read::Treex from='!$(DIR0)/{train,test}/*.treex.gz' Print::DeprelStats to=deprelstats.txt
+	$(TREEX) Read::Treex from='!$(DIR0)/{train,test}/*.treex.gz' Print::DeprelStats > deprelstats.txt
 
 clean:
 	rm -rf $(DATADIR)/treex
