@@ -157,7 +157,6 @@ $tb->load( ['ERRORS/NODES', map { sprintf "%.1f", 100 * $tests{$_}{TOTAL}/$afuns
 #$tb->load( ['WEIGHT', '', map { sprintf "%.1f", $weight{$_} } @languages[1..$#languages] ] );
 print $tb->table();
 printf "LOG-WEIGHTED AVERAGE ERROR SCORE: %.1f\n", $total_error_score;
-printf "
 
 
 sub _magnitude {
