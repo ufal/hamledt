@@ -147,6 +147,9 @@ ttests:
 	HamleDT::Test::AfunDefined \
 	HamleDT::Test::AfunKnown \
 	HamleDT::Test::AfunNotNR \
+	HamleDT::Test::AtvVBelowVerb \
+	HamleDT::Test::AuxAUnderNoun \
+	HamleDT::Test::AuxZChilds \
 	HamleDT::Test::CoApAboveEveryMember \
 	HamleDT::Test::FinalPunctuation \
 	HamleDT::Test::LeafAux \
@@ -157,14 +160,23 @@ ttests:
 	HamleDT::Test::NoNewNonProj \
 	HamleDT::Test::NonleafAuxC \
 	HamleDT::Test::NonleafAuxP \
+	HamleDT::Test::NonParentAuxS \
 	HamleDT::Test::NounGovernsDet \
+	HamleDT::Test::NumberHavePosC \
 	HamleDT::Test::PredUnderRoot \
 	HamleDT::Test::PrepIsAuxP \
 	HamleDT::Test::SubjectBelowVerb \
+	\
+	HamleDT::Test::AuxGIsPunctuation \
+	HamleDT::Test::AuxPNotMember \
+	HamleDT::Test::AuxVNotOnTop \
+	HamleDT::Test::AuxXIsComma \
+	HamleDT::Test::SingleEffectiveRootChild \
 	-- $(FILES) 2> $(T_DIR)/test.err > $(T_DIR)/$(TESTLOG)
 
 ttable:
 	cat $(T_DIR)/$(TESTLOG) | $(SCRIPTS)/summarize_tests.pl > $(T_DIR)/$(T_TABLE)
+	cat $(T_DIR)/$(TESTLOG) | $(SCRIPTS)/summarize_ok_tests.pl > $(T_DIR)/ok_$(T_TABLE)
 
 
 #############
@@ -179,4 +191,4 @@ clean:
 S_TABLE = score.txt
 
 score:
-	$(SCRIPTS)/score.pl -a $(A_DIR)/$(A_TABLE_COUNTS) -p $(B_DIR)/$(E_TABLE) -t $(T_DIR)/$(T_TABLE) > $(S_TABLE)
+	$(SCRIPTS)/score.pl -a $(A_DIR)/$(A_TABLE_COUNTS) -p $(B_DIR)/$(E_TABLE) -t $(T_DIR)/$(T_TABLE) -o $(T_DIR)/ok_$(T_TABLE) > $(S_TABLE)
