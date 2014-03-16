@@ -1,30 +1,82 @@
-Atr	40926
-AuxP	15900
-Obj	11556
-Adv	8158
-Sb	7538
-AuxY	6809
-AuxG	5956
-Coord	4386
-Pred	3769
-AuxK	3142
-AuxC	2747
-ExD	1786
-AuxM	1355
-Atv	924
-Pnom	580
-AuxE	515
-Apos	281
-Ante	152
-AtrAdv	88
-PredP	81
-AdvAtr	55
-PredE	25
-_	17
-AtrObj	15
-ObjAtr	12
-PredC	9
-AtrAtr	7
-ExD|Sb	3
-ExD|Coord	1
-TOTAL 29 TYPES
+Adv	16248	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:حَيَاةِ
+AdvAtr	52	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#10:بِيتش
+AdvAtr_Ap	2	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/HYT_ARB_20010912.0050#3:آذار
+Adv_Ap	248	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0009#4:أَيلُولَ
+Adv_Co	1656	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#13:اَلإِفرَاطُ
+Adv_Co_Pa	4	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0052#8:١١
+Adv_Pa	2	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/UMH_ARB_20040715.0011#3:بِ
+Ante	309	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0004#4:اَلمَسؤُولِينَ
+Ante_Ap	5	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/HYT_ARB_20010912.0063#3:مَكتَبَ
+Ante_Co	33	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000815.0104#7:اِنتِخَابُ
+Apos	652	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:(
+Apos_Ap	3	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000815.0080#4:كانون
+Apos_Co	54	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0016#15:(
+Atr	92834	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#1:٣٠٠
+AtrAdv	80	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#10:يَومَينِ
+AtrAdv_Co	7	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0004#2:أُورُوبَا
+AtrAtr	7	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0002#15:اَلشِّيشَانِ
+AtrObj	15	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#15:اَلمُشَرَّدِينَ
+Atr_Ap	682	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0002#15:تموز
+Atr_Co	9538	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#6:كَامِيرَاتِ
+Atr_Co_Pa	33	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0084#3:اَلحَالِيِّ
+Atr_Pa	30	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0002#4:اَلتَّسمِيَةُ
+Atv	1661	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:قَادِرًا
+Atv_Ap	4	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/UMH_ARB_20040705.0005#14:٦٦
+Atv_Co	147	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0009#7:أَجرَى
+AuxC	5894	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:عِندَمَا
+AuxC_Ap	7	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/UMH_ARB_20040809.0085#9:أَنَّ
+AuxC_Co	503	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0014#11:أَنَّ
+AuxE	1334	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#7:إِنَّ
+AuxE_Co	3	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#18:اما
+AuxG	14114	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:)
+AuxG_Co	1	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/UMH_ARB_20040809.0070#4:"
+AuxG_Pa	3	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#7:.
+AuxK	7265	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:-
+AuxM	3367	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#6:لَم
+AuxM_Ap	12	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0016#10:نَحوَ
+AuxM_Co	25	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0014#10:نَحوَ
+AuxP	37862	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#1:بِ
+AuxP_Ap	25	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#13:بِ
+AuxP_Co	805	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:بِ
+AuxP_Pa	4	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0067#5:مِن
+AuxY	15905	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:لِ
+AuxY_Co	17	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/NHR_ARB_20021130.0095#10:الذي
+AuxY_Pa	1	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/NHR_ARB_20021101.0009#4:لِ
+Coord	10373	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:وَ
+Coord_Ap	98	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#13:وَ
+Coord_Co	708	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#4:وَ
+Coord_Pa	7	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0012#7:وَ
+ExD	2329	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:١٥
+ExD_Ap	44	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:بِيتش
+ExD_Co	1103	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0002#9:لَا
+ExD_Co_Pa	19	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0052#2:١٣
+ExD_Pa	206	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#2:اف
+Obj	20792	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#1:حَيَاةَ
+ObjAtr	10	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0021#4:دِيَاجِيُو
+ObjAtr_Co	2	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#11:رَفضِ
+Obj_Ap	173	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0004#4:اَلإِيرَانِيِّينَ
+Obj_Co	4894	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#5:سِروَالًا
+Obj_Pa	1	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/HYT_ARB_20010912.0041#4:اِستِقبَالَ
+Pnom	1131	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#6:اَلسَّهلِ
+Pnom_Ap	5	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/UMH_ARB_20040705.0005#14:405.7
+Pnom_Co	323	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0004#7:اَلكَوَادِرِ
+Pnom_Co_Pa	3	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/HYT_ARB_20010911.0096#8:مُحَمَّدٌ
+Pnom_Pa	1	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/UMH_ARB_20040715.0003#6:اَلأَخطَرُ
+Pred	5921	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#1:يُقَلِّبُ
+PredC	8	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/HYT_ARB_20010912.0094#3:أَنَّ
+PredC_Co	11	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/HYT_ARB_20010911.0033#14:أَنَّ
+PredE	46	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000815.0045#12:لَا
+PredE_Co	26	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0084#5:هُنَاكَ
+PredP	132	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0012#7:مِن
+PredP_Co	66	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0030#8:بِ
+Pred_Ap	11	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/ASB_ARB_20041023.0015#6:اِعتَرَفُوا
+Pred_Co	2787	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#4:بَدَا
+Pred_Co_Pa	3	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/HYT_ARB_20010407.0221#5:تُشَارِكُ
+Pred_Pa	6	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/HYT_ARB_20010911.0033#15:يُمكِنُ
+Sb	16051	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0001#1:مِيرَاثٌ
+Sb_Ap	88	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0005#2:أُستُرَالِيَا
+Sb_Co	1642	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0004#3:اَلمَسؤُولُونَ
+Sb_Pa	2	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000715.0048#5:اَلنِّيَابَةُ
+_	1765	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000815.0010#1:لٰكِنَّ
+__Co	6	/home/zeman/tectomt/share/data/resources/hamledt/ar/treex/000_orig/train/AFP_ARB_20000815.0051#3:كَانَ
+TOTAL 81 TAG TYPES FOR 282246 TOKENS
