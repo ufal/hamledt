@@ -50,7 +50,7 @@ conll_to_treex:
 UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
 #TODO: Skip the HamleDT::DeleteAfunCoordWithoutMembers and similar blocks, check the cases when they had to be applied (HamleDT::Test::MemberInEveryCoAp) and fix it properly.
 #TODO: Do not even use the POSTPROCESS[12]_SCEN_OPT blocks. They also may contain transformations of coordination that would obscure the effect of Harmonize.
-#SCEN1  = HamleDT::$(UCLANG)::Harmonize $(POSTPROCESS1_SCEN_OPT) HamleDT::SetSharedModifier HamleDT::SetCoordConjunction HamleDT::DeleteAfunCoordWithoutMembers $(POSTPROCESS2_SCEN_OPT)
+#SCEN1  = HamleDT::$(UCLANG)::Harmonize $(POSTPROCESS1_SCEN_OPT) A2A::SetSharedModifier A2A::SetCoordConjunction HamleDT::DeleteAfunCoordWithoutMembers $(POSTPROCESS2_SCEN_OPT)
 SCEN1 = HamleDT::$(UCLANG)::Harmonize
 
 pdt:
@@ -75,8 +75,8 @@ TO_STANFORD=\
 			A2A::CopyAtree source_selector='' selector=pdt \
 			Util::Eval anode='$$anode->set_conll_deprel('');' \
 			HamleDT::Transform::SubordConjDownward \
-			HamleDT::SetSharedModifier \
-			HamleDT::SetCoordConjunction \
+			A2A::SetSharedModifier \
+			A2A::SetCoordConjunction \
 			HamleDT::Transform::CoordStyle from_style=fPhRsHcHpB style=fShLsHcBpB \
 			HamleDT::Transform::MarkPunct \
 			HamleDT::Transform::StanfordPunct \

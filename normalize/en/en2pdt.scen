@@ -12,8 +12,8 @@ W2A::EN::FixMultiwordPrepAndConj
 W2A::EN::SetAfunAuxCPCoord
 W2A::EN::SetAfun
 
-HamleDT::SetSharedModifier
-HamleDT::SetCoordConjunction
+A2A::SetSharedModifier
+A2A::SetCoordConjunction
 
 HamleDT::Tag2Interset language=en tagset=conll
 W2A::FixAuxLeaves
