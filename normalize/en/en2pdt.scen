@@ -1,4 +1,4 @@
-HamleDT::CopyAtree selector=orig
+A2A::CopyAtree selector=orig
 
 # CoNLL2007 English data have no lemma (underscore is filled in the column)
 W2A::EN::Lemmatize
