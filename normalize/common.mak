@@ -80,6 +80,7 @@ TO_STANFORD=\
 			HamleDT::Transform::CoordStyle from_style=fPhRsHcHpB style=fShLsHcBpB \
 			HamleDT::Transform::MarkPunct \
 			HamleDT::Transform::StanfordPunct \
+			HamleDT::Transform::PrepositionDownward \
 			HamleDT::Transform::StanfordTypes \
 			HamleDT::Transform::StanfordCopulas \
 			HamleDT::SetConllTags features=subpos,prontype,numtype,advtype,punctype,tense,verbform \
