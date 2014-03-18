@@ -55,6 +55,6 @@ transftest:
 #TEST=LeafAux
 FILELIST=ttred.$(TLNG).$(TEST).filelist
 ttred:
-	grep hamledt/$(TLNG)/treex $(TESTLOG) | grep $(TEST) | cut -f2 > $(FILELIST)
+	grep hamledt/$(TLNG)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 > $(FILELIST)
 	ttred -l $(FILELIST)
 
