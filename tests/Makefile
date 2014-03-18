@@ -1,5 +1,5 @@
 SHELL=bash
-JOBS=300
+JOBS=600
 VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
@@ -12,7 +12,7 @@ TRANSFFILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/trans*/$(S
 
 
 validate:
-	treex -p --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
+	treex -p --survive --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
 	@echo
 	@echo Output of the validation test stored in $(VALLOG)
 
@@ -22,9 +22,12 @@ summarize_validation:
 # DZ: Removing --survive from the treex command below.
 # Sometimes a job fails to produce .stderr, treex does not know what to do (it is supposed to pass the stderrs in the original order)
 # but it does not kill the jobs because of the --survive flag.
+# Každou chvíli to padá a v té změti souborů je skoro nemožné najít nějakou zprávu, co se stalo a na kterém stroji :-(
+# Snad aby to člověk pouštěl takhle, většinou to nakonec jednou nespadne:
+# while ! make tests ; do echo Nový pokus... ; done
 tests:
 	@date
-	treex -p --jobs=$(JOBS) --memory=4G \
+	treex -p --jobs=$(JOBS) --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*" \
 	Util::SetGlobal \
 	HamleDT::Test::AfunDefined            HamleDT::Test::AfunKnown           HamleDT::Test::AfunNotNR \
 	HamleDT::Test::CoApAboveEveryMember   HamleDT::Test::MemberInEveryCoAp   HamleDT::Test::MemberInEveryCoord \
