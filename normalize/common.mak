@@ -77,10 +77,10 @@ TO_STANFORD=\
 			HamleDT::Transform::SubordConjDownward \
 			A2A::SetSharedModifier \
 			A2A::SetCoordConjunction \
+			HamleDT::Transform::PrepositionDownward \
 			HamleDT::Transform::CoordStyle from_style=fPhRsHcHpB style=fShLsHcBpB \
 			HamleDT::Transform::MarkPunct \
 			HamleDT::Transform::StanfordPunct \
-			HamleDT::Transform::PrepositionDownward \
 			HamleDT::Transform::StanfordTypes \
 			HamleDT::Transform::StanfordCopulas \
 			HamleDT::Transform::StanfordObjects \
