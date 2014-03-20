@@ -11,8 +11,7 @@ source:
 
 treex: conll_to_treex
 
-#SCEN1 = HamleDT::DE::Harmonize HamleDT::DE::RehangJunctors HamleDT::DE::RehangAuxc
-# the block are now called from within HamleDT::DE::Harmonize
-
-TO_PDT_TRAIN_OPT := -p --jobs 37
+# Parallelize normalization to make it faster.
+###!!! Vypadá to, že za současného nastavení se pro train i test dohromady použije počet úloh z ...TRAIN_OPT a ...TEST_OPT se ignoruje.
+TO_PDT_TRAIN_OPT := -p --jobs 77
 TO_PDT_TEST_OPT  := -p --jobs 2
