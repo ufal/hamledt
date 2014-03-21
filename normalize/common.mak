@@ -83,7 +83,6 @@ TO_STANFORD=\
 			HamleDT::Transform::StanfordPunct \
 			HamleDT::Transform::StanfordTypes \
 			HamleDT::Transform::StanfordCopulas \
-			HamleDT::Transform::StanfordObjects \
 			HamleDT::SetConllTags features=subpos,prontype,numtype,advtype,punctype,tense,verbform \
 			Util::Eval anode='$$anode->set_afun('');'
 # This is for TrEd to display the newly set conll/deprels instead of afuns.

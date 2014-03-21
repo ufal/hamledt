@@ -21,7 +21,6 @@ TO_STANFORD=\
 			HamleDT::Transform::StanfordPunct \
 			HamleDT::Transform::StanfordTypes \
 			HamleDT::Transform::StanfordCopulas \
-			HamleDT::Transform::StanfordObjects \
 			HamleDT::SetConllTags features=subpos,prontype,numtype,advtype,punctype,tense,verbform \
 			Util::Eval anode='$$anode->set_afun('');'
 
