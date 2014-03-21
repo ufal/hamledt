@@ -1,7 +1,7 @@
 SHELL=/bin/bash
 
 # remainig langs: is zh
-LANGS= ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
+LANGS= ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sk sl sv ta te tr
 LANGS_PATTERN={$(shell echo $(LANGS) | tr ' ' ,)}
 QCMD = ${TMT_ROOT}/tools/cluster_utils/qruncmd
 JOBS = 20
