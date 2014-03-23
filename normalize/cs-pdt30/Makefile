@@ -2,10 +2,13 @@ LANGCODE=cs
 TREEBANK=cs-pdt30
 include ../common.mak
 
-# subdirs: amw, tamw / train-[1-8] dtest etest / *.a.gz
 SOURCEDIR=/net/projects/pdt/pdt30/data
+# subdirs: amw, tamw / train-[1-8] dtest etest / *.a.gz
 source:
-	echo NOT YET IMPLEMENTED
+	mkdir -p data/source/train
+	mkdir -p data/source/test
+	ln -s $(SOURCEDIR)/{tamw,amw}/{train-[1-8],dtest}/*.[amw].gz $(IN)/train
+	ln -s $(SOURCEDIR)/{tamw,amw}/etest/*.[amw].gz $(IN)/test
 
 SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
 treex:
