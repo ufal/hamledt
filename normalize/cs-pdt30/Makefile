@@ -1,5 +1,5 @@
 LANGCODE=cs
-TREEBANK=cs=pdt30
+TREEBANK=cs-pdt30
 include ../common.mak
 
 # subdirs: amw, tamw / train-[1-8] dtest etest / *.a.gz
