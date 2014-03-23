@@ -6,7 +6,7 @@ my %count;
 my %test;
 
 while (<>) {
-    next if !/^Test/;
+    next unless(s/^HamleDT::Test:://);
     chomp;
     my ($test,$file) = split;
     $file =~ /hamledt\/([a-z]+)/

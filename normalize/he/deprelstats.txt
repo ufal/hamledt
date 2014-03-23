@@ -1,0 +1,16 @@
+ 102813 dep
+  10149 CONJ
+   8987 SBJ
+   8036 ADJ
+   6697 ADV
+   6276 ROOT
+   4349 COM
+   3918 OBJ
+   2214 MOD
+   1253 prep_infl
+   1035 MW
+    320 at_infl
+    236 pos_infl
+      2 rb_infl
+ 156645 TOTAL
+

@@ -119,12 +119,12 @@ foreach my $f (split /,/, $family) {
                     my $name = 'f'.uc(substr($f,0,1)).'h'.uc(substr($h,0,1)).'s'.uc(substr($s,0,1)).'c'.uc(substr($c,0,1)).'p'.uc(substr($p,0,1));
                     my $command_line = "treex -p -j $JOBS "
                                      . "Util::Eval zone='\$zone->get_bundle()->remove_zone(\$zone->language,qw(orig hamledt))' " # Remove the original trees (before PDT styling).
-                                     . "HamleDT::BackupTree to_selector=before "                            # Store the trees before transformation to zone "before".
+                                     . "A2A::BackupTree to_selector=before "                            # Store the trees before transformation to zone "before".
                                      . "HamleDT::DeleteAfunCoordWithoutMembers "                            # TODO this should be done already within the normalization.
                                      . "HamleDT::SetSharedModifier "                                        # Attributes is_shared_modifier and wild->is_coord_conjunction
                                      . "HamleDT::SetCoordConjunction "                                      # must be filled before running the transformation.
                                      . "HamleDT::Transform::CoordStyle style=$name from_style=fPhRsHcHpB "  # Transform the zone with empty selector.
-                                     . "HamleDT::BackupTree to_selector=inverse "                           # Copy the trees after transformation to zone "inverse".
+                                     . "A2A::BackupTree to_selector=inverse "                           # Copy the trees after transformation to zone "inverse".
                                      . "Util::SetGlobal selector=inverse "                              # The rest of the scenario operates on this "inverse" zone.
                                      #. "HamleDT::SetCoordConjunction " # is this needed?
                                      . "HamleDT::Transform::CoordStyle from_style=$name style=fPhRsHcHpB "  # Make the inverse transformation in zone "inverse"

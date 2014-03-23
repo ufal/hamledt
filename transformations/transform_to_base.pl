@@ -10,7 +10,7 @@ my $JOBS= 5 * @ARGV;
 my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
 
 my $command_line = "treex -p -j $JOBS "
-     . "HamleDT::BackupTree to_selector=hamledt "
+     . "A2A::BackupTree to_selector=hamledt "
      . "HamleDT::DeleteAfunCoordWithoutMembers "                                # TODO this should be done already within the normalization.
      . "HamleDT::SetSharedModifier "                                            # Attributes is_shared_modifier and wild->is_coord_conjunction
      . "HamleDT::SetCoordConjunction "                                          # must be filled before running the transformation.
