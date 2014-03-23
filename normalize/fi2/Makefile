@@ -2,6 +2,7 @@
 # Work in progress
 # We need new Interset driver
 LANGCODE=fi
+TREEBANK=fi2
 include ../common.mak
 ORIG_TREEBANK=${TMT_ROOT}/share/data/resources/treebanks/fi/tdt-2013-07-18/tdt-2013-07-18.conllx
 

@@ -1,4 +1,5 @@
 LANGCODE=ca
+TREEBANK=ca
 include ../common.mak
 
 IMPORT = Read::CoNLL2009 lines_per_doc=500

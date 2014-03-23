@@ -1,4 +1,5 @@
 LANGCODE=sk
+TREEBANK=sk
 include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/slovallex

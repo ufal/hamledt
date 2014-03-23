@@ -1,4 +1,5 @@
-LANGCODE = tr
+LANGCODE=tr
+TREEBANK=tr
 include ../common.mak
 
 source:

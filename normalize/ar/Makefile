@@ -1,4 +1,5 @@
 LANGCODE=ar
+TREEBANK=ar
 include ../common.mak
 
 PADTDIR=/net/projects/padt/data/Prague

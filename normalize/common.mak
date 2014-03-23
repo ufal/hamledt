@@ -2,7 +2,14 @@ SHELL=/bin/bash
 
 # To be included from the language-specific makefiles like this:
 # include ../common.mak
-DATADIR  = $(TMT_ROOT)/share/data/resources/hamledt/$(LANGCODE)
+# The language-specific makefile should define two environment variables:
+# LANGCODE=cs # Czech
+# TREEBANK=cs-pdt30 # either same as language code, or with hyphen and lowercase treebank code; will be used in paths
+
+# Set paths. The main path, TMT_ROOT, must be pre-set in your environment.
+# You may want to put something like this in your .bash_profile, depending on where your copy of TectoMT is:
+# export TMT_ROOT=/net/work/people/zeman/tectomt
+DATADIR  = $(TMT_ROOT)/share/data/resources/hamledt/$(TREEBANK)
 SUBDIRIN = source
 SUBDIR0  = treex/000_orig
 SUBDIR1  = treex/001_pdtstyle
@@ -13,6 +20,8 @@ DIR0     = $(DATADIR)/$(SUBDIR0)
 DIR1     = $(DATADIR)/$(SUBDIR1)
 CONLLDIR = $(DATADIR)/$(SUBDIRC)
 DIR_STAN = $(DATADIR)/$(SUBDIR_STAN)
+
+# Processing shortcuts.
 TREEX    = treex -L$(LANGCODE)
 IMPORT   = Read::CoNLLX lines_per_doc=500
 WRITE0   = Write::Treex file_stem='' clobber=1
@@ -28,7 +37,7 @@ check-source:
 	[ -d $(IN) ] || (echo new $(LANGCODE) && make source)
 
 dirs:
-	@echo The root data directory for $(LANGCODE): $(DATADIR)
+	@echo The root data directory for $(TREEBANK): $(DATADIR)
 	mkdir -p $(DATADIR)
 	if [ ! -e data ]; then ln -s $(DATADIR) data; fi
 	mkdir -p data/$(SUBDIRIN)

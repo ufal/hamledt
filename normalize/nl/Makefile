@@ -1,4 +1,5 @@
 LANGCODE=nl
+TREEBANK=nl
 include ../common.mak
 
 source:

@@ -1,4 +1,5 @@
-LANGCODE = he
+LANGCODE=he
+TREEBANK=he
 include ../common.mak
 IMPORT = Read::CoNLLXfp lines_per_doc=500
 

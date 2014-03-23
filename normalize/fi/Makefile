@@ -1,4 +1,5 @@
 LANGCODE=fi
+TREEBANK=fi
 include ../common.mak
 
 source:

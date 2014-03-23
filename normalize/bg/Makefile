@@ -1,4 +1,5 @@
 LANGCODE=bg
+TREEBANK=bg
 include ../common.mak
 
 source:

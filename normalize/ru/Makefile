@@ -1,4 +1,5 @@
 LANGCODE=ru
+TREEBANK=ru
 include ../common.mak
 IMPORT   = Read::Syntagrus lines_per_doc=500
 

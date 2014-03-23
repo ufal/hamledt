@@ -1,4 +1,5 @@
 LANGCODE=is
+TREEBANK=is
 include ../common.mak
 
 source:

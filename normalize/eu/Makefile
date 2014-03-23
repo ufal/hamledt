@@ -1,4 +1,5 @@
 LANGCODE=eu
+TREEBANK=eu
 include ../common.mak
 
 source:

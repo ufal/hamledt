@@ -1,4 +1,5 @@
 LANGCODE=la
+TREEBANK=la
 include ../common.mak
 
 POSTPROCESS1_SCEN_OPT:=HamleDT::Pdt2TreexIsMemberConversion selector=""

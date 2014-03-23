@@ -1,4 +1,5 @@
 LANGCODE=sv
+TREEBANK=sv
 include ../common.mak
 
 source:

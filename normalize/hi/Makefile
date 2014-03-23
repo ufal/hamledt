@@ -1,4 +1,5 @@
 LANGCODE=hi
+TREEBANK=hi
 include ../common.mak
 WX2UTF   = perl -I /home/zeman/lib $(TMT_ROOT)/tools/format_convertors/conll_to_conll/conll_wx2utf.pl -l $(LANGCODE)
 

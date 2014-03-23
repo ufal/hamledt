@@ -1,4 +1,5 @@
-LANGCODE = ja
+LANGCODE=ja
+TREEBANK=ja
 include ../common.mak
 
 source:

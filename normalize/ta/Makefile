@@ -1,4 +1,5 @@
 LANGCODE=ta
+TREEBANK=ta
 include ../common.mak
 
 source:

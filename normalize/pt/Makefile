@@ -1,4 +1,5 @@
 LANGCODE=pt
+TREEBANK=pt
 include ../common.mak
 
 source:

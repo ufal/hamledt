@@ -1,4 +1,5 @@
 LANGCODE=hu
+TREEBANK=hu
 include ../common.mak
 
 source:

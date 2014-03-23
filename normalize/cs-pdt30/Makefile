@@ -1,6 +1,5 @@
-###!!! Pozor, tohle sice je kód jazyka, ale ten se dosud používal i pro tvorbu cest, a to teď už neplatí.
-###!!! Asi potřebujeme ještě něco jako TREEBANK=cs-pdt30
 LANGCODE=cs
+TREEBANK=cs=pdt30
 include ../common.mak
 
 # subdirs: amw, tamw / train-[1-8] dtest etest / *.a.gz

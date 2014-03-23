@@ -1,4 +1,5 @@
 LANGCODE=et
+TREEBANK=et
 include ../common.mak
 DIR0     = $(DATADIR)/treex/0000_constituents
 DIR1     = $(DATADIR)/treex/000_orig

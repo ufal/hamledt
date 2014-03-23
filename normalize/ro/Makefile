@@ -1,4 +1,5 @@
 LANGCODE=ro
+TREEBANK=ro
 include ../common.mak
 ORIG_TREEBANK=${TMT_ROOT}/share/data/resources/treebanks/ro
 IMPORT   = Read::DGA bundles_per_doc=500

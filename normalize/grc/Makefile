@@ -1,4 +1,5 @@
 LANGCODE=grc
+TREEBANK=grc
 include ../common.mak
 XML2CONLL = $(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl
 BETACODE  = $(TMT_ROOT)/tools/format_convertors/conll_to_conll/beta2unicode.pl

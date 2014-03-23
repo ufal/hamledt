@@ -1,4 +1,5 @@
-LANGCODE = zh
+LANGCODE=zh
+TREEBANK=zh
 include ../common.mak
 
 source:

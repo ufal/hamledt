@@ -1,4 +1,5 @@
 LANGCODE=sl
+TREEBANK=sl
 include ../common.mak
 
 source:
