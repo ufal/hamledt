@@ -10,11 +10,6 @@ source:
 
 treex: conll_to_treex
 
-# make the trees as similar to the PDT-style as possible
-# and store the result in 001_pdtstyle
-
-# SCEN1 = HamleDT::CS::Harmonize HamleDT::Pdt2TreexIsMemberConversion HamleDT::SetSharedModifier HamleDT::SetCoordConjunction HamleDT::Pdt2HamledtApos
-# the blocks are now called from within HamleDT::CS::Harmonize
-
-TO_PDT_TRAIN_OPT := -p --jobs 26
-
+# Parallelize normalization to make it faster.
+###!!! Vypadá to, že za současného nastavení se pro train i test dohromady použije počet úloh z ...TRAIN_OPT a ...TEST_OPT se ignoruje.
+TO_PDT_TRAIN_OPT := -p --jobs 52
