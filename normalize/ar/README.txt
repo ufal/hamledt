@@ -23,3 +23,5 @@ This data have their own problems (1700 syntactically unannotated nodes,
 
 Missing syntactic annotation should be repaired before we release HamleDT 2.0.
 Morphology might be repaired too if Zdeněk manages to run a tagger he developed.
+
+treex -Lar Read::Treex from='!data/treex/000_orig/train/*.treex.gz' Util::Eval atree='my $nrlimit=1; my $a = $.get_address(); my @nodes=$.get_descendants({ordered=>1}); my @nonrs = grep {$_->afun() ne "NR"} @nodes; my $n = scalar(@nodes); my $nnr=$n-scalar(@nonrs); if(scalar(@nonrs)==0) {log_warn("NO NON-NR AFUNS IN TREE\t$nnr/$n\t$a")} elsif($nnr>=$nrlimit) {log_warn("$nrlimit OR MORE NR AFUNS IN TREE\t$nnr/$n\t$a")}' |& tee NR.log
