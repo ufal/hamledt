@@ -115,7 +115,7 @@ for my $language ( @languages ) {
             NoNewNonProj         => $afuns{$language}{AuxS},
             NonleafAuxC          => $afuns{$language}{AuxC},
             NoneleafAuxP         => $afuns{$language}{AuxP},
-            NonParentAuxS        => $afuns{$language}{AuxS},
+            NonParentAuxS        => $afuns{$language}{TOTAL},
             NounGovernsDet       => ($ok_tests{$language}{NounGovernsDet} || 0)
                                      + ($tests{$language}{NounGovernsDet} || 0),
             NumberHavePosC       => ($ok_tests{$language}{NumberHavePosC} || 0)
