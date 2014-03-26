@@ -102,11 +102,11 @@ QI_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore
 
 i_all: trees tsplit incons
 
-check_tdir:
+check_idir:
 	[ -d $(I_DIR) ] || mkdir -p $(I_DIR)
 
-trees: check_tdir
-	$(TREEX) $(QI_OPS) $(I_BLOCKS) -- $(FILES) > $(I_DIR)/$(T_FILE)
+trees: check_idir
+	$(TREEX) $(QI_OPS) $(I_BLOCKS) -- $(FILES) 2> $(I_DIR)/trees.err > $(I_DIR)/$(T_FILE)
 
 tsplit: $(foreach l,$(LANGUAGES), tsplit-$(l))
 tsplit-%:
@@ -128,6 +128,9 @@ TESTLOG=test.log
 T_DIR = ./tests
 T_TABLE = latest_table.txt
 
+check_tdir:
+	[ -d $(T_DIR) ] || mkdir -p $(T_DIR)
+
 t_all: ttests ttable
 
 validate:
@@ -141,7 +144,7 @@ summarize_validation:
 # DZ: Removing --survive from the treex command below.
 # Sometimes a job fails to produce .stderr, treex does not know what to do (it is supposed to pass the stderrs in the original order)
 # but it does not kill the jobs because of the --survive flag.
-ttests:
+ttests: check_tdir
 	treex  -p --jobs=$(JOBS) \
 	Util::SetGlobal if_missing_bundles=ignore \
 	HamleDT::Test::AfunDefined \
