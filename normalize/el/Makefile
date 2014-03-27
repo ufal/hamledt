@@ -12,4 +12,4 @@ treex: conll_to_treex
 
 # Parallelize normalization to make it faster.
 ###!!! Vypadá to, že za současného nastavení se pro train i test dohromady použije počet úloh z ...TRAIN_OPT a ...TEST_OPT se ignoruje.
-TO_PDT_TRAIN_OPT := -p --jobs 52
+TO_PDT_TRAIN_OPT := -p --jobs 7
