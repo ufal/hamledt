@@ -127,27 +127,7 @@ VALLOG=validation.log
 TESTLOG=test.log
 T_DIR = ./tests
 T_TABLE = latest_table.txt
-
-check_tdir:
-	[ -d $(T_DIR) ] || mkdir -p $(T_DIR)
-
-t_all: ttests ttable
-
-validate:
-	treex -p --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(T_DIR)/$(VALLOG)
-	@echo
-	@echo Output of the validation test stored in $(T_DIR)/$(VALLOG)
-
-summarize_validation:
-	grep -v TREEX $(T_DIR)/$(VALLOG) || exit 0
-
-# DZ: Removing --survive from the treex command below.
-# Sometimes a job fails to produce .stderr, treex does not know what to do (it is supposed to pass the stderrs in the original order)
-# but it does not kill the jobs because of the --survive flag.
-ttests: check_tdir
-	treex  -p --jobs=$(JOBS) \
-	Util::SetGlobal if_missing_bundles=ignore \
-	HamleDT::Test::AfunDefined \
+TESTS = 'HamleDT::Test::AfunDefined \
 	HamleDT::Test::AfunKnown \
 	HamleDT::Test::AfunNotNR \
 	HamleDT::Test::AtvVBelowVerb \
@@ -174,7 +154,28 @@ ttests: check_tdir
 	HamleDT::Test::AuxPNotMember \
 	HamleDT::Test::AuxVNotOnTop \
 	HamleDT::Test::AuxXIsComma \
-	HamleDT::Test::SingleEffectiveRootChild \
+	HamleDT::Test::SingleEffectiveRootChild '
+
+check_tdir:
+	[ -d $(T_DIR) ] || mkdir -p $(T_DIR)
+
+t_all: ttests ttable
+
+validate:
+	treex -p --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(T_DIR)/$(VALLOG)
+	@echo
+	@echo Output of the validation test stored in $(T_DIR)/$(VALLOG)
+
+summarize_validation:
+	grep -v TREEX $(T_DIR)/$(VALLOG) || exit 0
+
+# DZ: Removing --survive from the treex command below.
+# Sometimes a job fails to produce .stderr, treex does not know what to do (it is supposed to pass the stderrs in the original order)
+# but it does not kill the jobs because of the --survive flag.
+ttests: check_tdir
+	treex  -p --jobs=$(JOBS) \
+	Util::SetGlobal if_missing_bundles=ignore \
+	$(TESTS) \
 	-- $(FILES) 2> $(T_DIR)/test.err > $(T_DIR)/$(TESTLOG)
 
 ttable:
