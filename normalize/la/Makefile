@@ -2,8 +2,6 @@ LANGCODE=la
 TREEBANK=la
 include ../common.mak
 
-POSTPROCESS1_SCEN_OPT:=HamleDT::Pdt2TreexIsMemberConversion selector=""
-
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
@@ -21,3 +19,7 @@ source:
 	$(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl -i $(IN)/test.xml > $(IN)/test.conll
 
 treex: conll_to_treex
+
+# Parallelize normalization to make it faster.
+###!!! Vypadá to, že za současného nastavení se pro train i test dohromady použije počet úloh z ...TRAIN_OPT a ...TEST_OPT se ignoruje.
+TO_PDT_TRAIN_OPT := -p --jobs 21
