@@ -4,7 +4,7 @@ VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
 LANGS={ar,bg,bn,ca,cs,da,de,el,en,es,et,eu,fa,fi,grc,hi,hu,it,ja,la,nl,pt,ro,ru,sk,sl,sv,ta,te,tr}
-#LANGS=el
+#LANGS=grc
 #LANGS={en,cs}
 SETS={train,test}
 FILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz'
@@ -54,7 +54,10 @@ transftest:
 #TLNG=hi
 #TEST=LeafAux
 FILELIST=ttred.$(TLNG).$(TEST).filelist
+# A bug in ttred causes it to ignore the first line in the file list.
+# Therefore we output a dummy line first.
 ttred:
-	grep hamledt/$(TLNG)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 > $(FILELIST)
+	echo > $(FILELIST)
+	grep hamledt/$(TLNG)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 >> $(FILELIST)
 	ttred -l $(FILELIST)
 
