@@ -20,5 +20,3 @@ treex:
 		Read::PDT schema_dir=$(SCHEMADIR) t_layer=0 from='!$(IN)/test/*.a.gz' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/  compress=1
-
-TO_PDT_TRAIN_OPT := -p --jobs 100

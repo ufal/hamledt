@@ -14,7 +14,3 @@ source:
 treex:
 	$(TREEX) $(IMPORT) from=$(IN)/train.conll W2A::EN::Lemmatize $(WRITE0) path=$(DIR0)/train/
 	$(TREEX) $(IMPORT) from=$(IN)/test.conll  W2A::EN::Lemmatize $(WRITE0) path=$(DIR0)/test/
-
-# Parallelize normalization to make it faster.
-###!!! Vypadá to, že za současného nastavení se pro train i test dohromady použije počet úloh z ...TRAIN_OPT a ...TEST_OPT se ignoruje.
-TO_PDT_TRAIN_OPT := -p --jobs 39

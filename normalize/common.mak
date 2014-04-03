@@ -28,8 +28,7 @@ WRITE0   = Write::Treex file_stem='' clobber=1
 WRITE    = Write::Treex clobber=1
 TRAIN    = $(IN)/train.conll
 TEST     = $(IN)/test.conll
-TO_PDT_TRAIN_OPT :=
-TO_PDT_TEST_OPT  :=
+TO_PDT_TRAIN_OPT := -p --jobs 50
 POSTPROCESS1_SCEN_OPT :=
 POSTPROCESS2_SCEN_OPT :=
 
