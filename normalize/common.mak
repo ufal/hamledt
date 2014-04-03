@@ -22,13 +22,12 @@ CONLLDIR = $(DATADIR)/$(SUBDIRC)
 DIR_STAN = $(DATADIR)/$(SUBDIR_STAN)
 
 # Processing shortcuts.
-TREEX    = treex -L$(LANGCODE)
+TREEX    = treex -p --jobs 50 -L$(LANGCODE)
 IMPORT   = Read::CoNLLX lines_per_doc=500
 WRITE0   = Write::Treex file_stem='' clobber=1
 WRITE    = Write::Treex clobber=1
 TRAIN    = $(IN)/train.conll
 TEST     = $(IN)/test.conll
-TO_PDT_TRAIN_OPT := -p --jobs 50
 POSTPROCESS1_SCEN_OPT :=
 POSTPROCESS2_SCEN_OPT :=
 
@@ -59,7 +58,7 @@ UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
 SCEN1 = HamleDT::$(UCLANG)::Harmonize
 
 pdt:
-	$(TREEX) $(TO_PDT_TRAIN_OPT) $(SCEN1)  Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
+	$(TREEX) $(SCEN1)  Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
 
 # This goal serves development and debugging of the Harmonize block.
 # Smaller data are processed faster.
