@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 # Regression testing of Treex and HamleDT.
 # This script checks out a fresh copy of the HEAD revision of Treex and tests how processing of HamleDT data changed since the previous test run.
+# The script invokes parallel processing and must be run on the head of the cluster. It is meant to be run nightly by cron.
 # Copyright © 2014 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
@@ -77,7 +78,9 @@ printf("There are %d treebanks in $normpath:\n%s\n", scalar(@treebanks), join(' 
 foreach my $tbk (@treebanks)
 {
     my $path = $normpath.'/'.$tbk;
+    print("====================================================================================================\n");
     print("Entering $path...\n");
+    print("====================================================================================================\n");
     chdir($path) or die("Cannot enter folder $path: $!");
     ###!!!dzsys::saferun("make dirs");
     ###!!!dzsys::saferun("make source");
