@@ -15,6 +15,7 @@ treex:
 		Util::Eval atree='$$._normalize_node_ordering()' \
 		Util::Eval anode='if($$.afun() eq "???") {$$.set_afun("NR")}' \
 		A2A::RemoveUnannotatedSentences \
+		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/train/ compress=1
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) t_layer=0 from='!$(IN)/test/*.a' \
@@ -22,6 +23,7 @@ treex:
 		Util::Eval atree='$$._normalize_node_ordering()' \
 		Util::Eval anode='if($$.afun() eq "???") {$$.set_afun("NR")}' \
 		A2A::RemoveUnannotatedSentences \
+		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/  compress=1
 
 # Parallelize normalization to make it faster.
