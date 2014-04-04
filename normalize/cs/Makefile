@@ -1,5 +1,6 @@
 LANGCODE=cs
 TREEBANK=cs
+HARMONIZE=HarmonizeCoNLL
 include ../common.mak
 
 source:

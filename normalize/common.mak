@@ -5,6 +5,7 @@ SHELL=/bin/bash
 # The language-specific makefile should define two environment variables:
 # LANGCODE=cs # Czech
 # TREEBANK=cs-pdt30 # either same as language code, or with hyphen and lowercase treebank code; will be used in paths
+# HARMONIZE=HarmonizeSpecial # only needed if not called Harmonize; will be sought for in the $(LANGCODE) folder.
 
 # Set paths. The main path, TMT_ROOT, must be pre-set in your environment.
 # You may want to put something like this in your .bash_profile, depending on where your copy of TectoMT is:
@@ -22,12 +23,15 @@ CONLLDIR = $(DATADIR)/$(SUBDIRC)
 DIR_STAN = $(DATADIR)/$(SUBDIR_STAN)
 
 # Processing shortcuts.
-TREEX    = treex -p --jobs 50 -L$(LANGCODE)
-IMPORT   = Read::CoNLLX lines_per_doc=500
-WRITE0   = Write::Treex file_stem='' clobber=1
-WRITE    = Write::Treex clobber=1
-TRAIN    = $(IN)/train.conll
-TEST     = $(IN)/test.conll
+TREEX      = treex -p --jobs 50 -L$(LANGCODE)
+IMPORT     = Read::CoNLLX lines_per_doc=500
+WRITE0     = Write::Treex file_stem='' clobber=1
+WRITE      = Write::Treex clobber=1
+# Treebank-specific Makefiles must override the value of HARMONIZE if their harmonization block is not called Harmonize.
+# They must do so before they include common.mak.
+HARMONIZE ?= Harmonize
+TRAIN      = $(IN)/train.conll
+TEST       = $(IN)/test.conll
 POSTPROCESS1_SCEN_OPT :=
 POSTPROCESS2_SCEN_OPT :=
 
@@ -55,7 +59,7 @@ conll_to_treex:
 # Make the trees as similar to the PDT-style as possible
 # and store the result in 001_pdtstyle.
 UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
-SCEN1 = HamleDT::$(UCLANG)::Harmonize
+SCEN1 = HamleDT::$(UCLANG)::$(HARMONIZE)
 
 pdt:
 	$(TREEX) $(SCEN1)  Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
