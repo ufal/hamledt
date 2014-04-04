@@ -62,7 +62,7 @@ UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
 SCEN1 = HamleDT::$(UCLANG)::$(HARMONIZE)
 
 pdt:
-	$(TREEX) $(SCEN1)  Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
+	$(TREEX) $(SCEN1) Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
 
 # This goal serves development and debugging of the Harmonize block.
 # Smaller data are processed faster.
