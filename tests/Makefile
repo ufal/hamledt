@@ -3,12 +3,12 @@ JOBS=100
 VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
-LANGS={ar,bg,bn,ca,cs,da,de,el,en,es,et,eu,fa,fi,grc,hi,hu,it,ja,la,nl,pt,ro,ru,sk,sl,sv,ta,te,tr}
-#LANGS=sk
-#LANGS={en,cs}
+TREEBANKS={ar,bg,bn,ca,cs,cs-pdt30,da,de,el,en,es,et,eu,fa,fi,grc,hi,hu,it,ja,la,nl,pt,ro,ru,sk,sl,sv,ta,te,tr}
+#TREEBANKS=sk
+#TREEBANKS={en,cs}
 SETS={train,test}
-FILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/*_pdtstyle/$(SETS)/*.treex.gz'
-TRANSFFILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(LANGS)/treex/trans*/$(SETS)/*.treex.gz'
+FILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(TREEBANKS)/treex/*_pdtstyle/$(SETS)/*.treex.gz'
+TRANSFFILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(TREEBANKS)/treex/trans*/$(SETS)/*.treex.gz'
 
 
 validate:
@@ -50,14 +50,14 @@ transftest:
 	HamleDT::Test::CoordStyle stylefrompath=1 \
 	-- $(TRANSFFILES) 2> transftest.err > transftest.log
 
-# TLNG=hi TEST=SubjectBelowVerb make ttred
-#TLNG=hi
+# TTBK=hi TEST=SubjectBelowVerb make ttred
+#TTBK=hi
 #TEST=LeafAux
-FILELIST=ttred.$(TLNG).$(TEST).filelist
+FILELIST=ttred.$(TTBK).$(TEST).filelist
 # A bug in ttred causes it to ignore the first line in the file list.
 # Therefore we output a dummy line first.
 ttred:
 	echo > $(FILELIST)
-	grep hamledt/$(TLNG)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 >> $(FILELIST)
+	grep hamledt/$(TTBK)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 >> $(FILELIST)
 	ttred -l $(FILELIST)
 
