@@ -2,6 +2,9 @@
 # Regression testing of Treex and HamleDT.
 # This script checks out a fresh copy of the HEAD revision of Treex and tests how processing of HamleDT data changed since the previous test run.
 # The script invokes parallel processing and must be run on the head of the cluster. It is meant to be run nightly by cron.
+# Usage: perl -I/home/zeman/lib regtest.pl |& tee regtest.log
+# 0 2 * * * perl -I/home/zeman/lib /net/work/people/zeman/tectomt/treex/devel/hamledt/regtest.pl > /net/cluster/TMP/zeman/hamledt-regression-test/regtest.log 2>&1
+# (Ssh to lrc1, call crontab -e and schedule the above command to be run regularly.)
 # Copyright © 2014 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
@@ -11,7 +14,9 @@ binmode(STDIN, ':utf8');
 binmode(STDOUT, ':utf8');
 binmode(STDERR, ':utf8');
 use Config;
+use lib '/home/zeman/lib';
 use dzsys;
+use cas;
 
 # Where is our test room?
 # Lot of disk space is required. Several previous logs and data snapshots will be kept there.
@@ -19,10 +24,10 @@ my $workroot = '/net/cluster/TMP/zeman/hamledt-regression-test';
 dzsys::saferun("mkdir -p $workroot");
 my $tmtroot = $workroot.'/tectomt';
 # Remove previous revision of TectoMT, if present.
-###!!!dzsys::saferun("rm -rf $tmtroot");
+dzsys::saferun("rm -rf $tmtroot");
 # Check out fresh working copy of TectoMT.
 chdir($workroot);
-###!!!dzsys::saferun("svn checkout https://svn.ms.mff.cuni.cz/svn/tectomt_devel/trunk tectomt");
+dzsys::saferun("svn checkout https://svn.ms.mff.cuni.cz/svn/tectomt_devel/trunk tectomt");
 # Make sure that any subsequent calls to Treex and other TectoMT code will use the current version.
 $ENV{TMT_ROOT} = $tmtroot;
 $ENV{TMT_SHARED} = $tmtroot.'/share';
@@ -68,7 +73,8 @@ $ENV{PERLLIB} = join(':', @plibs);
 $ENV{PERL5LIB} = $ENV{PERLLIB};
 print("PERL5LIB = $ENV{PERL5LIB}\n");
 # Prepare the folder where HamleDT will be generated according to its Makefiles.
-dzsys::saferun("mkdir -p $tmtroot/share/data/resources/hamledt");
+my $datapath = $tmtroot.'/share/data/resources/hamledt';
+dzsys::saferun("mkdir -p $datapath");
 # Figure out the current set of languages and treebanks in HamleDT.
 my $normpath = $tmtroot.'/treex/devel/hamledt/normalize';
 opendir(DIR, $normpath) or die("Cannot access $normpath: $!");
@@ -82,8 +88,16 @@ foreach my $tbk (@treebanks)
     print("Entering $path...\n");
     print("====================================================================================================\n");
     chdir($path) or die("Cannot enter folder $path: $!");
-    ###!!!dzsys::saferun("make dirs");
-    ###!!!dzsys::saferun("make source");
+    dzsys::saferun("make dirs");
+    dzsys::saferun("make source");
     dzsys::saferun("make treex");
     dzsys::saferun("make pdt");
 }
+# Generate name for the data snapshot that we just created.
+my $timestamp = cas::ted()->{rmdhms};
+my $treex_revision = dzsys::chompticks("cd $tmtroot ; svn info | grep -P '^Revision:'");
+$treex_revision =~ s/^Revision:\s*//;
+my $snapshotid = "hamledt-$timestamp-r$treex_revision";
+print("HamleDT snapshot ID = $snapshotid\n");
+# Archive the snapshot.
+dzsys::saferun("mv $datapath $workroot/$snapshotid");
