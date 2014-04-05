@@ -1,12 +1,22 @@
 LANGCODE=cs
 TREEBANK=cs
-HARMONIZE=HarmonizeCoNLL
 include ../common.mak
 
+SOURCEDIR=/net/projects/pdt/pdt30/data
+# subdirs: amw, tamw / train-[1-8] dtest etest / *.a.gz
 source:
-	mkdir -p $(DATADIR)
-	mkdir -p $(IN)
-	ln -s /net/data/conll/2007/cs/train.conll $(IN)/train.conll
-	ln -s /net/data/conll/2007/cs/test.conll $(IN)/test.conll
+	mkdir -p data/source/train
+	mkdir -p data/source/test
+	ln -s $(SOURCEDIR)/{tamw,amw}/{train-[1-8],dtest}/*.[amw].gz $(IN)/train
+	ln -s $(SOURCEDIR)/{tamw,amw}/etest/*.[amw].gz $(IN)/test
 
-treex: conll_to_treex
+SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
+treex:
+	$(TREEX) \
+		Read::PDT schema_dir=$(SCHEMADIR) t_layer=0 from='!$(IN)/train/*.a.gz' \
+		A2A::FillCoNLLAttributes \
+		Write::Treex clobber=1 path=$(DIR0)/train/ compress=1
+	$(TREEX) \
+		Read::PDT schema_dir=$(SCHEMADIR) t_layer=0 from='!$(IN)/test/*.a.gz' \
+		A2A::FillCoNLLAttributes \
+		Write::Treex clobber=1 path=$(DIR0)/test/  compress=1
