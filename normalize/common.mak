@@ -15,12 +15,14 @@ SUBDIRIN = source
 SUBDIR0  = treex/000_orig
 SUBDIR1  = treex/001_pdtstyle
 SUBDIRC  = conll
-SUBDIR_STAN = stanford
+SUBDIRJ  = jo
+SUBDIRS  = stanford
 IN       = $(DATADIR)/$(SUBDIRIN)
 DIR0     = $(DATADIR)/$(SUBDIR0)
 DIR1     = $(DATADIR)/$(SUBDIR1)
 CONLLDIR = $(DATADIR)/$(SUBDIRC)
-DIR_STAN = $(DATADIR)/$(SUBDIR_STAN)
+JODIR    = $(DATADIR)/$(SUBDIRJ)
+STANDIR  = $(DATADIR)/$(SUBDIRS)
 
 # Processing shortcuts.
 TREEX      = treex -p --jobs 50 -L$(LANGCODE)
@@ -95,7 +97,7 @@ TO_STANFORD=\
 			Util::Eval anode='$$anode->set_afun('');'
 # This is for TrEd to display the newly set conll/deprels instead of afuns.
 
-WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIR_STAN)} clobber=1 \
+WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIRS)} clobber=1 \
 	Write::Treex \
 	Write::Stanford type_attribute=conll/deprel to=. \
 	Write::CoNLLX deprel_attribute=conll/deprel pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=iset to=.
@@ -108,6 +110,24 @@ treex_to_stanford:
 
 treex_to_stanford_test:
 	$(TREEX) $(STANFORD) -- $(DIR1)/test/*.treex.gz
+
+# Joachim Daiber needs prepositions as leaves attached to their noun.
+# He does not want the Stanford style though. Everything else should be standard Prague.
+TGZJO = hamledt_2.0jo_$(TREEBANK)_conll.tgz
+jo:
+	$(TREEX) \
+		Read::Treex from='!$(DIR1)/train/*.treex.gz' \
+		HamleDT::Transform::PrepositionDownward \
+		Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(JODIR)/train clobber=1 compress=0
+	$(TREEX) \
+		Read::Treex from='!$(DIR1)/test/*.treex.gz' \
+		HamleDT::Transform::PrepositionDownward \
+		Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(JODIR)/test clobber=1 compress=0
+	tar czf $(TGZJO) -P --xform s-$(TMT_ROOT)/share/data/resources/hamledt/-- $(JODIR)/*
+	scp $(TGZJO) ufal.mff.cuni.cz:/home/zeman/www/soubory/$(TGZJO)
+	# wget http://ufal.mff.cuni.cz/~zeman/soubory/$(TGZJO)
+	# rm $(TGZJO)
+	# for l in en de nl ; do wget http://ufal.mff.cuni.cz/~zeman/soubory/hamledt_2.0jo_${l}_conll.tgz ; done
 
 # Basic statistics: number of sentences and tokens in train and test data.
 stats:
