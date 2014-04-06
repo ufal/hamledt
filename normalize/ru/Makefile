@@ -11,5 +11,5 @@ source:
 # run a conversion of the original data into the treex format
 # and store the results in 000_orig/
 treex:
-	cat $(IN)/*.tgt | $(TREEX) $(IMPORT) language=ru $(WRITE0) path=$(DIR0)/train/
-	cat $(IN)/*.tgt.TEST | $(TREEX) $(IMPORT) language=ru $(WRITE0) path=$(DIR0)/test/
+	cat $(IN)/*.tgt | $(TREEX) $(IMPORT) $(WRITE0) path=$(DIR0)/train/
+	cat $(IN)/*.tgt.TEST | $(TREEX) $(IMPORT) $(WRITE0) path=$(DIR0)/test/
