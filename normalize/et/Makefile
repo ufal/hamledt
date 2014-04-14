@@ -12,5 +12,5 @@ source:
 	done ; echo '</body></corpus>' ) | ./repair_encoding.pl > $(IN)/corpus.xml
 
 treex:
-	$(TREEX) Read::Tiger from=$(IN)/corpus.xml Filter::NthSentence n=10 keep=0 P2A::TigerET Write::Treex path=$(DIR0)/train/ clobber=1 compress=1
-	$(TREEX) Read::Tiger from=$(IN)/corpus.xml Filter::NthSentence n=10 keep=1 P2A::TigerET Write::Treex path=$(DIR0)/test/  clobber=1 compress=1
+	$(TREEX) Read::Tiger from=$(IN)/corpus.xml Filter::NthSentence n=10 keep=0 P2A::TigerET Write::Treex path=$(DIR0)/train/ file_stem='001' clobber=1 compress=1
+	$(TREEX) Read::Tiger from=$(IN)/corpus.xml Filter::NthSentence n=10 keep=1 P2A::TigerET Write::Treex path=$(DIR0)/test/  file_stem='001' clobber=1 compress=1
