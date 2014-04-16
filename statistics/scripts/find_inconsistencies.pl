@@ -11,9 +11,19 @@ while ( defined (my $line = <> )) {
     chomp $line;
     next if ($line eq '');
     my ($language,$tokens,$tree,$tags) = split /\t/, $line;
+    $tree =~ s/#\d+//g;
+    my @tokens = split /\s+/, $tokens;
+    my %order;
+    my @forms;
+    for my $token (@tokens) {
+        my ($form, $order) = split '#', $token;
+        $order{$form} = $order;
+        push @forms, $form;
+    }
+    $tokens = join ' ', sort { $order{$a} <=> $order{$b} } @forms;
     $cnt{$tokens}{$tree}++;
     $tags{$tokens}=$tags;
-    #  print "$tokens xxxxx $tree\n";
+    # print "$tokens xxxxx $tree\n";
 }
 
 my %trees_per_token;
