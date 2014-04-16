@@ -1,6 +1,7 @@
 #-*- mode: makefile -*-
 
 SUBDIR    = treex/001_pdtstyle
+ORIG_SUBDIR = treex/000_orig
 TREEX     = treex
 SCRIPTS = ../scripts
 JOBS=100
@@ -10,6 +11,7 @@ LANGS=*
 # for shell expansion
 
 FILES = $(DATADIR)/$(LANGS)/$(SUBDIR)/t*/*.treex.gz
+FILES_ORIG = $(DATADIR)/$(LANGS)/$(ORIG_SUBDIR)/t*/*.treex.gz
 
 help:
 	# 'Check Makefile'
@@ -94,8 +96,10 @@ entropy:
 
 I_BLOCKS = HamleDT::Test::Statistical::ExtractTrees
 I_DIR = ./inconsistencies
-T_FILE = trees.txt
-I_FILE = inconsistencies.txt
+T_FILE_ORIG = orig_trees.txt
+T_FILE_PDT = pdt_trees.txt
+I_FILE_ORIG = orig_inconsistencies.txt
+I_FILE_PDT = pdt_inconsistencies.txt
 
 
 QI_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore 
@@ -105,16 +109,27 @@ i_all: trees tsplit incons
 check_idir:
 	[ -d $(I_DIR) ] || mkdir -p $(I_DIR)
 
-trees: check_idir
-	$(TREEX) $(QI_OPS) $(I_BLOCKS) -- $(FILES) 2> $(I_DIR)/trees.err > $(I_DIR)/$(T_FILE)
+trees: check_idir trees_orig trees_pdt
+trees_orig:
+	$(TREEX) $(QI_OPS) $(I_BLOCKS) -- $(FILES_ORIG) 2> $(I_DIR)/orig_trees.err > $(I_DIR)/$(T_FILE_ORIG)
+trees_pdt: 
+	$(TREEX) $(QI_OPS) $(I_BLOCKS) -- $(FILES) 2> $(I_DIR)/pdt_trees.err > $(I_DIR)/$(T_FILE_PDT)
 
-tsplit: $(foreach l,$(LANGUAGES), tsplit-$(l))
-tsplit-%:
-	cat $(I_DIR)/$(T_FILE) | grep -e '^$*' > $(I_DIR)/$*-$(T_FILE)
+tsplit: tsplit_orig tsplit_pdt
+tsplit_orig: $(foreach l,$(LANGUAGES), tsplit_orig-$(l))
+tsplit_orig-%:
+	cat $(I_DIR)/$(T_FILE_ORIG) | grep -e '^$*' > $(I_DIR)/$*-$(T_FILE_ORIG)
+tsplit_pdt: $(foreach l,$(LANGUAGES), tsplit_pdt-$(l))
+tsplit_pdt-%:
+	cat $(I_DIR)/$(T_FILE_PDT) | grep -e '^$*' > $(I_DIR)/$*-$(T_FILE_PDT)
 
-incons: $(foreach l,$(LANGUAGES), incons-$(l))
-incons-%:
-	cat $(I_DIR)/$*-$(T_FILE) | $(SCRIPTS)/find_inconsistencies.pl > $(I_DIR)/$*-$(I_FILE)
+incons: incons_orig incons_pdt
+incons_orig: $(foreach l,$(LANGUAGES), incons_orig-$(l))
+incons_orig-%:
+	cat $(I_DIR)/$*-$(T_FILE_ORIG) | $(SCRIPTS)/find_inconsistencies.pl > $(I_DIR)/$*-$(I_FILE_ORIG)
+incons_pdt: $(foreach l,$(LANGUAGES), incons_pdt-$(l))
+incons_pdt-%:
+	cat $(I_DIR)/$*-$(T_FILE_PDT) | $(SCRIPTS)/find_inconsistencies.pl > $(I_DIR)/$*-$(I_FILE_PDT)
 
 total_incons:
 	cat $(I_DIR)/*-$(T_FILE) | $(SCRIPTS)/find_inconsistencies.pl > $(I_DIR)/total_$(I_FILE)
@@ -130,6 +145,9 @@ T_TABLE = latest_table.txt
 TESTS = 'HamleDT::Test::AfunDefined \
 	HamleDT::Test::AfunKnown \
 	HamleDT::Test::AfunNotNR \
+	HamleDT::Test::AfunsUnderRoot \
+	HamleDT::Test::AdvNotUnderNoun \
+	HamleDT::Test::AtrNotUnderVerb \
 	HamleDT::Test::AtvVBelowVerb \
 	HamleDT::Test::AuxAUnderNoun \
 	HamleDT::Test::AuxZChilds \
