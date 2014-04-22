@@ -205,6 +205,49 @@ sub loop
 
 
 #------------------------------------------------------------------------------
+# Returns block parameters that specify which node attributes shall be exported
+# to the CoNLL file. Identical parameters must be used to create training and
+# test data. In the former case, the parameters are applied to the
+# Write::CoNLLX block. In the latter case, the parameters are applied to the
+# W2A::ParseMalt block.
+#------------------------------------------------------------------------------
+sub get_conll_block_parameters
+{
+    my $transformation = shift;
+    my @parameters;
+    # Some attributes are not available before normalization.
+    if($transformation eq '000_orig')
+    {
+        @parameters =
+        (
+            'cpos_attribute=conll/cpos',
+            'pos_attribute=conll/pos',
+            'feat_attribute=conll/feat',
+            'deprel_attribute=conll/deprel',
+            'is_member_within_afun=1',
+            'is_shared_modifier_within_afun=1',
+            'is_coord_conjunction_within_afun=1'
+        );
+    }
+    else # harmonized data
+    {
+        @parameters =
+        (
+            'cpos_attribute=conll/cpos',
+            'pos_attribute=tag',
+            'feat_attribute=iset',
+            'deprel_attribute=afun',
+            'is_member_within_afun=1',
+            'is_shared_modifier_within_afun=1',
+            'is_coord_conjunction_within_afun=1'
+        );
+    }
+    return join(' ', @parameters);
+}
+
+
+
+#------------------------------------------------------------------------------
 # Creates CoNLL training file from the transformed Treex files. Must be rerun
 # before training whenever the normalization or transformation algorithm
 # changed.
@@ -220,26 +263,14 @@ sub create_conll_training_data
     print SCR ("treex -p -j 20 ");
     print SCR ("Util::SetGlobal language=$language ");
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
-    my $writeparam;
-    $writeparam .= 'cpos_attribute=conll/cpos ';
-    $writeparam .= 'pos_attribute=conll/pos ';
-    $writeparam .= 'feat_attribute=conll/feat ';
-    # Jednorázový pokus: odstranit z trénovacích dat všechny syntaktické značky.
-    # (Skončil katastrofou pro parser smf, ostatní z něj vyšly bez větších šrámů, ale zatím se mi nepodařilo zjistit příčinu, proto ponechávám možnost pokus znova zapnout.)
-    my $pokus = 0;
-    if($pokus)
-    {
-        $writeparam .= 'deprel_attribute=_ ';
-    }
-    else
-    {
-        $writeparam .= 'deprel_attribute='.($transformation eq '000_orig' ? 'conll/deprel' : 'afun').' ';
-        $writeparam .= 'is_member_within_afun=1 ';
-        $writeparam .= 'is_shared_modifier_within_afun=1 ';
-        $writeparam .= 'is_coord_conjunction_within_afun=1 ';
-    }
+    my $writeparam = get_conll_block_parameters($transformation);
     print SCR ("Write::CoNLLX $writeparam ");
-    print SCR ("-- $data_dir/$language/treex/$transformation/train/*.treex.gz > $filename1\n");
+    print SCR ("-- $data_dir/$language/treex/$transformation/train/*.treex.gz ");
+    print SCR ("> $filename1\n");
+    ###!!! In order to have experiments finished faster, temporarily limit training data to a fixed number of sentences.
+    print SCR ("/net/work/people/zeman/parsing/tools/split_conll.pl < $filename1 -head 5000 $filename1.truncated /dev/null\n");
+    print SCR ("mv $filename1.truncated $filename1\n");
+    # Prepare a modified form that can be used by the MST Parser.
     print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
     close(SCR);
     chmod(0755, $scriptname) or die("Cannot chmod $scriptname: $!\n");
@@ -320,10 +351,12 @@ sub parse
 {
     my $language = shift;
     my $transformation = shift;
+    # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See above.
+    my $writeparam = get_conll_block_parameters($transformation);
     my %parser_block =
     (
-        mlt => "W2A::ParseMalt model=malt_nivreeager.mco cpos_attribute=conll/cpos pos_attribute=conll/pos feat_attribute=conll/feat",
-        smf => "W2A::ParseMalt model=malt_stacklazy.mco  cpos_attribute=conll/cpos pos_attribute=conll/pos feat_attribute=conll/feat",
+        mlt => "W2A::ParseMalt model=malt_nivreeager.mco $writeparam",
+        smf => "W2A::ParseMalt model=malt_stacklazy.mco  $writeparam",
         mcd => "W2A::ParseMST  model_dir=. model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
         mcp => "W2A::ParseMST  model_dir=. model=mcd_proj_o2.model    decodetype=proj     pos_attribute=conll/pos",
     );
