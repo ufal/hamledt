@@ -8,7 +8,7 @@ JOBS = 20
 
 help:
 	@echo 'make qall                              # normalize everything using SGE'
-	@echo 'make source treex to_pdt LANGS="ar bg" # non-parallel, only for Arabic and Bengali'
+	@echo 'make source treex pdt LANGS="ar bg"    # non-parallel, only for Arabic and Bulgarian'
 	@echo '# Inspect the Makefile for details'
 
 # Non-parallel
@@ -31,8 +31,12 @@ qall: $(foreach l,$(LANGS),qall-$(l))
 qall-%:
 	/home/bojar/tools/shell/qsubmit --jobname=$*-normalize "cd $* && make check-source dirs treex pdt"
 
+qpdt: $(foreach l,$(LANGS),qpdt-$(l))
+qpdt-%:
+	/home/bojar/tools/shell/qsubmit --jobname=$*-pdt "cd $* && make pdt"
+
 clean:
-	rm -f *-normalize.o* .qsubmit*
+	rm -f *-normalize.o* *-pdt.o* .qsubmit*
 	rm -rf */???-cluster-run-*
 
 
