@@ -14,7 +14,8 @@ sub usage
     print STDERR ("\tThe list of transformations is created by scanning subfolders of the language.\n");
     print STDERR ("\tThe 'clean' action currently only removes the cluster logs (.o123456 files).\n");
     print STDERR ("\tOptions:\n");
-    print STDERR ("\t-languages en,cs,ar ... instead of all languages, process only those specified here.\n");
+    print STDERR ("\t--languages en,cs,ar ... instead of all languages, process only those specified here.\n");
+    print STDERR ("\t--trainlimit N ... for the 'pretrain' action: use only the first N sentences for training.\n");
 }
 
 use utf8;
@@ -33,7 +34,8 @@ use cluster;
 GetOptions
 (
     'languages|langs=s' => \$konfig{languages},
-    'help' => \$konfig{help}
+    'trainlimit=s'      => \$konfig{trainlimit},
+    'help'              => \$konfig{help}
 );
 exit(usage()) if($konfig{help});
 
@@ -267,9 +269,12 @@ sub create_conll_training_data
     print SCR ("Write::CoNLLX $writeparam ");
     print SCR ("-- $data_dir/$language/treex/$transformation/train/*.treex.gz ");
     print SCR ("> $filename1\n");
-    ###!!! In order to have experiments finished faster, temporarily limit training data to a fixed number of sentences.
-    print SCR ("/net/work/people/zeman/parsing/tools/split_conll.pl < $filename1 -head 5000 $filename1.truncated /dev/null\n");
-    print SCR ("mv $filename1.truncated $filename1\n");
+    # In order to have experiments finished faster, we can limit training data to a fixed number of sentences.
+    if($konfig{trainlimit})
+    {
+        print SCR ("/net/work/people/zeman/parsing/tools/split_conll.pl < $filename1 -head $konfig{trainlimit} $filename1.truncated /dev/null\n");
+        print SCR ("mv $filename1.truncated $filename1\n");
+    }
     # Prepare a modified form that can be used by the MST Parser.
     print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
     close(SCR);
