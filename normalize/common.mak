@@ -25,7 +25,8 @@ JODIR    = $(DATADIR)/$(SUBDIRJ)
 STANDIR  = $(DATADIR)/$(SUBDIRS)
 
 # Processing shortcuts.
-TREEX      = treex -p --jobs 50 -L$(LANGCODE)
+TREEX      = treex -L$(LANGCODE)
+QTREEX     = treex -p --jobs 50 -L$(LANGCODE)
 IMPORT     = Read::CoNLLX lines_per_doc=500
 WRITE0     = Write::Treex file_stem='' clobber=1
 WRITE      = Write::Treex clobber=1
@@ -64,7 +65,7 @@ UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
 SCEN1 = HamleDT::$(UCLANG)::$(HARMONIZE)
 
 pdt:
-	$(TREEX) $(SCEN1) Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
+	$(QTREEX) $(SCEN1) Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
 
 # This goal serves development and debugging of the Harmonize block.
 # Smaller data are processed faster.
@@ -76,8 +77,8 @@ test:
 # This goal exports the harmonized trees in CoNLL format, which is more useful for ordinary users.
 CONLL_ATTRIBUTES = selector= deprel_attribute=afun is_member_within_afun=1 pos_attribute=tag feat_attribute=iset
 export_conll:
-	$(TREEX) Read::Treex from='!$(DIR1)/train/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/train clobber=1 compress=1
-	$(TREEX) Read::Treex from='!$(DIR1)/test/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/test clobber=1 compress=1
+	$(QTREEX) Read::Treex from='!$(DIR1)/train/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/train clobber=1 compress=1
+	$(QTREEX) Read::Treex from='!$(DIR1)/test/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/test clobber=1 compress=1
 
 # TODO: other structure changes (compound verbs)
 # TODO: often fails because there remain some punct nodes with children
@@ -105,8 +106,7 @@ WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIRS)} clobber=1 \
 STANFORD=$(TO_STANFORD) $(WRITE_STANFORD)
 
 treex_to_stanford:
-	$(TREEX) $(STANFORD) -- $(DIR1)/train/*.treex.gz
-	$(TREEX) $(STANFORD) -- $(DIR1)/test/*.treex.gz
+	$(QTREEX) $(STANFORD) -- $(DIR1)/{train,test}/*.treex.gz
 
 treex_to_stanford_test:
 	$(TREEX) $(STANFORD) -- $(DIR1)/test/*.treex.gz
@@ -115,11 +115,11 @@ treex_to_stanford_test:
 # He does not want the Stanford style though. Everything else should be standard Prague.
 TGZJO = hamledt_2.0jo_$(TREEBANK)_conll.tgz
 jo:
-	$(TREEX) \
+	$(QTREEX) \
 		Read::Treex from='!$(DIR1)/train/*.treex.gz' \
 		HamleDT::Transform::PrepositionDownward \
 		Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(JODIR)/train clobber=1 compress=0
-	$(TREEX) \
+	$(QTREEX) \
 		Read::Treex from='!$(DIR1)/test/*.treex.gz' \
 		HamleDT::Transform::PrepositionDownward \
 		Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(JODIR)/test clobber=1 compress=0
@@ -143,6 +143,3 @@ deprelstats:
 
 clean:
 	rm -rf $(DATADIR)/treex
-
-pokus:
-	echo $(SCEN1)

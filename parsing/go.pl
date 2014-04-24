@@ -236,7 +236,7 @@ sub get_conll_block_parameters
         @parameters =
         (
             'cpos_attribute=conll/cpos',
-            'pos_attribute=tag',
+            'pos_attribute=conll/pos',
             'feat_attribute=iset',
             'deprel_attribute=afun',
             'is_member_within_afun=1',
