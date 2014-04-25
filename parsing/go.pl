@@ -7,7 +7,7 @@
 sub usage
 {
     print STDERR ("go.pl [OPTIONS] <ACTION>\n");
-    print STDERR ("\tActions: pretrain|train|parse|table|clean\n");
+    print STDERR ("\tActions: pretrain|train|parse|table|ltable|clean\n");
     print STDERR ("\tExperiment folder tree is created/expected at ./pokus (currently fixed).\n");
     print STDERR ("\tSource data path is fixed at \$TMT_SHARED.\n");
     print STDERR ("\tThe script knows the list of available languages.\n");
@@ -50,7 +50,7 @@ $wdir = dzsys::absolutize_path($wdir);
 # We need to know what jobs are running if we are going to clean the disk.
 my %qjobs = cluster::qstat0();
 loop($targets, $action, $wdir);
-print_table() if($action_name eq 'table');
+print_table() if($action_name =~ m/table$/);
 
 
 
@@ -65,7 +65,7 @@ sub get_languages
     }
     else
     {
-        return qw(ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sk sl sv ta te tr);
+        return qw(ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pl pt ro ru sk sl sv ta te tr);
     }
 }
 
@@ -113,6 +113,7 @@ sub sort_actions
         'train' => 20,
         'parse' => 40,
         'table' => 60,
+        'ltable' => 61, # labeled instead of unlabeled attachment score
         'clean' => 80,
     );
     # Check that all action identifiers are known.
@@ -162,6 +163,10 @@ sub get_action
     elsif($action_name eq 'table')
     {
         $action = \&get_results;
+    }
+    elsif($action_name eq 'ltable')
+    {
+        $action = \&get_labeled_results;
     }
     elsif($action_name eq 'clean')
     {
@@ -410,6 +415,7 @@ sub get_results
 {
     my $language = shift;
     my $transformation = shift;
+    my $labeled = shift;
     foreach my $parser qw(mlt smf mcd mcp)
     {
         # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
@@ -427,7 +433,8 @@ sub get_results
             # UASp ... parent match
             # UASpm ... parent and is_member match
             # UASpms ... parent, is_member and is_shared_modifier match
-            if($sys =~ m/^UAS(p(?:ms?)?)\(${language}_${parser},${language}\)$/)
+            my $x = $labeled ? 'L' : 'U';
+            if($sys =~ m/^${x}AS(p(?:ms?)?)\(${language}_${parser},${language}\)$/)
             {
                 my $uasparams = $1;
                 #print("$language $transformation $sys $score $value{$language}{'001_pdtstyle'}{$parser}\n");
@@ -445,6 +452,12 @@ sub get_results
             print("Parser $parser score not found in $language/$transformation/$uas_file.\n");
         }
     }
+}
+sub get_labeled_results
+{
+    my $language = shift;
+    my $transformation = shift;
+    return get_results($language, $transformation, 1);
 }
 
 
