@@ -2,8 +2,11 @@
 # Regression testing of Treex and HamleDT.
 # This script checks out a fresh copy of the HEAD revision of Treex and tests how processing of HamleDT data changed since the previous test run.
 # The script invokes parallel processing and must be run on the head of the cluster. It is meant to be run nightly by cron.
+# Note that cron should know that we want to use bash (SHELL=/bin/bash).
+# Even then it will not load ~/.bash_profile automatically. We must do it to get the environment and paths right.
+# Otherwise we will end up running Perl 5.10 instead of 5.12 and missing forks.pm in @INC.
 # Usage: perl -I/home/zeman/lib regtest.pl |& tee regtest.log
-# 0 2 * * * perl -I/home/zeman/lib /net/work/people/zeman/tectomt/treex/devel/hamledt/regtest.pl > /net/cluster/TMP/zeman/hamledt-regression-test/regtest.log 2>&1
+# 0 2 * * * source ~/.bash_profile ; perl -I/home/zeman/lib /net/work/people/zeman/tectomt/treex/devel/hamledt/regtest.pl > /net/cluster/TMP/zeman/hamledt-regression-test/regtest.log 2>&1
 # (Ssh to lrc1, call crontab -e and schedule the above command to be run regularly.)
 # Copyright © 2014 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
@@ -22,6 +25,8 @@ use cas;
 # Lot of disk space is required. Several previous logs and data snapshots will be kept there.
 my $workroot = '/net/cluster/TMP/zeman/hamledt-regression-test';
 dzsys::saferun("mkdir -p $workroot");
+# For the record: what version of Perl are we using?
+dzsys::saferun("perl --version | grep -i 'this is perl'");
 my $tmtroot = $workroot.'/tectomt';
 # Remove previous revision of TectoMT, if present.
 dzsys::saferun("rm -rf $tmtroot");
