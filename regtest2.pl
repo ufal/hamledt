@@ -34,6 +34,8 @@ STDERR->fdopen(\*LOG, 'w') or die $!;
 print("--------------------------------------------------------------------------------\n");
 print("Parallel processing finished for all treebanks.\n");
 print("--------------------------------------------------------------------------------\n");
+# Get the path to this script so we can instruct the cluster to run related scripts.
+my $myscriptdir = dzsys::get_script_path();
 # Get the other important paths.
 my $tmtroot = $workdir.'/tectomt';
 my $datapath = $tmtroot.'/share/data/resources/hamledt';
@@ -55,3 +57,12 @@ my $snapshotid = "hamledt-$timestamp-r$treex_revision";
 print("HamleDT snapshot ID = $snapshotid\n");
 # Archive the snapshot.
 dzsys::saferun("mv $datapath $testingroot/$snapshotid");
+# Compare the new snapshot with a previously archived reference snapshot.
+if(-d "$testingroot/hamledt-reference")
+{
+    dzsys::saferun("$myscriptdir/hamledtdiff.pl $testingroot/hamledt-reference $testingroot/$snapshotid");
+}
+else
+{
+    print("Reference snapshot of HamleDT '$testingroot/hamledt-reference' not found.\n");
+}

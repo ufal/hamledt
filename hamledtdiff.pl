@@ -16,6 +16,7 @@ sub usage
     print STDERR ("Usage: hamledtdiff.pl path1 path2\n");
 }
 
+my $n_differences = 0;
 if(scalar(@ARGV) != 2)
 {
     my $n = scalar(@ARGV);
@@ -47,6 +48,7 @@ else
     printf("%d treebanks added in version 1: %s\n", scalar(@additional), join(' ', @additional)) if(@additional);
     printf("%d treebanks missing in version 1: %s\n", scalar(@missing), join(' ', @missing)) if(@missing);
     @intersection = grep {my $x = $_; grep {$_ eq $x} (@tbks1)} (@tbks0);
+    $n_differences += scalar(@additional) + scalar(@missing);
 }
 foreach my $tbk (@intersection)
 {
@@ -65,19 +67,41 @@ foreach my $tbk (@intersection)
         my %map1; map {$map1{$_}++; $map{$_}++} @desc1;
         my $nadd = 0;
         my $ndel = 0;
+        my $nsize = 0;
         foreach my $object (sort(keys(%map)))
         {
             if(!$map0{$object})
             {
                 print("ADD $object\n");
                 $nadd++;
+                $n_differences++;
             }
             if(!$map1{$object})
             {
                 print("DEL $object\n");
                 $ndel++;
+                $n_differences++;
+            }
+            if($map0{$object} && $map1{$object})
+            {
+                my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size0, $atime, $mtime, $ctime, $blksize, $blocks) = stat("$tpath0/$object");
+                my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size1, $atime, $mtime, $ctime, $blksize, $blocks) = stat("$tpath1/$object");
+                if($size0 != $size1)
+                {
+                    print("SIZE $object $size0 != $size1\n");
+                    $nsize++;
+                    $n_differences++;
+                }
             }
         }
-        printf("Total of $nadd objects added and $ndel objects deleted.\n");
+        printf("Total of $nadd objects added, $ndel objects deleted and $nsize objects differ in size.\n");
     }
+}
+if($n_differences)
+{
+    print("THERE ARE $n_differences DIFFERENCES.\n");
+}
+else
+{
+    print("THERE ARE NO DIFFERENCES.\n");
 }
