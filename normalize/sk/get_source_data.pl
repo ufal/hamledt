@@ -14,9 +14,16 @@ use dzsys; # saferun
 
 # SVN: https://svn.ms.mff.cuni.cz/svn/slovallex/trunk/
 my $zdrojova_cesta = '/net/work/people/zeman/slovallex';
-# Následující dvě cesty vedou na stejné místo.
-#my $cilova_cesta = '/net/work/people/zeman/tectomt/treex/devel/hamledt/normalize/sk/data';
-my $cilova_cesta = '/net/projects/tectomt_shared/data/resources/hamledt/sk';
+my $cilova_cesta;
+if($ENV{TMT_ROOT})
+{
+    $cilova_cesta = "$ENV{TMT_ROOT}/share/data/resources/hamledt/sk";
+}
+else
+{
+    # Nejsou nastavené proměnné prostředí, tak zkusíme default ÚFAL.
+    $cilova_cesta = '/net/projects/tectomt_shared/data/resources/hamledt/sk';
+}
 # Podkorpusy, které obsahují syntaktickou anotaci od dvou nezávislých anotátorů.
 # Prvních 7 (Orwell1984 .. PsiaKoza) má potvrzenou ruční morfologii, u ostatních si myslím, že je také ruční.
 my @doublean = qw(Orwell1984 MojaPrvaLaska Mucska MilosFerko MilosFerko2 Patmos PsiaKoza blogSME Durovic Inzine ProgramVyhlasenie RaczovaOslov Rozpravky SME Wikipedia Wikipedia2);
