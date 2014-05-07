@@ -62,40 +62,41 @@ foreach my $tbk (@intersection)
     {
         print("----------------------------------------------\n");
         print("The list of files and folders in $tbk differs.\n");
-        my %map;
-        my %map0; map {$map0{$_}++; $map{$_}++} @desc0;
-        my %map1; map {$map1{$_}++; $map{$_}++} @desc1;
-        my $nadd = 0;
-        my $ndel = 0;
-        my $nsize = 0;
-        foreach my $object (sort(keys(%map)))
+    }
+    my %map;
+    my %map0; map {$map0{$_}++; $map{$_}++} @desc0;
+    my %map1; map {$map1{$_}++; $map{$_}++} @desc1;
+    my $nadd = 0;
+    my $ndel = 0;
+    my $nsize = 0;
+    foreach my $object (sort(keys(%map)))
+    {
+        if(!$map0{$object})
         {
-            if(!$map0{$object})
+            print("ADD $object\n");
+            $nadd++;
+            $n_differences++;
+        }
+        if(!$map1{$object})
+        {
+            print("DEL $object\n");
+            $ndel++;
+            $n_differences++;
+        }
+        if($map0{$object} && $map1{$object})
+        {
+            my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size0, $atime, $mtime, $ctime, $blksize, $blocks) = stat("$tpath0/$object");
+            my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size1, $atime, $mtime, $ctime, $blksize, $blocks) = stat("$tpath1/$object");
+            if($size0 != $size1)
             {
-                print("ADD $object\n");
-                $nadd++;
+                print("SIZE $object $size0 != $size1\n");
+                $nsize++;
                 $n_differences++;
-            }
-            if(!$map1{$object})
-            {
-                print("DEL $object\n");
-                $ndel++;
-                $n_differences++;
-            }
-            if($map0{$object} && $map1{$object})
-            {
-                my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size0, $atime, $mtime, $ctime, $blksize, $blocks) = stat("$tpath0/$object");
-                my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size1, $atime, $mtime, $ctime, $blksize, $blocks) = stat("$tpath1/$object");
-                if($size0 != $size1)
-                {
-                    print("SIZE $object $size0 != $size1\n");
-                    $nsize++;
-                    $n_differences++;
-                }
             }
         }
-        printf("Total of $nadd objects added, $ndel objects deleted and $nsize objects differ in size.\n");
     }
+    printf("Total of $nadd objects added, $ndel objects deleted and $nsize objects differ in size.\n");
+    dzsys::saferun("diff $path0/test.txt $path1/test.txt");
 }
 if($n_differences)
 {
