@@ -53,7 +53,7 @@ else
 # Test the newly generated treebank.
 my $hatestpath = "$tmtroot/treex/devel/hamledt/tests";
 print("Running HamleDT / Prague tests.\n");
-dzsys::saferun("cd $hatestpath ; while ! make tests ; do echo New attempt... ; done ; make table | tee $datapath/test.txt");
+dzsys::saferun("cd $hatestpath ; while ! make testall ; do echo New attempt... ; done ; make table | tee $datapath/test.txt");
 # Generate name for the data snapshot that we just created.
 my $treex_revision = dzsys::chompticks("cd $tmtroot ; svn info | grep -P '^Revision:'");
 $treex_revision =~ s/^Revision:\s*//;
