@@ -1,7 +1,10 @@
 LANGCODE=ro
 TREEBANK=ro
 include ../common.mak
-ORIG_TREEBANK=${TMT_ROOT}/share/data/resources/treebanks/ro
+# Do not make the following path derived from TMT_ROOT!
+# We need the fixed path to the ÚFAL location where the data really is!
+# Even if we are building a custom revision of HamleDT with modified TMT_ROOT, which is not linked to the ÚFAL shared folder.
+ORIG_TREEBANK=/net/projects/tectomt_shared/data/resources/treebanks/ro
 IMPORT   = Read::DGA bundles_per_doc=500
 
 source: $(IN)/test.xml $(IN)/train.xml
