@@ -35,6 +35,8 @@ open(LOG, ">$log") or die("Cannot write to $log: $!");
 print("Redirecting STDOUT and STDERR to $log...\n");
 STDOUT->fdopen(\*LOG, 'w') or die $!;
 STDERR->fdopen(\*LOG, 'w') or die $!;
+dzsys::autoflush(*STDOUT);
+dzsys::autoflush(*STDERR);
 # For the record: what version of Perl are we using?
 dzsys::saferun("perl --version | grep -i 'this is perl'");
 # Get the path to this script so we can instruct the cluster to run related scripts.
@@ -105,11 +107,11 @@ foreach my $tbk (@treebanks)
     my $path = $normpath.'/'.$tbk;
     print("====================================================================================================\n");
     print("Entering $path...\n");
-    print("====================================================================================================\n");
     chdir($path) or die("Cannot enter folder $path: $!");
     my $jobid = create_script_for_treebank($workdir, $normpath, $tbk);
     push(@jobs, $jobid);
 }
+print("====================================================================================================\n");
 create_waiting_script($workdir, $myscriptdir, @jobs);
 
 

@@ -73,13 +73,13 @@ foreach my $tbk (@intersection)
     {
         if(!$map0{$object})
         {
-            print("ADD $object\n");
+            print("ADD $tbk $object\n");
             $nadd++;
             $n_differences++;
         }
         if(!$map1{$object})
         {
-            print("DEL $object\n");
+            print("DEL $tbk $object\n");
             $ndel++;
             $n_differences++;
         }
@@ -89,15 +89,15 @@ foreach my $tbk (@intersection)
             my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size1, $atime, $mtime, $ctime, $blksize, $blocks) = stat("$tpath1/$object");
             if($size0 != $size1)
             {
-                print("SIZE $object $size0 != $size1\n");
+                print("SIZE $tbk $object $size0 != $size1\n");
                 $nsize++;
                 $n_differences++;
             }
         }
     }
     printf("Total of $nadd objects added, $ndel objects deleted and $nsize objects differ in size.\n");
-    dzsys::saferun("diff $path0/test.txt $path1/test.txt");
 }
+dzsys::saferun("diff $path0/test.txt $path1/test.txt");
 if($n_differences)
 {
     print("THERE ARE $n_differences DIFFERENCES.\n");
