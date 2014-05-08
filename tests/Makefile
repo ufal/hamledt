@@ -4,8 +4,8 @@ VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
 ALL_TREEBANKS={ar,bg,bn,ca,cs,cs-conll2007,da,de,el,en,es,et,eu,fa,fi,grc,hi,hu,it,ja,la,nl,pl,pt,ro,ru,sk,sl,sv,ta,te,tr}
-#TREEBANKS=$(ALL_TREEBANKS)
-TREEBANKS=ja
+TREEBANKS=$(ALL_TREEBANKS)
+#TREEBANKS=ja
 #TREEBANKS={en,cs}
 SETS={train,test}
 FILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(TREEBANKS)/treex/*_pdtstyle/$(SETS)/*.treex.gz'
@@ -13,12 +13,23 @@ TRANSFFILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(TREEBANKS)/treex/trans*
 ALL_FILES='!$(TMT_ROOT)/share/data/resources/hamledt/$(ALL_TREEBANKS)/treex/*_pdtstyle/$(SETS)/*.treex.gz'
 
 TESTS = \
-	HamleDT::Test::AfunDefined            HamleDT::Test::AfunKnown           HamleDT::Test::AfunNotNR \
-	HamleDT::Test::CoApAboveEveryMember   HamleDT::Test::MemberInEveryCoAp   HamleDT::Test::MemberInEveryCoord \
-	HamleDT::Test::NonleafAuxC            HamleDT::Test::NonleafAuxP         HamleDT::Test::PrepIsAuxP \
-	HamleDT::Test::LeafAux                HamleDT::Test::FinalPunctuation \
-	HamleDT::Test::NonemptyAttr           HamleDT::Test::NounGovernsDet      HamleDT::Test::NoNewNonProj \
-	HamleDT::Test::PredUnderRoot          HamleDT::Test::SubjectBelowVerb    HamleDT::Test::MaxOneSubject
+	HamleDT::Test::AfunDefined \
+	HamleDT::Test::AfunKnown \
+	HamleDT::Test::AfunNotNR \
+	HamleDT::Test::CoApAboveEveryMember \
+	HamleDT::Test::MemberInEveryCoAp \
+	HamleDT::Test::MemberInEveryCoord \
+	HamleDT::Test::NonleafAuxC \
+	HamleDT::Test::NonleafAuxP \
+	HamleDT::Test::PrepIsAuxP \
+	HamleDT::Test::LeafAux \
+	HamleDT::Test::FinalPunctuation \
+	HamleDT::Test::NonemptyAttr \
+	HamleDT::Test::NounGovernsDet \
+	HamleDT::Test::NoNewNonProj \
+	HamleDT::Test::PredUnderRoot \
+	HamleDT::Test::SubjectBelowVerb \
+	HamleDT::Test::MaxOneSubject
 
 validate:
 	treex -p --survive --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
@@ -37,9 +48,7 @@ summarize_validation:
 tests:
 	@date
 	treex -p --jobs=$(JOBS) --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*" \
-	Util::SetGlobal \
-	$(TESTS) \
-	-- $(FILES) 2> test.err > $(TESTLOG)
+	Util::SetGlobal Read::Treex from=$(FILES) $(TESTS) 2> test.err > $(TESTLOG)
 	@date
 testall:
 	@date
