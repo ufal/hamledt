@@ -95,9 +95,14 @@ foreach my $tbk (@intersection)
             }
         }
     }
-    printf("Total of $nadd objects added, $ndel objects deleted and $nsize objects differ in size.\n");
+    if($nadd + $ndel + $nsize > 0)
+    {
+        printf("TOTAL $tbk: $nadd objects added, $ndel objects deleted and $nsize objects differ in size.\n");
+    }
 }
-dzsys::saferun("diff $path0/test.txt $path1/test.txt");
+my $tabulka0 = "$path0/test.txt";
+my $tabulka1 = "$path1/test.txt";
+dzsys::saferun("head -2 $tabulka1 | tail -1 | sed 's/^/  /' ; diff $tabulka0 $tabulka1 | grep -P '^[<>]' | sort -k2,2 -k1,1 | sed 's/^</---\n</'");
 if($n_differences)
 {
     print("THERE ARE $n_differences DIFFERENCES.\n");
