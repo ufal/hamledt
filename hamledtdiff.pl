@@ -102,7 +102,7 @@ foreach my $tbk (@intersection)
 }
 my $tabulka0 = "$path0/test.txt";
 my $tabulka1 = "$path1/test.txt";
-dzsys::saferun("head -2 $tabulka1 | tail -1 | sed 's/^/  /' ; diff $tabulka0 $tabulka1 | grep -P '^[<>]' | sort -k2,2 -k1,1 | sed 's/^</---\n</'");
+dzsys::saferun("head -2 $tabulka1 | tail -1 | sed 's/^/  /' ; diff $tabulka0 $tabulka1 | grep -P '^[<>]' | sort -k2,2 -k1,1 | sed 's/^</---\\n</'");
 if($n_differences)
 {
     print("THERE ARE $n_differences DIFFERENCES.\n");
