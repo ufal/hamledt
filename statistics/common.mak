@@ -100,20 +100,21 @@ T_FILE_ORIG = orig_trees.txt
 T_FILE_PDT = pdt_trees.txt
 I_FILE_ORIG = orig_inconsistencies.txt
 I_FILE_PDT = pdt_inconsistencies.txt
-
+C_FILE_ORIG = orig_corrections.txt
+C_FILE_PDT = pdt_corrections.txt
 
 QI_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore 
 
-i_all: trees tsplit incons
+i_all: trees tsplit incons corrs c_stats
 
 check_idir:
 	[ -d $(I_DIR) ] || mkdir -p $(I_DIR)
 
 trees: check_idir trees_orig trees_pdt
 trees_orig:
-	$(TREEX) $(QI_OPS) $(I_BLOCKS) -- $(FILES_ORIG) 2> $(I_DIR)/orig_trees.err > $(I_DIR)/$(T_FILE_ORIG)
+	$(TREEX) $(QI_OPS) $(I_BLOCKS) type=orig -- $(FILES_ORIG) 2> $(I_DIR)/orig_trees.err > $(I_DIR)/$(T_FILE_ORIG)
 trees_pdt: 
-	$(TREEX) $(QI_OPS) $(I_BLOCKS) -- $(FILES) 2> $(I_DIR)/pdt_trees.err > $(I_DIR)/$(T_FILE_PDT)
+	$(TREEX) $(QI_OPS) $(I_BLOCKS) type=pdt -- $(FILES) 2> $(I_DIR)/pdt_trees.err > $(I_DIR)/$(T_FILE_PDT)
 
 tsplit: tsplit_orig tsplit_pdt
 tsplit_orig: $(foreach l,$(LANGUAGES), tsplit_orig-$(l))
@@ -126,10 +127,25 @@ tsplit_pdt-%:
 incons: incons_orig incons_pdt
 incons_orig: $(foreach l,$(LANGUAGES), incons_orig-$(l))
 incons_orig-%:
-	cat $(I_DIR)/$*-$(T_FILE_ORIG) | $(SCRIPTS)/find_inconsistencies.pl > $(I_DIR)/$*-$(I_FILE_ORIG)
+	cat $(I_DIR)/$*-$(T_FILE_ORIG) | $(SCRIPTS)/find_inconsistencies_02.pl -i $(I_DIR)/$*-$(I_FILE_ORIG) -c $(I_DIR)/$*-$(C_FILE_ORIG)
 incons_pdt: $(foreach l,$(LANGUAGES), incons_pdt-$(l))
 incons_pdt-%:
-	cat $(I_DIR)/$*-$(T_FILE_PDT) | $(SCRIPTS)/find_inconsistencies.pl > $(I_DIR)/$*-$(I_FILE_PDT)
+	cat $(I_DIR)/$*-$(T_FILE_PDT) | $(SCRIPTS)/find_inconsistencies_02.pl -i $(I_DIR)/$*-$(I_FILE_PDT) -c $(I_DIR)/$*-$(C_FILE_PDT)
+
+
+c_stats: c_stats_clean c_stats_orig c_stats_pdt
+c_stats_clean:
+	rm -f $(I_DIR)/corrections_statistics*.txt
+c_stats_orig: $(foreach l, $(LANGUAGES), c_stats_orig-$(l))
+c_stats_orig-%:
+	echo -n '$*	' >> $(I_DIR)/corrections_statistics_orig.txt
+	cat $(I_DIR)/$*-$(C_FILE_ORIG) | wc -l >> $(I_DIR)/corrections_statistics_orig.txt
+c_stats_pdt: $(foreach l, $(LANGUAGES), c_stats_pdt-$(l))
+c_stats_pdt-%:
+	echo -n '$*	' >> $(I_DIR)/corrections_statistics_pdt.txt
+	cat $(I_DIR)/$*-$(C_FILE_ORIG) | wc -l >> $(I_DIR)/corrections_statistics_pdt.txt
+
+
 
 total_incons:
 	cat $(I_DIR)/*-$(T_FILE) | $(SCRIPTS)/find_inconsistencies.pl > $(I_DIR)/total_$(I_FILE)
