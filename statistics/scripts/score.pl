@@ -59,7 +59,7 @@ while( defined( my $line = <$TESTS_FH> )) {
     push @tests, $test;
     for my $i (0..$#languages) {
         $tests{ $languages[$i] }{$test} = $counts[$i];
-        $tests{ $languages[$i] }{TOTAL} += $counts[$i];
+        $tests{ $languages[$i] }{TOTAL} = $counts[$i];
     }
 }
 close $TESTS_FH;
@@ -86,9 +86,14 @@ my %weight; # for weighted average of error rates - log of treebank size (in num
 my %test_instances; # how many times each test was run in each language
 for my $language ( @languages ) {
     $test_instances{$language}
-        = { AfunDefined          => $afuns{$language}{TOTAL},
+        = {
+            AdvNotUnderNoun      => $afuns{$language}{Adv},
+            AfunDefined          => $afuns{$language}{TOTAL},
             AfunKnown            => $afuns{$language}{TOTAL},
             AfunNotNR            => $afuns{$language}{TOTAL},
+            AfunsUnderRoot       => ($ok_tests{$language}{AfunsUnderRoot} || 0)
+                                     + ($tests{$language}{AfunsUnderRoot} || 0),
+            AtrNotUnderVerb      => $afuns{$language}{Atr},
             AtvVBelowVerb        => $afuns{$language}{AtvV},
             AuxAUnderNoun        => $afuns{$language}{AuxA},
             AuxGIsPunctuation    => $afuns{$language}{AuxG},
@@ -155,7 +160,7 @@ $tb->load( ['TESTS NOT PASSED', map { scalar( grep {$_ != 0} values %{$proportio
 $tb->load( ['ERRORS/NODES', map { sprintf "%.1f", 100 * $tests{$_}{TOTAL}/$afuns{$_}{TOTAL} } @languages ] );
 #$tb->load( ['ERROR SCORE', (sprintf "%.1f", $total_error_score), map {sprintf "%.1f", 100 * ($proportion{$_}{TOTAL} || 0) }  @languages[1..$#languages] ] );
 #$tb->load( ['WEIGHT', '', map { sprintf "%.1f", $weight{$_} } @languages[1..$#languages] ] );
-print $tb->table();
+print $tb;
 printf "LOG-WEIGHTED AVERAGE ERROR SCORE: %.1f\n", $total_error_score;
 
 
