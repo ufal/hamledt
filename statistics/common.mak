@@ -127,10 +127,10 @@ tsplit_pdt-%:
 incons: incons_orig incons_pdt
 incons_orig: $(foreach l,$(LANGUAGES), incons_orig-$(l))
 incons_orig-%:
-	cat $(I_DIR)/$*-$(T_FILE_ORIG) | $(SCRIPTS)/find_inconsistencies_02.pl -i $(I_DIR)/$*-$(I_FILE_ORIG) -c $(I_DIR)/$*-$(C_FILE_ORIG)
+	cat $(I_DIR)/$*-$(T_FILE_ORIG) | $(SCRIPTS)/find_inconsistencies.pl -i $(I_DIR)/$*-$(I_FILE_ORIG) -c $(I_DIR)/$*-$(C_FILE_ORIG)
 incons_pdt: $(foreach l,$(LANGUAGES), incons_pdt-$(l))
 incons_pdt-%:
-	cat $(I_DIR)/$*-$(T_FILE_PDT) | $(SCRIPTS)/find_inconsistencies_02.pl -i $(I_DIR)/$*-$(I_FILE_PDT) -c $(I_DIR)/$*-$(C_FILE_PDT)
+	cat $(I_DIR)/$*-$(T_FILE_PDT) | $(SCRIPTS)/find_inconsistencies.pl -i $(I_DIR)/$*-$(I_FILE_PDT) -c $(I_DIR)/$*-$(C_FILE_PDT)
 
 
 c_stats: c_stats_clean c_stats_orig c_stats_pdt
