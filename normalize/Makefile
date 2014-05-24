@@ -35,6 +35,10 @@ qpdt: $(foreach l,$(LANGS),qpdt-$(l))
 qpdt-%:
 	/home/bojar/tools/shell/qsubmit --jobname=$*-pdt "cd $* && make pdt"
 
+qstanford: $(foreach l,$(LANGS),qstanford-$(l))
+qstanford-%:
+	/home/bojar/tools/shell/qsubmit --jobname=$*-stanford "cd $* && make treex_to_stanford"
+
 clean:
 	rm -f *-normalize.o* *-pdt.o* .qsubmit*
 	rm -rf */???-cluster-run-*
