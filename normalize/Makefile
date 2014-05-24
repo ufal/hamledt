@@ -35,6 +35,10 @@ qpdt: $(foreach l,$(LANGS),qpdt-$(l))
 qpdt-%:
 	/home/bojar/tools/shell/qsubmit --jobname=$*-pdt "cd $* && make pdt"
 
+qconll: $(foreach l,$(LANGS),qconll-$(l))
+qconll-%:
+	/home/bojar/tools/shell/qsubmit --jobname=$*-conll "cd $* && make export_conll"
+
 qstanford: $(foreach l,$(LANGS),qstanford-$(l))
 qstanford-%:
 	/home/bojar/tools/shell/qsubmit --jobname=$*-stanford "cd $* && make treex_to_stanford"
