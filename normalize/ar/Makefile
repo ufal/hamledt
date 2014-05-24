@@ -20,6 +20,8 @@ source:
 	for i in `cat $(PADTDIR)/testfilelist.txt` ; do ln -s $(PADTDIR)/$$i.*.pml data/source/test ; done
 	for i in $(PADTDIR)/$(PADTSUBDIRS)/*.pml ; do if [[ ! -e data/source/test/`basename $$i` ]] ; then ln -s $$i data/source/train ; fi ; done
 
+# Temporarily reverting to PADT r349, which has some unannotated sentences but it also has morphology in state that we can process.
+# Note that different revisions of PADT use different XML schemas, so relying on the schemas copied to Treex may not succeed.
 treex:
-	treex Read::PADT 'from=!$(IN)/train/*.syntax.pml' Write::Treex path=$(DIR0)/train clobber=1
-	treex Read::PADT 'from=!$(IN)/test/*.syntax.pml'  Write::Treex path=$(DIR0)/test  clobber=1
+	treex Read::PADT schema_dir=$(PADTDIR) 'from=!$(IN)/train/*.syntax.pml' A2A::RemoveUnannotatedSentences Write::Treex path=$(DIR0)/train clobber=1
+	treex Read::PADT schema_dir=$(PADTDIR) 'from=!$(IN)/test/*.syntax.pml'  A2A::RemoveUnannotatedSentences Write::Treex path=$(DIR0)/test  clobber=1
