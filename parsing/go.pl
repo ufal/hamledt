@@ -300,7 +300,7 @@ sub train
     my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
     my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
     # Prepare the training script and submit the job to the cluster.
-    foreach my $parser qw(mlt smf mcd mcp)
+    foreach my $parser ('mlt', 'smf', 'mcd', 'mcp')
     {
         my $scriptname = "$parser-$language-$transformation.sh";
         my ($memory, $priority);
@@ -371,7 +371,7 @@ sub parse
         mcp => "W2A::ParseMST  model_dir=. model=mcd_proj_o2.model    decodetype=proj     pos_attribute=conll/pos",
     );
     # Prepare the training script and submit the job to the cluster.
-    foreach my $parser qw(mlt smf mcd mcp)
+    foreach my $parser ('mlt', 'smf', 'mcd', 'mcp')
     {
         # Copy test data to the working folder.
         # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
@@ -416,7 +416,7 @@ sub get_results
     my $language = shift;
     my $transformation = shift;
     my $labeled = shift;
-    foreach my $parser qw(mlt smf mcd mcp)
+    foreach my $parser ('mlt', 'smf', 'mcd', 'mcp')
     {
         # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
         my $uas_file = "uas-$parser.txt";
@@ -488,7 +488,7 @@ sub print_table
             $transformations{$transformation}++;
         }
     }
-    foreach my $parser qw(mlt smf mcd mcp)
+    foreach my $parser ('mlt', 'smf', 'mcd', 'mcp')
     {
         print("\n", '*' x 10 . "  $parser  " . '*' x 10, "\n\n");
         my $table = Text::Table->new('trans', @languages, 'better', 'worse', 'average');
