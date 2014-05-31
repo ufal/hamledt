@@ -323,7 +323,7 @@ sub train
         {
             print SCR ("java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n");
             print SCR ("  train order:2 format:MST decode-type:proj train-file:train.mst model-name:mcd_proj_o2.model\n");
-            $memory = '10G';
+            $memory = '16G';
             $priority = -300;
         }
         elsif($parser eq 'mlt')

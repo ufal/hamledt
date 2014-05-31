@@ -27,6 +27,7 @@ use Getopt::Long;
 use lib '/home/zeman/lib';
 use dzsys;
 use cluster;
+use cas;
 
 GetOptions
 (
@@ -104,6 +105,9 @@ foreach my $lang (@languages)
             else
             {
                 $models{$mpath}{found} = 1;
+                # If we found the model but it was too old, it may also mean that the current run has failed.
+                my $timestamp = cas::esek2datumcas(cas::cassoubor($model));
+                print("$model ... $timestamp\n");
             }
         }
         # Collect numbers of cluster jobs related to this transformation.
