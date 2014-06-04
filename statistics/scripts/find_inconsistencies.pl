@@ -21,9 +21,15 @@ my %file;  # the file in which the nodes with IDs are
 while ( defined (my $line = <> )) {
     chomp $line;
     my ($language, $tokens, $tree, $tags, $afuns, $file, $IDs) = split "\t", $line;
+    unless ($tokens) { print STDERR $line};
 
     # $forms are the words in the surface order, $tokens are in the "tree" (depth-first) order
-    my %order = map { my ($form, $order) = split /~/; $form => $order } (split /\s+/, $tokens);
+    my @tokens = split /\s+/, $tokens;
+    my %order;
+    for my $token (@tokens) {
+        my ($form, $order) = split /(?<=\S)~/, $token;
+        $order{$form} = $order;
+    }
     my $forms = join ' ', sort { $order{$a} <=> $order{$b} } keys %order;
 
     # strip the tokens (leave only the wordforms)

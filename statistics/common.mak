@@ -6,7 +6,7 @@ TREEX     = treex
 SCRIPTS = ../scripts
 JOBS=100
 
-LANGUAGES = ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # he is pl zh # for cycles
+LANGUAGES = bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar he is pl zh # for cycles
 LANGS=*
 # for shell expansion
 
@@ -26,7 +26,7 @@ qall: a_all b_all i_all t_all clean
 #########
 
 A_OPS = Util::SetGlobal if_missing_bundles=ignore 
-A_BLOCKS = HamleDT::Test::Statistical::Afuns
+A_BLOCKS = HamleDT::Util::ExtractAfuns
 A_DIR = ./afuns
 A_FILE = afuns.txt
 A_FILE_SORTED = afuns_sorted.txt
@@ -69,7 +69,7 @@ atable_normalized:
 #################################
 
 B_OPS = Util::SetGlobal if_missing_bundles=ignore
-B_BLOCKS = HamleDT::Test::Statistical::OutputAfunBigrams
+B_BLOCKS = HamleDT::Util::ExtractDependencyBigrams
 B_DIR = ./bigrams
 B_FILE = bigrams.txt
 QB_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore
@@ -93,9 +93,33 @@ entropy:
 ###################
 # inconsistencies #
 ###################
-
-I_BLOCKS = HamleDT::Test::Statistical::ExtractTrees
 I_DIR = ./inconsistencies
+QI_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore
+
+#######
+# POS #
+#######
+IP_BLOCKS = HamleDT::Util::ExtractSurfaceNGrams
+IP_DIR = $(I_DIR)/POS
+IP_ERR = pdt_surface_ngrams.err
+IP_FILE = pdt_surface_ngrams.txt
+
+check_ipdir:
+	[ -d $(IP_DIR) ] || mkdir -p $(IP_DIR) 
+
+ip_surface: check_ipdir
+	$(TREEX) $(QI_OPS) $(IP_BLOCKS) -- $(FILES) 2> $(IP_DIR)/$(IP_ERR) > $(IP_DIR)/$(IP_FILE)
+
+ip_split: $(foreach l,$(LANGUAGES), ip_split-$(l))
+ip_split-%:
+	cat $(IP_DIR)/$(IP_FILE) | grep -e '^$*' | cut -f2- > $(IP_DIR)/$*-$(IP_FILE)
+
+tmp:
+	treex HamleDT::Util::ExtractSurfaceNGrams -- /net/work/people/masek/tectomt/share/data/resources/hamledt/cs/treex/001_pdtstyle/test/*_001.treex.gz > ./inconsistencies/POS/pdt_surface_ngrams.txt
+
+
+I_BLOCKS = HamleDT::Util::ExtractTrees
+
 T_FILE_ORIG = orig_trees.txt
 T_FILE_PDT = pdt_trees.txt
 I_FILE_ORIG = orig_inconsistencies.txt
@@ -103,9 +127,9 @@ I_FILE_PDT = pdt_inconsistencies.txt
 C_FILE_ORIG = orig_corrections.txt
 C_FILE_PDT = pdt_corrections.txt
 
-QI_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore 
 
-i_all: trees tsplit incons corrs c_stats
+
+i_all: trees tsplit incons c_stats
 
 check_idir:
 	[ -d $(I_DIR) ] || mkdir -p $(I_DIR)
@@ -143,7 +167,7 @@ c_stats_orig-%:
 c_stats_pdt: $(foreach l, $(LANGUAGES), c_stats_pdt-$(l))
 c_stats_pdt-%:
 	echo -n '$*	' >> $(I_DIR)/corrections_statistics_pdt.txt
-	cat $(I_DIR)/$*-$(C_FILE_ORIG) | wc -l >> $(I_DIR)/corrections_statistics_pdt.txt
+	cat $(I_DIR)/$*-$(C_FILE_PDT) | wc -l >> $(I_DIR)/corrections_statistics_pdt.txt
 
 
 
