@@ -46,10 +46,11 @@ while (<STDIN>) {
         my $len = scalar(@toks);
     
         # check each data CoNLL line has 10 columns
-        if ($len != 10) {
+        if (($len != 10) && ($len != 8) ) {
             print "Something wrong with the CoNLL data: number of columns not 10 in line number: $linenum\n";
             exit 1;
         }
+
         
         $afun_stat{$toks[7]}++;
         
@@ -73,9 +74,9 @@ print '-' x 36 . "\n";
 my $str_out = sprintf("%-25s %-10s", "item", "value");
 print $str_out . "\n";
 print '-' x 36 . "\n";
-$str_out = sprintf("%-25s %-10s", "number of sentences", $num_sen);
+$str_out = sprintf("%-25s %-10s", "number of sentences - ", $num_sen);
 print $str_out . "\n";
-$str_out = sprintf("%-25s %-10s", "number of words", $num_words);
+$str_out = sprintf("%-25s %-10s", "number of words - ", $num_words);
 print $str_out . "\n";
 print '-' x 36 . "\n";
 
@@ -92,7 +93,7 @@ foreach my $afun (@afuns) {
     $total_words += $afun_stat{$afun};
 }
 print '-' x 36 . "\n";
-$str_out = sprintf("%-25s %-10s", scalar(@afuns), $total_words);
+$str_out = sprintf("tagset size - %-25s", scalar(@afuns));
 print $str_out . "\n";
 print '-' x 36 . "\n";
 
