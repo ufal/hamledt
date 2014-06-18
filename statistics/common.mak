@@ -1,6 +1,8 @@
 #-*- mode: makefile -*-
+SHELL=bash
 
 SUBDIR    = treex/001_pdtstyle
+SUBDIRC   = conll
 ORIG_SUBDIR = treex/000_orig
 TREEX     = treex
 SCRIPTS = ../scripts
@@ -10,8 +12,9 @@ LANGUAGES = bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro r
 LANGS=*
 # for shell expansion
 
-FILES = $(DATADIR)/$(LANGS)/$(SUBDIR)/t*/*.treex.gz
-FILES_ORIG = $(DATADIR)/$(LANGS)/$(ORIG_SUBDIR)/t*/*.treex.gz
+TREEX_FILES = $(DATADIR)/$(LANGS)/$(SUBDIR)/t*/*.treex.gz
+TREEX_FILES_ORIG = $(DATADIR)/$(LANGS)/$(ORIG_SUBDIR)/t*/*.treex.gz
+CONLL_FILES = $(DATADIR)/$(LANGS)/$(SUBDIRC)/t*/*.treex.gz
 
 help:
 	# 'Check Makefile'
@@ -41,10 +44,10 @@ check_adir:
 	[ -d $(A_DIR) ] || mkdir -p $(A_DIR)
 
 afuns: check_adir
-	$(TREEX) $(A_OPS) $(A_BLOCKS) -- $(FILES) > $(A_DIR)/$(A_LANGUAGE)-$(A_FILE)
+	$(TREEX) $(A_OPS) $(A_BLOCKS) -- $(TREEX_FILES) > $(A_DIR)/$(A_LANGUAGE)-$(A_FILE)
 
 qafuns: check_adir
-	$(TREEX) $(QA_OPS) $(A_BLOCKS) -- $(FILES) 2> $(A_DIR)/afuns.err > $(A_DIR)/$(A_FILE)
+	$(TREEX) $(QA_OPS) $(A_BLOCKS) -- $(TREEX_FILES) 2> $(A_DIR)/afuns.err > $(A_DIR)/$(A_FILE)
 
 asort:
 	cat $(A_DIR)/$(A_FILE) | sort | uniq -c | sort -n | sort -k2,3 | perl -ne 'chomp;s/^\s+//; my($$count,$$language,$$afun)=split /\s+/,$$_; print(join "\t",($$language,$$count,$$afun),"\n")' > $(A_DIR)/$(A_FILE_SORTED)
@@ -82,7 +85,7 @@ check_bdir:
 	[ -d $(B_DIR) ] || mkdir -p $(B_DIR)
 
 qbigrams: check_bdir
-	$(TREEX) $(QB_OPS) $(B_BLOCKS) -- $(FILES) 2> $(B_DIR)/bigrams.err > $(B_DIR)/$(B_FILE)
+	$(TREEX) $(QB_OPS) $(B_BLOCKS) -- $(TREEX_FILES) 2> $(B_DIR)/bigrams.err > $(B_DIR)/$(B_FILE)
 
 btable:
 	cat $(B_DIR)/$(B_FILE) | $(SCRIPTS)/summarize_bigrams.pl > $(B_DIR)/$(B_TABLE)
@@ -99,24 +102,41 @@ QI_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore
 #######
 # POS #
 #######
-IP_BLOCKS = HamleDT::Util::ExtractSurfaceNGrams
+OLD_IP_BLOCKS = HamleDT::Util::ExtractSurfaceNGrams
 IP_DIR = $(I_DIR)/POS
 IP_ERR = pdt_surface_ngrams.err
-IP_FILE = pdt_surface_ngrams.txt
+OLD_IP_FILE = pdt_surface_ngrams.txt
+IP_FILE = pdt_POS_surface_incons.txt
+IP_BLOCKS = HamleDT::Util::FindPOSInconsistencies
+IP_STATS_BASE = pdt_POS_surface_incons_stats
 
 check_ipdir:
 	[ -d $(IP_DIR) ] || mkdir -p $(IP_DIR) 
 
 ip_surface: check_ipdir
-	$(TREEX) $(QI_OPS) $(IP_BLOCKS) -- $(FILES) 2> $(IP_DIR)/$(IP_ERR) > $(IP_DIR)/$(IP_FILE)
+	$(TREEX) $(QI_OPS) $(OLD_IP_BLOCKS) -- $(TREEX_FILES) 2> $(IP_DIR)/$(IP_ERR) > $(IP_DIR)/$(OLD_IP_FILE)
 
 ip_split: $(foreach l,$(LANGUAGES), ip_split-$(l))
 ip_split-%:
-	cat $(IP_DIR)/$(IP_FILE) | grep -e '^$*' | cut -f2- > $(IP_DIR)/$*-$(IP_FILE)
+	cat $(IP_DIR)/$(OLD_IP_FILE) | grep -e '^$*' | cut -f2- > $(IP_DIR)/$*-$(OLD_IP_FILE)
 
-tmp:
-	treex HamleDT::Util::ExtractSurfaceNGrams -- /net/work/people/masek/tectomt/share/data/resources/hamledt/cs/treex/001_pdtstyle/test/*_001.treex.gz > ./inconsistencies/POS/pdt_surface_ngrams.txt
+CONTEXT_SIZE = 1
+MIN_NGRAM = 3
+MAX_NGRAM = 10
+IP_OPTS = $(CONTEXT_SIZE)-$(MIN_NGRAM)-$(MAX_NGRAM)
+IP_STATS = $(IP_STATS_BASE)-$(IP_OPTS).txt
 
+ip_incons: $(foreach l,$(LANGUAGES),ip_incons-$(l))
+ip_incons-%:
+	$(SCRIPTS)/inconsistencies_POS_surface.pl -i $(IP_DIR)/$*-$(OLD_IP_FILE) -c $(CONTEXT_SIZE) -n $(MIN_NGRAM) -x $(MAX_NGRAM) -- > $(IP_DIR)/$*-pdt_POS_surface_incons.txt 
+
+ip_stats: clean_ip_stats $(foreach l,$(LANGUAGES),ip_stats-$(l))
+ip_stats-%:
+	echo -n "$*	" >> $(I_DIR)/$(IP_STATS)
+	head -n1 $(IP_DIR)/$*-$(IP_FILE) >> $(I_DIR)/$(IP_STATS)
+
+clean_ip_stats:
+	rm -f $(I_DIR)/$(IP_STATS)
 
 I_BLOCKS = HamleDT::Util::ExtractTrees
 
@@ -136,9 +156,9 @@ check_idir:
 
 trees: check_idir trees_orig trees_pdt
 trees_orig:
-	$(TREEX) $(QI_OPS) $(I_BLOCKS) type=orig -- $(FILES_ORIG) 2> $(I_DIR)/orig_trees.err > $(I_DIR)/$(T_FILE_ORIG)
+	$(TREEX) $(QI_OPS) $(I_BLOCKS) type=orig -- $(TREEX_FILES_ORIG) 2> $(I_DIR)/orig_trees.err > $(I_DIR)/$(T_FILE_ORIG)
 trees_pdt: 
-	$(TREEX) $(QI_OPS) $(I_BLOCKS) type=pdt -- $(FILES) 2> $(I_DIR)/pdt_trees.err > $(I_DIR)/$(T_FILE_PDT)
+	$(TREEX) $(QI_OPS) $(I_BLOCKS) type=pdt -- $(TREEX_FILES) 2> $(I_DIR)/pdt_trees.err > $(I_DIR)/$(T_FILE_PDT)
 
 tsplit: tsplit_orig tsplit_pdt
 tsplit_orig: $(foreach l,$(LANGUAGES), tsplit_orig-$(l))
@@ -220,7 +240,7 @@ check_tdir:
 t_all: ttests ttable
 
 validate:
-	treex -p --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(T_DIR)/$(VALLOG)
+	treex -p --jobs=$(JOBS) --survive -- $(TREEX_FILES)  2>&1 | tee $(T_DIR)/$(VALLOG)
 	@echo
 	@echo Output of the validation test stored in $(T_DIR)/$(VALLOG)
 
@@ -234,7 +254,7 @@ ttests: check_tdir
 	treex  -p --jobs=$(JOBS) \
 	Util::SetGlobal if_missing_bundles=ignore \
 	$(TESTS) \
-	-- $(FILES) 2> $(T_DIR)/test.err > $(T_DIR)/$(TESTLOG)
+	-- $(TREEX_FILES) 2> $(T_DIR)/test.err > $(T_DIR)/$(TESTLOG)
 
 ttable:
 	cat $(T_DIR)/$(TESTLOG) | $(SCRIPTS)/summarize_tests.pl > $(T_DIR)/$(T_TABLE)
