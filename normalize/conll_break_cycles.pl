@@ -1,13 +1,13 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # Breaks cycles in CoNLL treebank. Otherwise the CoNLLX Treex reader would not read it.
 # Copyright © 2011 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 use utf8;
-use open ":utf8";
-binmode(STDIN, ":utf8");
-binmode(STDOUT, ":utf8");
-binmode(STDERR, ":utf8");
+use open ':utf8';
+binmode(STDIN, ':utf8');
+binmode(STDOUT, ':utf8');
+binmode(STDERR, ':utf8');
 
 # Empty first element of @tokens corresponds to the artificial root node.
 @tokens = ([]);
