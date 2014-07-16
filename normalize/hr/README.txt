@@ -11,7 +11,7 @@ training size = 3362 sentences, 75236 tokens
 test size     =  374 sentences,  8404 tokens
 
 The corpus is available in the CoNLL-X (CoNLL 2006) file format.
-Lemmas and morphosyntactic tags have been probably assigned manually, at least in part of the corpus (according to their website).
+All lemmas and morphosyntactic tags have been assigned manually (unlike in the older version available online; for this version it has been confirmed by Željko).
 Morphosyntactic tags use the Multext-East 4.0 tagset.
 For morphological tagset description: http://nlp.ffzg.hr/data/tagging/msd-hr.html
 
