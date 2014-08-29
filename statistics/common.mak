@@ -166,7 +166,7 @@ decca_dep_nuclei-%:
 
 decca_dep_tries: $(foreach l,$(LANGUAGES),decca_dep_tries-$(l))
 decca_dep_tries-%:
-	$(DECCA_DEP)/triefilter-idwordpos.py $(DECCA_DIR_DEP/$*-corpus-idwordposhead.txt $(DECCA_DIR_DEP)/$*-corpus-nuclei.txt > $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt
+	$(DECCA_DEP)/triefilter-idwordpos.py $(DECCA_DIR_DEP)$*-corpus-idwordposhead.txt $(DECCA_DIR_DEP)/$*-corpus-nuclei.txt > $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt
 
 
 
