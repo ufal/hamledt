@@ -107,7 +107,7 @@ QI_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore
 DECCA_BASE = $(SCRIPTS)/decca-0.3
 # DECCA_POS = $(DECCA_BASE)/pos/decca-pos.py
 DECCA_POS = $(DECCA_BASE)/pos/decca-pos-reduce.py
-DECCA_DIR = /net/work/people/masek/tectomt/treex/devel/hamledt/statistics/2.0_wip/decca
+
 DECCA_POS_STATS = $(DECCA_DIR)/decca_pos_stats.txt
 
 check_decca_dir: $(foreach l, $(LANGUAGES), check_decca_dir-$(l))
