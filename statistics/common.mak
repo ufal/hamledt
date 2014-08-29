@@ -161,8 +161,8 @@ decca_corpus-%:
 	$(DECCA_DEP)/deccaxml-xsltproc.py $(DECCA_DEP)/deccaxml-idwordposhead.xsl $(DECCA_DIR_DEP)/$*-$(DECCA_CORPUS) > $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt
 
 decca_dep_nuclei: $(foreach l,$(LANGUAGES),decca_dep_nuclei-$(l))
-decca_dep_nuclei:
-	$(DECCA_DEP)/deccaxml-nuclei.py $(DECCA_DEP)/deccaxml-nuclei.xsl $(DECCA_DIR_DEP)/$*-$(DECCA_CORPUS) > $(DECCA_DIR_DEP)/$*-corpus-nuclei.txt
+decca_dep_nuclei-%:
+	$(DECCA_DEP)/deccaxml-nuclei.py $(DECCA_DEP)/deccaxml-nuclei.xsl $(DECCA_DIR_DEP)/$*-$(DECCA_CORPUS) > $(DECCA_DIR_DEP)/$*/$*-corpus-nuclei.txt
 
 decca_dep_tries: $(foreach l,$(LANGUAGES),decca_dep_tries-$(l))
 decca_dep_tries-%:
@@ -339,7 +339,7 @@ ttable:
 #############
 
 clean:
-	rm -rf ???-cluster-run-* .qsubmit*.bash *-decca_tnt.o* *-hamledt2conll.o*
+	rm -rf ???-cluster-run-* .qsubmit*.bash *-decca_tnt.o* *-hamledt2conll.o* *-conll2decca.o*
 
 #########
 # score #
