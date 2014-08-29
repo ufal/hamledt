@@ -21,3 +21,4 @@ it_pdt:
 	cat $(I_DIR)/cs-pdt_$(T_FILE) | $(SCRIPTS)/find_inconsistencies.pl > $(I_DIR)/cs-pdt_$(I_FILE)
 
 
+DECCA_DIR = ./2.0_wip/decca

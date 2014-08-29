@@ -13,10 +13,20 @@ use Text::Table;
 my %opts;
 getopts('i:x:n:c:', \%opts);
 
+# file with the sentences in the pseudo-CoNNL format
+# (output of HamleDT::Util::ExtractSurfaceNGrams)
 my $source_file = $opts{i};
+
+# minimal length of ngrams
 my $MIN_NGRAM = $opts{n} || 3;
+
+# maximal length of ngrams
 my $MAX_NGRAM = $opts{x} || 10;
+
+# number of words at the beginning/end of the ngram that serve only
+# as context - we do not look for inconsistencies there
 my $CONTEXT_SIZE = $opts{c} || 1;
+
 
 my %count;
 my %unigrams;
