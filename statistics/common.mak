@@ -16,6 +16,8 @@ TREEX_FILES = $(DATADIR)/$(LANGS)/$(SUBDIR)/t*/*.treex.gz
 TREEX_FILES_ORIG = $(DATADIR)/$(LANGS)/$(ORIG_SUBDIR)/t*/*.treex.gz
 CONLL_FILES = $(DATADIR)/$(LANGS)/$(SUBDIRC)/t*/*.treex.gz
 
+SUBFILES = $(SUBDIR)/t*/*.treex.gz
+
 help:
 	# 'Check Makefile'
 
@@ -99,6 +101,78 @@ entropy:
 I_DIR = ./inconsistencies
 QI_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore
 
+#############
+# DECCA POS #
+#############
+DECCA_BASE = $(SCRIPTS)/decca-0.3
+# DECCA_POS = $(DECCA_BASE)/pos/decca-pos.py
+DECCA_POS = $(DECCA_BASE)/pos/decca-pos-reduce.py
+DECCA_DIR = /net/work/people/masek/tectomt/treex/devel/hamledt/statistics/2.0_wip/decca
+DECCA_POS_STATS = $(DECCA_DIR)/decca_pos_stats.txt
+
+check_decca_dir: $(foreach l, $(LANGUAGES), check_decca_dir-$(l))
+	[ -d $(DECCA_DIR) ] || mkdir -p $(DECCA_DIR)
+check_decca_dir-%:
+	[ -d $(DECCA_DIR)/$* ] || mkdir -p $(DECCA_DIR)/$*
+
+decca_tnt: $(foreach l, $(LANGUAGES), decca_tnt-$(l))
+decca_tnt-%:
+	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_tnt "$(TREEX) $(QI_OPS) HamleDT::Util::ExtractTnT -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_DIR)/$*-corpus.tt"
+
+decca_ngrams: check_decca_dir $(foreach l, $(LANGUAGES), decca_ngrams-$(l))
+decca_ngrams-%: 
+	$(DECCA_POS) -c $(DECCA_DIR)/$*-corpus.tt -d $(DECCA_DIR)/$* -f $*-ngrams
+
+decca_pos_stats: decca_reset_pos_stats $(foreach l, $(LANGUAGES), decca_pos_stats-$(l))
+decca_pos_stats-%:
+	echo -n '$*	' >> $(DECCA_POS_STATS)
+	cat $(DECCA_DIR)/$*/$*-ngrams.001 | wc -l | tr '\n' '	' >> $(DECCA_POS_STATS)
+	cat $(DECCA_DIR)/$*/$*-ngrams.001 | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_POS_STATS)
+	cat $(DECCA_DIR)/$*/$*-ngrams.reduced.??? | wc -l | tr '\n' '	' >> $(DECCA_POS_STATS)
+	cat $(DECCA_DIR)/$*/$*-ngrams.reduced.??? | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_POS_STATS)
+	ls $(DECCA_DIR)/$* | grep '$*-ngrams....$$' | wc -w  >> $(DECCA_POS_STATS)
+
+decca_reset_pos_stats:
+	echo 'LC	UTy	UTo	TTy	Tto	longest' > $(DECCA_POS_STATS)
+	echo '(LC: language code, UTy: Unique (unigram) Types, UTo: Unique (unigram) Tokens, TTy: Total ngrams (types), TTo: Total ngrams (tokens) longest: length of the longest variation ngram)' >> $(DECCA_POS_STATS)
+
+### DECCA dep. ###
+DECCA_DEP = $(DECCA_BASE)/dep
+DECCA_DIR_DEP = $(DECCA_DIR)/dep
+DECCA_CORPUS = corpus.xml
+
+decca_hamledt2conll: check_decca_dir_dep $(foreach l,$(LANGUAGES),decca_hamledt2conll-$(l))
+decca_hamledt2conll-%:
+	/home/bojar/tools/shell/qsubmit --jobname=$*-hamledt2conll "$(TREEX) $(QI_OPS) $(DECCA_TRANSFORMATION) Write::CoNLLX deprel_attribute='afun' pos_attribute='tag' cpos_attribute='iset/pos' feat_attribute='iset' -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_DIR_DEP)/$*-corpus.conll"
+
+check_decca_dir_dep: $(foreach l, $(LANGUAGES), check_decca_dir_dep-$(l))
+	[ -d $(DECCA_DIR_DEP) ] || mkdir -p $(DECCA_DIR_DEP)
+check_decca_dir_dep-%:
+	[ -d $(DECCA_DIR_DEP)/$* ] || mkdir -p $(DECCA_DIR_DEP)/$*
+
+decca_conll2decca: $(foreach l,$(LANGUAGES),decca_conll2decca-$(l))
+decca_conll2decca-%:
+# /home/bojar/tools/shell/qsubmit --jobname=$*-conll2decca "
+	$(DECCA_BASE)/CoNLL2Decca.py $(DECCA_DIR_DEP)/$*-corpus.conll $(DECCA_DIR_DEP)/$*-$(DECCA_CORPUS)
+#"
+
+decca_corpus: $(foreach l,$(LANGUAGES),decca_corpus-$(l))
+decca_corpus-%:
+	$(DECCA_DEP)/deccaxml-xsltproc.py $(DECCA_DEP)/deccaxml-idwordposhead.xsl $(DECCA_DIR_DEP)/$*-$(DECCA_CORPUS) > $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt
+
+decca_dep_nuclei: $(foreach l,$(LANGUAGES),decca_dep_nuclei-$(l))
+decca_dep_nuclei:
+	$(DECCA_DEP)/deccaxml-nuclei.py $(DECCA_DEP)/deccaxml-nuclei.xsl $(DECCA_DIR_DEP)/$*-$(DECCA_CORPUS) > $(DECCA_DIR_DEP)/$*-corpus-nuclei.txt
+
+decca_dep_tries: $(foreach l,$(LANGUAGES),decca_dep_tries-$(l))
+decca_dep_tries-%:
+	$(DECCA_DEP)/triefilter-idwordpos.py $(DECCA_DIR_DEP/$*-corpus-idwordposhead.txt $(DECCA_DIR_DEP)/$*-corpus-nuclei.txt > $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt
+
+
+
+
+
+
 #######
 # POS #
 #######
@@ -122,7 +196,7 @@ ip_split-%:
 
 CONTEXT_SIZE = 1
 MIN_NGRAM = 3
-MAX_NGRAM = 10
+MAX_NGRAM = 3
 IP_OPTS = $(CONTEXT_SIZE)-$(MIN_NGRAM)-$(MAX_NGRAM)
 IP_STATS = $(IP_STATS_BASE)-$(IP_OPTS).txt
 
@@ -194,6 +268,7 @@ c_stats_pdt-%:
 total_incons:
 	cat $(I_DIR)/*-$(T_FILE) | $(SCRIPTS)/find_inconsistencies.pl > $(I_DIR)/total_$(I_FILE)
 
+
 #########
 # tests #
 #########
@@ -264,7 +339,7 @@ ttable:
 #############
 
 clean:
-	rm -rf ???-cluster-run-*
+	rm -rf ???-cluster-run-* .qsubmit*.bash *-decca_tnt.o* *-hamledt2conll.o*
 
 #########
 # score #
