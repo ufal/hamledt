@@ -5,8 +5,13 @@ SUBDIR    = treex/001_pdtstyle
 SUBDIRC   = conll
 ORIG_SUBDIR = treex/000_orig
 TREEX     = treex
-SCRIPTS = ../scripts
+SCRIPTS =  $$TMT_ROOT/treex/devel/hamledt/statistics/scripts
+# SCRIPTS = /net/work/people/masek/tectomt/treex/devel/hamledt/statistics/scripts
+# SCRIPTS = /home/masek/treex/devel/hamledt/statistics/scripts
 JOBS=100
+
+tmp:
+	echo $(SCRIPTS)
 
 LANGUAGES = bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar he is pl zh # for cycles
 LANGS=*
@@ -170,7 +175,7 @@ decca_dep_tries-%:
 
 decca_dep_ngrams: $(foreach l,$(LANGUAGES),decca_dep_nuclei-$(l))
 decca_dep_ngrams-%:
-	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DEP_DIR)/$*-corpus-idwordposhead.txt -t $(DECCA_DEP_DIR)/$*-corpus-filtertries.txt -d $(DECCA_DEP_DIR)/$* -f $*-dep-ngrams
+	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt -t $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt -d $(DECCA_DIR_DEP)/$* -f $*-dep-ngrams
 
 
 
