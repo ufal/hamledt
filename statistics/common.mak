@@ -170,7 +170,7 @@ decca_dep_tries: $(foreach l,$(LANGUAGES),decca_dep_tries-$(l))
 decca_dep_tries-%:
 	$(DECCA_DEP)/triefilter-idwordpos.py $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt $(DECCA_DIR_DEP)/$*-corpus-nuclei.txt > $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt
 
-decca_dep_ngrams: $(foreach l,$(LANGUAGES),decca_dep_nuclei-$(l))
+decca_dep_ngrams: $(foreach l,$(LANGUAGES),decca_dep_ngrams-$(l))
 decca_dep_ngrams-%:
 	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt -t $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt -d $(DECCA_DIR_DEP)/$* -f $*-dep-ngrams
 
