@@ -10,9 +10,6 @@ SCRIPTS =  $$TMT_ROOT/treex/devel/hamledt/statistics/scripts
 # SCRIPTS = /home/masek/treex/devel/hamledt/statistics/scripts
 JOBS=100
 
-tmp:
-	echo $(SCRIPTS)
-
 LANGUAGES = bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar he is pl zh # for cycles
 LANGS=*
 # for shell expansion
