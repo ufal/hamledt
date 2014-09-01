@@ -166,9 +166,11 @@ decca_dep_nuclei-%:
 
 decca_dep_tries: $(foreach l,$(LANGUAGES),decca_dep_tries-$(l))
 decca_dep_tries-%:
-	$(DECCA_DEP)/triefilter-idwordpos.py $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt $(DECCA_DIR_DEP)/$*/$*-corpus-nuclei.txt > $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt
+	$(DECCA_DEP)/triefilter-idwordpos.py $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt $(DECCA_DIR_DEP)/$*-corpus-nuclei.txt > $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt
 
-
+decca_dep_ngrams: $(foreach l,$(LANGUAGES),decca_dep_nuclei-$(l))
+decca_dep_ngrams-%:
+	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DEP_DIR)/$*-corpus-idwordposhead.txt -t $(DECCA_DEP_DIR)/$*-corpus-filtertries.txt -d $(DECCA_DEP_DIR)/$* -f $*-dep-ngrams
 
 
 
