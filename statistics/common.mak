@@ -107,32 +107,33 @@ QI_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore
 # DECCA POS #
 #############
 DECCA_BASE = $(SCRIPTS)/decca-0.3
-# DECCA_POS = $(DECCA_BASE)/pos/decca-pos.py
 DECCA_POS = $(DECCA_BASE)/pos/decca-pos-reduce.py
 
-DECCA_POS_STATS = $(DECCA_DIR)/decca_pos_stats.txt
+DECCA_POS_DIR = $(DECCA_DIR)/pos
+DECCA_POS_STATS = $(DECCA_POS_DIR)/decca_pos_stats.txt
 
-check_decca_dir: $(foreach l, $(LANGUAGES), check_decca_dir-$(l))
-	[ -d $(DECCA_DIR) ] || mkdir -p $(DECCA_DIR)
-check_decca_dir-%:
-	[ -d $(DECCA_DIR)/$* ] || mkdir -p $(DECCA_DIR)/$*
+
+check_decca_pos_dir: $(foreach l, $(LANGUAGES), check_decca_pos_dir-$(l))
+	[ -d $(DECCA_POS_DIR) ] || mkdir -p $(DECCA_POS_DIR)
+check_decca_pos_dir-%:
+	[ -d $(DECCA_POS_DIR)/$* ] || mkdir -p $(DECCA_POS_DIR)/$*
 
 decca_tnt: $(foreach l, $(LANGUAGES), decca_tnt-$(l))
 decca_tnt-%:
-	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_tnt "$(TREEX) $(QI_OPS) HamleDT::Util::ExtractTnT -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_DIR)/$*-corpus.tt"
+	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_tnt "$(TREEX) $(QI_OPS) Write::TnT -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_POS_DIR)/$*-corpus.tt"
 
-decca_ngrams: check_decca_dir $(foreach l, $(LANGUAGES), decca_ngrams-$(l))
-decca_ngrams-%: 
-	$(DECCA_POS) -c $(DECCA_DIR)/$*-corpus.tt -d $(DECCA_DIR)/$* -f $*-ngrams
+decca_pos_ngrams: check_decca_pos_dir $(foreach l, $(LANGUAGES), decca_pos_ngrams-$(l))
+decca_pos_ngrams-%: 
+	$(DECCA_POS) -c $(DECCA_POS_DIR)/$*-corpus.tt -d $(DECCA_POS_DIR)/$* -f $*-ngrams
 
 decca_pos_stats: decca_reset_pos_stats $(foreach l, $(LANGUAGES), decca_pos_stats-$(l))
 decca_pos_stats-%:
 	echo -n '$*	' >> $(DECCA_POS_STATS)
-	cat $(DECCA_DIR)/$*/$*-ngrams.001 | wc -l | tr '\n' '	' >> $(DECCA_POS_STATS)
-	cat $(DECCA_DIR)/$*/$*-ngrams.001 | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_POS_STATS)
+	cat $(DECCA_POS_DIR)/$*/$*-ngrams.001 | wc -l | tr '\n' '	' >> $(DECCA_POS_STATS)
+	cat $(DECCA_POS_DIR)/$*/$*-ngrams.001 | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_POS_STATS)
 	cat $(DECCA_DIR)/$*/$*-ngrams.reduced.??? | wc -l | tr '\n' '	' >> $(DECCA_POS_STATS)
-	cat $(DECCA_DIR)/$*/$*-ngrams.reduced.??? | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_POS_STATS)
-	ls $(DECCA_DIR)/$* | grep '$*-ngrams....$$' | wc -w  >> $(DECCA_POS_STATS)
+	cat $(DECCA_POS_DIR)/$*/$*-ngrams.reduced.??? | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_POS_STATS)
+	ls $(DECCA_POS_DIR)/$* | grep '$*-ngrams....$$' | wc -w  >> $(DECCA_POS_STATS)
 
 decca_reset_pos_stats:
 	echo 'LC	UTy	UTo	TTy	Tto	longest' > $(DECCA_POS_STATS)
@@ -142,6 +143,7 @@ decca_reset_pos_stats:
 DECCA_DEP = $(DECCA_BASE)/dep
 DECCA_DIR_DEP = $(DECCA_DIR)/dep
 DECCA_CORPUS = corpus.xml
+DECCA_DEP_STATS = $(DECCA_DIR_DEP)/decca_dep_stats.txt
 
 decca_hamledt2conll: check_decca_dir_dep $(foreach l,$(LANGUAGES),decca_hamledt2conll-$(l))
 decca_hamledt2conll-%:
@@ -154,9 +156,7 @@ check_decca_dir_dep-%:
 
 decca_conll2decca: $(foreach l,$(LANGUAGES),decca_conll2decca-$(l))
 decca_conll2decca-%:
-# /home/bojar/tools/shell/qsubmit --jobname=$*-conll2decca "
-	$(DECCA_BASE)/CoNLL2Decca.py $(DECCA_DIR_DEP)/$*-corpus.conll $(DECCA_DIR_DEP)/$*-$(DECCA_CORPUS)
-#"
+	/home/bojar/tools/shell/qsubmit --jobname=$*-conll2decca "$(DECCA_BASE)/CoNLL2Decca.py $(DECCA_DIR_DEP)/$*-corpus.conll $(DECCA_DIR_DEP)/$*-$(DECCA_CORPUS)"
 
 decca_corpus: $(foreach l,$(LANGUAGES),decca_corpus-$(l))
 decca_corpus-%:
@@ -173,8 +173,20 @@ decca_dep_tries-%:
 decca_dep_ngrams: $(foreach l,$(LANGUAGES),decca_dep_ngrams-$(l))
 decca_dep_ngrams-%:
 	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt -t $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt -d $(DECCA_DIR_DEP)/$* -f $*-dep-ngrams
+#	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_dep_ngrams "	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt -t $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt -d $(DECCA_DIR_DEP)/$* -f $*-dep-ngrams"
 
+decca_dep_stats: decca_reset_dep_stats $(foreach l, $(LANGUAGES), decca_dep_stats-$(l))
+decca_dep_stats-%:
+	echo -n '$*	' >> $(DECCA_DEP_STATS)
+	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.002 | wc -l | tr '\n' '	' >> $(DECCA_DEP_STATS)
+	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.002 | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_DEP_STATS)
+	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.??? | wc -l | tr '\n' '	' >> $(DECCA_DEP_STATS)
+	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.??? | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_DEP_STATS)
+	ls $(DECCA_DIR_DEP)/$* | grep '$*-dep-ngrams....$$' | wc -w  >> $(DECCA_DEP_STATS)
 
+decca_reset_dep_stats:
+	echo 'LC	UTy	UTo	TTy	Tto	longest' > $(DECCA_DEP_STATS)
+	echo '(LC: language code, UTy: Unique (bigram) Types, UTo: Unique (bigram) Tokens, TTy: Total ngrams (types), TTo: Total ngrams (tokens) longest: length of the longest variation ngram)' >> $(DECCA_DEP_STATS)
 
 
 #######
