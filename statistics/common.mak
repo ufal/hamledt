@@ -103,6 +103,8 @@ entropy:
 I_DIR = ./inconsistencies
 QI_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore
 
+############################
+############################
 #############
 # DECCA POS #
 #############
@@ -120,11 +122,11 @@ check_decca_pos_dir-%:
 
 decca_tnt: check_decca_pos_dir $(foreach l, $(LANGUAGES), decca_tnt-$(l))
 decca_tnt-%:
-	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_tnt "$(TREEX) $(QI_OPS) Write::TnT pos_attribute='iset_feat' -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_POS_DIR)/$*-corpus.tt"
+	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_tnt "$(TREEX) $(QI_OPS) Write::TnT pos_attribute='iset_feat' -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_POS_DIR)/$*-simple_corpus.tt"
 
 decca_pos_ngrams: check_decca_pos_dir $(foreach l, $(LANGUAGES), decca_pos_ngrams-$(l))
 decca_pos_ngrams-%: 
-	$(DECCA_POS)/decca-pos-reduce.py -c $(DECCA_POS_DIR)/$*-corpus.tt -d $(DECCA_POS_DIR)/$* -f $*-ngrams
+	$(DECCA_POS)/decca-pos-reduce.py -c $(DECCA_POS_DIR)/$*-simple_corpus.tt -d $(DECCA_POS_DIR)/$* -f $*-ngrams
 
 decca_pos_ngrams_clean: $(foreach l, $(LANGUAGES), decca_pos_ngrams_clean-$(l))
 decca_pos_ngrams_clean-%:
@@ -160,7 +162,49 @@ decca_reset_pos_stats:
 	echo 'LC	UTy	UTo	TTy	Tto	longest' > $(DECCA_POS_STATS)
 	echo '(LC: language code, UTy: Unique (unigram) Types, UTo: Unique (unigram) Tokens, TTy: Total ngrams (types), TTo: Total ngrams (tokens) longest: length of the longest variation ngram)' >> $(DECCA_POS_STATS)
 
-### DECCA dep. ###
+
+#########
+
+complexify_corpus: $(foreach l, $(LANGUAGES), complexify_corpus-$(l))
+complexify_corpus-%:
+	$(SCRIPTS)/tagging/assign_complex_ambiguity_tags.pl -t $(DECCA_POS_DIR)/$*/$*-ngrams.nonfringe.003 -u $(DECCA_POS_DIR)/$*/$*-ngrams.001 -c $(DECCA_POS_DIR)/$*-simple_corpus.tt > $(DECCA_POS_DIR)/$*-complex_corpus.tt
+
+
+########
+# DTT  #
+########
+
+DTT_SCRIPTS = $(SCRIPTS)/tagging/DTT/bin
+DTT_TRAIN = $(DTT_SCRIPTS)/train-tree-tagger
+DTT_TAG = $(DTT_SCRIPTS)/tree-tagger
+DTT_MAKE_LEX = $(SCRIPTS)/tagging/make_DTT_lexicon.pl
+
+DTT_TRAIN_OPTS = -st pos=punc -utf8 -cl 2
+DTT_TAG_OPTS = 
+
+COMPLEXITY = simple
+
+dtt_train: dtt_check_dir dtt_lexicon dtt_tagset $(foreach l,$(LANGUAGES),dtt_train-$(l))
+dtt_train-%:
+	$(DTT_TRAIN) $(DTT_TRAIN_OPTS) $(DTT_DIR)/$*/$*.$(COMPLEXITY).lexicon $(DTT_DIR)/$*/$*.$(COMPLEXITY).tagset $(DECCA_POS_DIR)/$*-$(COMPLEXITY)_corpus.tt $(DTT_DIR)/$*/$*.$(COMPLEXITY).dtt_model
+
+dtt_check_dir: $(foreach l, $(LANGUAGES), dtt_check_dir-$(l))
+dtt_check_dir-%:
+	[ -d $(DTT_DIR)/$* ] || mkdir -p $(DTT_DIR)/$*
+
+dtt_lexicon: $(foreach l, $(LANGUAGES), dtt_lexicon-$(l))
+dtt_lexicon-%:
+	$(DTT_MAKE_LEX) $(DECCA_POS_DIR)/$*-$(COMPLEXITY)_corpus.tt > $(DTT_DIR)/$*/$*.$(COMPLEXITY).lexicon
+
+dtt_tagset: $(foreach l, $(LANGUAGES), dtt_tagset-$(l))
+dtt_tagset-%:
+	cat $(DECCA_POS_DIR)/$*-$(COMPLEXITY)_corpus.tt | cut -f2 | sort | uniq | tr "\n" " " > $(DTT_DIR)/$*/$*.$(COMPLEXITY).tagset
+
+
+##############
+# DECCA dep. #
+##############
+
 DECCA_DEP = $(DECCA_BASE)/dep
 DECCA_DIR_DEP = $(DECCA_DIR)/dep
 DECCA_CORPUS = corpus.xml
@@ -209,42 +253,8 @@ decca_reset_dep_stats:
 	echo 'LC	UTy	UTo	TTy	Tto	longest' > $(DECCA_DEP_STATS)
 	echo '(LC: language code, UTy: Unique (bigram) Types, UTo: Unique (bigram) Tokens, TTy: Total ngrams (types), TTo: Total ngrams (tokens) longest: length of the longest variation ngram)' >> $(DECCA_DEP_STATS)
 
-#########
-
-complexify_corpus: $(foreach l, $(LANGUAGES), complexify_corpus-$(l))
-complexify_corpus-%:
-	$(SCRIPTS)/tagging/assign_complex_ambiguity_tags.pl -t $(DECCA_POS_DIR)/$*/$*-ngrams.nonfringe.003 -u $(DECCA_POS_DIR)/$*/$*-ngrams.001 -c $(DECCA_POS_DIR)/$*-corpus.tt > $(DECCA_POS_DIR)/$*-complex-corpus.tt
-
-
-########
-# DTT  #
-########
-
-DTT_SCRIPTS = $(SCRIPTS)/tagging/DTT/bin
-DTT_TRAIN = $(DTT_SCRIPTS)/train-tree-tagger
-DTT_TAG = $(DTT_SCRIPTS)/tree-tagger
-DTT_MAKE_LEX = $(SCRIPTS)/tagging/make_DTT_lexicon.pl
-
-DTT_TRAIN_OPTS = -st pos=punc -utf8 -cl 2
-DTT_TAG_OPTS = 
-
-dtt_train: dtt_check_dir dtt_lexicon dtt_tagset $(foreach l,$(LANGUAGES),dtt_train-$(l))
-dtt_train-%:
-	$(DTT_TRAIN) $(DTT_TRAIN_OPTS) $(DTT_DIR)/$*/$*.lexicon $(DTT_DIR)/$*/$*.tagset $(DTT_DIR)/$*/$*-corpus.tt $(DTT_DIR)/$*/$*.dtt_model
-
-dtt_check_dir: $(foreach l, $(LANGUAGES), dtt_check_dir-$(l))
-dtt_check_dir-%:
-	[ -d $(DTT_DIR)/$* ] || mkdir -p $(DTT_DIR)/$*
-
-dtt_lexicon: $(foreach l, $(LANGUAGES), dtt_lexicon-$(l))
-dtt_lexicon-%:
-	$(DTT_MAKE_LEX) $(DTT_DIR)/$*/$*-corpus.tt > $(DTT_DIR)/$*/$*.lexicon
-
-dtt_tagset: $(foreach l, $(LANGUAGES), dtt_tagset-$(l))
-dtt_tagset-%:
-	cat $(DTT_DIR)/$*/$*-corpus.tt | cut -f2 | sort | uniq | tr "\n" " " > $(DTT_DIR)/$*/$*.tagset
-
-
+###########################
+###########################
 #######
 # POS #
 #######
