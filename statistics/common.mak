@@ -1,5 +1,5 @@
 #-*- mode: makefile -*-
-SHELL=bash
+SHELL=/bin/bash
 
 SUBDIR    = treex/001_pdtstyle
 SUBDIRC   = conll
@@ -10,7 +10,7 @@ SCRIPTS =  $$TMT_ROOT/treex/devel/hamledt/statistics/scripts
 # SCRIPTS = /home/masek/treex/devel/hamledt/statistics/scripts
 JOBS=100
 
-LANGUAGES = bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar he is pl zh # for cycles
+LANGUAGES = bg bn ca cs da el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar de he is pl zh # for cycles
 LANGS=*
 # for shell expansion
 
@@ -107,9 +107,9 @@ QI_OPS = -p -j $(JOBS) Util::SetGlobal if_missing_bundles=ignore
 # DECCA POS #
 #############
 DECCA_BASE = $(SCRIPTS)/decca-0.3
-DECCA_POS = $(DECCA_BASE)/pos/decca-pos-reduce.py
+DECCA_POS = $(DECCA_BASE)/pos
 
-DECCA_POS_DIR = $(DECCA_DIR)/pos
+DECCA_POS_DIR = $(DECCA_DIR)/pos/iset_feat
 DECCA_POS_STATS = $(DECCA_POS_DIR)/decca_pos_stats.txt
 
 
@@ -118,13 +118,34 @@ check_decca_pos_dir: $(foreach l, $(LANGUAGES), check_decca_pos_dir-$(l))
 check_decca_pos_dir-%:
 	[ -d $(DECCA_POS_DIR)/$* ] || mkdir -p $(DECCA_POS_DIR)/$*
 
-decca_tnt: $(foreach l, $(LANGUAGES), decca_tnt-$(l))
+decca_tnt: check_decca_pos_dir $(foreach l, $(LANGUAGES), decca_tnt-$(l))
 decca_tnt-%:
-	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_tnt "$(TREEX) $(QI_OPS) Write::TnT -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_POS_DIR)/$*-corpus.tt"
+	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_tnt "$(TREEX) $(QI_OPS) Write::TnT pos_attribute='iset_feat' -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_POS_DIR)/$*-corpus.tt"
 
 decca_pos_ngrams: check_decca_pos_dir $(foreach l, $(LANGUAGES), decca_pos_ngrams-$(l))
 decca_pos_ngrams-%: 
-	$(DECCA_POS) -c $(DECCA_POS_DIR)/$*-corpus.tt -d $(DECCA_POS_DIR)/$* -f $*-ngrams
+	$(DECCA_POS)/decca-pos-reduce.py -c $(DECCA_POS_DIR)/$*-corpus.tt -d $(DECCA_POS_DIR)/$* -f $*-ngrams
+
+decca_pos_ngrams_clean: $(foreach l, $(LANGUAGES), decca_pos_ngrams_clean-$(l))
+decca_pos_ngrams_clean-%:
+	bash -c 'filename=`ls -r $(DECCA_POS_DIR)/$* | grep ngrams.[[:digit:]] | head -n 1`; extension="$${filename##*.}"; basename="$${filename%.*}"; cat $(DECCA_POS_DIR)/$*/$$filename > $(DECCA_POS_DIR)/$*/$$basename.reduced.$$extension'
+
+decca_pos_nonfringe: $(foreach l, $(LANGUAGES), decca_pos_nonfringe-$(l))
+decca_pos_nonfringe-%:
+	for fullfile in $(DECCA_POS_DIR)/$*/*.reduced.* ; do \
+		filename=$$(basename "$$fullfile") ; \
+		extension="$${filename##*.}" ; \
+		basename="$${filename%.*}" ; \
+		python $(DECCA_POS)/nonfringe.py $$fullfile > $(DECCA_POS_DIR)/$*/$${basename}.nonfringe.$${extension} ; \
+	done;
+	for fullfile in $(DECCA_POS_DIR)/$*/*-ngrams.??? ; do \
+		filename=$$(basename "$$fullfile") ; \
+		extension="$${filename##*.}" ; \
+		basename="$${filename%.*}" ; \
+		python $(DECCA_POS)/nonfringe.py $$fullfile > $(DECCA_POS_DIR)/$*/$${basename}.nonfringe.$${extension} ; \
+	done;
+
+
 
 decca_pos_stats: decca_reset_pos_stats $(foreach l, $(LANGUAGES), decca_pos_stats-$(l))
 decca_pos_stats-%:
@@ -172,8 +193,8 @@ decca_dep_tries-%:
 
 decca_dep_ngrams: $(foreach l,$(LANGUAGES),decca_dep_ngrams-$(l))
 decca_dep_ngrams-%:
-	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt -t $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt -d $(DECCA_DIR_DEP)/$* -f $*-dep-ngrams
-#	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_dep_ngrams "	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt -t $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt -d $(DECCA_DIR_DEP)/$* -f $*-dep-ngrams"
+#	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt -t $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt -d $(DECCA_DIR_DEP)/$* -f $*-dep-ngrams
+	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_dep_ngrams "	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt -t $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt -d $(DECCA_DIR_DEP)/$* -f $*-dep-ngrams"
 
 decca_dep_stats: decca_reset_dep_stats $(foreach l, $(LANGUAGES), decca_dep_stats-$(l))
 decca_dep_stats-%:
@@ -187,6 +208,41 @@ decca_dep_stats-%:
 decca_reset_dep_stats:
 	echo 'LC	UTy	UTo	TTy	Tto	longest' > $(DECCA_DEP_STATS)
 	echo '(LC: language code, UTy: Unique (bigram) Types, UTo: Unique (bigram) Tokens, TTy: Total ngrams (types), TTo: Total ngrams (tokens) longest: length of the longest variation ngram)' >> $(DECCA_DEP_STATS)
+
+#########
+
+complexify_corpus: $(foreach l, $(LANGUAGES), complexify_corpus-$(l))
+complexify_corpus-%:
+	$(SCRIPTS)/tagging/assign_complex_ambiguity_tags.pl -t $(DECCA_POS_DIR)/$*/$*-ngrams.nonfringe.003 -u $(DECCA_POS_DIR)/$*/$*-ngrams.001 -c $(DECCA_POS_DIR)/$*-corpus.tt > $(DECCA_POS_DIR)/$*-complex-corpus.tt
+
+
+########
+# DTT  #
+########
+
+DTT_SCRIPTS = $(SCRIPTS)/tagging/DTT/bin
+DTT_TRAIN = $(DTT_SCRIPTS)/train-tree-tagger
+DTT_TAG = $(DTT_SCRIPTS)/tree-tagger
+DTT_MAKE_LEX = $(SCRIPTS)/tagging/make_DTT_lexicon.pl
+
+DTT_TRAIN_OPTS = -st pos=punc -utf8 -cl 2
+DTT_TAG_OPTS = 
+
+dtt_train: dtt_check_dir dtt_lexicon dtt_tagset $(foreach l,$(LANGUAGES),dtt_train-$(l))
+dtt_train-%:
+	$(DTT_TRAIN) $(DTT_TRAIN_OPTS) $(DTT_DIR)/$*/$*.lexicon $(DTT_DIR)/$*/$*.tagset $(DTT_DIR)/$*/$*-corpus.tt $(DTT_DIR)/$*/$*.dtt_model
+
+dtt_check_dir: $(foreach l, $(LANGUAGES), dtt_check_dir-$(l))
+dtt_check_dir-%:
+	[ -d $(DTT_DIR)/$* ] || mkdir -p $(DTT_DIR)/$*
+
+dtt_lexicon: $(foreach l, $(LANGUAGES), dtt_lexicon-$(l))
+dtt_lexicon-%:
+	$(DTT_MAKE_LEX) $(DTT_DIR)/$*/$*-corpus.tt > $(DTT_DIR)/$*/$*.lexicon
+
+dtt_tagset: $(foreach l, $(LANGUAGES), dtt_tagset-$(l))
+dtt_tagset-%:
+	cat $(DTT_DIR)/$*/$*-corpus.tt | cut -f2 | sort | uniq | tr "\n" " " > $(DTT_DIR)/$*/$*.tagset
 
 
 #######
