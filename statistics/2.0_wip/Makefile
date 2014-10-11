@@ -22,3 +22,4 @@ it_pdt:
 
 
 DECCA_DIR = decca
+DTT_DIR = dtt
