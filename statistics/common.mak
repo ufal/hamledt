@@ -10,7 +10,7 @@ SCRIPTS =  $$TMT_ROOT/treex/devel/hamledt/statistics/scripts
 # SCRIPTS = /home/masek/treex/devel/hamledt/statistics/scripts
 JOBS=100
 
-LANGUAGES = bg bn ca cs da el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar de he is pl zh # for cycles
+LANGUAGES = bg bn ca cs da el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar de sk he is pl zh # for cycles
 LANGS=*
 # for shell expansion
 
@@ -122,32 +122,35 @@ check_decca_pos_dir-%:
 
 decca_tnt: check_decca_pos_dir $(foreach l, $(LANGUAGES), decca_tnt-$(l))
 decca_tnt-%:
-	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_tnt "$(TREEX) $(QI_OPS) Write::TnT pos_attribute='iset_feat' -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_POS_DIR)/$*-simple_corpus.tt"
+	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_tnt "$(TREEX) $(QI_OPS) Print::TnT pos_attribute='iset_feat' -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_POS_DIR)/$*-simple_corpus.tt"
 
 decca_pos_ngrams: check_decca_pos_dir $(foreach l, $(LANGUAGES), decca_pos_ngrams-$(l))
-decca_pos_ngrams-%: 
-	$(DECCA_POS)/decca-pos-reduce.py -c $(DECCA_POS_DIR)/$*-simple_corpus.tt -d $(DECCA_POS_DIR)/$* -f $*-ngrams
+decca_pos_ngrams-%:
+	/home/bojar/tools/shell/qsubmit --jobname=$*-ngrams "$(DECCA_POS)/decca-pos-reduce.py -c $(DECCA_POS_DIR)/$*-simple_corpus.tt -d $(DECCA_POS_DIR)/$* -f $*-ngrams"
+
+decca_pos_ngrams_reduced: $(foreach l, $(LANGUAGES), decca_pos_ngrams_reduced-$(l))
+decca_pos_ngrams_reduced-%:
+	bash -c 'filename=`ls -r $(DECCA_POS_DIR)/$* | grep ngrams.[[:digit:]] | head -n 1`; extension="$${filename##*.}"; basename="$${filename%.*}"; cat $(DECCA_POS_DIR)/$*/$$filename > $(DECCA_POS_DIR)/$*/$$basename.reduced.$$extension'
+
+decca_pos_ngrams_nonfringe: $(foreach l, $(LANGUAGES), decca_pos_ngrams_nonfringe-$(l))
+decca_pos_ngrams_nonfringe-%:
+#	for fullfile in $(DECCA_POS_DIR)/$*/*.reduced.* ; do \
+		filename=$$(basename "$$fullfile") ; \
+		extension="$${filename##*.}" ; \
+		basename="$${filename%.*}" ; \
+		python $(DECCA_POS)/nonfringe.py $$fullfile > $(DECCA_POS_DIR)/$*/$${basename}.nonfringe.$${extension} ; \
+	done;
+	for fullfile in $(DECCA_POS_DIR)/$*/*-ngrams.003 ; do \
+		filename=$$(basename "$$fullfile") ; \
+		extension="$${filename##*.}" ; \
+		basename="$${filename%.*}" ; \
+		python $(DECCA_POS)/nonfringe.py $$fullfile > $(DECCA_POS_DIR)/$*/$${basename}.nonfringe.$${extension} ; \
+	done;
 
 decca_pos_ngrams_clean: $(foreach l, $(LANGUAGES), decca_pos_ngrams_clean-$(l))
 decca_pos_ngrams_clean-%:
-	bash -c 'filename=`ls -r $(DECCA_POS_DIR)/$* | grep ngrams.[[:digit:]] | head -n 1`; extension="$${filename##*.}"; basename="$${filename%.*}"; cat $(DECCA_POS_DIR)/$*/$$filename > $(DECCA_POS_DIR)/$*/$$basename.reduced.$$extension'
-
-decca_pos_nonfringe: $(foreach l, $(LANGUAGES), decca_pos_nonfringe-$(l))
-decca_pos_nonfringe-%:
-	for fullfile in $(DECCA_POS_DIR)/$*/*.reduced.* ; do \
-		filename=$$(basename "$$fullfile") ; \
-		extension="$${filename##*.}" ; \
-		basename="$${filename%.*}" ; \
-		python $(DECCA_POS)/nonfringe.py $$fullfile > $(DECCA_POS_DIR)/$*/$${basename}.nonfringe.$${extension} ; \
-	done;
-	for fullfile in $(DECCA_POS_DIR)/$*/*-ngrams.??? ; do \
-		filename=$$(basename "$$fullfile") ; \
-		extension="$${filename##*.}" ; \
-		basename="$${filename%.*}" ; \
-		python $(DECCA_POS)/nonfringe.py $$fullfile > $(DECCA_POS_DIR)/$*/$${basename}.nonfringe.$${extension} ; \
-	done;
-
-
+	rm -f $(DECCA_POS_DIR)/$*/*-ngrams.002 $(DECCA_POS_DIR)/$*/*-ngrams.00[4-9] $(DECCA_POS_DIR)/$*/*-ngrams.0[1-9]? $(DECCA_POS_DIR)/$*/*-ngrams.[1-9]??
+	rm -f $(DECCA_POS_DIR)/$*/*-ngrams.deleted.???
 
 decca_pos_stats: decca_reset_pos_stats $(foreach l, $(LANGUAGES), decca_pos_stats-$(l))
 decca_pos_stats-%:
@@ -164,6 +167,12 @@ decca_reset_pos_stats:
 
 
 #########
+
+COMPLEXITY = simple
+
+hash_tags: $(foreach l, $(LANGUAGES), hash_tags-$(l))
+hash_tags-%:
+	$(SCRIPTS)/tagging/hash_tags.pl -c $(DECCA_POS_DIR)/$*-$(COMPLEXITY)_tags_table.json $(DECCA_POS_DIR)/$*-$(COMPLEXITY)_corpus.tt > $(DECCA_POS_DIR)/$*-compressed_$(COMPLEXITY)_corpus.tt
 
 complexify_corpus: $(foreach l, $(LANGUAGES), complexify_corpus-$(l))
 complexify_corpus-%:
@@ -186,7 +195,9 @@ COMPLEXITY = simple
 
 dtt_train: dtt_check_dir dtt_lexicon dtt_tagset $(foreach l,$(LANGUAGES),dtt_train-$(l))
 dtt_train-%:
-	$(DTT_TRAIN) $(DTT_TRAIN_OPTS) $(DTT_DIR)/$*/$*.$(COMPLEXITY).lexicon $(DTT_DIR)/$*/$*.$(COMPLEXITY).tagset $(DECCA_POS_DIR)/$*-$(COMPLEXITY)_corpus.tt $(DTT_DIR)/$*/$*.$(COMPLEXITY).dtt_model
+#	/home/bojar/tools/shell/qsubmit --jobname=$*-$(COMPLEXITY)_dtt "$(DTT_TRAIN) $(DTT_TRAIN_OPTS) $(DTT_DIR)/$*/$*.$(COMPLEXITY).lexicon $(DTT_DIR)/$*/$*.$(COMPLEXITY).tagset $(DECCA_POS_DIR)/$*-compressed_$(COMPLEXITY)_corpus.tt $(DTT_DIR)/$*/$*.$(COMPLEXITY).dtt_model"
+	$(DTT_TRAIN) $(DTT_TRAIN_OPTS) $(DTT_DIR)/$*/$*.$(COMPLEXITY).lexicon $(DTT_DIR)/$*/$*.$(COMPLEXITY).tagset $(DECCA_POS_DIR)/$*-compressed_$(COMPLEXITY)_corpus.tt $(DTT_DIR)/$*/$*.$(COMPLEXITY).dtt_model
+
 
 dtt_check_dir: $(foreach l, $(LANGUAGES), dtt_check_dir-$(l))
 dtt_check_dir-%:
@@ -194,11 +205,11 @@ dtt_check_dir-%:
 
 dtt_lexicon: $(foreach l, $(LANGUAGES), dtt_lexicon-$(l))
 dtt_lexicon-%:
-	$(DTT_MAKE_LEX) $(DECCA_POS_DIR)/$*-$(COMPLEXITY)_corpus.tt > $(DTT_DIR)/$*/$*.$(COMPLEXITY).lexicon
+	$(DTT_MAKE_LEX) $(DECCA_POS_DIR)/$*-compressed_$(COMPLEXITY)_corpus.tt > $(DTT_DIR)/$*/$*.$(COMPLEXITY).lexicon
 
 dtt_tagset: $(foreach l, $(LANGUAGES), dtt_tagset-$(l))
 dtt_tagset-%:
-	cat $(DECCA_POS_DIR)/$*-$(COMPLEXITY)_corpus.tt | cut -f2 | sort | uniq | tr "\n" " " > $(DTT_DIR)/$*/$*.$(COMPLEXITY).tagset
+	cat $(DECCA_POS_DIR)/$*-compressed_$(COMPLEXITY)_corpus.tt | cut -f2 | sort | uniq | tr "\n" " " > $(DTT_DIR)/$*/$*.$(COMPLEXITY).tagset
 
 
 ##############
@@ -421,7 +432,7 @@ ttable:
 #############
 
 clean:
-	rm -rf ???-cluster-run-* .qsubmit*.bash *-decca_tnt.o* *-hamledt2conll.o* *-conll2decca.o*
+	rm -rf ???-cluster-run-* .qsubmit*.bash *-decca_tnt.o* *-hamledt2conll.o* *-conll2decca.o* *-ngrams.o*
 
 #########
 # score #
