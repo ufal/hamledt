@@ -22,8 +22,20 @@ while ( defined(my $line = <>) ) {
 #     $tags{$w} .= "\t$t $lemma{$p}";
 # }
 
+my $number_already_included = 0;
+
+WORD:
 for my $word (sort keys %tags) {
-    next if $word =~ /^[0-9][0-9,.:;\/]+$/;
+    if ($word =~ /^[0-9][0-9,.:;\/]+$/) {
+        if ($number_already_included) {
+            if ($tags{$word} =~ m/pos=digit\|numform=digit/) {
+                next WORD;
+            }
+        }
+        else {
+            $number_already_included = 1;
+        }
+    }
     print $word;
     for my $tag (sort keys %{$tags{$word}}) {
         print "\t", $tag, " -";
