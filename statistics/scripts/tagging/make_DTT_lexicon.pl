@@ -28,7 +28,7 @@ WORD:
 for my $word (sort keys %tags) {
     if ($word =~ /^[0-9][0-9,.:;\/]+$/) {
         if ($number_already_included) {
-            if ($tags{$word} =~ m/pos=digit\|numform=digit/) {
+            if ($tags{$word} =~ m/pos=digit(\|numform=digit)?/) {
                 next WORD;
             }
         }
