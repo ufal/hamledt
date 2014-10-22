@@ -10,7 +10,8 @@ SCRIPTS =  $$TMT_ROOT/treex/devel/hamledt/statistics/scripts
 # SCRIPTS = /home/masek/treex/devel/hamledt/statistics/scripts
 JOBS=100
 
-LANGUAGES = bg bn ca cs da el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar de sk he is pl zh # for cycles
+#LANGUAGES = bg bn ca cs da el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar de sk he is pl zh # for cycles
+LANGUAGES = bg bn ca cs da el en es et eu fi grc hi hu it la nl pt sl sv ta te tr
 LANGS=*
 # for shell expansion
 
@@ -126,8 +127,8 @@ decca_tnt-%:
 
 decca_pos_ngrams: check_decca_pos_dir $(foreach l, $(LANGUAGES), decca_pos_ngrams-$(l))
 decca_pos_ngrams-%:
-#	/home/bojar/tools/shell/qsubmit --jobname=$*-ngrams "$(DECCA_POS)/decca-pos-reduce.py -c $(POS_DIR)/$*-simple_corpus.tt -d $(POS_DIR)/$* -f $*-ngrams"
-	$(DECCA_POS)/decca-pos-reduce.py -c $(POS_DIR)/$*-simple_corpus.tt -d $(POS_DIR)/$* -f $*-ngrams
+	/home/bojar/tools/shell/qsubmit --jobname=$*-ngrams "$(DECCA_POS)/decca-pos-reduce.py -c $(POS_DIR)/$*-simple_corpus.tt -d $(POS_DIR)/$* -f $*-ngrams"
+#	$(DECCA_POS)/decca-pos-reduce.py -c $(POS_DIR)/$*-simple_corpus.tt -d $(POS_DIR)/$* -f $*-ngrams
 
 decca_pos_ngrams_reduced: $(foreach l, $(LANGUAGES), decca_pos_ngrams_reduced-$(l))
 decca_pos_ngrams_reduced-%:
@@ -199,8 +200,8 @@ COMPLEXITY = simple
 
 dtt_train: dtt_check_dir dtt_lexicon dtt_tagset $(foreach l,$(LANGUAGES),dtt_train-$(l))
 dtt_train-%:
-#	/home/bojar/tools/shell/qsubmit --jobname=$*-$(COMPLEXITY)_dtt "$(DTT_TRAIN) $(DTT_TRAIN_OPTS) $(DTT_DIR)/$*/$*.$(COMPLEXITY).lexicon $(DTT_DIR)/$*/$*.$(COMPLEXITY).tagset $(POS_DIR)/$*-compressed_$(COMPLEXITY)_corpus.tt $(DTT_DIR)/$*/$*.$(COMPLEXITY).dtt_model"
-	$(DTT_TRAIN) $(DTT_TRAIN_OPTS) $(DTT_DIR)/$*/$*.$(COMPLEXITY).lexicon $(DTT_DIR)/$*/$*.$(COMPLEXITY).tagset $(POS_DIR)/$*-compressed_$(COMPLEXITY)_corpus.tt $(DTT_DIR)/$*/$*.$(COMPLEXITY).dtt_model
+	/home/bojar/tools/shell/qsubmit --jobname=$*-$(COMPLEXITY)_dtt "$(DTT_TRAIN) $(DTT_TRAIN_OPTS) $(DTT_DIR)/$*/$*.$(COMPLEXITY).lexicon $(DTT_DIR)/$*/$*.$(COMPLEXITY).tagset $(POS_DIR)/$*-compressed_$(COMPLEXITY)_corpus.tt $(DTT_DIR)/$*/$*.$(COMPLEXITY).dtt_model"
+#	$(DTT_TRAIN) $(DTT_TRAIN_OPTS) $(DTT_DIR)/$*/$*.$(COMPLEXITY).lexicon $(DTT_DIR)/$*/$*.$(COMPLEXITY).tagset $(POS_DIR)/$*-compressed_$(COMPLEXITY)_corpus.tt $(DTT_DIR)/$*/$*.$(COMPLEXITY).dtt_model
 
 
 dtt_check_dir: $(foreach l, $(LANGUAGES), dtt_check_dir-$(l))
@@ -218,6 +219,15 @@ dtt_tagset-%:
 dtt_tag: $(foreach l, $(LANGUAGES), dtt_tag-$(l))
 dtt_tag-%:
 	$(DTT_TAG) $(DTT_TAG_OPTS) $(DTT_DIR)/$*/$*.$(COMPLEXITY).dtt_model $(POS_DIR)/$*-stripped_corpus.tt $(POS_DIR)/$*-retagged_compressed_$(COMPLEXITY)_corpus.tt
+
+unhash_tags: $(foreach l, $(LANGUAGES), unhash_tags-$(l))
+unhash_tags-%:
+	$(SCRIPTS)/tagging/hash_tags.pl -d $(POS_DIR)/$*-$(COMPLEXITY)_tags_table.json $(POS_DIR)/$*-retagged_compressed_$(COMPLEXITY)_corpus.tt > $(POS_DIR)/$*-retagged_$(COMPLEXITY)_corpus.tt
+
+correct_pos: $(foreach l, $(LANGUAGES), correct_pos-$(l))
+correct_pos-%:
+	$(TREEX) HamleDT::Util::CorrectPOSInconsistencies trigrams_file=$(POS_DIR)/$*/$*-ngrams.nonfringe.003 corpus_file=$(POS_DIR)/$*-retagged_$(COMPLEXITY)_corpus.tt complexity=$(COMPLEXITY) -- $(DATADIR)/$*/$(SUBFILES) > $(POS_DIR)/$*-$(COMPLEXITY).log
+
 
 ##############
 # DECCA dep. #
@@ -439,7 +449,7 @@ ttable:
 #############
 
 clean:
-	rm -rf ???-cluster-run-* .qsubmit*.bash *-decca_tnt.o* *-hamledt2conll.o* *-conll2decca.o* *-ngrams.o*
+	rm -rf ???-cluster-run-* .qsubmit*.bash *-decca_tnt.o* *-hamledt2conll.o* *-conll2decca.o* *-ngrams.o* *-*_pos_correction.o*
 
 #########
 # score #
