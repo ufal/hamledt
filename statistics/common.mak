@@ -10,7 +10,7 @@ SCRIPTS =  $$TMT_ROOT/treex/devel/hamledt/statistics/scripts
 # SCRIPTS = /home/masek/treex/devel/hamledt/statistics/scripts
 JOBS=100
 
-#LANGUAGES = bg bn ca cs da el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar de sk he is pl zh # for cycles
+# LANGUAGES = bg bn ca cs da el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar de sk he is pl zh # for cycles
 LANGUAGES = bg bn ca cs da el en es et eu fi grc hi hu it la nl pt sl sv ta te tr
 LANGS=*
 # for shell expansion
@@ -226,7 +226,7 @@ unhash_tags-%:
 
 correct_pos: $(foreach l, $(LANGUAGES), correct_pos-$(l))
 correct_pos-%:
-	$(TREEX) HamleDT::Util::CorrectPOSInconsistencies trigrams_file=$(POS_DIR)/$*/$*-ngrams.nonfringe.003 corpus_file=$(POS_DIR)/$*-retagged_$(COMPLEXITY)_corpus.tt complexity=$(COMPLEXITY) -- $(DATADIR)/$*/$(SUBFILES) > $(POS_DIR)/$*-$(COMPLEXITY).log
+	$(TREEX) HamleDT::Util::CorrectPOSInconsistencies trigrams_filessh=$(POS_DIR)/$*/$*-ngrams.nonfringe.003 corpus_file=$(POS_DIR)/$*-retagged_$(COMPLEXITY)_corpus.tt complexity=$(COMPLEXITY) -- $(DATADIR)/$*/$(SUBFILES) > $(POS_DIR)/$*-$(COMPLEXITY).log
 
 
 ##############
@@ -280,6 +280,36 @@ decca_dep_stats-%:
 decca_reset_dep_stats:
 	echo 'LC	UTy	UTo	TTy	Tto	longest' > $(DECCA_DEP_STATS)
 	echo '(LC: language code, UTy: Unique (bigram) Types, UTo: Unique (bigram) Tokens, TTy: Total ngrams (types), TTo: Total ngrams (tokens) longest: length of the longest variation ngram)' >> $(DECCA_DEP_STATS)
+
+#######
+# MST #
+#######
+
+MST_DIR = /net/work/people/masek/MSTParser
+
+conll2mst: $(foreach l, $(LANGUAGES), conll2mst-$(l))
+conll2mst-%:
+	$(MST_DIR)/scripts/conll2mst.py $(DECCA_DIR_DEP)/$*-corpus.conll > $(DECCA_DIR_DEP)/$*-corpus.mst
+
+mst_train: $(foreach l, $(LANGUAGES), mst_train-$(l))
+mst_train-%:
+	/home/bojar/tools/shell/qsubmit --jobname=$*-mst_train 'java -classpath ".:$(MST_DIR)/lib/trove.jar:$(MST_DIR)" -Xmx4000m mstparser.DependencyParser \
+  train train-file:$(DECCA_DIR_DEP)/$*-corpus.mst \
+  decode-type:non-proj \
+  model-name:$(MST_DIR)/data/$*.mst_model; rm $(DECCA_DIR_DEP)/$*-corpus.mst.forest'
+
+mst_run: $(foreach l, $(LANGUAGES), mst_run-$(l))
+mst_run-%:
+	/home/bojar/tools/shell/qsubmit --jobname=$*-mst_run 'java -classpath ".:$(MST_DIR)/lib/trove.jar:$(MST_DIR)" -Xmx4000m mstparser.DependencyParser \
+  test model-name:$(MST_DIR)/data/$*.mst_model \
+  test-file:$(DECCA_DIR_DEP)/$*-corpus.mst \
+  output-file:$(DECCA_DIR_DEP)/$*.mst_out \
+  decode-type:non-proj'
+
+mst_eval: $(foreach l, $(LANGUAGES), mst_eval-$(l))
+mst_eval-%:
+	java -classpath ".:$(MST_DIR)/lib/trove.jar:$(MST_DIR)" -Xmx4000m mstparser.DependencyParser \
+  eval gold-file:$(DECCA_DIR_DEP)/$*-corpus.mst output-file:$(DECCA_DIR_DEP)/$*.mst_out > $(DECCA_DIR_DEP)/$*.mst_eval
 
 ###########################
 ###########################
@@ -449,7 +479,7 @@ ttable:
 #############
 
 clean:
-	rm -rf ???-cluster-run-* .qsubmit*.bash *-decca_tnt.o* *-hamledt2conll.o* *-conll2decca.o* *-ngrams.o* *-*_pos_correction.o*
+	rm -rf ???-cluster-run-* .qsubmit*.bash *-decca_tnt.o* *-hamledt2conll.o* *-conll2decca.o* *ngrams.o* *-*_pos_correction.o*
 
 #########
 # score #
