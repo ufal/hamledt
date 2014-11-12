@@ -10,8 +10,8 @@ SCRIPTS =  $$TMT_ROOT/treex/devel/hamledt/statistics/scripts
 # SCRIPTS = /home/masek/treex/devel/hamledt/statistics/scripts
 JOBS=100
 
-# LANGUAGES = bg bn ca cs da el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr # ar de sk he is pl zh # for cycles
-LANGUAGES = bg bn ca cs da el en es et eu fi grc hi hu it la nl pt sl sv ta te tr
+LANGUAGES = bg bn ca cs da el en es et eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr de sk # ar de sk he is pl zh # for cycles
+# LANGUAGES = bg bn ca da el en es et eu fi grc hi hu it la nl pt sl sv ta te tr
 LANGS=*
 # for shell expansion
 
@@ -170,7 +170,7 @@ decca_reset_pos_stats:
 
 #########
 
-COMPLEXITY = simple
+COMPLEXITY = complex
 
 hash_tags: $(foreach l, $(LANGUAGES), hash_tags-$(l))
 hash_tags-%:
@@ -196,7 +196,7 @@ DTT_MAKE_LEX = $(SCRIPTS)/tagging/make_DTT_lexicon.pl
 DTT_TRAIN_OPTS = -st pos=punc -utf8 -cl 2
 DTT_TAG_OPTS = -token
 
-COMPLEXITY = simple
+COMPLEXITY = complex
 
 dtt_train: dtt_check_dir dtt_lexicon dtt_tagset $(foreach l,$(LANGUAGES),dtt_train-$(l))
 dtt_train-%:
@@ -226,7 +226,30 @@ unhash_tags-%:
 
 correct_pos: $(foreach l, $(LANGUAGES), correct_pos-$(l))
 correct_pos-%:
-	$(TREEX) HamleDT::Util::CorrectPOSInconsistencies trigrams_filessh=$(POS_DIR)/$*/$*-ngrams.nonfringe.003 corpus_file=$(POS_DIR)/$*-retagged_$(COMPLEXITY)_corpus.tt complexity=$(COMPLEXITY) -- $(DATADIR)/$*/$(SUBFILES) > $(POS_DIR)/$*-$(COMPLEXITY).log
+	$(TREEX) HamleDT::Util::CorrectPOSInconsistencies trigrams_file=$(POS_DIR)/$*/$*-ngrams.nonfringe.003 corpus_file=$(POS_DIR)/$*-retagged_$(COMPLEXITY)_corpus.tt complexity=$(COMPLEXITY) -- $(DATADIR)/$*/$(SUBFILES) > $(POS_DIR)/$*-$(COMPLEXITY).log
+
+dtt_stats: $(foreach l, $(LANGUAGES), dtt_stats-$(l))
+#	echo -n 'LANG	COUNT	simpS	simpC	compS	compC' > $(POS_DIR)/dtt_stats.txt
+dtt_stats-%:
+	echo -n '$*	' >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-simple.log | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-simple.log | grep "SAME" | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-simple.log | grep "CHANGED" | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-complex.log | grep "SAME" | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-complex.log | grep "CHANGED" | wc -l >> $(POS_DIR)/dtt_stats.txt
+
+
+N = 300
+shuffle_pos: $(foreach l, $(LANGUAGES), shuffle_pos-$(l))
+shuffle_pos-%:
+	$(SCRIPTS)/shuffle_paragraphs.pl $(POS_DIR)/$*-$(COMPLEXITY).log > $(POS_DIR)/$*-$(COMPLEXITY).log.shuffled
+
+sample_pos: $(foreach l, $(LANGUAGES), sample_pos-$(l)))
+sample_pos-%:
+	cat $(POS_DIR)/$*-$(COMPLEXITY).log.shuffled | grep -C 1 --no-group-separator "SAME" > $(POS_DIR)/$*-$(COMPLEXITY).log.same
+	head -n $(N) $(POS_DIR)/$*-$(COMPLEXITY).log.same > $(POS_DIR)/$*-$(COMPLEXITY)-same-100.txt
+	cat $(POS_DIR)/$*-$(COMPLEXITY).log.shuffled | grep -C 1 --no-group-separator "DIFF" > $(POS_DIR)/$*-$(COMPLEXITY).log.diff
+	head -n $(N) $(POS_DIR)/$*-$(COMPLEXITY).log.diff > $(POS_DIR)/$*-$(COMPLEXITY)-diff-100.txt
 
 
 ##############
@@ -263,19 +286,26 @@ decca_dep_tries: $(foreach l,$(LANGUAGES),decca_dep_tries-$(l))
 decca_dep_tries-%:
 	$(DECCA_DEP)/triefilter-idwordpos.py $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt $(DECCA_DIR_DEP)/$*-corpus-nuclei.txt > $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt
 
+
+TOKENSEP = ' \#\# '
+DD_OPS = -n # -n/--nopunc -x/--xhtml -p/--usedeppos
+
 decca_dep_ngrams: $(foreach l,$(LANGUAGES),decca_dep_ngrams-$(l))
 decca_dep_ngrams-%:
-#	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt -t $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt -d $(DECCA_DIR_DEP)/$* -f $*-dep-ngrams
-	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_dep_ngrams "	$(DECCA_DEP)/decca-dep.py -c $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt -t $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt -d $(DECCA_DIR_DEP)/$* -f $*-dep-ngrams"
+	/home/bojar/tools/shell/qsubmit --jobname=$*-decca_dep_ngrams "	$(DECCA_DEP)/decca-dep_mod.py -c $(DECCA_DIR_DEP)/$*-corpus-idwordposhead.txt -t $(DECCA_DIR_DEP)/$*-corpus-filtertries.txt -d $(DECCA_DIR_DEP)/nonfringe_udp0fp1/$* -f $*-dep-ngrams --tokensep $(TOKENSEP) $(DD_OPS)"
 
 decca_dep_stats: decca_reset_dep_stats $(foreach l, $(LANGUAGES), decca_dep_stats-$(l))
 decca_dep_stats-%:
 	echo -n '$*	' >> $(DECCA_DEP_STATS)
-	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.002 | wc -l | tr '\n' '	' >> $(DECCA_DEP_STATS)
-	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.002 | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_DEP_STATS)
-	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.??? | wc -l | tr '\n' '	' >> $(DECCA_DEP_STATS)
-	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.??? | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_DEP_STATS)
-	ls $(DECCA_DIR_DEP)/$* | grep '$*-dep-ngrams....$$' | wc -w  >> $(DECCA_DEP_STATS)
+#	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.002 | wc -l | tr '\n' '	' >> $(DECCA_DEP_STATS)
+#	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.002 | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_DEP_STATS)
+#	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.??? | wc -l | tr '\n' '	' >> $(DECCA_DEP_STATS)
+#	cat $(DECCA_DIR_DEP)/$*/$*-dep-ngrams.??? | cut -f 1 | paste -sd+ - | bc | tr '\n' '	' >> $(DECCA_DEP_STATS)
+#	ls $(DECCA_DIR_DEP)/$* | grep '$*-dep-ngrams....$$' | wc -w  >> $(DECCA_DEP_STATS)
+#	cat $(DECCA_DIR_DEP)/nonfringe_udp0fp0/$*/$*-dep-ngrams.txt | grep -v . | wc -l | tr '\n' '	' >> $(DECCA_DEP_STATS)
+	cat $(DECCA_DIR_DEP)/nonfringe_udp0fp1/$*/$*-dep-ngrams.txt | grep -v . | wc -l | tr '\n' '	' >> $(DECCA_DEP_STATS)
+	cat $(DECCA_DIR_DEP)/nonfringe_udp0fp1/$*/$*-dep-ngrams.txt | tr '	' '\n' | grep '^s[[:digit:]]' | wc -l | tr '\n' '	' >> $(DECCA_DEP_STATS)
+	echo >> $(DECCA_DEP_STATS)
 
 decca_reset_dep_stats:
 	echo 'LC	UTy	UTo	TTy	Tto	longest' > $(DECCA_DEP_STATS)
@@ -285,7 +315,7 @@ decca_reset_dep_stats:
 # MST #
 #######
 
-MST_DIR = /net/work/people/masek/MSTParser
+MST_DIR = /home/masek/MSTParser
 
 conll2mst: $(foreach l, $(LANGUAGES), conll2mst-$(l))
 conll2mst-%:
@@ -303,15 +333,41 @@ mst_run-%:
 	/home/bojar/tools/shell/qsubmit --jobname=$*-mst_run 'java -classpath ".:$(MST_DIR)/lib/trove.jar:$(MST_DIR)" -Xmx4000m mstparser.DependencyParser \
   test model-name:$(MST_DIR)/data/$*.mst_model \
   test-file:$(DECCA_DIR_DEP)/$*-corpus.mst \
-  output-file:$(DECCA_DIR_DEP)/$*.mst_out \
+  output-file:$(DECCA_DIR_DEP)/$*-out.mst \
   decode-type:non-proj'
 
 mst_eval: $(foreach l, $(LANGUAGES), mst_eval-$(l))
 mst_eval-%:
 	java -classpath ".:$(MST_DIR)/lib/trove.jar:$(MST_DIR)" -Xmx4000m mstparser.DependencyParser \
-  eval gold-file:$(DECCA_DIR_DEP)/$*-corpus.mst output-file:$(DECCA_DIR_DEP)/$*.mst_out > $(DECCA_DIR_DEP)/$*.mst_eval
+  eval gold-file:$(DECCA_DIR_DEP)/$*-corpus.mst output-file:$(DECCA_DIR_DEP)/$*-out.mst > $(DECCA_DIR_DEP)/$*.mst_eval
+
+mst2conll: $(foreach l, $(LANGUAGES), mst2conll-$(l))
+mst2conll-%:
+	$(MST_DIR)/scripts/mst2conll.py $(DECCA_DIR_DEP)/$*-out.mst > $(DECCA_DIR_DEP)/$*-mst_out.conll
 
 ###########################
+
+correct_dep: $(foreach l, $(LANGUAGES), correct_dep-$(l))
+correct_dep-%:
+	/home/bojar/tools/shell/qsubmit --jobname=$*-correct_dep '$(TREEX) HamleDT::Util::CorrectDependencyInconsistencies ngrams_file=$(DECCA_DIR_DEP)/nonfringe_udp0fp1/$*/$*-dep-ngrams.txt corpus_file=$(DECCA_DIR_DEP)/$*-out.mst -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_DIR_DEP)/$*-dep.log'
+
+###########################
+
+
+
+M = 600
+shuffle_dep: $(foreach l, $(LANGUAGES), shuffle_dep-$(l))
+shuffle_dep-%:
+	$(SCRIPTS)/shuffle_paragraphs.pl $(DECCA_DIR_DEP)/$*-dep.log > $(DECCA_DIR_DEP)/$*-dep.log.shuffled
+
+sample_dep: $(foreach l, $(LANGUAGES), sample_dep-$(l))
+sample_dep-%:
+	cat $(DECCA_DIR_DEP)/$*-dep.log.shuffled | grep -B 2 -A 3 --no-group-separator "SAME BOTH" > $(DECCA_DIR_DEP)/$*-dep.log.same
+	head -n $(M) $(DECCA_DIR_DEP)/$*-dep.log.same > $(DECCA_DIR_DEP)/$*-dep-same-100.txt
+	cat $(DECCA_DIR_DEP)/$*-dep.log.shuffled | grep -B 2 -A 3 --no-group-separator -E "DIFF ((FIRST)|(SECOND)|(BOTH))" > $(DECCA_DIR_DEP)/$*-dep.log.diff
+	head -n $(M) $(DECCA_DIR_DEP)/$*-dep.log.diff > $(DECCA_DIR_DEP)/$*-dep-diff-100.txt
+
+
 ###########################
 #######
 # POS #
@@ -479,7 +535,7 @@ ttable:
 #############
 
 clean:
-	rm -rf ???-cluster-run-* .qsubmit*.bash *-decca_tnt.o* *-hamledt2conll.o* *-conll2decca.o* *ngrams.o* *-*_pos_correction.o*
+	rm -rf ???-cluster-run-* .qsubmit*.bash *-decca_tnt.o* *-hamledt2conll.o* *-conll2decca.o* *ngrams.o* *-correct_dep.o*
 
 #########
 # score #
