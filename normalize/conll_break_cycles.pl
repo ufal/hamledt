@@ -30,7 +30,7 @@ while(<>)
                 # Start at the i-th node, go to root, watch for cycles.
                 my @map;
                 my $lastj;
-                for(my $j = $i; $j!=0; $j = $parents[$j])
+                for(my $j = $i; $j!=0; $j = defined($parents[$j]) ? $parents[$j] : 0)
                 {
                     # If we visited the j-th node before, there is a cycle.
                     if($map[$j])
