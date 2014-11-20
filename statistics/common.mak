@@ -226,30 +226,33 @@ unhash_tags-%:
 
 correct_pos: $(foreach l, $(LANGUAGES), correct_pos-$(l))
 correct_pos-%:
-	$(TREEX) HamleDT::Util::CorrectPOSInconsistencies trigrams_file=$(POS_DIR)/$*/$*-ngrams.nonfringe.003 corpus_file=$(POS_DIR)/$*-retagged_$(COMPLEXITY)_corpus.tt complexity=$(COMPLEXITY) -- $(DATADIR)/$*/$(SUBFILES) > $(POS_DIR)/$*-$(COMPLEXITY).log
+	/home/bojar/tools/shell/qsubmit --jobname=$*-pos_$(COMPLEXITY) '$(TREEX) HamleDT::Util::CorrectPOSInconsistencies trigrams_file=$(POS_DIR)/$*/$*-ngrams.nonfringe.003 corpus_file=$(POS_DIR)/$*-retagged_$(COMPLEXITY)_corpus.tt complexity=$(COMPLEXITY) -- $(DATADIR)/$*/$(SUBFILES) > $(POS_DIR)/$*-new-$(COMPLEXITY).log'
+# $(TREEX) HamleDT::Util::CorrectPOSInconsistencies trigrams_file=$(POS_DIR)/$*/$*-ngrams.nonfringe.003 corpus_file=$(POS_DIR)/$*-retagged_$(COMPLEXITY)_corpus.tt complexity=$(COMPLEXITY) -- $(DATADIR)/$*/$(SUBFILES) > $(POS_DIR)/$*-new-$(COMPLEXITY).log
 
 dtt_stats: $(foreach l, $(LANGUAGES), dtt_stats-$(l))
 #	echo -n 'LANG	COUNT	simpS	simpC	compS	compC' > $(POS_DIR)/dtt_stats.txt
 dtt_stats-%:
 	echo -n '$*	' >> $(POS_DIR)/dtt_stats.txt
-	cat $(POS_DIR)/$*-simple.log | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
-	cat $(POS_DIR)/$*-simple.log | grep "SAME" | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
-	cat $(POS_DIR)/$*-simple.log | grep "CHANGED" | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
-	cat $(POS_DIR)/$*-complex.log | grep "SAME" | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
-	cat $(POS_DIR)/$*-complex.log | grep "CHANGED" | wc -l >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-new-complex.log | grep '^a[-_]' | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-new-simple.log | grep "SAME" | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-new-simple.log | grep "DIFF" | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-new-simple.log | grep "INAPLICCABLE" | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-new-complex.log | grep "SAME" | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-new-complex.log | grep "DIFF" | wc -l | tr '\n' '	' >> $(POS_DIR)/dtt_stats.txt
+	cat $(POS_DIR)/$*-new-complex.log | grep "INAPLICCABLE" | wc -l  >> $(POS_DIR)/dtt_stats.txt
 
 
-N = 300
+N = 400
 shuffle_pos: $(foreach l, $(LANGUAGES), shuffle_pos-$(l))
 shuffle_pos-%:
-	$(SCRIPTS)/shuffle_paragraphs.pl $(POS_DIR)/$*-$(COMPLEXITY).log > $(POS_DIR)/$*-$(COMPLEXITY).log.shuffled
+	$(SCRIPTS)/shuffle_paragraphs.pl $(POS_DIR)/$*-new-$(COMPLEXITY).log > $(POS_DIR)/$*-new-$(COMPLEXITY).log.shuffled
 
 sample_pos: $(foreach l, $(LANGUAGES), sample_pos-$(l)))
 sample_pos-%:
-	cat $(POS_DIR)/$*-$(COMPLEXITY).log.shuffled | grep -C 1 --no-group-separator "SAME" > $(POS_DIR)/$*-$(COMPLEXITY).log.same
-	head -n $(N) $(POS_DIR)/$*-$(COMPLEXITY).log.same > $(POS_DIR)/$*-$(COMPLEXITY)-same-100.txt
-	cat $(POS_DIR)/$*-$(COMPLEXITY).log.shuffled | grep -C 1 --no-group-separator "DIFF" > $(POS_DIR)/$*-$(COMPLEXITY).log.diff
-	head -n $(N) $(POS_DIR)/$*-$(COMPLEXITY).log.diff > $(POS_DIR)/$*-$(COMPLEXITY)-diff-100.txt
+	cat $(POS_DIR)/$*-new-$(COMPLEXITY).log.shuffled | grep -A 1 -B 2 --no-group-separator "SAME" > $(POS_DIR)/$*-new-$(COMPLEXITY).log.same
+	head -n $(N) $(POS_DIR)/$*-new-$(COMPLEXITY).log.same > $(POS_DIR)/$*-new-$(COMPLEXITY)-same-100.txt
+	cat $(POS_DIR)/$*-new-$(COMPLEXITY).log.shuffled | grep -A 1 -B 2 --no-group-separator "DIFF" > $(POS_DIR)/$*-new-$(COMPLEXITY).log.diff
+	head -n $(N) $(POS_DIR)/$*-new-$(COMPLEXITY).log.diff > $(POS_DIR)/$*-new-$(COMPLEXITY)-diff-100.txt
 
 
 ##############
@@ -323,10 +326,14 @@ conll2mst-%:
 
 mst_train: $(foreach l, $(LANGUAGES), mst_train-$(l))
 mst_train-%:
-	/home/bojar/tools/shell/qsubmit --jobname=$*-mst_train 'java -classpath ".:$(MST_DIR)/lib/trove.jar:$(MST_DIR)" -Xmx4000m mstparser.DependencyParser \
+	/home/bojar/tools/shell/qsubmit --jobname=$*-mst_train 'java -classpath ".:$(MST_DIR)/lib/trove.jar:$(MST_DIR)" -Xmx8000m mstparser.DependencyParser \
   train train-file:$(DECCA_DIR_DEP)/$*-corpus.mst \
   decode-type:non-proj \
   model-name:$(MST_DIR)/data/$*.mst_model; rm $(DECCA_DIR_DEP)/$*-corpus.mst.forest'
+#	java -classpath ".:$(MST_DIR)/lib/trove.jar:$(MST_DIR)" -Xmx8000m mstparser.DependencyParser \
+  train train-file:$(DECCA_DIR_DEP)/$*-corpus.mst \
+  decode-type:non-proj \
+  model-name:$(MST_DIR)/data/$*.mst_model; rm $(DECCA_DIR_DEP)/$*-corpus.mst.forest
 
 mst_run: $(foreach l, $(LANGUAGES), mst_run-$(l))
 mst_run-%:
@@ -349,7 +356,7 @@ mst2conll-%:
 
 correct_dep: $(foreach l, $(LANGUAGES), correct_dep-$(l))
 correct_dep-%:
-	/home/bojar/tools/shell/qsubmit --jobname=$*-correct_dep '$(TREEX) HamleDT::Util::CorrectDependencyInconsistencies ngrams_file=$(DECCA_DIR_DEP)/nonfringe_udp0fp1/$*/$*-dep-ngrams.txt corpus_file=$(DECCA_DIR_DEP)/$*-out.mst -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_DIR_DEP)/$*-dep.log'
+	/home/bojar/tools/shell/qsubmit --jobname=$*-correct_dep '$(TREEX) HamleDT::Util::CorrectDependencyInconsistencies ngrams_file=$(DECCA_DIR_DEP)/nonfringe_udp0fp1/$*/$*-dep-ngrams.txt corpus_file=$(DECCA_DIR_DEP)/$*-out.mst -- $(DATADIR)/$*/$(SUBFILES) > $(DECCA_DIR_DEP)/$*-new-dep.log'
 
 ###########################
 
@@ -358,15 +365,23 @@ correct_dep-%:
 M = 600
 shuffle_dep: $(foreach l, $(LANGUAGES), shuffle_dep-$(l))
 shuffle_dep-%:
-	$(SCRIPTS)/shuffle_paragraphs.pl $(DECCA_DIR_DEP)/$*-dep.log > $(DECCA_DIR_DEP)/$*-dep.log.shuffled
+	$(SCRIPTS)/shuffle_paragraphs.pl $(DECCA_DIR_DEP)/$*-new-dep.log > $(DECCA_DIR_DEP)/$*-new-dep.log.shuffled
 
 sample_dep: $(foreach l, $(LANGUAGES), sample_dep-$(l))
 sample_dep-%:
-	cat $(DECCA_DIR_DEP)/$*-dep.log.shuffled | grep -B 2 -A 3 --no-group-separator "SAME BOTH" > $(DECCA_DIR_DEP)/$*-dep.log.same
-	head -n $(M) $(DECCA_DIR_DEP)/$*-dep.log.same > $(DECCA_DIR_DEP)/$*-dep-same-100.txt
-	cat $(DECCA_DIR_DEP)/$*-dep.log.shuffled | grep -B 2 -A 3 --no-group-separator -E "DIFF ((FIRST)|(SECOND)|(BOTH))" > $(DECCA_DIR_DEP)/$*-dep.log.diff
-	head -n $(M) $(DECCA_DIR_DEP)/$*-dep.log.diff > $(DECCA_DIR_DEP)/$*-dep-diff-100.txt
+	cat $(DECCA_DIR_DEP)/$*-new-dep.log.shuffled | grep -B 2 -A 3 --no-group-separator "SAME AFUN SAME PAR." > $(DECCA_DIR_DEP)/$*-new-dep.log.same
+	head -n $(M) $(DECCA_DIR_DEP)/$*-new-dep.log.same > $(DECCA_DIR_DEP)/$*-new-dep-same-100.txt
+	cat $(DECCA_DIR_DEP)/$*-new-dep.log.shuffled | grep -B 2 -A 3 --no-group-separator -E "(DIFF AFUN SAME PAR.)|(SAME AFUN DIFF PAR.)|(DIFF AFUN DIFF PAR.)" > $(DECCA_DIR_DEP)/$*-new-dep.log.diff
+	head -n $(M) $(DECCA_DIR_DEP)/$*-new-dep.log.diff > $(DECCA_DIR_DEP)/$*-new-dep-diff-100.txt
 
+cor_dep_stats: $(foreach l, $(LANGUAGES), cor_dep_stats-$(l))
+cor_dep_stats-%:
+	echo -n '$*	' >> $(DECCA_DIR_DEP)/cor_dep_stats.txt
+	cat $(DECCA_DIR_DEP)/$*-new-dep.log | grep '^a[-_]' | wc -l | tr '\n' '	' >> $(DECCA_DIR_DEP)/cor_dep_stats.txt
+	cat $(DECCA_DIR_DEP)/$*-new-dep.log | grep 'SAME AFUN SAME PAR.' | wc -l | tr '\n' '	' >> $(DECCA_DIR_DEP)/cor_dep_stats.txt
+	cat $(DECCA_DIR_DEP)/$*-new-dep.log | grep -E "(DIFF AFUN SAME PAR.)|(SAME AFUN DIFF PAR.)|(DIFF AFUN DIFF PAR.)" | wc -l | tr '\n' '	' >> $(DECCA_DIR_DEP)/cor_dep_stats.txt
+	cat $(DECCA_DIR_DEP)/$*-new-dep.log | grep 'INAPLICCABLE INAPLICCABLE' | wc -l | tr '\n' '	' >> $(DECCA_DIR_DEP)/cor_dep_stats.txt
+	echo >> $(DECCA_DIR_DEP)/cor_dep_stats.txt
 
 ###########################
 #######
