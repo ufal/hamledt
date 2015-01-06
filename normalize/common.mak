@@ -10,19 +10,21 @@ SHELL=/bin/bash
 # Set paths. The main path, TMT_ROOT, must be pre-set in your environment.
 # You may want to put something like this in your .bash_profile, depending on where your copy of TectoMT is:
 # export TMT_ROOT=/net/work/people/zeman/tectomt
-DATADIR  = $(TMT_ROOT)/share/data/resources/hamledt/$(TREEBANK)
-SUBDIRIN = source
-SUBDIR0  = treex/000_orig
-SUBDIR1  = treex/001_pdtstyle
-SUBDIRC  = conll
-SUBDIRJ  = jo
-SUBDIRS  = stanford
-IN       = $(DATADIR)/$(SUBDIRIN)
-DIR0     = $(DATADIR)/$(SUBDIR0)
-DIR1     = $(DATADIR)/$(SUBDIR1)
-CONLLDIR = $(DATADIR)/$(SUBDIRC)
-JODIR    = $(DATADIR)/$(SUBDIRJ)
-STANDIR  = $(DATADIR)/$(SUBDIRS)
+DATADIR   = $(TMT_ROOT)/share/data/resources/hamledt/$(TREEBANK)
+SUBDIRIN  = source
+SUBDIR0   = treex/000_orig
+SUBDIR1   = treex/001_pdtstyle
+SUBDIRC   = conll
+SUBDIRCU  = conll-u
+SUBDIRJ   = jo
+SUBDIRS   = stanford
+IN        = $(DATADIR)/$(SUBDIRIN)
+DIR0      = $(DATADIR)/$(SUBDIR0)
+DIR1      = $(DATADIR)/$(SUBDIR1)
+CONLLDIR  = $(DATADIR)/$(SUBDIRC)
+CONLLUDIR = $(DATADIR)/$(SUBDIRCU)
+JODIR     = $(DATADIR)/$(SUBDIRJ)
+STANDIR   = $(DATADIR)/$(SUBDIRS)
 
 # Processing shortcuts.
 TREEX      = treex -L$(LANGCODE)
@@ -65,7 +67,7 @@ UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
 SCEN1 = HamleDT::$(UCLANG)::$(HARMONIZE)
 
 pdt:
-	$(QTREEX) $(SCEN1) Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,test}/*.treex.gz'
+	$(QTREEX) $(SCEN1) Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,dev,test}/*.treex.gz'
 
 # This goal serves development and debugging of the Harmonize block.
 # Smaller data are processed faster.
@@ -79,6 +81,14 @@ CONLL_ATTRIBUTES = selector= deprel_attribute=afun is_member_within_afun=1 pos_a
 export_conll:
 	$(QTREEX) Read::Treex from='!$(DIR1)/train/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/train clobber=1 compress=1
 	$(QTREEX) Read::Treex from='!$(DIR1)/test/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/test clobber=1 compress=1
+export_conllu:
+	$(QTREEX) Read::Treex from='!$(DIR1)/train/*.treex.gz' Write::CoNLLU $(CONLL_ATTRIBUTES) path=$(CONLLUDIR)/train clobber=1 compress=1
+	$(QTREEX) Read::Treex from='!$(DIR1)/test/*.treex.gz' Write::CoNLLU $(CONLL_ATTRIBUTES) path=$(CONLLUDIR)/test clobber=1 compress=1
+udep:
+	$(QTREEX) Read::Treex from='!$(DIR0)/train/*.treex.gz' HamleDT::CS::Udep Write::CoNLLU deprel_attribute=conll/deprel is_member_within_afun=0 path=$(CONLLUDIR)/train clobber=1 compress=1
+	$(QTREEX) Read::Treex from='!$(DIR0)/dev/*.treex.gz' HamleDT::CS::Udep Write::CoNLLU deprel_attribute=conll/deprel is_member_within_afun=0 path=$(CONLLUDIR)/dev clobber=1 compress=1
+	$(QTREEX) Read::Treex from='!$(DIR0)/test/*.treex.gz' HamleDT::CS::Udep Write::CoNLLU deprel_attribute=conll/deprel is_member_within_afun=0 path=$(CONLLUDIR)/test clobber=1 compress=1
+
 
 # TODO: other structure changes (compound verbs)
 # TODO: often fails because there remain some punct nodes with children
