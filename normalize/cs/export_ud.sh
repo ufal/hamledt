@@ -6,5 +6,9 @@ zcat data/conll-u/train/cmpr94* > cs-ud-train-c.conllu
 zcat data/conll-u/train/ln* > cs-ud-train-l.conllu
 zcat data/conll-u/train/mf9* > cs-ud-train-m.conllu
 zcat data/conll-u/train/vesm9* > cs-ud-train-v.conllu
-cp *.conllu /ha/home/zeman/network/unidep/Czech
+for i in *.conllu ; do
+  echo $i
+  /ha/home/zeman/network/unidep/tools/validate.py $i --no-lists --noecho
+  cp $i /ha/home/zeman/network/unidep/Czech
+done
 
