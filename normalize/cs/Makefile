@@ -8,7 +8,7 @@ source:
 	mkdir -p data/source/train
 	mkdir -p data/source/dev
 	mkdir -p data/source/test
-	ln -s $(SOURCEDIR)/{tamw,amw}/{train-[1-8],dtest}/*.[amw].gz $(IN)/train
+	ln -s $(SOURCEDIR)/{tamw,amw}/train-[1-8]/*.[amw].gz $(IN)/train
 	ln -s $(SOURCEDIR)/{tamw,amw}/dtest/*.[amw].gz $(IN)/dev
 	ln -s $(SOURCEDIR)/{tamw,amw}/etest/*.[amw].gz $(IN)/test
 
