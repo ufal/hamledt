@@ -9,7 +9,7 @@ conj	70972
 advmod	63624
 cc	49415
 mark	24958
-advmod:emph	23577
+advmod:emph	23225
 nummod	21230
 acl	21134
 cop	20824
@@ -32,5 +32,6 @@ compound	1294
 det:numgov	1007
 det:nummod	595
 discourse	381
+neg	352
 csubjpass	127
-Found total of 35 distinct values.
+Found total of 36 distinct values.
