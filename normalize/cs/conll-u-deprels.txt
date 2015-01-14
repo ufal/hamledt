@@ -1,6 +1,5 @@
 nmod	251129
 punct	217123
-	175826
 amod	166656
 case	150284
 root	93236
@@ -10,7 +9,7 @@ conj	70972
 advmod	63624
 cc	49415
 mark	24958
-advmod:auxz	23577
+advmod:emph	23577
 nummod	21230
 acl	21134
 cop	20824
@@ -28,11 +27,10 @@ auxpass	6257
 csubj	5837
 auxpass:reflex	4906
 mwe	3677
-_	2752
 parataxis	2068
 compound	1294
-det:nummodgov	1007
+det:numgov	1007
 det:nummod	595
 discourse	381
 csubjpass	127
-Found total of 37 distinct values.
+Found total of 35 distinct values.
