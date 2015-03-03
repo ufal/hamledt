@@ -37,8 +37,10 @@ HARMONIZE ?= Harmonize
 TRAIN      = $(IN)/train.conll
 DEV        = $(IN)/dev.conll
 TEST       = $(IN)/test.conll
-POSTPROCESS1_SCEN_OPT :=
-POSTPROCESS2_SCEN_OPT :=
+
+# If a treebank requires postprocessing after conversion to UD, the treebank-specific Makefile must override the value of POST_UD_BLOCKS.
+# Example: POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
+POST_UD_BLOCKS ?=
 
 check-source:
 	[ -d $(IN) ] || (echo new $(LANGCODE) && make source)
@@ -70,7 +72,7 @@ prague:
 
 ###!!! The ud goal is currently defined only for Czech but we want it language-independent!
 # Convert the trees to Universal Dependencies and store the result in 02.
-SCEN2 = A2A::CopyAtree source_selector='' selector='prague' HamleDT::Udep
+SCEN2 = A2A::CopyAtree source_selector='' selector='prague' HamleDT::Udep $(POST_UD_BLOCKS)
 ud:
 	$(QTREEX) $(SCEN2) Write::Treex substitute={01}{02} -- '!$(DIR1)/{train,dev,test}/*.treex.gz'
 
