@@ -12,18 +12,17 @@ SHELL=/bin/bash
 # export TMT_ROOT=/net/work/people/zeman/tectomt
 DATADIR   = $(TMT_ROOT)/share/data/resources/hamledt/$(TREEBANK)
 SUBDIRIN  = source
-SUBDIR0   = treex/000_orig
-SUBDIR1   = treex/001_pdtstyle
-SUBDIRC   = conll
-SUBDIRCU  = conll-u
-SUBDIRJ   = jo
-SUBDIRS   = stanford
+SUBDIR0   = treex/00
+SUBDIR1   = treex/01
+SUBDIR2   = treex/02
+SUBDIRCU  = conllu
 IN        = $(DATADIR)/$(SUBDIRIN)
 DIR0      = $(DATADIR)/$(SUBDIR0)
 DIR1      = $(DATADIR)/$(SUBDIR1)
-CONLLDIR  = $(DATADIR)/$(SUBDIRC)
+DIR2      = $(DATADIR)/$(SUBDIR2)
 CONLLUDIR = $(DATADIR)/$(SUBDIRCU)
-JODIR     = $(DATADIR)/$(SUBDIRJ)
+# DEPRECATED: The Stanford stuff will be removed once we have conversion to Universal Dependencies fully operational.
+SUBDIRS   = stanford
 STANDIR   = $(DATADIR)/$(SUBDIRS)
 
 # Processing shortcuts.
@@ -36,6 +35,7 @@ WRITE      = Write::Treex clobber=1
 # They must do so before they include common.mak.
 HARMONIZE ?= Harmonize
 TRAIN      = $(IN)/train.conll
+DEV        = $(IN)/dev.conll
 TEST       = $(IN)/test.conll
 POSTPROCESS1_SCEN_OPT :=
 POSTPROCESS2_SCEN_OPT :=
@@ -48,48 +48,47 @@ dirs:
 	mkdir -p $(DATADIR)
 	if [ ! -e data ]; then ln -s $(DATADIR) data; fi
 	mkdir -p data/$(SUBDIRIN)
-	mkdir -p data/{$(SUBDIR0),$(SUBDIR1)}/{train,test}
+	mkdir -p data/{$(SUBDIR0),$(SUBDIR1),$(SUBDIR2)}/{train,dev,test}
 	chmod -R g+w data/. data/*
 
 # Run a conversion of the original data into the treex format
-# and store the results in 000_orig. This default assumes CoNLL-X,
+# and store the results in 00. This default assumes CoNLL-X,
 # our most-widely used source format. If a different conversion
 # is needed, override in the language-specific Makefile.
 # Otherwise, define the language-specific "treex" goal as dependent
 # on "conll_to_treex".
 conll_to_treex:
 	$(TREEX) $(IMPORT) from=$(IN)/train.conll $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORT) from=$(IN)/dev.conll   $(WRITE0) path=$(DIR0)/dev/
 	$(TREEX) $(IMPORT) from=$(IN)/test.conll  $(WRITE0) path=$(DIR0)/test/
 
-# Make the trees as similar to the PDT-style as possible
-# and store the result in 001_pdtstyle.
+# Convert the trees to the HamleDT/Prague style and store the result in 01.
 UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
-SCEN1 = HamleDT::$(UCLANG)::$(HARMONIZE)
+SCEN1 = A2A::CopyAtree source_selector='' selector='orig' HamleDT::$(UCLANG)::$(HARMONIZE)
+prague:
+	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} -- '!$(DIR0)/{train,dev,test}/*.treex.gz'
 
-pdt:
-	$(QTREEX) $(SCEN1) Write::Treex substitute={000_orig}{001_pdtstyle} -- '!$(DIR0)/{train,dev,test}/*.treex.gz'
-
-# This goal serves development and debugging of the Harmonize block.
-# Smaller data are processed faster.
-# $(TREEX) is not used because we do not want to parallelize the task on the cluster.
-# (By default, copies of logs from parallel jobs lack the TREEX-INFO level.)
-test:
-	$(TREEX) $(SCEN1) $(WRITE) path=$(DIR1)/test -- '!$(DIR0)/test/*.treex.gz'
+###!!! The ud goal is currently defined only for Czech but we want it language-independent!
+# Convert the trees to Universal Dependencies and store the result in 02.
+SCEN2 = A2A::CopyAtree source_selector='' selector='prague' HamleDT::Udep
+ud:
+	$(QTREEX) $(SCEN2) Write::Treex substitute={01}{02} -- '!$(DIR1)/{train,dev,test}/*.treex.gz'
 
 # This goal exports the harmonized trees in CoNLL format, which is more useful for ordinary users.
 CONLL_ATTRIBUTES = selector= deprel_attribute=afun is_member_within_afun=1 pos_attribute=tag feat_attribute=iset
-export_conll:
-	$(QTREEX) Read::Treex from='!$(DIR1)/train/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/train clobber=1 compress=1
-	$(QTREEX) Read::Treex from='!$(DIR1)/test/*.treex.gz' Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(CONLLDIR)/test clobber=1 compress=1
 export_conllu:
 	$(QTREEX) Read::Treex from='!$(DIR1)/train/*.treex.gz' Write::CoNLLU $(CONLL_ATTRIBUTES) path=$(CONLLUDIR)/train clobber=1 compress=1
+	$(QTREEX) Read::Treex from='!$(DIR1)/dev/*.treex.gz' Write::CoNLLU $(CONLL_ATTRIBUTES) path=$(CONLLUDIR)/dev clobber=1 compress=1
 	$(QTREEX) Read::Treex from='!$(DIR1)/test/*.treex.gz' Write::CoNLLU $(CONLL_ATTRIBUTES) path=$(CONLLUDIR)/test clobber=1 compress=1
+
+###!!! The udep goal is currently defined only for Czech but we want it language-independent!
 udep:
 	$(QTREEX) Read::Treex from='!$(DIR0)/train/*.treex.gz' HamleDT::CS::Udep Write::CoNLLU deprel_attribute=conll/deprel is_member_within_afun=0 path=$(CONLLUDIR)/train clobber=1 compress=1
 	$(QTREEX) Read::Treex from='!$(DIR0)/dev/*.treex.gz' HamleDT::CS::Udep Write::CoNLLU deprel_attribute=conll/deprel is_member_within_afun=0 path=$(CONLLUDIR)/dev clobber=1 compress=1
 	$(QTREEX) Read::Treex from='!$(DIR0)/test/*.treex.gz' HamleDT::CS::Udep Write::CoNLLU deprel_attribute=conll/deprel is_member_within_afun=0 path=$(CONLLUDIR)/test clobber=1 compress=1
 
 
+# DEPRECATED: The Stanford stuff will be removed once we have conversion to Universal Dependencies fully operational.
 # TODO: other structure changes (compound verbs)
 # TODO: often fails because there remain some punct nodes with children
 TO_STANFORD=\
@@ -121,24 +120,6 @@ treex_to_stanford:
 treex_to_stanford_test:
 	$(TREEX) $(STANFORD) -- $(DIR1)/test/*.treex.gz
 
-# Joachim Daiber needs prepositions as leaves attached to their noun.
-# He does not want the Stanford style though. Everything else should be standard Prague.
-TGZJO = hamledt_2.0jo_$(TREEBANK)_conll.tgz
-jo:
-	$(QTREEX) \
-		Read::Treex from='!$(DIR1)/train/*.treex.gz' \
-		HamleDT::Transform::PrepositionDownward \
-		Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(JODIR)/train clobber=1 compress=0
-	$(QTREEX) \
-		Read::Treex from='!$(DIR1)/test/*.treex.gz' \
-		HamleDT::Transform::PrepositionDownward \
-		Write::CoNLLX $(CONLL_ATTRIBUTES) path=$(JODIR)/test clobber=1 compress=0
-	tar czf $(TGZJO) -P --xform s-$(TMT_ROOT)/share/data/resources/hamledt/-- $(JODIR)/*
-	scp $(TGZJO) ufal.mff.cuni.cz:/home/zeman/www/soubory/$(TGZJO)
-	# wget http://ufal.mff.cuni.cz/~zeman/soubory/$(TGZJO)
-	# rm $(TGZJO)
-	# for l in en de nl ; do wget http://ufal.mff.cuni.cz/~zeman/soubory/hamledt_2.0jo_${l}_conll.tgz ; done
-
 # Basic statistics: number of sentences and tokens in train and test data.
 stats:
 	$(TREEX) -p --jobs=100 Read::Treex from='!$(DIR0)/train/*.treex.gz' Util::Eval atree='print("XXX ROOT XXX\n");' anode='print("XXX NODE XXX\n");' > train-wcl.txt
@@ -149,7 +130,11 @@ stats:
 	grep 'XXX NODE XXX' test-wcl.txt | wc -l
 
 deprelstats:
-	$(TREEX) Read::Treex from='!$(DIR0)/{train,test}/*.treex.gz' Print::DeprelStats > deprelstats.txt
+	$(TREEX) Read::Treex from='!$(DIR0)/{train,dev,test}/*.treex.gz' Print::DeprelStats > deprelstats.txt
 
-clean:
-	rm -rf $(DATADIR)/treex
+
+clean_cluster:
+	rm -rf *-cluster-run-*
+
+clean: clean_cluster
+	rm -rf $(DATADIR)/treex $(DATADIR)/conllu
