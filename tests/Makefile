@@ -33,7 +33,8 @@ PTESTS = \
 	HamleDT::Test::MaxOneSubject
 
 UTESTS = \
-	HamleDT::Test::UD::Determiners
+	HamleDT::Test::UD::Determiners \
+	HamleDT::Test::UD::CompoundPrepositions
 
 validate:
 	treex -p --survive --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
