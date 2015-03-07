@@ -37,20 +37,18 @@ while(my $oline = <ORIG>)
 {
     $ioline++;
     my $pline = next_pline();
-    if(!defined($pline))
-    {
-        die("The patch file $patch ended prematurely");
-    }
     chomp($oline);
     chomp($pline);
     my $oempty = $oline =~ m/^\s*$/;
     my $pempty = $pline =~ m/^\s*$/;
     if($oempty && !$pempty)
     {
+        print STDERR ("orig line $ioline, patch file $pfiles[$ipfile], patch line $ipline\n");
         die("Synchronization error: original line empty, patch line not empty");
     }
     elsif($pempty && !$oempty)
     {
+        print STDERR ("orig line $ioline, patch file $pfiles[$ipfile], patch line $ipline\n");
         die("Synchronization error: original line not empty, patch line empty");
     }
     if($oempty)
@@ -64,11 +62,13 @@ while(my $oline = <ORIG>)
         # Check synchronization.
         if($of[0] != $pf[0])
         {
+            print STDERR ("orig line $ioline, patch file $pfiles[$ipfile], patch line $ipline\n");
             die("Synchronization error: original word index $of[0] and patch word index $pf[0] do not match");
         }
         # From time to time the patch contains word forms, too. Then we can check synchro also on the word forms.
         if($pf[1] ne '' && $pf[1] ne $of[1])
         {
+            print STDERR ("orig line $ioline, patch file $pfiles[$ipfile], patch line $ipline\n");
             die("Synchronization error: original word '$of[1]' and patch word '$pf[1]' do not match");
         }
         # Synchronization is OK. Combine the sources and print the result.
@@ -117,7 +117,7 @@ sub next_pline
         }
         else
         {
-            die("The patch files ended prematurely. The file number $ipfile has ended and it is the last file in $patch");
+            die("The patch files ended prematurely. The file number $ipfile ($pfiles[$ipfile]) has ended and it is the last file in $patch");
         }
     }
     return $pline;
