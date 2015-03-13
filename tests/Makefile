@@ -34,7 +34,8 @@ PTESTS = \
 
 UTESTS = \
 	HamleDT::Test::UD::Determiners \
-	HamleDT::Test::UD::CompoundPrepositions
+	HamleDT::Test::UD::CompoundPrepositions \
+	HamleDT::Test::UD::Punctuation
 
 validate:
 	treex -p --survive --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
