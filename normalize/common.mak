@@ -76,18 +76,10 @@ SCEN2 = A2A::CopyAtree source_selector='' selector='prague' HamleDT::Udep $(POST
 ud:
 	$(QTREEX) $(SCEN2) Write::Treex substitute={01}{02} -- '!$(DIR1)/{train,dev,test}/*.treex.gz'
 
-# This goal exports the harmonized trees in CoNLL format, which is more useful for ordinary users.
-CONLL_ATTRIBUTES = selector= deprel_attribute=afun is_member_within_afun=1 pos_attribute=tag feat_attribute=iset
+# This goal exports the harmonized trees in the CoNLL-U format, which is more useful for ordinary users.
 export_conllu:
-	$(QTREEX) Read::Treex from='!$(DIR1)/train/*.treex.gz' Write::CoNLLU $(CONLL_ATTRIBUTES) path=$(CONLLUDIR)/train clobber=1 compress=1
-	$(QTREEX) Read::Treex from='!$(DIR1)/dev/*.treex.gz' Write::CoNLLU $(CONLL_ATTRIBUTES) path=$(CONLLUDIR)/dev clobber=1 compress=1
-	$(QTREEX) Read::Treex from='!$(DIR1)/test/*.treex.gz' Write::CoNLLU $(CONLL_ATTRIBUTES) path=$(CONLLUDIR)/test clobber=1 compress=1
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Write::CoNLLU substitute={$(DIR2)}{$(CONLLUDIR)} clobber=1 compress=1
 
-###!!! The udep goal is currently defined only for Czech but we want it language-independent!
-udep:
-	$(QTREEX) Read::Treex from='!$(DIR0)/train/*.treex.gz' HamleDT::CS::Udep Write::CoNLLU deprel_attribute=conll/deprel is_member_within_afun=0 path=$(CONLLUDIR)/train clobber=1 compress=1
-	$(QTREEX) Read::Treex from='!$(DIR0)/dev/*.treex.gz' HamleDT::CS::Udep Write::CoNLLU deprel_attribute=conll/deprel is_member_within_afun=0 path=$(CONLLUDIR)/dev clobber=1 compress=1
-	$(QTREEX) Read::Treex from='!$(DIR0)/test/*.treex.gz' HamleDT::CS::Udep Write::CoNLLU deprel_attribute=conll/deprel is_member_within_afun=0 path=$(CONLLUDIR)/test clobber=1 compress=1
 
 
 # DEPRECATED: The Stanford stuff will be removed once we have conversion to Universal Dependencies fully operational.
