@@ -84,3 +84,13 @@ ttred:
 	echo > $(FILELIST)
 	grep hamledt/$(TTBK)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 >> $(FILELIST)
 	ttred -l $(FILELIST)
+
+# If we work remotely (and remote graphical interface is not available), we may want to save the examples in a treex file,
+# then download it via sftp and inspect it in a local installation of Tred.
+# The fl2treex tool resides in $TMT_ROOT/treex/bin so we probably have it in $PATH already.
+treex:
+	echo > $(FILELIST)
+	grep hamledt/$(TTBK)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 >> $(FILELIST)
+	mkdir -p examples
+	fl2treex $(FILELIST) -o examples -n 50
+
