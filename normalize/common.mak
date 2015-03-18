@@ -26,8 +26,10 @@ SUBDIRS   = stanford
 STANDIR   = $(DATADIR)/$(SUBDIRS)
 
 # Processing shortcuts.
+# Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
+# I am temporarily setting it rather high in order to sneak before Shadi's jobs.
 TREEX      = treex -L$(LANGCODE)
-QTREEX     = treex -p --jobs 50 -L$(LANGCODE)
+QTREEX     = treex -p --jobs 100 --priority=-1 -L$(LANGCODE)
 IMPORT     = Read::CoNLLX lines_per_doc=500
 WRITE0     = Write::Treex file_stem='' clobber=1
 WRITE      = Write::Treex clobber=1

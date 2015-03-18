@@ -57,9 +57,11 @@ ptests:
 	Util::SetGlobal Read::Treex from=$(PFILES) $(PTESTS) 2> test.err > $(TESTLOG)
 	@date
 
+# Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
+# I am temporarily setting it rather high in order to sneak before Shadi's jobs.
 utests:
 	@date
-	treex -p --jobs=$(JOBS) --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*" \
+	treex -p --jobs=$(JOBS) --priority=-1 --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*" \
 	Util::SetGlobal Read::Treex from=$(UFILES) $(UTESTS) 2> test.err > $(TESTLOG)
 	@date
 
