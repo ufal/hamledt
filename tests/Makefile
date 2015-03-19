@@ -94,5 +94,5 @@ treex:
 	echo > $(FILELIST)
 	grep hamledt/$(TTBK)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 >> $(FILELIST)
 	mkdir -p examples
-	head -51 $(FILELIST) | refine_filelist.pl > examples/index.fl
+	cat $(FILELIST) | refine_filelist.pl > examples/index.fl
 	fl2treex $(FILELIST) -o examples -n 50
