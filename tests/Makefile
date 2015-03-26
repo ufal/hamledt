@@ -35,7 +35,8 @@ PTESTS = \
 UTESTS = \
 	HamleDT::Test::UD::Root \
 	HamleDT::Test::UD::Determiners \
-	HamleDT::Test::UD::Prepositions \
+	HamleDT::Test::UD::Adpositions \
+	HamleDT::Test::UD::Subjunctions \
 	HamleDT::Test::UD::CompoundPrepositions \
 	HamleDT::Test::UD::Punctuation
 
