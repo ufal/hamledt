@@ -33,7 +33,9 @@ PTESTS = \
 	HamleDT::Test::MaxOneSubject
 
 UTESTS = \
+	HamleDT::Test::UD::Root \
 	HamleDT::Test::UD::Determiners \
+	HamleDT::Test::UD::Prepositions \
 	HamleDT::Test::UD::CompoundPrepositions \
 	HamleDT::Test::UD::Punctuation
 
