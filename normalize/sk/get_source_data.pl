@@ -44,13 +44,14 @@ foreach my $slozka (@singlean)
 }
 # Vytvořit cílové složky a zkopírovat do nich soubory.
 dzsys::saferun("mkdir -p $cilova_cesta/source/train");
+dzsys::saferun("mkdir -p $cilova_cesta/source/dev");
 dzsys::saferun("mkdir -p $cilova_cesta/source/test");
 my $i = 0;
 foreach my $soubor (sort(@seznam))
 {
     $i++;
-    my $urceni = ($i % 10 == 0) ? 'test' : 'train';
-    foreach my $ext qw(a m w)
+    my $urceni = ($i % 10 == 0) ? 'test' : ($i % 10 == 1) ? 'dev' : 'train';
+    foreach my $ext (qw(a m w))
     {
         dzsys::saferun("cp $soubor.$ext $cilova_cesta/source/$urceni/$cilove_nazvy{$soubor}.$ext\n");
     }
