@@ -72,7 +72,6 @@ SCEN1 = A2A::CopyAtree source_selector='' selector='orig' HamleDT::$(UCLANG)::$(
 prague:
 	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} -- '!$(DIR0)/{train,dev,test}/*.treex.gz'
 
-###!!! The ud goal is currently defined only for Czech but we want it language-independent!
 # Convert the trees to Universal Dependencies and store the result in 02.
 SCEN2 = A2A::CopyAtree source_selector='' selector='prague' HamleDT::Udep $(POST_UD_BLOCKS)
 ud:
