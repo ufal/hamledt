@@ -55,6 +55,10 @@ foreach my $subdir (@src_subdirs)
             {
                 $file3 .= '.TEST';
             }
+            elsif($file3 eq 'v_pogone.tgt')
+            {
+                $file3 .= '.DEV';
+            }
             # Copy the source file to the target file.
             my $srcfile = "$path/$file";
             my $tgtfile = "$tgtdir/$file3";
