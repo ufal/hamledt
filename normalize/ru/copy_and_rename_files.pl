@@ -55,7 +55,7 @@ foreach my $subdir (@src_subdirs)
             {
                 $file3 .= '.TEST';
             }
-            elsif($file3 eq 'v_pogone.tgt')
+            elsif($file3 eq 'Artist_mimansa.tgt')
             {
                 $file3 .= '.DEV';
             }
