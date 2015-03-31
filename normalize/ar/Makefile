@@ -24,4 +24,5 @@ source:
 # Note that different revisions of PADT use different XML schemas, so relying on the schemas copied to Treex may not succeed.
 treex:
 	treex Read::PADT schema_dir=$(PADTDIR) 'from=!$(IN)/train/*.syntax.pml' A2A::RemoveUnannotatedSentences Write::Treex path=$(DIR0)/train clobber=1
+	treex Read::PADT schema_dir=$(PADTDIR) 'from=!$(IN)/dev/*.syntax.pml'  A2A::RemoveUnannotatedSentences Write::Treex path=$(DIR0)/dev  clobber=1
 	treex Read::PADT schema_dir=$(PADTDIR) 'from=!$(IN)/test/*.syntax.pml'  A2A::RemoveUnannotatedSentences Write::Treex path=$(DIR0)/test  clobber=1
