@@ -10,16 +10,7 @@ source:
 
 # Do not convert Universal Dependencies to the Prague style and then back to UD. Instead, read directly UD.
 # Note that there will be just one tree per sentence, not three. (There are three trees per sentence for treebanks that are converted via Prague.)
-ud:
-	$(TREEX) \
-		Read::CoNLLU from=$(IN)/train.conllu lines_per_doc=500 \
-		Write::Treex clobber=1 path=$(DIR0)/train/ compress=1
-	$(TREEX) \
-		Read::CoNLLU from=$(IN)/dev.conllu lines_per_doc=500 \
-		Write::Treex clobber=1 path=$(DIR0)/dev/ compress=1
-	$(TREEX) \
-		Read::CoNLLU from=$(IN)/test.conllu lines_per_doc=500 \
-		Write::Treex clobber=1 path=$(DIR0)/test/ compress=1
+ud: conllu_to_treex
 
 ###!!! The following goal has been copied from another Makefile but it does not apply in this form to this dataset. It has to be adjusted!
 SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema

@@ -30,9 +30,10 @@ STANDIR   = $(DATADIR)/$(SUBDIRS)
 # I am temporarily setting it rather high in order to sneak before Shadi's jobs.
 TREEX      = treex -L$(LANGCODE)
 QTREEX     = treex -p --jobs 100 --priority=0 -L$(LANGCODE)
-IMPORT     = Read::CoNLLX lines_per_doc=500
-WRITE0     = Write::Treex file_stem='' clobber=1
-WRITE      = Write::Treex clobber=1
+IMPORTX    = Read::CoNLLX lines_per_doc=500
+IMPORTU    = Read::CoNLLU lines_per_doc=500
+WRITE0     = Write::Treex file_stem='' clobber=1 compress=1
+WRITE      = Write::Treex clobber=1 compress=1
 # Treebank-specific Makefiles must override the value of HARMONIZE if their harmonization block is not called Harmonize.
 # They must do so before they include common.mak.
 HARMONIZE ?= Harmonize
@@ -59,12 +60,23 @@ dirs:
 # and store the results in 00. This default assumes CoNLL-X,
 # our most-widely used source format. If a different conversion
 # is needed, override in the language-specific Makefile.
-# Otherwise, define the language-specific "treex" goal as dependent
+# Otherwise, define the treebank-specific "treex" goal as dependent
 # on "conll_to_treex".
 conll_to_treex:
-	$(TREEX) $(IMPORT) from=$(IN)/train.conll $(WRITE0) path=$(DIR0)/train/
-	$(TREEX) $(IMPORT) from=$(IN)/dev.conll   $(WRITE0) path=$(DIR0)/dev/
-	$(TREEX) $(IMPORT) from=$(IN)/test.conll  $(WRITE0) path=$(DIR0)/test/
+	$(TREEX) $(IMPORTX) from=$(IN)/train.conll $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORTX) from=$(IN)/dev.conll   $(WRITE0) path=$(DIR0)/dev/
+	$(TREEX) $(IMPORTX) from=$(IN)/test.conll  $(WRITE0) path=$(DIR0)/test/
+
+# If the source data is already in Universal Dependencies, do not convert it to the Prague style and then back to UD.
+# Read UD directly instead. Note that there will be just one tree per sentence, not three.
+# (There are three trees per sentence for treebanks that are converted via Prague.)
+# Also note that we save the result directly in $(DIR2), not $(DIR0).
+# For UD treebanks the treebank-specific Makefile should redefine the "ud" goal as dependent on "conllu_to_treex".
+# (See below for the default definition of the "ud" goal.)
+conllu_to_treex:
+	$(TREEX) $(IMPORTU) from=$(IN)/train.conllu $(WRITE0) path=$(DIR2)/train/
+	$(TREEX) $(IMPORTU) from=$(IN)/dev.conllu   $(WRITE0) path=$(DIR2)/dev/
+	$(TREEX) $(IMPORTU) from=$(IN)/test.conllu  $(WRITE0) path=$(DIR2)/test/
 
 # Convert the trees to the HamleDT/Prague style and store the result in 01.
 UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
