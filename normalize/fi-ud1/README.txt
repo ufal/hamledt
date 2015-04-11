@@ -1,4 +1,4 @@
-Spanish Universal Dependencies / Universal Dependency Treebank 2.0
+Finnish Universal Dependencies / Turku Dependency Treebank (TDT)
 released via LINDAT/CLARIN on 15.1.2015
 http://universaldependencies.github.io/docs/de/overview/introduction.html
 http://hdl.handle.net/11234/1-1464
