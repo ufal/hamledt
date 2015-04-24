@@ -1,0 +1,5 @@
+The software and data in this repository is copyright Charles University in Prague,
+Faculty of Mathematics and Physics, Institute of Formal and Applied Linguistics.
+It is provided as-is (without any warranty) and may be freely used, modified and
+redistributed under the GNU General Public License version 3.0 or
+the Perl Artistic License version 1.0. 
