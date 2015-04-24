@@ -28,12 +28,12 @@ r11870 (2014-03-14 zeman) ........ removed old hamledt (after checking all langu
 r11991 (2014-03-23 zeman) ........ hamledt2 renamed to hamledt
 r12700 (2014-05-24 zeman) ........ HamleDT release 2.0 (Prague + Stanford)
 r14841 (2015-04-23 zeman) ........ pruned large generatable files, hamledt with history copied to Github ufal/hamledt
+r14847 (2015-04-24 zeman) ........ hamledt removed from the Subversion repository
 
 See also
 
-https://svn.ms.mff.cuni.cz/trac/tectomt_devel/
-
-(password-protected access, only for ÚFAL members).
+https://svn.ms.mff.cuni.cz/trac/tectomt_devel/ (password-protected access, only for ÚFAL members)
+https://github.com/ufal/hamledt
 
 
 
