@@ -7,10 +7,10 @@ SHELL=/bin/bash
 # TREEBANK=cs-pdt30 # either same as language code, or with hyphen and lowercase treebank code; will be used in paths
 # HARMONIZE=HarmonizeSpecial # only needed if not called Harmonize; will be sought for in the $(LANGCODE) folder.
 
-# Set paths. The main path, TMT_ROOT, must be pre-set in your environment.
-# You may want to put something like this in your .bash_profile, depending on where your copy of TectoMT is:
-# export TMT_ROOT=/net/work/people/zeman/tectomt
-DATADIR   = $(TMT_ROOT)/share/data/resources/hamledt/$(TREEBANK)
+# Set paths. The main path to the working copy of the data, HAMLEDT_DATA, must be pre-set in your environment.
+# You may want to put something like this in your .bash_profile:
+# export HAMLEDT_DATA=/net/projects/tectomt_shared/data/resources/hamledt
+DATADIR   = $(HAMLEDT_DATA)/$(TREEBANK)
 SUBDIRIN  = source
 SUBDIR0   = treex/00
 SUBDIR1   = treex/01
