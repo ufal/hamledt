@@ -1,0 +1,3 @@
+# Ignore the symbolic link 'data' in any treebank-specific subfolder.
+*/data
+
