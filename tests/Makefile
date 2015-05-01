@@ -33,6 +33,7 @@ PTESTS = \
 	HamleDT::Test::MaxOneSubject
 
 UTESTS = \
+	HamleDT::Test::UD::SingleRoot \
 	HamleDT::Test::UD::Root \
 	HamleDT::Test::UD::Determiners \
 	HamleDT::Test::UD::Adpositions \
