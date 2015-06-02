@@ -2,12 +2,13 @@ LANGCODE=es
 TREEBANK=es
 include ../common.mak
 
-IMPORT = Read::CoNLL2009 lines_per_doc=500
+IMPORTX = Read::CoNLL2009 lines_per_doc=500
 
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
 	ln -s /net/data/conll/2009/es/train.conll $(IN)/train.conll
-	ln -s /net/data/conll/2009/es/dev.conll $(IN)/test.conll
+	ln -s /net/data/conll/2009/es/dtest.conll $(IN)/dev.conll
+	ln -s /net/data/conll/2009/es/etest.conll $(IN)/test.conll
 
 treex: conll_to_treex

@@ -8,10 +8,10 @@ ALL_TREEBANKS={ar,bg,bn,ca,cs,cs-conll2007,da,de,el,en,es,et,eu,fa,fi,grc,hi,hr,
 TREEBANKS={cs,sk,pl,sl,hr,bg,ru}
 #TREEBANKS={en,cs}
 SETS={train,dev,test}
-DATADIR=$(TMT_ROOT)/share/data/resources/hamledt
-PFILES='!$(DATADIR)/$(TREEBANKS)/treex/01/$(SETS)/*.treex.gz'
-UFILES='!$(DATADIR)/$(TREEBANKS)/treex/02/$(SETS)/*.treex.gz'
-TRANSFFILES='!$(DATADIR)/$(TREEBANKS)/treex/trans*/$(SETS)/*.treex.gz'
+# HAMLEDT_DATA must be set in your environment.
+PFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/01/$(SETS)/*.treex.gz'
+UFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/02/$(SETS)/*.treex.gz'
+TRANSFFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/trans*/$(SETS)/*.treex.gz'
 
 PTESTS = \
 	HamleDT::Test::AfunDefined \
@@ -40,6 +40,10 @@ UTESTS = \
 	HamleDT::Test::UD::CompoundPrepositions \
 	HamleDT::Test::UD::Punctuation \
 	HamleDT::Test::UD::ZZZSearch
+# The SingleRoot test cannot be applied to the Prague-style treebanks because of ellipsis.
+# Some people believe that all trees in UD should have just one top node (attached to the root)
+# but they have not provided an alternative solution to sentences like "A co na to MF?"
+#	HamleDT::Test::UD::SingleRoot
 
 validate:
 	treex -p --survive --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
