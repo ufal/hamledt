@@ -8,7 +8,7 @@ zcat data/conllu/train/mf9* > cs-ud-train-m.conllu
 zcat data/conllu/train/vesm9* > cs-ud-train-v.conllu
 for i in *.conllu ; do
   echo $i
-  /net/work/people/zeman/unidep/release1/universal-dependencies-1.0-tools/validate.py $i --no-lists --noecho
+  python /net/work/people/zeman/unidep/tools/validate.py --noecho --lang=cs --multiple-roots $i
   cp $i /ha/home/zeman/network/unidep/UD_Czech
 done
 
