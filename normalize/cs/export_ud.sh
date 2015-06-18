@@ -9,6 +9,6 @@ zcat data/conllu/train/vesm9* > cs-ud-train-v.conllu
 for i in *.conllu ; do
   echo $i
   python /net/work/people/zeman/unidep/tools/validate.py --noecho --lang=cs --multiple-roots $i
-  cp $i /ha/home/zeman/network/unidep/UD_Czech
+  mv $i /ha/home/zeman/network/unidep/UD_Czech
 done
 
