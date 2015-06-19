@@ -86,7 +86,10 @@ prague:
 
 # Convert the trees to Universal Dependencies and store the result in 02.
 SCEN2 = A2A::CopyAtree source_selector='' selector='prague' HamleDT::Udep $(POST_UD_BLOCKS)
-ud:
+###!!! Momentálně se zabývám převážně načítáním publikovaných treebanků UD do Treexu.
+###!!! Ty mají svůj vlastní cíl "ud" ve svém soukromém Makefilu.
+###!!! Jenže pak dochází ke konfliktu a volá se následně i tento společný cíl. Proto jsem ho zatím přejmenoval. V budoucnu je to potřeba vyřešit nějak systematicky.
+zablokovano_ud:
 	$(QTREEX) $(SCEN2) Write::Treex substitute={01}{02} -- '!$(DIR1)/{train,dev,test}/*.treex.gz'
 
 # This goal exports the harmonized trees in the CoNLL-U format, which is more useful for ordinary users.
