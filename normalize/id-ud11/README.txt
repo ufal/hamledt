@@ -1,23 +1,39 @@
-French Universal Dependencies / Universal Dependency Treebank 2.0
-released via LINDAT/CLARIN on 15.1.2015
-http://universaldependencies.github.io/docs/fr/overview/introduction.html
-http://hdl.handle.net/11234/1-1464
+Indonesian Universal Dependencies / Universal Dependency Treebank 2.0
+released via LINDAT/CLARIN on 15.5.2015
+http://universaldependencies.github.io/docs/id/overview/introduction.html
+http://hdl.handle.net/11234/LRT-1478
+
+License: Creative Commons BY-NC-SA 3.0
+
+training size    = 1032 sentences, 20764 tokens
+development size =  129 sentences,  3049 tokens
+test size        =  138 sentences,  2725 tokens
 
 License: http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 
-training size    = 14507 sentences, 354684 tokens, 10325 fused tokens spanning 20652 nodes, i.e. 344357 total surface tokens
-development size =  1611 sentences,  38857 tokens, 1218 fused tokens spanning 2436 nodes, i.e. 37639 total surface tokens
-test size        =   300 sentences,   7079 tokens, 192 fused tokens spanning 384 nodes, i.e. 6887 total surface tokens
+training size    = 14118 sentences, 269626 tokens, 4719 fused tokens spanning 9440 nodes, i.e. 264905 total surface tokens
+development size =   800 sentences,  12379 tokens, 164 fused tokens spanning 328 nodes, i.e. 12215 total surface tokens
+test size        =  1000 sentences,  16609 tokens, 270 fused tokens spanning 540 nodes, i.e. 16339 total surface tokens
 
-The French UD is converted from the content head version of the universal
+The Indonesian UD is converted from the content head version of the universal
 dependency treebank v2.0 (legacy):
 
 https://code.google.com/p/uni-dep-tb/
 
 The README for that project is included here.
 
-The French UD conforms to the UD guidelines, but there are some exceptions.
+The Indonesian UD conforms to the UD guidelines, but there are some exceptions.
 The primary exception is that there are no morphological features defined.
+
+===================================
+STATS
+===================================
+Tree count:  5593
+Word count:  121923
+Token count: 121923
+Dep. relations: 28 of which 0 language specific
+POS tags: 16
+Category=value feature pairs: 0
 
 ===================================
 LEGACY README FILE BELOW

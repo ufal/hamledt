@@ -1,22 +1,22 @@
-French Universal Dependencies / Universal Dependency Treebank 2.0
-released via LINDAT/CLARIN on 15.1.2015
-http://universaldependencies.github.io/docs/fr/overview/introduction.html
-http://hdl.handle.net/11234/1-1464
+Spanish Universal Dependencies / Universal Dependency Treebank 2.0
+released via LINDAT/CLARIN on 15.5.2015
+http://universaldependencies.github.io/docs/es/overview/introduction.html
+http://hdl.handle.net/11234/LRT-1478
 
 License: http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 
-training size    = 14507 sentences, 354684 tokens, 10325 fused tokens spanning 20652 nodes, i.e. 344357 total surface tokens
-development size =  1611 sentences,  38857 tokens, 1218 fused tokens spanning 2436 nodes, i.e. 37639 total surface tokens
-test size        =   300 sentences,   7079 tokens, 192 fused tokens spanning 384 nodes, i.e. 6887 total surface tokens
+training size    = 14137 sentences, 382426 tokens, 7267 fused tokens spanning 14554 nodes, i.e. 375139 total surface tokens
+development size =  1569 sentences,  41749 tokens, 797 fused tokens spanning 1596 nodes, i.e. 40950 total surface tokens
+test size        =   300 sentences,   8476 tokens, 181 fused tokens spanning 362 nodes, i.e. 8295 total surface tokens
 
-The French UD is converted from the content head version of the universal
+The Spanish UD is converted from the content head version of the universal
 dependency treebank v2.0 (legacy):
 
 https://code.google.com/p/uni-dep-tb/
 
 The README for that project is included here.
 
-The French UD conforms to the UD guidelines, but there are some exceptions.
+The Spanish UD conforms to the UD guidelines, but there are some exceptions.
 The primary exception is that there are no morphological features defined.
 
 ===================================

@@ -1,6 +1,6 @@
 Hungarian Universal Dependencies / Szeged Treebank
 released via LINDAT/CLARIN on 15.1.2015
-http://universaldependencies.github.io/docs/de/overview/introduction.html
+http://universaldependencies.github.io/docs/hu/overview/introduction.html
 http://hdl.handle.net/11234/1-1464
 
 License: Creative Commons BY-NC-SA 3.0
