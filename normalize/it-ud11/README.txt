@@ -1,13 +1,13 @@
 Italian Universal Dependencies / Italian Stanford Dependency Treebank
-released via LINDAT/CLARIN on 15.1.2015
+released via LINDAT/CLARIN on 15.5.2015
 http://universaldependencies.github.io/docs/it/overview/introduction.html
-http://hdl.handle.net/11234/1-1464
+http://hdl.handle.net/11234/LRT-1478
 
 License: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported
 
-training size    = 9077 sentences, 194063 tokens, 13117 fused tokens spanning 26256 nodes, i.e. 180924 total surface tokens
-development size =  500 sentences,  10492 tokens, 682 fused tokens spanning 1364 nodes, i.e. 9810 total surface tokens
-test size        =  500 sentences,  10193 tokens, 699 fused tokens spanning 1399 nodes, i.e. 9493 total surface tokens
+training size    = 11330 sentences, 254224 tokens, 17268 fused tokens spanning 34561 nodes, i.e. 236931 total surface tokens
+development size =   500 sentences,  11541 tokens, 796 fused tokens spanning 1592 nodes, i.e. 10745 total surface tokens
+test size        =   500 sentences,  11444 tokens, 811 fused tokens spanning 1623 nodes, i.e. 10632 total surface tokens
 
 # Description
 
@@ -21,8 +21,6 @@ ISDT is a resource annotated according to the Stanford dependencies scheme (de M
 The details of the harmonization and conversion process leading to MIDT were discussed in (Bosco, Montemagni, Simi, 2012). The Stanford annotation scheme, obtained from an enriched version of MIDT,
 was adapted to the specificity of the Italian language. We refer to (Bosco, Montemagni, Simi, 2013 and 2014) for a discussion. 
 
-This is the first release of the data.
-
 ## Main contributors
 
 * Cristina Bosco - Università di Torino, Dipartimento di Informatica
@@ -35,13 +33,37 @@ This is the first release of the data.
 <table>
 <tr style="background-color: #eee"><th>Original format</th><th>Source</th><th>Genre</th><th>Size in tokens</th><th>Size in sentences</th>
 </tr>
-<tr><td>TUT-CONLL</td><td>Evalita 2011 Dependency parsing</td><td>Legal texts, news articles, Wikipedia articles</td><td>97,558</td><td>3,842</td></tr>
-<tr><td>ISST-TANL</td><td>Evalita 2011 Domain adaptation task</td><td>Newspaper articles</td><td>80,990</td><td>4,136</td></tr>
-<tr><td>ISST-TANL</td><td>SPLeT 2012 </td><td>Legal texts: European directives</td><td>5,922</td><td>260</td></tr>
-<tr><td>MIDT</td><td>Several QA competitions</td><td>Questions</td><td>21,968</td><td>2,228</td></tr>
-<tr><td>MIDT</td><td>Evalita 2014 Dependency parsing:test data set (partial)</td><td>News articles</td><td>7,386</td><td>304</td></tr>
-<tr><td></td><td></td><td>TOTAL</td><td><b>213,829</b></td><td><b>10,770</b></td></tr>
+<tr><td>TUT-CONLL</td><td>Evalita 2011 Dependency parsing</td><td>Legal texts, news articles, Wikipedia articles</td><td>116,986</td><td>3,842</td></tr>
+<tr><td>ISST-TANL</td><td>Evalita 2011 Domain adaptation task</td><td>Newspaper articles</td><td>93,721</td><td>4,135</td></tr>
+<tr><td>ISST-TANL</td><td>SPLeT 2012 </td><td>Legal texts: European directives</td><td>7,200</td><td>260</td></tr>
+<tr><td>MIDT</td><td>Several QA competitions</td><td>Questions</td><td>26,078</td><td>2,228</td></tr>
+<tr><td>MIDT</td><td>Evalita 2014 Dependency parsing:test data set (partial)</td><td>News articles</td><td>8,776</td><td>304</td></tr>
+<tr><td>TUT-CONLL</td><td>Parallel TUT (Italian part)</td><td>Various genres</td><td>71,645</td><td>2,310</td></tr>
+<tr><td></td><td></td><td>TOTAL</td><td><b>324,406</b></td><td><b>13,079</b></td></tr>
 </table>
+
+## Corpus splitting
+
+The Corpus has been randomly splitted (by a script) as follows:
+
+* it-ud-train.conllu: 294154 tokens (11330 sentences)
+* it-ud-dev.conllu: 13337 tokens (500 sentences)
+* it-ud-test.conllu: 13255 tokens (500 sentences)
+
+## Changelog V1.1 May 15 2015
+
+This is Version 1.1 of the data. Changes from the previous version include.
+
+* Added Italian section of ParTUT (71645 tokens)
+* Checked SYM
+* Checked X
+* Added more negation adverbs
+* Eliminated Gender=Com and Number=Com
+* Eliminated Negation=Neg
+* Added language specific feature PronType=Clit
+* Changed 'case' into 'mark' for 'xcomp'
+* Fixed xcomp/ccomp distinction
+* Checked dependencies marked 'dep', and resolved most of them
 
 ## Acknowledgments
 
