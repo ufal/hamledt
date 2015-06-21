@@ -1,7 +1,7 @@
 Finnish Universal Dependencies / Turku Dependency Treebank (TDT)
-released via LINDAT/CLARIN on 15.1.2015
+released via LINDAT/CLARIN on 15.5.2015
 http://universaldependencies.github.io/docs/fi/overview/introduction.html
-http://hdl.handle.net/11234/1-1464
+http://hdl.handle.net/11234/LRT-1478
 
 License: Creative Commons Attribution-ShareAlike 4.0 International
 
