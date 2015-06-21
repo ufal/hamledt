@@ -1,12 +1,12 @@
 French Universal Dependencies / Universal Dependency Treebank 2.0
-released via LINDAT/CLARIN on 15.1.2015
+released via LINDAT/CLARIN on 15.5.2015
 http://universaldependencies.github.io/docs/fr/overview/introduction.html
-http://hdl.handle.net/11234/1-1464
+http://hdl.handle.net/11234/LRT-1478
 
 License: http://creativecommons.org/licenses/by-nc-sa/3.0/us/
 
-training size    = 14507 sentences, 354684 tokens, 10325 fused tokens spanning 20652 nodes, i.e. 344357 total surface tokens
-development size =  1611 sentences,  38857 tokens, 1218 fused tokens spanning 2436 nodes, i.e. 37639 total surface tokens
+training size    = 14551 sentences, 354690 tokens, 10323 fused tokens spanning 20648 nodes, i.e. 344365 total surface tokens
+development size =  1617 sentences,  38858 tokens, 1218 fused tokens spanning 2436 nodes, i.e. 37640 total surface tokens
 test size        =   300 sentences,   7079 tokens, 192 fused tokens spanning 384 nodes, i.e. 6887 total surface tokens
 
 The French UD is converted from the content head version of the universal
