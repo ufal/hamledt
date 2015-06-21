@@ -1,6 +1,6 @@
 Swedish Universal Dependencies / Talbanken
 released via LINDAT/CLARIN on 15.1.2015
-http://universaldependencies.github.io/docs/de/overview/introduction.html
+http://universaldependencies.github.io/docs/sv/overview/introduction.html
 http://hdl.handle.net/11234/1-1464
 
 License: CC BY-SA 3.0
