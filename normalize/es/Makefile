@@ -12,3 +12,6 @@ source:
 	ln -s /net/data/conll/2009/es/etest.conll $(IN)/test.conll
 
 treex: conll_to_treex
+
+# ud should map either to prague_to_ud, or to conllu_to_treex.
+ud: prague_to_ud
