@@ -5,8 +5,9 @@ We read directly the native PML data format. Therefore we do not lose the is_mem
 
 ÚFAL holds the copyright => no licensing problems
 
-training size = 2912 sentences, 111669 tokens
-test size     =  131 sentences,   5124 tokens
+training size    = 6174 sentences, 225853 tokens
+development size =  786 sentences,  28263 tokens
+test size        =  704 sentences,  28268 tokens
 
 Analytical functions contain a few more values in addition to PDT.
 See the README file in /net/data/conll/2007/ar/doc.
