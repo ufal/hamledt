@@ -1,5 +1,7 @@
 Prague Arabic Dependency Treebank
-as prepared for the CoNLL 2007 shared task
+This data is larger than PADT 1.0 (and consequently CoNLL 2006 and 2007).
+It has not been published elsewhere than in HamleDT. We want to publish PADT 2.0 eventually but there is work that needs to be done on the annotation.
+We read directly the native PML data format. Therefore we do not lose the is_member attribute (unlike CoNLL 2007).
 
 ÚFAL holds the copyright => no licensing problems
 
@@ -8,12 +10,6 @@ test size     =  131 sentences,   5124 tokens
 
 Analytical functions contain a few more values in addition to PDT.
 See the README file in /net/data/conll/2007/ar/doc.
-
-Problem: the is_member attribute is lost.
-We are currently (May 2013) preparing new Arabic data from PADT 2.0 (unreleased).
-The data is more than twice larger than CoNLL 2007.
-It should also be better annotated.
-We will read directly the native PML data format, so no attributes should be lost this time.
 
 ----------
 

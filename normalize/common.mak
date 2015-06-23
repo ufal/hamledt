@@ -72,7 +72,7 @@ conll_to_treex:
 # (There are three trees per sentence for treebanks that are converted via Prague.)
 # Also note that we save the result directly in $(DIR2), not $(DIR0).
 # For UD treebanks the treebank-specific Makefile should redefine the "ud" goal as dependent on "conllu_to_treex".
-# (See below for the default definition of the "ud" goal.)
+# (See also "prague_to_ud" below.)
 conllu_to_treex:
 	$(TREEX) $(IMPORTU) from=$(IN)/train.conllu $(WRITE0) path=$(DIR2)/train/
 	$(TREEX) $(IMPORTU) from=$(IN)/dev.conllu   $(WRITE0) path=$(DIR2)/dev/
@@ -85,11 +85,11 @@ prague:
 	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} -- '!$(DIR0)/{train,dev,test}/*.treex.gz'
 
 # Convert the trees to Universal Dependencies and store the result in 02.
+# If the UD version of the treebank is created using HamleDT transformation via the Prague style,
+# define the treebank-specific goal "ud" as dependent on "prague_to_ud".
+# Otherwise, if reading directly data published in Universal Dependencies, make "ud" dependent on "conllu_to_treex".
 SCEN2 = A2A::CopyAtree source_selector='' selector='prague' HamleDT::Udep $(POST_UD_BLOCKS)
-###!!! Momentálně se zabývám převážně načítáním publikovaných treebanků UD do Treexu.
-###!!! Ty mají svůj vlastní cíl "ud" ve svém soukromém Makefilu.
-###!!! Jenže pak dochází ke konfliktu a volá se následně i tento společný cíl. Proto jsem ho zatím přejmenoval. V budoucnu je to potřeba vyřešit nějak systematicky.
-zablokovano_ud:
+prague_to_ud:
 	$(QTREEX) $(SCEN2) Write::Treex substitute={01}{02} -- '!$(DIR1)/{train,dev,test}/*.treex.gz'
 
 # This goal exports the harmonized trees in the CoNLL-U format, which is more useful for ordinary users.
