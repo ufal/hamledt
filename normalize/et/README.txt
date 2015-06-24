@@ -5,8 +5,9 @@ The website is in Estonian only, so Dan just guessed what to download and how to
 
 License: unknown but it was freely downloadable
 
-training size = 1140 sentences, 7040 tokens
-test size     =  175 sentences, 2451 tokens
+training size    = 1066 sentences, 7687 tokens
+development size =  118 sentences,  848 tokens
+test size        =  131 sentences,  956 tokens
 
 Annotation similar to this one:
 
