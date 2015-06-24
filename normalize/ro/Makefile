@@ -5,26 +5,28 @@ include ../common.mak
 # We need the fixed path to the ÚFAL location where the data really is!
 # Even if we are building a custom revision of HamleDT with modified TMT_ROOT, which is not linked to the ÚFAL shared folder.
 ORIG_TREEBANK=/net/projects/tectomt_shared/data/resources/treebanks/ro
-IMPORT   = Read::DGA bundles_per_doc=500
 
-source: $(IN)/test.xml $(IN)/train.xml
+source: $(IN)/train.xml $(IN)/dev.xml $(IN)/test.xml
 
 $(IN)/%.xml: $(ORIG_TREEBANK)/*.xml
 	mkdir -p $(IN)
 	echo '<?xml version="1.0" encoding="utf-8"?>' > $@
 	echo '<!DOCTYPE DGAdoc SYSTEM "dga.dtd">' >> $@
 	echo '<DGAdoc>' >> $@
-	[ $* = train ] && SOURCE='tp*.xml' || SOURCE='t[0-9]*.xml';\
+	if [[ $* == train ]] ; then SOURCE='tp[0-9][0-9].xml' ; \
+	elif [[ $* == dev ]] ; then SOURCE='tp[0-9].xml' ; \
+	else SOURCE='t[0-9]*.xml' ; fi ; \
+	echo $$SOURCE ;\
 	for FILE in $(ORIG_TREEBANK)/$$SOURCE ; do\
 	  head -n -1 $$FILE | tail -n +5 | iconv -f l1 -t utf8  >> $@;\
         done
 	echo '</DGAdoc>' >> $@
 
+IMPORT = Read::DGA bundles_per_doc=500
 treex:
-	$(TREEX) $(IMPORT) from=$(IN)/test.xml  $(WRITE0) path=$(DIR0)/test/
 	$(TREEX) $(IMPORT) from=$(IN)/train.xml $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORT) from=$(IN)/dev.xml   $(WRITE0) path=$(DIR0)/dev/
+	$(TREEX) $(IMPORT) from=$(IN)/test.xml  $(WRITE0) path=$(DIR0)/test/
 
-# make the trees as similar to the PDT-style as possible
-# and store the result in 001_pdtstyle
-# SCEN1 = HamleDT::RO::Harmonize HamleDT::SetSharedModifier HamleDT::SetCoordConjunction
-# the block are now called from within HamleDT::RO::Harmonize
+# ud should map either to prague_to_ud, or to conllu_to_treex.
+ud: prague_to_ud

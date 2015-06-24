@@ -3,9 +3,10 @@ downloaded from: http://www.phobos.ro/roric/texts/xml/
 
 License: unknown (but freely available on the web)
 
-training size = 3776 sentences, 33510 tokens
-test size     =  266 sentences,  2640 tokens
-total         = 4042 sentences, 36150 tokens
+training size    = 3776 sentences, 33510 tokens
+development size =  255 sentences,  2155 tokens
+test size        =  266 sentences,  2640 tokens
+total            = 4042 sentences, 36150 tokens
 
 RDT is missing:
 * diacritics (originally encoded in ASCII which has no Ă, Â, Î, Ș, Ț)
