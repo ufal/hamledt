@@ -19,3 +19,6 @@ treex:
 	cat $(IN)/*.tgt.TEST | $(TREEX) \
 		Read::Syntagrus lines_per_doc=500 \
 		$(WRITE0) path=$(DIR0)/test/
+
+# ud should map either to prague_to_ud, or to conllu_to_treex.
+ud: prague_to_ud
