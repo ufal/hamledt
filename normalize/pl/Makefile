@@ -1,17 +1,16 @@
 LANGCODE=pl
 TREEBANK=pl
 include ../common.mak
+SRCDIR=/a/LRC_TMP/hamledt/data_translations/not_yet_hamledt_treebanks/pl
+TOOLS=/net/work/people/zeman/parsing/tools
 
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	/net/work/people/zeman/parsing/tools/split_conll.pl < /a/LRC_TMP/hamledt/data_translations/not_yet_hamledt_treebanks/pl/train.conll -head 6800 $(IN)/train.conll $(IN)/dev.conll
-	ln -s /a/LRC_TMP/hamledt/data_translations/not_yet_hamledt_treebanks/pl/test.conll $(IN)/test.conll
+	$(TOOLS)/split_conll.pl < $(SRCDIR)/train.conll -head 6800 $(IN)/train.conll $(IN)/dev.conll
+	ln -s $(SRCDIR)/test.conll $(IN)/test.conll
 
 treex: conll_to_treex
 
-treex_rur:  # there already is a treex conversion together with a Google Translate English translation (but it does not have dev set)
-	mkdir -p $(DIR0)/train
-	mkdir -p $(DIR0)/test
-	cp /a/LRC_TMP/hamledt/data_translations/not_yet_hamledt_treebanks/pl/train/*.treex.gz $(DIR0)/train/
-	cp /a/LRC_TMP/hamledt/data_translations/not_yet_hamledt_treebanks/pl/test/*.treex.gz $(DIR0)/test/
+# ud should map either to prague_to_ud, or to conllu_to_treex.
+ud: prague_to_ud
