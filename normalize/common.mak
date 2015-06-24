@@ -32,8 +32,8 @@ TREEX      = treex -L$(LANGCODE)
 QTREEX     = treex -p --jobs 100 --priority=0 -L$(LANGCODE)
 IMPORTX    = Read::CoNLLX lines_per_doc=500
 IMPORTU    = Read::CoNLLU lines_per_doc=500
-WRITE0     = Write::Treex file_stem='' clobber=1 compress=1
-WRITE      = Write::Treex clobber=1 compress=1
+WRITE0     = Write::Treex file_stem='' compress=1
+WRITE      = Write::Treex compress=1
 # Treebank-specific Makefiles must override the value of HARMONIZE if their harmonization block is not called Harmonize.
 # They must do so before they include common.mak.
 HARMONIZE ?= Harmonize
@@ -94,7 +94,7 @@ prague_to_ud:
 
 # This goal exports the harmonized trees in the CoNLL-U format, which is more useful for ordinary users.
 export_conllu:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Write::CoNLLU substitute={$(DIR2)}{$(CONLLUDIR)} clobber=1 compress=1
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Write::CoNLLU substitute={$(DIR2)}{$(CONLLUDIR)} compress=1
 
 
 
@@ -117,7 +117,7 @@ TO_STANFORD=\
 			Util::Eval anode='$$anode->set_afun('');'
 # This is for TrEd to display the newly set conll/deprels instead of afuns.
 
-WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIRS)} clobber=1 \
+WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIRS)} \
 	Write::Treex \
 	Write::Stanford type_attribute=conll/deprel to=. \
 	Write::CoNLLX deprel_attribute=conll/deprel pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=iset to=.
