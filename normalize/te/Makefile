@@ -7,6 +7,10 @@ source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
 	cat /net/data/icon2010/te/training/telugu_training.conll | $(WX2UTF) > $(IN)/train.conll
-	cat /net/data/icon2010/te/development/telugu_development.conll | $(WX2UTF) > $(IN)/test.conll
+	cat /net/data/icon2010/te/development/telugu_development.conll | $(WX2UTF) > $(IN)/dev.conll
+	cat /net/data/icon2010/te/testing-gold/telugu_testing.conll | $(WX2UTF) > $(IN)/test.conll
 
 treex: conll_to_treex
+
+# ud should map either to prague_to_ud, or to conllu_to_treex.
+ud: prague_to_ud
