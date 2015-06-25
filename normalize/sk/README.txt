@@ -12,18 +12,20 @@ unmerged. In these cases we take always "Annotator 1". Some texts have just one 
 https://svn.ms.mff.cuni.cz/svn/slovallex/trunk/
 /ha/home/zeman/network/slovallex
 
-As there is no official training/test data split, we designed our own. Every tenth file goes to test, the rest goes
-to train.
+As there is no official training/test data split, we designed our own.
+Every tenth file goes to test, the immediately following file goes to development.
+The rest goes to train.
 
-training size = 51967 sentences, 816533 tokens
-test size     =  5498 sentences,  86152 tokens
+training size    = 51913 sentences, 814561 tokens
+development size =  5833 sentences,  93404 tokens
+test size        =  5492 sentences,  85903 tokens
 
 
 
 Morphology (lemmas and tags) seems to be mostly annotated manually. Agáta Karčová (see copy of her message below) has
 confirmed this for seven texts. Dan Zeman inspected sample files of all texts and found only one (BallekPomocnik) that
 apparently was tagged automatically. One other text (DominoForum) seemed to have manual morphology but severely
-damaged sentence segmentation. Provided that one file is good representative of all other files in the same folder,
+damaged sentence segmentation. Provided that one file is a good representative of all other files in the same folder,
 all texts but these two seem to be reasonably trustworthy.
 
 
