@@ -3,9 +3,9 @@ JOBS=100
 VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
-ALL_TREEBANKS={ar,bg,bn,ca,cs,cs-conll2007,da,de,el,en,es,et,eu,fa,fi,grc,hi,hr,hu,it,ja,la,nl,pl,pt,ro,ru,sk,sl,sv,ta,te,tr}
-#TREEBANKS=$(ALL_TREEBANKS)
-TREEBANKS={cs,sk,pl,sl,hr,bg,ru}
+ALL_TREEBANKS={ar,bg-ud11,bn,ca,cs,da-ud11,de,de-ud11,el-ud11,en,en-ud11,es,es-ud11,et,eu-ud11,fa,fa-ud11,fi-ud11,fi-ud11ftb,fr-ud11,ga-ud11,grc,he-ud11,hi,hr-ud11,hu-ud11,id-ud11,it-ud11,ja,la,nl,pl,pt,ro,ru,sk,sl,sv-ud11,ta,te,tr}
+TREEBANKS=$(ALL_TREEBANKS)
+#TREEBANKS={cs,sk,pl,sl,hr,bg,ru}
 #TREEBANKS={en,cs}
 SETS={train,dev,test}
 # HAMLEDT_DATA must be set in your environment.
@@ -13,6 +13,7 @@ PFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/01/$(SETS)/*.treex.gz'
 UFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/02/$(SETS)/*.treex.gz'
 TRANSFFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/trans*/$(SETS)/*.treex.gz'
 
+# Tests for the Prague style.
 PTESTS = \
 	HamleDT::Test::AfunDefined \
 	HamleDT::Test::AfunKnown \
@@ -32,6 +33,7 @@ PTESTS = \
 	HamleDT::Test::SubjectBelowVerb \
 	HamleDT::Test::MaxOneSubject
 
+# Tests for Universal Dependencies.
 UTESTS = \
 	HamleDT::Test::UD::Root \
 	HamleDT::Test::UD::Determiners \
