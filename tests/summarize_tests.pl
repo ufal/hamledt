@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
+use Text::Table;
 
 my %count;
 my %test;
@@ -51,24 +52,37 @@ foreach my $treebank (@treebanks)
     $last_lngcode = $lngcode;
     $i++;
 }
-my @shortreebanks = map {exists($shortcut{$_}) ? $shortcut{$_} : $_} (@treebanks);
-
-use Text::Table;
-
-my $tb = Text::Table->new(
-        'Test / Treebank', @shortreebanks,
-    );
-
-$tb->load(
-    map {
-        my $test = $_;
-        [$_, map {$count{$_}{$test} || 0} @treebanks]
-    } @tests
-);
-
-print $tb;
+my $partsize = 22;
+for(my $i = 0; $i<2; $i++)
+{
+    my $from = $i*$partsize;
+    my $to = ($i+1)*$partsize-1;
+    $to = $#treebanks if($to>$#treebanks);
+    my @tbpart = @treebanks[$from..$to];
+    my @shortb = map {exists($shortcut{$_}) ? $shortcut{$_} : $_} (@tbpart);
+    print_table(\@shortb, \@tbpart, \%count, \@tests);
+    print("\n");
+}
 my @legend = map {"$_=$legend{$_}"} (sort(keys(%legend)));
 if(@legend)
 {
     print('LEGEND: ', join(', ', @legend), "\n");
+}
+
+
+
+#------------------------------------------------------------------------------
+# Constructs and prints the table of test results for each treebank. This can
+# be a partial table for a subset of the treebanks. Split tables if there are
+# too many treebanks to fit in the window.
+#------------------------------------------------------------------------------
+sub print_table
+{
+    my $shortreebanks = shift;
+    my $treebanks = shift;
+    my $count = shift;
+    my $tests = shift;
+    my $tb = Text::Table->new('Test / Treebank', @{$shortreebanks});
+    $tb->load(map {my $test = $_; [$_, map {$count->{$_}{$test} || 0} @{$treebanks}]} @{$tests});
+    print $tb;
 }
