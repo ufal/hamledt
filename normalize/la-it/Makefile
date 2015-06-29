@@ -1,5 +1,6 @@
 LANGCODE=la
 TREEBANK=la-it
+HARMONIZE=HarmonizeIT
 include ../common.mak
 
 source:
