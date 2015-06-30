@@ -2,12 +2,14 @@ LANGCODE=la
 TREEBANK=la-it
 HARMONIZE=HarmonizeIT
 include ../common.mak
+SRCDIR=/net/data/treebanks/la/it-tb-2015-06-30
 
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	cat /net/data/treebanks/la/IT-TB_01-Sept-2014/CONLL/IT-TB.conll | split_conll.pl -head 13375 $(IN)/traindev.conll $(IN)/test.conll
-	cat $(IN)/traindev.conll | split_conll.pl -head 13000 $(IN)/train.conll $(IN)/dev.conll
+	cat $(SRCDIR)/train2.conll $(SRCDIR)/train3.conll > $(IN)/train.conll
+	cat $(SRCDIR)/dev2.conll $(SRCDIR)/dev3.conll | ../conll_break_cycles.pl > $(IN)/dev.conll
+	cat $(SRCDIR)/test2.conll $(SRCDIR)/test3.conll | ../conll_break_cycles.pl > $(IN)/test.conll
 
 treex: conll_to_treex
 
