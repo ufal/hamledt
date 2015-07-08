@@ -27,3 +27,7 @@ treex:
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/test/*.a.gz' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/  compress=1
+
+# ud should map either to prague_to_ud, or to conllu_to_treex.
+ud: prague_to_ud
+
