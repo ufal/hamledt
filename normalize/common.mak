@@ -16,14 +16,12 @@ SUBDIR0   = treex/00
 SUBDIR1   = treex/01
 SUBDIR2   = treex/02
 SUBDIRCU  = conllu
+SUBDIRPTQ = pmltq
 IN        = $(DATADIR)/$(SUBDIRIN)
 DIR0      = $(DATADIR)/$(SUBDIR0)
 DIR1      = $(DATADIR)/$(SUBDIR1)
 DIR2      = $(DATADIR)/$(SUBDIR2)
 CONLLUDIR = $(DATADIR)/$(SUBDIRCU)
-# DEPRECATED: The Stanford stuff will be removed once we have conversion to Universal Dependencies fully operational.
-SUBDIRS   = stanford
-STANDIR   = $(DATADIR)/$(SUBDIRS)
 
 # Processing shortcuts.
 # Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
@@ -98,9 +96,9 @@ export_conllu:
 
 # Export for PML-TQ: Treex files but smaller (50 trees per file) and all in one folder.
 # Further processing occurs in /net/work/projects/pmltq/data/hamledt.
-# Z dokumentace Write::BaseWriter: 'You can use regex substituions, e.g. substitute={dir(\d+)/file(\d+).treex}{f\1-\2.streex}i',
+# We do not use parallel treex here because it cannot work with undefined total number of documents. And the reader does not know in advance how many documents it will read.
 pmltq:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/}{$(PMLTQDIR)/\1-}' compress=1
+	$(TREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/(\d\d\d)(\d+)}{$(SUBDIRPTQ)/\1-\2-\3}' compress=1
 
 
 

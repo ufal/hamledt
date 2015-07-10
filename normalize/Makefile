@@ -1,9 +1,10 @@
 SHELL=/bin/bash
 
-# remainig langs: is zh
+# The list of LANGS is outdated but it is still used in the goals below.
 LANGS= ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sk sl sv ta te tr
+TREEBANKS = ar bg-ud11 bn ca cs da-ud11 de de-ud11 el-ud11 en en-ud11 es es-ud11 et eu-ud11 fa fa-ud11 fi-ud11 fi-ud11ftb fr-ud11 ga-ud11 grc he-ud11 hi hr-ud11 hu-ud11 id-ud11 it-ud11 ja la la-it nl pl pt ro ru sk sl sv-ud11 ta te tr
 LANGS_PATTERN={$(shell echo $(LANGS) | tr ' ' ,)}
-QCMD = ${TMT_ROOT}/tools/cluster_utils/qruncmd
+QCMD = /home/bojar/tools/shell/qsubmit
 JOBS = 20
 
 help:
@@ -29,19 +30,19 @@ pdt-%:
 # Parallel
 qall: $(foreach l,$(LANGS),qall-$(l))
 qall-%:
-	/home/bojar/tools/shell/qsubmit --jobname=$*-normalize "cd $* && make check-source dirs treex pdt"
+	$(QCMD) --jobname=$*-normalize "cd $* && make check-source dirs treex pdt"
 
 qpdt: $(foreach l,$(LANGS),qpdt-$(l))
 qpdt-%:
-	/home/bojar/tools/shell/qsubmit --jobname=$*-pdt "cd $* && make pdt"
+	$(QCMD) --jobname=$*-pdt "cd $* && make pdt"
 
 qconll: $(foreach l,$(LANGS),qconll-$(l))
 qconll-%:
-	/home/bojar/tools/shell/qsubmit --jobname=$*-conll "cd $* && make export_conll"
+	$(QCMD) --jobname=$*-conll "cd $* && make export_conll"
 
-qstanford: $(foreach l,$(LANGS),qstanford-$(l))
-qstanford-%:
-	/home/bojar/tools/shell/qsubmit --jobname=$*-stanford "cd $* && make treex_to_stanford"
+qpmltq: $(foreach t,$(TREEBANKS),qpmltq-$(t))
+qpmltq-%:
+	$(QCMD) --jobname=$*-pmltq "cd $* && make pmltq"
 
 clean:
 	rm -f *-normalize.o* *-pdt.o* .qsubmit*
@@ -55,8 +56,3 @@ TO_CONLL_SCEN=Write::CoNLLX language=mul deprel_attribute=afun pos_attribute=tag
 treex-to-conll:
 	echo $(LANGS_PATTERN)/data/treex/001_pdtstyle/{train,test}/*.treex.gz | tr " " "\n" |\
 	$(QCMD) --jobs=$(JOBS) --sync "while read file; do treex $(TO_CONLL_SCEN) -- \$$file; done"
-
-treex_to_stanford: $(foreach l,$(LANGS),treex_to_stanford_$(l))
-treex_to_stanford_%:
-	cd $* && make treex_to_stanford
-
