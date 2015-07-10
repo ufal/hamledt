@@ -96,39 +96,13 @@ prague_to_ud:
 export_conllu:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Write::CoNLLU substitute={$(DIR2)}{$(CONLLUDIR)} compress=1
 
+# Export for PML-TQ: Treex files but smaller (50 trees per file) and all in one folder.
+# Further processing occurs in /net/work/projects/pmltq/data/hamledt.
+# Z dokumentace Write::BaseWriter: 'You can use regex substituions, e.g. substitute={dir(\d+)/file(\d+).treex}{f\1-\2.streex}i',
+pmltq:
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/}{$(PMLTQDIR)/\1-}' compress=1
 
 
-# DEPRECATED: The Stanford stuff will be removed once we have conversion to Universal Dependencies fully operational.
-# TODO: other structure changes (compound verbs)
-# TODO: often fails because there remain some punct nodes with children
-TO_STANFORD=\
-			A2A::CopyAtree source_selector='' selector=pdt \
-			Util::Eval anode='$$anode->set_conll_deprel('');' \
-			HamleDT::Transform::SubordConjDownward \
-			A2A::SetSharedModifier \
-			A2A::SetCoordConjunction \
-			HamleDT::Transform::PrepositionDownward \
-			HamleDT::Transform::CoordStyle from_style=fPhRsHcHpB style=fShLsHcBpB \
-			HamleDT::Transform::MarkPunct \
-			HamleDT::Transform::StanfordPunct \
-			HamleDT::Transform::StanfordTypes \
-			HamleDT::Transform::StanfordCopulas \
-			HamleDT::SetConllTags features=subpos,prontype,numtype,advtype,punctype,tense,verbform \
-			Util::Eval anode='$$anode->set_afun('');'
-# This is for TrEd to display the newly set conll/deprels instead of afuns.
-
-WRITE_STANFORD=Util::SetGlobal substitute={$(SUBDIR1)}{$(SUBDIRS)} \
-	Write::Treex \
-	Write::Stanford type_attribute=conll/deprel to=. \
-	Write::CoNLLX deprel_attribute=conll/deprel pos_attribute=conll/pos cpos_attribute=conll/cpos feat_attribute=iset to=.
-
-STANFORD=$(TO_STANFORD) $(WRITE_STANFORD)
-
-treex_to_stanford:
-	$(QTREEX) $(STANFORD) -- $(DIR1)/{train,test}/*.treex.gz
-
-treex_to_stanford_test:
-	$(TREEX) $(STANFORD) -- $(DIR1)/test/*.treex.gz
 
 # Basic statistics: number of sentences and tokens in train and test data.
 stats:
