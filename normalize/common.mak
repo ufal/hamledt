@@ -98,7 +98,7 @@ export_conllu:
 # Further processing occurs in /net/work/projects/pmltq/data/hamledt.
 # We do not use parallel treex here because it cannot work with undefined total number of documents. And the reader does not know in advance how many documents it will read.
 pmltq:
-	$(TREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/(\d\d\d)(\d+)}{$(SUBDIRPTQ)/\1-\2-\3}' compress=1
+	$(TREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/(.+)(\d\d\d)}{$(SUBDIRPTQ)/\1-\2-\3}' compress=1
 
 
 
