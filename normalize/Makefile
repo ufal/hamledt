@@ -23,31 +23,34 @@ treex: $(foreach l,$(LANGS),treex-$(l))
 treex-%:
 	cd $* && make dirs treex
 
-pdt: $(foreach l,$(LANGS),pdt-$(l))
-pdt-%:
-	cd $* && make pdt
+prague: $(foreach l,$(LANGS),prague-$(l))
+prague-%:
+	cd $* && make prague
+
+ud: $(foreach l,$(LANGS),ud-$(l))
+ud-%:
+	cd $* && make ud
 
 # Parallel
 qall: $(foreach l,$(LANGS),qall-$(l))
 qall-%:
-	$(QCMD) --jobname=$*-normalize "cd $* && make check-source dirs treex pdt"
+	$(QCMD) --jobname=$*-normalize "cd $* && make check-source dirs treex prague ud pmltq"
 
-qpdt: $(foreach l,$(LANGS),qpdt-$(l))
-qpdt-%:
-	$(QCMD) --jobname=$*-pdt "cd $* && make pdt"
+qprague: $(foreach l,$(LANGS),qprague-$(l))
+qprague-%:
+	$(QCMD) --jobname=$*-prague "cd $* && make prague"
 
-qconll: $(foreach l,$(LANGS),qconll-$(l))
-qconll-%:
-	$(QCMD) --jobname=$*-conll "cd $* && make export_conll"
+qud: $(foreach l,$(LANGS),qud-$(l))
+qud-%:
+	$(QCMD) --jobname=$*-ud "cd $* && make ud"
 
 qpmltq: $(foreach t,$(TREEBANKS),qpmltq-$(t))
 qpmltq-%:
 	$(QCMD) --jobname=$*-pmltq "cd $* && make pmltq"
 
 clean:
-	rm -f *-normalize.o* *-pdt.o* .qsubmit*
+	rm -f *-normalize.o* *-prague.o* *-ud.o* .qsubmit*
 	rm -rf */???-cluster-run-*
-
 
 TO_CONLL_SCEN=Write::CoNLLX language=mul deprel_attribute=afun pos_attribute=tag substitute={treex/001_pdtstyle}{conll} compress=1 to=.
 # TODO: 
