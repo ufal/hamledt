@@ -346,7 +346,7 @@ sub train
         {
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print SCR ("rm -rf malt_nivreeager\n");
-            print SCR ("java -Xmx15g -jar $malt_dir/malt.jar -i train.conll -c malt_nivreeager -a nivreeager -gcs '~' -l liblinear -m learn\n");
+            print SCR ("java -Xmx14g -jar $malt_dir/malt.jar -i train.conll -c malt_nivreeager -a nivreeager -gcs '~' -l liblinear -m learn\n");
             $memory = '16G';
             $priority = -300;
         }
@@ -458,9 +458,9 @@ sub get_results
                 #print("$language $transformation $sys $score $value{$language}{'001_pdtstyle'}{$parser}\n");
                 $score = $score ? 100 * $score : 0;
                 # Store score differences instead of scores for transformed trees.
-                if($trans !~ /00/ && defined($value{$treebank}{02}{$parser}{$uasparams}))
+                if($trans !~ /00/ && defined($value{$treebank}{'02'}{$parser}{$uasparams}))
                 {
-                    $score -= $value{$treebank}{02}{$parser}{$uasparams};
+                    $score -= $value{$treebank}{'02'}{$parser}{$uasparams};
                 }
                 $value{$treebank}{$transformation}{$parser}{$uasparams} = round($score);
             }
