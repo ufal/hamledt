@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # Processes selected languages and transformations (train, parse, eval, clean etc.)
 # Provides the unified necessary infrastructure for looping through all the sub-experiment subfolders.
-# Copyright © 2011, 2012, 2013, 2014 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2011, 2012, 2013, 2014, 2015 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 sub usage
@@ -65,36 +65,62 @@ sub get_languages
     }
     else
     {
-        return qw(ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pl pt ro ru sk sl sv ta te tr);
+        my %map;
+        map {s/-.*//; $map{$_}++} get_treebanks();
+        return sort(keys(%map));
     }
 }
 
 
 
 #------------------------------------------------------------------------------
-# Returns the list of transformations available for a given language, i.e. the
-# list of subfolders of the language folder.
+# Returns the list of all treebanks that can be processed. A treebank id
+# starts with the language code. The treebank id is part of the path to the
+# data. Some treebank ids are just the language code and nothing else.
 #------------------------------------------------------------------------------
-sub get_transformations_for_language
+sub get_treebanks
 {
-    my $language = shift;
-    ###!!! We have suspended experiments with transformations until normalization is perfect.
-    return grep {m/^00[01]_/} (map {s-^.+/--; $_} (grep {-d $_} (glob("$data_dir/$language/treex/*"))));
+    if($konfig{treebanks})
+    {
+        return split(/,/, $konfig{treebanks});
+    }
+    else
+    {
+        my @hamledt = qw(ar bn ca de en es et fa grc hi hr hu ja la la-it nl pl pt ro ru sk sl sv ta te tr);
+        my @ud11 = map {$_.'-ud11'} qw(bg cs da de el en es eu fa fi fr ga he hr hu id it sv);
+        push(@ud11, 'fi-ud11ftb');
+        return (@hamledt, @ud11);
+    }
 }
 
 
 
 #------------------------------------------------------------------------------
-# Returns the matrix (hash) of all languages and transformations.
+# Returns the list of transformations available for a given treebank, i.e. the
+# list of subfolders of the treebank folder.
 #------------------------------------------------------------------------------
-sub get_languages_and_transformations
+sub get_transformations_for_treebank
 {
-    my @languages = get_languages();
+    my $treebank = shift;
+    ###!!! We have suspended experiments with transformations until normalization is perfect.
+    ###!!! Now we have also suspended experiments with 00 (the original trees) because the UD treebanks do not have them.
+    my $path = "$data_dir/$treebank/treex/02";
+    return ($path);
+}
+
+
+
+#------------------------------------------------------------------------------
+# Returns the matrix (hash) of all treebanks and transformations.
+#------------------------------------------------------------------------------
+sub get_treebanks_and_transformations
+{
+    my @treebanks = get_treebanks();
     my %hash;
-    foreach my $language (@languages)
+    foreach my $treebank (@treebanks)
     {
-        my @transformations = get_transformations_for_language($language);
-        $hash{$language} = \@transformations;
+        my @transformations = get_transformations_for_treebank($treebank);
+        $hash{$treebank} = \@transformations;
     }
     return \%hash;
 }
@@ -192,19 +218,19 @@ sub loop
     my $action = shift; # reference to subroutine (takes $lang and $trans)
     my $wdir = shift; # absolute path to root working folder for all languages
     $wdir = dzsys::absolutize_path($wdir);
-    my @languages = sort(keys(%{$targets}));
-    foreach my $language (@languages)
+    my @treebanks = sort(keys(%{$targets}));
+    foreach my $treebank (@treebanks)
     {
-        foreach my $transformation (@{$targets->{$language}})
+        foreach my $transformation (@{$targets->{$treebank}})
         {
-            my $dir = "$wdir/$language/$transformation";
+            my $dir = "$wdir/$treebank/$transformation";
             # Create the working folder if it does not exist yet.
             # This will also create other folders in the path if necessary.
             system("mkdir -p $dir");
             # Change to the working folder.
             chdir($dir) or die("Cannot change to $dir: $!\n");
             # Run the action.
-            &{$action}($language, $transformation);
+            &{$action}($treebank, $transformation);
         }
     }
 }
@@ -261,8 +287,10 @@ sub get_conll_block_parameters
 #------------------------------------------------------------------------------
 sub create_conll_training_data
 {
-    my $language = shift;
+    my $treebank = shift;
     my $transformation = shift;
+    my $language = $treebank;
+    $language =~ s/-.*//;
     my $filename1 = 'train.conll';
     my $filename2 = 'train.mst';
     my $scriptname = 'create_training_data.sh';
@@ -272,7 +300,7 @@ sub create_conll_training_data
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
     my $writeparam = get_conll_block_parameters($transformation);
     print SCR ("Write::CoNLLX $writeparam ");
-    print SCR ("-- $data_dir/$language/treex/$transformation/train/*.treex.gz ");
+    print SCR ("-- $data_dir/$treebank/treex/$transformation/train/*.treex.gz ");
     print SCR ("> $filename1\n");
     # In order to have experiments finished faster, we can limit training data to a fixed number of sentences.
     if($konfig{trainlimit})
@@ -295,14 +323,14 @@ sub create_conll_training_data
 #------------------------------------------------------------------------------
 sub train
 {
-    my $language = shift;
+    my $treebank = shift;
     my $transformation = shift;
     my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
     my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
     # Prepare the training script and submit the job to the cluster.
     foreach my $parser ('mlt', 'smf', 'mcd', 'mcp')
     {
-        my $scriptname = "$parser-$language-$transformation.sh";
+        my $scriptname = "$parser-$treebank-$transformation.sh";
         my ($memory, $priority);
         print STDERR ("Creating script $scriptname.\n");
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
@@ -359,8 +387,10 @@ sub train
 #------------------------------------------------------------------------------
 sub parse
 {
-    my $language = shift;
+    my $treebank = shift;
     my $transformation = shift;
+    my $language = $treebank;
+    $language =~ s/-.*//;
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See above.
     my $writeparam = get_conll_block_parameters($transformation);
     my %parser_block =
@@ -377,8 +407,8 @@ sub parse
         # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
         system("rm -rf $parser-test");
         system("mkdir -p $parser-test");
-        system("cp $data_dir/$language/treex/$transformation/test/*.treex.gz $parser-test");
-        my $scriptname = "p$parser-$language-$transformation.sh";
+        system("cp $data_dir/$treebank/treex/$transformation/test/*.treex.gz $parser-test");
+        my $scriptname = "p$parser-$treebank-$transformation.sh";
         my $memory = '12G';
         my $scenario;
         $scenario .= "Util::SetGlobal language=$language selector=$parser ";
@@ -386,8 +416,8 @@ sub parse
         $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
         $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
         $scenario .= "$parser_block{$parser} ";
-        # Note: the trees in 000_orig should be compared against the original gold tree.
-        # However, that tree has the '' selector in 000_orig (while it has the 'orig' selector elsewhere),
+        # Note: the trees in 00 should be compared against the original gold tree.
+        # However, that tree has the '' selector in 00 (while it has the 'orig' selector elsewhere),
         # so we do not select 'orig' here.
         $scenario .= "Eval::AtreeUAS selector='' ";
         # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
@@ -413,7 +443,7 @@ sub parse
 #------------------------------------------------------------------------------
 sub get_results
 {
-    my $language = shift;
+    my $treebank = shift;
     my $transformation = shift;
     my $labeled = shift;
     foreach my $parser ('mlt', 'smf', 'mcd', 'mcp')
@@ -423,7 +453,7 @@ sub get_results
         # Read the score from the UAS file. Store it in a global hash called %value.
         if(!open(UAS, $uas_file))
         {
-            print STDERR ("Cannot read $language/$transformation/$uas_file: $!\n");
+            print STDERR ("Cannot read $treebank/$transformation/$uas_file: $!\n");
             next;
         }
         while (<UAS>)
@@ -434,30 +464,30 @@ sub get_results
             # UASpm ... parent and is_member match
             # UASpms ... parent, is_member and is_shared_modifier match
             my $x = $labeled ? 'L' : 'U';
-            if($sys =~ m/^${x}AS(p(?:ms?)?)\(${language}_${parser},${language}\)$/)
+            if($sys =~ m/^${x}AS(p(?:ms?)?)\(${treebank}_${parser},${treebank}\)$/)
             {
                 my $uasparams = $1;
                 #print("$language $transformation $sys $score $value{$language}{'001_pdtstyle'}{$parser}\n");
                 $score = $score ? 100 * $score : 0;
                 # Store score differences instead of scores for transformed trees.
-                if($trans !~ /00/ && defined($value{$language}{'001_pdtstyle'}{$parser}{$uasparams}))
+                if($trans !~ /00/ && defined($value{$treebank}{02}{$parser}{$uasparams}))
                 {
-                    $score -= $value{$language}{'001_pdtstyle'}{$parser}{$uasparams};
+                    $score -= $value{$treebank}{02}{$parser}{$uasparams};
                 }
-                $value{$language}{$transformation}{$parser}{$uasparams} = round($score);
+                $value{$treebank}{$transformation}{$parser}{$uasparams} = round($score);
             }
         }
-        if(!defined($value{$language}{$transformation}{$parser}{pms}))
+        if(!defined($value{$treebank}{$transformation}{$parser}{pms}))
         {
-            print("Parser $parser score not found in $language/$transformation/$uas_file.\n");
+            print("Parser $parser score not found in $treebank/$transformation/$uas_file.\n");
         }
     }
 }
 sub get_labeled_results
 {
-    my $language = shift;
+    my $treebank = shift;
     my $transformation = shift;
-    return get_results($language, $transformation, 1);
+    return get_results($treebank, $transformation, 1);
 }
 
 
@@ -536,10 +566,10 @@ sub print_table
 #------------------------------------------------------------------------------
 sub clean
 {
-    my $language = shift;
+    my $treebank = shift;
     my $transformation = shift;
     # Scan the current folder for cluster logs.
-    opendir(DIR, '.') or die("Cannot read folder $language/$transformation: $!");
+    opendir(DIR, '.') or die("Cannot read folder $treebank/$transformation: $!");
     my @files = readdir(DIR);
     closedir(DIR);
     foreach my $file (@files)
@@ -553,8 +583,8 @@ sub clean
             unless(exists($qjobs{$jobid}))
             {
                 # Remove the log.
-                print STDERR ("Removing $language/$transformation/$file\n");
-                unlink($file) or print STDERR ("Warning: Cannot remove $language/$transformation/$file: $!\n");
+                print STDERR ("Removing $treebank/$transformation/$file\n");
+                unlink($file) or print STDERR ("Warning: Cannot remove $treebank/$transformation/$file: $!\n");
                 ###!!!
                 # We do not know whether we can also remove the script.
                 # It could be reused by another job which could be still running.
@@ -562,7 +592,7 @@ sub clean
             }
             else
             {
-                print STDERR ("Keeping $language/$transformation/$file because the job no. $jobid is still on the cluster.\n");
+                print STDERR ("Keeping $treebank/$transformation/$file because the job no. $jobid is still on the cluster.\n");
             }
         }
         # Does it look like the name of the folder created for a parallelized Treex run?
@@ -577,14 +607,14 @@ sub clean
                 # Is this the reason why we cannot remove the whole folder?
                 if($file1 =~ m/\.o(\d+)$/ && exists($qjobs{$jobid}))
                 {
-                    print STDERR ("Keeping $language/$transformation/$file because the job no. $jobid is still on the cluster.\n");
+                    print STDERR ("Keeping $treebank/$transformation/$file because the job no. $jobid is still on the cluster.\n");
                     $removable = 0;
                     last;
                 }
             }
             if($removable)
             {
-                print STDERR ("Removing $language/$transformation/$file\n");
+                print STDERR ("Removing $treebank/$transformation/$file\n");
                 system("rm -rf $file");
             }
         }
