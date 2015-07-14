@@ -40,13 +40,21 @@ GetOptions
 exit(usage()) if($konfig{help});
 
 my $scriptdir = dzsys::get_script_path();
+my $share_dir = Treex::Core::Config->share_dir();
+if(!defined($share_dir) || $share_dir eq '')
+{
+    die("Unknown path to the shared folder");
+}
 my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
 $data_dir =~ s-//-/-;
+print STDERR ("Data folder    = $data_dir\n");
 my $targets = get_treebanks_and_transformations();
 my $action_name = sort_actions(@ARGV);
 my $action = get_action($action_name);
 my $wdir = 'pokus'; ###!!!
 $wdir = dzsys::absolutize_path($wdir);
+print STDERR ("Working folder = $wdir\n");
+sleep(5);
 # We need to know what jobs are running if we are going to clean the disk.
 my %qjobs = cluster::qstat0();
 loop($targets, $action, $wdir);
@@ -85,8 +93,7 @@ sub get_transformations_for_treebank
     my $treebank = shift;
     ###!!! We have suspended experiments with transformations until normalization is perfect.
     ###!!! Now we have also suspended experiments with 00 (the original trees) because the UD treebanks do not have them.
-    my $path = "$data_dir/$treebank/treex/02";
-    return ($path);
+    return ('02');
 }
 
 
@@ -348,7 +355,7 @@ sub train
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print SCR ("rm -rf malt_stacklazy\n");
             my $features = $scriptdir.'/malt-feature-models/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
-            my $command = "java -Xmx28g -jar $malt_dir/malt.jar -i train.conll -c malt_stacklazy -a stacklazy -F $features -grl Pred -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            my $command = "java -Xmx27g -jar $malt_dir/malt.jar -i train.conll -c malt_stacklazy -a stacklazy -F $features -grl Pred -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
             print SCR ("echo $command");
             print SCR ($command);
             # It is more difficult to get a machine with so much memory so we will be less generous with priority.
