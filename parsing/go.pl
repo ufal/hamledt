@@ -42,7 +42,7 @@ exit(usage()) if($konfig{help});
 my $scriptdir = dzsys::get_script_path();
 my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
 $data_dir =~ s-//-/-;
-my $targets = get_languages_and_transformations();
+my $targets = get_treebanks_and_transformations();
 my $action_name = sort_actions(@ARGV);
 my $action = get_action($action_name);
 my $wdir = 'pokus'; ###!!!
@@ -51,25 +51,6 @@ $wdir = dzsys::absolutize_path($wdir);
 my %qjobs = cluster::qstat0();
 loop($targets, $action, $wdir);
 print_table() if($action_name =~ m/table$/);
-
-
-
-#------------------------------------------------------------------------------
-# Returns the list of all languages that can be processed.
-#------------------------------------------------------------------------------
-sub get_languages
-{
-    if($konfig{languages})
-    {
-        return split(/,/, $konfig{languages});
-    }
-    else
-    {
-        my %map;
-        map {s/-.*//; $map{$_}++} get_treebanks();
-        return sort(keys(%map));
-    }
-}
 
 
 
