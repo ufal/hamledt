@@ -434,6 +434,8 @@ sub get_results
     my $treebank = shift;
     my $transformation = shift;
     my $labeled = shift;
+    my $language = $treebank;
+    $language =~ s/-.*//;
     foreach my $parser ('mlt', 'smf', 'mcd', 'mcp')
     {
         # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
@@ -452,10 +454,9 @@ sub get_results
             # UASpm ... parent and is_member match
             # UASpms ... parent, is_member and is_shared_modifier match
             my $x = $labeled ? 'L' : 'U';
-            if($sys =~ m/^${x}AS(p(?:ms?)?)\(${treebank}_${parser},${treebank}\)$/)
+            if($sys =~ m/^${x}AS(p(?:ms?)?)\(${language}_${parser},${language}\)$/)
             {
                 my $uasparams = $1;
-                #print("$language $transformation $sys $score $value{$language}{'001_pdtstyle'}{$parser}\n");
                 $score = $score ? 100 * $score : 0;
                 # Store score differences instead of scores for transformed trees.
                 if($trans !~ /00/ && defined($value{$treebank}{'02'}{$parser}{$uasparams}))
