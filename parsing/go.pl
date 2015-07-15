@@ -75,7 +75,7 @@ sub get_treebanks
     }
     else
     {
-        my @hamledt = qw(ar bn ca de en es et fa grc hi hr hu ja la la-it nl pl pt ro ru sk sl sv ta te tr);
+        my @hamledt = qw(ar bn ca de en es et fa grc hi hr ja la la-it nl pl pt ro ru sk sl ta te tr);
         my @ud11 = map {$_.'-ud11'} qw(bg cs da de el en es eu fa fi fr ga he hr hu id it sv);
         push(@ud11, 'fi-ud11ftb');
         return (@hamledt, @ud11);
@@ -237,7 +237,7 @@ sub get_conll_block_parameters
     my $transformation = shift;
     my @parameters;
     # Some attributes are not available before normalization.
-    if($transformation eq '000_orig')
+    if($transformation eq '00')
     {
         @parameters =
         (
@@ -254,13 +254,13 @@ sub get_conll_block_parameters
     {
         @parameters =
         (
-            'cpos_attribute=conll/cpos',
-            'pos_attribute=conll/pos',
+            'cpos_attribute=tag',
+            'pos_attribute=tag',
             'feat_attribute=iset',
-            'deprel_attribute=afun',
-            'is_member_within_afun=1',
-            'is_shared_modifier_within_afun=1',
-            'is_coord_conjunction_within_afun=1'
+            'deprel_attribute=deprel',
+            'is_member_within_afun=0',
+            'is_shared_modifier_within_afun=0',
+            'is_coord_conjunction_within_afun=0'
         );
     }
     return join(' ', @parameters);
@@ -332,7 +332,7 @@ sub train
         {
             print SCR ("java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n");
             print SCR ("  train order:2 format:MST decode-type:non-proj train-file:train.mst model-name:mcd_nonproj_o2.model\n");
-            $memory = '10G';
+            $memory = '12G';
             $priority = -300;
         }
         elsif($parser eq 'mcp')
@@ -346,7 +346,7 @@ sub train
         {
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print SCR ("rm -rf malt_nivreeager\n");
-            print SCR ("java -Xmx14g -jar $malt_dir/malt.jar -i train.conll -c malt_nivreeager -a nivreeager -gcs '~' -l liblinear -m learn\n");
+            print SCR ("java -Xmx13g -jar $malt_dir/malt.jar -i train.conll -c malt_nivreeager -a nivreeager -gcs '~' -l liblinear -m learn\n");
             $memory = '16G';
             $priority = -300;
         }
@@ -605,6 +605,12 @@ sub clean
                 print STDERR ("Removing $treebank/$transformation/$file\n");
                 system("rm -rf $file");
             }
+        }
+        # Is it a core file created after a crash?
+        elsif($file eq 'core')
+        {
+            print STDERR ("Removing $treebank/$transformation/$file\n");
+            unlink($file) or print STDERR ("Warning: Cannot remove $treebank/$transformation/$file: $!\n");
         }
     }
 }
