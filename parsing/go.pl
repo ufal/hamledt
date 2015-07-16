@@ -297,6 +297,10 @@ sub create_conll_training_data
         print SCR ("/net/work/people/zeman/parsing/tools/split_conll.pl < $filename1 -head $konfig{trainlimit} $filename1.truncated /dev/null\n");
         print SCR ("mv $filename1.truncated $filename1\n");
     }
+    # Prepare a delexicalized training file for experiments with delexicalized parsing.
+    my $delexfilename1 = $filename1;
+    $delexfilename1 =~ s/\.conll$/.delex.conll/;
+    print SCR ("/net/work/people/zeman/parsing/tools/conll_delexicalize.pl < $filename1 > $delexfilename1\n");
     # Prepare a modified form that can be used by the MST Parser.
     print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
     close(SCR);
@@ -317,7 +321,7 @@ sub train
     my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
     my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
     # Prepare the training script and submit the job to the cluster.
-    foreach my $parser ('mlt', 'smf', 'mcd', 'mcp')
+    foreach my $parser ('mlt', 'smf', 'dlx')
     {
         my $scriptname = "$parser-$treebank-$transformation.sh";
         my ($memory, $priority);
@@ -353,10 +357,25 @@ sub train
         }
         elsif($parser eq 'smf')
         {
+            my $model = 'malt_stacklazy';
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
-            print SCR ("rm -rf malt_stacklazy\n");
+            print SCR ("rm -rf $model\n");
             my $features = $scriptdir.'/malt-feature-models/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
-            my $command = "java -Xmx27g -jar $malt_dir/malt.jar -i train.conll -c malt_stacklazy -a stacklazy -F $features -grl Pred -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.conll -c $model -a stacklazy -F $features -grl Pred -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            print SCR ("echo $command");
+            print SCR ($command);
+            # It is more difficult to get a machine with so much memory so we will be less generous with priority.
+            # Often a machine lacks just a few hundred megabytes to be able to provide 31G. Asking for 30G increases our chances to get a machine.
+            $memory = '30G';
+            $priority = -100;
+        }
+        elsif($parser eq 'dlx')
+        {
+            my $model = 'malt_stacklazy_delex';
+            # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
+            print SCR ("rm -rf $model\n");
+            my $features = $scriptdir.'/malt-feature-models/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
+            my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.delex.conll -c $model -a stacklazy -F $features -grl Pred -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
             print SCR ("echo $command");
             print SCR ($command);
             # It is more difficult to get a machine with so much memory so we will be less generous with priority.
@@ -384,13 +403,14 @@ sub parse
     my $writeparam = get_conll_block_parameters($transformation);
     my %parser_block =
     (
-        mlt => "W2A::ParseMalt model=malt_nivreeager.mco $writeparam",
-        smf => "W2A::ParseMalt model=malt_stacklazy.mco  $writeparam",
+        mlt => "W2A::ParseMalt model=malt_nivreeager.mco      $writeparam",
+        smf => "W2A::ParseMalt model=malt_stacklazy.mco       $writeparam",
+        dlx => "W2A::ParseMalt model=malt_stacklazy_delex.mco $writeparam",
         mcd => "W2A::ParseMST  model_dir=. model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
         mcp => "W2A::ParseMST  model_dir=. model=mcd_proj_o2.model    decodetype=proj     pos_attribute=conll/pos",
     );
     # Prepare the training script and submit the job to the cluster.
-    foreach my $parser ('mlt', 'smf', 'mcd', 'mcp')
+    foreach my $parser ('mlt', 'smf', 'dlx')
     {
         # Copy test data to the working folder.
         # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
@@ -404,6 +424,11 @@ sub parse
         # If there is a tree with the same name, remove it first.
         $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
         $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+        # Delexicalize the test sentence if required.
+        if($parser eq 'dlx')
+        {
+            $scenario .= "Util::Eval anode='\$.set_form(\"_\"); \$.set_lemma(\"_\");' ";
+        }
         $scenario .= "$parser_block{$parser} ";
         # Note: the trees in 00 should be compared against the original gold tree.
         # However, that tree has the '' selector in 00 (while it has the 'orig' selector elsewhere),
@@ -437,7 +462,7 @@ sub get_results
     my $labeled = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
-    foreach my $parser ('mlt', 'smf', 'mcd', 'mcp')
+    foreach my $parser ('mlt', 'smf', 'dlx')
     {
         # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
         my $uas_file = "uas-$parser.txt";
@@ -508,7 +533,7 @@ sub print_table
             $transformations{$transformation}++;
         }
     }
-    foreach my $parser ('mlt', 'smf', 'mcd', 'mcp')
+    foreach my $parser ('mlt', 'smf', 'dlx')
     {
         print("\n", '*' x 10 . "  $parser  " . '*' x 10, "\n\n");
         my $table = Text::Table->new('trans', @languages, 'better', 'worse', 'average');
