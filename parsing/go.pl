@@ -86,6 +86,22 @@ sub get_treebanks
 
 
 #------------------------------------------------------------------------------
+# Returns the list of all parsers we can use. A parser is referenced by a short
+# code. The code represents parser software (such as Malt or MST) together with
+# particular configuration (such as the nivreeager or stacklazy algorithms of
+# the Malt parser). The code may also refer to particular experiment setup, for
+# example, 'dlx' uses delexicalized training and test data, while the default
+# for other parsers is to used lexicalized data.
+#------------------------------------------------------------------------------
+sub get_parsers
+{
+    # We temporarily do not use 'mcd' and 'mcp' (the MST parser by Ryan McDonald).
+    return qw(mlt smf dlx);
+}
+
+
+
+#------------------------------------------------------------------------------
 # Returns the list of transformations available for a given treebank, i.e. the
 # list of subfolders of the treebank folder.
 #------------------------------------------------------------------------------
@@ -321,7 +337,7 @@ sub train
     my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
     my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
     # Prepare the training script and submit the job to the cluster.
-    foreach my $parser ('mlt', 'smf', 'dlx')
+    foreach my $parser (get_parsers())
     {
         my $scriptname = "$parser-$treebank-$transformation.sh";
         my ($memory, $priority);
@@ -391,14 +407,14 @@ sub train
 
 
 #------------------------------------------------------------------------------
-# Parses using all parsers.
+# Creates the Treex parsing scenario for a given parser.
 #------------------------------------------------------------------------------
-sub parse
+sub get_parsing_scenario
 {
-    my $treebank = shift;
+    my $parser = shift; # parser code, e.g. 'mlt' or 'mcd'
+    my $delexicalized = ($parser eq 'dlx'); # we may want to make this a parameter
+    my $language = shift; # language, not treebank code
     my $transformation = shift;
-    my $language = $treebank;
-    $language =~ s/-.*//;
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See above.
     my $writeparam = get_conll_block_parameters($transformation);
     my %parser_block =
@@ -409,44 +425,78 @@ sub parse
         mcd => "W2A::ParseMST  model_dir=. model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
         mcp => "W2A::ParseMST  model_dir=. model=mcd_proj_o2.model    decodetype=proj     pos_attribute=conll/pos",
     );
-    # Prepare the training script and submit the job to the cluster.
-    foreach my $parser ('mlt', 'smf', 'dlx')
+    my $scenario;
+    $scenario .= "Util::SetGlobal language=$language selector=$parser ";
+    # If there is a tree with the same name, remove it first.
+    $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
+    $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
+    # Delexicalize the test sentence if required.
+    if($delexicalized)
     {
-        # Copy test data to the working folder.
-        # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
-        system("rm -rf $parser-test");
-        system("mkdir -p $parser-test");
-        system("cp $data_dir/$treebank/treex/$transformation/test/*.treex.gz $parser-test");
-        my $scriptname = "p$parser-$treebank-$transformation.sh";
-        my $memory = '12G';
-        my $scenario;
-        $scenario .= "Util::SetGlobal language=$language selector=$parser ";
-        # If there is a tree with the same name, remove it first.
-        $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
-        $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
-        # Delexicalize the test sentence if required.
+        $scenario .= "Util::Eval anode='\$.set_form(\"_\"); \$.set_lemma(\"_\");' ";
+    }
+    $scenario .= "$parser_block{$parser} ";
+    # Note: the trees in 00 should be compared against the original gold tree.
+    # However, that tree has the '' selector in 00 (while it has the 'orig' selector elsewhere),
+    # so we do not select 'orig' here.
+    $scenario .= "Eval::AtreeUAS selector='' ";
+    return $scenario;
+}
+
+
+
+#------------------------------------------------------------------------------
+# Parses using all parsers.
+#------------------------------------------------------------------------------
+sub parse
+{
+    my $treebank = shift;
+    my $transformation = shift;
+    my $language = $treebank;
+    $language =~ s/-.*//;
+    # Prepare the training script and submit the job to the cluster.
+    foreach my $parser (get_parsers())
+    {
+        my %scenarios;
+        # The delexicalized parser can use trained delexicalized models from any language/treebank, not necessarily its own.
         if($parser eq 'dlx')
         {
-            $scenario .= "Util::Eval anode='\$.set_form(\"_\"); \$.set_lemma(\"_\");' ";
+            my @treebanks = get_treebanks();
+            foreach my $srctbk (@treebanks)
+            {
+                my $dir = "$wdir/$srctbk";
+                $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $transformation, $dir);
+            }
         }
-        $scenario .= "$parser_block{$parser} ";
-        # Note: the trees in 00 should be compared against the original gold tree.
-        # However, that tree has the '' selector in 00 (while it has the 'orig' selector elsewhere),
-        # so we do not select 'orig' here.
-        $scenario .= "Eval::AtreeUAS selector='' ";
-        # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
-        my $uas_file = "uas-$parser.txt";
-        print STDERR ("Creating script $scriptname.\n");
-        open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
-        print SCR ("#!/bin/bash\n\n");
-        # Debugging message: anyone here eating my memory?
-        print SCR ("hostname -f\n");
-        print SCR ("echo jednou | /net/projects/SGE/sensors/mem_free.sh\n");
-        print SCR ("echo jednou | /net/projects/SGE/sensors/act_mem_free.sh\n");
-        print SCR ("top -bn1 | head -20\n");
-        print SCR ("treex -s $scenario -- $parser-test/*.treex.gz | tee $uas_file\n");
-        close(SCR);
-        cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname);
+        else
+        {
+            $scenarios{''} = get_parsing_scenario($parser, $language, $transformation);
+        }
+        foreach my $srctbk (keys(%scenarios))
+        {
+            my $scenario = $scenarios{$srctbk};
+            my $parserst = $srctbk ne '' ? "$parser-$srctbk" : $parser;
+            # Copy test data to the working folder.
+            # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
+            system("rm -rf $parserst-test");
+            system("mkdir -p $parserst-test");
+            system("cp $data_dir/$treebank/treex/$transformation/test/*.treex.gz $parserst-test");
+            my $scriptname = "p$parserst-$treebank-$transformation.sh";
+            my $memory = '12G';
+            # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
+            my $uas_file = "uas-$parserst.txt";
+            print STDERR ("Creating script $scriptname.\n");
+            open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
+            print SCR ("#!/bin/bash\n\n");
+            # Debugging message: anyone here eating my memory?
+            print SCR ("hostname -f\n");
+            print SCR ("echo jednou | /net/projects/SGE/sensors/mem_free.sh\n");
+            print SCR ("echo jednou | /net/projects/SGE/sensors/act_mem_free.sh\n");
+            print SCR ("top -bn1 | head -20\n");
+            print SCR ("treex -s $scenario -- $parserst-test/*.treex.gz | tee $uas_file\n");
+            close(SCR);
+            cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname);
+        }
     }
 }
 
@@ -462,7 +512,7 @@ sub get_results
     my $labeled = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
-    foreach my $parser ('mlt', 'smf', 'dlx')
+    foreach my $parser (get_parsers())
     {
         # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
         my $uas_file = "uas-$parser.txt";
@@ -533,7 +583,7 @@ sub print_table
             $transformations{$transformation}++;
         }
     }
-    foreach my $parser ('mlt', 'smf', 'dlx')
+    foreach my $parser (get_parsers())
     {
         print("\n", '*' x 10 . "  $parser  " . '*' x 10, "\n\n");
         my $table = Text::Table->new('trans', @languages, 'better', 'worse', 'average');
