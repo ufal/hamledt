@@ -44,6 +44,22 @@ if($help || !$wdirroot)
 {
     die(usage());
 }
+
+# Parsers, models and their abbreviated codes that we seek in every treebank.
+my %parsers =
+(
+    'mlt' => 'malt_nivreeager.mco',
+    'smf' => 'malt_stacklazy.mco',
+    'dlx' => 'malt_stacklazy_delex.mco',
+#    'mcp' => 'mcd_proj_o2.model',
+#    'mcd' => 'mcd_nonproj_o2.model'
+);
+my %modelfiles;
+foreach my $parser (keys(%parsers))
+{
+    $modelfiles{$parsers{$parser}} = $parser;
+}
+
 # Get the list of jobs currently running or waiting on the cluster.
 # We will compare it with the logs we find in the experiment folders.
 my %qstat = cluster::qstat0();
@@ -65,7 +81,7 @@ foreach my $lang (@languages)
     # All subfolders of the current folder are transformations (including the 000_orig and 001_pdtstyle baselines).
     my @transformations = sort(dzsys::get_subfolders('.'));
     my $n_trans = scalar(@transformations);
-    my @compressed = map {my $x = $_; $x =~ s/^(00[01])_.*$/$1/; $x =~ s/^trans_//; $x} (@transformations);
+    my @compressed = map {my $x = $_; $x =~ s/^trans_//; $x} (@transformations);
     print("Found $n_trans transformations: ", join(' ', @compressed), "\n");
     # Search through every transformation.
     foreach my $trans (@transformations)
@@ -75,18 +91,12 @@ foreach my $lang (@languages)
         print("Current path = $tpath\n");
         #system('ls -al');
         # Check that all parser models have been trained.
-        my @models = qw(malt_nivreeager.mco malt_stacklazy.mco mcd_proj_o2.model mcd_nonproj_o2.model);
         my $scripttrans = $trans;
         $scripttrans =~ s/^trans_/t/;
-        my %scripts =
-        (
-            'malt_nivreeager.mco'  => "mlt-$lang-$scripttrans.sh",
-            'malt_stacklazy.mco'   => "smf-$lang-$scripttrans.sh",
-            'mcd_proj_o2.model'    => "mcp-$lang-$scripttrans.sh",
-            'mcd_nonproj_o2.model' => "mcd-$lang-$scripttrans.sh"
-        );
-        foreach my $model (@models)
+        my %scripts;
+        foreach my $model (keys(%modelfiles))
         {
+            $scripts{$model} = "$modelfiles{$model}-$lang-$scripttrans.sh";
             # Remember for every model of every experiment whether we found it.
             my $mpath = "$tpath/$model";
             $models{$mpath}{filename} = $model;
@@ -127,27 +137,13 @@ foreach my $lang (@languages)
             }
             # Classify the job as training or parsing.
             my ($type, $output);
-            if($script =~ m/^(mlt|smf|mcd|mcp)-/)
+            my $parsers_re = join('|', keys(%parsers));
+            if($script =~ m/^($parsers_re)-/)
             {
                 my $parser = $1;
                 $type = 'training';
                 # Remember the expected output name for every job.
-                if($parser eq 'mlt')
-                {
-                    $output = 'malt_nivreeager.mco';
-                }
-                elsif($parser eq 'smf')
-                {
-                    $output = 'malt_stacklazy.mco';
-                }
-                elsif($parser eq 'mcd')
-                {
-                    $output = 'mcd_nonproj_o2.model';
-                }
-                else
-                {
-                    $output = 'mcd_proj_o2.model';
-                }
+                $output = $parsers{$parser};
                 # At the same time, for every expected output remember the jobs that attempted to create it
                 # (there may be more than one job that attempted to create a particular model).
                 my $mpath = "$tpath/$output";
@@ -350,7 +346,7 @@ foreach my $state (keys(%jobstates))
 print("====================\n");
 foreach my $mt (sort(keys(%m_total)))
 {
-    printf("%20s: expected %3d times, found %3d times, nojob %3d times, running %3d times, lost %3d times: lowmem %3d, io %3d, null %3d, svm %3d, suddendeath %3d\n", $mt,
+    printf("%24s: expected %3d times, found %3d times, nojob %3d times, running %3d times, lost %3d times: lowmem %3d, io %3d, null %3d, svm %3d, suddendeath %3d\n", $mt,
         $m_total{$mt}, $m_found{$mt}, $m_nojob{$mt}, $m_running{$mt}, $m_lost{$mt},
         $m_lowmem{$mt}, $m_io{$mt}, $m_nullpointer{$mt}, $m_libsvm{$mt}, $m_sudden{$mt});
 }
