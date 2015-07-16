@@ -31,8 +31,10 @@ use dzsys;
 use cluster;
 
 # Read options.
+my $wdir = 'pokus'; # default working folder
 GetOptions
 (
+    'wdir=s'            => \$wdir,
     'languages|langs=s' => \$konfig{languages},
     'trainlimit=s'      => \$konfig{trainlimit},
     'help'              => \$konfig{help}
@@ -51,7 +53,6 @@ print STDERR ("Data folder    = $data_dir\n");
 my $targets = get_treebanks_and_transformations();
 my $action_name = sort_actions(@ARGV);
 my $action = get_action($action_name);
-my $wdir = 'pokus'; ###!!!
 $wdir = dzsys::absolutize_path($wdir);
 print STDERR ("Working folder = $wdir\n");
 sleep(5);

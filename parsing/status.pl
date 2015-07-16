@@ -29,6 +29,7 @@ use dzsys;
 use cluster;
 use cas;
 
+$wdirroot = 'pokus'; # default working folder
 GetOptions
 (
     'help|h'         => \$help,
