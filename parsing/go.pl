@@ -415,13 +415,15 @@ sub get_parsing_scenario
     my $delexicalized = ($parser eq 'dlx'); # we may want to make this a parameter
     my $language = shift; # language, not treebank code
     my $transformation = shift;
+    my $modeldir = shift; # for cross-language delexicalized training: where is the model?
+    my $path = defined($modeldir) ? "$modeldir/$transformation/" : '';
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See above.
     my $writeparam = get_conll_block_parameters($transformation);
     my %parser_block =
     (
-        mlt => "W2A::ParseMalt model=malt_nivreeager.mco      $writeparam",
-        smf => "W2A::ParseMalt model=malt_stacklazy.mco       $writeparam",
-        dlx => "W2A::ParseMalt model=malt_stacklazy_delex.mco $writeparam",
+        mlt => "W2A::ParseMalt model=malt_nivreeager.mco             $writeparam",
+        smf => "W2A::ParseMalt model=malt_stacklazy.mco              $writeparam",
+        dlx => "W2A::ParseMalt model=${path}malt_stacklazy_delex.mco $writeparam",
         mcd => "W2A::ParseMST  model_dir=. model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
         mcp => "W2A::ParseMST  model_dir=. model=mcd_proj_o2.model    decodetype=proj     pos_attribute=conll/pos",
     );
