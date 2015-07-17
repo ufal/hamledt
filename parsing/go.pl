@@ -377,7 +377,7 @@ sub train
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print SCR ("rm -rf $model\n");
             my $features = $scriptdir.'/malt-feature-models/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
-            my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.conll -c $model -a stacklazy -F $features -grl Pred -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.conll -c $model -a stacklazy -F $features -grl root -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
             print SCR ("echo $command");
             print SCR ($command);
             # It is more difficult to get a machine with so much memory so we will be less generous with priority.
@@ -391,7 +391,7 @@ sub train
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print SCR ("rm -rf $model\n");
             my $features = $scriptdir.'/malt-feature-models/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
-            my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.delex.conll -c $model -a stacklazy -F $features -grl Pred -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
+            my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.delex.conll -c $model -a stacklazy -F $features -grl root -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
             print SCR ("echo $command");
             print SCR ($command);
             # It is more difficult to get a machine with so much memory so we will be less generous with priority.
