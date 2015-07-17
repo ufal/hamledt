@@ -484,7 +484,7 @@ sub parse
             system("mkdir -p $parserst-test");
             system("cp $data_dir/$treebank/treex/$transformation/test/*.treex.gz $parserst-test");
             my $scriptname = "p$parserst-$treebank-$transformation.sh";
-            my $memory = '12G';
+            my $memory = '16G';
             # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
             my $uas_file = "uas-$parserst.txt";
             print STDERR ("Creating script $scriptname.\n");
@@ -514,7 +514,19 @@ sub get_results
     my $labeled = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
-    foreach my $parser (get_parsers())
+    # Get the list of known parsers. For delexicalized parsing, each source model counts as a separate parser.
+    my @parsers = map
+    {
+        my @subset = ($_);
+        if($_ eq 'dlx')
+        {
+            my @treebanks = get_treebanks();
+            @subset = map {"dlx-$_"} @treebanks;
+        }
+        @subset;
+    }
+    (get_parsers());
+    foreach my $parser (@parsers)
     {
         # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
         my $uas_file = "uas-$parser.txt";
@@ -532,7 +544,8 @@ sub get_results
             # UASpm ... parent and is_member match
             # UASpms ... parent, is_member and is_shared_modifier match
             my $x = $labeled ? 'L' : 'U';
-            if($sys =~ m/^${x}AS(p(?:ms?)?)\(${language}_${parser},${language}\)$/)
+            my $selector = $parser =~ m/^dlx/ ? 'dlx' : $parser;
+            if($sys =~ m/^${x}AS(p(?:ms?)?)\(${language}_${selector},${language}\)$/)
             {
                 my $uasparams = $1;
                 $score = $score ? 100 * $score : 0;
@@ -544,7 +557,8 @@ sub get_results
                 $value{$treebank}{$transformation}{$parser}{$uasparams} = round($score);
             }
         }
-        if(!defined($value{$treebank}{$transformation}{$parser}{pms}))
+        my $debug = 0;
+        if($debug && !defined($value{$treebank}{$transformation}{$parser}{pms}))
         {
             print("Parser $parser score not found in $treebank/$transformation/$uas_file.\n");
         }
@@ -574,7 +588,7 @@ sub round
 #------------------------------------------------------------------------------
 # Prints the table of results, found in the global hash %value.
 #------------------------------------------------------------------------------
-sub print_table
+sub print_table_old
 {
     my @languages = sort(keys(%value));
     my %transformations;
@@ -624,6 +638,61 @@ sub print_table
             print($table->select(0,($n_langs/2)+2 .. $n_langs+3)->table());
         }
     }
+}
+
+
+
+#------------------------------------------------------------------------------
+# Prints the table of results, found in the global hash %value.
+#------------------------------------------------------------------------------
+sub print_table
+{
+    my @treebanks = sort(keys(%value));
+    my %parsers;
+    foreach my $treebank (@treebanks)
+    {
+        my $transformation = '02';
+        foreach my $parser (keys(%{$value{$treebank}{$transformation}}))
+        {
+            $parsers{$parser}++;
+        }
+    }
+    # Create table with the header (which also defines the number of columns).
+    my $table = Text::Table->new('parser', @treebanks);
+    foreach my $parser (sort(keys(%parsers)))
+    {
+        my @row = ($parser);
+        foreach my $treebank (@treebanks)
+        {
+            my $out = $value{$treebank}{'02'}{$parser}{pms};
+            push(@row, $out);
+        }
+        $table->add(@row);
+    }
+    # Split the table if there are too many columns.
+    my $n = scalar(@treebanks);
+    if($n < 18)
+    {
+        print($table->table());
+    }
+    else
+    {
+        print($table->select(0 .. ($n/2)+1)->table());
+        print("\n");
+        print($table->select(0, ($n/2)+2 .. $n)->table());
+    }
+    # Another table.
+    # For each target treebank, show source treebanks (parsers) ordered by accuracy.
+    print("\n");
+    $table = Text::Table->new('treebank', 1 .. 10);
+    foreach my $treebank (@treebanks)
+    {
+        my $results = $value{$treebank}{'02'};
+        my @parsers = sort {$results->{$b}{pms} <=> $results->{$a}{pms}} (keys(%{$results}));
+        my @row = ($treebank, map {my $x = "$_ ($results->{$_}{pms})"; $x =~ s/^dlx-/d/; $x =~ s/-ud11/-u/; $x} @parsers);
+        $table->add(@row);
+    }
+    print($table->select(0..10)->table());
 }
 
 
