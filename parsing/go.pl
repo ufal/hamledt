@@ -133,6 +133,84 @@ sub get_treebanks_and_transformations
 
 
 #------------------------------------------------------------------------------
+# Returns pre-selected combinations of Interset features that we want to try
+# keeping in the data. The combinations can be used as parameter to either
+# conll_delexicalize.pl (for training data) or the W2A::Delexicalize Treex
+# block (for test data). Experiments with different feature combinations serve
+# two goals: 1. to estimate how important is a particular feature for parsers;
+# 2. to improve cross-language training in cases where a feature is not
+# available in the target language.
+#------------------------------------------------------------------------------
+sub get_feature_combinations
+{
+    # Volitelný výběr rysů z Universal Dependencies:
+    # žádné rysy (pouze UPOS)
+    # různé kombinace následujících množin:
+    # - pouze lexikální rysy: PronType, NumType, Poss, Reflex
+    # - pád: Case
+    # - slovesný tvar: VerbForm
+    # - slovesné tvary jemněji: Mood, Tense, Aspect, Voice
+    # - osoba: Person
+    # - číslo: Number
+    # - další jmenné se shodou: Gender, Animacy, Definite
+    # - (zbývá Degree a Negative, v jejichž užitečnost nevěřím, projeví se jen v množině všechny rysy)
+    # všechny univerzální rysy (vynechat nadstavby jednotlivých jazyků či treebanků)
+    # všechny rysy
+    my %fc;
+    $fc{lex}  = ['prontype', 'numtype', 'poss', 'reflex'];
+    $fc{vf}   = ['verbform'];
+    $fc{tmav} = ['mood', 'tense', 'aspect', 'voice'];
+    $fc{case} = ['case'];
+    $fc{prs}  = ['person'];
+    $fc{num}  = ['number'];
+    $fc{gad}  = ['gender', 'animacy', 'definiteness'];
+    $fc{lv}   = fc(\%fc, 'lex', 'vf');
+    $fc{lt}   = fc(\%fc, 'lex', 'tmav');
+    $fc{lc}   = fc(\%fc, 'lex', 'case');
+    $fc{lp}   = fc(\%fc, 'lex', 'prs');
+    $fc{ln}   = fc(\%fc, 'lex', 'num');
+    $fc{lg}   = fc(\%fc, 'lex', 'gad');
+    $fc{vt}   = fc(\%fc, 'vf', 'tmav');
+    $fc{vc}   = fc(\%fc, 'vf', 'case');
+    $fc{vp}   = fc(\%fc, 'vf', 'prs');
+    $fc{vn}   = fc(\%fc, 'vf', 'num');
+    $fc{vg}   = fc(\%fc, 'vf', 'gad');
+    $fc{tc}   = fc(\%fc, 'tmav', 'case');
+    $fc{tp}   = fc(\%fc, 'tmav', 'prs');
+    $fc{tn}   = fc(\%fc, 'tmav', 'num');
+    $fc{tg}   = fc(\%fc, 'tmav', 'gad');
+    $fc{cp}   = fc(\%fc, 'case', 'prs');
+    $fc{cn}   = fc(\%fc, 'case', 'num');
+    $fc{cg}   = fc(\%fc, 'case', 'gad');
+    $fc{pn}   = fc(\%fc, 'prs', 'num');
+    $fc{pg}   = fc(\%fc, 'prs', 'gad');
+    $fc{ng}   = fc(\%fc, 'num', 'gad');
+    $fc{lvt}  = fc(\%fc, 'lex', 'vf', 'tmav');
+    $fc{lvtc} = fc(\%fc, 'lex', 'vf', 'tmav', 'case');
+    $fc{lvc}  = fc(\%fc, 'lex', 'vf', 'case');
+    $fc{vtc}  = fc(\%fc, 'vf', 'tmav', 'case');
+    $fc{lvtcpn} = fc(\%fc, 'lex', 'vf', 'tmav', 'case', 'prs', 'num');
+    $fc{lvtcpng} = fc(\%fc, 'lvtcpn', 'gad');
+    my %fcpar;
+    foreach my $combination (keys(%fc))
+    {
+        $fcpar{$combination} = join(',', @{$fc{$combination}});
+    }
+    $fcpar{all} = 1;
+    $fcpar{none} = 0;
+    return \%fcpar;
+}
+sub fc
+{
+    my $fc = shift;
+    my @keys = @_;
+    my @features = map {@{$fc->{$_}}} @keys;
+    return \@features;
+}
+
+
+
+#------------------------------------------------------------------------------
 # Sorts actions in the order in which they must logically follow each other.
 #------------------------------------------------------------------------------
 sub sort_actions
@@ -224,18 +302,23 @@ sub loop
     my $wdir = shift; # absolute path to root working folder for all languages
     $wdir = dzsys::absolutize_path($wdir);
     my @treebanks = sort(keys(%{$targets}));
+    my $fchash = get_feature_combinations();
+    my @fcombinations = sort(keys(%{$fchash}));
     foreach my $treebank (@treebanks)
     {
         foreach my $transformation (@{$targets->{$treebank}})
         {
-            my $dir = "$wdir/$treebank/$transformation";
-            # Create the working folder if it does not exist yet.
-            # This will also create other folders in the path if necessary.
-            system("mkdir -p $dir");
-            # Change to the working folder.
-            chdir($dir) or die("Cannot change to $dir: $!\n");
-            # Run the action.
-            &{$action}($treebank, $transformation);
+            foreach my $fc (@fcombinations)
+            {
+                my $dir = "$wdir/$treebank/$transformation/$fc";
+                # Create the working folder if it does not exist yet.
+                # This will also create other folders in the path if necessary.
+                system("mkdir -p $dir");
+                # Change to the working folder.
+                chdir($dir) or die("Cannot change to $dir: $!\n");
+                # Run the action.
+                &{$action}($treebank, $transformation, $fchash->{$fc});
+            }
         }
     }
 }
@@ -294,6 +377,7 @@ sub create_conll_training_data
 {
     my $treebank = shift;
     my $transformation = shift;
+    my $fcparameter = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
     my $filename1 = 'train.conll';
@@ -316,7 +400,7 @@ sub create_conll_training_data
     # Prepare a delexicalized training file for experiments with delexicalized parsing.
     my $delexfilename1 = $filename1;
     $delexfilename1 =~ s/\.conll$/.delex.conll/;
-    print SCR ("/net/work/people/zeman/parsing/tools/conll_delexicalize.pl < $filename1 > $delexfilename1\n");
+    print SCR ("/net/work/people/zeman/parsing/tools/conll_delexicalize.pl --keep-features=$fcparameter < $filename1 > $delexfilename1\n");
     # Prepare a modified form that can be used by the MST Parser.
     print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
     close(SCR);
@@ -415,6 +499,7 @@ sub get_parsing_scenario
     my $delexicalized = ($parser eq 'dlx'); # we may want to make this a parameter
     my $language = shift; # language, not treebank code
     my $transformation = shift;
+    my $fcparameter = shift;
     my $modeldir = shift; # for cross-language delexicalized training: where is the model?
     my $path = defined($modeldir) ? "$modeldir/$transformation/" : '';
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See above.
@@ -435,7 +520,7 @@ sub get_parsing_scenario
     # Delexicalize the test sentence if required.
     if($delexicalized)
     {
-        $scenario .= "Util::Eval anode='\$.set_form(\"_\"); \$.set_lemma(\"_\");' ";
+        $scenario .= "W2A::Delexicalize keep_iset=$fcparameter "
     }
     $scenario .= "$parser_block{$parser} ";
     # Note: the trees in 00 should be compared against the original gold tree.
@@ -454,6 +539,7 @@ sub parse
 {
     my $treebank = shift;
     my $transformation = shift;
+    my $fcparameter = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
     # Prepare the training script and submit the job to the cluster.
@@ -467,7 +553,7 @@ sub parse
             foreach my $srctbk (@treebanks)
             {
                 my $dir = "$wdir/$srctbk";
-                $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $transformation, $dir);
+                $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $transformation, $fcparameter, $dir);
             }
         }
         else
