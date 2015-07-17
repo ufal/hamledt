@@ -317,7 +317,7 @@ sub loop
                 # Change to the working folder.
                 chdir($dir) or die("Cannot change to $dir: $!\n");
                 # Run the action.
-                &{$action}($treebank, $transformation, $fchash->{$fc});
+                &{$action}($treebank, $transformation, $fc, $fchash->{$fc});
             }
         }
     }
@@ -377,6 +377,7 @@ sub create_conll_training_data
 {
     my $treebank = shift;
     my $transformation = shift;
+    my $fc = shift;
     my $fcparameter = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
@@ -499,9 +500,10 @@ sub get_parsing_scenario
     my $delexicalized = ($parser eq 'dlx'); # we may want to make this a parameter
     my $language = shift; # language, not treebank code
     my $transformation = shift;
+    my $fc = shift;
     my $fcparameter = shift;
     my $modeldir = shift; # for cross-language delexicalized training: where is the model?
-    my $path = defined($modeldir) ? "$modeldir/$transformation/" : '';
+    my $path = defined($modeldir) ? "$modeldir/$transformation/$fc/" : '';
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See above.
     my $writeparam = get_conll_block_parameters($transformation);
     my %parser_block =
@@ -539,6 +541,7 @@ sub parse
 {
     my $treebank = shift;
     my $transformation = shift;
+    my $fc = shift;
     my $fcparameter = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
@@ -553,12 +556,12 @@ sub parse
             foreach my $srctbk (@treebanks)
             {
                 my $dir = "$wdir/$srctbk";
-                $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $transformation, $fcparameter, $dir);
+                $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $transformation, $fc, $fcparameter, $dir);
             }
         }
         else
         {
-            $scenarios{''} = get_parsing_scenario($parser, $language, $transformation);
+            $scenarios{''} = get_parsing_scenario($parser, $language, $transformation, $fc, $fcparameter);
         }
         foreach my $srctbk (keys(%scenarios))
         {
