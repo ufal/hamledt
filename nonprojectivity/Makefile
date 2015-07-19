@@ -13,4 +13,4 @@ nonproj:
 	treex -L$(LNG) Eval::Nonproj -- ../normalize/$(TBK)/data/treex/02/{train,dev,test}/*.treex.gz > $(TBK).nonproj.txt
 qnonproj:
 	treex -p --jobs 100 --priority 0 -L$(LNG) Eval::Nonproj -- ../normalize/$(TBK)/data/treex/02/{train,dev,test}/*.treex.gz > $(TBK).qnonproj.txt
-	cat $(TBK).qnonproj.txt | grep -v -P '_(orig|prague)' | perl -e 'while(<>) { if(m:\t(\d+)/(\d+)\t:) { $$x+=$$1; $$n+=$$2; }} printf("%d/%d = %f\n", $$x, $$n, $$x/$$n);'
+	cat $(TBK).qnonproj.txt | grep -v -P '_(orig|prague)' | perl -e 'while(<>) { if(m:\t(\d+)/(\d+)\t:) { $$x+=$$1; $$n+=$$2; }} printf("%d/%d = %f\n", $$x, $$n, $$x/$$n);' | tee $(TBK).nonproj.txt
