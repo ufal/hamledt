@@ -600,6 +600,7 @@ sub get_results
 {
     my $treebank = shift;
     my $transformation = shift;
+    my $fc = shift;
     my $labeled = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
@@ -620,9 +621,10 @@ sub get_results
         # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
         my $uas_file = "uas-$parser.txt";
         # Read the score from the UAS file. Store it in a global hash called %value.
-        if(!open(UAS, $uas_file))
+        my $debug = 0;
+        if(!open(UAS, $uas_file) && $debug)
         {
-            print STDERR ("Cannot read $treebank/$transformation/$uas_file: $!\n");
+            print STDERR ("Cannot read $treebank/$transformation/$fc/$uas_file: $!\n");
             next;
         }
         while (<UAS>)
@@ -638,18 +640,16 @@ sub get_results
             {
                 my $uasparams = $1;
                 $score = $score ? 100 * $score : 0;
-                # Store score differences instead of scores for transformed trees.
-                if($trans !~ /00/ && defined($value{$treebank}{'02'}{$parser}{$uasparams}))
+                # The 'smf' parser is not delexicalized and it always uses all features, regardless of what the folder name may suggest.
+                if($parser eq 'smf')
                 {
-                    $score -= $value{$treebank}{'02'}{$parser}{$uasparams};
+                    $value{$treebank}{'smf'}{'smf'}{$uasparams} = round($score);
                 }
-                $value{$treebank}{$transformation}{$parser}{$uasparams} = round($score);
+                else
+                {
+                    $value{$treebank}{$fc}{$parser}{$uasparams} = round($score);
+                }
             }
-        }
-        my $debug = 0;
-        if($debug && !defined($value{$treebank}{$transformation}{$parser}{pms}))
-        {
-            print("Parser $parser score not found in $treebank/$transformation/$uas_file.\n");
         }
     }
 }
@@ -657,7 +657,8 @@ sub get_labeled_results
 {
     my $treebank = shift;
     my $transformation = shift;
-    return get_results($treebank, $transformation, 1);
+    my $fc = shift;
+    return get_results($treebank, $transformation, $fc, 1);
 }
 
 
@@ -734,7 +735,7 @@ sub print_table_old
 #------------------------------------------------------------------------------
 # Prints the table of results, found in the global hash %value.
 #------------------------------------------------------------------------------
-sub print_table
+sub print_table_zablokovano
 {
     my @treebanks = sort(keys(%value));
     my %parsers;
@@ -781,6 +782,75 @@ sub print_table
         my @row = ($treebank, map {my $x = "$_ ($results->{$_}{pms})"; $x =~ s/^dlx-/d/; $x =~ s/-ud11/-u/; $x} @parsers);
         $table->add(@row);
     }
+    print($table->select(0..10)->table());
+}
+
+
+
+#------------------------------------------------------------------------------
+# Prints a table of feature combinations.
+#------------------------------------------------------------------------------
+sub print_table
+{
+    # The results are stored in the following structure:
+    # $value{$treebank}{$fc}{$parser}{$uasparams}
+    # We want to reorganize them to the following structure:
+    # $result{$treebank.$parser}{$fc}
+    # At the same time we want to know the best result (feature combination) for each $treebank.$parser pair.
+    # We will use it to order parsers and drop the uninteresting ones.
+    my %result;
+    my %bestfc;
+    my @datasets;
+    my @treebanks = sort(keys(%value));
+    foreach my $treebank (@treebanks)
+    {
+        my @fcs = keys(%{$value{$treebank}});
+        foreach my $fc (@fcs)
+        {
+            my @parsers = keys(%{$value{$treebank}{$fc}});
+            foreach my $parser (@parsers)
+            {
+                # We do not want to show the results of 'mlt'. It uses different algorithm than 'smf' and all the 'dlx*' parsers.
+                next if($parser eq 'mlt');
+                my $pms = $value{$treebank}{$fc}{$parser}{pms};
+                if(defined($pms))
+                {
+                    $result{$treebank.' <= '.$parser}{$fc} = $pms;
+                    if(!defined($bestfc{$treebank}{$parser}) || $pms > $bestfc{$treebank}{$parser})
+                    {
+                        $bestfc{$treebank}{$parser} = $pms;
+                    }
+                }
+            }
+        }
+        # Order parsers for each treebank from the best to the worst. Forget results of bad parsers so that the table is not cluttered.
+        my @parsers = sort {$bestfc{$treebank}{$b} <=> $bestfc{$treebank}{$a}} (keys(%{$bestfc{$treebank}}));
+        for(my $i = 0; $i<=$#parsers; $i++)
+        {
+            my $dataset = $treebank.' <= '.$parsers[$i];
+            if($i<10)
+            {
+                push(@datasets, $dataset);
+            }
+        }
+    }
+    # Create table with the header (which also defines the number of columns).
+    my $table = Text::Table->new('data', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
+    # For each data set ($treebank + $parser), rank the feature combinations.
+    my %fcscore;
+    foreach my $dataset (@datasets)
+    {
+        my @fcs = sort {$result{$dataset}{$b} <=> $result{$dataset}{$a}} keys(%{$result{$dataset}});
+        $table->add($dataset, @fcs[0..9]);
+        $table->add('', map {$result{$dataset}{$_}} (@fcs[0..9]));
+        for(my $i = 0; $i<10; $i++)
+        {
+            $fcscore{$fcs[$i]} += $result{$dataset}{$fcs[$i]} / $result{$dataset}{$fcs[0]};
+        }
+    }
+    my @fcs = sort {$fcscore{$b} <=> $fcscore{$a}} (keys(%fcscore));
+    $table->add('GLOBAL', @fcs[0..9]);
+    $table->add('', map {$fcscore{$_}} (@fcs[0..9]));
     print($table->select(0..10)->table());
 }
 

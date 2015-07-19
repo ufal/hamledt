@@ -76,7 +76,7 @@ print("Found $n_langs languages: ", join(' ', @languages), "\n");
 foreach my $lang (@languages)
 {
     print("===== LANGUAGE $lang =====\n");
-    my $lpath = "$wdirroot/$lang";
+    my $lpath = "$wdirroot/$lang/02";
     chdir($lpath) or die("Cannot enter $lpath: $!\n");
     # All subfolders of the current folder are transformations (including the 000_orig and 001_pdtstyle baselines).
     my @transformations = sort(dzsys::get_subfolders('.'));
