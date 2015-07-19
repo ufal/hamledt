@@ -104,15 +104,21 @@ pmltq:
 
 # Basic statistics: number of sentences and tokens in train and test data.
 stats:
-	$(TREEX) -p --jobs=100 Read::Treex from='!$(DIR0)/train/*.treex.gz' Util::Eval atree='print("XXX ROOT XXX\n");' anode='print("XXX NODE XXX\n");' > train-wcl.txt
-	$(TREEX) -p --jobs=100 Read::Treex from='!$(DIR0)/dev/*.treex.gz'  Util::Eval atree='print("XXX ROOT XXX\n");' anode='print("XXX NODE XXX\n");' > dev-wcl.txt
-	$(TREEX) -p --jobs=100 Read::Treex from='!$(DIR0)/test/*.treex.gz'  Util::Eval atree='print("XXX ROOT XXX\n");' anode='print("XXX NODE XXX\n");' > test-wcl.txt
+	$(QTREEX) Read::Treex from='!$(DIR0)/train/*.treex.gz' Util::Eval atree='print("XXX ROOT XXX\n");' anode='print("XXX NODE XXX\n");' > train-wcl.txt
+	$(QTREEX) Read::Treex from='!$(DIR0)/dev/*.treex.gz'  Util::Eval atree='print("XXX ROOT XXX\n");' anode='print("XXX NODE XXX\n");' > dev-wcl.txt
+	$(QTREEX) Read::Treex from='!$(DIR0)/test/*.treex.gz'  Util::Eval atree='print("XXX ROOT XXX\n");' anode='print("XXX NODE XXX\n");' > test-wcl.txt
 	grep 'XXX ROOT XXX' train-wcl.txt | wc -l
 	grep 'XXX NODE XXX' train-wcl.txt | wc -l
 	grep 'XXX ROOT XXX' dev-wcl.txt | wc -l
 	grep 'XXX NODE XXX' dev-wcl.txt | wc -l
 	grep 'XXX ROOT XXX' test-wcl.txt | wc -l
 	grep 'XXX NODE XXX' test-wcl.txt | wc -l
+
+morphostats:
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Util::Eval anode='print($$.form, "\t", $$.lemma, "\n");' |\
+		grep -v -P '\d' |\
+		perl -e 'while(<>) { s/\r?\n$$//; if(m/^(.+\t(.+))$$/) { $$f{lc($$1)}++; $$l{lc($$2)}++; } } $$nf=scalar(keys(%f)); $$nl=scalar(keys(%l)); $$r=($$nl==0)?0:($$nf/$$nl); print("$$nf forms, $$nl lemmas, mr=$$r\n");' |\
+		tee morphostats.txt
 
 deprelstats:
 	$(TREEX) Read::Treex from='!$(DIR0)/{train,dev,test}/*.treex.gz' Print::DeprelStats > deprelstats.txt

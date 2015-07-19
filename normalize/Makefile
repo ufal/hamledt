@@ -48,12 +48,16 @@ qpmltq: $(foreach t,$(TREEBANKS),qpmltq-$(t))
 qpmltq-%:
 	$(QCMD) --jobname=$*-pmltq "cd $* && make pmltq"
 
+qmorphostats: $(foreach t,$(TREEBANKS),qmorphostats-$(t))
+qmorphostats-%:
+	$(QCMD) --jobname=$*-most "cd $* && make morphostats"
+
 clean:
 	rm -f *-normalize.o* *-prague.o* *-ud.o* .qsubmit*
 	rm -rf */???-cluster-run-*
 
 TO_CONLL_SCEN=Write::CoNLLX language=mul deprel_attribute=afun pos_attribute=tag substitute={treex/001_pdtstyle}{conll} compress=1 to=.
-# TODO: 
+# TODO:
 # treex -p -j $(JOBS) $(TO_CONLL_SCEN) -- '!$(LANGS_PATTERN)/data/treex/001_pdtstyle/{train,test}/*.treex.gz'
 # Parallel processing with client-server leads to saving all files to the current dir
 treex-to-conll:
