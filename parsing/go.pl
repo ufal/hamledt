@@ -35,7 +35,7 @@ my $wdir = 'pokus'; # default working folder
 GetOptions
 (
     'wdir=s'            => \$wdir,
-    'languages|langs=s' => \$konfig{languages},
+    'treebanks=s'       => \$konfig{treebanks},  # comma-separated list, e.g. "--treebanks de,de-ud11"
     'trainlimit=s'      => \$konfig{trainlimit},
     'help'              => \$konfig{help}
 );
@@ -51,6 +51,7 @@ my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
 $data_dir =~ s-//-/-;
 print STDERR ("Data folder    = $data_dir\n");
 my $targets = get_treebanks_and_transformations();
+$konfig{delexpairs} = get_best_delex();
 my $action_name = sort_actions(@ARGV);
 my $action = get_action($action_name);
 $wdir = dzsys::absolutize_path($wdir);
@@ -95,8 +96,8 @@ sub get_treebanks
 #------------------------------------------------------------------------------
 sub get_parsers
 {
-    # We temporarily do not use 'mcd' and 'mcp' (the MST parser by Ryan McDonald).
-    return qw(mlt smf dlx);
+    # We temporarily do not use 'mlt', 'mcd' and 'mcp' (the MST parser by Ryan McDonald).
+    return qw(smf dlx);
 }
 
 
@@ -211,6 +212,67 @@ sub fc
 
 
 #------------------------------------------------------------------------------
+# Returns pre-computed hash that says for each treebank, which other treebanks
+# provide the best delexicalized models to parse this treebank.
+#------------------------------------------------------------------------------
+sub get_best_delex
+{
+    my %best =
+    (
+        'bg' => ['hr', 'sl', 'da'],
+        'cs' => ['hr', 'sl', 'bg'],
+        'hr' => ['sl', 'pl', 'bg'],
+        'pl' => ['hr', 'sl', 'bg'],
+        'ru' => ['hr', 'sk', 'pl'],
+        'sk' => ['hr', 'sl', 'pl'],
+        'sl' => ['hr', 'fi', 'bg'],
+        'da' => ['sv', 'hr', 'fi'],
+        'de' => ['hr', 'sv', 'bg'],
+        'en' => ['de', 'fr', 'sv'],
+        'nl' => ['hu', 'fi', 'sv'],
+        'sv' => ['da', 'en', 'hr'],
+        'ca' => ['it', 'fr', 'es'],
+        'es' => ['fr', 'ca', 'it'],
+        'fr' => ['es', 'it', 'ca'],
+        'it' => ['fr', 'ca', 'hr'],
+        'pt' => ['it', 'fr', 'he'],
+        'ro' => ['hr', 'la', 'es'],
+        'el' => ['hr', 'pl', 'bg'],
+        'ga' => ['he', 'id', 'it'],
+        'grc' => ['bg', 'pl', 'la'],
+        'la' => ['pl', 'grc', 'sk'],
+        'bn' => ['ja', 'te', 'ru'],
+        'fa' => ['he', 'hr', 'id'],
+        'hi' => ['ta', 'hu', 'eu'],
+        'ta' => ['hi', 'hu', 'eu'],
+        'te' => ['bn', 'ja', 'tr'],
+        'eu' => ['hu', 'et', 'hr'],
+        'et' => ['hu', 'sv', 'da'],
+        'fi' => ['et', 'hu', 'da'],
+        'hu' => ['bg', 'fi', 'sv'],
+        'ja' => ['tr', 'he', 'grc'],
+        'tr' => ['ta', 'la', 'hu'],
+        'id' => ['hr', 'he', 'it'],
+        'ar' => ['he', 'pl', 'id'],
+        'he' => ['ca', 'it', 'id']
+    );
+    my %pairs;
+    foreach my $tgt (keys(%best))
+    {
+        my @src = @{$best{$tgt}};
+        $tgt =~ s/(bg|cs|hr|da|de|en|sv|es|fr|it|el|ga|fa|eu|fi|hu|id|he)/$1-ud11/;
+        foreach my $src (@src)
+        {
+            $src =~ s/(bg|cs|hr|da|de|en|sv|es|fr|it|el|ga|fa|eu|fi|hu|id|he)/$1-ud11/;
+            $pairs{$tgt}{$src}++;
+        }
+    }
+    return \%pairs;
+}
+
+
+
+#------------------------------------------------------------------------------
 # Sorts actions in the order in which they must logically follow each other.
 #------------------------------------------------------------------------------
 sub sort_actions
@@ -308,16 +370,17 @@ sub loop
     {
         foreach my $transformation (@{$targets->{$treebank}})
         {
-            foreach my $fc (@fcombinations)
+            foreach my $size (10, 20, 50, 100, 200, 500, 1000, 2000, 5000)
             {
-                my $dir = "$wdir/$treebank/$transformation/$fc";
+                $konfig{trainlimit} = $size;
+                my $dir = "$wdir/$treebank/$transformation/$size";
                 # Create the working folder if it does not exist yet.
                 # This will also create other folders in the path if necessary.
                 system("mkdir -p $dir");
                 # Change to the working folder.
                 chdir($dir) or die("Cannot change to $dir: $!\n");
                 # Run the action.
-                &{$action}($treebank, $transformation, $fc, $fchash->{$fc});
+                &{$action}($treebank, $transformation);
             }
         }
     }
@@ -377,8 +440,6 @@ sub create_conll_training_data
 {
     my $treebank = shift;
     my $transformation = shift;
-    my $fc = shift;
-    my $fcparameter = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
     my $filename1 = 'train.conll';
@@ -401,7 +462,7 @@ sub create_conll_training_data
     # Prepare a delexicalized training file for experiments with delexicalized parsing.
     my $delexfilename1 = $filename1;
     $delexfilename1 =~ s/\.conll$/.delex.conll/;
-    print SCR ("/net/work/people/zeman/parsing/tools/conll_delexicalize.pl --keep-features=$fcparameter < $filename1 > $delexfilename1\n");
+    print SCR ("/net/work/people/zeman/parsing/tools/conll_delexicalize.pl < $filename1 > $delexfilename1\n");
     # Prepare a modified form that can be used by the MST Parser.
     print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
     close(SCR);
@@ -500,10 +561,8 @@ sub get_parsing_scenario
     my $delexicalized = ($parser eq 'dlx'); # we may want to make this a parameter
     my $language = shift; # language, not treebank code
     my $transformation = shift;
-    my $fc = shift;
-    my $fcparameter = shift;
     my $modeldir = shift; # for cross-language delexicalized training: where is the model?
-    my $path = defined($modeldir) ? "$modeldir/$transformation/$fc/" : '';
+    my $path = defined($modeldir) ? "$modeldir/$transformation/" : '';
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See above.
     my $writeparam = get_conll_block_parameters($transformation);
     my %parser_block =
@@ -522,7 +581,7 @@ sub get_parsing_scenario
     # Delexicalize the test sentence if required.
     if($delexicalized)
     {
-        $scenario .= "W2A::Delexicalize keep_iset=$fcparameter "
+        $scenario .= "W2A::Delexicalize "
     }
     $scenario .= "$parser_block{$parser} ";
     # Note: the trees in 00 should be compared against the original gold tree.
@@ -541,8 +600,6 @@ sub parse
 {
     my $treebank = shift;
     my $transformation = shift;
-    my $fc = shift;
-    my $fcparameter = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
     # Prepare the training script and submit the job to the cluster.
@@ -552,16 +609,27 @@ sub parse
         # The delexicalized parser can use trained delexicalized models from any language/treebank, not necessarily its own.
         if($parser eq 'dlx')
         {
+            # If the user restricted the set of treebanks, it was for target treebanks.
+            # We must now remove the restriction, otherwise get_treebanks() will also apply it to source treebanks! ###!!!
+            delete($konfig{treebanks});
             my @treebanks = get_treebanks();
             foreach my $srctbk (@treebanks)
             {
-                my $dir = "$wdir/$srctbk";
-                $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $transformation, $fc, $fcparameter, $dir);
+                # Skip delexicalized source models that have not been determined as promising.
+                if($konfig{delexpairs}{$treebank}{$srctbk})
+                {
+                    my $dir = "$wdir/$srctbk";
+                    $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $transformation, $dir);
+                }
+                else
+                {
+                    print("Skipping delexpair $treebank $srctbk.\n");
+                }
             }
         }
         else
         {
-            $scenarios{''} = get_parsing_scenario($parser, $language, $transformation, $fc, $fcparameter);
+            $scenarios{''} = get_parsing_scenario($parser, $language, $transformation);
         }
         foreach my $srctbk (keys(%scenarios))
         {

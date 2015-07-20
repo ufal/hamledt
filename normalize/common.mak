@@ -120,6 +120,11 @@ morphostats:
 		perl -e 'while(<>) { s/\r?\n$$//; if(m/^(.+\t(.+))$$/) { $$f{lc($$1)}++; $$l{lc($$2)}++; } } $$nf=scalar(keys(%f)); $$nl=scalar(keys(%l)); $$r=($$nl==0)?0:($$nf/$$nl); print("$$nf forms, $$nl lemmas, mr=$$r\n");' |\
 		tee morphostats.txt
 
+featurestats:
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Util::Eval anode='my $$f = join("|", $$.iset()->get_ufeatures()); print($$f, "\n") if(defined($$f));' |\
+		perl -e 'while(<>) { s/\r?\n$$//; @f=split(/\|/, $$_); foreach $$fv (@f) { $$h{$$fv}++ }} @k=sort(keys(%h)); foreach my $$k (@k) { print("$$k\t$$h{$$k}\n"); }' |\
+		tee featurestats.txt
+
 deprelstats:
 	$(TREEX) Read::Treex from='!$(DIR0)/{train,dev,test}/*.treex.gz' Print::DeprelStats > deprelstats.txt
 
