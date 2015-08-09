@@ -35,7 +35,7 @@ my $wdir = 'pokus'; # default working folder
 GetOptions
 (
     'wdir=s'            => \$wdir,
-    'languages|langs=s' => \$konfig{languages},
+    'treebanks=s'       => \$konfig{treebanks},  # comma-separated list, e.g. "--treebanks de,de-ud11"
     'trainlimit=s'      => \$konfig{trainlimit},
     'help'              => \$konfig{help}
 );
@@ -51,6 +51,7 @@ my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
 $data_dir =~ s-//-/-;
 print STDERR ("Data folder    = $data_dir\n");
 my $targets = get_treebanks_and_transformations();
+$konfig{delexpairs} = get_best_delex();
 my $action_name = sort_actions(@ARGV);
 my $action = get_action($action_name);
 $wdir = dzsys::absolutize_path($wdir);
@@ -95,8 +96,8 @@ sub get_treebanks
 #------------------------------------------------------------------------------
 sub get_parsers
 {
-    # We temporarily do not use 'mcd' and 'mcp' (the MST parser by Ryan McDonald).
-    return qw(mlt smf dlx);
+    # We temporarily do not use 'mlt', 'mcd' and 'mcp' (the MST parser by Ryan McDonald).
+    return qw(smf dlx);
 }
 
 
@@ -128,6 +129,22 @@ sub get_treebanks_and_transformations
         $hash{$treebank} = \@transformations;
     }
     return \%hash;
+}
+
+
+
+#------------------------------------------------------------------------------
+# Returns a pre-selected feature combination to use for all delexicalizations.
+# It has to be supplied at two places (pretrain and parse), so it is good to
+# have it defined at one central place. (See below for an experiment with many
+# different feature combinations.)
+#------------------------------------------------------------------------------
+sub get_fc
+{
+    # 0 ... none
+    # 1 ... all
+    # prontype,numtype ... only prontype and numtype
+    return 0;
 }
 
 
@@ -206,6 +223,67 @@ sub fc
     my @keys = @_;
     my @features = map {@{$fc->{$_}}} @keys;
     return \@features;
+}
+
+
+
+#------------------------------------------------------------------------------
+# Returns pre-computed hash that says for each treebank, which other treebanks
+# provide the best delexicalized models to parse this treebank.
+#------------------------------------------------------------------------------
+sub get_best_delex
+{
+    my %best =
+    (
+        'bg' => ['hr', 'sl', 'da'],
+        'cs' => ['hr', 'sl', 'bg'],
+        'hr' => ['sl', 'pl', 'bg'],
+        'pl' => ['hr', 'sl', 'bg'],
+        'ru' => ['hr', 'sk', 'pl'],
+        'sk' => ['hr', 'sl', 'pl'],
+        'sl' => ['hr', 'fi', 'bg'],
+        'da' => ['sv', 'hr', 'fi'],
+        'de' => ['hr', 'sv', 'bg'],
+        'en' => ['de', 'fr', 'sv'],
+        'nl' => ['hu', 'fi', 'sv'],
+        'sv' => ['da', 'en', 'hr'],
+        'ca' => ['it', 'fr', 'es'],
+        'es' => ['fr', 'ca', 'it'],
+        'fr' => ['es', 'it', 'ca'],
+        'it' => ['fr', 'ca', 'hr'],
+        'pt' => ['it', 'fr', 'he'],
+        'ro' => ['hr', 'la', 'es'],
+        'el' => ['hr', 'pl', 'bg'],
+        'ga' => ['he', 'id', 'it'],
+        'grc' => ['bg', 'pl', 'la'],
+        'la' => ['pl', 'grc', 'sk'],
+        'bn' => ['ja', 'te', 'ru'],
+        'fa' => ['he', 'hr', 'id'],
+        'hi' => ['ta', 'hu', 'eu'],
+        'ta' => ['hi', 'hu', 'eu'],
+        'te' => ['bn', 'ja', 'tr'],
+        'eu' => ['hu', 'et', 'hr'],
+        'et' => ['hu', 'sv', 'da'],
+        'fi' => ['et', 'hu', 'da'],
+        'hu' => ['bg', 'fi', 'sv'],
+        'ja' => ['tr', 'he', 'grc'],
+        'tr' => ['ta', 'la', 'hu'],
+        'id' => ['hr', 'he', 'it'],
+        'ar' => ['he', 'pl', 'id'],
+        'he' => ['ca', 'it', 'id']
+    );
+    my %pairs;
+    foreach my $tgt (keys(%best))
+    {
+        my @src = ($tgt, @{$best{$tgt}});
+        $tgt =~ s/(bg|cs|hr|da|de|en|sv|es|fr|it|el|ga|fa|eu|fi|hu|id|he)/$1-ud11/;
+        foreach my $src (@src)
+        {
+            $src =~ s/(bg|cs|hr|da|de|en|sv|es|fr|it|el|ga|fa|eu|fi|hu|id|he)/$1-ud11/;
+            $pairs{$tgt}{$src}++;
+        }
+    }
+    return \%pairs;
 }
 
 
@@ -308,16 +386,17 @@ sub loop
     {
         foreach my $transformation (@{$targets->{$treebank}})
         {
-            foreach my $fc (@fcombinations)
+            foreach my $size (10, 20, 50, 100, 200, 500, 1000, 2000, 5000)
             {
-                my $dir = "$wdir/$treebank/$transformation/$fc";
+                $konfig{trainlimit} = $size;
+                my $dir = "$wdir/$treebank/$transformation/$size";
                 # Create the working folder if it does not exist yet.
                 # This will also create other folders in the path if necessary.
                 system("mkdir -p $dir");
                 # Change to the working folder.
                 chdir($dir) or die("Cannot change to $dir: $!\n");
                 # Run the action.
-                &{$action}($treebank, $transformation, $fc, $fchash->{$fc});
+                &{$action}($treebank, $transformation, $size);
             }
         }
     }
@@ -377,8 +456,6 @@ sub create_conll_training_data
 {
     my $treebank = shift;
     my $transformation = shift;
-    my $fc = shift;
-    my $fcparameter = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
     my $filename1 = 'train.conll';
@@ -399,9 +476,10 @@ sub create_conll_training_data
         print SCR ("mv $filename1.truncated $filename1\n");
     }
     # Prepare a delexicalized training file for experiments with delexicalized parsing.
+    my $fc = get_fc();
     my $delexfilename1 = $filename1;
     $delexfilename1 =~ s/\.conll$/.delex.conll/;
-    print SCR ("/net/work/people/zeman/parsing/tools/conll_delexicalize.pl --keep-features=$fcparameter < $filename1 > $delexfilename1\n");
+    print SCR ("/net/work/people/zeman/parsing/tools/conll_delexicalize.pl --keep-features=$fc < $filename1 > $delexfilename1\n");
     # Prepare a modified form that can be used by the MST Parser.
     print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
     close(SCR);
@@ -500,10 +578,9 @@ sub get_parsing_scenario
     my $delexicalized = ($parser eq 'dlx'); # we may want to make this a parameter
     my $language = shift; # language, not treebank code
     my $transformation = shift;
-    my $fc = shift;
-    my $fcparameter = shift;
+    my $size = shift; # training size
     my $modeldir = shift; # for cross-language delexicalized training: where is the model?
-    my $path = defined($modeldir) ? "$modeldir/$transformation/$fc/" : '';
+    my $path = defined($modeldir) ? "$modeldir/$transformation/$size/" : '';
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See above.
     my $writeparam = get_conll_block_parameters($transformation);
     my %parser_block =
@@ -522,7 +599,8 @@ sub get_parsing_scenario
     # Delexicalize the test sentence if required.
     if($delexicalized)
     {
-        $scenario .= "W2A::Delexicalize keep_iset=$fcparameter "
+        my $fc = get_fc();
+        $scenario .= "W2A::Delexicalize keep_iset=$fc "
     }
     $scenario .= "$parser_block{$parser} ";
     # Note: the trees in 00 should be compared against the original gold tree.
@@ -541,8 +619,7 @@ sub parse
 {
     my $treebank = shift;
     my $transformation = shift;
-    my $fc = shift;
-    my $fcparameter = shift;
+    my $size = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
     # Prepare the training script and submit the job to the cluster.
@@ -552,16 +629,27 @@ sub parse
         # The delexicalized parser can use trained delexicalized models from any language/treebank, not necessarily its own.
         if($parser eq 'dlx')
         {
+            # If the user restricted the set of treebanks, it was for target treebanks.
+            # We must now remove the restriction, otherwise get_treebanks() will also apply it to source treebanks! ###!!!
+            delete($konfig{treebanks});
             my @treebanks = get_treebanks();
             foreach my $srctbk (@treebanks)
             {
-                my $dir = "$wdir/$srctbk";
-                $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $transformation, $fc, $fcparameter, $dir);
+                # Skip delexicalized source models that have not been determined as promising.
+                if($konfig{delexpairs}{$treebank}{$srctbk})
+                {
+                    my $dir = "$wdir/$srctbk";
+                    $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $transformation, $size, $dir);
+                }
+                else
+                {
+                    print("Skipping delexpair $treebank $srctbk.\n");
+                }
             }
         }
         else
         {
-            $scenarios{''} = get_parsing_scenario($parser, $language, $transformation, $fc, $fcparameter);
+            $scenarios{''} = get_parsing_scenario($parser, $language, $transformation, $size);
         }
         foreach my $srctbk (keys(%scenarios))
         {
@@ -600,7 +688,7 @@ sub get_results
 {
     my $treebank = shift;
     my $transformation = shift;
-    my $fc = shift;
+    my $size = shift;
     my $labeled = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
@@ -624,7 +712,7 @@ sub get_results
         my $debug = 0;
         if(!open(UAS, $uas_file) && $debug)
         {
-            print STDERR ("Cannot read $treebank/$transformation/$fc/$uas_file: $!\n");
+            print STDERR ("Cannot read $treebank/$transformation/$size/$uas_file: $!\n");
             next;
         }
         while (<UAS>)
@@ -636,19 +724,11 @@ sub get_results
             # UASpms ... parent, is_member and is_shared_modifier match
             my $x = $labeled ? 'L' : 'U';
             my $selector = $parser =~ m/^dlx/ ? 'dlx' : $parser;
-            if($sys =~ m/^${x}AS(p(?:ms?)?)\(${language}_${selector},${language}\)$/)
+            if($sys =~ m/^${x}AS([pd](?:ms?)?)\(${language}_${selector},${language}\)$/)
             {
                 my $uasparams = $1;
                 $score = $score ? 100 * $score : 0;
-                # The 'smf' parser is not delexicalized and it always uses all features, regardless of what the folder name may suggest.
-                if($parser eq 'smf')
-                {
-                    $value{$treebank}{'smf'}{'smf'}{$uasparams} = round($score);
-                }
-                else
-                {
-                    $value{$treebank}{$fc}{$parser}{$uasparams} = round($score);
-                }
+                $value{$treebank}{$size}{$parser}{$uasparams} = round($score);
             }
         }
     }
@@ -657,8 +737,8 @@ sub get_labeled_results
 {
     my $treebank = shift;
     my $transformation = shift;
-    my $fc = shift;
-    return get_results($treebank, $transformation, $fc, 1);
+    my $size = shift;
+    return get_results($treebank, $transformation, $size, 1);
 }
 
 
@@ -678,66 +758,67 @@ sub round
 #------------------------------------------------------------------------------
 # Prints the table of results, found in the global hash %value.
 #------------------------------------------------------------------------------
-sub print_table_old
+sub print_table
 {
-    my @languages = sort(keys(%value));
-    my %transformations;
-    foreach my $language (@languages)
-    {
-        foreach my $transformation (keys(%{$value{$language}}))
-        {
-            $transformations{$transformation}++;
-        }
-    }
-    foreach my $parser (get_parsers())
-    {
-        print("\n", '*' x 10 . "  $parser  " . '*' x 10, "\n\n");
-        my $table = Text::Table->new('trans', @languages, 'better', 'worse', 'average');
-        foreach my $trans (sort(keys(%transformations)))
-        {
-            my @row = $trans;
-            my $better = 0;
-            my $worse = 0;
-            my $diff = 0;
-            my $cnt = 0;
-            foreach my $language (@languages)
-            {
-                my $out = $value{$language}{$trans}{$parser}{pms};
-                #$out .= '/'.$value{$language}{$trans}{$parser}{pms};
-                push(@row, $out);
-                next if(!$value{$language}{$trans}{$parser}{pms} || !$value{$language}{'001_pdtstyle'}{$parser}{pms});
-                $better++ if($value{$language}{$trans}{$parser}{pms} > $signif_diff);
-                $worse++ if($value{$language}{$trans}{$parser}{pms} < -$signif_diff);
-                $diff += $value{$language}{$trans}{$parser}{pms};
-                $cnt++;
-            }
-            # Warning: $cnt can be zero if we do not have $value for either this transformation or for 001_pdtstyle.
-            $diff /= $cnt if($cnt);
-            push(@row, ($better, $worse, round($diff)));
-            $table->add(@row);
-        }
-        my $n_langs = scalar(@languages);
-        if($n_langs < 18)
-        {
-            print($table->table());
-        }
-        else
-        {
-            print($table->select(0 .. ($n_langs/2)+1)->table());
-            print("\n");
-            print($table->select(0,($n_langs/2)+2 .. $n_langs+3)->table());
-        }
-    }
-}
-
-
-
-#------------------------------------------------------------------------------
-# Prints the table of results, found in the global hash %value.
-#------------------------------------------------------------------------------
-sub print_table_zablokovano
-{
+    my $metric = 'd'; # pms|d|...
     my @treebanks = sort(keys(%value));
+    # Print results for each treebank in a separate table (but technically it will be one large table).
+    my $table = Text::Table->new('&right', \' | ', '&right', \' | ', '&right', \' | ', '&right', \' | ', '&right', \' | ', '&right');
+    foreach my $treebank (@treebanks)
+    {
+        my @sizes = sort {$a <=> $b} (keys(%{$value{$treebank}}));
+        # Normally it would be enough to take the parsers from the largest size
+        # but if we are retrieving a partial table before everything is done, the
+        # list of parsers may not be complete there!
+        my %parsers;
+        for(my $i = 0; $i<=$#sizes; $i++)
+        {
+            my @parsers = keys(%{$value{$treebank}{$sizes[$i]}});
+            foreach my $parser (@parsers)
+            {
+                if(!defined($parsers{$parser}) || $value{$treebank}{$sizes[$i]}{$parser}{$metric} > $parsers{$parser})
+                {
+                    $parsers{$parser} = $value{$treebank}{$sizes[$i]}{$parser}{$metric};
+                }
+            }
+        }
+        my @parsers = sort {$parsers{$b} <=> $parsers{$a}} (keys{%parsers});
+        $table->add("Treebank: $treebank", @parsers);
+        foreach my $size (@sizes)
+        {
+            my $snt = sprintf("%5d sentences:", $size);
+            $table->add($snt, map {$value{$treebank}{$size}{$_}{$metric}} (@parsers));
+        }
+        # Estimate how many training sentences of the smf parsing model each delexicalized model corresponds to.
+        my @psignif = ('~ smf sents');
+        my @smfscores = map {$value{$treebank}{$sizes[$_]}{smf}{$metric}} (0..$#sizes);
+        foreach my $parser (@parsers)
+        {
+            my @scores = map {$value{$treebank}{$sizes[$_]}{$parser}{$metric}} (0..$#sizes);
+            my $score = $scores[-1];
+            my $i = $#sizes;
+            for(; $i>0 && $score < $smfscores[$i]; $i--)
+            {
+            }
+            if($i==0)
+            {
+                push(@psignif, 'USELESS');
+            }
+            elsif($i==$#sizes)
+            {
+                push(@psignif, $score > $smfscores[$i] ? 'BETTER!' : '');
+            }
+            else
+            {
+                my $isents = sprintf("%d", ($score-$smfscores[$i])/($smfscores[$i+1]-$smfscores[$i])*($sizes[$i+1]-$sizes[$i])+$sizes[$i]+0.5);
+                push(@psignif, $isents);
+            }
+        }
+        $table->add(@psignif);
+        $table->add(' ', ' ', ' ', ' ', ' ');
+    }
+    print($table->table());
+    return;
     my %parsers;
     foreach my $treebank (@treebanks)
     {
@@ -788,9 +869,10 @@ sub print_table_zablokovano
 
 
 #------------------------------------------------------------------------------
-# Prints a table of feature combinations.
+# Prints a table of feature combinations (currently out of order, we do not
+# generate experiments for different feature combinations).
 #------------------------------------------------------------------------------
-sub print_table
+sub print_table_feature_combinations
 {
     # The results are stored in the following structure:
     # $value{$treebank}{$fc}{$parser}{$uasparams}
