@@ -41,6 +41,7 @@ UTESTS = \
 	HamleDT::Test::UD::Subjunctions \
 	HamleDT::Test::UD::CompoundPrepositions \
 	HamleDT::Test::UD::Punctuation \
+	HamleDT::Test::UD::UnconvertedDependencies \
 	HamleDT::Test::UD::ZZZSearch
 # The SingleRoot test cannot be applied to the Prague-style treebanks because of ellipsis.
 # Some people believe that all trees in UD should have just one top node (attached to the root)
