@@ -52,6 +52,10 @@ qmorphostats: $(foreach t,$(TREEBANKS),qmorphostats-$(t))
 qmorphostats-%:
 	$(QCMD) --jobname=$*-most "cd $* && make morphostats"
 
+qfeaturestats: $(foreach t,$(TREEBANKS),qfeaturestats-$(t))
+qfeaturestats-%:
+	$(QCMD) --jobname=$*-fest "cd $* && make featurestats"
+
 clean:
 	rm -f *-normalize.o* *-prague.o* *-ud.o* .qsubmit*
 	rm -rf */???-cluster-run-*
