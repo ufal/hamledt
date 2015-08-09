@@ -1,0 +1,430 @@
+Treebank: ar	smf	dlx-he-ud11	dlx-id-ud11	dlx-pl
+   10 sentences:	52.61	40.79	42.81	47.18
+   20 sentences:	55.23	45.87	43.72	48.19
+   50 sentences:	61.42	50.55	44.75	45.61
+  100 sentences:	64.95	48.11	46.21	46.18
+  200 sentences:	67.30	49.99	46.74	48.56
+  500 sentences:	62.37	49.68	46.20	48.64
+ 1000 sentences:	73.05	50.16	46.30	48.14
+ 2000 sentences:	74.87	50.36	47.61	47.26
+ 5000 sentences:	78.01	50.39	48.48	46.75
+Treebank: bg-ud11	smf	dlx-hr-ud11	dlx-sl	dlx-da-ud11
+   10 sentences:	50.46	52.69	49.73	59.40
+   20 sentences:	53.71	58.78	51.61	64.43
+   50 sentences:	69.74	66.39	58.29	66.44
+  100 sentences:	72.97	69.68	67.15	67.74
+  200 sentences:	77.88	72.29	67.57	69.53
+  500 sentences:	81.12	73.49	71.16	68.68
+ 1000 sentences:	80.10	74.39	71.52	68.69
+ 2000 sentences:	83.33	75.17	71.85	67.34
+ 5000 sentences:	86.31	75.95	71.85	67.27
+Treebank: bn	smf	dlx-te	dlx-ja	dlx-ru
+   10 sentences:	57.86	52.97	28.93	9.79
+   20 sentences:	63.06	53.49	24.56	12.60
+   50 sentences:	68.68	47.98	29.97	10.10
+  100 sentences:	73.26	53.80	38.51	18.84
+  200 sentences:	77.94	46.00	30.49	44.23
+  500 sentences:	78.15	55.78	56.30	51.83
+ 1000 sentences:	79.92	54.53	58.28	47.35
+ 2000 sentences:	79.92	52.03	54.64	48.18
+ 5000 sentences:	79.92	52.03	49.95	49.33
+Treebank: ca	dlx-it-ud11	dlx-es-ud11	dlx-fr-ud11
+   10 sentences:	59.03	57.35	59.44
+   20 sentences:	61.83	59.72	60.75
+   50 sentences:	64.06	64.11	63.32
+  100 sentences:	66.86	68.18	65.74
+  200 sentences:	69.78	68.90	66.37
+  500 sentences:	71.03	65.49	67.10
+ 1000 sentences:	71.07	67.01	68.30
+ 2000 sentences:	71.80	69.02	69.55
+ 5000 sentences:	72.37	69.87	69.65
+Treebank: cs-ud11	smf	dlx-hr-ud11	dlx-sl	dlx-bg-ud11
+   10 sentences:	48.86	44.26	46.70	37.83
+   20 sentences:	55.17	49.26	48.56	40.48
+   50 sentences:	62.26	55.97	55.30	50.99
+  100 sentences:	66.13	58.36	59.83	53.92
+  200 sentences:	69.26	60.19	60.46	58.02
+  500 sentences:	72.79	61.64	62.89	59.39
+ 1000 sentences:	71.93	63.27	62.87	59.42
+ 2000 sentences:	78.05	63.67	63.07	61.16
+ 5000 sentences:	81.19	64.05	63.07	61.86
+Treebank: da-ud11	smf	dlx-sv-ud11	dlx-fi-ud11	dlx-hr-ud11
+   10 sentences:	44.43	40.91	28.25	38.66
+   20 sentences:	57.40	46.66	28.30	45.37
+   50 sentences:	64.65	52.65	42.45	49.97
+  100 sentences:	69.26	56.38	45.37	56.12
+  200 sentences:	73.48	56.05	52.93	56.96
+  500 sentences:	77.06	58.93	53.17	56.89
+ 1000 sentences:	79.00	59.23	56.09	56.89
+ 2000 sentences:	82.01	58.05	57.75	56.58
+ 5000 sentences:	83.67	59.59	56.28	56.17
+Treebank: de	smf
+   10 sentences:	56.18
+   20 sentences:	60.20
+   50 sentences:	65.03
+  100 sentences:	69.24
+  200 sentences:	70.50
+  500 sentences:	73.23
+ 1000 sentences:	76.86
+ 2000 sentences:	78.36
+ 5000 sentences:	79.73
+Treebank: de-ud11	smf	dlx-hr-ud11	dlx-bg-ud11	dlx-sv-ud11
+   10 sentences:	50.67	41.83	37.59	41.96
+   20 sentences:	54.91	43.07	36.39	46.22
+   50 sentences:	58.24	48.50	42.07	54.48
+  100 sentences:	64.25	54.11	44.26	57.34
+  200 sentences:	67.28	54.07	54.60	59.96
+  500 sentences:	71.20	56.26	56.85	58.88
+ 1000 sentences:	73.56	58.68	56.43	57.48
+ 2000 sentences:	79.95	56.34	54.98	50.78
+ 5000 sentences:	80.89	57.71	57.14	47.56
+Treebank: el-ud11	dlx-hr-ud11	dlx-bg-ud11	dlx-pl
+   10 sentences:	45.79	36.91	39.60
+   20 sentences:	48.40	40.39	45.56
+   50 sentences:	57.27	54.57	43.41
+  100 sentences:	61.00	54.06	49.25
+  200 sentences:	61.47	58.12	55.53
+  500 sentences:	62.04	58.16	58.24
+ 1000 sentences:	62.41	59.13	59.83
+ 2000 sentences:	62.37	58.54	60.38
+ 5000 sentences:	63.36	59.60	57.86
+Treebank: en	smf
+   10 sentences:	49.46
+   20 sentences:	58.83
+   50 sentences:	62.69
+  100 sentences:	67.08
+  200 sentences:	72.34
+  500 sentences:	73.06
+ 1000 sentences:	75.20
+ 2000 sentences:	76.24
+ 5000 sentences:	84.65
+Treebank: en-ud11	smf	dlx-de-ud11	dlx-fr-ud11	dlx-sv-ud11
+   10 sentences:	50.83	47.54	46.93	44.81
+   20 sentences:	55.75	45.94	47.53	50.88
+   50 sentences:	65.88	48.90	49.63	54.53
+  100 sentences:	68.83	48.34	53.58	56.37
+  200 sentences:	72.84	52.33	55.52	56.48
+  500 sentences:	76.71	56.09	57.09	55.80
+ 1000 sentences:	78.44	57.95	56.70	54.64
+ 2000 sentences:	80.93	59.37	57.47	51.70
+ 5000 sentences:	83.70	59.64	58.25	50.68
+Treebank: es	smf
+   10 sentences:	61.85
+   20 sentences:	66.77
+   50 sentences:	69.42
+  100 sentences:	74.80
+  200 sentences:	77.65
+  500 sentences:	75.92
+ 1000 sentences:	82.71
+ 2000 sentences:	84.30
+ 5000 sentences:	86.93
+Treebank: es-ud11	smf	dlx-fr-ud11	dlx-it-ud11
+   10 sentences:	58.05	57.07	53.10
+   20 sentences:	60.99	59.01	55.49
+   50 sentences:	67.65	61.33	56.68
+  100 sentences:	71.54	63.22	60.23
+  200 sentences:	73.74	65.34	63.32
+  500 sentences:	70.11	65.57	64.41
+ 1000 sentences:	71.74	67.61	63.94
+ 2000 sentences:	73.19	68.73	65.37
+ 5000 sentences:	76.01	70.00	66.14
+Treebank: et	smf	dlx-hu-ud11	dlx-da-ud11	dlx-sv-ud11
+   10 sentences:	69.67	48.02	56.91	41.11
+   20 sentences:	70.30	58.79	60.88	56.91
+   50 sentences:	75.53	60.99	64.02	65.17
+  100 sentences:	78.88	68.52	66.64	65.59
+  200 sentences:	85.26	68.00	68.94	67.47
+  500 sentences:	85.78	66.95	67.47	69.36
+ 1000 sentences:	87.03	71.45	68.94	70.51
+ 2000 sentences:	88.29	71.76	69.15	68.73
+ 5000 sentences:	88.29	71.76	69.88	67.89
+Treebank: eu-ud11	smf	dlx-hu-ud11	dlx-et	dlx-hr-ud11
+   10 sentences:	53.17	31.35	25.17	33.40
+   20 sentences:	58.77	33.66	41.08	36.04
+   50 sentences:	66.13	33.06	44.75	40.16
+  100 sentences:	67.72	46.57	44.88	40.16
+  200 sentences:	71.75	46.86	44.07	39.27
+  500 sentences:	75.30	48.28	45.06	40.14
+ 1000 sentences:	76.98	48.72	45.49	44.37
+ 2000 sentences:	79.35	49.46	44.28	43.28
+ 5000 sentences:	80.98	49.46	44.28	44.11
+Treebank: fa	smf
+   10 sentences:	43.07
+   20 sentences:	49.80
+   50 sentences:	56.80
+  100 sentences:	61.33
+  200 sentences:	63.43
+  500 sentences:	67.54
+ 1000 sentences:	69.34
+ 2000 sentences:	69.93
+ 5000 sentences:	71.32
+Treebank: fa-ud11	smf	dlx-id-ud11	dlx-hr-ud11	dlx-he-ud11
+   10 sentences:	41.68	36.98	29.56	34.00
+   20 sentences:	55.79	38.07	37.17	39.74
+   50 sentences:	61.38	41.36	43.48	43.57
+  100 sentences:	61.28	41.56	43.91	42.38
+  200 sentences:	62.99	44.65	46.99	49.17
+  500 sentences:	68.02	41.75	46.77	47.23
+ 1000 sentences:	74.48	45.67	45.79	46.17
+ 2000 sentences:	80.68	46.93	45.68	45.65
+ 5000 sentences:	84.40	47.79	46.67	45.24
+Treebank: fi-ud11	smf	dlx-et	dlx-hu-ud11	dlx-da-ud11
+   10 sentences:	33.60	37.82	38.83	36.46
+   20 sentences:	40.66	45.44	39.90	40.15
+   50 sentences:	49.11	48.50	42.43	41.55
+  100 sentences:	56.78	51.53	46.58	43.48
+  200 sentences:	61.84	52.44	47.61	49.38
+  500 sentences:	66.81	52.66	49.39	49.84
+ 1000 sentences:	71.19	52.90	50.75	48.44
+ 2000 sentences:	75.02	52.84	50.84	50.39
+ 5000 sentences:	78.33	52.84	50.84	49.98
+Treebank: fi-ud11ftb	smf
+   10 sentences:	27.17
+   20 sentences:	42.11
+   50 sentences:	46.89
+  100 sentences:	57.12
+  200 sentences:	61.39
+  500 sentences:	68.21
+ 1000 sentences:	73.68
+ 2000 sentences:	76.83
+ 5000 sentences:	81.06
+Treebank: fr-ud11	smf	dlx-es-ud11	dlx-it-ud11
+   10 sentences:	57.22	58.67	49.50
+   20 sentences:	59.84	60.07	52.40
+   50 sentences:	65.24	61.84	57.58
+  100 sentences:	68.55	64.96	61.19
+  200 sentences:	71.85	66.54	63.21
+  500 sentences:	67.50	62.64	63.02
+ 1000 sentences:	76.43	64.28	63.33
+ 2000 sentences:	78.31	64.99	65.14
+ 5000 sentences:	79.93	66.82	66.10
+Treebank: ga-ud11	smf	dlx-id-ud11	dlx-he-ud11	dlx-it-ud11
+   10 sentences:	57.63	49.65	49.83	51.38
+   20 sentences:	60.41	49.60	57.03	53.13
+   50 sentences:	64.70	51.90	57.66	53.50
+  100 sentences:	68.60	53.68	57.95	52.53
+  200 sentences:	71.90	54.94	60.07	54.36
+  500 sentences:	76.24	53.92	59.07	50.91
+ 1000 sentences:	76.90	56.59	57.66	55.07
+ 2000 sentences:	76.90	57.58	58.52	55.07
+ 5000 sentences:	76.90	58.16	56.30	54.49
+Treebank: grc	smf	dlx-pl	dlx-bg-ud11	dlx-la
+   10 sentences:	37.09	30.38	36.82	37.83
+   20 sentences:	47.39	33.54	36.55	39.42
+   50 sentences:	50.79	34.63	42.65	41.36
+  100 sentences:	51.29	38.05	43.64	41.52
+  200 sentences:	55.14	42.21	43.47	41.69
+  500 sentences:	57.83	42.10	42.63	41.74
+ 1000 sentences:	60.37	43.05	43.95	42.40
+ 2000 sentences:	62.96	44.40	43.41	42.72
+ 5000 sentences:	64.18	44.16	43.52	42.87
+Treebank: he-ud11	smf	dlx-id-ud11	dlx-it-ud11
+   10 sentences:	57.84	45.41	50.61
+   20 sentences:	60.80	48.95	51.51
+   50 sentences:	65.85	52.99	52.62
+  100 sentences:	67.25	53.72	50.06
+  200 sentences:	72.52	54.41	53.77
+  500 sentences:	75.72	55.12	53.81
+ 1000 sentences:	78.78	54.15	54.79
+ 2000 sentences:	82.34	56.18	56.62
+ 5000 sentences:	84.48	57.65	55.36
+Treebank: hi	smf	dlx-ta	dlx-hu-ud11	dlx-eu-ud11
+   10 sentences:	69.17	42.60	36.02	37.74
+   20 sentences:	69.43	53.52	42.96	39.20
+   50 sentences:	76.03	63.68	54.65	43.54
+  100 sentences:	79.85	60.93	56.87	45.92
+  200 sentences:	82.01	62.23	55.82	48.84
+  500 sentences:	84.75	65.07	57.45	49.66
+ 1000 sentences:	86.35	65.07	57.48	54.89
+ 2000 sentences:	87.92	65.07	58.14	53.53
+ 5000 sentences:	88.88	65.07	58.14	44.80
+Treebank: hr	smf
+   10 sentences:	44.97
+   20 sentences:	52.09
+   50 sentences:	61.98
+  100 sentences:	68.26
+  200 sentences:	70.79
+  500 sentences:	73.89
+ 1000 sentences:	76.62
+ 2000 sentences:	71.97
+ 5000 sentences:	83.79
+Treebank: hr-ud11	smf	dlx-sl	dlx-bg-ud11	dlx-pl
+   10 sentences:	45.41	43.18	34.41	36.15
+   20 sentences:	53.22	44.10	35.54	37.61
+   50 sentences:	63.79	48.85	43.59	39.79
+  100 sentences:	66.87	54.33	45.46	43.57
+  200 sentences:	69.87	55.47	53.17	51.88
+  500 sentences:	74.62	57.90	55.28	54.57
+ 1000 sentences:	78.33	58.96	53.51	55.42
+ 2000 sentences:	81.05	58.91	55.98	56.34
+ 5000 sentences:	82.38	58.91	57.00	52.90
+Treebank: hu-ud11	smf	dlx-fi-ud11	dlx-bg-ud11	dlx-sv-ud11
+   10 sentences:	61.00	33.47	44.48	42.02
+   20 sentences:	66.43	31.09	50.54	49.11
+   50 sentences:	70.90	38.68	54.28	53.58
+  100 sentences:	74.68	47.34	55.64	53.55
+  200 sentences:	75.78	52.56	54.54	57.14
+  500 sentences:	77.66	51.82	56.41	48.78
+ 1000 sentences:	79.71	54.79	55.64	52.12
+ 2000 sentences:	79.42	55.45	53.14	52.37
+ 5000 sentences:	79.42	52.85	52.59	49.91
+Treebank: id-ud11	smf	dlx-hr-ud11	dlx-it-ud11	dlx-he-ud11
+   10 sentences:	54.94	38.38	43.72	44.42
+   20 sentences:	60.64	43.09	47.72	48.09
+   50 sentences:	67.31	52.31	47.52	48.77
+  100 sentences:	71.97	54.96	49.67	46.47
+  200 sentences:	75.37	56.41	52.50	57.34
+  500 sentences:	78.00	57.81	52.45	54.11
+ 1000 sentences:	79.11	58.35	53.79	54.91
+ 2000 sentences:	80.32	58.77	55.17	51.78
+ 5000 sentences:	81.64	58.99	54.70	54.69
+Treebank: it-ud11	smf	dlx-fr-ud11	dlx-hr-ud11
+   10 sentences:	58.76	61.39	44.80
+   20 sentences:	64.49	64.31	50.91
+   50 sentences:	70.55	65.55	58.26
+  100 sentences:	74.10	66.83	59.97
+  200 sentences:	78.11	68.23	62.42
+  500 sentences:	80.80	67.28	64.96
+ 1000 sentences:	82.69	70.37	67.06
+ 2000 sentences:	84.25	71.26	67.89
+ 5000 sentences:	87.27	71.27	67.58
+Treebank: ja	smf	dlx-tr	dlx-he-ud11	dlx-grc
+   10 sentences:	63.23	41.12	24.66	27.50
+   20 sentences:	72.58	45.74	25.34	31.14
+   50 sentences:	76.72	47.86	30.00	33.15
+  100 sentences:	80.50	45.29	28.44	32.63
+  200 sentences:	83.90	49.40	32.29	31.37
+  500 sentences:	85.35	50.50	36.15	32.54
+ 1000 sentences:	86.40	50.31	36.23	34.87
+ 2000 sentences:	86.36	49.40	35.01	32.05
+ 5000 sentences:	87.22	49.19	32.31	31.26
+Treebank: la	smf	dlx-grc	dlx-pl	dlx-sk
+   10 sentences:	33.08	27.88	27.42	29.76
+   20 sentences:	35.44	31.79	32.12	30.32
+   50 sentences:	36.32	33.50	31.91	32.04
+  100 sentences:	40.56	34.17	33.90	33.21
+  200 sentences:	41.77	35.92	35.40	34.17
+  500 sentences:	45.69	36.42	36.42	33.29
+ 1000 sentences:	50.31	35.98	36.25	35.52
+ 2000 sentences:	53.44	36.86	37.93	34.23
+ 5000 sentences:	54.40	39.70	39.09	33.23
+Treebank: la-it	smf
+   10 sentences:	33.51
+   20 sentences:	32.47
+   50 sentences:	40.21
+  100 sentences:	44.75
+  200 sentences:	48.84
+  500 sentences:	56.30
+ 1000 sentences:	57.93
+ 2000 sentences:	66.32
+ 5000 sentences:	70.04
+Treebank: nl	smf	dlx-hu-ud11	dlx-sv-ud11	dlx-fi-ud11
+   10 sentences:	49.75	38.64	30.87	27.78
+   20 sentences:	52.45	41.20	32.06	23.53
+   50 sentences:	53.17	43.46	35.69	27.35
+  100 sentences:	53.24	42.31	35.06	33.27
+  200 sentences:	55.37	42.60	36.76	35.03
+  500 sentences:	58.20	42.71	35.99	35.76
+ 1000 sentences:	62.98	41.90	36.32	37.89
+ 2000 sentences:	60.09	41.38	34.97	37.05
+ 5000 sentences:	71.77	41.38	35.48	35.24
+Treebank: pl	smf	dlx-hr-ud11	dlx-bg-ud11	dlx-sl
+   10 sentences:	55.58	51.14	45.06	44.57
+   20 sentences:	61.61	54.41	50.51	47.73
+   50 sentences:	67.90	62.27	59.57	56.39
+  100 sentences:	71.99	65.31	62.36	61.27
+  200 sentences:	76.23	66.64	65.50	61.91
+  500 sentences:	79.99	66.23	66.09	64.15
+ 1000 sentences:	81.22	66.42	63.57	64.31
+ 2000 sentences:	86.70	66.07	64.74	64.70
+ 5000 sentences:	89.72	66.74	66.03	64.70
+Treebank: pt	smf	dlx-it-ud11	dlx-fr-ud11	dlx-he-ud11
+   10 sentences:	60.62	59.44	56.18	56.85
+   20 sentences:	65.68	61.86	56.73	55.62
+   50 sentences:	69.55	60.90	59.00	55.59
+  100 sentences:	71.32	62.40	60.44	60.53
+  200 sentences:	75.24	65.59	62.01	63.62
+  500 sentences:	73.55	69.04	62.27	64.71
+ 1000 sentences:	74.80	69.48	66.12	65.32
+ 2000 sentences:	75.05	69.85	66.89	65.51
+ 5000 sentences:	77.27	68.92	66.31	64.18
+Treebank: ro	smf	dlx-es-ud11	dlx-hr-ud11	dlx-la
+   10 sentences:	62.92	54.40	44.13	52.09
+   20 sentences:	67.24	52.51	53.38	48.49
+   50 sentences:	75.27	56.71	59.47	55.35
+  100 sentences:	80.84	63.22	59.85	62.47
+  200 sentences:	81.33	62.20	63.64	65.54
+  500 sentences:	84.47	65.50	58.83	69.70
+ 1000 sentences:	85.27	64.74	67.01	66.75
+ 2000 sentences:	86.44	66.37	65.91	64.66
+ 5000 sentences:	86.86	69.47	68.07	65.31
+Treebank: ru	smf	dlx-sk	dlx-hr-ud11	dlx-pl
+   10 sentences:	43.73	35.95	40.84	38.15
+   20 sentences:	52.17	37.31	46.48	40.55
+   50 sentences:	59.72	42.95	53.42	40.92
+  100 sentences:	63.25	44.31	51.16	43.32
+  200 sentences:	65.94	48.76	52.12	50.03
+  500 sentences:	70.45	54.69	54.86	52.72
+ 1000 sentences:	72.88	55.01	57.35	54.89
+ 2000 sentences:	76.67	55.96	59.09	56.05
+ 5000 sentences:	82.02	60.27	58.88	56.97
+Treebank: sk	smf	dlx-hr-ud11	dlx-sl	dlx-pl
+   10 sentences:	44.80	47.36	44.53	38.08
+   20 sentences:	49.52	49.60	46.24	45.32
+   50 sentences:	55.47	53.92	51.82	47.59
+  100 sentences:	58.71	55.62	56.48	49.77
+  200 sentences:	61.14	56.91	57.43	51.94
+  500 sentences:	65.09	58.17	59.01	53.84
+ 1000 sentences:	58.67	60.28	59.32	54.39
+ 2000 sentences:	72.57	59.75	59.43	53.99
+ 5000 sentences:	76.54	60.63	59.43	55.72
+Treebank: sl	smf	dlx-hr-ud11	dlx-bg-ud11	dlx-fi-ud11
+   10 sentences:	50.71	49.49	40.68	28.46
+   20 sentences:	56.61	54.26	44.29	32.04
+   50 sentences:	65.56	58.78	52.02	48.10
+  100 sentences:	69.86	59.77	53.85	54.34
+  200 sentences:	72.34	60.29	58.02	57.59
+  500 sentences:	78.24	62.12	60.96	57.74
+ 1000 sentences:	80.43	62.92	58.52	59.79
+ 2000 sentences:	80.85	63.60	60.91	61.54
+ 5000 sentences:	80.85	64.21	60.90	59.74
+Treebank: sv-ud11	smf	dlx-hr-ud11	dlx-en-ud11	dlx-da-ud11
+   10 sentences:	43.36	45.93	49.27	48.94
+   20 sentences:	51.15	51.81	48.97	53.50
+   50 sentences:	62.31	56.94	55.66	56.69
+  100 sentences:	70.03	61.94	59.06	59.95
+  200 sentences:	72.19	62.60	62.09	62.09
+  500 sentences:	77.77	63.75	62.70	63.68
+ 1000 sentences:	80.49	64.76	65.41	66.17
+ 2000 sentences:	83.01	64.00	65.69	64.33
+ 5000 sentences:	85.99	64.83	64.17	62.89
+Treebank: ta	smf	dlx-eu-ud11	dlx-hi	dlx-hu-ud11
+   10 sentences:	53.70	32.38	50.48	38.47
+   20 sentences:	61.95	39.67	46.86	43.34
+   50 sentences:	71.35	44.80	53.65	42.54
+  100 sentences:	76.17	46.06	56.42	49.78
+  200 sentences:	78.13	47.67	56.42	50.03
+  500 sentences:	79.59	50.73	54.76	49.88
+ 1000 sentences:	79.59	49.58	55.11	49.88
+ 2000 sentences:	79.59	52.95	52.85	49.68
+ 5000 sentences:	79.59	51.19	50.63	49.68
+Treebank: te	smf	dlx-bn	dlx-tr	dlx-ja
+   10 sentences:	72.96	59.77	31.89	18.37
+   20 sentences:	73.46	65.78	29.05	16.37
+   50 sentences:	74.96	69.79	48.75	19.37
+  100 sentences:	76.80	70.29	40.41	29.39
+  200 sentences:	77.30	70.79	57.10	21.37
+  500 sentences:	85.48	72.46	62.61	64.61
+ 1000 sentences:	84.65	70.96	62.78	63.11
+ 2000 sentences:	85.81	70.96	60.94	61.61
+ 5000 sentences:	85.81	70.96	60.44	59.77
+Treebank: tr	smf	dlx-ta	dlx-hu-ud11	dlx-la
+   10 sentences:	58.41	32.84	33.40	42.37
+   20 sentences:	60.41	39.49	36.48	41.49
+   50 sentences:	65.02	48.95	45.39	37.28
+  100 sentences:	69.63	50.48	52.99	47.25
+  200 sentences:	73.55	49.79	51.17	44.45
+  500 sentences:	75.10	56.13	47.11	39.47
+ 1000 sentences:	80.15	56.13	45.96	36.19
+ 2000 sentences:	82.85	56.13	45.43	28.50
+ 5000 sentences:	83.05	56.13	45.43	32.29

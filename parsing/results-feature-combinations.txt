@@ -1,0 +1,523 @@
+data                         1                2                3                4                5                6                7                8                9                10              
+ar <= smf                    smf                                                                                                                                                                      
+                              73.05                                                                                                                                                                   
+ar <= dlx-ar                 all              none             vf               lex              lv               tmav             vt               lp               lt               prs             
+                              66.26            65.55            65.08            64.01            63.36           63.10            63.02            62.67            62.59            62.29           
+ar <= dlx-he-ud11            all              lp               tp               prs              cp               vtc              vp               vt               tmav             lvtc            
+                              50.16            48.86            48.80            48.46            48.42           47.84            47.82            47.80            47.73            47.71           
+ar <= dlx-pl                 all              prs              none             lp               lex              ng               cg               lvt              vp               tmav            
+                              48.14            46.54            46.13            45.78            45.55           44.22            44.02            44.01            44.00            43.71           
+ar <= dlx-id-ud11            cp               tn               pn               tg               num              case             tp               gad              vc               vn              
+                              46.79            46.79            46.79            46.79            46.79           46.79            46.79            46.79            46.79            46.79           
+ar <= dlx-it-ud11            tc               tmav             tp               lp               lt               cp               prs              lex              lc               none            
+                              46.52            46.52            45.75            45.68            45.18           45.07            45.07            44.98            44.98            44.73           
+ar <= dlx-ga-ud11            tg               num              pn               tn               cp               pg               cg               tmav             cn               vp              
+                              46.41            46.41            46.41            46.41            46.41           46.41            46.41            46.41            46.41            46.41           
+ar <= dlx-es                 cn               num              tn               pn               none             lex              vc               all              lc               pg              
+                              46.36            45.97            45.15            45.14            44.96           44.79            44.46            44.45            44.34            44.26           
+ar <= dlx-hr-ud11            all              prs              cn               tp               tmav             none             tc               lt               lp               vf              
+                              45.42            44.78            44.54            44.40            44.31           43.84            43.79            43.79            43.76            43.37           
+ar <= dlx-la                 all              none             lex              prs              lp               lv               cg               vf               lc               vp              
+                              44.97            44.05            43.37            41.84            41.31           41.17            40.77            40.14            40.01            39.92           
+bg-ud11 <= smf               smf                                                                                                                                                                      
+                              80.10                                                                                                                                                                   
+bg-ud11 <= dlx-bg-ud11       all              none             lc               lex              case             prs              lp               cp               lvc              lv              
+                              78.44            76.48            76.18            75.96            75.68           75.21            74.91            74.40            73.19            72.25           
+bg-ud11 <= dlx-hr-ud11       all              prs              lv               lt               lp               lex              vp               tp               lvt              none            
+                              74.39            73.70            73.21            73.10            72.95           72.94            72.70            72.67            72.57            72.44           
+bg-ud11 <= dlx-es            all              case             none             lex              lg               lc               vn               gad              vf               cg              
+                              73.02            67.42            67.31            67.10            66.24           66.11            66.00            65.92            65.33            65.26           
+bg-ud11 <= dlx-sl            all              prs              none             lex              lp               cp               vp               gad              pg               tp              
+                              71.52            69.27            68.01            66.22            64.20           64.04            63.77            63.73            62.64            62.56           
+bg-ud11 <= dlx-hr            all              lex              lp               prs              case             none             pg               gad              tmav             tp              
+                              68.70            66.08            65.97            65.69            65.34           65.31            65.19            64.96            64.75            64.59           
+bg-ud11 <= dlx-da-ud11       all              lc               case             cp               gad              none             lp               lex              pg               prs             
+                              68.69            66.57            66.23            66.06            65.81           65.79            65.58            65.45            65.10            64.83           
+bg-ud11 <= dlx-sv-ud11       lex              lp               all              vn               prs              none             lv               pn               num              ln              
+                              67.59            67.59            66.85            66.81            66.45           66.45            65.99            65.71            65.71            65.66           
+bg-ud11 <= dlx-it-ud11       case             none             lc               lex              all              cg               gad              tmav             tc               lv              
+                              67.37            67.37            66.26            66.26            64.59           60.55            60.55            60.53            60.53            60.48           
+bg-ud11 <= dlx-pl            all              none             prs              lp               lex              lv               cn               ln               lvtc             vf              
+                              66.14            65.23            65.03            64.82            64.68           62.62            62.46            62.31            62.22            62.13           
+bn <= smf                    smf                                                                                                                                                                      
+                              79.92                                                                                                                                                                   
+bn <= dlx-bn                 all              num              tg               tn               pn               tmav             none             ng               vf               vg              
+                              72.01            70.35            70.35            70.35            70.35           70.35            70.35            70.35            70.35            70.35           
+bn <= dlx-te                 vtc              tc               case             vc               lvtc             lvc              lc               lvt              lv               lt              
+                              67.02            67.02            67.02            67.02            64.83           64.83            64.83            64.31            64.31            64.31           
+bn <= dlx-ja                 all              tg               tn               tmav             tp               tc               lt               vp               vn               vg              
+                              58.28            45.79            45.79            45.79            45.79           37.26            37.15            36.22            36.22            36.22           
+bn <= dlx-fi-ud11ftb         tc               cn               cp               cg               case             vc               tn               lvc              vtc              vf              
+                              58.07            56.40            55.99            54.43            54.43           53.39            53.18            52.55            52.55            52.14           
+bn <= dlx-tr                 lv               lg               lex              none             gad              lp               vf               vg               tmav             tp              
+                              55.16            54.74            54.74            54.12            54.12           53.07            52.97            52.97            52.03            52.03           
+bn <= dlx-ru                 lvtcpng          gad              lg               tn               lvtcpn           vn               cg               vc               lvc              case            
+                              53.70            53.18            53.18            51.51            50.89           50.06            49.64            49.12            49.12            48.81           
+bn <= dlx-et                 ln               num              ng               vn               pn               tn               vtc              lvtcpng          lvc              lvtcpn          
+                              50.58            48.91            48.91            48.60            48.08           47.46            47.14            46.62            46.62            46.62           
+bn <= dlx-hi                 ln               tn               tg               tmav             cn               ng               num              lt               all              pn              
+                              49.43            48.18            47.14            45.06            44.23           42.67            42.04            42.04            40.90            39.55           
+bn <= dlx-grc                tn               tg               lvtc             vg               vn               lvc              lvtcpn           vtc              lvtcpng          tc              
+                              48.50            47.35            46.94            46.52            46.41           46.21            45.89            45.06            44.96            44.02           
+ca <= dlx-es                 all              none             case             lex              prs              cp               lc               tmav             tp               vf              
+                              79.74            78.01            77.99            76.45            76.43           76.38            76.25            76.07            76.02            75.75           
+ca <= smf                    smf                                                                                                                                                                      
+                              79.50                                                                                                                                                                   
+ca <= dlx-ca                 all              case             none             lex              prs              lc               tc               cp               tp               tmav            
+                              75.28            74.23            74.07            72.91            72.72           72.70            72.61            72.33            72.13            72.13           
+ca <= dlx-it-ud11            all              none             case             lc               lex              gad              cg               tc               tmav             tg              
+                              71.07            70.36            70.36            69.60            69.60           68.19            68.19            67.12            67.12            66.87           
+ca <= dlx-fr-ud11            tg               num              cp               tn               pn               cg               tmav             pg               cn               vp              
+                              69.13            69.13            69.13            69.13            69.13           69.13            69.13            69.13            69.13            69.13           
+ca <= dlx-es-ud11            lvtc             lvc              ln               lvtcpn           lg               lex              lc               lp               lvt              lv              
+                              67.04            67.04            67.04            67.04            67.04           67.04            67.04            67.04            67.04            67.04           
+ca <= dlx-id-ud11            all              tg               num              tn               pn               cp               pg               tmav             cn               vp              
+                              65.78            65.44            65.44            65.44            65.44           65.44            65.44            65.44            65.44            65.44           
+ca <= dlx-hr-ud11            vp               all              prs              tp               vt               lvt              tmav             none             vf               lex             
+                              65.10            65.08            64.66            64.35            63.97           63.57            63.57            63.12            63.00            62.87           
+ca <= dlx-hr                 all              prs              lp               tp               lex              tmav             lt               vp               pg               none            
+                              63.16            63.16            63.09            62.47            62.10           61.53            61.42            61.35            61.10            61.01           
+ca <= dlx-en-ud11            prs              cp               none             all              lp               case             lex              lc               num              cn              
+                              62.96            62.80            62.43            62.37            62.35           62.26            61.95            61.60            61.14            61.05           
+cs-ud11 <= smf               smf                                                                                                                                                                      
+                              71.88                                                                                                                                                                   
+cs-ud11 <= dlx-hr-ud11       all              lex              lt               lv               lp               lvt              ln               cn               cp               case            
+                              63.27            60.54            60.37            60.33            60.24           58.93            57.03            56.73            56.67            56.36           
+cs-ud11 <= dlx-sl            all              lex              lp               lv               cp               gad              lc               lt               lvt              lg              
+                              62.87            58.94            57.62            54.34            54.29           53.29            53.06            52.61            52.51            51.79           
+cs-ud11 <= dlx-cs-ud11       all              lex              lp               lv               gad              lt               lvt              lg               lvc              cp              
+                              62.44            60.15            58.15            57.64            54.95           54.51            53.73            53.40            48.51            48.28           
+cs-ud11 <= dlx-hr            all              lex              lp               lt               gad              cp               case             lv               lc               lg              
+                              62.38            59.31            59.00            58.04            55.61           55.29            55.20            54.55            54.24            54.19           
+cs-ud11 <= dlx-bg-ud11       lc               lex              lp               case             all              cp               lvc              lv               lg               lt              
+                              61.05            60.91            59.99            59.86            59.42           58.68            57.78            57.58            57.49            56.64           
+cs-ud11 <= dlx-sk            all              lex              lg               cn               lv               gad              ln               lvc              cp               lp              
+                              55.80            53.27            52.27            50.93            50.10           49.95            49.64            49.45            49.21            48.99           
+cs-ud11 <= dlx-fi-ud11       all              lvc              cp               lc               cn               cg               case             gad              lg               lex             
+                              55.14            49.07            48.65            47.42            47.37           47.09            47.09            46.78            46.49            46.49           
+cs-ud11 <= dlx-es            all              case             lex              lc               gad              lg               cp               cg               lp               lt              
+                              54.77            54.58            53.99            53.83            52.22           51.77            51.65            51.12            50.50            50.42           
+cs-ud11 <= dlx-it-ud11       case             lex              lc               all              lt               lp               lv               lvc              cp               gad             
+                              54.37            53.49            53.49            52.84            50.58           50.23            50.07            50.07            49.91            48.46           
+da-ud11 <= smf               smf                                                                                                                                                                      
+                              79.00                                                                                                                                                                   
+da-ud11 <= dlx-da-ud11       all              cp               none             case             prs              lc               lex              lp               gad              pg              
+                              75.19            73.06            72.61            72.44            71.72           71.30            71.18            70.73            70.00            69.78           
+da-ud11 <= dlx-sv-ud11       lp               lex              all              none             prs              pn               num              ln               lv               lt              
+                              59.44            59.44            59.23            58.77            58.77           57.81            57.81            57.15            57.08            55.78           
+da-ud11 <= dlx-es            all              gad              none             case             lc               lex              cg               lg               tc               tp              
+                              58.77            58.17            57.52            57.32            56.81           56.74            56.52            55.68            55.46            55.44           
+da-ud11 <= dlx-hr-ud11       all              prs              vf               none             lex              lt               lp               lv               tp               lvt             
+                              56.89            55.87            55.80            55.70            55.56           55.23            54.94            54.86            54.45            54.11           
+da-ud11 <= dlx-fi-ud11       all              lvc              vc               cp               cn               lg               lex              lv               pg               none            
+                              56.09            49.41            48.93            48.40            48.09           48.06            48.06            47.48            47.13            47.13           
+da-ud11 <= dlx-it-ud11       all              lex              lc               none             case             lt               tg               pg               cg               gad             
+                              56.07            55.71            55.71            54.53            54.53           53.61            53.53            53.32            53.10            53.10           
+da-ud11 <= dlx-bg-ud11       lc               lex              case             lp               none             prs              cp               lg               all              lv              
+                              55.92            55.75            55.08            54.81            54.64           54.41            54.33            53.58            52.81            52.69           
+da-ud11 <= dlx-en-ud11       prs              all              cp               gad              lp               none             pg               case             lc               cg              
+                              55.05            54.67            53.54            53.37            53.27           53.20            52.93            52.79            52.57            52.28           
+da-ud11 <= dlx-sl            all              none             gad              prs              lex              case             lc               ng               pg               cp              
+                              54.93            53.18            52.38            52.23            51.47           51.35            51.06            50.74            50.53            50.35           
+de <= smf                    smf                                                                                                                                                                      
+                              76.86                                                                                                                                                                   
+de <= dlx-de                 all              none             lex              gad              lg               cg               lc               lv               ng               cn              
+                              74.36            70.25            69.43            69.24            68.75           66.75            65.56            64.39            64.39            64.15           
+de <= dlx-nl                 all              lp               pg               case             cp               none             lg               prs              cg               lex             
+                              51.79            50.22            50.19            49.92            49.76           49.69            49.63            49.26            49.08            48.98           
+de <= dlx-hu-ud11            all              none             case             lex              lg               gad              lc               lv               lp               vg              
+                              41.26            40.35            39.59            39.58            38.97           38.64            38.34            38.13            38.11            37.97           
+de <= dlx-sv-ud11            num              pn               ln               all              lp               lex              lv               none             prs              vp              
+                              37.97            37.97            37.66            37.18            37.03           37.03            36.94            36.90            36.90            36.71           
+de <= dlx-fa                 cp               pg               prs              pn               vp               cn               lp               tn               num              ng              
+                              37.39            37.38            37.38            36.61            35.52           35.35            35.01            34.98            34.88            34.88           
+de <= dlx-bg-ud11            vc               case             all              prs              lc               none             gad              lg               lp               cp              
+                              36.93            36.76            36.57            36.24            36.17           36.14            36.04            35.87            35.84            35.81           
+de <= dlx-hr                 all              gad              prs              case             tmav             cg               tp               none             lex              lg              
+                              36.81            34.82            34.01            33.98            33.92           33.77            33.43            33.41            33.24            33.21           
+de <= dlx-sl                 all              none             cp               prs              gad              case             cg               lex              vg               lc              
+                              35.71            34.25            33.81            33.59            33.54           33.42            33.00            32.66            32.63            32.58           
+de <= dlx-de-ud11            lv               lvt              lp               lvtcpng          lt               lvtcpn           ln               lc               lex              lg              
+                              35.67            35.67            35.67            35.67            35.67           35.67            35.67            35.67            35.67            35.67           
+de-ud11 <= smf               smf                                                                                                                                                                      
+                              73.53                                                                                                                                                                   
+de-ud11 <= dlx-de-ud11       all              pn               tn               cp               tg               num              vg               vn               vt               vc              
+                              67.04            66.70            66.70            66.70            66.70           66.70            66.70            66.70            66.70            66.70           
+de-ud11 <= dlx-hr-ud11       all              prs              none             tp               vp               tmav             vt               vf               lex              lp              
+                              58.68            57.06            57.00            56.73            56.54           56.32            56.22            55.85            55.14            55.05           
+de-ud11 <= dlx-bg-ud11       lex              lp               lc               prs              none             lv               lt               lvc              case             lvtc            
+                              58.20            58.01            57.82            57.58            57.56           57.07            57.03            56.88            56.71            56.71           
+de-ud11 <= dlx-sv-ud11       lp               lex              all              prs              none             num              pn               ln               lt               lv              
+                              57.98            57.98            57.48            57.39            57.39           56.59            56.59            56.56            56.43            56.05           
+de-ud11 <= dlx-cs-ud11       lex              prs              none             vg               vp               lp               vf               lv               gad              lg              
+                              57.46            55.65            55.53            55.44            54.92           54.61            54.55            54.46            53.92            52.84           
+de-ud11 <= dlx-en-ud11       prs              none             cp               case             gad              lp               lex              lc               pg               cg              
+                              57.36            57.25            56.90            56.19            55.28           55.17            54.88            54.78            54.75            54.73           
+de-ud11 <= dlx-sl            none             lex              prs              all              gad              cp               lp               lg               cg               vf              
+                              56.76            55.64            55.55            55.22            54.69           53.39            53.16            53.06            53.00            52.70           
+de-ud11 <= dlx-hr            gad              prs              none             lex              all              tp               tmav             lg               lp               pg              
+                              56.66            56.56            55.79            55.75            55.61           55.11            54.78            54.36            53.86            53.76           
+de-ud11 <= dlx-ca            all              lp               lg               lex              tc               lt               case             tn               lc               none            
+                              54.64            51.62            51.54            51.25            51.24           51.21            51.20            51.04            50.89            50.86           
+el-ud11 <= smf               smf                                                                                                                                                                      
+                              79.89                                                                                                                                                                   
+el-ud11 <= dlx-el-ud11       all              vf               none             lex              lv               vp               vt               prs              lvt              lp              
+                              74.83            71.05            70.42            70.33            69.68           68.14            64.75            64.74            64.19            63.52           
+el-ud11 <= dlx-hr-ud11       all              vf               lex              lv               none             lt               prs              lp               tp               vp              
+                              62.41            60.36            60.17            59.92            59.87           59.71            59.71            59.29            59.09            59.06           
+el-ud11 <= dlx-hr            all              prs              none             tmav             lp               lex              tp               lt               vp               vt              
+                              60.63            58.44            58.42            58.12            57.84           57.79            57.45            57.06            56.06            55.42           
+el-ud11 <= dlx-bg-ud11       lex              lc               case             none             all              lp               cp               lg               prs              vf              
+                              60.61            60.48            59.73            59.66            59.13           58.56            57.47            57.47            57.40            56.07           
+el-ud11 <= dlx-pl            all              lex              none             lp               prs              lv               tmav             vt               vf               tp              
+                              59.83            57.56            56.46            55.69            55.46           53.64            53.43            53.15            53.07            52.77           
+el-ud11 <= dlx-sl            all              prs              none             lp               lex              tp               vp               lt               tmav             vt              
+                              58.99            55.54            53.97            53.92            53.43           52.60            52.35            51.47            51.15            50.30           
+el-ud11 <= dlx-sk            lex              all              none             cn               lg               lv               vf               gad              ln               vc              
+                              55.53            54.79            54.47            53.62            53.36           52.16            51.93            51.86            51.54            51.45           
+el-ud11 <= dlx-sv-ud11       num              pn               lex              lp               ln               lv               prs              none             all              tn              
+                              55.21            55.21            55.02            55.02            54.96           53.97            53.60            53.60            53.07            53.07           
+el-ud11 <= dlx-cs-ud11       lex              lp               prs              none             lv               vp               vf               lt               tp               all             
+                              55.19            54.56            54.54            53.96            53.94           53.16            52.00            51.59            51.45            51.20           
+en <= smf                    smf                                                                                                                                                                      
+                              75.12                                                                                                                                                                   
+en <= dlx-en                 all              tc               tp               tmav             tg               none             case             gad              cg               prs             
+                              68.80            65.31            65.31            65.31            65.31           65.29            65.29            65.29            65.29            64.87           
+en <= dlx-en-ud11            cp               prs              none             case             all              lp               lc               gad              cg               lex             
+                              62.77            62.69            62.37            61.83            60.73           60.59            60.55            60.21            60.09            60.07           
+en <= dlx-el-ud11            case             vc               vg               gad              pn               cp               cg               lvc              num              lc              
+                              48.26            48.08            47.84            46.86            46.76           46.48            46.24            46.24            45.94            45.84           
+en <= dlx-de-ud11            all              ln               lvtcpn           lex              lg               lc               lvtc             lvc              lp               lvt             
+                              48.12            47.90            47.90            47.90            47.90           47.90            47.90            47.90            47.90            47.90           
+en <= dlx-hr                 all              lg               none             lex              gad              case             cg               lc               lp               prs             
+                              48.04            45.78            45.72            45.60            45.28           45.18            44.86            44.72            44.52            44.22           
+en <= dlx-fr-ud11            all              cn               vp               pg               cg               tmav             none             prs              tc               ng              
+                              47.66            47.60            47.60            47.60            47.60           47.60            47.60            47.60            47.60            47.60           
+en <= dlx-et                 lv               all              lvt              vp               vg               vf               lvtcpn           lvtcpng          lex              lg              
+                              44.84            44.26            44.12            42.98            42.32           42.32            41.70            41.70            41.64            41.64           
+en <= dlx-sv-ud11            prs              none             lp               lex              lv               vp               vf               lt               tmav             tp              
+                              44.68            44.68            44.50            44.50            44.38           43.82            43.82            43.44            43.20            43.20           
+en <= dlx-hu-ud11            none             all              pg               gad              lex              lv               lc               prs              vg               vf              
+                              44.42            44.16            43.30            43.26            42.88           42.56            42.42            42.36            42.30            41.86           
+en-ud11 <= smf               smf                                                                                                                                                                      
+                              78.44                                                                                                                                                                   
+en-ud11 <= dlx-en-ud11       all              none             lex              case             prs              gad              lp               cp               lg               lc              
+                              72.68            70.02            69.59            69.55            69.35           69.12            69.11            68.99            68.96            68.86           
+en-ud11 <= dlx-en            tc               tmav             tg               case             gad              none             cg               prs              pg               cp              
+                              61.19            61.19            61.19            61.00            61.00           61.00            61.00            60.67            60.67            60.67           
+en-ud11 <= dlx-fr-ud11       ln               lvtcpn           lg               lex              lc               lvtc             lvc              lp               lvt              lv              
+                              58.26            58.26            58.26            58.26            58.26           58.26            58.26            58.26            58.26            58.26           
+en-ud11 <= dlx-de-ud11       all              num              tg               tn               pn               cp               cn               vp               pg               tmav            
+                              57.95            57.41            57.41            57.41            57.41           57.41            57.41            57.41            57.41            57.41           
+en-ud11 <= dlx-hr            all              lp               prs              none             lex              lt               tp               tmav             cp               pg              
+                              56.60            56.39            55.85            55.40            55.28           54.63            54.21            54.19            54.17            53.66           
+en-ud11 <= dlx-sv-ud11       lp               lex              none             prs              lv               lt               all              vf               vp               pn              
+                              56.48            56.48            55.92            55.92            55.18           54.67            54.64            54.37            54.37            54.22           
+en-ud11 <= dlx-el-ud11       vg               gad              vf               lg               vc               case             cg               pg               ng               lv              
+                              55.69            54.96            54.78            54.48            54.13           54.00            53.92            53.86            53.56            53.55           
+en-ud11 <= dlx-fi-ud11       all              lv               vc               none             gad              lvc              lg               lex              lp               lvtc            
+                              53.87            51.57            51.23            51.20            51.20           51.06            50.98            50.98            50.30            50.17           
+en-ud11 <= dlx-bg-ud11       lc               lex              lp               none             case             prs              lg               cp               ng               all             
+                              53.24            52.69            52.60            52.34            51.58           51.47            51.43            50.58            50.55            50.36           
+es <= smf                    smf                                                                                                                                                                      
+                              82.71                                                                                                                                                                   
+es <= dlx-es                 all              case             none             cp               lex              lc               prs              tmav             tp               tc              
+                              79.23            77.11            76.96            75.22            75.15           75.13            74.65            74.49            74.20            74.09           
+es <= dlx-ca                 all              case             none             lc               lex              tc               prs              cp               tmav             tp              
+                              72.37            71.65            71.30            69.93            69.84           69.69            69.48            69.29            69.14            68.96           
+es <= dlx-it-ud11            all              none             case             lc               lex              gad              cg               lg               tg               tc              
+                              68.14            67.03            67.03            66.73            66.73           64.93            64.93            63.47            62.91            62.73           
+es <= dlx-fr-ud11            vtc              vf               tc               ng               prs              none             gad              tp               case             vn              
+                              66.36            66.36            66.36            66.36            66.36           66.36            66.36            66.36            66.36            66.36           
+es <= dlx-es-ud11            all              lvtcpng          lt               lv               lp               lvt              lc               lg               lex              lvtcpn          
+                              65.13            65.01            65.01            65.01            65.01           65.01            65.01            65.01            65.01            65.01           
+es <= dlx-id-ud11            gad              case             tp               vc               vg               vt               vn               vf               vtc              none            
+                              63.67            63.67            63.67            63.67            63.67           63.67            63.67            63.67            63.67            63.67           
+es <= dlx-hr-ud11            all              tp               vp               prs              vt               tmav             lvt              vf               lp               none            
+                              63.37            63.17            62.86            62.76            62.38           62.25            61.70            61.48            61.42            61.00           
+es <= dlx-pt                 all              lex              none             lc               case             lvt              lvtc             lv               lvc              lg              
+                              62.82            61.92            61.60            61.57            61.02           60.71            60.57            60.38            60.16            59.89           
+es <= dlx-da-ud11            all              case             prs              none             cp               lex              lc               lg               lp               gad             
+                              61.65            60.73            60.73            60.38            60.35           60.07            59.79            59.62            59.60            59.52           
+es-ud11 <= smf               smf                                                                                                                                                                      
+                              71.74                                                                                                                                                                   
+es-ud11 <= dlx-fr-ud11       vp               cn               cg               tmav             pg               vf               vtc              none             prs              ng              
+                              68.14            68.14            68.14            68.14            68.14           68.14            68.14            68.14            68.14            68.14           
+es-ud11 <= dlx-es-ud11       all              lex              lg               lc               ln               lvtcpn           lvc              lvtc             lt               lvtcpng         
+                              67.76            67.63            67.63            67.63            67.63           67.63            67.63            67.63            67.63            67.63           
+es-ud11 <= dlx-it-ud11       none             case             lex              lc               gad              cg               tg               tc               tmav             lvc             
+                              67.16            67.16            66.16            66.16            64.92           64.92            64.37            64.07            64.07            64.03           
+es-ud11 <= dlx-es            case             none             tmav             lex              tc               cp               all              tp               vt               lc              
+                              67.14            66.92            65.98            65.78            65.78           65.70            65.68            65.53            65.33            65.21           
+es-ud11 <= dlx-ca            case             none             all              prs              cp               tc               lex              tmav             lc               lp              
+                              65.37            65.09            64.54            64.49            64.47           64.16            64.12            64.00            64.00            63.88           
+es-ud11 <= dlx-en-ud11       prs              none             lp               cp               case             tp               num              lg               lex              tmav            
+                              63.09            62.56            62.11            61.56            61.47           61.33            61.25            61.21            61.17            61.10           
+es-ud11 <= dlx-hr            lp               all              tp               prs              none             lt               tmav             lex              vp               pg              
+                              62.19            62.15            62.06            61.69            61.40           61.21            61.08            60.65            60.33            59.81           
+es-ud11 <= dlx-hr-ud11       all              vp               prs              vf               lvt              vt               tp               tmav             lp               lex             
+                              61.45            59.95            59.93            59.89            59.42           59.35            59.31            59.16            58.94            58.36           
+es-ud11 <= dlx-id-ud11       vf               vtc              prs              none             ng               tc               gad              case             tp               vc              
+                              61.24            61.24            61.24            61.24            61.24           61.24            61.24            61.24            61.24            61.24           
+et <= smf                    smf                                                                                                                                                                      
+                              87.03                                                                                                                                                                   
+et <= dlx-et                 all              gad              none             lex              lg               vp               lv               pg               prs              lp              
+                              86.20            82.85            82.85            82.22            82.22           79.50            79.29            78.77            78.77            78.56           
+et <= dlx-hu-ud11            lex              none             all              gad              pg               lg               vp               lp               lc               case            
+                              73.65            73.44            71.45            71.24            70.09           68.94            68.52            68.10            67.68            67.58           
+et <= dlx-fi-ud11            gad              none             lex              lg               cp               cn               lc               pg               prs              lv              
+                              73.44            73.44            71.66            71.66            69.67           69.36            68.83            68.42            68.42            67.89           
+et <= dlx-sv-ud11            all              pn               num              ln               vn               lex              vf               vp               lp               none            
+                              70.51            70.09            70.09            69.98            69.36           68.73            68.73            68.73            68.73            68.31           
+et <= dlx-pl                 case             cp               lc               none             all              cg               lvtcpng          lex              prs              lp              
+                              70.30            69.57            68.94            68.42            68.42           68.10            68.00            67.47            67.26            66.43           
+et <= dlx-da-ud11            lc               all              lex              num              lp               cp               ln               lg               case             pn              
+                              69.57            68.94            68.10            67.26            67.06           66.74            66.74            66.53            66.53            66.43           
+et <= dlx-bg-ud11            lg               cg               all              gad              lex              lp               none             cp               case             prs             
+                              68.31            66.95            66.64            66.43            66.11           65.90            65.80            65.49            65.38            65.38           
+et <= dlx-hr                 all              lc               case             gad              tc               cn               pg               cg               pn               ng              
+                              67.47            65.80            65.07            64.86            64.02           63.92            63.71            63.50            63.50            63.39           
+et <= dlx-el-ud11            lg               vc               vg               gad              cg               case             lc               lvc              ng               cn              
+                              66.64            66.43            66.22            66.01            64.86           64.34            64.34            64.02            62.45            62.14           
+eu-ud11 <= smf               smf                                                                                                                                                                      
+                              76.98                                                                                                                                                                   
+eu-ud11 <= dlx-eu-ud11       all              prs              none             lex              lp               pn               num              vn               ln               tmav            
+                              73.36            65.23            64.95            64.21            64.20           63.19            62.89            62.26            61.91            61.80           
+eu-ud11 <= dlx-hu-ud11       lt               lg               lvt              gad              lv               lex              none             vt               vp               lp              
+                              51.49            50.88            50.46            49.77            49.73           49.66            49.59            49.43            49.41            49.19           
+eu-ud11 <= dlx-pl            lvtcpn           cn               lvtcpng          vc               ln               lvc              pn               num              vtc              lvtc            
+                              47.65            47.58            47.34            47.19            47.11           46.77            45.72            45.67            45.66            45.59           
+eu-ud11 <= dlx-en            lvtcpn           lvtcpng          lvtc             lvt              lvc              lv               vg               vc               vf               vn              
+                              45.96            45.96            45.84            45.84            45.13           45.13            44.71            44.71            44.71            44.27           
+eu-ud11 <= dlx-bg-ud11       pg               ng               tg               pn               vg               num              ln               cn               gad              prs             
+                              45.82            45.75            44.64            44.56            44.17           44.01            43.76            43.50            43.41            43.18           
+eu-ud11 <= dlx-et            all              tc               lvc              vn               lex              lg               cp               lp               case             cg              
+                              45.49            44.16            43.87            43.55            43.50           43.50            43.46            43.44            43.41            43.41           
+eu-ud11 <= dlx-hr-ud11       all              gad              lvtc             cp               vg               case             prs              vtc              lex              lp              
+                              44.37            43.35            42.87            42.63            42.39           42.29            42.20            41.93            41.93            41.78           
+eu-ud11 <= dlx-tr            lv               vg               vf               vc               lvc              gad              none             lvt              cg               case            
+                              43.97            42.88            42.88            42.39            40.86           40.53            40.53            39.84            39.64            39.64           
+eu-ud11 <= dlx-te            lvtcpng          lvtcpn           pn               cp               all              ng               pg               vp               prs              tp              
+                              43.12            41.53            41.11            38.77            38.01           35.92            35.90            35.62            35.62            35.62           
+fa <= smf                    smf                                                                                                                                                                      
+                              69.34                                                                                                                                                                   
+fa <= dlx-fa                 gad              none             cg               case             all              lc               lex              lg               vg               vf              
+                              59.82            59.82            59.77            59.77            58.98           58.49            58.25            58.25            46.54            46.54           
+fa <= dlx-fa-ud11            vtc              vt               lvt              lvtc             tc               tmav             tp               tg               vc               vp              
+                              32.26            32.26            31.35            30.30            28.88           28.19            28.19            28.19            28.00            27.66           
+fa <= dlx-he-ud11            tp               prs              lt               tmav             cp               lp               none             tc               lex              lc              
+                              28.03            28.00            27.96            27.52            27.40           27.21            26.97            26.89            26.51            26.33           
+fa <= dlx-ar                 tmav             vt               lvt              lt               vf               lp               none             lex              tp               lv              
+                              27.54            27.21            26.04            25.73            25.73           24.47            24.47            24.41            23.91            23.47           
+fa <= dlx-es                 num              cn               pn               tn               ln               vp               pg               lp               vn               vtc             
+                              26.48            26.15            24.39            24.21            23.74           23.46            23.32            23.26            23.25            23.12           
+fa <= dlx-id-ud11            vp               cn               pg               tmav             none             prs              ng               tc               vf               vtc             
+                              25.67            25.67            25.67            25.67            25.67           25.67            25.67            25.67            25.67            25.67           
+fa <= dlx-pt                 prs              lt               cp               lp               tp               none             lex              vc               tmav             vp              
+                              25.58            24.56            24.44            24.24            24.15           23.95            23.76            23.55            23.38            23.10           
+fa <= dlx-it-ud11            prs              cp               lp               tp               tmav             tc               lt               vp               lvtc             lvt             
+                              24.70            24.70            24.68            23.91            23.07           23.07            22.98            22.80            22.31            22.31           
+fa <= dlx-ga-ud11            vc               vg               vt               vn               gad              case             tp               prs              none             tc              
+                              24.68            24.68            24.68            24.68            24.68           24.68            24.68            24.68            24.68            24.68           
+fa-ud11 <= smf               smf                                                                                                                                                                      
+                              74.48                                                                                                                                                                   
+fa-ud11 <= dlx-fa-ud11       cg               case             cp               pg               gad              none             prs              lc               all              vc              
+                              63.26            63.26            63.26            63.03            63.03           63.03            63.03            62.87            62.85            62.80           
+fa-ud11 <= dlx-he-ud11       vc               vf               vp               lvc              lv               vt               vtc              none             lvt              lex             
+                              51.57            51.20            50.94            50.74            50.53           49.76            49.27            49.16            49.08            49.05           
+fa-ud11 <= dlx-it-ud11       none             case             lc               lex              cg               gad              lg               all              lt               tmav            
+                              48.77            48.77            48.71            48.71            47.42           47.42            47.13            45.58            45.51            45.39           
+fa-ud11 <= dlx-es            vn               num              tn               cg               gad              cn               none             lex              all              pn              
+                              46.87            45.70            45.46            45.23            45.20           44.92            44.89            44.44            44.41            43.76           
+fa-ud11 <= dlx-hr-ud11       tmav             tp               none             prs              lp               all              lex              lv               vf               lt              
+                              46.79            46.77            46.35            46.32            45.82           45.79            45.65            45.55            45.39            45.35           
+fa-ud11 <= dlx-id-ud11       cp               tn               pn               num              tg               vf               vtc              tc               ng               none            
+                              46.50            46.50            46.50            46.50            46.50           46.50            46.50            46.50            46.50            46.50           
+fa-ud11 <= dlx-pl            all              ng               pn               lg               pg               lp               prs              none             ln               lex             
+                              45.62            45.57            45.30            45.27            44.85           44.61            44.28            44.28            44.18            44.17           
+fa-ud11 <= dlx-hr            none             prs              tp               lp               all              tmav             lex              lt               lv               vf              
+                              45.52            45.33            45.26            45.19            45.13           45.11            45.09            44.74            43.64            43.52           
+fa-ud11 <= dlx-la            none             lex              all              lv               lp               vf               vp               prs              vt               tp              
+                              45.01            44.71            44.20            43.74            43.60           43.20            42.99            42.78            42.65            41.55           
+fi-ud11 <= smf               smf                                                                                                                                                                      
+                              71.19                                                                                                                                                                   
+fi-ud11 <= dlx-fi-ud11       all              none             gad              lex              lg               prs              pg               lp               lv               vc              
+                              66.20            55.52            55.52            54.62            54.62           52.99            52.99            52.00            51.95            51.66           
+fi-ud11 <= dlx-et            all              gad              none             lp               lex              lg               pg               prs              lv               vp              
+                              52.90            49.37            49.37            48.65            48.30           48.30            48.04            48.04            47.90            47.65           
+fi-ud11 <= dlx-hu-ud11       none             gad              all              lex              pg               lg               vg               lv               prs              lp              
+                              51.10            51.04            50.75            49.92            49.87           49.65            49.46            49.43            49.06            48.81           
+fi-ud11 <= dlx-fi-ud11ftb    all              lex              lg               lv               vc               vg               vf               gad              none             lp              
+                              50.75            43.60            43.60            43.42            43.31           43.28            43.28            42.78            42.78            42.74           
+fi-ud11 <= dlx-da-ud11       all              lp               none             lex              prs              pn               ng               ln               num              lg              
+                              48.44            46.24            46.10            45.73            45.64           45.16            45.05            44.72            44.63            44.60           
+fi-ud11 <= dlx-en-ud11       lp               lc               pg               cg               prs              cp               lg               lex              gad              case            
+                              47.58            47.25            47.13            47.11            46.69           46.59            46.55            46.48            46.47            46.14           
+fi-ud11 <= dlx-bg-ud11       lg               lc               gad              all              lex              none             lp               cg               case             ng              
+                              47.51            46.35            46.32            46.13            45.95           45.93            45.73            45.50            45.25            45.18           
+fi-ud11 <= dlx-sv-ud11       all              lp               lex              prs              none             ng               lg               num              pn               vp              
+                              47.01            46.07            46.07            45.53            45.53           45.43            45.27            44.65            44.65            44.34           
+fi-ud11 <= dlx-hr-ud11       all              prs              tmav             vf               none             lv               tp               lt               lp               tc              
+                              46.00            45.69            45.09            44.98            44.92           44.84            44.83            44.73            44.57            44.22           
+fi-ud11ftb <= smf            smf                                                                                                                                                                      
+                              73.68                                                                                                                                                                   
+fi-ud11ftb <= dlx-fi-ud11ftb all              vg               vf               lex              lg               gad              none             lv               vc               vp              
+                              69.81            63.53            63.53            63.25            63.25           63.03            63.03            62.97            62.22            61.92           
+fi-ud11ftb <= dlx-fi-ud11    all              gad              none             lex              lg               pn               pg               prs              ln               cn              
+                              53.47            48.55            48.55            47.63            47.63           46.07            45.55            45.55            45.54            45.27           
+fi-ud11ftb <= dlx-hu-ud11    vg               gad              vp               all              none             pg               vf               lv               prs              vt              
+                              48.42            47.40            47.22            47.05            46.96           46.81            46.67            46.63            46.45            46.41           
+fi-ud11ftb <= dlx-et         all              lv               lvt              vt               vg               vf               vp               lp               gad              none            
+                              47.65            46.35            45.40            45.20            45.17           45.17            44.88            44.63            44.44            44.44           
+fi-ud11ftb <= dlx-bn         cp               tp               prs              pg               vp               pn               lvtcpng          lvtcpn           ln               lc              
+                              46.02            45.17            45.17            45.17            45.17           44.70            44.50            44.50            43.94            43.81           
+fi-ud11ftb <= dlx-sv-ud11    lvt              lt               vt               tp               tmav             none             prs              vn               all              lv              
+                              45.93            45.72            45.55            45.30            45.30           45.20            45.20            44.95            44.76            44.67           
+fi-ud11ftb <= dlx-el-ud11    gad              lg               case             pg               ng               cp               cn               cg               lc               num             
+                              45.45            44.92            44.86            44.71            44.70           44.65            44.46            44.26            44.20            44.09           
+fi-ud11ftb <= dlx-tr         lv               vc               vg               vf               lvc              gad              none             vt               cg               case            
+                              44.17            44.16            44.03            44.03            43.21           41.59            41.59            40.95            40.90            40.90           
+fi-ud11ftb <= dlx-de         all              none             gad              lvc              lex              lg               lt               lc               vc               cn              
+                              43.94            43.79            43.33            43.31            43.24           43.08            43.06            43.01            42.95            42.78           
+fr-ud11 <= smf               smf                                                                                                                                                                      
+                              76.43                                                                                                                                                                   
+fr-ud11 <= dlx-fr-ud11       all              cp               tn               pn               num              tg               vf               vtc              none             prs             
+                              69.93            69.90            69.90            69.90            69.90           69.90            69.90            69.90            69.90            69.90           
+fr-ud11 <= dlx-it-ud11       none             case             lc               lex              lp               cg               gad              tmav             tc               pg              
+                              66.62            66.62            66.57            66.57            65.00           64.79            64.79            64.62            64.62            64.52           
+fr-ud11 <= dlx-es            none             case             tp               lex              cp               lc               tmav             prs              tc               all             
+                              65.61            65.34            65.18            65.18            65.07           64.79            64.34            64.32            64.27            64.25           
+fr-ud11 <= dlx-es-ud11       all              lvtcpn           ln               lc               lex              lg               lvtc             lvc              lv               lvt             
+                              64.28            63.73            63.73            63.73            63.73           63.73            63.73            63.73            63.73            63.73           
+fr-ud11 <= dlx-ca            lc               none             case             lex              all              cp               prs              lp               lt               gad             
+                              63.38            63.08            62.95            62.84            62.37           62.36            62.34            62.33            62.12            62.03           
+fr-ud11 <= dlx-en-ud11       prs              lp               cp               lc               lex              none             case             tc               lt               tmav            
+                              61.92            61.27            61.23            61.21            61.16           61.02            60.85            60.51            60.49            60.48           
+fr-ud11 <= dlx-id-ud11       all              num              tg               cp               pn               tn               vp               cn               tmav             pg              
+                              60.78            60.23            60.23            60.23            60.23           60.23            60.23            60.23            60.23            60.23           
+fr-ud11 <= dlx-pt            lv               lvtc             lvc              lvt              lex              lt               lp               lc               vt               none            
+                              60.68            60.59            60.47            59.97            59.82           59.29            59.22            58.98            58.71            58.42           
+fr-ud11 <= dlx-hr            all              tp               lp               prs              lex              lt               none             vp               tmav             pg              
+                              60.15            58.69            58.67            58.67            58.56           58.02            57.98            57.81            57.60            57.15           
+ga-ud11 <= smf               smf                                                                                                                                                                      
+                              76.90                                                                                                                                                                   
+ga-ud11 <= dlx-ga-ud11       tg               num              tn               pn               cp               pg               cg               tmav             vp               cn              
+                              69.25            69.25            69.25            69.25            69.25           69.25            69.25            69.25            69.25            69.25           
+ga-ud11 <= dlx-he-ud11       vp               lvt              lc               vt               tp               lex              lvtc             lp               vtc              lv              
+                              59.39            59.31            59.15            59.07            59.02           58.84            58.84            58.73            58.58            58.50           
+ga-ud11 <= dlx-id-ud11       tmav             pg               vp               cn               case             tp               gad              vn               vt               vg              
+                              57.08            57.08            57.08            57.08            57.08           57.08            57.08            57.08            57.08            57.08           
+ga-ud11 <= dlx-it-ud11       lex              lc               tg               lp               lt               all              tc               tmav             lg               case            
+                              56.38            56.38            55.38            55.33            55.28           55.07            55.04            55.04            54.96            54.73           
+ga-ud11 <= dlx-hr            lp               all              tp               lt               prs              lex              none             tmav             cg               lg              
+                              55.62            55.44            55.33            55.30            55.23           55.23            55.04            55.02            53.68            53.63           
+ga-ud11 <= dlx-es-ud11       lex              lg               lc               ln               lvtcpn           lvc              lvtc             lt               lvtcpng          lp              
+                              54.52            54.52            54.52            54.52            54.52           54.52            54.52            54.52            54.52            54.52           
+ga-ud11 <= dlx-ca            all              tmav             case             ng               tc               none             lc               lt               num              lex             
+                              54.49            53.58            53.55            53.50            53.42           53.34            53.29            53.11            53.03            52.82           
+ga-ud11 <= dlx-pt            none             lex              all              lc               lg               lp               case             gad              ln               tmav            
+                              54.36            53.68            53.26            53.03            53.03           52.74            52.45            52.43            51.85            51.69           
+ga-ud11 <= dlx-bg-ud11       none             case             lc               lex              prs              lp               cp               cg               lg               gad             
+                              54.26            54.00            53.89            53.34            53.29           53.08            52.77            52.66            52.35            52.24           
+grc <= smf                   smf                                                                                                                                                                      
+                              60.37                                                                                                                                                                   
+grc <= dlx-grc               all              none             lex              lp               num              prs              lvtcpng          lvtcpn           vtc              cn              
+                              56.42            46.55            46.25            43.02            42.85           42.65            42.21            42.13            41.96            41.76           
+grc <= dlx-bg-ud11           all              prs              case             none             cp               lc               lp               lv               gad              lex             
+                              43.95            42.35            42.31            42.11            41.96           41.94            41.61            41.47            41.36            41.07           
+grc <= dlx-pl                all              cn               lg               none             gad              lex              ln               lvtcpng          lp               prs             
+                              43.05            39.79            39.59            39.59            39.54           39.46            39.37            39.34            38.97            38.77           
+grc <= dlx-la                all              lex              cg               gad              lg               none             ln               vc               pn               lc              
+                              42.40            37.27            37.07            36.65            36.45           36.18            35.74            35.44            35.31            35.29           
+grc <= dlx-hr-ud11           all              vf               vp               lvt              tmav             vt               lv               tp               lex              prs             
+                              40.47            39.37            39.19            39.07            38.85           38.80            38.63            38.06            37.94            37.83           
+grc <= dlx-et                all              vtc              vc               lvtcpn           lvtcpng          lvtc             lvc              case             cg               cp              
+                              40.33            40.31            39.94            39.56            39.56           39.32            39.20            38.94            38.94            38.58           
+grc <= dlx-hu-ud11           all              lex              lg               case             lc               none             lvc              lp               lv               pg              
+                              39.42            37.56            37.09            37.07            36.92           36.85            35.29            35.04            34.85            34.82           
+grc <= dlx-sl                all              gad              lc               cg               cp               case             prs              lg               pg               vc              
+                              38.90            35.69            35.37            35.24            34.95           34.80            33.81            33.66            33.29            33.15           
+grc <= dlx-sv-ud11           num              pn               ln               vn               ng               lp               lex              vg               pg               gad             
+                              38.41            38.41            37.99            37.66            37.41           37.07            37.07            37.05            37.04            37.04           
+he-ud11 <= smf               smf                                                                                                                                                                      
+                              78.78                                                                                                                                                                   
+he-ud11 <= dlx-he-ud11       all              none             vf               tmav             case             vt               tc               lex              vp               vc              
+                              76.05            72.26            71.97            71.59            70.89           70.88            70.88            70.84            70.52            70.44           
+he-ud11 <= dlx-it-ud11       lex              lc               lg               gad              cg               all              case             none             lv               lvc             
+                              57.09            57.09            55.70            55.44            55.44           54.79            54.66            54.66            54.08            54.08           
+he-ud11 <= dlx-es            all              lex              lc               lg               none             case             cn               pn               lp               vn              
+                              57.07            56.43            56.12            54.97            54.85           54.80            54.21            53.75            53.69            53.45           
+he-ud11 <= dlx-ca            all              lg               lex              lv               lvc              lc               tc               lvtc             case             vc              
+                              56.30            54.73            54.66            54.65            54.48           54.18            53.80            53.78            53.77            53.76           
+he-ud11 <= dlx-id-ud11       vf               vtc              tc               ng               none             prs              case             gad              tp               vt              
+                              55.65            55.65            55.65            55.65            55.65           55.65            55.65            55.65            55.65            55.65           
+he-ud11 <= dlx-sl            all              none             prs              lex              tp               vp               lp               gad              lv               tmav            
+                              54.00            51.31            50.68            49.83            49.20           48.82            48.34            48.33            47.97            47.63           
+he-ud11 <= dlx-es-ud11       ln               lvtcpn           lg               lex              lc               lvtc             lvc              lvt              lp               lv              
+                              53.54            53.54            53.54            53.54            53.54           53.54            53.54            53.54            53.54            53.54           
+he-ud11 <= dlx-pt            lex              none             all              lc               case             lvc              lg               lv               lvtc             gad             
+                              52.99            52.99            52.81            52.70            52.55           51.60            51.44            51.22            51.07            51.00           
+he-ud11 <= dlx-fr-ud11       tn               pn               cp               tg               num              vc               vt               vn               vg               case            
+                              52.50            52.50            52.50            52.50            52.50           52.50            52.50            52.50            52.50            52.50           
+hi <= smf                    smf                                                                                                                                                                      
+                              86.35                                                                                                                                                                   
+hi <= dlx-hi                 all              none             lex              vf               lv               prs              vg               num              gad              lp              
+                              80.55            76.95            75.77            74.87            73.13           73.10            72.65            71.58            71.19            70.62           
+hi <= dlx-ta                 all              lvt              lv               vf               lt               vn               lvtcpng          none             tmav             vt              
+                              65.07            63.31            63.10            62.42            62.25           62.02            61.91            61.62            61.46            61.44           
+hi <= dlx-hu-ud11            vp               vt               lt               tp               tmav             lvt              lv               prs              vg               vf              
+                              62.60            62.45            62.33            62.18            61.99           61.82            61.41            61.24            61.24            61.20           
+hi <= dlx-eu-ud11            pn               num              cp               cg               cn               vtc              tn               case             tc               ln              
+                              56.26            55.85            55.83            55.67            55.60           55.58            55.58            55.48            55.47            54.91           
+hi <= dlx-et                 all              lp               tp               lvt              lt               prs              pg               lex              lg               vp              
+                              50.68            47.15            46.92            46.42            46.40           46.16            46.16            46.07            46.07            45.99           
+hi <= dlx-fi-ud11ftb         lv               pg               prs              none             gad              vf               vg               lp               vp               lt              
+                              50.45            49.85            49.85            49.50            49.50           49.46            49.46            49.33            48.76            48.25           
+hi <= dlx-fi-ud11            vf               vg               vp               all              lv               tmav             tg               lp               prs              pg              
+                              47.30            47.30            46.84            45.25            44.91           44.34            44.34            44.32            44.19            44.19           
+hi <= dlx-te                 lvtcpng          lvtcpn           cp               ng               pn               all              cn               tn               num              vn              
+                              40.72            40.50            40.28            38.01            37.75           35.83            35.69            35.19            35.19            35.19           
+hi <= dlx-bn                 cp               lvtcpn           lvtcpng          pg               vp               tp               prs              pn               tmav             gad             
+                              39.63            38.80            38.80            37.62            37.62           37.62            37.62            36.72            36.44            36.44           
+hr <= smf                    smf                                                                                                                                                                      
+                              76.62                                                                                                                                                                   
+hr <= dlx-hr                 all              none             lex              prs              lp               tmav             tp               lt               vp               gad             
+                              72.61            68.27            67.19            66.93            65.71           65.69            65.22            63.75            61.12            60.56           
+hr <= dlx-hr-ud11            all              none             lex              vf               prs              lp               tp               lt               lv               vp              
+                              69.33            66.65            65.31            65.31            65.06           64.58            64.39            64.33            64.30            63.94           
+hr <= dlx-sl                 all              prs              none             lp               lex              vp               tp               tmav             vf               lv              
+                              59.73            57.07            56.89            55.61            55.15           53.22            52.97            52.66            52.06            51.04           
+hr <= dlx-cs-ud11            lex              prs              lp               all              none             vp               lv               vf               tp               lt              
+                              57.31            54.67            54.42            54.26            54.26           52.88            52.25            52.15            51.84            51.14           
+hr <= dlx-bg-ud11            lc               lex              none             case             lp               prs              all              cp               lvc              lv              
+                              56.41            56.37            55.90            55.60            55.03           54.98            53.87            53.77            53.46            53.12           
+hr <= dlx-pl                 all              none             lex              lp               prs              lv               vt               tmav             vf               lvt             
+                              55.68            52.09            51.92            51.81            51.59           50.87            50.50            50.31            50.25            49.96           
+hr <= dlx-es                 none             case             lc               lex              vf               cp               vc               all              tc               vt              
+                              55.43            54.65            53.11            52.92            52.17           51.75            51.61            51.59            51.58            51.50           
+hr <= dlx-it-ud11            none             case             lex              lc               all              tc               tmav             lt               lv               lvc             
+                              53.24            53.24            52.21            52.21            51.10           50.47            50.47            49.85            49.16            49.16           
+hr <= dlx-el-ud11            vf               lv               none             lex              vp               lvt              vt               all              vc               lt              
+                              52.69            51.79            51.34            50.83            50.25           48.49            48.48            48.40            47.53            46.61           
+hr-ud11 <= smf               smf                                                                                                                                                                      
+                              78.33                                                                                                                                                                   
+hr-ud11 <= dlx-hr-ud11       all              none             lp               lex              prs              lt               vf               lv               tmav             tp              
+                              75.52            71.84            70.74            70.31            70.24           70.09            69.90            69.44            68.85            68.61           
+hr-ud11 <= dlx-hr            all              lex              none             prs              lp               tmav             lt               tp               lv               vf              
+                              64.10            60.15            60.05            59.54            59.54           59.30            59.01            58.11            56.42            56.05           
+hr-ud11 <= dlx-sl            all              prs              none             lex              lp               tp               lv               tmav             vp               vf              
+                              58.96            56.10            55.86            55.01            54.60           52.27            52.05            51.88            51.59            50.48           
+hr-ud11 <= dlx-bg-ud11       lex              lc               none             case             lp               prs              lv               lvc              cp               lvt             
+                              57.53            57.53            56.15            56.10            55.91           54.96            54.79            54.45            54.14            53.90           
+hr-ud11 <= dlx-pl            all              none             lp               lex              tmav             prs              tc               lv               vf               lt              
+                              55.42            53.34            52.27            51.96            51.01           50.38            49.87            49.82            49.77            49.68           
+hr-ud11 <= dlx-it-ud11       case             none             all              lc               lex              tmav             tc               tp               lt               lp              
+                              54.48            54.48            53.29            52.22            52.22           50.87            50.87            50.02            49.36            49.36           
+hr-ud11 <= dlx-cs-ud11       lex              lp               none             prs              all              lv               vf               tp               tmav             vg              
+                              54.14            53.80            53.31            52.88            52.54           51.08            50.53            50.41            50.16            49.44           
+hr-ud11 <= dlx-es            none             all              case             lex              lc               vf               vc               cp               lvt              lv              
+                              54.09            54.07            54.02            53.68            53.53           53.39            52.73            52.17            52.17            51.91           
+hr-ud11 <= dlx-da-ud11       lc               cp               case             pg               gad              lg               lp               cg               none             ln              
+                              53.63            52.56            52.25            51.54            51.06           50.62            50.50            50.45            50.26            50.21           
+GLOBAL                       all              lex              none             lp               prs              case             lc               gad              lv               cp              
+                             166.080734556611 161.624932120689 159.622404780113 128.667249847349 122.937931970809 96.0433996040261 91.8215699215077 88.3170534046381 87.8528404090049 78.7538233986228

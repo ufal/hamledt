@@ -2,4 +2,6 @@ parsing/pokus
 parsing/full
 parsing/delex
 parsing/exp
+parsing/curve
+parsing/keep0curve
 
