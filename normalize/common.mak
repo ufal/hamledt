@@ -28,8 +28,8 @@ CONLLUDIR = $(DATADIR)/$(SUBDIRCU)
 # I am temporarily setting it rather high in order to sneak before Shadi's jobs.
 TREEX      = treex -L$(LANGCODE)
 QTREEX     = treex -p --jobs 100 --priority=0 -L$(LANGCODE)
-IMPORTX    = Read::CoNLLX lines_per_doc=500
-IMPORTU    = Read::CoNLLU lines_per_doc=500
+IMPORTX    = Read::CoNLLX lines_per_doc=100
+IMPORTU    = Read::CoNLLU lines_per_doc=100
 WRITE0     = Write::Treex file_stem='' compress=1
 WRITE      = Write::Treex compress=1
 # Treebank-specific Makefiles must override the value of HARMONIZE if their harmonization block is not called Harmonize.
