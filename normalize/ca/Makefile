@@ -2,7 +2,7 @@ LANGCODE=ca
 TREEBANK=ca
 include ../common.mak
 
-IMPORTX = Read::CoNLL2009 lines_per_doc=500
+IMPORTX = Read::CoNLL2009 lines_per_doc=100
 
 source:
 	mkdir -p $(DATADIR)
