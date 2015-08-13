@@ -53,7 +53,8 @@ foreach my $treebank (@treebanks)
     $i++;
 }
 my $partsize = 22;
-for(my $i = 0; $i<2; $i++)
+my $n = int((scalar(@treebanks) - 1) / $partsize) + 1;
+for(my $i = 0; $i < $n; $i++)
 {
     my $from = $i*$partsize;
     my $to = ($i+1)*$partsize-1;
