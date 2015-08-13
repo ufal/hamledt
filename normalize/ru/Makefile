@@ -11,13 +11,13 @@ source:
 # and store the results in 000_orig/
 treex:
 	cat $(IN)/*.tgt | $(TREEX) \
-		Read::Syntagrus lines_per_doc=500 \
+		Read::Syntagrus lines_per_doc=100 \
 		$(WRITE0) path=$(DIR0)/train/
 	cat $(IN)/*.tgt.DEV | $(TREEX) \
-		Read::Syntagrus lines_per_doc=500 \
+		Read::Syntagrus lines_per_doc=100 \
 		$(WRITE0) path=$(DIR0)/dev/
 	cat $(IN)/*.tgt.TEST | $(TREEX) \
-		Read::Syntagrus lines_per_doc=500 \
+		Read::Syntagrus lines_per_doc=100 \
 		$(WRITE0) path=$(DIR0)/test/
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
