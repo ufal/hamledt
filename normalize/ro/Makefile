@@ -22,7 +22,7 @@ $(IN)/%.xml: $(ORIG_TREEBANK)/*.xml
         done
 	echo '</DGAdoc>' >> $@
 
-IMPORT = Read::DGA bundles_per_doc=500
+IMPORT = Read::DGA bundles_per_doc=100
 treex:
 	$(TREEX) $(IMPORT) from=$(IN)/train.xml $(WRITE0) path=$(DIR0)/train/
 	$(TREEX) $(IMPORT) from=$(IN)/dev.xml   $(WRITE0) path=$(DIR0)/dev/
