@@ -4,10 +4,9 @@ VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
 ALL_TREEBANKS={ar,bg-ud11,bn,ca,cs,da-ud11,de,de-ud11,el-ud11,en,en-ud11,es,es-ud11,et,eu-ud11,fa,fa-ud11,fi-ud11,fi-ud11ftb,fr-ud11,ga-ud11,grc,he-ud11,hi,hr-ud11,hu-ud11,id-ud11,it-ud11,ja,la,la-it,nl,pl,pt,ro,ru,sk,sl,sv-ud11,ta,te,tr}
-TREEBANKS=ru
-#TREEBANKS=$(ALL_TREEBANKS)
+#TREEBANKS=tr
+TREEBANKS=$(ALL_TREEBANKS)
 #TREEBANKS={cs,sk,pl,sl,hr,bg,ru}
-#TREEBANKS={en,cs}
 SETS={train,dev,test}
 # HAMLEDT_DATA must be set in your environment.
 PFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/01/$(SETS)/*.treex.gz'
