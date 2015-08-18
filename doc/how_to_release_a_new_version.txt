@@ -26,6 +26,10 @@ Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
   Současně příslušné commity v obou repozitářích otagovat značkou "HamleDT_3.0".
   Dělá se to pomocí "git tag HamleDT_3.0", ale pozor, následující push asi potřebuje nějaký parametr navíc, jinak značku neodešle na server a nechá ji lokální.
 
+- Dále je potřeba do README.txt doplnit text o treebancích, ze kterých se HamleDT skládá, jejich licenčních podmínkách
+  a citace souvisejících odborných publikací. Vzor z předchozích verzí lze nalézt v $HAMLEDT/licenses.
+  Aktualizovaný seznam licencí je také potřeba dodat mailem do Lindatu ("HamleDT 3.0 License Agreement").
+
 - Data leží na disku ve složce
   HDATA=/net/projects/tectomt_shared/data/resources/hamledt
 - Pozor, do verze 3.0 nepatří všechny treebanky, které v pracovní složce HamleDTa najdeme, ale pouze následujících 42:
@@ -83,8 +87,14 @@ Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
 
 - Připravit balík souborů ke zveřejnění na Lindatu:
   cd $DISTRO
-  HDTAR=hamledt_3.0.tar
+  HDTAR=hamledt-3.0.tar
   tar cf /net/projects/tectomt_shared/hamledt/$HDTAR *
+- Zveřejnit na Lindatu:
+  https://lindat.mff.cuni.cz/repository/xmlui/submit
+  - a přidat do Biblia.
+- Pokud jsme to ještě neudělali, aktualizovat web http://ufal.mff.cuni.cz/hamledt
+- Zveřejnit v PML-TQ.
+- Rozeslat oznámení na Corpora list, ÚFAL-l, Universal Dependencies, ACL wiki...
 
 Pokud bychom chtěli někomu, kdo na to má právo (např. studentům ÚFALu) poskytnout i jiný treebank, zde na příkladu němčiny:
 cd /net/projects/tectomt_shared/data/resources/hamledt/de
