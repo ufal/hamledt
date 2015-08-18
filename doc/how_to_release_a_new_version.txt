@@ -57,9 +57,11 @@ Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
   Patche se vyrábějí skriptem create_conll_patch.pl:
   for t in $PATCH ; do
     echo patch: $t
-    mkdir -p $DISTRO/$t/conllu-patch
-    for f in $ARCHIVE/$t/conllu/*.conllu.gz ; do
-      gunzip -c $f | $HAMLEDT/create_conll_patch.pl | gzip -c > $DISTRO/$t/conllu-patch/`basename $f`
+    for d in train dev test ; do
+      mkdir -p $DISTRO/$t/conllu-patch/$d
+      for f in $ARCHIVE/$t/conllu/$d/*.conllu.gz ; do
+        gunzip -c $f | $HAMLEDT/create_conll_patch.pl | gzip -c > $DISTRO/$t/conllu-patch/$d/`basename $f`
+      done
     done
   done
 

@@ -20,7 +20,7 @@ sub usage
 my $i = 0;
 while(<>)
 {
-    unless(m/^\s*$/)
+    unless(m/^\s*$/ || m/^\#/)
     {
         my @fields = split(/\t/, $_);
         # From time to time keep full annotation of a few tokens so that the user can check synchronization with his own data.
