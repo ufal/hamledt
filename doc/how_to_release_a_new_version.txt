@@ -1,10 +1,12 @@
 Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
 
-- Vlézt na clusteru do normalize a
+- Vlézt na clusteru do $HAMLEDT/normalize a
   - zavolat "make qprague", tj. přegenerovat treexové pražské soubory paralelně pro všechny jazyky, které normalizujeme sami.
   - zavolat "make qud", tj. naše pražské treebanky převést do UD a treebanky, které již byly vydané v UD, prostě načíst do Treexu.
   - zavolat "make qconllu", tj. stromy UD ve formátu CoNLL-U.
   - zavolat "make qpmltq", tj. připravit menší treexové soubory pro pozdější import do PML-TQ.
+- Vlézt na clusteru do $HAMLEDT/tests a
+  - zavolat "make utests ; make table > table.txt"
 
 - Zakonzervovat aktuální data jako novou verzi HamleDTa do složky:
   ARCHIVE=/net/projects/tectomt_shared/data/archive/hamledt/3.0_2015-08-18
@@ -31,7 +33,10 @@ Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
 - Pro treebank "xx" chceme z této složky zakonzervovat jako novou verzi tyto soubory:
   - xx/treex/02/{train,dev,test}/*.treex.gz ... obsahuje původní, normalizovaný pražský a normalizovaný UD strom pro každou větu; při kopírování vynechat složku "02"
   - xx/conllu/{train,dev,test}/*.conllu.gz ... obsahuje normalizované stromy UD exportované ve formátu CoNLL-U
-  - Případně přibalit tabulku s výsledky testů na této verzi ($HAMLEDT/tests: make tests ; make table).
+  - Případně přibalit tabulku s výsledky testů na této verzi:
+    cp $HAMLEDT/tests/table.txt $ARCHIVE/tests.txt
+  - Přibalit skript, který aplikuje patche CoNLL na původní data:
+    cp $HAMLEDT/apply_conll_patch.pl $ARCHIVE
   - Naopak nechceme např. pokusné transformace koordinací, nebo různý bordel jako soubory .rurlastdir.
   for t in $TREEBANKS ; do
     for d in train dev test ; do
@@ -64,15 +69,26 @@ Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
       done
     done
   done
+- Zkopírovat z ARCHIVE do DISTRO soubory README.txt a apply_conll_patch.pl:
+  cp $ARCHIVE/README.txt $DISTRO
+  cp $ARCHIVE/apply_conll_patch.pl $DISTRO
 
 - Odebrat oběma zakonzervovaným složkám právo zápisu, pro jistotu jak konvenční, tak ACL:
-  zeman@lrc2:/net/projects/tectomt_shared/hamledt/2.0$ setfacl -R -m m::rx .
-  zeman@lrc2:/net/projects/tectomt_shared/hamledt/2.0$ chmod -R a-w .
+  for f in $ARCHIVE $DISTRO ; do
+    cd $f
+    setfacl -R -m m::rx .
+    chmod -R a-w .
+  done
+
+- Připravit balík souborů ke zveřejnění na Lindatu:
+  cd $DISTRO
+  HDTAR=hamledt_3.0.tar
+  tar cf /net/projects/tectomt_shared/hamledt/$HDTAR *
 
 Pokud bychom chtěli někomu, kdo na to má právo (např. studentům ÚFALu) poskytnout i jiný treebank, zde na příkladu němčiny:
 cd /net/projects/tectomt_shared/data/resources/hamledt/de
-HDTAR=hamledt_2.0_de_conll.tar
-tar cf $HDTAR conll/*
+HDTAR=hamledt_3.0_de_conllu.tar
+tar cf $HDTAR conllu/*
 scp $HDTAR ufal.mff.cuni.cz:/home/zeman/www/soubory/$HDTAR
 # wget http://ufal.mff.cuni.cz/~zeman/soubory/$HDTAR
 rm $HDTAR
