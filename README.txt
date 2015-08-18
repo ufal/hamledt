@@ -29,6 +29,7 @@ r11991 (2014-03-23 zeman) ........ hamledt2 renamed to hamledt
 r12700 (2014-05-24 zeman) ........ HamleDT release 2.0 (Prague + Stanford)
 r14841 (2015-04-23 zeman) ........ pruned large generatable files, hamledt with history copied to Github ufal/hamledt
 r14847 (2015-04-24 zeman) ........ hamledt removed from the Subversion repository
+commit 19f47665fed00b9defe5119b557ca950384db0ba (2015-08-18 zeman) ..... HamleDT release 3.0 (UD)
 
 See also
 
