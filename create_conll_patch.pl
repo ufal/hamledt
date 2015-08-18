@@ -35,7 +35,7 @@ while(<>)
             $fields[4] = '_';
         }
         $_ = join("\t", @fields);
+        $i++;
     }
     print;
-    $i++;
 }
