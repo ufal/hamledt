@@ -24,6 +24,7 @@ Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
   git log | head -3 >> $README
   cat $README
   Současně příslušné commity v obou repozitářích otagovat značkou "HamleDT_3.0".
+  Dělá se to pomocí "git tag HamleDT_3.0", ale pozor, následující push asi potřebuje nějaký parametr navíc, jinak značku neodešle na server a nechá ji lokální.
 
 - Data leží na disku ve složce
   HDATA=/net/projects/tectomt_shared/data/resources/hamledt
