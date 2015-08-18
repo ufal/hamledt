@@ -1,0 +1,57 @@
+Postup při vydávání nové číslované veřejné verze HamleDT (např. 1.5)
+
+- Projít všechny jazyky a zavolat "make pdt", tj. přegenerovat treexové soubory, ve kterých je vedle sebe původní i normalizovaný strom.
+- Projít všechny jazyky a zavolat "make export_conll", tj. normalizované stromy ještě uložit ve formátu CoNLL pro ty, kteří nemají Treex.
+- Ze všech cílových složek odstranit bordel, např. soubory ".rurlastdir".
+- Zkopírovat to (zakonzervovat) do share/data/archive/hamledt/1.5_2014-02-15_treex-r11606. Název udává veřejné číslo verze,
+  datum jejího vytvoření a revizi Treexu, kterou to bylo provedeno. Pozor, nekopírujeme všechno, např. určitě ne všechny transformace koordinací.
+  Verze 1.5 zabírá na disku 1,1 GB a obsahuje následující podsložky pro každý jazyk:
+  - source (diskutabilní, pro některé jazyky jen spousta symlinků, pro jiné, třeba grc, zase docela dost dat přímo zde)
+  - treex/000_orig (diskutabilní, protože původní strom je stejně obsažen i v 001_pdtstyle, spolu s normalizovaným stromem)
+  - treex/001_pdtstyle (tohle je to nejdůležitější, co jsme vytvořili)
+  - conll (export normalizovaných stromů do formátu CoNLL, samozřejmě se část informace ztratí)
+  - Případně přibalit tabulku s výsledky testů na této verzi (treex/devel/hamledt/tests make tests ; make table).
+- Treebanky, které máme právo dále šířit (nyní i s estonštinou, 13 jazyků) také zkopírovat do share/hamledt/1.5. Sem asi pouze tyto podsložky:
+  - treex/001_pdtstyle
+  - conll
+  Čili:
+  for i in ar cs da et fa fi grc la nl pt ro sv ta ; do mkdir -p ../../../../hamledt/1.5/$i ; cp -r $i/conll ../../../../hamledt/1.5/$i/conll ; done
+  for i in ar cs da et fa fi grc la nl pt ro sv ta ; do mkdir -p ../../../../hamledt/1.5/$i/treex ; cp -r $i/treex/001_pdtstyle ../../../../hamledt/1.5/$i/treex/001_pdtstyle ; done
+
+Pokud bychom chtěli někomu, kdo na to má právo (např. studentům ÚFALu) poskytnout i jiný treebank, zde na příkladu němčiny:
+cd share/data/resources/hamledt/de
+tar cf hamledt_1.5_de_conll.tar conll/*
+scp hamledt_1.5_de_conll.tar ufal.mff.cuni.cz:/home/zeman/www/soubory/hamledt_1.5_de_conll.tar
+# wget http://ufal.mff.cuni.cz/~zeman/soubory/hamledt_1.5_de_conll.tar
+rm hamledt_1.5_de_conll.tar
+
+for l in en de nl ; do wget http://ufal.mff.cuni.cz/~zeman/soubory/hamledt_2.0beta_${l}_stanford_conll.tar.gz ; done
+
+----------
+
+Postup při vydávání HamleDT 2.0
+
+- Vlézt na clusteru do normalize a zavolat "make qpdt", tj. přegenerovat treexové normalizované soubory paralelně pro všechny jazyky.
+- Vlézt na clusteru do normalize a zavolat "make qconll", tj. vyexportovat pražské normalizované stromy do CoNLL.
+- Vlézt na clusteru do normalize a zavolat "make qstanford", tj. převést stromy do stanfordského stylu, rovnou ve třech souborových formátech.
+- Data leží na disku ve složce /net/projects/tectomt_shared/data/resources/hamledt.
+  Pro jazyk "xx" chceme z této složky zakonzervovat jako novou verzi tyto soubory:
+  - xx/treex/001_pdtstyle/{train,test}/*.treex.gz ... obsahuje původní i normalizovaný pražský strom pro každou větu
+  - xx/conll/{train,test}/*.conll.gz ... obsahuje normalizované pražské stromy exportované ve formátu CoNLL 2006
+  - xx/stanford/{train,test}/*.{treex.gz,stanford,conll} ... treex obsahuje všechny stromy až po Stanford, ostatní formáty obsahují jen Stanford
+    - Stanfordské formáty conll a stanford ještě dodatečně zagzipovat, aby to bylo u všech souborů stejné.
+  - Případně přibalit tabulku s výsledky testů na této verzi (treex/devel/hamledt/tests make tests ; make table).
+  Naopak nechceme např. pokusné transformace koordinací, nebo různý bordel jako soubory .rurlastdir.
+- Pozor, do verze 2.0 nepatří všechny treebanky, které v pracovní složce HamleDTa najdeme, ale pouze následujících 30:
+  ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sk sl sv ta te tr
+- Výše uvedené soubory zakonzervovat jako novou verzi HamleDTa. Podle výše uvedeného pojmenovávacího schématu bude ležet v této složce:
+  /net/projects/tectomt_shared/data/archive/hamledt/2.0_2014-05-24_treex-r12700
+- Kromě toho ještě připravit soubory k distribuci. Dříve jsme tomu říkali HamleDT-free a byly tam pouze treebanky, které máme právo šířit dál.
+  Nyní tam budou složky pro všechny treebanky, ale u těch, které nemůžeme šířit, budou pouze CoNLL patche, nic víc.
+  volné: ar cs da et fa fi grc la nl pt ro sv ta
+  patch: bg bn ca de el en es eu hi hu it ja ru sk sl te tr
+  Patche se vyrábějí skriptem create_conll_patch.pl. Distribuci vytvořit v této složce:
+  /net/projects/tectomt_shared/hamledt/2.0
+- Odebrat oběma zakonzervovaným složkám právo zápisu, pro jistotu jak konvenční, tak ACL:
+  zeman@lrc2:/net/projects/tectomt_shared/hamledt/2.0$ setfacl -R -m m::rx .
+  zeman@lrc2:/net/projects/tectomt_shared/hamledt/2.0$ chmod -R a-w .
