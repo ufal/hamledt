@@ -1,27 +1,68 @@
-Postup při vydávání nové číslované veřejné verze HamleDT (např. 2.0)
+Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
 
-- Vlézt na clusteru do normalize a zavolat "make qpdt", tj. přegenerovat treexové normalizované soubory paralelně pro všechny jazyky.
-- Vlézt na clusteru do normalize a zavolat "make qconll", tj. vyexportovat pražské normalizované stromy do CoNLL.
-- Vlézt na clusteru do normalize a zavolat "make qstanford", tj. převést stromy do stanfordského stylu, rovnou ve třech souborových formátech.
-- Data leží na disku ve složce /net/projects/tectomt_shared/data/resources/hamledt.
-  Pro jazyk "xx" chceme z této složky zakonzervovat jako novou verzi tyto soubory:
-  - xx/treex/001_pdtstyle/{train,test}/*.treex.gz ... obsahuje původní i normalizovaný pražský strom pro každou větu
-  - xx/conll/{train,test}/*.conll.gz ... obsahuje normalizované pražské stromy exportované ve formátu CoNLL 2006
-  - xx/stanford/{train,test}/*.{treex.gz,stanford,conll} ... treex obsahuje všechny stromy až po Stanford, ostatní formáty obsahují jen Stanford
-    - Stanfordské formáty conll a stanford ještě dodatečně zagzipovat, aby to bylo u všech souborů stejné.
-  - Případně přibalit tabulku s výsledky testů na této verzi (treex/devel/hamledt/tests make tests ; make table).
-  Naopak nechceme např. pokusné transformace koordinací, nebo různý bordel jako soubory .rurlastdir.
-- Pozor, do verze 2.0 nepatří všechny treebanky, které v pracovní složce HamleDTa najdeme, ale pouze následujících 30:
-  ar bg bn ca cs da de el en es et eu fa fi grc hi hu it ja la nl pt ro ru sk sl sv ta te tr
-- Výše uvedené soubory zakonzervovat jako novou verzi HamleDTa do složky:
-  /net/projects/tectomt_shared/data/archive/hamledt/2.0_2014-05-24_treex-r12700
-  Název udává veřejné číslo verze, datum jejího vytvoření a revizi Treexu, kterou to bylo provedeno.
-- Kromě toho ještě připravit soubory k distribuci. Dříve jsme tomu říkali HamleDT-free a byly tam pouze treebanky, které máme právo šířit dál.
-  Nyní tam budou složky pro všechny treebanky, ale u těch, které nemůžeme šířit, budou pouze CoNLL patche, nic víc.
-  volné: ar cs da et fa fi grc la nl pt ro sv ta
-  patch: bg bn ca de el en es eu hi hu it ja ru sk sl te tr
-  Patche se vyrábějí skriptem create_conll_patch.pl. Distribuci vytvořit v této složce:
-  /net/projects/tectomt_shared/hamledt/2.0
+- Vlézt na clusteru do normalize a
+  - zavolat "make qprague", tj. přegenerovat treexové pražské soubory paralelně pro všechny jazyky, které normalizujeme sami.
+  - zavolat "make qud", tj. naše pražské treebanky převést do UD a treebanky, které již byly vydané v UD, prostě načíst do Treexu.
+  - zavolat "make qconllu", tj. stromy UD ve formátu CoNLL-U.
+  - zavolat "make qpmltq", tj. připravit menší treexové soubory pro pozdější import do PML-TQ.
+
+- Zakonzervovat aktuální data jako novou verzi HamleDTa do složky:
+  ARCHIVE=/net/projects/tectomt_shared/data/archive/hamledt/3.0_2015-08-18
+  mkdir -p $ARCHIVE
+  Název udává veřejné číslo verze a datum jejího vytvoření.
+  Do verze 2.0 bylo součástí názvu složky také číslo revize Treexu, kterou byla daná verze HamleDTa vyrobena, ale nyní
+  je kód rozdělen do dvou repozitářů a ty jsou navíc gitové, takže místo přirozených čísel mají dlouhé hash kódy.
+  Proto raději vyrobit v této složce README.txt a do něj uvést hash kódy příslušných commitů v repozitářích treex a hamledt:
+  README=$ARCHIVE/README.txt
+  echo git@github.com:/ufal/treex.git > $README
+  cd $TREEX
+  git log | head -3 >> $README
+  echo git@github.com:/ufal/hamledt.git >> $README
+  cd $HAMLEDT
+  git log | head -3 >> $README
+  cat $README
+  Současně příslušné commity v obou repozitářích otagovat značkou "HamleDT_3.0".
+
+- Data leží na disku ve složce
+  HDATA=/net/projects/tectomt_shared/data/resources/hamledt
+- Pozor, do verze 3.0 nepatří všechny treebanky, které v pracovní složce HamleDTa najdeme, ale pouze následujících 42:
+  TREEBANKS="ar bg-ud11 bn ca cs da-ud11 de de-ud11 el-ud11 en en-ud11 es es-ud11 et eu-ud11 fa fa-ud11 fi-ud11 fi-ud11ftb fr-ud11 ga-ud11 grc he-ud11 hi hr-ud11 hu-ud11 id-ud11 it-ud11 ja la la-it nl pl pt ro ru sk sl sv-ud11 ta te tr"
+
+- Pro treebank "xx" chceme z této složky zakonzervovat jako novou verzi tyto soubory:
+  - xx/treex/02/{train,dev,test}/*.treex.gz ... obsahuje původní, normalizovaný pražský a normalizovaný UD strom pro každou větu; při kopírování vynechat složku "02"
+  - xx/conllu/{train,dev,test}/*.conllu.gz ... obsahuje normalizované stromy UD exportované ve formátu CoNLL-U
+  - Případně přibalit tabulku s výsledky testů na této verzi ($HAMLEDT/tests: make tests ; make table).
+  - Naopak nechceme např. pokusné transformace koordinací, nebo různý bordel jako soubory .rurlastdir.
+  for t in $TREEBANKS ; do
+    for d in train dev test ; do
+      echo $t/$d
+      mkdir -p $ARCHIVE/$t/treex/$d
+      cp $HDATA/$t/treex/02/$d/*.treex.gz $ARCHIVE/$t/treex/$d
+      mkdir -p $ARCHIVE/$t/conllu/$d
+      cp $HDATA/$t/conllu/$d/*.conllu.gz $ARCHIVE/$t/conllu/$d
+    done
+  done
+
+- Kromě toho ještě připravit soubory k distribuci ve složce
+  DISTRO=/net/projects/tectomt_shared/hamledt/3.0
+  mkdir -p $DISTRO
+- Treebanky, které máme právo šířit dál (FREE), tam budou celé,
+  zatímco u těch, které nemůžeme šířit (PATCH), budou pouze CoNLL patche, nic víc.
+  FREE="ar bg-ud11 cs da-ud11 de-ud11 el-ud11 en-ud11 es-ud11 et eu-ud11 fa fa-ud11 fi-ud11 fi-ud11ftb fr-ud11 ga-ud11 grc he-ud11 hr-ud11 hu-ud11 id-ud11 it-ud11 la la-it nl pl pt ro sl sv-ud11 ta"
+  PATCH="bn ca de en es hi ja ru sk te tr"
+  for t in $FREE ; do
+    echo free: $t
+    cp -r $ARCHIVE/$t $DISTRO
+  done
+  Patche se vyrábějí skriptem create_conll_patch.pl:
+  for t in $PATCH ; do
+    echo patch: $t
+    mkdir -p $DISTRO/$t/conllu-patch
+    for f in $ARCHIVE/$t/conllu/*.conllu.gz ; do
+      gunzip -c $f | $HAMLEDT/create_conll_patch.pl | gzip -c > $DISTRO/$t/conllu-patch/`basename $f`
+    done
+  done
+
 - Odebrat oběma zakonzervovaným složkám právo zápisu, pro jistotu jak konvenční, tak ACL:
   zeman@lrc2:/net/projects/tectomt_shared/hamledt/2.0$ setfacl -R -m m::rx .
   zeman@lrc2:/net/projects/tectomt_shared/hamledt/2.0$ chmod -R a-w .
