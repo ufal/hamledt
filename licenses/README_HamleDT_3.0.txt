@@ -1,68 +1,80 @@
-﻿HamleDT 2.0 (HArmonized Multi-LanguagE Dependency Treebank) is a collection of pre-existing treebanks for 30 languages that have been harmonized to two popular annotation styles: the Prague dependencies (primary) and the Stanford dependencies (secondary). There are two important web addresses where more information can be obtained:
+﻿HamleDT 3.0 (HArmonized Multi-LanguagE Dependency Treebank) is a collection of pre-existing treebanks for 36 languages that have been harmonized to a common annotation style: the Universal Dependencies. There are two important web addresses where more information can be obtained:
 
 http://ufal.mff.cuni.cz/hamledt ... the project site and information hub
-http://hdl.handle.net/11858/00-097C-0000-0023-9551-4 ... persistent address of the data for download
+http://hdl.handle.net/11858/00-097C-0000-0023-9551-4 ... persistent address of the data for download ###!!! TODO: update
 
 
 
 =========================
-HamleDT 2.0 License Terms
+HamleDT 3.0 License Terms
 =========================
 
-HamleDT 2.0 (referred to as “HamleDT” in the rest of this document) is a collection of linguistic textual data in multiple languages. It is based on pre-existing data sets (“original treebanks”). Each of the original treebanks has its own license terms and you (the “User”) are responsible for complying with the license terms applicable to those parts of HamleDT, which you use. If you do not agree with the license terms, you must stop using HamleDT and destroy all copies of HamleDT data that you have obtained.
+HamleDT 3.0 (referred to as “HamleDT” in the rest of this document) is a collection of linguistic textual data in multiple languages. It is based on pre-existing data sets (“original treebanks”). Each of the original treebanks has its own license terms and you (the “User”) are responsible for complying with the license terms applicable to those parts of HamleDT, which you use. If you do not agree with the license terms, you must stop using HamleDT and destroy all copies of HamleDT data that you have obtained.
 
 You are specifically reminded that some of the original treebanks permit only non-commercial usage.
 
 The additional tree transformations and the software performing the transformations is copyright Charles University in Prague, Faculty of Mathematics and Physics, Institute of Formal and Applied Linguistics (“we” or the “Provider”). It is provided as-is (without any warranty) and may be freely used, modified and redistributed under the GNU General Public License version 3.0 or the Perl Artistic License version 1.0.
 
-The treebanks in HamleDT are organized in two groups: “Free” and “Patch”. The Free group consists of treebanks whose license terms permit us redistributing them in full. For treebanks in the Patch group, we provide only our transformed annotation, without the underlying texts, lemmas and part of speech tags. If you legally obtained an original treebank, you can use the corresponding patch to transform the treebank to its HamleDT form.
+The treebanks in HamleDT are organized in two groups: “Free” and “Patch”. The Free group consists of treebanks whose license terms permit us redistributing them in full. For treebanks in the Patch group, we provide only our transformed annotation, without the underlying texts, lemmas and original part of speech tags. If you legally obtained an original treebank, you can use the corresponding patch to transform the treebank to its HamleDT form.
 
 Overview of the “Free” treebanks and their license terms
 
-Lang.	Treebank	Web	License
-ar	Prague Arabic Dependency Treebank	http://ufal.mff.cuni.cz/padt	CC BY-NC-SA 3.0
-cs	Prague Dependency Treebank	http://ufal.mff.cuni.cz/pdt3.0	CC BY-NC-SA 3.0
-da	CoNLL 2006	http://www.buch-kromann.dk/matthias/treebank/	GPL 3
-et	Eesti keele puudepank	http://vvv.cs.ut.ee/~kaili/Korpus/puud/	free download
-fa	Persian Dependency Treebank	http://dadegan.ir/en/perdt	GPL 3*
-fi	Turku Dependency Treebank	http://bionlp.utu.fi/fintreebank.html	CC BY-SA 3.0
-grc	Ancient Greek Dependency Treebank	http://nlp.perseus.tufts.edu/syntax/treebank/	CC BY-NC-SA 2.5
-la	Latin Dependency Treebank	http://nlp.perseus.tufts.edu/syntax/treebank/	CC BY-NC-SA 2.5
-nl	CoNLL 2006 (Alpino)	http://odur.let.rug.nl/~vannoord/trees/	GPL
-pt	CoNLL 2006 (Floresta Sintá(c)tica)	http://www.linguateca.pt/Floresta/principal.html	CC BY-NC-SA 3.0
-ro	Resurse pentru Gramaticile de Dependenta	http://www.phobos.ro/roric/texts/indexro.html	free download
-sv	CoNLL 2006 (Talbanken05)	http://stp.lingfil.uu.se/~nivre/research/Talbanken05.html	research*, cite
-ta	Tamil Dependency Treebank	http://ufal.mff.cuni.cz/~ramasamy/tamiltb/0.1/	CC BY-NC-SA 3.0
+Code	Treebank	Web	License
+ar      Prague Arabic Dependency Treebank	http://ufal.mff.cuni.cz/padt                                                               CC BY-NC-SA 3.0
+bg-ud11 BulTreeBank / Universal Dependencies 1.1	http://www.bultreebank.org/indexBTB.html                                           CC BY-NC-SA 3.0
+cs      Prague Dependency Treebank	http://ufal.mff.cuni.cz/pdt3.0                                                                   CC BY-NC-SA 3.0
+da-ud11 Danish Dependency Treebank / Universal Dependencies 1.1	http://www.buch-kromann.dk/matthias/treebank/                        GNU GPL 2
+de-ud11 Universal Dependencies 1.1  http://universaldependencies.github.io/docs/#language-de                                         CC BY-NC-SA 3.0 US
+el-ud11 Greek Dependency Treebank / Universal Dependencies 1.1  http://universaldependencies.github.io/docs/#language-el             CC BY-NC-SA 3.0
+en-ud11 English Web Treebank (Stanford) / Universal Dependencies 1.1  http://nlp.stanford.edu/software/stanford-dependencies.shtml   CC BY-SA 4.0
+es-ud11 Universal Dependencies 1.1  http://universaldependencies.github.io/docs/#language-es                                         CC BY-NC-SA 3.0 US
+et      Eesti keele puudepank	http://vvv.cs.ut.ee/~kaili/Korpus/puud/                                                                free download
+eu-ud11 Basque Dependency Treebank / Universal Dependencies 1.1                                                                      CC BY-NC-SA 3.0
+fa      Persian Dependency Treebank	http://dadegan.ir/en/perdt                                                                       GNU GPL 3*
+fa-ud11 Uppsala Persian Dependency Treebank / Universal Dependencies 1.1  http://universaldependencies.github.io/docs/#language-fa   CC BY-SA 4.0
+fi-ud11 Turku Dependency Treebank / Universal Dependencies 1.1	http://bionlp.utu.fi/fintreebank.html                                CC BY-SA 4.0
+fi-ud11ftb FinnTreeBank / Universal Dependencies 1.1  http://www.ling.helsinki.fi/kieliteknologia/tutkimus/treebank/      LGPLv3+ or CC BY 4.0 (dual license)
+fr-ud11 Universal Dependencies 1.1  http://universaldependencies.github.io/docs/#language-fr                                         CC BY-NC-SA 3.0 US
+ga-ud11 Irish Dependency Treebank / Universal Dependencies 1.1  http://universaldependencies.github.io/docs/#language-ga             CC BY-SA 3.0
+grc     Ancient Greek Dependency Treebank	http://nlp.perseus.tufts.edu/syntax/treebank/                                              CC BY-NC-SA 2.5
+he-ud11 Hebrew Dependency Treebank / Universal Dependencies 1.1 http://www.cs.bgu.ac.il/~yoavg/data/hebdeptb/                        CC BY-NC-SA 4.0
+hr-ud11 SETimes.HR / Universal Dependencies 1.1 http://universaldependencies.github.io/docs/#language-hr                             CC BY-SA 4.0
+hu-ud11 Szeged Treebank / Universal Dependencies 1.1	http://www.inf.u-szeged.hu/projectdirs/hlt/hu/Treebank/treebank2.html          CC BY-NC-SA 3.0
+id-ud11 Universal Dependencies 1.1	http://universaldependencies.github.io/docs/#language-id                                         CC BY-NC-SA 3.0 US
+it-ud11 Universal Dependencies 1.1	http://universaldependencies.github.io/docs/#language-it                                         CC BY-NC-SA 3.0
+la      Latin Dependency Treebank	http://nlp.perseus.tufts.edu/syntax/treebank/                                                      CC BY-NC-SA 2.5
+la-it   Index Thomisticus Treebank  http://itreebank.marginalia.it/                                                                  CC BY-NC-SA 3.0
+nl      CoNLL 2006 (Alpino)	http://odur.let.rug.nl/~vannoord/trees/                                                                  GNU GPL
+pl      Składnica zależnościowa 0.5 http://zil.ipipan.waw.pl/Sk%C5%82adnica                                                          GNU GPL 3
+pt      CoNLL 2006 (Floresta Sintá(c)tica)	http://www.linguateca.pt/Floresta/principal.html                                         CC BY-NC-SA 3.0
+ro      Resurse pentru Gramaticile de Dependenta	http://www.phobos.ro/roric/texts/indexro.html                                      free download
+sl      Slovene Dependency Treebank	http://nl.ijs.si/sdt/                                                                            research, cite
+sv-ud11 Talbanken05 / Universal Dependencies 1.1	http://stp.lingfil.uu.se/~nivre/research/Talbanken05.html                          CC BY-SA 4.0
+ta      Tamil Dependency Treebank	http://ufal.mff.cuni.cz/~ramasamy/tamiltb/0.1/                                                     CC BY-NC-SA 3.0
 
 Overview of the “Patch” treebanks
 
 Lang.	Treebank	Web
-bg	BulTreeBank / CoNLL 2006	http://www.bultreebank.org/indexBTB.html
 bn	Hyderabad Dependency Treebank / ICON 2010
 ca	AnCora-CA	http://clic.ub.edu/corpus/
 de	TIGER Corpus / CoNLL 2009	http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/tiger.html
-el	Greek Dependency Treebank / CoNLL 2007
 en	Penn Treebank / CoNLL 2007	http://www.cis.upenn.edu/~treebank/
 es	AnCora-ES	http://clic.ub.edu/corpus/
-eu	Basque Dependency Treebank
 hi	Hyderabad Dependency Treebank / COLING 2012
-hu	Szeged Treebank	http://www.inf.u-szeged.hu/projectdirs/hlt/hu/Treebank/treebank2.html
-it	Italian Syntactic-Semantic Treebank / CoNLL 2007	http://www.ilc.cnr.it/viewpage.php/sez=ricerca/id=874/vers=ing
 ja	Tübingen Treebank of Spoken Japanese (Tüba-J/S)	http://www.sfs.uni-tuebingen.de/en/ascl/resources/corpora/tueba-js.html
 ru	SynTagRus	http://www.ruscorpora.ru/en/search-syntax.html
 sk	Slovak Treebank	http://korpus.sk/
-sl	Slovene Dependency Treebank	http://nl.ijs.si/sdt/
 te	Hyderabad Dependency Treebank / ICON 2010
 tr	METU-Sabanci (ODTÜ-Sabancı) Treebank	http://ii.metu.edu.tr/corpus
 
 Licenses
 
-CC BY-NC-SA 3.0	http://creativecommons.org/licenses/by-nc-sa/3.0/
+CC BY-SA 4.0 http://creativecommons.org/licenses/by-sa/4.0/
 CC BY-SA 3.0	http://creativecommons.org/licenses/by-sa/3.0/
+CC BY-NC-SA 3.0	http://creativecommons.org/licenses/by-nc-sa/3.0/
 CC BY-NC-SA 2.5	http://creativecommons.org/licenses/by-nc-sa/2.5/
 GPL	http://www.gnu.org/licenses/gpl.html
 fa: Persian Dependency Treebank: The download page contained the statement “I will use the treebank for research purposes only.” The “Readme and Licence.txt” file says “only non-commercially”. However, the included license is the standard GPL 3 (without any restrictions).
-sv: Talbanken05: The download page was saying at the time of retrieval: “The treebank comes with no guarantee but is freely available for research and educational purposes as long as proper credit is given for the work done to produce the material (both in Lund and in Växjö).”
 
 References
 
