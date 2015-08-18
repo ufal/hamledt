@@ -41,7 +41,7 @@ he-ud11 Hebrew Dependency Treebank / Universal Dependencies 1.1 http://www.cs.bg
 hr-ud11 SETimes.HR / Universal Dependencies 1.1   http://universaldependencies.github.io/docs/#language-hr                           CC BY-SA 4.0
 hu-ud11 Szeged Treebank / Universal Dependencies 1.1  http://www.inf.u-szeged.hu/projectdirs/hlt/hu/Treebank/treebank2.html          CC BY-NC-SA 3.0
 id-ud11 Universal Dependencies 1.1                http://universaldependencies.github.io/docs/#language-id                           CC BY-NC-SA 3.0 US
-it-ud11 Universal Dependencies 1.1                http://universaldependencies.github.io/docs/#language-it                           CC BY-NC-SA 3.0
+it-ud11 Italian Stanford Dependencz Treebank / Universal Dependencies 1.1 http://universaldependencies.github.io/docs/#language-it   CC BY-NC-SA 3.0
 la      Latin Dependency Treebank                 http://nlp.perseus.tufts.edu/syntax/treebank/                                      CC BY-NC-SA 2.5
 la-it   Index Thomisticus Treebank                http://itreebank.marginalia.it/                                                    CC BY-NC-SA 3.0
 nl      CoNLL 2006 (Alpino)                       http://odur.let.rug.nl/~vannoord/trees/                                            GNU GPL
@@ -79,6 +79,8 @@ fa: Persian Dependency Treebank: The download page contained the statement “I 
 References
 
 The following research papers should be cited to give proper credit to the creators of the original treebanks and to us, the creators of HamleDT.
+
+HamleDT: Daniel Zeman, Ondřej Dušek, David Mareček, Martin Popel, Loganathan Ramasamy, Jan Štěpánek, Zdeněk Žabokrtský, Jan Hajič (2014): HamleDT: Harmonized Multi-Language Dependency Treebank. In: Language Resources and Evaluation, 48(4) pp. 601–637, Springer, Dordrecht, Netherlands, ISSN 1574-020X.
 
 HamleDT 2.0: Rudolf Rosa, Jan Mašek, David Mareček, Martin Popel, Daniel Zeman, Zdeněk Žabokrtský (2014): HamleDT 2.0: Thirty Dependency Treebanks Stanfordized. In Proceedings of the Ninth International Conference on Language Resources and Evaluation (LREC 2014), pp. 2334–2341. ELDA, Reykjavík, Iceland.
 
