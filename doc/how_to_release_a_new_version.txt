@@ -28,6 +28,7 @@ Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
 
 - Dále je potřeba do README.txt doplnit text o treebancích, ze kterých se HamleDT skládá, jejich licenčních podmínkách
   a citace souvisejících odborných publikací. Vzor z předchozích verzí lze nalézt v $HAMLEDT/licenses.
+  Je tam verze v LibreOffice, PDF a v README; edituje se ta v LibreOffice, pak se PDF vygeneruje a do README se to zkopíruje.
   Aktualizovaný seznam licencí je také potřeba dodat mailem do Lindatu ("HamleDT 3.0 License Agreement").
 
 - Data leží na disku ve složce

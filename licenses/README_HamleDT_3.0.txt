@@ -1,7 +1,7 @@
 ﻿HamleDT 3.0 (HArmonized Multi-LanguagE Dependency Treebank) is a collection of pre-existing treebanks for 36 languages that have been harmonized to a common annotation style: the Universal Dependencies. There are two important web addresses where more information can be obtained:
 
 http://ufal.mff.cuni.cz/hamledt ... the project site and information hub
-http://hdl.handle.net/11858/00-097C-0000-0023-9551-4 ... persistent address of the data for download ###!!! TODO: update
+http://hdl.handle.net/11234/1-1508 ... persistent address of the data for download
 
 
 
