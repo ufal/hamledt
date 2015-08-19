@@ -23,8 +23,10 @@ Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
   cd $HAMLEDT
   git log | head -3 >> $README
   cat $README
-  Současně příslušné commity v obou repozitářích otagovat značkou "HamleDT_3.0".
-  Dělá se to pomocí "git tag HamleDT_3.0", ale pozor, následující push asi potřebuje nějaký parametr navíc, jinak značku neodešle na server a nechá ji lokální.
+  Současně příslušné commity v obou repozitářích otagovat značkou "HamleDT_3.0" (jde to ke konkrétnímu commitu udělat i zpětně):
+  git tag -a HamleDT_3.0 9fceb02
+  # v editoru napsat popisek
+  git push origin --tags
 
 - Dále je potřeba do README.txt doplnit text o treebancích, ze kterých se HamleDT skládá, jejich licenčních podmínkách
   a citace souvisejících odborných publikací. Vzor z předchozích verzí lze nalézt v $HAMLEDT/licenses.
