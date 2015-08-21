@@ -106,3 +106,4 @@ tar cf $HDTAR conllu/*
 scp $HDTAR ufal.mff.cuni.cz:/home/zeman/www/soubory/$HDTAR
 # wget http://ufal.mff.cuni.cz/~zeman/soubory/$HDTAR
 rm $HDTAR
+# or, if Dropbox is running (not when I'm working remotely): mv $HDTAR ~/Dropbox/
