@@ -8,12 +8,12 @@ sub usage
 {
     print STDERR ("go.pl [OPTIONS] <ACTION>\n");
     print STDERR ("\tActions: pretrain|train|parse|table|ltable|clean\n");
-    print STDERR ("\tExperiment folder tree is created/expected at ./pokus (currently fixed).\n");
     print STDERR ("\tSource data path is fixed at \$TMT_SHARED.\n");
     print STDERR ("\tThe script knows the list of available languages.\n");
-    print STDERR ("\tThe list of transformations is created by scanning subfolders of the language.\n");
+    print STDERR ("\tThe script currently ignores transformations (if any) but it models the learning curve.\n");
     print STDERR ("\tThe 'clean' action currently only removes the cluster logs (.o123456 files).\n");
     print STDERR ("\tOptions:\n");
+    print STDERR ("\t--wdir folder ... experiment folder; default is ./pokus.\n");
     print STDERR ("\t--languages en,cs,ar ... instead of all languages, process only those specified here.\n");
     print STDERR ("\t--trainlimit N ... for the 'pretrain' action: use only the first N sentences for training.\n");
 }
@@ -144,7 +144,7 @@ sub get_fc
     # 0 ... none
     # 1 ... all
     # prontype,numtype ... only prontype and numtype
-    return 0;
+    return 1;
 }
 
 
@@ -386,7 +386,7 @@ sub loop
     {
         foreach my $transformation (@{$targets->{$treebank}})
         {
-            foreach my $size (10, 20, 50, 100, 200, 500, 1000, 2000, 5000)
+            foreach my $size (10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 100000)
             {
                 $konfig{trainlimit} = $size;
                 my $dir = "$wdir/$treebank/$transformation/$size";
