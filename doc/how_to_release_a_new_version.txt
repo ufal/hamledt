@@ -81,15 +81,11 @@ Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
   cp $ARCHIVE/README.txt $DISTRO
   cp $ARCHIVE/apply_conll_patch.pl $DISTRO
 
-- Odebrat oběma zakonzervovaným složkám právo zápisu, pro jistotu jak konvenční, tak ACL:
-  for f in $ARCHIVE $DISTRO ; do
-    cd $f
-    setfacl -R -m m::rx .
-    chmod -R a-w .
-  done
-
-- Připravit balík souborů ke zveřejnění na Lindatu:
+- Připravit balík souborů ke zveřejnění na Lindatu. Pozor na přístupová práva! Pokud jsou už teď
+  podsložky pouze pro čtení, tar si to zapamatuje a při rozbalování na Linuxu s tím můžou být
+  problémy, protože do složky pouze pro čtení nedokáže vybalit soubory.
   cd $DISTRO
+  chmod -R u+w .
   HDTAR=hamledt-3.0.tar
   tar cf /net/projects/tectomt_shared/hamledt/$HDTAR *
 - Zveřejnit na Lindatu:
@@ -98,6 +94,13 @@ Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
 - Pokud jsme to ještě neudělali, aktualizovat web http://ufal.mff.cuni.cz/hamledt
 - Zveřejnit v PML-TQ.
 - Rozeslat oznámení na Corpora list, ÚFAL-l, Universal Dependencies, ACL wiki...
+
+- Odebrat oběma zakonzervovaným složkám právo zápisu, pro jistotu jak konvenční, tak ACL:
+  for f in $ARCHIVE $DISTRO ; do
+    cd $f
+    setfacl -R -m m::rx .
+    chmod -R a-w .
+  done
 
 Pokud bychom chtěli někomu, kdo na to má právo (např. studentům ÚFALu) poskytnout i jiný treebank, zde na příkladu němčiny:
 cd /net/projects/tectomt_shared/data/resources/hamledt/de
