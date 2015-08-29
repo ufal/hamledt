@@ -103,10 +103,11 @@ Postup při vydávání nové číslované veřejné verze HamleDT (např. 3.0)
   done
 
 Pokud bychom chtěli někomu, kdo na to má právo (např. studentům ÚFALu) poskytnout i jiný treebank, zde na příkladu němčiny:
-cd /net/projects/tectomt_shared/data/resources/hamledt/de
-HDTAR=hamledt_3.0_de_conllu.tar
+LANGUAGE=de
+cd /net/projects/tectomt_shared/data/resources/hamledt/$LANGUAGE
+HDTAR=hamledt_3.0_${LANGUAGE}_conllu.tar
 tar cf $HDTAR conllu/*
 scp $HDTAR ufal.mff.cuni.cz:/home/zeman/www/soubory/$HDTAR
-# wget http://ufal.mff.cuni.cz/~zeman/soubory/$HDTAR
+echo wget http://ufal.mff.cuni.cz/~zeman/soubory/$HDTAR
 rm $HDTAR
-# or, if Dropbox is running (not when I'm working remotely): mv $HDTAR ~/Dropbox/
+# or, if Dropbox is running (it is not running when I'm working remotely): mv $HDTAR ~/Dropbox/
