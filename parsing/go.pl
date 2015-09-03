@@ -77,7 +77,7 @@ sub get_treebanks
     }
     else
     {
-        my @hamledt = qw(ar bn ca de en es et fa grc hi hr ja la la-it nl pl pt ro ru sk sl ta te tr);
+        my @hamledt = qw(ar bn ca de en es et fa grc hi hr ja la la-it mt nl pl pt ro ru sk sl ta te tr);
         my @ud11 = map {$_.'-ud11'} qw(bg cs da de el en es eu fa fi fr ga he hr hu id it sv);
         push(@ud11, 'fi-ud11ftb');
         return (@hamledt, @ud11);
@@ -636,7 +636,8 @@ sub parse
             foreach my $srctbk (@treebanks)
             {
                 # Skip delexicalized source models that have not been determined as promising.
-                if($konfig{delexpairs}{$treebank}{$srctbk})
+                ###!!! Temporarily turning off because the data has changed and the delexicalized similarity of languages may have too.
+                if(1 || $konfig{delexpairs}{$treebank}{$srctbk})
                 {
                     my $dir = "$wdir/$srctbk";
                     $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $transformation, $size, $dir);
