@@ -36,6 +36,7 @@ PTESTS = \
 # Tests for Universal Dependencies.
 UTESTS = \
 	HamleDT::Test::UD::Root \
+	HamleDT::Test::UD::SingleRoot \
 	HamleDT::Test::UD::Determiners \
 	HamleDT::Test::UD::Adpositions \
 	HamleDT::Test::UD::Subjunctions \
@@ -44,10 +45,6 @@ UTESTS = \
 	HamleDT::Test::UD::Punctuation \
 	HamleDT::Test::UD::UnconvertedDependencies \
 	HamleDT::Test::UD::ZZZSearch
-# The SingleRoot test cannot be applied to the Prague-style treebanks because of ellipsis.
-# Some people believe that all trees in UD should have just one top node (attached to the root)
-# but they have not provided an alternative solution to sentences like "A co na to MF?"
-#	HamleDT::Test::UD::SingleRoot
 
 validate:
 	treex -p --survive --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
