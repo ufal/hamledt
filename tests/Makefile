@@ -42,6 +42,7 @@ UTESTS = \
 	HamleDT::Test::UD::Subjunctions \
 	HamleDT::Test::UD::CompoundPrepositions \
 	HamleDT::Test::UD::Reflexives \
+	HamleDT::Test::UD::ConjLeftToRight \
 	HamleDT::Test::UD::Punctuation \
 	HamleDT::Test::UD::UnconvertedDependencies \
 	HamleDT::Test::UD::ZZZSearch
