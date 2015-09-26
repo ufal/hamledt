@@ -39,8 +39,10 @@ TRAIN      = $(IN)/train.conll
 DEV        = $(IN)/dev.conll
 TEST       = $(IN)/test.conll
 
+# If a treebank requires preprocessing before conversion to UD, the treebank-specific Makefile must override the value of PRE_UD_BLOCKS.
 # If a treebank requires postprocessing after conversion to UD, the treebank-specific Makefile must override the value of POST_UD_BLOCKS.
-# Example: POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
+# Example: PRE_UD_BLOCKS=HamleDT::CS::SplitFusedWords
+PRE_UD_BLOCKS  ?=
 POST_UD_BLOCKS ?=
 
 check-source:
@@ -86,7 +88,7 @@ prague:
 # If the UD version of the treebank is created using HamleDT transformation via the Prague style,
 # define the treebank-specific goal "ud" as dependent on "prague_to_ud".
 # Otherwise, if reading directly data published in Universal Dependencies, make "ud" dependent on "conllu_to_treex".
-SCEN2 = A2A::CopyAtree source_selector='' selector='prague' HamleDT::Udep $(POST_UD_BLOCKS)
+SCEN2 = A2A::CopyAtree source_selector='' selector='prague' $(PRE_UD_BLOCKS) HamleDT::Udep $(POST_UD_BLOCKS)
 prague_to_ud:
 	$(QTREEX) $(SCEN2) Write::Treex substitute={01}{02} -- '!$(DIR1)/{train,dev,test}/*.treex.gz'
 
