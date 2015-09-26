@@ -1,6 +1,6 @@
 LANGCODE=cs
 TREEBANK=cs
-PRE_UD_BLOCKS=HamleDT::CS::SplitFusedWords
+POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
 include ../common.mak
 
 SOURCEDIR=/net/projects/pdt/pdt30/data
