@@ -43,6 +43,7 @@ UTESTS = \
 	HamleDT::Test::UD::CompoundPrepositions \
 	HamleDT::Test::UD::Reflexives \
 	HamleDT::Test::UD::FutureIsNotXcomp \
+	HamleDT::Test::UD::XcompHasNoSubject \
 	HamleDT::Test::UD::LeftToRightRelations \
 	HamleDT::Test::UD::Punctuation \
 	HamleDT::Test::UD::UnconvertedDependencies \
