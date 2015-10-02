@@ -17,9 +17,13 @@ if [ "$lcode" == "cs" ] ; then
 else
   zcat data/conllu/train/*.conllu.gz > $lcode-ud-train.conllu
 fi
+UDDIR=/net/work/people/zeman/unidep
+UDTOOLS=$UDDIR/tools
+mkdir -p $UDDIR/UD_$lname
+cat *.conllu | $UDTOOLS/conllu-stats.pl > $UDDIR/UD_$lname/stats.xml
 for i in *.conllu ; do
   echo $i
-  python /net/work/people/zeman/unidep/tools/validate.py --noecho --lang=$lcode $i
-  mv $i /ha/home/zeman/network/unidep/UD_$lname
+  python $UDTOOLS/validate.py --noecho --lang=$lcode $i
+  mv $i $UDDIR/UD_$lname
 done
 

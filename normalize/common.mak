@@ -15,12 +15,14 @@ SUBDIRIN  = source
 SUBDIR0   = treex/00
 SUBDIR1   = treex/01
 SUBDIR2   = treex/02
+SUBDIR3   = treex/03
 SUBDIRCU  = conllu
 SUBDIRPTQ = pmltq
 IN        = $(DATADIR)/$(SUBDIRIN)
 DIR0      = $(DATADIR)/$(SUBDIR0)
 DIR1      = $(DATADIR)/$(SUBDIR1)
 DIR2      = $(DATADIR)/$(SUBDIR2)
+DIR3      = $(DATADIR)/$(SUBDIR3)
 CONLLUDIR = $(DATADIR)/$(SUBDIRCU)
 
 # Processing shortcuts.
