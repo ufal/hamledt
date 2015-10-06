@@ -11,6 +11,7 @@ SETS={train,dev,test}
 # HAMLEDT_DATA must be set in your environment.
 PFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/01/$(SETS)/*.treex.gz'
 UFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/02/$(SETS)/*.treex.gz'
+CFILES='!$(HAMLEDT_DATA)/es-ud12/treex/03/$(SETS)/*.treex.gz'
 TRANSFFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/trans*/$(SETS)/*.treex.gz'
 
 # Tests for the Prague style.
