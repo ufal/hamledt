@@ -9,7 +9,15 @@ source:
 	$(TOOLS)/split_conll.pl < /net/data/TamilTB/train.conll -head 400 $(IN)/train.conll $(IN)/dev.conll
 	ln -s /net/data/TamilTB/test.conll $(IN)/test.conll
 
-treex: conll_to_treex
+# The import of Tamil data to Treex differs from other languages in that we
+# also transliterate the cased Latin back to the Tamil script in UTF-8, and
+# the word forms are furthermore romanized using the scientific scheme and the
+# result is stored in the translit attribute.
+# Otherwise we could just write "treex: conll_to_treex" here.
+treex:
+	$(TREEX) $(IMPORTX) from=$(IN)/train.conll W2W::TA::Transliteration use_enc_map=latin_2_utf8 mark_latin=0 W2W::Translit $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORTX) from=$(IN)/dev.conll   W2W::TA::Transliteration use_enc_map=latin_2_utf8 mark_latin=0 W2W::Translit $(WRITE0) path=$(DIR0)/dev/
+	$(TREEX) $(IMPORTX) from=$(IN)/test.conll  W2W::TA::Transliteration use_enc_map=latin_2_utf8 mark_latin=0 W2W::Translit $(WRITE0) path=$(DIR0)/test/
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud
