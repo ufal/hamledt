@@ -14,7 +14,7 @@ sub usage
     print STDERR ("\tThe 'clean' action currently only removes the cluster logs (.o123456 files).\n");
     print STDERR ("\tOptions:\n");
     print STDERR ("\t--wdir folder ... experiment folder; default is ./pokus.\n");
-    print STDERR ("\t--languages en,cs,ar ... instead of all languages, process only those specified here.\n");
+    print STDERR ("\t--treebanks en,cs,ar ... instead of all treebanks, process only those specified here.\n");
     print STDERR ("\t--trainlimit N ... for the 'pretrain' action: use only the first N sentences for training.\n");
 }
 
@@ -764,54 +764,91 @@ sub print_table
     my $metric = 'd'; # pms|d|...
     my @treebanks = sort(keys(%value));
     # Print results for each treebank in a separate table (but technically it will be one large table).
-    my $table = Text::Table->new('&right', \' | ', '&right', \' | ', '&right', \' | ', '&right', \' | ', '&right', \' | ', '&right');
+    my $table = Text::Table->new('&right', \' | ', '&right', \' | ', '&right', \' | ', '&right', \' | ', '&right', \' | ', '&right', \' | ', '&right', \' | ', '&right');
     foreach my $treebank (@treebanks)
     {
         my @sizes = sort {$a <=> $b} (keys(%{$value{$treebank}}));
+        # The real maximum size is not 100,000 sentences but something smaller.
+        my $wcconll = `wc_conll.pl $wdir/$treebank/02/100000/train.conll`;
+        my $maxsize = 100000;
+        if($wcconll =~ m/^(\d+)\s+sentences/)
+        {
+            $maxsize = $1;
+        }
+        # Collect parsers (identified by training treebanks) that produced at least one result for this target treebank.
         # Normally it would be enough to take the parsers from the largest size
         # but if we are retrieving a partial table before everything is done, the
         # list of parsers may not be complete there!
         my %parsers;
+        my %best_sizes;
         for(my $i = 0; $i<=$#sizes; $i++)
         {
             my @parsers = keys(%{$value{$treebank}{$sizes[$i]}});
             foreach my $parser (@parsers)
             {
-                if(!defined($parsers{$parser}) || $value{$treebank}{$sizes[$i]}{$parser}{$metric} > $parsers{$parser})
+                my $parser_score = $value{$treebank}{$sizes[$i]}{$parser}{$metric};
+                if(defined($parser_score) && (!defined($parsers{$parser}) || $parser_score > $parsers{$parser}))
                 {
-                    $parsers{$parser} = $value{$treebank}{$sizes[$i]}{$parser}{$metric};
+                    $parsers{$parser} = $parser_score;
+                    $best_sizes{$parser} = $sizes[$i];
                 }
             }
         }
         my @parsers = sort {$parsers{$b} <=> $parsers{$a}} (keys{%parsers});
         $table->add("Treebank: $treebank", @parsers);
+        # Add scores for each size of each parser.
         foreach my $size (@sizes)
         {
-            my $snt = sprintf("%5d sentences:", $size);
-            $table->add($snt, map {$value{$treebank}{$size}{$_}{$metric}} (@parsers));
+            my $isize = $size > $maxsize ? $maxsize : $size;
+            my $snt = sprintf("%5d sentences:", $isize);
+            my @scores = map
+            {
+                my $score = $value{$treebank}{$size}{$_}{$metric};
+                # Some parsers do not achieve the best score with the best size.
+                # Mark scores that are lower than a score of a smaller size of the same parser.
+                $score = "($score)" if($size > $best_sizes{$_});
+                $score
+            }
+            (@parsers);
+            $table->add($snt, @scores);
         }
         # Estimate how many training sentences of the smf parsing model each delexicalized model corresponds to.
         my @psignif = ('~ smf sents');
-        my @smfscores = map {$value{$treebank}{$sizes[$_]}{smf}{$metric}} (0..$#sizes);
+        # Extract scores of the smf parser for each treebank size.
+        # For the purpose of this estimation make the sequence monotonic, i.e. artificially increase scores that were worse than a previous score.
+        my @smfscores;
+        foreach my $size (@sizes)
+        {
+            my $size_score = $value{$treebank}{$size}{smf}{$metric};
+            if(scalar(@smfscores)>=1 && (!defined($size_score) || $size_score<=$smfscores[-1]))
+            {
+                $size_score = $smfscores[-1] + 0.01; # 0.01 %; our scores are in % and their precision is two decimal positions
+            }
+            push(@smfscores, $size_score);
+        }
         foreach my $parser (@parsers)
         {
-            my @scores = map {$value{$treebank}{$sizes[$_]}{$parser}{$metric}} (0..$#sizes);
-            my $score = $scores[-1];
-            my $i = $#sizes;
-            for(; $i>0 && $score < $smfscores[$i]; $i--)
-            {
-            }
-            if($i==0)
+            my $score = $parsers{$parser};
+            if ($score < $smfscores[0])
             {
                 push(@psignif, 'USELESS');
             }
-            elsif($i==$#sizes)
+            elsif ($score > $smfscores[-1])
             {
-                push(@psignif, $score > $smfscores[$i] ? 'BETTER!' : '');
+                push(@psignif, 'BETTER!');
             }
             else
             {
-                my $isents = sprintf("%d", ($score-$smfscores[$i])/($smfscores[$i+1]-$smfscores[$i])*($sizes[$i+1]-$sizes[$i])+$sizes[$i]+0.5);
+                my $i = $#sizes;
+                for(; $i>0 && $score < $smfscores[$i]; $i--)
+                {
+                }
+                my $score0 = $smfscores[$i];
+                my $score1 = $smfscores[$i+1];
+                my $size0  = $sizes[$i];
+                my $size1  = $sizes[$i+1] > $maxsize ? $maxsize : $sizes[$i+1];
+                my $isents = sprintf("%d", ($score-$score0)/($score1-$score0)*($size1-$size0)+$size0+0.5);
+                $isents = $maxsize if($isents>$maxsize);
                 push(@psignif, $isents);
             }
         }
