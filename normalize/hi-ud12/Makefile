@@ -20,6 +20,7 @@ ud: conllu_to_treex
 ###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
 correct:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
+	        W2W::Translit \
 	        HamleDT::HI::FixUD \
 	        Write::CoNLLU substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} compress=1

@@ -4,14 +4,14 @@ VALLOG=validation.log
 TESTLOG=test.log
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
 ALL_TREEBANKS={ar,bg-ud11,bn,ca,cs,da-ud11,de,de-ud11,el-ud11,en,en-ud11,es,es-ud11,et,eu-ud11,fa,fa-ud11,fi-ud11,fi-ud11ftb,fr-ud11,ga-ud11,grc,he-ud11,hi,hr-ud11,hu-ud11,id-ud11,it-ud11,ja,la,la-it,nl,pl,pt,ro,ru,sk,sl,sv-ud11,ta,te,tr}
-TREEBANKS={cs,ar,et,grc,la,la-it,nl,pl,pt,ta,es-ud12}
+TREEBANKS={cs,ar,et,grc,la,la-it,nl,pl,pt,ta,es-ud12,hi-ud12}
 #TREEBANKS=$(ALL_TREEBANKS)
 #TREEBANKS={cs,sk,pl,sl,hr,bg,ru}
 SETS={train,dev,test}
 # HAMLEDT_DATA must be set in your environment.
 PFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/01/$(SETS)/*.treex.gz'
 UFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/02/$(SETS)/*.treex.gz'
-CFILES='!$(HAMLEDT_DATA)/es-ud12/treex/03/$(SETS)/*.treex.gz'
+CFILES='!$(HAMLEDT_DATA)/{es,hi}-ud12/treex/03/$(SETS)/*.treex.gz'
 TRANSFFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/trans*/$(SETS)/*.treex.gz'
 
 # Tests for the Prague style.
@@ -75,7 +75,7 @@ ptests:
 utests:
 	@date
 	treex -p --jobs=$(JOBS) --priority=-1 --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*" \
-	Util::SetGlobal Read::Treex from=$(UFILES) $(UTESTS) 2> test.err > $(TESTLOG)
+	Util::SetGlobal Read::Treex from=$(CFILES) $(UTESTS) 2> test.err > $(TESTLOG)
 	@date
 
 table:
