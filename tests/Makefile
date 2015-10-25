@@ -2,17 +2,22 @@ SHELL=bash
 JOBS=100
 VALLOG=validation.log
 TESTLOG=test.log
-# You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
-ALL_TREEBANKS={ar,bg-ud11,bn,ca,cs,da-ud11,de,de-ud11,el-ud11,en,en-ud11,es,es-ud11,et,eu-ud11,fa,fa-ud11,fi-ud11,fi-ud11ftb,fr-ud11,ga-ud11,grc,he-ud11,hi,hr-ud11,hu-ud11,id-ud11,it-ud11,ja,la,la-it,nl,pl,pt,ro,ru,sk,sl,sv-ud11,ta,te,tr}
-TREEBANKS={cs,ar,et,grc,la,la-it,nl,pl,pt,ta,es-ud12,hi-ud12}
-#TREEBANKS=$(ALL_TREEBANKS)
-#TREEBANKS={cs,sk,pl,sl,hr,bg,ru}
-SETS={train,dev,test}
-# HAMLEDT_DATA must be set in your environment.
-PFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/01/$(SETS)/*.treex.gz'
-UFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/02/$(SETS)/*.treex.gz'
-CFILES='!$(HAMLEDT_DATA)/{es,hi}-ud12/treex/03/$(SETS)/*.treex.gz'
-TRANSFFILES='!$(HAMLEDT_DATA)/$(TREEBANKS)/treex/trans*/$(SETS)/*.treex.gz'
+
+# Tests for Universal Dependencies.
+UTESTS = \
+	HamleDT::Test::UD::Root \
+	HamleDT::Test::UD::SingleRoot \
+	HamleDT::Test::UD::Determiners \
+	HamleDT::Test::UD::Adpositions \
+	HamleDT::Test::UD::Subjunctions \
+	HamleDT::Test::UD::CompoundPrepositions \
+	HamleDT::Test::UD::Reflexives \
+	HamleDT::Test::UD::FutureIsNotXcomp \
+	HamleDT::Test::UD::XcompHasNoSubject \
+	HamleDT::Test::UD::LeftToRightRelations \
+	HamleDT::Test::UD::Punctuation \
+	HamleDT::Test::UD::UnconvertedDependencies \
+	HamleDT::Test::UD::ZZZSearch
 
 # Tests for the Prague style.
 PTESTS = \
@@ -34,29 +39,32 @@ PTESTS = \
 	HamleDT::Test::SubjectBelowVerb \
 	HamleDT::Test::MaxOneSubject
 
-# Tests for Universal Dependencies.
-UTESTS = \
-	HamleDT::Test::UD::Root \
-	HamleDT::Test::UD::SingleRoot \
-	HamleDT::Test::UD::Determiners \
-	HamleDT::Test::UD::Adpositions \
-	HamleDT::Test::UD::Subjunctions \
-	HamleDT::Test::UD::CompoundPrepositions \
-	HamleDT::Test::UD::Reflexives \
-	HamleDT::Test::UD::FutureIsNotXcomp \
-	HamleDT::Test::UD::XcompHasNoSubject \
-	HamleDT::Test::UD::LeftToRightRelations \
-	HamleDT::Test::UD::Punctuation \
-	HamleDT::Test::UD::UnconvertedDependencies \
-	HamleDT::Test::UD::ZZZSearch
+# You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
+#ALL_TREEBANKS={ar,bg-ud11,bn,ca,cs,da-ud11,de,de-ud11,el-ud11,en,en-ud11,es,es-ud11,et,eu-ud11,fa,fa-ud11,fi-ud11,fi-ud11ftb,fr-ud11,ga-ud11,grc,he-ud11,hi,hr-ud11,hu-ud11,id-ud11,it-ud11,ja,la,la-it,nl,pl,pt,ro,ru,sk,sl,sv-ud11,ta,te,tr}
+#TREEBANKS={cs,ar,et,grc,la,la-it,nl,pl,pt,ta,es-ud12,hi-ud12}
+#TREEBANKS=$(ALL_TREEBANKS)
+#TREEBANKS={cs,sk,pl,sl,hr,bg,ru}
+SETS={train,dev,test}
+# HAMLEDT_DATA must be set in your environment.
+# P-treebanks are those that have the Prague conversion in 01, i.e. those whose UD version is created via Prague.
+PTREBANKS=ar,bn,ca,cs,de,en,es,et,fa,grc,hi,ja,la,la-it,nl,pl,pt,ro,ru,sk,sl,ta,te,tr
+PFILES='!$(HAMLEDT_DATA)/{$(PTREEBANKS)}/treex/01/$(SETS)/*.treex.gz'
+# U-treebanks come from the last official release of Universal Dependencies. They do not have a Prague conversion.
+# UD tests can be run on both P-treebanks and U-treebanks because both have the UD version in 02.
+UTREEBANKS=bg-ud11,da-ud11,de-ud11,el-ud11,en-ud11,es-ud11,eu-ud11,fa-ud11,fi-ud11,fi-ud11ftb,fr-ud11,ga-ud11,he-ud11,hr-ud11,hu-ud11,id-ud11,it-ud11,sv-ud11
+UFILES='!$(HAMLEDT_DATA)/{$(PTREEBANKS),$(UTREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
+# C-treebanks are under correction. They come from the last release of UD and are being improved for the next release.
+# They do not have Prague style in 01 but they have two UD folders: 02 is the input and 03 is the corrected output.
+CTREEBANKS=es-ud12,hi-ud12
+CFILES='!$(HAMLEDT_DATA)/{$(CTREEBANKS)}/treex/03/$(SETS)/*.treex.gz'
 
-validate:
-	treex -p --survive --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
-	@echo
-	@echo Output of the validation test stored in $(VALLOG)
-
-summarize_validation:
-	grep -v TREEX $(VALLOG) || exit 0
+# Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
+# I am temporarily setting it rather high in order to sneak before Shadi's jobs.
+utests:
+	@date
+	treex -p --jobs=$(JOBS) --priority=-1 --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*" \
+	Util::SetGlobal Read::Treex from=$(CFILES) $(UTESTS) 2> test.err > $(TESTLOG)
+	@date
 
 # DZ: Removing --survive from the treex command below.
 # Sometimes a job fails to produce .stderr, treex does not know what to do (it is supposed to pass the stderrs in the original order)
@@ -70,24 +78,8 @@ ptests:
 	Util::SetGlobal Read::Treex from=$(PFILES) $(PTESTS) 2> test.err > $(TESTLOG)
 	@date
 
-# Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
-# I am temporarily setting it rather high in order to sneak before Shadi's jobs.
-utests:
-	@date
-	treex -p --jobs=$(JOBS) --priority=-1 --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*" \
-	Util::SetGlobal Read::Treex from=$(CFILES) $(UTESTS) 2> test.err > $(TESTLOG)
-	@date
-
 table:
 	cat $(TESTLOG) | ./summarize_tests.pl
-
-clean:
-	rm -rf *.log ???-cluster-run-* test.err
-
-transftest:
-	treex  -p --jobs=$(JOBS) --survive  \
-	HamleDT::Test::CoordStyle stylefrompath=1 \
-	-- $(TRANSFFILES) 2> transftest.err > transftest.log
 
 # TTBK=hi TEST=SubjectBelowVerb make ttred
 #TTBK=hi
@@ -109,3 +101,14 @@ treex:
 	mkdir -p examples
 	cat $(FILELIST) | refine_filelist.pl > examples/index.fl
 	fl2treex $(FILELIST) -o examples -n 50
+
+validate:
+	treex -p --survive --jobs=$(JOBS) --survive -- $(FILES)  2>&1 | tee $(VALLOG)
+	@echo
+	@echo Output of the validation test stored in $(VALLOG)
+
+summarize_validation:
+	grep -v TREEX $(VALLOG) || exit 0
+
+clean:
+	rm -rf *.log *.filelist ???-cluster-run-* test.err
