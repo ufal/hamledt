@@ -55,26 +55,32 @@ UTREEBANKS=bg-ud11,da-ud11,de-ud11,el-ud11,en-ud11,es-ud11,eu-ud11,fa-ud11,fi-ud
 UFILES='!$(HAMLEDT_DATA)/{$(PTREEBANKS),$(UTREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
 # C-treebanks are under correction. They come from the last release of UD and are being improved for the next release.
 # They do not have Prague style in 01 but they have two UD folders: 02 is the input and 03 is the corrected output.
+# The way it is written we cannot test both 02 and 03 at the same time: we would see errors from both aggregated under one treebank code.
 CTREEBANKS=es-ud12,hi-ud12
-CFILES='!$(HAMLEDT_DATA)/{$(CTREEBANKS)}/treex/{02,03}/$(SETS)/*.treex.gz'
+CFILES='!$(HAMLEDT_DATA)/{$(CTREEBANKS)}/treex/03/$(SETS)/*.treex.gz'
 
 # Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
 # I am temporarily setting it rather high in order to sneak before Shadi's jobs.
+CLUSTER=-p --jobs=$(JOBS) --priority=-1 --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*"
+
 utests:
 	@date
-	treex -p --jobs=$(JOBS) --priority=-1 --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*" \
+	treex $(CLUSTER) \
+	Util::SetGlobal Read::Treex from=$(UFILES) $(UTESTS) 2> test.err > $(TESTLOG)
+	@date
+
+ctests:
+	@date
+	treex $(CLUSTER) \
 	Util::SetGlobal Read::Treex from=$(CFILES) $(UTESTS) 2> test.err > $(TESTLOG)
 	@date
 
-# DZ: Removing --survive from the treex command below.
-# Sometimes a job fails to produce .stderr, treex does not know what to do (it is supposed to pass the stderrs in the original order)
-# but it does not kill the jobs because of the --survive flag.
 # Každou chvíli to padá a v té změti souborů je skoro nemožné najít nějakou zprávu, co se stalo a na kterém stroji :-(
 # Snad aby to člověk pouštěl takhle, většinou to nakonec jednou nespadne:
 # while ! make utests ; do echo Nový pokus... ; done ; make table
 ptests:
 	@date
-	treex -p --jobs=$(JOBS) --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*" \
+	treex $(CLUSTER) \
 	Util::SetGlobal Read::Treex from=$(PFILES) $(PTESTS) 2> test.err > $(TESTLOG)
 	@date
 
