@@ -56,7 +56,7 @@ UFILES='!$(HAMLEDT_DATA)/{$(PTREEBANKS),$(UTREEBANKS)}/treex/02/$(SETS)/*.treex.
 # C-treebanks are under correction. They come from the last release of UD and are being improved for the next release.
 # They do not have Prague style in 01 but they have two UD folders: 02 is the input and 03 is the corrected output.
 CTREEBANKS=es-ud12,hi-ud12
-CFILES='!$(HAMLEDT_DATA)/{$(CTREEBANKS)}/treex/03/$(SETS)/*.treex.gz'
+CFILES='!$(HAMLEDT_DATA)/{$(CTREEBANKS)}/treex/{02,03}/$(SETS)/*.treex.gz'
 
 # Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
 # I am temporarily setting it rather high in order to sneak before Shadi's jobs.
