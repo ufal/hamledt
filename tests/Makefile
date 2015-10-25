@@ -49,15 +49,15 @@ SETS={train,dev,test}
 # P-treebanks are those that have the Prague conversion in 01, i.e. those whose UD version is created via Prague.
 PTREBANKS=ar,bn,ca,cs,de,en,es,et,fa,grc,hi,ja,la,la-it,nl,pl,pt,ro,ru,sk,sl,ta,te,tr
 PFILES='!$(HAMLEDT_DATA)/{$(PTREEBANKS)}/treex/01/$(SETS)/*.treex.gz'
-# U-treebanks come from the last official release of Universal Dependencies. They do not have a Prague conversion.
-# UD tests can be run on both P-treebanks and U-treebanks because both have the UD version in 02.
-UTREEBANKS=bg-ud11,da-ud11,de-ud11,el-ud11,en-ud11,es-ud11,eu-ud11,fa-ud11,fi-ud11,fi-ud11ftb,fr-ud11,ga-ud11,he-ud11,hr-ud11,hu-ud11,id-ud11,it-ud11,sv-ud11
-UFILES='!$(HAMLEDT_DATA)/{$(PTREEBANKS),$(UTREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
 # C-treebanks are under correction. They come from the last release of UD and are being improved for the next release.
 # They do not have Prague style in 01 but they have two UD folders: 02 is the input and 03 is the corrected output.
 # The way it is written we cannot test both 02 and 03 at the same time: we would see errors from both aggregated under one treebank code.
 CTREEBANKS=es-ud12,hi-ud12
 CFILES='!$(HAMLEDT_DATA)/{$(CTREEBANKS)}/treex/03/$(SETS)/*.treex.gz'
+# U-treebanks come from the last official release of Universal Dependencies. They do not have a Prague conversion.
+# UD tests can be run on P-treebanks, U-treebanks and C-treebanks because all three have the UD version in 02.
+UTREEBANKS=bg-ud11,da-ud11,de-ud11,el-ud11,en-ud11,es-ud11,eu-ud11,fa-ud11,fi-ud11,fi-ud11ftb,fr-ud11,ga-ud11,he-ud11,hr-ud11,hu-ud11,id-ud11,it-ud11,sv-ud11
+UFILES='!$(HAMLEDT_DATA)/{$(PTREEBANKS),$(UTREEBANKS),$(CTREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
 
 # Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
 # I am temporarily setting it rather high in order to sneak before Shadi's jobs.
