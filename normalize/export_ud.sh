@@ -4,6 +4,9 @@
 # Usage:
 #   cd $HAMLEDT/normalize/cs
 #   ../export_ud.sh cs Czech
+# If this is not the default treebank for the language:
+#   cd $HAMLEDT/normalize/la-it
+#   ../export_ud.sh la_itt Latin-ITT
 
 lcode=$1
 lname=$2
@@ -26,4 +29,3 @@ for i in *.conllu ; do
   python $UDTOOLS/validate.py --noecho --lang=$lcode $i
   mv $i $UDDIR/UD_$lname
 done
-
