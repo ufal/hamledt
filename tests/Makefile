@@ -2,6 +2,9 @@ SHELL=bash
 JOBS=100
 VALLOG=validation.log
 TESTLOG=test.log
+# Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
+# I am temporarily setting it rather high in order to sneak before Shadi's jobs.
+CLUSTER=-p --jobs=$(JOBS) --priority=-1 --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*"
 
 # Tests for Universal Dependencies.
 UTESTS = \
@@ -41,10 +44,6 @@ PTESTS = \
 	HamleDT::Test::MaxOneSubject
 
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
-#ALL_TREEBANKS={ar,bg-ud11,bn,ca,cs,da-ud11,de,de-ud11,el-ud11,en,en-ud11,es,es-ud11,et,eu-ud11,fa,fa-ud11,fi-ud11,fi-ud11ftb,fr-ud11,ga-ud11,grc,he-ud11,hi,hr-ud11,hu-ud11,id-ud11,it-ud11,ja,la,la-it,nl,pl,pt,ro,ru,sk,sl,sv-ud11,ta,te,tr}
-#TREEBANKS={cs,ar,et,grc,la,la-it,nl,pl,pt,ta,es-ud12,hi-ud12}
-#TREEBANKS=$(ALL_TREEBANKS)
-#TREEBANKS={cs,sk,pl,sl,hr,bg,ru}
 SETS={train,dev,test}
 # HAMLEDT_DATA must be set in your environment.
 # P-treebanks are those that have the Prague conversion in 01, i.e. those whose UD version is created via Prague.
@@ -58,11 +57,10 @@ CFILES='!$(HAMLEDT_DATA)/{$(CTREEBANKS)}/treex/03/$(SETS)/*.treex.gz'
 # U-treebanks come from the last official release of Universal Dependencies. They do not have a Prague conversion.
 # UD tests can be run on P-treebanks, U-treebanks and C-treebanks because all three have the UD version in 02.
 UTREEBANKS=bg-ud11,da-ud11,de-ud11,el-ud11,en-ud11,es-ud11,eu-ud11,fa-ud11,fi-ud11,fi-ud11ftb,fr-ud11,ga-ud11,he-ud11,hr-ud11,hu-ud11,id-ud11,it-ud11,sv-ud11
-UFILES='!$(HAMLEDT_DATA)/{$(PTREEBANKS),$(UTREEBANKS),$(CTREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
-
-# Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
-# I am temporarily setting it rather high in order to sneak before Shadi's jobs.
-CLUSTER=-p --jobs=$(JOBS) --priority=-1 --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@f*,*@hyp*,*@l*,*@o*,*@p*,*@t*"
+ALLTREEBANKS=$(PTREEBANKS),$(UTREEBANKS),$(CTREEBANKS)
+# Either assign $(ALLTREEBANKS) to TREEBANKS, or narrow the selection down to what we currently need to see.
+TREEBANKS=la-it
+UFILES='!$(HAMLEDT_DATA)/{$(TREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
 
 utests:
 	@date
