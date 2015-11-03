@@ -14,7 +14,7 @@ source:
 # the word forms are furthermore romanized using the scientific scheme and the
 # result is stored in the translit attribute.
 # Otherwise we could just write "treex: conll_to_treex" here.
-TRANSLIT=W2W::TA::Transliteration use_enc_map=latin_2_utf8 mark_latin=0 W2W::Translit
+TRANSLIT=W2W::TA::Transliteration use_enc_map=latin_2_utf8 mark_latin=0 W2W::Translit W2W::EstimateNoSpaceAfter
 DETOKDIR=$(HAMLEDT)/normalize/ta/detokenized
 treex:
 	$(TREEX) $(IMPORTX) from=$(IN)/train.conll $(TRANSLIT) HamleDT::TA::ReadDetokenizedSentences from=$(DETOKDIR)/train.ta $(WRITE0) path=$(DIR0)/train/
