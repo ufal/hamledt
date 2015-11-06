@@ -105,6 +105,19 @@ prague_to_ud:
 export_conllu:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Write::CoNLLU substitute={$(DIR2)}{$(CONLLUDIR)} compress=1
 
+# Improving UD data for the next release.
+# It takes UD as input, improves it and saves it to a new folder.
+# It also immediately exports the corrected data to the conllu folder because that is what we will want to do anyway
+# and we cannot use the common export_conllu target which reads from DIR2, not DIR3.
+###!!! Due to a bug in Treex::Core::Node::Interset we must write CoNLLU before Treex.
+###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
+correct:
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
+	        HamleDT::$(UCLANG)::FixUD \
+	        Write::CoNLLU substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
+	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} compress=1
+	../export_ud.sh $(UDCODE) $(UDNAME)
+
 # Export for PML-TQ: Treex files but smaller (50 trees per file) and all in one folder.
 # Further processing occurs in /net/work/projects/pmltq/data/hamledt.
 # We do not use parallel treex here because it cannot work with undefined total number of documents. And the reader does not know in advance how many documents it will read.
