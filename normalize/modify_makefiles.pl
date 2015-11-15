@@ -52,26 +52,24 @@ sub process_makefile
     {
         die("Cannot identify language in path $path");
     }
+    ###!!! The current change should be applied only to UD 1.2 treebanks.
+    if($lang !~ m/-UD12$/)
+    {
+        print STDERR ("... skipping non-UD1.2 treebank\n");
+        return;
+    }
     open(MAKEFILE, $path) or die("Cannot read $path: $!\n");
     open(MF1, ">$path1") or die("Cannot write $path1: $!\n");
     my $i_line = 0;
     while(<MAKEFILE>)
     {
         $i_line++;
-        if(m/^(\t\$\(TREEX\)\s-p)(.*)$/)
+        ###!!! Changes are hard-coded in the source code.
+        if(s-SOURCEDIR=/net/work/people/zeman/unidep/UD_-SOURCEDIR=/net/data/universal-dependencies-1.2/UD_-)
         {
-            my $prefix = $1;
-            my $suffix = $2;
-            # The suffix has probably lost the line break but let's make sure.
-            $suffix =~ s/\r?\n$//;
             print STDERR (" ... hit\n");
-            # Make sure that both the cluster and the local Treex output all infos and warnings.
-            print MF1 ($prefix.' -e ALL -E ALL'.$suffix."\n");
         }
-        else
-        {
-            print MF1;
-        }
+        print MF1;
     }
     close(MAKEFILE);
     close(MF1);
