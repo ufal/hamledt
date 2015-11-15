@@ -6,7 +6,7 @@ include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)
 source:
-	cp $(SOURCEDIR)/$(UDCODE)-ud-train.conllu data/source/train.conllu
+	cat $(SOURCEDIR)/$(UDCODE)-ud-train-[clmv].conllu > data/source/train.conllu
 	cp $(SOURCEDIR)/$(UDCODE)-ud-dev.conllu data/source/dev.conllu
 	cp $(SOURCEDIR)/$(UDCODE)-ud-test.conllu data/source/test.conllu
 

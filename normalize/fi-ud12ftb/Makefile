@@ -1,7 +1,7 @@
 LANGCODE=fi
 TREEBANK=fi-ud12ftb
 UDCODE=fi_ftb
-UDNAME=Finnish
+UDNAME=Finnish-FTB
 include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)

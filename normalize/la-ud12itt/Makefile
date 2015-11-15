@@ -1,7 +1,7 @@
 LANGCODE=la
 TREEBANK=la-ud12itt
 UDCODE=la_itt
-UDNAME=Latin
+UDNAME=Latin-ITT
 include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)

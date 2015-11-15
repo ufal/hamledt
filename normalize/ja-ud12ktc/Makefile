@@ -1,7 +1,7 @@
 LANGCODE=ja
 TREEBANK=ja-ud12ktc
 UDCODE=ja_ktc
-UDNAME=Japanese
+UDNAME=Japanese-KTC
 include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)

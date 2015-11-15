@@ -62,13 +62,15 @@ foreach my $folder (@folders)
 {
     # The name of the folder: 'UD_' + language name + optional treebank identifier.
     # Example: UD_Ancient_Greek-PROIEL
+    my $udname = '';
     my $language = '';
     my $treebank = '';
     my $langcode;
-    if($folder =~ m/^UD_([A-Za-z_]+)(?:-([A-Z]+))?$/)
+    if($folder =~ m/^UD_(([A-Za-z_]+)(?:-([A-Z]+))?)$/)
     {
-        $language = $1;
-        $treebank = $2 if(defined($2));
+        $udname = $1;
+        $language = $2;
+        $treebank = $3 if(defined($2));
         if(exists($langcodes{$language}))
         {
             $langcode = $langcodes{$language};
@@ -97,7 +99,7 @@ foreach my $folder (@folders)
 LANGCODE=$langcode
 TREEBANK=$hfolder
 UDCODE=$key
-UDNAME=$language
+UDNAME=$udname
 include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/unidep/UD_\$(UDNAME)

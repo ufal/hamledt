@@ -1,7 +1,7 @@
 LANGCODE=grc
 TREEBANK=grc-ud12proiel
 UDCODE=grc_proiel
-UDNAME=Ancient_Greek
+UDNAME=Ancient_Greek-PROIEL
 include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)

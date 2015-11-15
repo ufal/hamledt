@@ -1,7 +1,7 @@
 LANGCODE=la
 TREEBANK=la-ud12proiel
 UDCODE=la_proiel
-UDNAME=Latin
+UDNAME=Latin-PROIEL
 include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)

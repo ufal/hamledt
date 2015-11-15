@@ -20,7 +20,6 @@ UTESTS = \
 	HamleDT::Test::UD::LeftToRightRelations \
 	HamleDT::Test::UD::Punctuation \
 	HamleDT::Test::UD::UnconvertedDependencies \
-	HamleDT::Test::UD::FiniteVerbWithGender \
 	HamleDT::Test::UD::ZZZSearch
 
 # Tests for the Prague style.
