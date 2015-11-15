@@ -1,13 +1,13 @@
 #!/usr/bin/perl
 # Batch modification of the makefiles for all languages.
-# Copyright © 2011 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2011, 2015 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 use utf8;
-use open ":utf8";
-binmode(STDIN, ":utf8");
-binmode(STDOUT, ":utf8");
-binmode(STDERR, ":utf8");
+use open ':utf8';
+binmode(STDIN, ':utf8');
+binmode(STDOUT, ':utf8');
+binmode(STDERR, ':utf8');
 use lib '/home/zeman/lib';
 use find;
 
@@ -24,7 +24,7 @@ sub process_object
     my $object = shift;
     my $type = shift;
     # If this is a Makefile in a subfolder of the root folder, process it.
-    if($path =~ m-^\./\w+$- && $object eq 'Makefile')
+    if($path =~ m:^\./[-\w]+$: && $object eq 'Makefile')
     {
         process_makefile("$path/Makefile");
     }
@@ -44,7 +44,7 @@ sub process_makefile
     my $path1 = $path.'1';
     print STDERR ("$path => $path1\n");
     my $lang;
-    if($path =~ m-^\./(\w+)/Makefile$-)
+    if($path =~ m:^\./([-\w]+)/Makefile$:)
     {
         $lang = uc($1);
     }
@@ -53,7 +53,7 @@ sub process_makefile
         die("Cannot identify language in path $path");
     }
     ###!!! The current change should be applied only to UD 1.2 treebanks.
-    if($lang !~ m/-UD12$/)
+    if($lang !~ m/-UD12\w*$/)
     {
         print STDERR ("... skipping non-UD1.2 treebank\n");
         return;
@@ -65,7 +65,7 @@ sub process_makefile
     {
         $i_line++;
         ###!!! Changes are hard-coded in the source code.
-        if(s-SOURCEDIR=/net/work/people/zeman/unidep/UD_-SOURCEDIR=/net/data/universal-dependencies-1.2/UD_-)
+        if(s:SOURCEDIR=/net/work/people/zeman/unidep/UD_:SOURCEDIR=/net/data/universal-dependencies-1.2/UD_:)
         {
             print STDERR (" ... hit\n");
         }

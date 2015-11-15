@@ -4,7 +4,7 @@ UDCODE=cs
 UDNAME=Czech
 include ../common.mak
 
-SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)
+SOURCEDIR=/net/data/universal-dependencies-1.2/UD_$(UDNAME)
 source:
 	cat $(SOURCEDIR)/$(UDCODE)-ud-train-[clmv].conllu > data/source/train.conllu
 	cp $(SOURCEDIR)/$(UDCODE)-ud-dev.conllu data/source/dev.conllu

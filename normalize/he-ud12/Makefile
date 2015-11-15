@@ -4,7 +4,7 @@ UDCODE=he
 UDNAME=Hebrew
 include ../common.mak
 
-SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)
+SOURCEDIR=/net/data/universal-dependencies-1.2/UD_$(UDNAME)
 source:
 	cp $(SOURCEDIR)/$(UDCODE)-ud-train.conllu data/source/train.conllu
 	cp $(SOURCEDIR)/$(UDCODE)-ud-dev.conllu data/source/dev.conllu
