@@ -19,6 +19,7 @@ UTESTS = \
 	HamleDT::Test::UD::FutureIsNotXcomp \
 	HamleDT::Test::UD::XcompHasNoSubject \
 	HamleDT::Test::UD::LeftToRightRelations \
+	HamleDT::Test::UD::AuxChain \
 	HamleDT::Test::UD::Punctuation \
 	HamleDT::Test::UD::UnconvertedDependencies \
 	HamleDT::Test::UD::ZZZSearch
