@@ -10,6 +10,7 @@ CLUSTER=-p --jobs=$(JOBS) --priority=-1 --memory=4G --qsub="-q *@a*,*@b*,*@c*,*@
 UTESTS = \
 	HamleDT::Test::UD::Root \
 	HamleDT::Test::UD::SingleRoot \
+	HamleDT::Test::UD::UnderscoreInForm \
 	HamleDT::Test::UD::Determiners \
 	HamleDT::Test::UD::Adpositions \
 	HamleDT::Test::UD::Subjunctions \
