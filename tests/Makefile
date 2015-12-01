@@ -27,7 +27,6 @@ UTESTS = \
 
 # Tests for the Prague style.
 PTESTS = \
-	HamleDT::Test::AfunDefined \
 	HamleDT::Test::AfunKnown \
 	HamleDT::Test::AfunNotNR \
 	HamleDT::Test::CoApAboveEveryMember \
