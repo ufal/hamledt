@@ -29,19 +29,22 @@ UTESTS = \
 PTESTS = \
 	HamleDT::Test::AfunKnown \
 	HamleDT::Test::AfunNotNR \
+	HamleDT::Test::AuxGIsPunctuation \
+	HamleDT::Test::AuxKAtEnd \
+	HamleDT::Test::AuxKUnderRoot \
+	HamleDT::Test::AuxVNotOnTop \
+	HamleDT::Test::AuxXIsComma \
 	HamleDT::Test::CoApAboveEveryMember \
 	HamleDT::Test::MemberInEveryCoAp \
-	HamleDT::Test::MemberInEveryCoord \
-	HamleDT::Test::NonleafAuxC \
-	HamleDT::Test::NonleafAuxP \
+	HamleDT::Test::PunctUnderCoord \
 	HamleDT::Test::PrepIsAuxP \
 	HamleDT::Test::LeafAux \
 	HamleDT::Test::FinalPunctuation \
 	HamleDT::Test::NonemptyAttr \
+	HamleDT::Test::NonParentAuxS \
 	HamleDT::Test::NounGovernsDet \
 	HamleDT::Test::NoNewNonProj \
-	HamleDT::Test::PredUnderRoot \
-	HamleDT::Test::SubjectBelowVerb \
+	HamleDT::Test::SubjectUnderVerb \
 	HamleDT::Test::MaxOneSubject
 
 # You can also specify the languages and datasets you are interested in (you should also set e.g. JOBS=10)
