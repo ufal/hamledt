@@ -27,7 +27,7 @@ UTESTS = \
 
 # Tests for the Prague style.
 PTESTS = \
-	HamleDT::Test::AfunKnown \
+	HamleDT::Test::DeprelKnown \
 	HamleDT::Test::AuxGIsPunctuation \
 	HamleDT::Test::AuxKAtEnd \
 	HamleDT::Test::AuxKUnderRoot \
