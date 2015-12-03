@@ -50,7 +50,8 @@ PTESTS = \
 SETS={train,dev,test}
 # HAMLEDT_DATA must be set in your environment.
 # P-treebanks are those that have the Prague conversion in 01, i.e. those whose UD version is created via Prague.
-PTREEBANKS=ar,bn,ca,cs,de,en,es,et,fa,grc,hi,ja,la,la-it,nl,pl,pt,ro,ru,sk,sl,ta,te,tr
+#PTREEBANKS=ar,bn,ca,cs,de,en,es,et,fa,grc,hi,ja,la,la-it,nl,pl,pt,ro,ru,sk,sl,ta,te,tr
+PTREEBANKS=cs
 PFILES='!$(HAMLEDT_DATA)/{$(PTREEBANKS)}/treex/01/$(SETS)/*.treex.gz'
 # C-treebanks are under correction. They come from the last release of UD and are being improved for the next release.
 # They do not have Prague style in 01 but they have two UD folders: 02 is the input and 03 is the corrected output.
