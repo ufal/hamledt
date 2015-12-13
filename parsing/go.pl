@@ -80,7 +80,9 @@ sub get_treebanks
         my @hamledt = qw(ar bn ca de en es et fa grc hi hr ja la la-it mt nl pl pt ro ru sk sl ta te tr);
         my @ud11 = map {$_.'-ud11'} qw(bg cs da de el en es eu fa fi fr ga he hr hu id it sv);
         push(@ud11, 'fi-ud11ftb');
-        return (@hamledt, @ud11);
+        my @ud12 = map {$_.'-ud12'} qw(ar bg cs cu da de el en es et eu fa fi fr ga got grc he hi hr hu id it la nl no pl pt ro sl sv ta);
+        push(@ud12, 'fi-ud12ftb', 'grc-ud12proiel', 'ja-ud12ktc', 'la-ud12itt', 'la-ud12proiel');
+        return (@hamledt, @ud12);
     }
 }
 
