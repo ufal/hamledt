@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # Processes selected languages and transformations (train, parse, eval, clean etc.)
 # Provides the unified necessary infrastructure for looping through all the sub-experiment subfolders.
-# Copyright © 2011, 2012, 2013, 2014, 2015 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2011-2016 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 sub usage
@@ -81,8 +81,8 @@ sub get_treebanks
         my @ud11 = map {$_.'-ud11'} qw(bg cs da de el en es eu fa fi fr ga he hr hu id it sv);
         push(@ud11, 'fi-ud11ftb');
         my @ud12 = map {$_.'-ud12'} qw(ar bg cs cu da de el en es et eu fa fi fr ga got grc he hi hr hu id it la nl no pl pt ro sl sv ta);
-        push(@ud12, 'fi-ud12ftb', 'grc-ud12proiel', 'ja-ud12ktc', 'la-ud12itt', 'la-ud12proiel');
-        return (@hamledt, @ud12);
+        push(@ud12, 'fi-ud12ftb', 'grc-ud12proiel', 'la-ud12itt', 'la-ud12proiel'); # Excluding ja-ud12ktc because it does not contain words and lemmas.
+        return (@ud12);
     }
 }
 
