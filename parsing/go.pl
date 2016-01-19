@@ -26,6 +26,7 @@ binmode(STDERR, ':utf8');
 use Getopt::Long;
 use Treex::Core::Config;
 use Text::Table;
+use Time::Piece; # localtime()->ymd();
 use lib '/home/zeman/lib';
 use dzsys;
 use cluster;
@@ -664,6 +665,8 @@ sub parse
             system("mkdir -p $parserst-test");
             system("cp $data_dir/$treebank/treex/$transformation/test/*.treex.gz $parserst-test");
             my $scriptname = "p$parserst-$treebank-$transformation.sh";
+            # Shorten the script name so that the derived job name on the cluster is more descriptive.
+            $scriptname =~ s/-ud\d*//g;
             my $memory = '16G';
             # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
             my $uas_file = "uas-$parserst.txt";
@@ -991,6 +994,10 @@ sub clean
     closedir(DIR);
     foreach my $file (@files)
     {
+        # Get the date of the last modification of the file.
+        # We can use it to only remove files older than a certain threshold.
+        my $filedate = localtime((stat $file)[9])->ymd(''); # '' means empty separator; format is: 20000229
+        next if($filedate > 20151231);
         # Does the file name look like a cluster log?
         if($file =~ m/^(.*)\.o(\d+)$/)
         {

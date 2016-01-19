@@ -48,7 +48,7 @@ if($help || !$wdirroot)
 # Parsers, models and their abbreviated codes that we seek in every treebank.
 my %parsers =
 (
-    'mlt' => 'malt_nivreeager.mco',
+#    'mlt' => 'malt_nivreeager.mco',
     'smf' => 'malt_stacklazy.mco',
     'dlx' => 'malt_stacklazy_delex.mco',
 #    'mcp' => 'mcd_proj_o2.model',
@@ -210,6 +210,9 @@ foreach my $jobid (@my_jobs)
     }
 }
 # Identify jobs that have finished but their output was not found.
+print("Identify jobs that have finished but their output was not found.\n");
+my $njobs = scalar(keys(%jobs));
+print("There are $njobs jobs to search.\n");
 foreach my $jobid (keys(%jobs))
 {
     my $job = $jobs{$jobid};
