@@ -86,6 +86,19 @@ SCEN1 = A2A::CopyAtree source_selector='' selector='orig' HamleDT::$(UCLANG)::$(
 prague:
 	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} -- '!$(DIR0)/{train,dev,test}/*.treex.gz'
 
+# Convert the original non-Prague trees directly to Universal Dependencies and store the result in 02.
+# Export the result at the same time also to the CoNLL-U format (we need it for everything to be released).
+# Remember to define the treebank-specific goal "ud" as dependent on "orig_to_ud" if this path is to be taken.
+###!!! Due to a bug in Treex::Core::Node::Interset we must write CoNLLU before Treex.
+###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
+orig_to_ud:
+	$(QTREEX) \
+	    Read::Treex from='!$(DIR0)/{train,dev,test}/*.treex.gz' \
+	    A2A::CopyAtree source_selector='' selector='orig' \
+	    HamleDT::$(UCLANG)::GoogleToUdep \
+	    Write::CoNLLU substitute={$(SUBDIR0)}{$(SUBDIRCU)} compress=1 \
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=1
+
 # Convert the trees to Universal Dependencies and store the result in 02.
 # Export the result at the same time also to the CoNLL-U format (we need it for everything to be released).
 # If the UD version of the treebank is created using HamleDT transformation via the Prague style,
