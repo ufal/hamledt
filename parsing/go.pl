@@ -240,53 +240,69 @@ sub fc
 #------------------------------------------------------------------------------
 sub get_best_delex
 {
+    # The accuracy of the source languages was assessed on the UD 1.2 data.
+    # Malt parser stack lazy, gold standard tags and features, including language-specific.
+    # Utility of the model is based on the best number along the learning curve.
+    # Sometimes a source language is good because it has a lot of data. But sometimes we have to stop training much earlier, otherwise we overfit to the source language.
+    # This ranking cheats in that we will not know what is the right amount to take from the available training data.
     my %best =
     (
-        'bg' => ['hr', 'sl', 'da'],
-        'cs' => ['hr', 'sl', 'bg'],
-        'hr' => ['sl', 'pl', 'bg'],
-        'pl' => ['hr', 'sl', 'bg'],
+        # Indo-European
+        'bg-ud12' => ['sl-ud12', 'hr-ud12', 'cs-ud12'],
+        'cs-ud12' => ['sl-ud12', 'bg-ud12', 'hr-ud12'],
+        'cu-ud12' => ['got-ud12', 'grc-ud12proiel', 'la-ud12proiel'],
+        'hr-ud12' => ['sl-ud12', 'bg-ud12', 'cs-ud12'],
+        'pl-ud12' => ['sl-ud12', 'bg-ud12', 'hr-ud12'],
         'ru' => ['hr', 'sk', 'pl'],
         'sk' => ['hr', 'sl', 'pl'],
-        'sl' => ['hr', 'fi', 'bg'],
-        'da' => ['sv', 'hr', 'fi'],
-        'de' => ['hr', 'sv', 'bg'],
-        'en' => ['de', 'fr', 'sv'],
-        'nl' => ['hu', 'fi', 'sv'],
-        'sv' => ['da', 'en', 'hr'],
+        'sl-ud12' => ['cs-ud12', 'bg-ud12', 'hr-ud12'],
+        'da-ud12' => ['bg-ud12', 'sv-ud12', 'no-ud12'],
+        'de-ud12' => ['sl-ud12', 'bg-ud12', 'sv-ud12'],
+        'en-ud12' => ['de-ud12', 'fr-ud12', 'sv-ud12'],
+        'got-ud12' => ['cu-ud12', 'grc-ud12proiel', 'la-ud12proiel'],
+        'nl-ud12' => ['de-ud12', 'pt-ud12', 'el-ud12'],
+        'no-ud12' => ['sv-ud12', 'hr-ud12', 'bg-ud12'],
+        'sv-ud12' => ['da-ud12', 'no-ud12', 'en-ud12'],
         'ca' => ['it', 'fr', 'es'],
-        'es' => ['fr', 'ca', 'it'],
-        'fr' => ['es', 'it', 'ca'],
-        'it' => ['fr', 'ca', 'hr'],
-        'pt' => ['it', 'fr', 'he'],
-        'ro' => ['hr', 'la', 'es'],
-        'el' => ['hr', 'pl', 'bg'],
-        'ga' => ['he', 'id', 'it'],
-        'grc' => ['bg', 'pl', 'la'],
-        'la' => ['pl', 'grc', 'sk'],
+        'es-ud12' => ['it-ud12', 'fr-ud12', 'ro-ud12'],
+        'fr-ud12' => ['es-ud12', 'it-ud12', 'bg-ud12'],
+        'it-ud12' => ['es-ud12', 'fr-ud12', 'ro-ud12'],
+        'pt-ud12' => ['es-ud12', 'it-ud12', 'fr-ud12'],
+        'ro-ud12' => ['it-ud12', 'es-ud12', 'id-ud12'],
+        'el-ud12' => ['sl-ud12', 'hr-ud12', 'ro-ud12'],
+        'grc-ud12' => ['grc-ud12proiel', 'got-ud12', 'la-ud12'],
+        'grc-ud12proiel' => ['got-ud12', 'la-ud12proiel', 'grc-ud12'],
+        'la-ud12' => ['la-ud12proiel', 'grc-ud12proiel', 'cu-ud12'],
+        'la-ud12itt' => ['la-ud12', 'pl-ud12', 'hr-ud12'],
+        'la-ud12proiel' => ['grc-ud12proiel', 'got-ud12', 'cu-ud12'],
+        'ga-ud12' => ['he-ud12', 'ro-ud12', 'id-ud12'],
         'bn' => ['ja', 'te', 'ru'],
-        'fa' => ['he', 'hr', 'id'],
-        'hi' => ['ta', 'hu', 'eu'],
-        'ta' => ['hi', 'hu', 'eu'],
+        'fa-ud12' => ['he-ud12', 'sl-ud12', 'grc-ud12proiel'],
+        'hi-ud12' => ['ta-ud12', 'hu-ud12', 'et-ud12'],
+        # Semitic
+        'ar-ud12' => ['he-ud12', 'pl-ud12', 'got-ud12'],
+        'he-ud12' => ['ro-ud12', 'id-ud12', 'es-ud12'],
+        'eu-ud12' => ['hu-ud12', 'hi-ud12', 'et-ud12'],
+        # Dravidian
+        'ta-ud12' => ['hi-ud12', 'hu-ud12', 'eu-ud12'],
         'te' => ['bn', 'ja', 'tr'],
-        'eu' => ['hu', 'et', 'hr'],
-        'et' => ['hu', 'sv', 'da'],
-        'fi' => ['et', 'hu', 'da'],
-        'hu' => ['bg', 'fi', 'sv'],
+        # Uralic
+        'et-ud12' => ['fi-ud12', 'hu-ud12', 'pl-ud12'],
+        'fi-ud12' => ['fi-ud12ftb', 'da-ud12', 'et-ud12'],
+        'fi-ud12ftb' => ['fi-ud12', 'la-ud12', 'et-ud12'],
+        'hu-ud12' => ['bg-ud12', 'sv-ud12', 'et-ud12'],
+        # Altaic
         'ja' => ['tr', 'he', 'grc'],
         'tr' => ['ta', 'la', 'hu'],
-        'id' => ['hr', 'he', 'it'],
-        'ar' => ['he', 'pl', 'id'],
-        'he' => ['ca', 'it', 'id']
+        # Austronesian
+        'id-ud12' => ['hr-ud12', 'he-ud12', 'bg-ud12'],
     );
     my %pairs;
     foreach my $tgt (keys(%best))
     {
         my @src = ($tgt, @{$best{$tgt}});
-        $tgt =~ s/(bg|cs|hr|da|de|en|sv|es|fr|it|el|ga|fa|eu|fi|hu|id|he)/$1-ud11/;
         foreach my $src (@src)
         {
-            $src =~ s/(bg|cs|hr|da|de|en|sv|es|fr|it|el|ga|fa|eu|fi|hu|id|he)/$1-ud11/;
             $pairs{$tgt}{$src}++;
         }
     }
