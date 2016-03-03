@@ -33,11 +33,15 @@ use cluster;
 
 # Read options.
 my $wdir = 'pokus'; # default working folder
+$konfig{sizes} = '10,20,50,100,200,500,1000,2000,5000,100000'; # default learning curve (number of training sentences)
 GetOptions
 (
     'wdir=s'            => \$wdir,
     'treebanks=s'       => \$konfig{treebanks},  # comma-separated list, e.g. "--treebanks de,de-ud11"
     'trainlimit=s'      => \$konfig{trainlimit},
+    # Use --sizes instead of --trainlimit if you want to evaluate the learning curve.
+    # Each size is a separate experiment in its own folder. Make sure that a model for your sizes exist when you run parsing.
+    'sizes=s'           => \$konfig{sizes}, # comma-separated list, e.g. "--sizes 10,20,50,100,200,500,1000,2000,5000,100000
     'help'              => \$konfig{help}
 );
 exit(usage()) if($konfig{help});
@@ -385,11 +389,12 @@ sub loop
     my @treebanks = sort(keys(%{$targets}));
     my $fchash = get_feature_combinations();
     my @fcombinations = sort(keys(%{$fchash}));
+    my @sizes = split(/,/, $konfig{sizes});
     foreach my $treebank (@treebanks)
     {
         foreach my $transformation (@{$targets->{$treebank}})
         {
-            foreach my $size (10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 100000)
+            foreach my $size (@sizes)
             {
                 $konfig{trainlimit} = $size;
                 my $dir = "$wdir/$treebank/$transformation/$size";
@@ -667,6 +672,7 @@ sub parse
             my $scriptname = "p$parserst-$treebank-$transformation.sh";
             # Shorten the script name so that the derived job name on the cluster is more descriptive.
             $scriptname =~ s/-ud\d*//g;
+            $scriptname =~ s/-//g;
             my $memory = '16G';
             # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
             my $uas_file = "uas-$parserst.txt";

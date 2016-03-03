@@ -65,9 +65,9 @@ dirs:
 # Otherwise, define the treebank-specific "treex" goal as dependent
 # on "conll_to_treex".
 conll_to_treex:
-	$(TREEX) $(IMPORTX) from=$(IN)/train.conll $(WRITE0) path=$(DIR0)/train/
-	$(TREEX) $(IMPORTX) from=$(IN)/dev.conll   $(WRITE0) path=$(DIR0)/dev/
-	$(TREEX) $(IMPORTX) from=$(IN)/test.conll  $(WRITE0) path=$(DIR0)/test/
+	$(TREEX) $(IMPORTX) from=$(IN)/train.conll Filter::RemoveEmptySentences $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORTX) from=$(IN)/dev.conll   Filter::RemoveEmptySentences $(WRITE0) path=$(DIR0)/dev/
+	$(TREEX) $(IMPORTX) from=$(IN)/test.conll  Filter::RemoveEmptySentences $(WRITE0) path=$(DIR0)/test/
 
 # If the source data is already in Universal Dependencies, do not convert it to the Prague style and then back to UD.
 # Read UD directly instead. Note that there will be just one tree per sentence, not three.
