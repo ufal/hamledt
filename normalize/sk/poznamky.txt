@@ -30,6 +30,7 @@ treex -p -j100 -Lsk Read::PDT schema_dir=$SCHEMA_DIR from='!'$STB_DIR/*/anotator
 
 ###!!!
 Potřebovali bychom zachovat také atribut is_parenthesis_root, ale ten se momentálně zřejmě ignoruje.
+Také ztrácím původní id uzlů. I když je v nich místy binec, je to škoda, protože obsahují čísla původních slov, vět a dokonce odstavců.
 ###!!!
 
 zeman@lrc2:/net/work/people/zeman/hamledt/normalize/sk$ cat /net/work/people/zeman/stb-conll/*/anotator1/*.conll | wc_conll.pl
@@ -42,3 +43,4 @@ zeman@lrc2:/net/work/people/zeman/hamledt/normalize/sk$ cat /net/work/people/zem
 ###!!! Otestovat, jak se to vlastně volá. Dokumentace ve zdrojáku téměř chybí. Viz též Github issue:
 ###!!! https://github.com/ufal/treex/issues/54
 treex -p -j100 -Lsk Read::AlignedCoNLL sk_selector1='!sk1*.conll' sk_selector2='!sk2*.conll'
+treex -Lsk Read::AlignedCoNLL conll_format=2006 is_member_within_afun=1 sk_annotator1=/net/work/people/zeman/stb-conll/Durovic/anotator1/durovic000_olejkarova_dok.conll sk_annotator2=/net/work/people/zeman/stb-conll/Durovic/anotator2/durovic000_bugajova_dok.conll Write::Treex to=pokus.treex.gz
