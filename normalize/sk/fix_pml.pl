@@ -19,13 +19,40 @@ use xmltree;
 my $file = shift(@ARGV);
 my $xmltree = xmltree::read($file);
 # Projít všechny prvky LM. Do hloubky, mohou být vnořené.
-my $lmsubtree = xmltree::find_element('LM', $xmltree);
-my $id = $lmsubtree->{attributes}{id};
-if(defined($id) && $id !~ m/^\s*$/)
+remove_idless_lms($xmltree);
+xmltree::print_xml($xmltree);
+
+
+
+#------------------------------------------------------------------------------
+# Searches the tree depth-first. If it finds a LM element without id, deletes
+# it. The root element will not be checked!
+#------------------------------------------------------------------------------
+sub remove_idless_lms
 {
-    print("element LM id $id\n");
-}
-else
-{
-    die("Undefined attribute id of element LM");
+    my $tree = shift;
+    if(exists($tree->{children}) && scalar(@{$tree->{children}}))
+    {
+        for(my $i = 0; $i <= $#{$tree->{children}}; $i++)
+        {
+            my $child = $tree->{children}[$i];
+            if($child->{element} eq 'LM')
+            {
+                my $id = $child->{attributes}{id};
+                if(!defined($id) || $id =~ m/^\s*$/)
+                {
+                    splice(@{$tree->{children}}, $i, 1);
+                    $i--;
+                }
+                else
+                {
+                    remove_idless_lms($child);
+                }
+            }
+            else
+            {
+                remove_idless_lms($child);
+            }
+        }
+    }
 }
