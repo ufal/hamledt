@@ -1,0 +1,21 @@
+Pohnout se slovenským treebankem! Márii Šimkové jsem slíbil, že vytáhnu věty, kde se obě anotátorky shodly, a pošlu jí je. Ona sice nemá lingvisty, kteří by se tím mohli zabývat, ale pokud bude mít v ruce tohle, je tady určitá nenulová šance, že nakonec schválí, aby se část toho vydala. (Pak bude samozřejmě taky otázka licence. Ideální by bylo, kdyby vyšla Wikipedie a pohádky, které zřejmě nebudou závislé na autorských právech k textům.)
+
+1. Vybrat dokumenty, které byly anotovány dvěma anotátory. Leží ve složce anotator1 nebo anotator2, např.:
+   /net/work/people/zeman/slovallex/Wikipedia/anotator1/apollo001_tencerova_dok.a
+   /net/work/people/zeman/slovallex/Wikipedia/anotator2/apollo001_kandracova_dok.a
+   Ostatní dokumenty nás vůbec nezajímají.
+
+2. Některé soubory obsahují chyby, kvůli kterým není možné je načíst do Treexu. Např. prázdný uzel s nedefinovaným id a ord na konci souboru /net/work/people/zeman/slovallex/BallekPomocnik/anotator1/H-Pomocnik-082_katarinag_dok.a:
+  <LM id="">
+   <ord></ord>
+  </LM>
+  Těchto chyb se musíme zbavit nezávisle na Treexu.
+  Jestliže prvek <LM> nemá id, budeme předpokládat, že je prázdný a že ho vůbec nechceme.
+
+
+2. Zkonvertovat je z formátu PDT PML do formátu CoNLL (2006, nebo 2009?)
+
+SCHEMA_DIR=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema
+STB_DIR=/net/work/people/zeman/slovallex
+SECTIONS=BallekPomocnik,Durovic,Inzine,MilosFerko,MilosFerko2,MojaPrvaLaska,Mucska,Orwell1984,Patmos,ProgramVyhlasenie,PsiaKoza,RaczovaOslov,Rozpravky,SME,Wikipedia,Wikipedia2,blogSME
+treex -p -Lsk Read::PDT schema_dir=$SCHEMA_DIR from='!'$STB_DIR/{$SECTIONS}/anotator*/*.a top_layer=a Write::CoNLLX is_member_within_afun=1 substitute={slovallex}{stb-conll}
