@@ -38,8 +38,16 @@ zeman@lrc2:/net/work/people/zeman/hamledt/normalize/sk$ cat /net/work/people/zem
 zeman@lrc2:/net/work/people/zeman/hamledt/normalize/sk$ cat /net/work/people/zeman/stb-conll/*/anotator2/*.conll | wc_conll.pl
 41824 sentences, 691109 tokens
 
-6. Načíst páry souborů do Treexu vedle sebe (vždy anotátor 1 v jedné zóně a anotátor 2 ve druhé).
+6. Pro každý dokument máme dvojici CoNLL souborů od dvou různých anotátorů. V několika párech nemají oba soubory stejný počet vět.
+   Zřejmě jeden anotátor opravil segmentaci na věty a druhý ne. Takové soubory musíme vynechat, protože Read::AlignedCoNLL by nevěděl, co s nimi.
 
-###!!! Otestovat, jak se to vlastně volá. Dokumentace ve zdrojáku téměř chybí. Viz též Github issue:
+zeman@lrc2:/net/work/people/zeman/hamledt/normalize/sk$ cat /net/work/people/zeman/stb-conll/*/anotator1/*.conll | wc_conll.pl
+40928 sentences, 677290 tokens
+zeman@lrc2:/net/work/people/zeman/hamledt/normalize/sk$ cat /net/work/people/zeman/stb-conll/*/anotator2/*.conll | wc_conll.pl
+40928 sentences, 677295 tokens
+
+7. Načíst páry souborů do Treexu vedle sebe (vždy anotátor 1 v jedné zóně a anotátor 2 ve druhé).
+
+###!!! Viz též Github issue:
 ###!!! https://github.com/ufal/treex/issues/54
 treex Read::AlignedCoNLL conll_format=2006 is_member_within_afun=1 sk_annotator1='!/net/work/people/zeman/stb-conll/*/anotator1/*.conll' sk_annotator2='!/net/work/people/zeman/stb-conll/*/anotator2/*.conll' Write::Treex substitute={stb-conll}{stb-merged}
