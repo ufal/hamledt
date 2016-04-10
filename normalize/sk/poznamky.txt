@@ -22,33 +22,79 @@ Pohnout se slovenským treebankem! Márii Šimkové jsem slíbil, že vytáhnu v
    doc0002774_job002: warning: KNIT failed: ID m-vojna007-p6s3w37 not found in reffile 'm'
    To se pravděpodobně vyřeší prostě tak, že budou prázdná některá pole (včetně slovního tvaru), na základě čehož nakonec dotyčný soubor vyhodíme.
 
-5. Zkonvertovat soubory z formátu PDT PML do formátu CoNLL (2006, nebo 2009?)
+5. Zkonvertovat soubory z formátu PDT PML do formátu CoNLL-X (2006).
+   Id uzlu uložit do sloupce FEATS, abychom o něj nepřišli, protože obsahují původní název dokumentu, číslo odstavce, věty a slova.
 
-SCHEMA_DIR=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema
-STB_DIR=/net/work/people/zeman/stb_fixed
-treex -p -j100 -Lsk Read::PDT schema_dir=$SCHEMA_DIR from='!'$STB_DIR/*/anotator*/*.a top_layer=a A2A::RemoveDuplicateNodes Util::Eval atree='$._normalize_node_ordering()' Util::Eval anode='if($.afun() eq "???") {$.set_afun("NR")}' Write::CoNLLX is_member_within_afun=1 substitute={stb_fixed}{stb-conll}
+treex -p -j100 -Lsk Read::PDT schema_dir=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema from='!'/net/work/people/zeman/stb-fixed/*/anotator*/*.a top_layer=a A2A::RemoveDuplicateNodes Util::Eval atree='$._normalize_node_ordering()' Util::Eval anode='if($.afun() eq "???") {$.set_afun("NR")} $.set_conll_feat("id=".$.id);' Write::CoNLLX is_member_within_afun=1 is_parenthesis_root_within_afun=1 substitute={stb-fixed}{stb-conll}
 
-###!!!
-Potřebovali bychom zachovat také atribut is_parenthesis_root, ale ten se momentálně zřejmě ignoruje.
-Také ztrácím původní id uzlů. I když je v nich místy binec, je to škoda, protože obsahují čísla původních slov, vět a dokonce odstavců.
-###!!!
-
-zeman@lrc2:/net/work/people/zeman/hamledt/normalize/sk$ cat /net/work/people/zeman/stb-conll/*/anotator1/*.conll | wc_conll.pl
+cat /net/work/people/zeman/stb-conll/*/anotator1/*.conll | wc_conll.pl
 41819 sentences, 690994 tokens
-zeman@lrc2:/net/work/people/zeman/hamledt/normalize/sk$ cat /net/work/people/zeman/stb-conll/*/anotator2/*.conll | wc_conll.pl
+cat /net/work/people/zeman/stb-conll/*/anotator2/*.conll | wc_conll.pl
 41824 sentences, 691109 tokens
 
 6. Pro každý dokument máme dvojici CoNLL souborů od dvou různých anotátorů. V několika párech nemají oba soubory stejný počet vět.
    Zřejmě jeden anotátor opravil segmentaci na věty a druhý ne. Takové soubory musíme vynechat, protože Read::AlignedCoNLL by nevěděl, co s nimi.
+   Současně tento skript zjednoduší názvy souborů.
 
-zeman@lrc2:/net/work/people/zeman/hamledt/normalize/sk$ cat /net/work/people/zeman/stb-conll/*/anotator1/*.conll | wc_conll.pl
+/net/work/people/zeman/hamledt/normalize/sk/remove_conll_files_with_unmatching_sentences.pl
+
+cat /net/work/people/zeman/stb-conll/*/anotator1/*.conll | wc_conll.pl
 40928 sentences, 677290 tokens
-zeman@lrc2:/net/work/people/zeman/hamledt/normalize/sk$ cat /net/work/people/zeman/stb-conll/*/anotator2/*.conll | wc_conll.pl
+cat /net/work/people/zeman/stb-conll/*/anotator2/*.conll | wc_conll.pl
 40928 sentences, 677295 tokens
 
 7. Načíst páry souborů do Treexu vedle sebe (vždy anotátor 1 v jedné zóně a anotátor 2 ve druhé).
 
-###!!! Viz též Github issue:
-###!!! https://github.com/ufal/treex/issues/54
-treex -p -j100 -Lsk Read::AlignedCoNLL sk_selector1='!sk1*.conll' sk_selector2='!sk2*.conll'
-treex -Lsk Read::AlignedCoNLL conll_format=2006 is_member_within_afun=1 sk_annotator1=/net/work/people/zeman/stb-conll/Durovic/anotator1/durovic000_olejkarova_dok.conll sk_annotator2=/net/work/people/zeman/stb-conll/Durovic/anotator2/durovic000_bugajova_dok.conll Write::Treex to=pokus.treex.gz
+treex -p -j100 Read::AlignedCoNLL conll_format=2006 is_member_within_afun=1 is_parenthesis_root_within_afun=1 sk_annotator1='!/net/work/people/zeman/stb-conll/*/anotator1/*.conll' sk_annotator2='!/net/work/people/zeman/stb-conll/*/anotator2/*.conll' A2A::NodeIdFromCoNLLFeats language=sk selector=annotator1 A2A::NodeIdFromCoNLLFeats language=sk selector=annotator2 Write::Treex substitute='{stb-conll/(.*)/anotator[12]}{stb-merged/$1}'
+
+Výsledkem je 1601 treexových souborů.
+
+8. Spočítat mezianotátorskou shodu v různých parametrech:
+  - Věty, které nemají stejný počet uzlů, jen spočítat, ale do dalších statistik nezahrnout.
+  - Obdobně věty, které jsou prázdné nebo mají jen jeden uzel. Ty pro nás nejsou zajímavé.
+  - Vyřadit věty, kde je prázdné nebo nedefinované alespoň jedno lemma, morfologická značka nebo druh závislosti. Ty nechceme, ani kdyby se anotátoři shodli.
+  - Liší se někde slovní tvar?
+  - Liší se někde lemma nebo morfologická značka?
+  - UAS. Shodný rodič bez ohledu na druh závislosti.
+  - LAS. Shodný rodič a druh závislosti.
+  - Complete match. Celá věta shodná. Takové věty nás zajímají nejvíce.
+
+Následující příkaz rovnou vyfiltruje věty, kde se oba anotátoři zcela shodují, a uloží je do stb-filtered (některé soubory mohou zůstat bez stromů).
+
+treex -p -j100 -Lsk Read::Treex from='!/net/work/people/zeman/stb-merged/*/*.treex.gz' Eval::InterAnnotatorAgreement Write::Treex substitute='{stb-merged}{stb-filtered}' > iaa.log
+perl -e 'while(<>) { chomp; my($x,$i)=split(/\t/,$_); $h{$x} += $i; } @k=sort(keys(%h)); foreach my $k (@k) { print "$k\t$h{$k}\n" }' < iaa.log
+
+complete_match  10604
+complete_match_token    106043
+empty_deprel    1079
+empty_lemma     759
+empty_tag       748
+lparent 539852
+sentence        40350
+sentence_too_short      414
+token   671968
+unmatched_deprel        46832
+unmatched_form  747
+unmatched_lemma 2
+unmatched_parent        85284
+unmatched_sentence_length       15
+unmatched_tag   3
+uparent 586684
+
+UAS = 87.31%
+LAS = 80.34%
+CMS = 26.28%
+CMT = 15.78%
+průměrná délka věty přes všechny věty = 16,7 tokenu
+průměrná délka věty přes vybrané věty = 10,0 tokenů
+
+9. Zkonvertovat přefiltrovaný treebank do formátu CoNLL, soubory následně sloučíme.
+   Vzít zónu sk_annotator1 (ta druhá je její přesnou kopií).
+
+treex -p -j100 Util::SetGlobal language=sk selector=annotator1 if_missing_bundles=ignore Read::Treex from='!/net/work/people/zeman/stb-filtered/*/*.treex.gz' Util::Eval anode='my $id = $.id; $id =~ s/^sk-annotator1-//; $.set_conll_feat("id=$id");' Write::CoNLLX is_member_within_afun=1 is_parenthesis_root_within_afun=1 substitute='{stb-filtered}{stb-filtered-conll}'
+cat /net/work/people/zeman/stb-filtered-conll/*/*.conll > stb.conll
+
+10. Prohnat treebank hamledtí normalizací a zejména testy, jestli neobjeví nějaké další problémy.
+
+    Výsledek: Na několika místech jsou dvě věty spojené do jednoho stromu, ale jinak jsou anotované správně (včetně AuxK na konci první věty).
+    Na jednom místě má předložka AuxC místo AuxP. Nic závažnějšího jsem neobjevil.

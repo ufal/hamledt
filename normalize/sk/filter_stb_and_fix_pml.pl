@@ -14,7 +14,7 @@ use dzsys; # saferun
 
 # SVN: https://svn.ms.mff.cuni.cz/svn/slovallex/trunk/
 my $zdrojova_cesta = '/net/work/people/zeman/slovallex';
-my $cilova_cesta   = '/net/work/people/zeman/stb_fixed';
+my $cilova_cesta   = '/net/work/people/zeman/stb-fixed';
 # Zajímají nás pouze ty podkorpusy, které mají ruční morfologickou anotaci a syntaktickou anotaci od dvou nezávislých anotátorů.
 # Prvních 7 (Orwell1984 .. PsiaKoza) má potvrzenou ruční morfologii, u ostatních si myslím, že je také ruční.
 my @doublean = qw(Orwell1984 MojaPrvaLaska Mucska MilosFerko MilosFerko2 Patmos PsiaKoza blogSME Durovic Inzine ProgramVyhlasenie RaczovaOslov Rozpravky SME Wikipedia Wikipedia2);
