@@ -22,6 +22,7 @@ UTESTS = \
 	HamleDT::Test::UD::Reflexives \
 	HamleDT::Test::UD::FutureIsNotXcomp \
 	HamleDT::Test::UD::XcompHasNoSubject \
+	HamleDT::Test::UD::MaxOneSubject \
 	HamleDT::Test::UD::LeftToRightRelations \
 	HamleDT::Test::UD::CopulaIsVerb \
 	HamleDT::Test::UD::AuxChain \
