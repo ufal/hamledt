@@ -1,7 +1,5 @@
 LANGCODE=ar
 TREEBANK=ar
-# Only numbers and unknown words currently have lemmas in PADT, and these are copies of wordforms, which is useless.
-POST_UD_BLOCKS=Util::Eval anode='$$.set_lemma(undef);'
 include ../common.mak
 
 PADTDIR=/net/projects/padt/data/Prague
