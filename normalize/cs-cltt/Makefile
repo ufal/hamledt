@@ -1,21 +1,21 @@
 LANGCODE=cs
-TREEBANK=cs-cac
+TREEBANK=cs-cltt
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
 include ../common.mak
 
-SOURCEDIR=/net/projects/cac/cac20/data/pml
-SCHEMADIR=/net/projects/cac/cac20/data/schemas
-# There is no official train / dev / test data split. Temporary: s50w is dev, s60w is test, the rest is train.
+SOURCEDIR=/net/data/treebanks/cs/cltt
+SCHEMADIR=/net/data/treebanks/cs/cltt
+# There is no official train / dev / test data split.
+# document_01_001.a
 source:
 	mkdir -p data/source/train
 	mkdir -p data/source/dev
 	mkdir -p data/source/test
-	cp $(SOURCEDIR)/{[ans][03-9]0w,[ans][0-9][1-9]w}.[amw].gz $(IN)/train
-	cp $(SOURCEDIR)/[ans]10w.[amw].gz $(IN)/dev
-	cp $(SOURCEDIR)/[ans]20w.[amw].gz $(IN)/test
-	gunzip $(IN)/{train,dev,test}/*.gz
+	cp $(SOURCEDIR)/document_01*.[amw] $(IN)/train
+	cp $(SOURCEDIR)/document_02_00[1-38].[amw] $(IN)/train
+	cp $(SOURCEDIR)/document_02_00[45].[amw] $(IN)/dev
+	cp $(SOURCEDIR)/document_02_00[67].[amw] $(IN)/test
 
-#SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
 treex:
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/*.a' \
