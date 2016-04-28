@@ -15,6 +15,7 @@ UTESTS = \
 	HamleDT::Test::UD::Adpositions \
 	HamleDT::Test::UD::Subjunctions \
 	HamleDT::Test::UD::CcIsConjunction \
+	HamleDT::Test::UD::CcIsLeaf \
 	HamleDT::Test::UD::PronounIsNotMark \
 	HamleDT::Test::UD::AdverbIsNotNmod \
 	HamleDT::Test::UD::CompoundPrepositions \
@@ -23,6 +24,7 @@ UTESTS = \
 	HamleDT::Test::UD::FutureIsNotXcomp \
 	HamleDT::Test::UD::XcompHasNoSubject \
 	HamleDT::Test::UD::MaxOneSubject \
+	HamleDT::Test::UD::MaxOneDirectObject \
 	HamleDT::Test::UD::LeftToRightRelations \
 	HamleDT::Test::UD::CopulaIsVerb \
 	HamleDT::Test::UD::AuxChain \
