@@ -27,10 +27,10 @@ CONLLUDIR = $(DATADIR)/$(SUBDIRCU)
 
 # Processing shortcuts.
 # Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
-# I am temporarily setting it rather high in order to sneak before Shadi's jobs.
+# Do not use the --queue option if you do not live in the ÚFAL network!
 TREEX      = treex -L$(LANGCODE)
-QTREEX     = treex -p --jobs 100 --priority=0 -L$(LANGCODE)
-IMPORTX    = Read::CoNLLX lines_per_doc=100
+QTREEX     = treex -p --jobs 100 --priority=-50 -L$(LANGCODE) --queue=troja-all.q
+IMPORTX    = Read::CoNLLX lines_per_doc=100 sid_within_feat=1
 IMPORTU    = Read::CoNLLU lines_per_doc=100
 WRITE0     = Write::Treex file_stem='' compress=1
 WRITE      = Write::Treex compress=1
@@ -113,6 +113,7 @@ prague_to_ud:
 	    $(SCEN2) \
 	    Write::CoNLLU substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=1
+	../export_ud.sh $(UDCODE) $(UDNAME)
 
 # This goal exports the harmonized trees in the CoNLL-U format, which is more useful for ordinary users.
 export_conllu:
