@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# Processes selected languages and transformations (train, parse, eval, clean etc.)
+# Processes selected treebanks performing selected actions (train, parse, eval, clean etc.)
 # Provides the unified necessary infrastructure for looping through all the sub-experiment subfolders.
 # Copyright © 2011-2016 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
@@ -55,17 +55,17 @@ if(!defined($share_dir) || $share_dir eq '')
 my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
 $data_dir =~ s-//-/-;
 print STDERR ("Data folder    = $data_dir\n");
-my $targets = get_treebanks_and_transformations();
+my $targets = get_treebanks();
 $konfig{delexpairs} = get_best_delex();
-my $action_name = sort_actions(@ARGV);
-my $action = get_action($action_name);
+$konfig{action_name} = shift(@ARGV);
+my $action = get_action($konfig{action_name});
 $wdir = dzsys::absolutize_path($wdir);
 print STDERR ("Working folder = $wdir\n");
 sleep(5);
 # We need to know what jobs are running if we are going to clean the disk.
 my %qjobs = cluster::qstat0();
 loop($targets, $action, $wdir);
-print_table() if($action_name =~ m/table$/);
+print_table() if($konfig{action_name} =~ m/table$/);
 
 
 
@@ -105,37 +105,6 @@ sub get_parsers
 {
     # We temporarily do not use 'mlt', 'mcd' and 'mcp' (the MST parser by Ryan McDonald).
     return qw(smf dlx);
-}
-
-
-
-#------------------------------------------------------------------------------
-# Returns the list of transformations available for a given treebank, i.e. the
-# list of subfolders of the treebank folder.
-#------------------------------------------------------------------------------
-sub get_transformations_for_treebank
-{
-    my $treebank = shift;
-    ###!!! We have suspended experiments with transformations until normalization is perfect.
-    ###!!! Now we have also suspended experiments with 00 (the original trees) because the UD treebanks do not have them.
-    return ('02');
-}
-
-
-
-#------------------------------------------------------------------------------
-# Returns the matrix (hash) of all treebanks and transformations.
-#------------------------------------------------------------------------------
-sub get_treebanks_and_transformations
-{
-    my @treebanks = get_treebanks();
-    my %hash;
-    foreach my $treebank (@treebanks)
-    {
-        my @transformations = get_transformations_for_treebank($treebank);
-        $hash{$treebank} = \@transformations;
-    }
-    return \%hash;
 }
 
 
@@ -312,46 +281,6 @@ sub get_best_delex
 
 
 #------------------------------------------------------------------------------
-# Sorts actions in the order in which they must logically follow each other.
-#------------------------------------------------------------------------------
-sub sort_actions
-{
-    my @actions = @_;
-    my %ordering =
-    (
-        'pretrain' => 10, # prepare training data
-        'train' => 20,
-        'parse' => 40,
-        'table' => 60,
-        'ltable' => 61, # labeled instead of unlabeled attachment score
-        'clean' => 80,
-    );
-    # Check that all action identifiers are known.
-    my @unknown = grep {!exists($ordering{$_})} (@actions);
-    if(@unknown)
-    {
-        die('Unknown actions '.join(', ', @unknown));
-    }
-    # Check that there is at least one action in the list.
-    if(!@actions)
-    {
-        die('At least one action must be specified.');
-    }
-    # Order actions.
-    @actions = sort {$ordering{$a} <=> $ordering{$b}} (@actions);
-    ###!!! We cannot currently solve action dependencies and waiting for results.
-    ###!!! That is why we only perform the first action and ignore the others.
-    if(scalar(@actions)>1)
-    {
-        print STDERR ("Warning: We can currently run only one action at a time.\n");
-        print STDERR ("Action '$actions[0]' will be run while the rest (", join(', ', @actions[1..$#actions]), ") will be ignored.\n");
-    }
-    return $actions[0];
-}
-
-
-
-#------------------------------------------------------------------------------
 # Returns reference to the subroutine for an action name.
 #------------------------------------------------------------------------------
 sub get_action
@@ -392,35 +321,42 @@ sub get_action
 
 
 #------------------------------------------------------------------------------
-# Performs the given action for each given language and transformation.
+# Performs the given action for each given treebank.
 # Always changes to the corresponding target folder first, i.e. all cluster
 # logs will be also created there. Creates the folder if it does not exist yet.
 #------------------------------------------------------------------------------
 sub loop
 {
-    my $targets = shift; # reference to hash: languages => \@transformations
+    my $targets = shift; # reference to array of language-treebank codes
     my $action = shift; # reference to subroutine (takes $lang and $trans)
     my $wdir = shift; # absolute path to root working folder for all languages
     $wdir = dzsys::absolutize_path($wdir);
-    my @treebanks = sort(keys(%{$targets}));
+    my @treebanks = @{$targets};
     my $fchash = get_feature_combinations();
     my @fcombinations = sort(keys(%{$fchash}));
     my @sizes = split(/,/, $konfig{sizes});
     foreach my $treebank (@treebanks)
     {
-        foreach my $transformation (@{$targets->{$treebank}})
+        if($konfig{action_name} eq 'pretrain')
+        {
+            my $dir = "$wdir/$treebank";
+            system("mkdir -p $dir");
+            chdir($dir) or die("Cannot change to $dir: $!\n");
+            &{$action}($treebank);
+        }
+        else
         {
             foreach my $size (@sizes)
             {
                 $konfig{trainlimit} = $size;
-                my $dir = "$wdir/$treebank/$transformation/$size";
+                my $dir = "$wdir/$treebank/$size";
                 # Create the working folder if it does not exist yet.
                 # This will also create other folders in the path if necessary.
                 system("mkdir -p $dir");
                 # Change to the working folder.
                 chdir($dir) or die("Cannot change to $dir: $!\n");
                 # Run the action.
-                &{$action}($treebank, $transformation, $size);
+                &{$action}($treebank, $size);
             }
         }
     }
@@ -437,35 +373,16 @@ sub loop
 #------------------------------------------------------------------------------
 sub get_conll_block_parameters
 {
-    my $transformation = shift;
-    my @parameters;
-    # Some attributes are not available before normalization.
-    if($transformation eq '00')
-    {
-        @parameters =
-        (
-            'cpos_attribute=conll/cpos',
-            'pos_attribute=conll/pos',
-            'feat_attribute=conll/feat',
-            'deprel_attribute=conll/deprel',
-            'is_member_within_afun=1',
-            'is_shared_modifier_within_afun=1',
-            'is_coord_conjunction_within_afun=1'
-        );
-    }
-    else # harmonized data
-    {
-        @parameters =
-        (
-            'cpos_attribute=tag',
-            'pos_attribute=tag',
-            'feat_attribute=iset',
-            'deprel_attribute=deprel',
-            'is_member_within_afun=0',
-            'is_shared_modifier_within_afun=0',
-            'is_coord_conjunction_within_afun=0'
-        );
-    }
+    my @parameters =
+    (
+        'cpos_attribute=tag',
+        'pos_attribute=tag',
+        'feat_attribute=iset',
+        'deprel_attribute=deprel',
+        'is_member_within_afun=0',
+        'is_shared_modifier_within_afun=0',
+        'is_coord_conjunction_within_afun=0'
+    );
     return join(' ', @parameters);
 }
 
@@ -479,36 +396,36 @@ sub get_conll_block_parameters
 sub create_conll_training_data
 {
     my $treebank = shift;
-    my $transformation = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
     my $filename1 = 'train.conll';
     my $filename2 = 'train.mst';
     my $scriptname = 'create_training_data.sh';
+    my $toolsdir = '/net/work/people/zeman/parsing/tools';
     open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
     print SCR ("treex -p -j 20 ");
     print SCR ("Util::SetGlobal language=$language ");
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
-    my $writeparam = get_conll_block_parameters($transformation);
+    my $writeparam = get_conll_block_parameters();
     print SCR ("Write::CoNLLX $writeparam ");
-    print SCR ("-- $data_dir/$treebank/treex/$transformation/train/*.treex.gz ");
+    print SCR ("-- $data_dir/$treebank/treex/02/train/*.treex.gz ");
     print SCR ("> $filename1\n");
     # In order to have experiments finished faster, we can limit training data to a fixed number of sentences.
     if($konfig{trainlimit})
     {
-        print SCR ("/net/work/people/zeman/parsing/tools/split_conll.pl < $filename1 -head $konfig{trainlimit} $filename1.truncated /dev/null\n");
+        print SCR ("$toolsdir/split_conll.pl < $filename1 -head $konfig{trainlimit} $filename1.truncated /dev/null\n");
         print SCR ("mv $filename1.truncated $filename1\n");
     }
     # Prepare a delexicalized training file for experiments with delexicalized parsing.
     my $fc = get_fc();
     my $delexfilename1 = $filename1;
     $delexfilename1 =~ s/\.conll$/.delex.conll/;
-    print SCR ("/net/work/people/zeman/parsing/tools/conll_delexicalize.pl --keep-features=$fc < $filename1 > $delexfilename1\n");
+    print SCR ("$toolsdir/conll_delexicalize.pl --keep-features=$fc < $filename1 > $delexfilename1\n");
     # Prepare a modified form that can be used by the MST Parser.
     print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
     close(SCR);
     chmod(0755, $scriptname) or die("Cannot chmod $scriptname: $!\n");
-    # Send the job to the cluster. It will itself spawn 20 cluster jobs (via treex -p) but we do not want to wait here until they're all done.
+    # Send the job to the cluster. It will itself spawn additional cluster jobs (via treex -p) but we do not want to wait here until they're all done.
     return cluster::qsub('priority' => -200, 'memory' => '1G', 'script' => $scriptname);
 }
 
@@ -520,13 +437,12 @@ sub create_conll_training_data
 sub train
 {
     my $treebank = shift;
-    my $transformation = shift;
     my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
     my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
     # Prepare the training script and submit the job to the cluster.
     foreach my $parser (get_parsers())
     {
-        my $scriptname = "$parser-$treebank-$transformation.sh";
+        my $scriptname = "$parser-$treebank.sh";
         my ($memory, $priority);
         print STDERR ("Creating script $scriptname.\n");
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
@@ -601,12 +517,11 @@ sub get_parsing_scenario
     my $parser = shift; # parser code, e.g. 'mlt' or 'mcd'
     my $delexicalized = ($parser eq 'dlx'); # we may want to make this a parameter
     my $language = shift; # language, not treebank code
-    my $transformation = shift;
     my $size = shift; # training size
     my $modeldir = shift; # for cross-language delexicalized training: where is the model?
-    my $path = defined($modeldir) ? "$modeldir/$transformation/$size/" : '';
+    my $path = defined($modeldir) ? "$modeldir/$size/" : '';
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See above.
-    my $writeparam = get_conll_block_parameters($transformation);
+    my $writeparam = get_conll_block_parameters();
     my %parser_block =
     (
         mlt => "W2A::ParseMalt model=malt_nivreeager.mco             $writeparam",
@@ -642,7 +557,6 @@ sub get_parsing_scenario
 sub parse
 {
     my $treebank = shift;
-    my $transformation = shift;
     my $size = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
@@ -664,7 +578,7 @@ sub parse
                 if(1 || $konfig{delexpairs}{$treebank}{$srctbk})
                 {
                     my $dir = "$wdir/$srctbk";
-                    $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $transformation, $size, $dir);
+                    $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $size, $dir);
                 }
                 else
                 {
@@ -674,7 +588,7 @@ sub parse
         }
         else
         {
-            $scenarios{''} = get_parsing_scenario($parser, $language, $transformation, $size);
+            $scenarios{''} = get_parsing_scenario($parser, $language, $size);
         }
         foreach my $srctbk (keys(%scenarios))
         {
@@ -684,8 +598,8 @@ sub parse
             # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
             system("rm -rf $parserst-test");
             system("mkdir -p $parserst-test");
-            system("cp $data_dir/$treebank/treex/$transformation/test/*.treex.gz $parserst-test");
-            my $scriptname = "p$parserst-$treebank-$transformation.sh";
+            system("cp $data_dir/$treebank/treex/test/*.treex.gz $parserst-test");
+            my $scriptname = "p$parserst-$treebank.sh";
             # Shorten the script name so that the derived job name on the cluster is more descriptive.
             $scriptname =~ s/-ud\d*//g;
             $scriptname =~ s/-//g;
@@ -715,7 +629,6 @@ sub parse
 sub get_results
 {
     my $treebank = shift;
-    my $transformation = shift;
     my $size = shift;
     my $labeled = shift;
     my $language = $treebank;
@@ -740,7 +653,7 @@ sub get_results
         my $debug = 0;
         if(!open(UAS, $uas_file) && $debug)
         {
-            print STDERR ("Cannot read $treebank/$transformation/$size/$uas_file: $!\n");
+            print STDERR ("Cannot read $treebank/$size/$uas_file: $!\n");
             next;
         }
         while (<UAS>)
@@ -764,9 +677,8 @@ sub get_results
 sub get_labeled_results
 {
     my $treebank = shift;
-    my $transformation = shift;
     my $size = shift;
-    return get_results($treebank, $transformation, $size, 1);
+    return get_results($treebank, $size, 1);
 }
 
 
@@ -887,8 +799,7 @@ sub print_table
     my %parsers;
     foreach my $treebank (@treebanks)
     {
-        my $transformation = '02';
-        foreach my $parser (keys(%{$value{$treebank}{$transformation}}))
+        foreach my $parser (keys(%{$value{$treebank}}))
         {
             $parsers{$parser}++;
         }
@@ -1009,9 +920,8 @@ sub print_table_feature_combinations
 sub clean
 {
     my $treebank = shift;
-    my $transformation = shift;
     # Scan the current folder for cluster logs.
-    opendir(DIR, '.') or die("Cannot read folder $treebank/$transformation: $!");
+    opendir(DIR, '.') or die("Cannot read folder $treebank: $!");
     my @files = readdir(DIR);
     closedir(DIR);
     foreach my $file (@files)
@@ -1029,8 +939,8 @@ sub clean
             unless(exists($qjobs{$jobid}))
             {
                 # Remove the log.
-                print STDERR ("Removing $treebank/$transformation/$file\n");
-                unlink($file) or print STDERR ("Warning: Cannot remove $treebank/$transformation/$file: $!\n");
+                print STDERR ("Removing $treebank/$file\n");
+                unlink($file) or print STDERR ("Warning: Cannot remove $treebank/$file: $!\n");
                 ###!!!
                 # We do not know whether we can also remove the script.
                 # It could be reused by another job which could be still running.
@@ -1038,7 +948,7 @@ sub clean
             }
             else
             {
-                print STDERR ("Keeping $treebank/$transformation/$file because the job no. $jobid is still on the cluster.\n");
+                print STDERR ("Keeping $treebank/$file because the job no. $jobid is still on the cluster.\n");
             }
         }
         # Does it look like the name of the folder created for a parallelized Treex run?
@@ -1053,22 +963,22 @@ sub clean
                 # Is this the reason why we cannot remove the whole folder?
                 if($file1 =~ m/\.o(\d+)$/ && exists($qjobs{$jobid}))
                 {
-                    print STDERR ("Keeping $treebank/$transformation/$file because the job no. $jobid is still on the cluster.\n");
+                    print STDERR ("Keeping $treebank/$file because the job no. $jobid is still on the cluster.\n");
                     $removable = 0;
                     last;
                 }
             }
             if($removable)
             {
-                print STDERR ("Removing $treebank/$transformation/$file\n");
+                print STDERR ("Removing $treebank/$file\n");
                 system("rm -rf $file");
             }
         }
         # Is it a core file created after a crash?
         elsif($file eq 'core')
         {
-            print STDERR ("Removing $treebank/$transformation/$file\n");
-            unlink($file) or print STDERR ("Warning: Cannot remove $treebank/$transformation/$file: $!\n");
+            print STDERR ("Removing $treebank/$file\n");
+            unlink($file) or print STDERR ("Warning: Cannot remove $treebank/$file: $!\n");
         }
     }
 }
