@@ -58,7 +58,7 @@ $konfig{action_name} = shift(@ARGV);
 my $action = get_action($konfig{action_name});
 $wdir = dzsys::absolutize_path($wdir);
 print STDERR ("Working folder = $wdir\n");
-my $treebanks = join(',', @treebanks);
+my $treebanks = join(', ', @treebanks);
 print STDERR ("Treebanks = $treebanks\n");
 sleep(5);
 # We need to know what jobs are running if we are going to clean the disk.
@@ -446,6 +446,7 @@ sub train
         # To evaluate the learning curve (or just to make training faster), we can limit training data to a fixed number of sentences.
         ###!!! We currently do not process the training data in the MST input format.
         print SCR ("$konfig{toolsdir}/split_conll.pl < ../train.conll -head $current{size} train.conll /dev/null\n");
+        print SCR ("$konfig{toolsdir}/split_conll.pl < ../train.delex.conll -head $current{size} train.delex.conll /dev/null\n");
         if($parser eq 'mcd')
         {
             print SCR ("java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n");
