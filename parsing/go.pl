@@ -61,6 +61,8 @@ $konfig{action_name} = shift(@ARGV);
 my $action = get_action($konfig{action_name});
 $wdir = dzsys::absolutize_path($wdir);
 print STDERR ("Working folder = $wdir\n");
+my $treebanks = join(',', @treebanks);
+print STDERR ("Treebanks = $treebanks\n");
 sleep(5);
 # We need to know what jobs are running if we are going to clean the disk.
 my %qjobs = cluster::qstat0();
