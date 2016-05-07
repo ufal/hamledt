@@ -55,7 +55,7 @@ if(!defined($share_dir) || $share_dir eq '')
 my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
 $data_dir =~ s-//-/-;
 print STDERR ("Data folder    = $data_dir\n");
-my $targets = get_treebanks();
+my @treebanks = get_treebanks();
 $konfig{delexpairs} = get_best_delex();
 $konfig{action_name} = shift(@ARGV);
 my $action = get_action($konfig{action_name});
@@ -64,7 +64,7 @@ print STDERR ("Working folder = $wdir\n");
 sleep(5);
 # We need to know what jobs are running if we are going to clean the disk.
 my %qjobs = cluster::qstat0();
-loop($targets, $action, $wdir);
+loop(\@treebanks, $action, $wdir);
 print_table() if($konfig{action_name} =~ m/table$/);
 
 
