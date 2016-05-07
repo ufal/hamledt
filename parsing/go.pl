@@ -9,13 +9,11 @@ sub usage
     print STDERR ("go.pl [OPTIONS] <ACTION>\n");
     print STDERR ("\tActions: pretrain|train|parse|table|ltable|clean\n");
     print STDERR ("\tSource data path is fixed at \$TMT_SHARED.\n");
-    print STDERR ("\tThe script knows the list of available languages.\n");
-    print STDERR ("\tThe script currently ignores transformations (if any) but it models the learning curve.\n");
+    print STDERR ("\tThe script knows the list of available treebanks.\n");
     print STDERR ("\tThe 'clean' action currently only removes the cluster logs (.o123456 files).\n");
     print STDERR ("\tOptions:\n");
     print STDERR ("\t--wdir folder ... experiment folder; default is ./pokus.\n");
     print STDERR ("\t--treebanks en,cs,ar ... instead of all treebanks, process only those specified here.\n");
-    print STDERR ("\t--trainlimit N ... for the 'pretrain' action: use only the first N sentences for training.\n");
 }
 
 use utf8;
@@ -38,14 +36,13 @@ GetOptions
 (
     'wdir=s'            => \$wdir,
     'treebanks=s'       => \$konfig{treebanks},  # comma-separated list, e.g. "--treebanks de,de-ud11"
-    'trainlimit=s'      => \$konfig{trainlimit},
-    # Use --sizes instead of --trainlimit if you want to evaluate the learning curve.
     # Each size is a separate experiment in its own folder. Make sure that a model for your sizes exist when you run parsing.
     'sizes=s'           => \$konfig{sizes}, # comma-separated list, e.g. "--sizes 10,20,50,100,200,500,1000,2000,5000,100000
     'help'              => \$konfig{help}
 );
 exit(usage()) if($konfig{help});
 
+$konfig{toolsdir} = '/net/work/people/zeman/parsing/tools';
 my $scriptdir = dzsys::get_script_path();
 my $share_dir = Treex::Core::Config->share_dir();
 if(!defined($share_dir) || $share_dir eq '')
@@ -68,6 +65,46 @@ sleep(5);
 my %qjobs = cluster::qstat0();
 loop(\@treebanks, $action, $wdir);
 print_table() if($konfig{action_name} =~ m/table$/);
+
+
+
+#------------------------------------------------------------------------------
+# Returns reference to the subroutine for an action name.
+#------------------------------------------------------------------------------
+sub get_action
+{
+    my $action_name = shift;
+    my $action;
+    if($action_name eq 'pretrain')
+    {
+        $action = \&create_conll_training_data;
+    }
+    elsif($action_name eq 'train')
+    {
+        $action = \&train;
+    }
+    elsif($action_name eq 'parse')
+    {
+        $action = \&parse;
+    }
+    elsif($action_name eq 'table')
+    {
+        $action = \&get_results;
+    }
+    elsif($action_name eq 'ltable')
+    {
+        $action = \&get_labeled_results;
+    }
+    elsif($action_name eq 'clean')
+    {
+        $action = \&clean;
+    }
+    else
+    {
+        die("Unknown action $action_name");
+    }
+    return $action;
+}
 
 
 
@@ -283,46 +320,6 @@ sub get_best_delex
 
 
 #------------------------------------------------------------------------------
-# Returns reference to the subroutine for an action name.
-#------------------------------------------------------------------------------
-sub get_action
-{
-    my $action_name = shift;
-    my $action;
-    if($action_name eq 'pretrain')
-    {
-        $action = \&create_conll_training_data;
-    }
-    elsif($action_name eq 'train')
-    {
-        $action = \&train;
-    }
-    elsif($action_name eq 'parse')
-    {
-        $action = \&parse;
-    }
-    elsif($action_name eq 'table')
-    {
-        $action = \&get_results;
-    }
-    elsif($action_name eq 'ltable')
-    {
-        $action = \&get_labeled_results;
-    }
-    elsif($action_name eq 'clean')
-    {
-        $action = \&clean;
-    }
-    else
-    {
-        die("Unknown action $action_name");
-    }
-    return $action;
-}
-
-
-
-#------------------------------------------------------------------------------
 # Performs the given action for each given treebank.
 # Always changes to the corresponding target folder first, i.e. all cluster
 # logs will be also created there. Creates the folder if it does not exist yet.
@@ -337,27 +334,26 @@ sub loop
     my $fchash = get_feature_combinations();
     my @fcombinations = sort(keys(%{$fchash}));
     my @sizes = split(/,/, $konfig{sizes});
+    # The nested functions can access the current values of variables that change in the loop.
+    local %current;
     foreach my $treebank (@treebanks)
     {
+        $current{treebank} = $treebank;
         if($konfig{action_name} eq 'pretrain')
         {
-            my $dir = "$wdir/$treebank";
-            system("mkdir -p $dir");
-            chdir($dir) or die("Cannot change to $dir: $!\n");
+            $current{dir} = "$wdir/$treebank";
+            system("mkdir -p $current{dir}");
+            chdir($current{dir}) or die("Cannot change to $current{dir}: $!\n");
             &{$action}($treebank);
         }
         else
         {
             foreach my $size (@sizes)
             {
-                $konfig{trainlimit} = $size;
-                my $dir = "$wdir/$treebank/$size";
-                # Create the working folder if it does not exist yet.
-                # This will also create other folders in the path if necessary.
-                system("mkdir -p $dir");
-                # Change to the working folder.
-                chdir($dir) or die("Cannot change to $dir: $!\n");
-                # Run the action.
+                $current{size} = $size;
+                $current{dir} = "$wdir/$treebank/$size";
+                system("mkdir -p $current{dir}");
+                chdir($current{dir}) or die("Cannot change to $current{dir}: $!\n");
                 &{$action}($treebank, $size);
             }
         }
@@ -403,7 +399,6 @@ sub create_conll_training_data
     my $filename1 = 'train.conll';
     my $filename2 = 'train.mst';
     my $scriptname = 'create_training_data.sh';
-    my $toolsdir = '/net/work/people/zeman/parsing/tools';
     open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
     print SCR ("treex -p -j 20 ");
     print SCR ("Util::SetGlobal language=$language ");
@@ -412,17 +407,11 @@ sub create_conll_training_data
     print SCR ("Write::CoNLLX $writeparam ");
     print SCR ("-- $data_dir/$treebank/treex/02/train/*.treex.gz ");
     print SCR ("> $filename1\n");
-    # In order to have experiments finished faster, we can limit training data to a fixed number of sentences.
-    if($konfig{trainlimit})
-    {
-        print SCR ("$toolsdir/split_conll.pl < $filename1 -head $konfig{trainlimit} $filename1.truncated /dev/null\n");
-        print SCR ("mv $filename1.truncated $filename1\n");
-    }
     # Prepare a delexicalized training file for experiments with delexicalized parsing.
     my $fc = get_fc();
     my $delexfilename1 = $filename1;
     $delexfilename1 =~ s/\.conll$/.delex.conll/;
-    print SCR ("$toolsdir/conll_delexicalize.pl --keep-features=$fc < $filename1 > $delexfilename1\n");
+    print SCR ("$konfig{toolsdir}/conll_delexicalize.pl --keep-features=$fc < $filename1 > $delexfilename1\n");
     # Prepare a modified form that can be used by the MST Parser.
     print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
     close(SCR);
@@ -454,6 +443,9 @@ sub train
         print SCR ("echo jednou | /net/projects/SGE/sensors/mem_free.sh\n");
         print SCR ("echo jednou | /net/projects/SGE/sensors/act_mem_free.sh\n");
         print SCR ("top -bn1 | head -20\n");
+        # To evaluate the learning curve (or just to make training faster), we can limit training data to a fixed number of sentences.
+        ###!!! We currently do not process the training data in the MST input format.
+        print SCR ("$konfig{toolsdir}/split_conll.pl < ../train.conll -head $current{size} train.conll /dev/null\n");
         if($parser eq 'mcd')
         {
             print SCR ("java -cp $mcd_dir/output/mstparser.jar:$mcd_dir/lib/trove.jar -Xmx9g mstparser.DependencyParser \\\n");
