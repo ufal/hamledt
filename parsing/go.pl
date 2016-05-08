@@ -937,7 +937,7 @@ sub clean
         # Get the date of the last modification of the file.
         # We can use it to only remove files older than a certain threshold.
         my $filedate = localtime((stat $file)[9])->ymd(''); # '' means empty separator; format is: 20000229
-        next if($filedate > 20151231);
+        #next if($filedate > 20151231);
         # Does the file name look like a cluster log?
         if($file =~ m/^(.*)\.o(\d+)$/)
         {
