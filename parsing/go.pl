@@ -478,37 +478,42 @@ sub train
             $memory = '16G';
             $priority = -300;
         }
-        elsif($parser eq 'smf')
+        elsif($parser =~ m/^(smf|dlx)$/)
         {
+            # Both smf and dlx are instances of Malt parser. Prepare common settings.
+            my $features = $scriptdir.'/malt-feature-models/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
+            # -d CPOSTAG means that we will learn a separate model for each part of speech tag; if we work with Universal Dependencies, this is the UPOS tag.
+            # -s Stack[0] means that the model splitting will be based on the tag of the word on the top of the stack.
+            my $maltsettings = "-a stacklazy -F $features -grl root -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn";
             my $model = 'malt_stacklazy';
+            if($parser eq 'smf')
+            {
+                my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.conll -c $model $maltsettings\n";
+                print SCR ("echo $command");
+                print SCR ($command);
+                # It is more difficult to get a machine with so much memory so we will be less generous with priority.
+                # Often a machine lacks just a few hundred megabytes to be able to provide 31G. Asking for 30G increases our chances to get a machine.
+                $memory = '30G';
+                $priority = -100;
+            }
+            else # dlx
+            {
+                $model .= '_delex';
+                my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.delex.conll -c $model $maltsettings\n";
+                print SCR ("echo $command");
+                print SCR ($command);
+                # It is more difficult to get a machine with so much memory so we will be less generous with priority.
+                # Often a machine lacks just a few hundred megabytes to be able to provide 31G. Asking for 30G increases our chances to get a machine.
+                $memory = '30G';
+                $priority = -100;
+            }
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print SCR ("rm -rf $model\n");
-            my $features = $scriptdir.'/malt-feature-models/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
-            my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.conll -c $model -a stacklazy -F $features -grl root -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
-            print SCR ("echo $command");
-            print SCR ($command);
-            # It is more difficult to get a machine with so much memory so we will be less generous with priority.
-            # Often a machine lacks just a few hundred megabytes to be able to provide 31G. Asking for 30G increases our chances to get a machine.
-            $memory = '30G';
-            $priority = -100;
-        }
-        elsif($parser eq 'dlx')
-        {
-            my $model = 'malt_stacklazy_delex';
-            # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
-            print SCR ("rm -rf $model\n");
-            my $features = $scriptdir.'/malt-feature-models/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
-            my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.delex.conll -c $model -a stacklazy -F $features -grl root -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn\n";
-            print SCR ("echo $command");
-            print SCR ($command);
-            # It is more difficult to get a machine with so much memory so we will be less generous with priority.
-            # Often a machine lacks just a few hundred megabytes to be able to provide 31G. Asking for 30G increases our chances to get a machine.
-            $memory = '30G';
-            $priority = -100;
         }
         close(SCR);
         my $jobname = $scriptname;
         $jobname =~ s/-ud\d*//ig;
+        $jobname =~ s/-//g;
         cluster::qsub('priority' => $priority, 'memory' => $memory, 'script' => $scriptname, 'name' => $jobname);
     }
 }
