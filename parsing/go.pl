@@ -358,7 +358,7 @@ sub loop
                 $current{dir} = "$wdir/$treebank/$size";
                 system("mkdir -p $current{dir}");
                 chdir($current{dir}) or die("Cannot change to $current{dir}: $!\n");
-                &{$action}($treebank, $size);
+                &{$action}($treebank);
             }
         }
     }
@@ -518,9 +518,8 @@ sub get_parsing_scenario
     my $parser = shift; # parser code, e.g. 'mlt' or 'mcd'
     my $delexicalized = ($parser eq 'dlx'); # we may want to make this a parameter
     my $language = shift; # language, not treebank code
-    my $size = shift; # training size
     my $modeldir = shift; # for cross-language delexicalized training: where is the model?
-    my $path = defined($modeldir) ? "$modeldir/$size/" : '';
+    my $path = defined($modeldir) ? "$modeldir/$current{size}/" : '';
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See above.
     my $writeparam = get_conll_block_parameters();
     my %parser_block =
@@ -558,7 +557,6 @@ sub get_parsing_scenario
 sub parse
 {
     my $treebank = shift;
-    my $size = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
     # Prepare the training script and submit the job to the cluster.
@@ -575,11 +573,10 @@ sub parse
             foreach my $srctbk (@treebanks)
             {
                 # Skip delexicalized source models that have not been determined as promising.
-                ###!!! Temporarily turning off because the data has changed and the delexicalized similarity of languages may have too.
-                if(1 || $konfig{delexpairs}{$treebank}{$srctbk})
+                if($konfig{delexpairs}{$treebank}{$srctbk})
                 {
                     my $dir = "$wdir/$srctbk";
-                    $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $size, $dir);
+                    $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $dir);
                 }
                 else
                 {
@@ -589,7 +586,7 @@ sub parse
         }
         else
         {
-            $scenarios{''} = get_parsing_scenario($parser, $language, $size);
+            $scenarios{''} = get_parsing_scenario($parser, $language);
         }
         foreach my $srctbk (keys(%scenarios))
         {
@@ -617,7 +614,9 @@ sub parse
             print SCR ("top -bn1 | head -20\n");
             print SCR ("treex -s $scenario -- $parserst-test/*.treex.gz | tee $uas_file\n");
             close(SCR);
-            cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname);
+            my $jobname = $scriptname;
+            $jobname =~ s/-ud\d*//ig;
+            cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname, 'name' => $jobname);
         }
     }
 }
@@ -630,7 +629,6 @@ sub parse
 sub get_results
 {
     my $treebank = shift;
-    my $size = shift;
     my $labeled = shift;
     my $language = $treebank;
     $language =~ s/-.*//;
@@ -654,7 +652,7 @@ sub get_results
         my $debug = 0;
         if(!open(UAS, $uas_file) && $debug)
         {
-            print STDERR ("Cannot read $treebank/$size/$uas_file: $!\n");
+            print STDERR ("Cannot read $treebank/$current{size}/$uas_file: $!\n");
             next;
         }
         while (<UAS>)
@@ -670,7 +668,7 @@ sub get_results
             {
                 my $uasparams = $1;
                 $score = $score ? 100 * $score : 0;
-                $value{$treebank}{$size}{$parser}{$uasparams} = round($score);
+                $value{$treebank}{$current{size}}{$parser}{$uasparams} = round($score);
             }
         }
     }
@@ -678,8 +676,7 @@ sub get_results
 sub get_labeled_results
 {
     my $treebank = shift;
-    my $size = shift;
-    return get_results($treebank, $size, 1);
+    return get_results($treebank, 1);
 }
 
 
