@@ -438,7 +438,7 @@ sub train
 {
     my $treebank = shift;
     my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
-    my $malt_dir = $ENV{TMT_ROOT}."/share/installed_tools/malt_parser/malt-1.5";
+    my $malt_jar = '/home/zeman/nastroje/parsery/maltparser-1.8.1/maltparser-1.8.1.jar';
     # Prepare the training script and submit the job to the cluster.
     foreach my $parser (get_parsers())
     {
@@ -474,7 +474,7 @@ sub train
         {
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print SCR ("rm -rf malt_nivreeager\n");
-            print SCR ("java -Xmx13g -jar $malt_dir/malt.jar -i train.conll -c malt_nivreeager -a nivreeager -gcs '~' -l liblinear -m learn\n");
+            print SCR ("java -Xmx13g -jar $malt_jar -i train.conll -c malt_nivreeager -a nivreeager -gcs '~' -l liblinear -m learn\n");
             $memory = '16G';
             $priority = -300;
         }
@@ -488,7 +488,7 @@ sub train
             my $model = 'malt_stacklazy';
             if($parser eq 'smf')
             {
-                my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.conll -c $model $maltsettings\n";
+                my $command = "java -Xmx26g -jar $malt_jar -i train.conll -c $model $maltsettings\n";
                 print SCR ("echo $command");
                 print SCR ($command);
                 # It is more difficult to get a machine with so much memory so we will be less generous with priority.
@@ -499,7 +499,7 @@ sub train
             else # dlx
             {
                 $model .= '_delex';
-                my $command = "java -Xmx26g -jar $malt_dir/malt.jar -i train.delex.conll -c $model $maltsettings\n";
+                my $command = "java -Xmx26g -jar $malt_jar -i train.delex.conll -c $model $maltsettings\n";
                 print SCR ("echo $command");
                 print SCR ($command);
                 # It is more difficult to get a machine with so much memory so we will be less generous with priority.
