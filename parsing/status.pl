@@ -122,13 +122,13 @@ foreach my $lang (@languages)
             }
         }
         # Collect numbers of cluster jobs related to this transformation.
-        my @cluster_logs = grep {m/\.sh\.o\d+$/} (dzsys::get_files('.'));
+        my @cluster_logs = grep {m/\.o\d+$/} (dzsys::get_files('.'));
         foreach my $log (@cluster_logs)
         {
             my ($script, $jobid);
-            if($log =~ m/^(.*\.sh)\.o(\d+)$/)
+            if($log =~ m/^(.*)\.o(\d+)$/)
             {
-                $script = $1;
+                $script = $1; ###!!! Since we started to name the jobs differently from scripts, this is the name of the job rather than of the script.
                 $jobid = $2;
             }
             else
