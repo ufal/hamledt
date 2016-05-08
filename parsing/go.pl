@@ -502,7 +502,9 @@ sub train
             $priority = -100;
         }
         close(SCR);
-        cluster::qsub('priority' => $priority, 'memory' => $memory, 'script' => $scriptname);
+        my $jobname = $scriptname;
+        $jobname =~ s/-ud\d*//ig;
+        cluster::qsub('priority' => $priority, 'memory' => $memory, 'script' => $scriptname, 'name' => $jobname);
     }
 }
 
