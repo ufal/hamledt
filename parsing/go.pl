@@ -596,11 +596,8 @@ sub parse
             # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
             system("rm -rf $parserst-test");
             system("mkdir -p $parserst-test");
-            system("cp $data_dir/$treebank/treex/test/*.treex.gz $parserst-test");
+            system("cp $data_dir/$treebank/treex/02/test/*.treex.gz $parserst-test");
             my $scriptname = "p$parserst-$treebank.sh";
-            # Shorten the script name so that the derived job name on the cluster is more descriptive.
-            $scriptname =~ s/-ud\d*//g;
-            $scriptname =~ s/-//g;
             my $memory = '16G';
             # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
             my $uas_file = "uas-$parserst.txt";
@@ -616,6 +613,7 @@ sub parse
             close(SCR);
             my $jobname = $scriptname;
             $jobname =~ s/-ud\d*//ig;
+            $jobname =~ s/-//g;
             cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname, 'name' => $jobname);
         }
     }
