@@ -138,7 +138,7 @@ foreach my $lang (@languages)
             # Classify the job as training or parsing.
             my ($type, $output);
             my $parsers_re = join('|', keys(%parsers));
-            if($script =~ m/^($parsers_re)-/)
+            if($script =~ m/^($parsers_re)/)
             {
                 my $parser = $1;
                 $type = 'training';
