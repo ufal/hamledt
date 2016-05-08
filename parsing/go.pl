@@ -348,6 +348,10 @@ sub loop
         }
         else
         {
+            # Remove *-cluster-run-* subfolders from previous runs of the pretrain action.
+            # Try to make sure that all subfolders correspond to various sizes of training data.
+            chdir("$wdir/$treebank") or die("Cannot change to $wdir/$treebank: $!\n");
+            system("rm -rf *-cluster-run-*");
             foreach my $size (@sizes)
             {
                 $current{size} = $size;
