@@ -514,6 +514,7 @@ sub train
         my $jobname = $scriptname;
         $jobname =~ s/-ud\d*//ig;
         $jobname =~ s/-//g;
+        $jobname =~ s/\.sh$//;
         cluster::qsub('priority' => $priority, 'memory' => $memory, 'script' => $scriptname, 'name' => $jobname);
     }
 }
@@ -624,6 +625,7 @@ sub parse
             my $jobname = $scriptname;
             $jobname =~ s/-ud\d*//ig;
             $jobname =~ s/-//g;
+            $jobname =~ s/\.sh$//;
             cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname, 'name' => $jobname);
         }
     }
