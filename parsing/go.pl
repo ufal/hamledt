@@ -6,13 +6,13 @@
 
 sub usage
 {
-    print STDERR ("go.pl [OPTIONS] <ACTION>\n");
+    print STDERR ("go.pl --wdir <WDIR> [OPTIONS] <ACTION>\n");
     print STDERR ("\tActions: pretrain|train|parse|table|ltable|clean\n");
     print STDERR ("\tSource data path is fixed at \$TMT_SHARED.\n");
     print STDERR ("\tThe script knows the list of available treebanks.\n");
     print STDERR ("\tThe 'clean' action currently only removes the cluster logs (.o123456 files).\n");
     print STDERR ("\tOptions:\n");
-    print STDERR ("\t--wdir folder ... experiment folder; default is ./pokus.\n");
+    print STDERR ("\t--wdir folder ... experiment folder.\n");
     print STDERR ("\t--treebanks en,cs,ar ... instead of all treebanks, process only those specified here.\n");
 }
 
@@ -30,7 +30,7 @@ use dzsys;
 use cluster;
 
 # Read options.
-my $wdir = 'pokus'; # default working folder
+my $wdir; # working folder; typically subfolder of the folder where this script resides
 $konfig{sizes} = '10,20,50,100,200,500,1000,2000,5000,100000'; # default learning curve (number of training sentences)
 GetOptions
 (
@@ -41,6 +41,11 @@ GetOptions
     'help'              => \$konfig{help}
 );
 exit(usage()) if($konfig{help});
+if(!defined($wdir))
+{
+    usage();
+    die('Unknown working folder');
+}
 
 $konfig{toolsdir} = '/net/work/people/zeman/parsing/tools';
 my $scriptdir = dzsys::get_script_path();
