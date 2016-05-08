@@ -484,7 +484,7 @@ sub train
             my $features = $scriptdir.'/malt-feature-models/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
             # -d CPOSTAG means that we will learn a separate model for each part of speech tag; if we work with Universal Dependencies, this is the UPOS tag.
             # -s Stack[0] means that the model splitting will be based on the tag of the word on the top of the stack.
-            my $maltsettings = "-a stacklazy -F $features -grl root -gcs '~' -d POSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn";
+            my $maltsettings = "-a stacklazy -F $features -grl root -gcs '~' -d CPOSTAG -s 'Stack[0]' -T 1000 -gds T.TRANS,A.DEPREL -l libsvm -m learn";
             my $model = 'malt_stacklazy';
             if($parser eq 'smf')
             {
