@@ -421,6 +421,7 @@ sub create_conll_training_data
             $udcode = $1;
             $udcode .= '_'.$2 if(defined($2) && $2 ne '');
         }
+        print STDERR ("$konfig{datadir}/$udcode/$udcode-ud-train*.conllu\n");
         system("cat $konfig{datadir}/$udcode/$udcode-ud-train*.conllu | /net/work/people/zeman/unidep/tools/conllu_to_conllx.pl > train.conll");
         system("$scriptdir/conll2mst.pl < train.conll > train.mst");
     }
