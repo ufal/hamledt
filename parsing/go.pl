@@ -416,11 +416,11 @@ sub create_conll_training_data
         # HamleDT: fi-ud12ftb
         # UD and Milan: fi_ftb
         my $udcode = $treebank;
-        if($udcode =~ m/^([a-z]+)-ud\d*([a-z]+)$/)
+        if($udcode =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
         {
-            my $lcode = $1;
+            $udcode = $1;
             my $tcode = $2;
-            $udcode = $lcode.'_'.$tcode;
+            $udcode .= '_'.$tcode if(defined($tcode));
         }
         system("cat $konfig{datadir}/$udcode/$udcode-ud-train*.conllu | /net/work/people/zeman/unidep/tools/conllu_to_conllx.pl > train.conll");
         system("$scriptdir/conll2mst.pl < train.conll > train.mst");
