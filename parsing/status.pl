@@ -103,7 +103,7 @@ foreach my $lang (@languages)
             if(!-e $model)
             {
                 $models{$mpath}{found} = 0;
-                print("$model not found\n");
+                print("$mpath not found\n");
                 # We are going to search job logs and assign jobs to intended target models.
                 # However, it is possible that a target has no job log because the job did not even start.
                 # In such a case we want to know whether there is the script for the job or not.
