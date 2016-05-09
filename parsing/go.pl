@@ -419,8 +419,7 @@ sub create_conll_training_data
         if($udcode =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
         {
             $udcode = $1;
-            my $tcode = $2;
-            $udcode .= '_'.$tcode if(defined($tcode));
+            $udcode .= '_'.$2 if(defined($2) && $2 ne '');
         }
         system("cat $konfig{datadir}/$udcode/$udcode-ud-train*.conllu | /net/work/people/zeman/unidep/tools/conllu_to_conllx.pl > train.conll");
         system("$scriptdir/conll2mst.pl < train.conll > train.mst");
