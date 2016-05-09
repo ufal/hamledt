@@ -633,7 +633,26 @@ sub parse
             # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
             system("rm -rf $parserst-test");
             system("mkdir -p $parserst-test");
-            system("cp $konfig{datadir}/$treebank/treex/02/test/*.treex.gz $parserst-test");
+            # If we are working with machine-assigned morphology by Milan Straka, the input files are not in HamleDT and their format is CoNLL-U.
+            my $readblock;
+            if($konfig{milan})
+            {
+                # The ways of identifying treebanks within a language are not compatible.
+                # HamleDT: fi-ud12ftb
+                # UD and Milan: fi_ftb
+                my $udcode = $treebank;
+                if($udcode =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
+                {
+                    $udcode = $1;
+                    $udcode .= '_'.$2 if(defined($2) && $2 ne '');
+                }
+                $readblock = "Read::CoNLLU from='$konfig{datadir}/$udcode/$udcode-ud-test.conllu'";
+            }
+            else
+            {
+                system("cp $konfig{datadir}/$treebank/treex/02/test/*.treex.gz $parserst-test");
+                $readblock = "Read::Treex from='!$parserst-test/*.treex.gz'";
+            }
             my $scriptname = "p$parserst-$treebank.sh";
             my $memory = '16G';
             # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
@@ -646,7 +665,7 @@ sub parse
             print SCR ("echo jednou | /net/projects/SGE/sensors/mem_free.sh\n");
             print SCR ("echo jednou | /net/projects/SGE/sensors/act_mem_free.sh\n");
             print SCR ("top -bn1 | head -20\n");
-            print SCR ("treex -s $scenario -- $parserst-test/*.treex.gz | tee $uas_file\n");
+            print SCR ("treex -s $readblock $scenario | tee $uas_file\n");
             close(SCR);
             my $jobname = $scriptname;
             $jobname =~ s/-ud\d*//ig;
