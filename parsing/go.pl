@@ -31,13 +31,15 @@ use cluster;
 
 # Read options.
 my $wdir; # working folder; typically subfolder of the folder where this script resides
-$konfig{sizes} = '10,20,50,100,200,500,1000,2000,5000,100000'; # default learning curve (number of training sentences)
+$konfig{sizes} = '10,20,50,100,200,500,1000,2000,5000'; # default learning curve (number of training sentences)
+$konfig{milan} = 0; # do we want to use the data machine-tagged by Milan Straka?
 GetOptions
 (
     'wdir=s'            => \$wdir,
     'treebanks=s'       => \$konfig{treebanks},  # comma-separated list, e.g. "--treebanks de,de-ud11"
     # Each size is a separate experiment in its own folder. Make sure that a model for your sizes exist when you run parsing.
     'sizes=s'           => \$konfig{sizes}, # comma-separated list, e.g. "--sizes 10,20,50,100,200,500,1000,2000,5000,100000
+    'milan'             => \$konfig{milan}, # do we want to use the data machine-tagged by Milan Straka?
     'help'              => \$konfig{help}
 );
 exit(usage()) if($konfig{help});
@@ -54,9 +56,13 @@ if(!defined($share_dir) || $share_dir eq '')
 {
     die("Unknown path to the shared folder");
 }
-my $data_dir = Treex::Core::Config->share_dir()."/data/resources/hamledt";
-$data_dir =~ s-//-/-;
-print STDERR ("Data folder    = $data_dir\n");
+# HamleDT data is in Treex shared disk space. We usually read the UD-converted Treex files, i.e. treebank/treex/02/{train,dev,test}/*.treex.gz.
+# If we want to use machine-assigned morphology instead, we can take CoNLL-U files processed by Milan Straka (9/10-1/10 cross learning).
+# The data is here: /net/work/people/zeman/ud-1.2_tagged-cross/treebank/*-ud-{train,dev,test}.conllu.
+$konfig{datadir} = Treex::Core::Config->share_dir().'/data/resources/hamledt';
+$konfig{datadir} = '/net/work/people/zeman/ud-1.2_tagged-cross' if($konfig{milan});
+$konfig{datadir} =~ s-//-/-;
+print STDERR ("Data folder    = $konfig{datadir}\n");
 my @treebanks = get_treebanks();
 $konfig{delexpairs} = get_best_delex();
 $konfig{action_name} = shift(@ARGV);
@@ -403,30 +409,50 @@ sub get_conll_block_parameters
 sub create_conll_training_data
 {
     my $treebank = shift;
-    my $language = $treebank;
-    $language =~ s/-.*//;
-    my $filename1 = 'train.conll';
-    my $filename2 = 'train.mst';
-    my $scriptname = 'create_training_data.sh';
-    open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
-    print SCR ("treex -p -j 20 ");
-    print SCR ("Util::SetGlobal language=$language ");
-    # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
-    my $writeparam = get_conll_block_parameters();
-    print SCR ("Write::CoNLLX $writeparam ");
-    print SCR ("-- $data_dir/$treebank/treex/02/train/*.treex.gz ");
-    print SCR ("> $filename1\n");
-    # Prepare a delexicalized training file for experiments with delexicalized parsing.
-    my $fc = get_fc();
-    my $delexfilename1 = $filename1;
-    $delexfilename1 =~ s/\.conll$/.delex.conll/;
-    print SCR ("$konfig{toolsdir}/conll_delexicalize.pl --keep-features=$fc < $filename1 > $delexfilename1\n");
-    # Prepare a modified form that can be used by the MST Parser.
-    print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
-    close(SCR);
-    chmod(0755, $scriptname) or die("Cannot chmod $scriptname: $!\n");
-    # Send the job to the cluster. It will itself spawn additional cluster jobs (via treex -p) but we do not want to wait here until they're all done.
-    return cluster::qsub('priority' => -200, 'memory' => '1G', 'script' => $scriptname);
+    # If we work with machine-tagged data, the input files are CoNLL-U and we do not use the cluster.
+    if($konfig{milan})
+    {
+        # The ways of identifying treebanks within a language are not compatible.
+        # HamleDT: fi-ud12ftb
+        # UD and Milan: fi_ftb
+        my $udcode = $treebank;
+        if($udcode =~ m/^([a-z]+)-ud\d*([a-z]+)$/)
+        {
+            my $lcode = $1;
+            my $tcode = $2;
+            $udcode = $lcode.'_'.$tcode;
+        }
+        system("cat $konfig{datadir}/$udcode/$udcode-ud-train*.conllu | /net/work/people/zeman/unidep/tools/conllu_to_conllx.pl > train.conll");
+        system("$scriptdir/conll2mst.pl < train.conll > train.mst");
+    }
+    # If we work with gold-standard morphology, the input files are Treex and we use the cluster to convert them to CoNLL-X.
+    else
+    {
+        my $language = $treebank;
+        $language =~ s/-.*//;
+        my $filename1 = 'train.conll';
+        my $filename2 = 'train.mst';
+        my $scriptname = 'create_training_data.sh';
+        open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
+        print SCR ("treex -p -j 20 ");
+        print SCR ("Util::SetGlobal language=$language ");
+        # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
+        my $writeparam = get_conll_block_parameters();
+        print SCR ("Write::CoNLLX $writeparam ");
+        print SCR ("-- $konfig{datadir}/$treebank/treex/02/train/*.treex.gz ");
+        print SCR ("> $filename1\n");
+        # Prepare a delexicalized training file for experiments with delexicalized parsing.
+        my $fc = get_fc();
+        my $delexfilename1 = $filename1;
+        $delexfilename1 =~ s/\.conll$/.delex.conll/;
+        print SCR ("$konfig{toolsdir}/conll_delexicalize.pl --keep-features=$fc < $filename1 > $delexfilename1\n");
+        # Prepare a modified form that can be used by the MST Parser.
+        print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
+        close(SCR);
+        chmod(0755, $scriptname) or die("Cannot chmod $scriptname: $!\n");
+        # Send the job to the cluster. It will itself spawn additional cluster jobs (via treex -p) but we do not want to wait here until they're all done.
+        return cluster::qsub('priority' => -200, 'memory' => '1G', 'script' => $scriptname);
+    }
 }
 
 
@@ -607,7 +633,7 @@ sub parse
             # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
             system("rm -rf $parserst-test");
             system("mkdir -p $parserst-test");
-            system("cp $data_dir/$treebank/treex/02/test/*.treex.gz $parserst-test");
+            system("cp $konfig{datadir}/$treebank/treex/02/test/*.treex.gz $parserst-test");
             my $scriptname = "p$parserst-$treebank.sh";
             my $memory = '16G';
             # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
