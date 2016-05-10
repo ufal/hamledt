@@ -596,6 +596,7 @@ sub get_parsing_scenario
 sub prepare_test_data
 {
     my $treebank = shift;
+    my $language = shift;
     my $testdir = shift;
     system("rm -rf $testdir");
     system("mkdir -p $testdir");
@@ -648,7 +649,7 @@ sub parse
                     # Copy test data to the working folder.
                     # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
                     my $testdir = "$parser-$srctbk-test";
-                    prepare_test_data($treebank, $testdir);
+                    prepare_test_data($treebank, $language, $testdir);
                     my $modeldir = "$wdir/$srctbk";
                     $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $testdir, $modeldir);
                 }
@@ -663,7 +664,7 @@ sub parse
             # Copy test data to the working folder.
             # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
             my $testdir = "$parser-test";
-            prepare_test_data($treebank, $testdir);
+            prepare_test_data($treebank, $language, $testdir);
             $scenarios{''} = get_parsing_scenario($parser, $language, $testdir);
         }
         foreach my $srctbk (keys(%scenarios))
