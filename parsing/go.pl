@@ -555,6 +555,7 @@ sub get_parsing_scenario
     my $parser = shift; # parser code, e.g. 'mlt' or 'mcd'
     my $delexicalized = ($parser eq 'dlx'); # we may want to make this a parameter
     my $language = shift; # language, not treebank code
+    my $testdir = shift; # where is the test data?
     my $modeldir = shift; # for cross-language delexicalized training: where is the model?
     my $path = defined($modeldir) ? "$modeldir/$current{size}/" : '';
     # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See above.
@@ -569,6 +570,7 @@ sub get_parsing_scenario
     );
     my $scenario;
     $scenario .= "Util::SetGlobal language=$language selector=$parser ";
+    $scenario .= "Read::Treex from='!$testdir/*.treex.gz' ";
     # If there is a tree with the same name, remove it first.
     $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
     $scenario .= "A2A::CopyAtree source_selector='' flatten=1 ";
@@ -584,6 +586,37 @@ sub get_parsing_scenario
     # so we do not select 'orig' here.
     $scenario .= "Eval::AtreeUAS selector='' ";
     return $scenario;
+}
+
+
+
+#------------------------------------------------------------------------------
+# Copies test data to a private folder of one parser configuration.
+#------------------------------------------------------------------------------
+sub prepare_test_data
+{
+    my $treebank = shift;
+    my $testdir = shift;
+    system("rm -rf $testdir");
+    system("mkdir -p $testdir");
+    # If we are working with machine-assigned morphology by Milan Straka, the input files are not in HamleDT and their format is CoNLL-U.
+    if($konfig{milan})
+    {
+        # The ways of identifying treebanks within a language are not compatible.
+        # HamleDT: fi-ud12ftb
+        # UD and Milan: fi_ftb
+        my $udcode = $treebank;
+        if($udcode =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
+        {
+            $udcode = $1;
+            $udcode .= '_'.$2 if(defined($2) && $2 ne '');
+        }
+        system("treex -L$language Read::CoNLLU from='$konfig{datadir}/$udcode/$udcode-ud-test.conllu' Write::Treex to='$testdir/$udcode-ud-test.treex.gz'");
+    }
+    else
+    {
+        system("cp $konfig{datadir}/$treebank/treex/02/test/*.treex.gz $testdir");
+    }
 }
 
 
@@ -612,8 +645,12 @@ sub parse
                 # Skip delexicalized source models that have not been determined as promising.
                 if($konfig{delexpairs}{$treebank}{$srctbk})
                 {
-                    my $dir = "$wdir/$srctbk";
-                    $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $dir);
+                    # Copy test data to the working folder.
+                    # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
+                    my $testdir = "$parser-$srctbk-test";
+                    prepare_test_data($treebank, $testdir);
+                    my $modeldir = "$wdir/$srctbk";
+                    $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $testdir, $modeldir);
                 }
                 else
                 {
@@ -623,36 +660,16 @@ sub parse
         }
         else
         {
-            $scenarios{''} = get_parsing_scenario($parser, $language);
+            # Copy test data to the working folder.
+            # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
+            my $testdir = "$parser-test";
+            prepare_test_data($treebank, $testdir);
+            $scenarios{''} = get_parsing_scenario($parser, $language, $testdir);
         }
         foreach my $srctbk (keys(%scenarios))
         {
             my $scenario = $scenarios{$srctbk};
             my $parserst = $srctbk ne '' ? "$parser-$srctbk" : $parser;
-            # Copy test data to the working folder.
-            # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
-            system("rm -rf $parserst-test");
-            system("mkdir -p $parserst-test");
-            # If we are working with machine-assigned morphology by Milan Straka, the input files are not in HamleDT and their format is CoNLL-U.
-            my $readblock;
-            if($konfig{milan})
-            {
-                # The ways of identifying treebanks within a language are not compatible.
-                # HamleDT: fi-ud12ftb
-                # UD and Milan: fi_ftb
-                my $udcode = $treebank;
-                if($udcode =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
-                {
-                    $udcode = $1;
-                    $udcode .= '_'.$2 if(defined($2) && $2 ne '');
-                }
-                $readblock = "Read::CoNLLU from='$konfig{datadir}/$udcode/$udcode-ud-test.conllu'";
-            }
-            else
-            {
-                system("cp $konfig{datadir}/$treebank/treex/02/test/*.treex.gz $parserst-test");
-                $readblock = "Read::Treex from='!$parserst-test/*.treex.gz'";
-            }
             my $scriptname = "p$parserst-$treebank.sh";
             my $memory = '16G';
             # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
@@ -665,7 +682,7 @@ sub parse
             print SCR ("echo jednou | /net/projects/SGE/sensors/mem_free.sh\n");
             print SCR ("echo jednou | /net/projects/SGE/sensors/act_mem_free.sh\n");
             print SCR ("top -bn1 | head -20\n");
-            print SCR ("treex -s $readblock $scenario | tee $uas_file\n");
+            print SCR ("treex -s $scenario | tee $uas_file\n");
             close(SCR);
             my $jobname = $scriptname;
             $jobname =~ s/-ud\d*//ig;
