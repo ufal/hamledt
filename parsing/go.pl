@@ -7,7 +7,7 @@
 sub usage
 {
     print STDERR ("go.pl --wdir <WDIR> [OPTIONS] <ACTION>\n");
-    print STDERR ("\tActions: pretrain|train|parse|table|ltable|clean\n");
+    print STDERR ("\tActions: pretrain|train|preparse|parse|table|ltable|clean\n");
     print STDERR ("\tSource data path is fixed at \$TMT_SHARED.\n");
     print STDERR ("\tThe script knows the list of available treebanks.\n");
     print STDERR ("\tThe 'clean' action currently only removes the cluster logs (.o123456 files).\n");
@@ -93,6 +93,10 @@ sub get_action
     elsif($action_name eq 'train')
     {
         $action = \&train;
+    }
+    elsif($action_name eq 'preparse')
+    {
+        $action = \&convert_milans_ud_to_treex;
     }
     elsif($action_name eq 'parse')
     {
@@ -548,6 +552,70 @@ sub train
 
 
 #------------------------------------------------------------------------------
+# Converts CoNLL-U to Treex. Used to prepare test data tagged by Milan Straka.
+#------------------------------------------------------------------------------
+sub convert_milans_ud_to_treex
+{
+    my $treebank = shift;
+    # Calling this function only makes sense if $konfig{milan} is set.
+    # If we are working with machine-assigned morphology by Milan Straka, the input files are not in HamleDT and their format is CoNLL-U.
+    if($konfig{milan})
+    {
+        my $language = $treebank;
+        $language =~ s/-.*//;
+        # The ways of identifying treebanks within a language are not compatible.
+        # HamleDT: fi-ud12ftb
+        # UD and Milan: fi_ftb
+        my $udcode = $treebank;
+        if($udcode =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
+        {
+            $udcode = $1;
+            $udcode .= '_'.$2 if(defined($2) && $2 ne '');
+        }
+        my $scriptname = "ud2trx-$treebank.sh";
+        my $memory = '1G';
+        print STDERR ("Creating script $scriptname.\n");
+        open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
+        print SCR ("#!/bin/bash\n\n");
+        print SCR ("rm -rf testdata\n");
+        print SCR ("mkdir -p testdata\n");
+        print SCR ("treex -L$language Read::CoNLLU from='$konfig{datadir}/$udcode/$udcode-ud-test.conllu' lines_per_doc=100 Write::Treex path=testdata file_stem='' compress=1\n");
+        close(SCR);
+        cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname);
+    }
+    else
+    {
+        die('Action preparse requires --milan');
+    }
+}
+
+
+
+#------------------------------------------------------------------------------
+# Copies test data to a private folder of one parser configuration.
+#------------------------------------------------------------------------------
+sub prepare_test_data
+{
+    my $treebank = shift;
+    my $language = shift;
+    my $testdir = shift;
+    system("rm -rf $testdir");
+    system("mkdir -p $testdir");
+    # If we are working with machine-assigned morphology by Milan Straka, the input files are not in HamleDT and their format is CoNLL-U.
+    # We must have performed the 'preparse' action first, so the data has been converted to Treex and copied to 'testdata'.
+    if($konfig{milan})
+    {
+        system("cp testdata/*.treex.gz $testdir");
+    }
+    else
+    {
+        system("cp $konfig{datadir}/$treebank/treex/02/test/*.treex.gz $testdir");
+    }
+}
+
+
+
+#------------------------------------------------------------------------------
 # Creates the Treex parsing scenario for a given parser.
 #------------------------------------------------------------------------------
 sub get_parsing_scenario
@@ -586,38 +654,6 @@ sub get_parsing_scenario
     # so we do not select 'orig' here.
     $scenario .= "Eval::AtreeUAS selector='' ";
     return $scenario;
-}
-
-
-
-#------------------------------------------------------------------------------
-# Copies test data to a private folder of one parser configuration.
-#------------------------------------------------------------------------------
-sub prepare_test_data
-{
-    my $treebank = shift;
-    my $language = shift;
-    my $testdir = shift;
-    system("rm -rf $testdir");
-    system("mkdir -p $testdir");
-    # If we are working with machine-assigned morphology by Milan Straka, the input files are not in HamleDT and their format is CoNLL-U.
-    if($konfig{milan})
-    {
-        # The ways of identifying treebanks within a language are not compatible.
-        # HamleDT: fi-ud12ftb
-        # UD and Milan: fi_ftb
-        my $udcode = $treebank;
-        if($udcode =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
-        {
-            $udcode = $1;
-            $udcode .= '_'.$2 if(defined($2) && $2 ne '');
-        }
-        system("treex -L$language Read::CoNLLU from='$konfig{datadir}/$udcode/$udcode-ud-test.conllu' Write::Treex to='$testdir/$udcode-ud-test.treex.gz'");
-    }
-    else
-    {
-        system("cp $konfig{datadir}/$treebank/treex/02/test/*.treex.gz $testdir");
-    }
 }
 
 
