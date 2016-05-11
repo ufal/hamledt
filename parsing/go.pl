@@ -427,6 +427,8 @@ sub create_conll_training_data
         }
         print STDERR ("$konfig{datadir}/$udcode/$udcode-ud-train*.conllu\n");
         system("cat $konfig{datadir}/$udcode/$udcode-ud-train*.conllu | /net/work/people/zeman/unidep/tools/conllu_to_conllx.pl > train.conll");
+        my $fc = get_fc();
+        system("$konfig{toolsdir}/conll_delexicalize.pl --keep-features=$fc < train.conll > train.delex.conll\n");
         system("$scriptdir/conll2mst.pl < train.conll > train.mst");
     }
     # If we work with gold-standard morphology, the input files are Treex and we use the cluster to convert them to CoNLL-X.
@@ -434,8 +436,6 @@ sub create_conll_training_data
     {
         my $language = $treebank;
         $language =~ s/-.*//;
-        my $filename1 = 'train.conll';
-        my $filename2 = 'train.mst';
         my $scriptname = 'create_training_data.sh';
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
         print SCR ("treex -p -j 20 ");
@@ -444,14 +444,12 @@ sub create_conll_training_data
         my $writeparam = get_conll_block_parameters();
         print SCR ("Write::CoNLLX $writeparam ");
         print SCR ("-- $konfig{datadir}/$treebank/treex/02/train/*.treex.gz ");
-        print SCR ("> $filename1\n");
+        print SCR ("> train.conll\n");
         # Prepare a delexicalized training file for experiments with delexicalized parsing.
         my $fc = get_fc();
-        my $delexfilename1 = $filename1;
-        $delexfilename1 =~ s/\.conll$/.delex.conll/;
-        print SCR ("$konfig{toolsdir}/conll_delexicalize.pl --keep-features=$fc < $filename1 > $delexfilename1\n");
+        print SCR ("$konfig{toolsdir}/conll_delexicalize.pl --keep-features=$fc < train.conll > train.delex.conll\n");
         # Prepare a modified form that can be used by the MST Parser.
-        print SCR ("$scriptdir/conll2mst.pl < $filename1 > $filename2\n");
+        print SCR ("$scriptdir/conll2mst.pl < train.conll > train.mst\n");
         close(SCR);
         chmod(0755, $scriptname) or die("Cannot chmod $scriptname: $!\n");
         # Send the job to the cluster. It will itself spawn additional cluster jobs (via treex -p) but we do not want to wait here until they're all done.
@@ -545,6 +543,11 @@ sub train
         $jobname =~ s/-ud\d*//ig;
         $jobname =~ s/-//g;
         $jobname =~ s/\.sh$//;
+        my $sizetag = $current{size};
+        $sizetag =~ s/^\d+0000$/XL/;
+        $sizetag =~ s/000$/k/;
+        $sizetag =~ s/00$/h/;
+        $jobname .= $sizetag;
         cluster::qsub('priority' => $priority, 'memory' => $memory, 'script' => $scriptname, 'name' => $jobname);
     }
 }
