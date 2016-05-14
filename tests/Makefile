@@ -70,10 +70,12 @@ CFILES='!$(HAMLEDT_DATA)/{$(CTREEBANKS)}/treex/03/$(SETS)/*.treex.gz'
 # U-treebanks come from the last official release of Universal Dependencies. They do not have a Prague conversion.
 # UD tests can be run on P-treebanks, U-treebanks and C-treebanks because all three have the UD version in 02.
 U11TREEBANKS=bg-ud11,da-ud11,de-ud11,el-ud11,en-ud11,es-ud11,eu-ud11,fa-ud11,fi-ud11,fi-ud11ftb,fr-ud11,ga-ud11,he-ud11,hr-ud11,hu-ud11,id-ud11,it-ud11,sv-ud11
-UTREEBANKS=ar-ud12,bg-ud12,cs-ud12,cu-ud12,da-ud12,de-ud12,el-ud12,en-ud12,es-ud12,et-ud12,eu-ud12,fa-ud12,fi-ud12,fi-ud12ftb,fr-ud12,ga-ud12,got-ud12,grc-ud12,grc-ud12proiel,he-ud12,hi-ud12,hr-ud12,hu-ud12,id-ud12,it-ud12,ja-ud12ktc,la-ud12,la-ud12itt,la-ud12proiel,nl-ud12,no-ud12,pl-ud12,pt-ud12,pt-udt2,ro-ud12,sl-ud12,sv-ud12,ta-ud12
+U12TREEBANKS=ar-ud12,bg-ud12,cs-ud12,cu-ud12,da-ud12,de-ud12,el-ud12,en-ud12,es-ud12,et-ud12,eu-ud12,fa-ud12,fi-ud12,fi-ud12ftb,fr-ud12,ga-ud12,got-ud12,grc-ud12,grc-ud12proiel,he-ud12,hi-ud12,hr-ud12,hu-ud12,id-ud12,it-ud12,ja-ud12ktc,la-ud12,la-ud12itt,la-ud12proiel,nl-ud12,no-ud12,pl-ud12,pt-ud12,pt-udt2,ro-ud12,sl-ud12,sv-ud12,ta-ud12
+UTREEBANKS=ar-ud13,bg-ud13,ca-ud13,cs-ud13,cs-ud13cac,cs-ud13cltt,cu-ud13,da-ud13,de-ud13,el-ud13,en-ud13,en-ud13esl,en-ud13lines,es-ud13,es-ud13ancora,et-ud13,eu-ud13,fa-ud13,fi-ud13,fi-ud13ftb,fr-ud13,ga-ud13,gl-ud13,got-ud13,grc-ud13,grc-ud13proiel,he-ud13,hi-ud13,hr-ud13,hu-ud13,id-ud13,it-ud13,ja-ud13ktc,kk-ud13,la-ud13,la-ud13ittb,la-ud13proiel,lv-ud13,nl-ud13,nl-ud13lassysmall,no-ud13,pl-ud13,pt-ud13,pt-ud13br,ro-ud13,ru-ud13,ru-ud13syntagrus,sl-ud13,sl-ud13sst,sv-ud13,sv-ud13lines,ta-ud13,tr-ud13,zh-ud13
 ALLTREEBANKS=$(PTREEBANKS),$(UTREEBANKS),$(CTREEBANKS)
 # Either assign $(ALLTREEBANKS) to TREEBANKS, or narrow the selection down to what we currently need to see.
-TREEBANKS=cs,cs-cac,cs-cltt,ar,ta,ca,es,la-it,nl,pl,pt
+#TREEBANKS=cs,cs-cac,cs-cltt,ar,ta,ca,es,la-it,nl,pl,pt
+TREEBANKS=$(UTREEBANKS)
 UFILES='!$(HAMLEDT_DATA)/{$(TREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
 
 utests:

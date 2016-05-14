@@ -1,22 +1,68 @@
 cat test.log | ./summarize_tests.pl
-Test / Treebank             TOTAL  ar   bg0 bn ca   cs   da0  de  de1   el0   en   en1  es   es1   et eu0  fa   fa1  fi0  fi1  fr0   ga0 
-UD::Adpositions              50930 1840 170 0  5988  839 2261 589   871   109  627  498 8131  3724  1    0  958  313   35  943  6047  766
-UD::CompoundPrepositions      5822    0   0 0     1    0    0   0    56     1    0    8    0  1776  0    0    0  320    0    0  2337    0
-UD::Determiners              67923   49 158 0   426   54    0  82 11938  9821   26 3044  806  5290  0 1436   74  658 3162  461  5382  317
-UD::Punctuation               6882  338   0 5    53   76    9 188   102   348   14  256   83    24  0   39  242   14  147  215    58   21
-UD::Root                         5    3   0 0     0    0    0   2     0     0    0    0    0     0  0    0    0    0    0    0     0    0
-UD::Subjunctions             14088    0  97 0   141  133  124  99    85     0 2368  111  244   622 11 3203  238 1246  176  777   960  181
-UD::UnconvertedDependencies      6    0   0 0     0    0    0   1     0     0    0    0    0     0  0    0    0    0    0    0     0    0
-TOTAL                       145656 2230 425 5  6609 1102 2394 961 13052 10279 3035 3917 9264 11436 12 4678 1512 2551 3520 2396 14784 1285
+Test / Treebank               TOTAL  ar0  bg0  ca0  cs0  cs1 cu0  da0  de0   el0 en0  en1   en2  es0  es1  et0   eu0  fa0  fi0 fi1  fr0  ga0 
+UD::Adpositions                54644  324  199  437   46   9  144  436   839 107  388   115  637  865  334   178  526  224  35  912  448  766
+UD::AdverbIsNotNmod             3690    0   14    2    0   0    0    0     2   0  196    48    8   16    3   162  358   18  73    9   29    1
+UD::AuxChain                     205    0    0   36    0   0    0    0    44   0    0     0    0    0   28     0    3    2   0    0    0    0
+UD::AuxpassImpliesSubjpass      1349    0    2   31    0   0    0    1    26   0    4     0    1   77   45     0    0    8   1    0    0    0
+UD::CcIsConjunction             9774 6390    0  422  332  37    0    8   183   0  132     6    0  266  203     6    3    2 199    1    9    7
+UD::CcIsLeaf                    8993  175  644  459  256  33    6  354   105 492  111    19   35  438  363    15  296  184  29   76  399  100
+UD::CompoundPrepositions        1013    0    0    7    0   0    1    0    35   1    0     0    1    0    6     0    1  325   0    0    1    0
+UD::CopulaIsVerb                3555  249    0   54   48  34    0    0   185   0    0     0    1   69   72     0    5    3   0    2    0    4
+UD::Determiners                19399    0    6   60   10   0    0    0  7371   2    7    12    1   37   63     0  788  351  29    5  343   28
+UD::LeftToRightRelations       19607    0    2    7    0   0   24  301  7420  15 1670     0   51   87    4  1936   13   85   0  159    0   18
+UD::MaxOneDirectObject         33950 1015   72 5807  431  15  273  341   415 106 1062   489  327  305 5011   793  146  722 151   32  434  184
+UD::MaxOneSubject               4477  177  105  426   20   7    5  238    48  31   35    25   68   59  374     0   37   96   6    2  132   29
+UD::MweDoesNotCombineWithName    260    0    0    0    0   0    0    0     0   0    0     0    0    0    0     0    0    0   0    0    0    0
+UD::PronounIsNotMark            3339   88    0  139    5   0 1218  177    30   0    1     0    0   64    3     0    0    6   4   21    0    1
+UD::Punctuation                 9113  348  171   79   15   3    0    9   102   1  258     5   41   53   57     1  170   14 147  210   32   21
+UD::Subjunctions                8569    0    8  133  408   3  159  125    82   0   30    11   98  346  212   134    0 1226 140  164  131  175
+UD::UnconvertedDependencies    41368    0    0    0    0   0    0    0     0   0    0     0    0    0    0  6846    0    0   0    0    0    0
+UD::UnderscoreInForm          381645    0    6    1    0 725    0    0     9  88  113 97681    1    1    0     4    0    0   3   54   77  274
+UD::XcompHasNoSubject           4682  146   15  436    4   0   38    3   214   0    0     8  327   75  310    15  155  118   4    0   65   19
+TOTAL                         609632 8912 1244 8536 1575 866 1868 1993 17110 843 4007 98419 1597 2758 7088 10090 2501 3384 821 1647 2100 1627
 
-Test / Treebank             grc  he0   hi   hr0  hu0 id0  it0  ja   la  la1  nl   pl   pt   ro   ru  sk   sl  sv0  ta te tr 
-UD::Adpositions             1647  1343  396  285  3  1411  263 5090  18 1093  381  253  797  486 773  689  54 1093 6   1 138
-UD::CompoundPrepositions       0     1    0   57  0  1171   49    0   0    0    0    0    0    0   0    0   0   45 0   0   0
-UD::Determiners                2 17594   22  859 45  1184 2151    0   0    0    2    0   40   20   0    0   4 2815 1   0   0
-UD::Punctuation              157   880 1146  137  3   303  232    0 104   84    1  464    0    0   0  436  13  110 1   3 576
-UD::Root                       0     0    0    0  0     0    0    0   0    0    0    0    0    0   0    0   0    0 0   0   0
-UD::Subjunctions               0   282    0  382  1    83  349    0   0    0  680  438  233  602   0    0  59  140 0  23   0
-UD::UnconvertedDependencies    0     0    0    0  0     0    0    0   0    0    0    5    0    0   0    0   0    0 0   0   0
-TOTAL                       1806 20100 1564 1720 52  4152 3044 5090 122 1177 1064 1160 1070 1108 773 1125 130 4203 8  27 714
+Test / Treebank               gl0   got0 grc0 grc1 he0   hi0  hr0  hu0  id0  it0 ja0    kk0  la0 la1  la2  lv0 nl0  nl1  no0  pl0 pt0  pt1 
+UD::Adpositions               22971 299  1145 1242  1201  912  244   14 1400 135   4632   10  44  562  865  10 1310  165 2172 247   93  664
+UD::AdverbIsNotNmod              33   1     0   11   103  995    8    3    0  13    241    0  18    0    1   1    4  122    5   0    0  368
+UD::AuxChain                     11   0     0    0     0    0    0    0    0   0      0    2   0    0    0   1   64    0    0   0    0    0
+UD::AuxpassImpliesSubjpass        0   0    10    0     0    0   10    0    0   0      0    0  38    0    0   0    0  812    0   0    1   32
+UD::CcIsConjunction              40   0   540    0   186  138   31    2   14  12      1    0  17   53    0   2  242   21    2   1   65   37
+UD::CcIsLeaf                     63  12   370   27     0  101   79   10   58  96    665    5  22   53   16  37   15    8   28   2   85   51
+UD::CompoundPrepositions          0   0     1   14     0    0   57    0  285   0      0    0   0    0    4  14    0    0    0   0    0    0
+UD::CopulaIsVerb               1699   0     0    0     7    1    0    0    0   0      0    0   1   42    0   0  112    0    0   6  285   22
+UD::Determiners                1162   0     0    0   877   20  123    2  595   0      0    1   0    0    0   9    0  125 2894  11    6  294
+UD::LeftToRightRelations          0  29   861   88     0   13  108 1026  696   0      0  295 270    0   49  14    0    1    0   0    1    0
+UD::MaxOneDirectObject         1838 297  1657  990   100   27  306   26  592 491    141    7 195  350  726  60 1736   73  709 166  645   79
+UD::MaxOneSubject               632   9   211   80    28  204    6   41   96   0    109    1  75   63  154   7  235   17  264   0   36   15
+UD::MweDoesNotCombineWithName     0   0     0    0     0    0    0    0   72   8      0    0   0    0    0   0    0  175    0   0    0    0
+UD::PronounIsNotMark              0 104    14    0     0  119 1239    0   15   0      0    0   5    9    0   0   26    1    0   0    4   43
+UD::Punctuation                 289   0   843    0   880  217  137    7  303  78   1138    5  99   26    0  55   43  119    8  74    4    9
+UD::Subjunctions                115 153   233  319    93  128  107    3   56 134      1    4  47   27  409 207  741    7  342   3  305    0
+UD::UnconvertedDependencies       0   0     0    0     0    0    0    0    0   0      0  413   0    0    0   0    0    0    0   0    0    0
+UD::UnderscoreInForm            228   5     0    0  7332    0    0    0    5   1 267631  466   0    0    1   0    0    1    2   0    0   17
+UD::XcompHasNoSubject             0  52   811   26     0   15   15    0   69  12      0    1  22  443   27   0  250    0  296   5   78  158
+TOTAL                         29081 961  6696 2797 10807 2890 2470 1134 4256 980 274559 1210 853 1628 2252 417 4778 1647 6722 515 1608 1789
 
-LEGEND: bg0=bg-ud11, da0=da-ud11, de1=de-ud11, el0=el-ud11, en1=en-ud11, es1=es-ud11, eu0=eu-ud11, fa1=fa-ud11, fi0=fi-ud11, fi1=fi-ud11ftb, fr0=fr-ud11, ga0=ga-ud11, he0=he-ud11, hr0=hr-ud11, hu0=hu-ud11, id0=id-ud11, it0=it-ud11, la1=la-it, sv0=sv-ud11
+Test / Treebank               ro0  ru0  ru1   sl0 sl1  sv0 sv1  ta0 tr0   zh0  
+UD::Adpositions                547  481  1285   2  125 243  921  6    663  2065
+UD::AdverbIsNotNmod            127   33   574   0    4  85    1  0      0     0
+UD::AuxChain                    14    0     0   0    0   0    0  0      0     0
+UD::AuxpassImpliesSubjpass     114    8    11   0    0   0    1  0      0   116
+UD::CcIsConjunction             69   13     0   4   24   1    0  9     39     5
+UD::CcIsLeaf                   169  121  1958  47  126   2   24  0    152     2
+UD::CompoundPrepositions        71   84     3   0    0   0    0  0    102     0
+UD::CopulaIsVerb                13    6   626   0    1   0    0  0      0     8
+UD::Determiners                 86   35     0   0    0  44   27  1   1009  2965
+UD::LeftToRightRelations        69  115    57   0    1   0    0  0   4107    15
+UD::MaxOneDirectObject         203  112  2783 126   58 238  321 36    150   581
+UD::MaxOneSubject               24   14     5   0    0   1   95  3     42    90
+UD::MweDoesNotCombineWithName    5    0     0   0    0   0    0  0      0     0
+UD::PronounIsNotMark             1    2     0   0    0   0    0  0      0     0
+UD::Punctuation                558 1221     1   4  920   3   70  0    227    38
+UD::Subjunctions                48    7  1312   5   84   5   89  0      0     0
+UD::UnconvertedDependencies    121  865  9775   0 1100   0    0  0   5683 16565
+UD::UnderscoreInForm            86    8  6676   0    0 146    2  0      1     0
+UD::XcompHasNoSubject           18    4     1  50    1  15  313 15      0    33
+TOTAL                         2343 3129 25067 238 2444 783 1864 70  12175 22483
+
+LEGEND: ar0=ar-ud13, bg0=bg-ud13, ca0=ca-ud13, cs0=cs-ud13cac, cs1=cs-ud13cltt, cu0=cu-ud13, da0=da-ud13, de0=de-ud13, el0=el-ud13, en0=en-ud13, en1=en-ud13esl, en2=en-ud13lines, es0=es-ud13, es1=es-ud13ancora, et0=et-ud13, eu0=eu-ud13, fa0=fa-ud13, fi0=fi-ud13, fi1=fi-ud13ftb, fr0=fr-ud13, ga0=ga-ud13, gl0=gl-ud13, got0=got-ud13, grc0=grc-ud13, grc1=grc-ud13proiel, he0=he-ud13, hi0=hi-ud13, hr0=hr-ud13, hu0=hu-ud13, id0=id-ud13, it0=it-ud13, ja0=ja-ud13ktc, kk0=kk-ud13, la0=la-ud13, la1=la-ud13ittb, la2=la-ud13proiel, lv0=lv-ud13, nl0=nl-ud13, nl1=nl-ud13lassysmall, no0=no-ud13, pl0=pl-ud13, pt0=pt-ud13, pt1=pt-ud13br, ro0=ro-ud13, ru0=ru-ud13, ru1=ru-ud13syntagrus, sl0=sl-ud13, sl1=sl-ud13sst, sv0=sv-ud13, sv1=sv-ud13lines, ta0=ta-ud13, tr0=tr-ud13, zh0=zh-ud13
