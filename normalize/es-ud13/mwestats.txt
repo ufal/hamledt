@@ -1,0 +1,518 @@
+1	a barberos	ADP NOUN	dobj
+1	a cambio	ADP NOUN	mark
+1	a causa	ADP NOUN	case
+1	a causa de	ADP NOUN ADP	nmod
+1	a cliente	ADP NOUN	dobj
+1	a donde	ADP ADV	advmod
+1	a favor	ADP NOUN	case
+2	a fin de	ADP NOUN ADP	mark
+2	a fin de que	ADP NOUN ADP SCONJ	mark
+1	a gente	ADP NOUN	dobj
+2	a igual	ADP ADJ	advmod
+1	a igual	ADP ADV	case
+1	a igual que	ADP ADJ CONJ	amod
+5	a igual que	ADP ADJ CONJ	case
+3	a igual que	ADP ADJ CONJ	cc
+1	a igual que	ADP ADJ CONJ	dep
+1	a igual que	ADP ADJ CONJ	mark
+2	a igual que	ADP ADJ SCONJ	mark
+1	a igual que	ADP ADV SCONJ	case
+1	a la que	ADP DET CONJ	mark
+2	a la vez que	ADP DET NOUN CONJ	mark
+2	a medida que	ADP NOUN SCONJ	mark
+16	a menos	ADP ADV	advmod
+1	a menos	ADP ADV	cc
+1	a menos	ADP ADV	mark
+1	a menos de	ADP ADV ADP	advmod
+1	a menos que	ADP ADV CONJ	mark
+1	a menos que	ADP ADV SCONJ	mark
+3	a menudo	ADP ADJ	advmod
+1	a menudo	ADP ADJ	nmod
+1	a menudo	ADP NOUN	advmod
+2	a menudo	ADP NOUN	nmod
+1	a modo de	ADP NOUN ADP	nmod
+1	a no ser que	ADP ADV VERB CONJ	mark
+1	a partir	ADP VERB	case
+1	a partir de	ADP ADP ADP	case
+5	a partir de	ADP VERB ADP	case
+1	a país	ADP NOUN	dobj
+1	a pesar	ADP VERB	case
+5	a pesar de	ADP NOUN ADP	mark
+2	a pesar de	ADP NOUN ADP	nmod
+1	a pesar de	ADP VERB ADP	mark
+2	a pesar de que	ADP NOUN ADP SCONJ	mark
+1	a pesar que	ADP VERB SCONJ	mark
+2	a por	ADP ADP	case
+1	a por mayor	ADP ADP ADV	advmod
+1	a punto de	ADP NOUN ADP	case
+1	a que	ADP CONJ	mark
+1	a tiempo que	ADP NOUN CONJ	mark
+1	a tiempo que	ADP NOUN PRON	mark
+1	a tiempo que	ADP NOUN SCONJ	mark
+1	a través	ADP NOUN	nmod
+7	a través de	ADP NOUN ADP	case
+1	a través de	ADP NOUN ADP	mark
+6	a través de	ADP NOUN ADP	nmod
+1	a veces	ADP NOUN	advcl
+1	a veces	ADP NOUN	advmod
+1	abajo de	ADV ADP	case
+3	acaba de	AUX ADP	aux
+2	acababa de	AUX ADP	aux
+6	acabo de	AUX ADP	aux
+1	accionada a	VERB ADP	conj
+5	acerca de	ADV ADP	advmod
+14	acerca de	ADV ADP	case
+1	acerca de	ADV ADP	mark
+1	ad hoc	X X	amod
+1	ademas de	ADV ADP	advmod
+38	además de	ADV ADP	advmod
+33	además de	ADV ADP	case
+15	además de	ADV ADP	cc
+12	además de	ADV ADP	mark
+1	además de	ADV ADP	parataxis
+1	además de que	ADV ADP CONJ	mark
+1	además que	ADV CONJ	mark
+1	afuera de	ADV ADP	case
+1	agasajado que	VERB CONJ	acl:relcl
+1	ahora como	ADV ADP	case
+1	ainsi que	X CONJ	cc
+1	al igual	ADP ADJ	advmod
+1	al igual	ADP ADV	advmod
+2	al igual que	ADP ADJ CONJ	case
+1	al igual que	ADP ADJ CONJ	dep
+1	al igual que	ADP ADJ SCONJ	case
+1	al igual que	ADP ADV SCONJ	case
+2	al menos	ADP ADV	advmod
+1	allá de	ADV ADP	case
+8	alrededor de	ADV ADP	advmod
+25	alrededor de	ADV ADP	case
+1	ante de	ADP ADP	case
+1	anterior a	ADJ ADP	case
+1	anteriormente a	ADV ADP	case
+39	antes de	ADV ADP	advmod
+46	antes de	ADV ADP	case
+33	antes de	ADV ADP	mark
+1	antes de que	ADV ADP CONJ	advmod
+1	antes de que	ADV ADP SCONJ	mark
+1	antes que	ADV CONJ	case
+1	antes que	ADV CONJ	cc
+1	aparte de	ADJ ADP	case
+1	aparte de	ADP ADP	case
+3	aparte de	ADV ADP	advmod
+4	aparte de	ADV ADP	case
+1	aparte de	ADV ADP	mark
+1	aparte de	NOUN ADP	appos
+2	aparte de	NOUN ADP	case
+1	aparte de	NOUN ADP	nmod
+1	aprobado esta	VERB DET	parataxis
+1	asi mismo	ADV ADV	advmod
+1	asi que	ADV CONJ	cc
+1	así como	ADV ADP	cc
+2	así como	ADV ADP	conj
+100	así como	ADV CONJ	cc
+4	así como	ADV SCONJ	mark
+1	así mismo	ADV ADJ	advmod
+2	así pues	ADV CONJ	advmod
+2	así pues	ADV CONJ	cc
+3	así que	ADV CONJ	advmod
+5	así que	ADV CONJ	cc
+4	así que	ADV CONJ	mark
+8	así que	ADV SCONJ	mark
+1	aun así	X ADV	advmod
+1	bien que	ADV SCONJ	mark
+1	caen de	VERB ADP	conj
+16	cerca de	ADV ADP	advmod
+4	cerca de	ADV ADP	appos
+45	cerca de	ADV ADP	case
+4	cerca de	ADV ADP	conj
+1	cesado de	AUX ADP	aux
+1	comenzado a	AUX ADP	aux
+1	comenzamos a	AUX ADP	aux
+1	comenzara a	AUX ADP	aux
+3	comenzaron a	AUX ADP	aux
+1	comenzará a	AUX ADP	aux
+1	comenzarán a	AUX ADP	aux
+1	comenzó a	AUX ADP	aux
+1	comienza a	AUX ADP	aux
+1	como en	ADP ADP	case
+4	como en	CONJ ADP	case
+1	como para	CONJ ADP	mark
+1	como que	ADP SCONJ	mark
+1	como si	ADP CONJ	mark
+5	como si	ADV CONJ	mark
+1	como si	ADV SCONJ	mark
+4	como si	SCONJ CONJ	mark
+3	con el fin de	ADP DET NOUN ADP	mark
+1	con miras a	ADP NOUN ADP	mark
+3	con respecto a	ADP NOUN ADP	case
+7	con respecto a	ADP NOUN ADP	nmod
+1	con tal de	ADP ADV ADP	mark
+1	con tal de	ADP PRON ADP	mark
+1	conocer acerca de	VERB ADP ADP	acl
+1	construir de	VERB ADP	advcl
+1	contrario a	ADJ ADP	case
+1	cómo no	ADV ADV	advmod
+1	cómo si	SCONJ CONJ	mark
+1	dada que	X CONJ	mark
+8	dado que	VERB CONJ	mark
+7	dado que	VERB SCONJ	mark
+1	de actor	ADP NOUN	root
+1	de acuerdo	ADP NOUN	case
+1	de acuerdo	ADP NOUN	nmod
+1	de ahí que	ADP ADV CONJ	mark
+1	de de	ADP ADP	case
+1	de debe	X VERB	csubj
+1	de designación	ADP NOUN	root
+1	de hecho	ADP NOUN	advmod
+1	de hecho	ADP NOUN	mark
+1	de inmediato	ADP NOUN	nmod
+2	de manera que	ADP NOUN SCONJ	mark
+1	de modo que	ADP NOUN CONJ	mark
+1	de rosa	PROPN PROPN	nmod
+1	de rossi	PROPN PROPN	nsubj
+1	de utilizado	ADP VERB	root
+1	de vega	PROPN PROPN	nsubj
+7	debajo de	ADV ADP	advmod
+16	debajo de	ADV ADP	case
+1	deberán de	AUX ADP	aux
+1	deberían de	AUX ADP	aux
+15	debido a	VERB ADP	acl
+28	debido a	VERB ADP	case
+1	debido a que	VERB ADP CONJ	mark
+8	debido a que	VERB ADP SCONJ	mark
+1	decidimos a	AUX ADP	aux
+1	dedican a	AUX ADP	aux
+1	deja de	AUX ADP	aux
+2	dejado de	AUX ADP	aux
+4	dejar de	AUX ADP	aux
+1	dejarán de	AUX ADP	aux
+1	dejaré de	AUX ADP	aux
+1	deje de	AUX ADP	aux
+1	dejen de	AUX ADP	aux
+1	dejes de	AUX ADP	aux
+1	dejéis de	AUX ADP	aux
+1	dejó de	AUX ADP	aux
+3	delante de	ADV ADP	advmod
+3	delante de	ADV ADP	case
+2	dentro de	ADP ADP	case
+28	dentro de	ADV ADP	advmod
+81	dentro de	ADV ADP	case
+1	dentro nigerianas	ADV ADJ	amod
+1	desaparecer de	NOUN ADP	nsubj
+1	desarrollo de	NOUN ADP	nsubj
+1	descreer o bien	VERB CONJ ADV	root
+1	desde luego	ADP ADV	advmod
+1	desde luego que	ADP ADV CONJ	advmod
+1	desde que	ADP CONJ	mark
+1	desde que	ADP SCONJ	mark
+3	despues de	ADV ADP	advmod
+1	despues de	NOUN ADP	nmod
+1	después de	ADP ADP	case
+44	después de	ADV ADP	advmod
+101	después de	ADV ADP	case
+1	después de	ADV ADP	cc
+2	después de	ADV ADP	conj
+1	después de	ADV ADP	dep
+1	después de	ADV ADP	det
+29	después de	ADV ADP	mark
+3	después de que	ADV ADP CONJ	mark
+1	después de que	ADV ADP SCONJ	mark
+1	después que	ADV CONJ	mark
+1	después que	ADV SCONJ	mark
+1	detrás de	ADJ ADP	case
+7	detrás de	ADV ADP	advmod
+11	detrás de	ADV ADP	case
+1	detrás de	ADV ADP	conj
+1	empezaba a	AUX ADP	aux
+1	empezaban a	AUX ADP	aux
+1	empezamos a	AUX ADP	aux
+3	empezar a	AUX ADP	aux
+1	empezará a	AUX ADP	aux
+1	empezó a	AUX ADP	aux
+1	empiece a	AUX ADP	aux
+2	empiecen a	AUX ADP	aux
+3	empieza a	AUX ADP	aux
+1	empiezan a	AUX ADP	aux
+2	en base a	ADP NOUN ADP	case
+5	en concreto	ADP ADJ	advmod
+1	en cuanto	ADP ADV	advmod
+2	en cuanto	ADP ADV	mark
+21	en cuanto a	ADP ADV ADP	advmod
+9	en cuanto a	ADP ADV ADP	case
+1	en especial	ADP ADJ	advmod
+1	en lugar de	ADP NOUN ADP	cc
+1	en lugar de	ADP NOUN ADP	nmod
+1	en tanto	ADP NOUN	nmod
+1	en tanto	ADP PRON	case
+1	en tanto que	ADP PRON PRON	cc
+3	en torno a	ADP NOUN ADP	advmod
+2	en torno a	ADP NOUN ADP	case
+1	en torno a	ADP NOUN ADP	nmod
+1	en vez de	ADP NOUN ADP	mark
+7	encima de	ADV ADP	advmod
+8	encima de	ADV ADP	case
+1	entrar a	AUX ADP	aux
+1	es decir	CONJ VERB	cc
+1	es decir	VERB VERB	advmod
+42	es decir	VERB VERB	cc
+1	es decir	VERB VERB	conj
+2	es decir	VERB VERB	mark
+1	estamos a	X SYM	aux
+2	esto es	PRON VERB	cc
+1	ex mujer	ADJ NOUN	nmod
+13	frente a	ADV ADP	case
+40	frente a	NOUN ADP	case
+20	frente a	NOUN ADP	nmod
+1	fruto de	NOUN ADP	case
+11	fuera de	ADV ADP	advmod
+20	fuera de	ADV ADP	case
+33	gracias a	NOUN ADP	case
+31	gracias a	NOUN ADP	nmod
+1	habrá que	AUX CONJ	aux
+1	habrán de	AUX ADP	aux
+4	habría que	AUX CONJ	aux
+2	había que	AUX CONJ	aux
+1	hacia a	ADP ADP	case
+1	han de	AUX ADP	aux
+1	hasta que	ADP SCONJ	mark
+30	hay que	AUX CONJ	aux
+2	he de	AUX ADP	aux
+2	hoy día	ADV NOUN	advmod
+1	hubo de	AUX ADP	aux
+1	hubo que	AUX CONJ	aux
+4	iba a	AUX ADP	aux
+1	ibamos a	AUX ADP	aux
+1	iban a	AUX ADP	aux
+1	igual que	ADJ CONJ	amod
+1	igual que	ADJ CONJ	cc
+1	independientemente de	ADV ADP	advmod
+2	ir a	AUX ADP	aux
+57	junto a	ADJ ADP	case
+1	junto a	ADJ ADP	mark
+1	junto a	ADV ADP	advmod
+39	junto a	ADV ADP	case
+45	junto con	ADJ ADP	case
+24	junto con	ADV ADP	case
+1	junto conla	ADV X	case
+1	justo en	ADJ ADP	case
+2	lejos de	ADV ADP	advmod
+3	lejos de	ADV ADP	case
+1	llega a	AUX ADP	aux
+1	llegado a	AUX ADP	aux
+1	llegando a	AUX ADP	aux
+2	llegaron a	AUX ADP	aux
+1	llegará a	AUX ADP	aux
+1	lleguen a	AUX ADP	aux
+1	llegué a	AUX ADP	aux
+1	llegó a	AUX ADP	aux
+1	localizado de	VERB ADP	root
+7	luego de	ADV ADP	advmod
+22	luego de	ADV ADP	case
+10	luego de	ADV ADP	mark
+1	luego de devastar	ADV ADP VERB	advcl
+2	luego de que	ADV ADP SCONJ	mark
+2	luego que	ADV CONJ	mark
+1	luego que	ADV SCONJ	mark
+1	make up	PROPN X	dobj
+1	mar de	NOUN ADP	advmod
+1	mas de	ADV ADP	advmod
+1	mediante a	ADP ADP	case
+2	menos de	ADV ADP	advmod
+1	menos mal que	ADV ADV ADV	advmod
+1	menos que	ADV CONJ	advmod
+2	merced a	NOUN ADP	case
+2	merced a	NOUN ADP	nmod
+5	mientras que	ADV CONJ	cc
+2	mientras que	ADV CONJ	conj
+1	mientras que	ADV CONJ	iobj
+15	mientras que	ADV CONJ	mark
+16	mientras que	ADV SCONJ	mark
+7	mientras que	CONJ CONJ	cc
+1	mientras que	CONJ CONJ	dep
+1	mientras que	CONJ CONJ	root
+41	mientras que	CONJ SCONJ	mark
+8	mientras que	SCONJ CONJ	mark
+1	mientras tanto	ADP PRON	advmod
+8	mientras tanto	ADV PRON	advmod
+1	mientras tanto	ADV PRON	nmod
+1	mientras tanto	CONJ PRON	nmod
+1	mientrás que	ADV SCONJ	mark
+1	miles de	NOUN ADP	nummod
+1	más bien	ADV ADV	cc
+5	más de	ADV ADP	advmod
+1	más de	ADV ADP	case
+1	más que	ADV CONJ	advmod
+1	más que	ADV CONJ	cc
+2	nada más	PRON ADV	mark
+1	ni que	SCONJ CONJ	mark
+1	ni si	CONJ X	neg
+2	ni siquiera	CONJ ADV	advmod
+11	ni siquiera	CONJ ADV	neg
+2	ni tan siquiera	CONJ ADV ADV	neg
+4	no obstante	ADV ADJ	advmod
+11	no obstante	ADV ADJ	cc
+2	no obstante	ADV ADJ	conj
+1	no obstante	ADV ADJ	mark
+7	no obstante	ADV ADV	advmod
+6	no obstante	ADV ADV	cc
+1	normalmente de	ADV ADP	case
+5	o bien	CONJ ADV	cc
+1	o sea	CONJ VERB	advmod
+2	o sea	CONJ VERB	cc
+1	para cuando	ADP SCONJ	mark
+1	para que	ADP CONJ	case
+40	para que	ADP CONJ	mark
+3	para que	ADP PRON	mark
+42	para que	ADP SCONJ	mark
+1	para que	CONJ SCONJ	mark
+1	para que	SCONJ CONJ	mark
+1	pasará a	AUX ADP	aux
+1	pero bueno	CONJ ADJ	cc
+1	pese a	NOUN ADP	nmod
+7	pese a	VERB ADP	acl
+6	pese a	VERB ADP	case
+1	pese a	VERB ADP	cc
+1	pese a	VERB ADP	conj
+4	pese a	VERB ADP	mark
+4	pese a que	VERB ADP SCONJ	mark
+1	poblados de	NOUN ADP	nmod
+1	pop up	X X	compound
+1	por detrás de	ADP ADV ADP	case
+1	por encima	ADP ADV	advmod
+1	por encima de	ADP ADV ADP	case
+1	por lo menos	ADP PRON ADV	advmod
+1	por lo tanto	ADP PRON ADV	mark
+1	por medio de	ADP NOUN ADP	nmod
+1	por otro	ADP DET	case
+1	por países	ADP NOUN	nmod
+4	por si	ADP CONJ	mark
+1	por supuesto	ADP NOUN	advmod
+7	por supuesto	ADP VERB	advmod
+1	por tanto	VERB PRON	mark
+1	prendieron fuego	VERB NOUN	root
+1	prendió fuego	VERB NOUN	conj
+2	previo a	ADJ ADP	case
+4	puede que	AUX CONJ	aux
+2	puesto que	NOUN SCONJ	mark
+1	puesto que	SCONJ CONJ	mark
+7	puesto que	VERB CONJ	mark
+8	puesto que	VERB SCONJ	mark
+1	puse a	AUX ADP	aux
+1	que coincidía	CONJ VERB	ccomp
+1	que entregado	CONJ VERB	advcl
+1	que pequeña	CONJ ADJ	advcl
+1	que prohibía	CONJ VERB	advcl
+1	que unido	CONJ ADJ	ccomp
+6	respecto a	NOUN ADP	case
+12	respecto a	NOUN ADP	nmod
+3	respecto de	NOUN ADP	case
+6	respecto de	NOUN ADP	nmod
+2	rumbo a	NOUN ADP	case
+1	rumbo a	NOUN ADP	nmod
+1	salvo en	ADJ ADP	case
+1	seguro que	ADV CONJ	advmod
+14	si bien	CONJ ADV	mark
+8	si bien	SCONJ ADV	mark
+1	si embargo	X NOUN	advmod
+1	si que	ADV CONJ	advmod
+1	si que	ADV PRON	advmod
+7	siempre que	ADV CONJ	mark
+3	siempre que	ADV SCONJ	mark
+1	sin embago	ADP NOUN	cc
+3	sin embargo	ADP ADV	advmod
+31	sin embargo	ADP NOUN	advmod
+131	sin embargo	ADP NOUN	cc
+1	sin embargo	ADP NOUN	conj
+2	sin que	ADP CONJ	mark
+1	sin que	ADP PRON	mark
+1	sino que	ADV CONJ	cc
+5	sino que	CONJ CONJ	cc
+1	situada de	VERB ADP	acl
+1	sobre todo	ADP PRON	advmod
+1	sold out	X X	nmod
+1	sold out	X X	nsubj
+1	solo que	ADV CONJ	cc
+1	sí mismo	PRON ADJ	amod
+2	sí que	ADV CONJ	advmod
+2	sólo que	ADV CONJ	cc
+1	sólo que	ADV SCONJ	mark
+1	tal como	ADV ADV	mark
+2	tal como	ADV CONJ	case
+1	tal como	ADV CONJ	mark
+2	tal como	ADV SCONJ	mark
+2	tal cual	ADV ADV	advmod
+1	tal que	ADV CONJ	mark
+1	tal y como	ADV CONJ ADV	advmod
+2	tal y como	ADV CONJ SCONJ	mark
+1	tanto que	PRON SCONJ	mark
+1	tendremos que	AUX CONJ	aux
+1	tendrian que	AUX CONJ	aux
+3	tendrá que	AUX CONJ	aux
+2	tendrán que	AUX CONJ	aux
+4	tendría que	AUX CONJ	aux
+4	tenemos que	AUX CONJ	aux
+3	tener que	AUX CONJ	aux
+1	tenga que	AUX CONJ	aux
+1	tenga que ver	VERB CONJ VERB	acl:relcl
+1	tengan que	AUX CONJ	aux
+3	tengo que	AUX CONJ	aux
+1	tenia que	AUX CONJ	aux
+5	tenido que	AUX CONJ	aux
+1	teniendo que	AUX CONJ	aux
+1	tenéis que	AUX CONJ	aux
+1	tenía que	AUX CONJ	aux
+1	teníamos que	AUX CONJ	aux
+1	tenían que	AUX CONJ	aux
+4	tiene que	AUX CONJ	aux
+1	tiene que ver	VERB CONJ VERB	acl:relcl
+1	tiene que ver	VERB CONJ VERB	conj
+1	tiene que ver	VERB CONJ VERB	csubj
+1	tiene que ver	VERB CONJ VERB	root
+3	tienen que	AUX CONJ	aux
+1	tienen que ver	VERB CONJ VERB	acl:relcl
+7	tienes que	AUX CONJ	aux
+1	toda vez que	DET NOUN CONJ	mark
+3	tuve que	AUX CONJ	aux
+1	tuvieron que	AUX CONJ	aux
+1	tuviese que	AUX CONJ	aux
+1	tuvimos que	AUX CONJ	aux
+7	tuvo que	AUX CONJ	aux
+1	un mínimo de	DET NOUN ADP	advmod
+1	un poco	DET ADV	advmod
+1	un poquito	DET ADV	advmod
+2	una vez	DET NOUN	mark
+3	una vez que	DET NOUN SCONJ	mark
+19	va a	AUX ADP	aux
+1	vale decir	VERB VERB	cc
+13	vamos a	AUX ADP	aux
+6	van a	AUX ADP	aux
+1	van vaart	PROPN PROPN	dobj
+1	vaya a	AUX ADP	aux
+1	vayan a	AUX ADP	aux
+2	vez que	NOUN CONJ	mark
+1	viene a	AUX ADP	aux
+1	vienen a	AUX ADP	aux
+10	volver a	AUX ADP	aux
+3	volveremos a	AUX ADP	aux
+2	volverán a	AUX ADP	aux
+2	volveré a	AUX ADP	aux
+1	volvería a	AUX ADP	aux
+1	volvi a	AUX ADP	aux
+1	volvieron a	AUX ADP	aux
+1	volvió a	AUX ADP	aux
+1	volví a	AUX ADP	aux
+8	voy a	AUX ADP	aux
+2	vuelto a	AUX ADP	aux
+1	vuelva a	AUX ADP	aux
+2	vuelve a	AUX ADP	aux
+4	vuelven a	AUX ADP	aux
+3	vuelvo a	AUX ADP	aux
+1	y aunque	CONJ SCONJ	mark
+1	ya desde	ADV ADP	advmod
+1	ya que	ADV CONJ	cc
+1	ya que	ADV CONJ	dep
+74	ya que	ADV CONJ	mark
+3	ya que	ADV PRON	mark
+76	ya que	ADV SCONJ	mark
+1	ya que enferma	ADV CONJ ADJ	advcl
+3	ya sea	ADV VERB	cc

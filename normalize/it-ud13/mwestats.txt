@@ -1,0 +1,233 @@
+1	- tech	PUNCT NOUN	punct
+1	0 1	NUM NUM	nummod
+1	1 0	NUM NUM	root
+1	1 1	NUM NUM	nummod
+1	1 3	NUM NUM	conj
+1	1 a	NUM X	nummod
+1	1 b	NUM X	conj
+1	2 0	NUM NUM	conj
+1	2 0	NUM NUM	nummod
+2	2 1	NUM NUM	nummod
+1	3 1	NUM NUM	conj
+1	3 1	NUM NUM	nmod
+1	3 1	NUM NUM	nummod
+1	39 x 49	NUM SYM NUM	nummod
+1	4 3 3	NUM NUM NUM	nmod
+1	4 3 3	NUM NUM NUM	nummod
+1	4. a	NUM X	nummod
+1	4. b	NUM X	conj
+1	4. c	NUM X	conj
+1	6 5	NUM NUM	nummod
+1	8. f	NUM X	nummod
+2	a bordo	ADP NOUN	case
+1	a causa di	ADP NOUN ADP	case
+10	a che	ADP SCONJ	mark
+1	a come	ADP ADP	mark
+1	a detta di	ADP NOUN ADP	case
+1	a il più presto	ADP DET ADV ADV	advmod
+1	a l' incirca	ADP DET ADV	advmod
+5	a parte	ADP NOUN	case
+1	a poco a poco	ADP ADV ADP ADV	advmod
+1	a priori	ADV ADV	advmod
+1	a priori	ADV NOUN	advmod
+1	accanto a	ADP ADP	case
+12	accanto a	ADV ADP	case
+1	accanto ad	ADV ADP	case
+2	adesso che	ADV SCONJ	mark
+1	anch' essa	ADV PRON	advmod
+1	anche se	ADV CONJ	cc
+2	anche se	ADV SCONJ	mark
+1	assieme a	ADP ADP	case
+10	assieme a	ADV ADP	case
+2	assieme ad	ADV ADP	case
+4	attorno a	ADP ADP	case
+10	attorno a	ADV ADP	case
+2	attorno ad	ADV ADP	case
+1	centro s.p.a.	PROPN NOUN	nmod
+1	centro s.p.a.	PROPN NOUN	nsubj
+1	che a	ADP ADP	case
+3	che da	ADP ADP	case
+1	che in	ADP ADP	case
+1	che per	ADP ADP	case
+1	che tra	ADP ADP	case
+1	ciò nondimeno	PRON ADV	nmod
+1	come a	ADP ADP	case
+1	come a	ADP ADP	mark
+1	come a	ADV ADP	case
+1	come a gli	ADP ADP DET	case
+1	come con	ADP ADP	case
+4	come da	ADP ADP	case
+2	come di	ADP ADP	case
+3	come in	ADP ADP	case
+5	come in	ADV ADP	case
+1	come per	ADP ADP	case
+1	come pure	CONJ ADV	cc
+1	come se	ADV SCONJ	mark
+2	contro di	ADP ADP	case
+4	contro di	ADV ADP	case
+1	così che	ADV SCONJ	advmod
+2	così come	ADV ADP	cc
+1	così come	ADV SCONJ	mark
+1	così da	ADV ADP	mark
+2	da dietro	ADP ADV	case
+1	da far	ADP VERB	nmod
+1	da fare	ADP VERB	dobj
+1	da parte di	ADP NOUN ADP	case
+1	da prima ancora che	ADP ADV ADV SCONJ	mark
+4	da quando	ADP SCONJ	mark
+2	dato che	VERB SCONJ	advcl
+32	davanti a	ADV ADP	case
+1	davanti a il	ADV ADP DET	case
+1	davanti ad	ADP ADP	case
+1	davanti ad	ADV ADP	case
+2	dentro a	ADV ADP	case
+1	di come	ADP ADP	mark
+6	di fuori	ADP ADV	nmod
+8	di là	ADP ADV	nmod
+3	di per sé	ADP ADP PRON	advmod
+6	di sopra	ADP ADV	nmod
+1	di sotto	ADP ADV	case
+1	di sotto	ADP ADV	conj
+5	di sotto	ADP ADV	nmod
+3	dietro a	ADV ADP	case
+1	dietro di	ADV ADP	case
+2	dinanzi a	ADP ADP	case
+7	dinanzi a	ADV ADP	case
+1	dinanzi ad	ADV ADP	case
+1	dinnanzi a	ADP ADP	case
+13	dopo che	ADV SCONJ	mark
+1	e o	CONJ CONJ	cc
+2	ebbe luogo	VERB NOUN	root
+2	ecco che	ADV SCONJ	mark
+1	en plein air	ADP ADJ NOUN	advmod
+1	faccia a faccia	NOUN ADP NOUN	dobj
+1	faccia a faccia	NOUN ADP NOUN	nmod
+3	faceva parte	VERB NOUN	root
+1	fatto fuori	VERB ADV	root
+1	fin da	ADP ADP	case
+2	fin da	ADV ADP	case
+26	fino a	ADP ADP	case
+1	fino a	ADP ADP	mark
+76	fino a	ADV ADP	case
+4	fino a	ADV ADP	mark
+3	fino ad	ADV ADP	case
+1	fino in	ADV ADP	case
+1	fuori d'	ADV ADP	case
+11	fuori da	ADV ADP	case
+1	fuori di	ADP ADP	case
+4	fuori di	ADV ADP	case
+1	gold srl	PROPN NOUN	nmod
+1	grazie a	ADP ADP	case
+38	grazie a	NOUN ADP	case
+1	grazie a	NOUN ADP	conj
+2	honoré de	PROPN ADP	nsubj
+1	in come	ADP ADP	mark
+1	in i	ADP DET	dep
+1	in quanto	ADP ADV	advmod
+5	in quanto	ADP ADV	case
+16	in quanto	ADP ADV	mark
+1	in quanto	ADP SCONJ	mark
+1	in à	ADP ADP	case
+1	incontro a	ADP ADP	case
+1	incontro ad	ADP ADP	case
+1	incontro ad	ADV ADP	case
+8	insieme a	ADP ADP	case
+17	insieme a	ADV ADP	case
+1	insieme ad	ADP ADP	case
+2	insieme ad	ADV ADP	case
+1	insieme con	ADP ADP	case
+6	insieme con	ADV ADP	case
+3	intorno a	ADP ADP	case
+15	intorno a	ADV ADP	case
+1	intorno ad	ADV ADP	conj
+1	invece a	ADV ADP	case
+7	invece di	ADP ADP	mark
+2	invece di	ADV ADP	case
+3	invece di	ADV ADP	mark
+1	invece di	SCONJ ADP	mark
+1	invece per	ADV ADP	case
+4	lontano da	ADV ADP	case
+1	lucien de	PROPN ADP	nmod
+1	man che	NOUN SCONJ	nmod
+1	mano a mano che	NOUN ADP NOUN SCONJ	nmod
+1	meglio se	ADV SCONJ	conj
+1	meno che	ADV SCONJ	advmod
+1	meno che meno	ADV SCONJ ADV	advmod
+2	meno di	ADV ADP	case
+1	non che	ADV SCONJ	neg
+1	nonostante che	SCONJ SCONJ	mark
+1	nulla osta	NOUN VERB	dobj
+1	oggi che	ADV SCONJ	mark
+3	oltre a	ADP ADP	case
+2	oltre a	ADP ADP	mark
+12	oltre a	ADV ADP	case
+5	oltre a	ADV ADP	mark
+1	oltre che	ADV SCONJ	advmod
+4	oltre che	ADV SCONJ	case
+1	oltre che	ADV SCONJ	cc
+1	or sono	ADV VERB	advmod
+1	ora che	ADV SCONJ	mark
+1	peau de	PROPN ADP	nsubj
+1	per cui	ADP PRON	mark
+1	per quanto	ADP ADV	mark
+2	per via di	ADP NOUN ADP	case
+1	piano piano	ADV ADV	advmod
+1	piuttosto che	ADP ADP	case
+1	piuttosto che	ADP ADP	mark
+1	piuttosto che	ADV ADP	mark
+1	piuttosto che	ADV CONJ	cc
+1	piuttosto che	ADV SCONJ	mark
+1	piuttosto che a	ADV ADP ADP	case
+3	più che	ADV SCONJ	advmod
+1	più che	ADV SCONJ	case
+2	più che	ADV SCONJ	mark
+1	più che	PRON SCONJ	nmod
+1	più di	ADV ADP	case
+1	più in	ADV ADP	case
+1	più tardi	ADV ADV	nmod
+1	poco fa	ADV ADV	advmod
+1	presso di	ADV ADP	case
+15	prima che	ADV SCONJ	mark
+1	prima d'	ADV ADP	mark
+15	prima di	ADP ADP	case
+3	prima di	ADP ADP	mark
+56	prima di	ADV ADP	case
+37	prima di	ADV ADP	mark
+2	pur di	ADV ADP	mark
+1	pur se	ADV SCONJ	cc
+3	quanto a	ADV ADP	case
+2	quanto meno	PRON ADV	nmod
+1	raphaël de	PROPN ADP	nmod
+1	relativamente a	ADV ADP	case
+6	riguardo a	ADP ADP	case
+3	riguardo a	ADV ADP	case
+12	rispetto a	ADP ADP	case
+24	rispetto a	ADV ADP	case
+1	rispetto ad	ADP ADP	case
+1	rispetto ad	ADV ADP	case
+1	salvo che	ADP SCONJ	advmod
+4	salvo che	ADP SCONJ	mark
+2	salvo che	ADV SCONJ	advmod
+25	salvo che	ADV SCONJ	mark
+1	se no	SCONJ ADV	mark
+10	senza che	ADP SCONJ	mark
+2	senza che	SCONJ SCONJ	mark
+2	senza di	ADP ADP	case
+1	sin da	ADP ADP	case
+2	sin da	ADV ADP	case
+1	sino a	ADP ADP	case
+8	sino a	ADV ADP	case
+1	sino a	ADV ADP	mark
+1	sino ad	ADV ADP	case
+12	su di	ADP ADP	case
+1	sì che	INTJ SCONJ	discourse
+5	tra di	ADP ADP	case
+1	tranne in	ADP ADP	case
+1	tutt' a il più	PRON ADP DET ADV	nmod
+2	tutt' altro che	ADJ PRON SCONJ	amod
+1	vale a dire	VERB ADP VERB	advmod
+2	vicino a	ADP ADP	case
+19	vicino a	ADV ADP	case
+7	visto che	VERB SCONJ	advcl
+1	visto come	VERB SCONJ	advcl
+1	volta che	NOUN SCONJ	nmod

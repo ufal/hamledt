@@ -1,0 +1,53 @@
+1	academia română	NOUN ADJ	nmod:agent
+1	administrației prezidențiale	NOUN ADJ	nmod
+1	agenția spațială nasa	NOUN ADJ NOUN	nsubj
+1	anul nou	NOUN ADJ	nsubj
+2	are loc	VERB NOUN	root
+1	asemenea de	ADJ ADP	advmod
+1	avea gând	VERB NOUN	ccomp
+1	avea rost	VERB NOUN	root
+1	avut compunere	VERB NOUN	root
+1	avut loc	VERB NOUN	conj
+1	care drept	PRON ADP	advmod
+1	centrul de transfuziii sanguine	NOUN ADP PROPN ADJ	nsubj
+1	comisia europeană	NOUN ADJ	nsubj
+1	comisiei europene	NOUN ADJ	nmod
+1	conservatorul din cluj	NOUN ADP PROPN	nmod
+1	constituție europeană	NOUN ADJ	dobj
+1	corp comun	NOUN ADJ	dobj
+1	curtea europeană a drepturilor omului	NOUN ADJ DET NOUN NOUN	nmod
+1	cvartetul molinari	NOUN PROPN	nmod
+2	cât și	ADV CONJ	cc
+1	că pentru	SCONJ ADP	mark
+1	dai seama	VERB NOUN	ccomp
+1	dat încet	ADJ ADV	root
+1	dau întâlnire	VERB NOUN	root
+1	facultatea de filosofie	NOUN ADP NOUN	nmod
+1	făcea parte	VERB NOUN	advcl
+1	gând de	NOUN ADP	mwe
+1	ia ființă	VERB NOUN	root
+1	ia naștere	VERB NOUN	root
+1	ia notă	VERB NOUN	root
+1	intră în_vigoare	VERB ADV	root
+1	luat avânt	VERB NOUN	root
+1	luat ființă	VERB NOUN	root
+1	mână pe_sub	NOUN ADP	nmod
+1	plus în	ADV ADP	advmod
+1	poate peste	VERB ADV	advcl
+1	poate peste	VERB ADV	root
+1	prealabil în	ADV ADP	advmod
+1	până la	SCONJ ADP	case
+1	părere de rău	NOUN ADP NOUN	nmod
+1	regula în toată	NOUN ADP DET	nmod
+1	saci de dormit	NOUN ADP NOUN	nmod
+1	scrântesc o	VERB PRON	ccomp
+1	societatea scriitorilor români	NOUN NOUN ADJ	nsubj
+1	societății comerciale	NOUN ADJ	nmod
+1	sta pe gânduri	VERB ADP NOUN	advcl
+1	stare în	NOUN ADP	conj
+1	tihnă în	NOUN ADP	nmod
+1	tragere la sorți	NOUN ADP NOUN	nmod
+1	uniunii scriitorilor	NOUN NOUN	nmod
+1	în urma	ADP NOUN	case
+1	ține cont	VERB NOUN	advcl
+1	ținând seama	VERB NOUN	advcl

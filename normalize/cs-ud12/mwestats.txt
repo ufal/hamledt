@@ -1,0 +1,117 @@
+2	a la	ADP ADJ	case
+9	až na	PART ADP	case
+70	bez ohledu na	ADP NOUN ADP	case
+19	co do	ADV ADP	case
+1	co do	ADV ADP	mark
+1	daleko od	ADV ADP	case
+1	do rozporu s	ADP NOUN ADP	case
+8	jako když	SCONJ SCONJ	mark
+1	jako na	SCONJ ADP	case
+4	jako že	SCONJ SCONJ	mark
+1	ke konci	ADP NOUN	case
+148	na rozdíl od	ADP NOUN ADP	case
+3	na rozdíl ode	ADP NOUN ADP	case
+3	na způsob	ADP NOUN	case
+223	na základě	ADP NOUN	case
+14	na závěr	ADP NOUN	case
+26	na úkor	ADP NOUN	case
+16	na úrovni	ADP NOUN	case
+1	na čele	ADP NOUN	case
+1	nad rámec	ADP NOUN	case
+6	narozdíl od	ADP ADP	case
+2	nehledě k	ADP ADP	case
+8	nehledě na	ADP ADP	case
+2	nezávisle na	ADV ADP	case
+2	po vzoru	ADP NOUN	case
+15	pod vlivem	ADP NOUN	case
+3	pro případ	ADP NOUN	case
+7	při příležitosti	ADP NOUN	case
+36	s ohledem na	ADP NOUN ADP	case
+4	s pomocí	ADP NOUN	case
+2	s přihlédnutím k	ADP NOUN ADP	case
+1	s přihlédnutím na	ADP NOUN ADP	case
+1	s vyloučením	ADP NOUN	case
+45	s výjimkou	ADP NOUN	case
+2	se zřetelem k	ADP NOUN ADP	case
+1	severně od	ADV ADP	case
+4	směrem do	NOUN ADP	case
+28	směrem k	NOUN ADP	case
+4	směrem ke	NOUN ADP	case
+7	směrem na	NOUN ADP	case
+1	směrem od	NOUN ADP	case
+3	současně s	ADV ADP	case
+54	společně s	ADV ADP	case
+13	společně se	ADV ADP	case
+183	spolu s	ADV ADP	case
+40	spolu se	ADV ADP	case
+5	u příležitosti	ADP NOUN	case
+8	v duchu	ADP NOUN	case
+1	v duchu	ADP NOUN	mark
+86	v důsledku	ADP NOUN	case
+1	v konfrontaci s	ADP NOUN ADP	case
+3	v neprospěch	ADP NOUN	case
+13	v období	ADP NOUN	case
+57	v oblasti	ADP NOUN	case
+8	v oboru	ADP NOUN	case
+5	v otázce	ADP NOUN	case
+24	v podobě	ADP NOUN	case
+2	v poměru k	ADP NOUN ADP	case
+1	v porovnání k	ADP NOUN ADP	case
+29	v porovnání s	ADP NOUN ADP	case
+8	v porovnání se	ADP NOUN ADP	case
+1	v procesu	ADP NOUN	case
+1	v protikladu k	ADP NOUN ADP	case
+107	v průběhu	ADP NOUN	case
+160	v případě	ADP NOUN	case
+1	v případě	ADP NOUN	mark
+22	v rozporu s	ADP NOUN ADP	case
+10	v rozporu se	ADP NOUN ADP	case
+223	v rámci	ADP NOUN	case
+1	v souhlasu s	ADP NOUN ADP	case
+1	v soulad s	ADP NOUN ADP	case
+51	v souladu s	ADP NOUN ADP	case
+22	v souladu se	ADP NOUN ADP	case
+129	v souvislosti s	ADP NOUN ADP	case
+25	v souvislosti se	ADP NOUN ADP	case
+2	v zastoupení	ADP NOUN	case
+31	v zájmu	ADP NOUN	case
+1	v záležitosti	ADP NOUN	case
+25	v závislosti na	ADP NOUN ADP	case
+22	v závěru	ADP NOUN	case
+18	v čele	ADP NOUN	case
+21	v čele s	ADP NOUN ADP	case
+2	v čele se	ADP NOUN ADP	case
+12	v řadě	ADP NOUN	case
+19	ve formě	ADP NOUN	case
+6	ve jménu	ADP NOUN	case
+48	ve prospěch	ADP NOUN	case
+5	ve shodě s	ADP NOUN ADP	case
+2	ve službách	ADP NOUN	case
+13	ve smyslu	ADP NOUN	case
+1	ve spojeni s	ADP VERB ADP	case
+13	ve spojení s	ADP NOUN ADP	case
+2	ve spojení se	ADP NOUN ADP	case
+1	ve spojitosti s	ADP NOUN ADP	case
+29	ve spolupráci s	ADP NOUN ADP	case
+1	ve spolupráci se	ADP NOUN ADP	case
+67	ve srovnání s	ADP NOUN ADP	case
+18	ve srovnání se	ADP NOUN ADP	case
+4	ve světle	ADP NOUN	case
+32	ve vztahu k	ADP NOUN ADP	case
+6	ve vztahu ke	ADP NOUN ADP	case
+7	ve věci	ADP NOUN	case
+5	ve znamení	ADP NOUN	case
+1	vlastně nepřinesl	ADV VERB	case
+238	vzhledem k	ADP ADP	case
+1	vzhledem k	ADP ADP	mark
+24	vzhledem ke	ADP ADP	case
+11	z důvodu	ADP NOUN	case
+2	z důvodů	ADP NOUN	case
+102	z hlediska	ADP NOUN	case
+1	z hlediska	ADP NOUN	mark
+5	z titulu	ADP NOUN	case
+7	z řad	ADP NOUN	case
+5	za pomoci	ADP NOUN	case
+13	za účelem	ADP NOUN	case
+61	ze strany	ADP NOUN	case
+1	à la	ADP ADJ	case

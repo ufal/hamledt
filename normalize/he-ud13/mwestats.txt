@@ -1,0 +1,162 @@
+1	אב - טיפוס	NOUN PUNCT NOUN	dobj
+1	אחר - כך	ADP PUNCT PRON	advmod
+1	אחר כך	ADP PRON	advmod
+1	אחת היא	NUM PRON	dep
+1	אחת ו לתמיד	NUM CONJ ADV	advmod
+1	אט - אט	ADV PUNCT ADV	advmod
+1	אט אט	ADV ADV	advmod
+1	אי - אלו	ADV PUNCT PRON	advmod
+2	אי - פעם	ADV PUNCT ADV	advmod
+2	אי - פעם	ADV PUNCT ADV	dep
+1	אי - פעם	ADV PUNCT ADV	nmod
+2	אי פעם	ADV ADV	advmod
+1	אין - סוף	ADV PUNCT NOUN	advmod
+1	אינו עוד	VERB ADV	advmod
+1	אך בקושי	CONJ ADV	advmod
+1	אם כי	CONJ SCONJ	nmod
+1	אם לא	CONJ ADV	case
+1	אף - על - פי	CONJ PUNCT ADP PUNCT NOUN	case
+1	ב אין	ADP NOUN	case
+2	ב בת אחת	ADP NOUN NUM	advmod
+4	ב דומה	ADP ADJ	case
+3	ב דרך - כלל	ADP NOUN PUNCT NOUN	advmod
+1	ב דרך - כלל	ADP NOUN PUNCT NOUN	case
+1	ב דרך אגב	ADP NOUN CONJ	advmod
+18	ב דרך כלל	ADP NOUN NOUN	advmod
+1	ב הדגשה	ADP NOUN	conj
+2	ב המשך	ADP NOUN	case
+4	ב העדר	ADP NOUN	case
+6	ב השוואה	ADP NOUN	case
+6	ב התאם	ADP NOUN	case
+1	ב התייחסות	ADP NOUN	case
+1	ב יחד עם	ADP ADV ADP	case
+9	ב יחס	ADP NOUN	case
+8	ב כל זאת	ADP DET PRON	advmod
+1	ב כל זאת	ADP DET PRON	parataxis
+1	ב כלל זה	ADP NOUN PRON	advmod
+26	ב מהלך	ADP NOUN	case
+1	ב מסגרת	ADP NOUN	advmod
+40	ב מסגרת	ADP NOUN	case
+1	ב נוח	ADP NOUN	advmod
+11	ב נוסף	ADP VERB	case
+1	ב עורמה	ADP NOUN	advmod
+1	ב עת	ADP NOUN	case
+1	ב פי	ADP NOUN	case
+1	ב קשר	ADP NOUN	case
+1	ב שעתו	ADP NOUN	advmod
+1	ב תבונה	ADP NOUN	advmod
+1	ב תחילה	ADP NOUN	advmod
+1	ב תמורה	ADP NOUN	case
+1	באמת ו בתמים	ADV CONJ ADV	advmod
+1	בטרם עת	ADP NOUN	advmod
+1	בכלל זה	ADV PRON	advmod
+1	בראש ו בראשונה	ADV CONJ ADV	dep
+1	דאבל בליינד	NOUN NOUN	nmod:smixut
+1	דה - לוקס	PROPN PUNCT NOUN	nmod:smixut
+2	די ו הותר	ADV CONJ ADV	advmod
+1	ה היא	SCONJ PRON	amod
+1	ה לה	DET PRON	nsubj
+1	הוקוס פוקוס	NOUN NOUN	nmod:smixut
+1	ו אילך	CONJ ADV	advmod
+2	ו כדומה	CONJ ADV	conj
+2	ו כו	CONJ ADV	advmod
+4	ו כו	CONJ ADV	conj
+1	ו כך הלאה	CONJ ADV ADV	advmod
+1	ו כך הלאה	CONJ ADV ADV	conj
+2	זאת ו עוד	PRON CONJ ADV	advmod
+1	זאת ו עוד	PRON CONJ ADV	parataxis
+2	זה כבר	PRON ADV	advmod
+1	זה לא מ כבר	PRON ADV ADP ADV	advmod
+2	זה מ כבר	PRON ADP ADV	advmod
+1	חד משמעית	ADV ADV	advmod
+14	יחד עם	ADV ADP	case
+1	יחד עם זאת	ADV ADP PRON	advmod
+1	יתר - על - כן	NOUN PUNCT ADP PUNCT PRON	advmod
+1	יתר על ה מידה	DET ADP DET NOUN	advmod
+6	יתר על ה מידה	NOUN ADP DET NOUN	advmod
+4	יתר על כן	NOUN ADP PRON	advmod
+1	יתרה מ זאת	ADV ADP PRON	advmod
+1	יתרה מ זה	ADJ ADP PRON	advmod
+5	כ אחד	ADP NUM	advmod
+4	כ דומה	ADP ADJ	conj
+2	כהנה ו כהנה	ADV CONJ ADV	advmod
+1	כי אז	SCONJ ADV	advmod
+1	כך או אחרת	ADV CONJ ADV	dep
+2	כך או אחרת	ADV CONJ ADV	parataxis
+3	כך או כך	ADV CONJ ADV	parataxis
+1	כך או כך	PRON CONJ PRON	parataxis
+9	כל - כך	DET PUNCT ADV	advmod
+1	כל - כך	DET PUNCT ADV	advmod:phrase
+1	כל - כך	DET PUNCT ADV	amod
+19	כל כך	DET ADV	advmod
+1	כל כך	DET ADV	advmod:phrase
+2	כל כך	DET ADV	amod
+1	כל כך	DET ADV	dep
+1	כלל ו כלל	ADV CONJ ADV	advmod
+1	ל אורך	ADP NOUN	case
+8	ל טובת	ADP NOUN	case
+4	ל משך	ADP NOUN	case
+1	ל עתים קרובות	ADP NOUN ADJ	advmod
+1	ל רוחב	ADP NOUN	case
+1	לא זו בלבד	ADV PRON ADV	dep
+6	לא מ כבר	ADV ADP ADV	advmod
+1	למעלה מ כל ספק	ADV ADP DET NOUN	advmod
+1	למרות זאת	ADP PRON	advmod
+33	מ אז	ADP ADV	case
+1	מ אז	ADP ADV	dep
+3	מ זה	ADP PRON	det
+21	מ חוץ	ADP NOUN	case
+1	מ כבר	ADP ADV	advmod
+1	מ לפני	ADP ADP	case
+1	מ סביב	ADP ADV	case
+11	מ פי	ADP NOUN	case
+4	מ פעם ל פעם	ADP ADV ADP ADV	advmod
+1	מ תמיד	ADP NOUN	conj
+2	מאז ו מתמיד	ADV CONJ ADV	advmod
+6	מדי פעם	ADV ADV	advmod
+1	מעל ו מעבר	ADP CONJ ADP	case
+1	מעתה ו הלאה	ADV CONJ ADV	advmod
+1	משא מתן	NOUN NOUN	nsubj
+1	סוף - סוף	ADV PUNCT ADV	advmod
+3	סוף סוף	ADV ADV	advmod
+2	סוף סוף	NOUN NOUN	advmod
+3	עד כדי	ADP ADP	case
+4	עד כדי כך	ADP ADP PRON	case
+29	עד כה	ADP ADV	advmod
+4	עד כמה	ADP DET	advmod
+2	עד מאוד	ADP ADV	advmod
+2	עוד יותר	ADV ADV	advmod
+1	עוד מעט	ADV ADV	advmod
+1	עולם - גולם	NOUN PUNCT NOUN	dobj
+2	על - אף	ADP PUNCT CONJ	case
+44	על - ידי	ADP PUNCT NOUN	case
+2	על - מנת	ADP PUNCT ADP	case
+32	על - פי	ADP PUNCT NOUN	case
+2	על - פני	ADP PUNCT NOUN	case
+16	על אף	ADP CONJ	case
+4	על גבי	ADP NOUN	case
+33	על ידי	ADP NOUN	case
+2	על כן	ADP ADV	advmod
+4	על כן	ADP PRON	advmod
+1	על מנת	ADP NOUN	case
+45	על פי	ADP NOUN	case
+5	על פני	ADP NOUN	case
+22	על רקע	ADP NOUN	case
+3	פה ו שם	ADV CONJ ADV	advmod
+2	פחות או יותר	ADV CONJ ADV	advmod
+2	פי כמה	ADV DET	advmod
+1	פעם אחר פעם	ADV ADP ADV	advmod
+10	קודם ל ה_ כן	ADV ADP DET PRON	advmod
+1	קודם ל ה_ כן	ADV ADP DET PRON	advmod:phrase
+1	קודם ל ה_ כן	ADV ADP DET PRON	appos
+1	קרוב ל וודאי	ADJ ADP ADJ	parataxis
+1	קרוב ל וודאי	ADJ ADP ADJ	root
+1	ראשית כל	ADV DET	parataxis
+1	רצח - אופי	NOUN PUNCT NOUN	nsubj:cop
+1	ש הוא	SCONJ PRON	dep
+3	שוב ו שוב	ADV CONJ ADV	advmod
+1	שוב ו שוב	ADV CONJ ADV	dep
+1	שח - מט	NOUN PUNCT VERB	nsubj
+5	תוך כדי	ADP ADP	case
+1	תוך כדי	X ADP	case
+1	תיכף ו מיד	ADV CONJ ADV	advmod

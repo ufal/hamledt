@@ -1,0 +1,145 @@
+243	أن ه	CONJ PRON	mark
+1	أن ها	CONJ PRON	mark
+2	أن و	CONJ CONJ	mark
+2	أي أن	CONJ CONJ	mark
+1	إذ أن	CONJ CONJ	mark
+7	إذا ما	CONJ PRON	mark
+2	إلا أن	PART CONJ	mark
+1	إلا أن ه	PART CONJ PRON	mark
+1	إلا اذا	PART CONJ	mark
+86	إن ه	CONJ PRON	mark
+1	إن ه	PART PRON	mark
+1	اذ ان	CONJ CONJ	mark
+8	اذا ما	CONJ PRON	mark
+1	الأمر الذي	NOUN DET	mark
+2	الا أن	PART CONJ	mark
+2	الا ان	PART CONJ	mark
+1	الى بعد	ADP ADP	case
+1	الى جانب	ADP NOUN	case
+1	ان والذي	CONJ X	mark
+1	اننا اننا	X X	mark
+1	ب أن ه	ADP CONJ PRON	mark
+24	ب إلى	ADP ADP	case
+1	ب إلي	ADP ADP	case
+3	ب اعتبار أن	ADP NOUN CONJ	mark
+1	ب اعتبار ها	ADP NOUN PRON	mark
+1	ب اعتبار هما	ADP NOUN PRON	mark
+1	ب الإضافة إلى	ADP NOUN ADP	mark
+1	ب التالي	ADP ADJ	mark
+1	ب التوازي مع	ADP NOUN ADP	mark
+1	ب الرغم من أن	ADP NOUN ADP CONJ	mark
+1	ب الرغم من ان	ADP NOUN ADP CONJ	mark
+17	ب الى	ADP ADP	case
+4	ب الينا	ADP X	case
+1	ب ب	ADP ADP	case
+1	ب حسب	ADP ADP	case
+3	ب حيث	ADP CONJ	mark
+1	ب شأن	ADP NOUN	case
+4	ب عن	ADP ADP	case
+4	ب فى	ADP ADP	case
+14	ب في	ADP ADP	case
+42	ب ل	ADP ADP	case
+1	ب لأحمد	ADP X	case
+1	ب لقبرص	ADP X	case
+1	ب للعبة	ADP X	case
+1	ب لوارداتنا	ADP X	case
+1	ب ما أن	ADP PRON CONJ	mark
+1	ب مع	ADP ADP	case
+21	ب من	ADP ADP	case
+2	ب من	ADP ADP	mark
+10	بعد ما	ADP PRON	mark
+1	بيد ان	CONJ CONJ	mark
+5	بين ما	ADP PRON	mark
+1	بينما لم	CONJ PART	mark
+3	حتى لو	ADV CONJ	mark
+1	حتى و لو	ADV CONJ CONJ	mark
+1	حتى وإن	ADV X	mark
+5	حيث أن	CONJ CONJ	mark
+1	حيث إن ه	CONJ PART PRON	mark
+3	خاصة أن	ADJ CONJ	mark
+1	خاصة و	ADJ CONJ	mark
+1	خشية أن	NOUN CONJ	mark
+2	خصوصاً أن	NOUN CONJ	mark
+2	دون أن	ADP CONJ	mark
+1	ذلك أن	PRON CONJ	mark
+1	ذلك ان	PRON CONJ	mark
+1	ذلك لان	PRON CONJ	mark
+1	رغم أن	ADP CONJ	case
+7	رغم أن	ADP CONJ	mark
+1	رغم أن	NOUN CONJ	mark
+2	شرط ان	NOUN CONJ	mark
+3	طالما أن	CONJ CONJ	mark
+1	طالما طالما	X X	mark
+4	على أن	ADP CONJ	mark
+1	على اعتبار أن	ADP NOUN CONJ	mark
+2	على الرغم من أن	ADP NOUN ADP CONJ	mark
+4	على رغم أن	ADP NOUN CONJ	mark
+1	على مدى	ADP X	case
+19	على من	ADP ADP	case
+1	على من	ADP ADP	mark
+4	عند ما	ADP PRON	mark
+1	غالبا ما	ADJ DET	mark
+1	غير ان	NOUN CONJ	mark
+1	ف إذا	CONJ CONJ	mark
+5	ف إن	CONJ PART	mark
+1	ففيما ففيما	X X	mark
+2	فى حين	ADP ADP	mark
+40	في حين	ADP ADP	mark
+10	في حين	ADP NOUN	mark
+2	في ما	ADP PRON	mark
+1	كأن كأن	X X	mark
+1	ل درجة أن	ADP NOUN CONJ	mark
+1	ل عل	PART PART	mark
+6	ل كون	ADP NOUN	mark
+3	لأن ه	CONJ PRON	mark
+1	لا سيما و أن	PART ADV CONJ CONJ	mark
+2	لذا ف	CONJ CONJ	mark
+1	لكن إذا	X CONJ	mark
+1	لكن اذا	X CONJ	mark
+1	ما إذا	DET CONJ	mark
+7	ما إذا	PRON CONJ	mark
+1	ما اذا	DET CONJ	mark
+9	ما اذا	PRON CONJ	mark
+2	ما دام	PRON VERB	mark
+2	ما دام	X VERB	mark
+1	ما دام أن	PRON VERB CONJ	mark
+2	مع أن	ADP CONJ	mark
+33	من بين	ADP ADP	case
+4	من خلال	ADP ADP	case
+6	من دون	ADP ADP	case
+1	من دون	ADP ADP	mark
+1	من دون ان	ADP ADP CONJ	mark
+2	من ضمن	ADP ADP	case
+1	من غير أن	ADP NOUN CONJ	mark
+1	منذ أن	ADP CONJ	mark
+2	منذ ان	ADP CONJ	mark
+1	نظراً إلى ان	NOUN ADP CONJ	mark
+1	نظراً ل أن	NOUN ADP CONJ	mark
+4	هو أن	PRON CONJ	mark
+1	هو ان	PRON CONJ	mark
+1	هي أن	PRON CONJ	mark
+5	و أن	CONJ CONJ	mark
+2	و أن ه	CONJ CONJ PRON	mark
+1	و إلا	CONJ PART	mark
+8	و إن	CONJ CONJ	mark
+1	و ب أن ه	CONJ ADP CONJ PRON	mark
+1	و بعدما	CONJ CONJ	mark
+1	و بينما	CONJ CONJ	mark
+1	و ذٰلك عندما	CONJ PRON CONJ	mark
+1	و طالما	CONJ CONJ	mark
+1	و عند ما	CONJ ADP PRON	mark
+1	و كما	CONJ CONJ	mark
+1	و لأن	CONJ CONJ	mark
+1	و لا سيما و أن ه	CONJ PART ADV CONJ CONJ PRON	mark
+1	و لذا	CONJ CONJ	mark
+7	و لو	CONJ CONJ	mark
+1	و من ثم ف	CONJ ADP CONJ CONJ	mark
+2	وذلك وذلك بعدما	X X CONJ	mark
+1	وذلك وذلك لأن	X X CONJ	mark
+1	وذلك وذلك لكي	X X CONJ	mark
+1	وذلك وذلك نظرا	X X NOUN	mark
+1	وطالما وطالما	X X	mark
+1	وقت أن	NOUN CONJ	mark
+1	وكأننا وكأننا	X X	mark
+1	ولكن ولكن	X X	mark
+1	يوم أن	NOUN CONJ	mark
