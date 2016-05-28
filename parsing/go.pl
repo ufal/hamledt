@@ -558,7 +558,7 @@ sub train
                 # It is more difficult to get a machine with so much memory so we will be less generous with priority.
                 # Often a machine lacks just a few hundred megabytes to be able to provide 31G. Asking for 30G increases our chances to get a machine.
                 $memory = '30G';
-                $priority = -100;
+                $priority = -90;
             }
             else # dlx
             {
@@ -569,7 +569,7 @@ sub train
                 # It is more difficult to get a machine with so much memory so we will be less generous with priority.
                 # Often a machine lacks just a few hundred megabytes to be able to provide 31G. Asking for 30G increases our chances to get a machine.
                 $memory = '30G';
-                $priority = -100;
+                $priority = -90;
             }
             # If there is the temporary folder from failed previous runs, erase it or Malt will decline training.
             print SCR ("rm -rf $model\n");
