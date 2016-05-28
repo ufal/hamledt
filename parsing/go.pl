@@ -434,7 +434,8 @@ sub create_conll_training_data
         my $language = $treebank;
         $language =~ s/-.*//;
         print SCR ("Util::SetGlobal language=$language ");
-        print SCR ("Read::CoNLLU from='!$konfig{datadir}/$udcode/$udcode-ud-train*.conllu' ");
+        # We will write just one CoNLL file through STDOUT but the lines_per_doc parameter makes sure that we do not run out of memory.
+        print SCR ("Read::CoNLLU from='!$konfig{datadir}/$udcode/$udcode-ud-train*.conllu' lines_per_doc=50 ");
         # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
         my $writeparam = get_conll_block_parameters();
         print SCR ("Write::CoNLLX $writeparam ");
