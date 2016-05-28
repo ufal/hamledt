@@ -1,0 +1,80 @@
+5	af sted	ADP NOUN	nmod:loc
+1	af sted	ADP NOUN	root
+1	alt imens	ADJ ADV	mark
+4	bl. a.	ADP PRON	advmod
+21	blandt andet	ADP PRON	advmod
+1	blandt andet	ADP PRON	root
+1	blandt andre	ADP PRON	advmod
+6	bortset fra	VERB ADP	case
+1	bortset fra	VERB ADP	mark
+4	for nylig	ADP ADV	advmod
+4	for tiden	ADP NOUN	advmod
+9	i aften	ADP NOUN	advmod
+7	i aftes	ADP NOUN	advmod
+13	i alt	ADP NOUN	advmod
+1	i alt	ADP NOUN	compound:prt
+49	i dag	ADP NOUN	advmod
+1	i dag	ADP NOUN	appos
+1	i dag	ADP NOUN	compound:prt
+1	i dag	ADP NOUN	nmod:tmod
+1	i dag	ADP NOUN	root
+4	i det hele taget	ADP DET NOUN VERB	advmod
+5	i forvejen	ADP NOUN	advmod
+2	i fredags	ADP NOUN	advmod
+1	i gang	ADP NOUN	acl:relcl
+3	i gang	ADP NOUN	advmod
+12	i gang	ADP NOUN	compound:prt
+1	i gang	ADP NOUN	conj
+2	i gang	ADP NOUN	root
+51	i går	ADP NOUN	advmod
+1	i går aftes	ADP NOUN NOUN	advmod
+1	i går eftermiddags	ADP NOUN NOUN	advmod
+1	i går morges	ADP NOUN NOUN	advmod
+22	i hvert fald	ADP DET NOUN	advmod
+1	i hvert fald	ADP DET NOUN	compound:prt
+1	i hvert fald	ADP DET NOUN	root
+1	i hænde	ADP NOUN	root
+1	i læssevis	ADP ADV	advmod
+4	i lørdags	ADP NOUN	advmod
+2	i mandags	ADP NOUN	advmod
+10	i morgen	ADP NOUN	advmod
+2	i morgen	ADP NOUN	conj
+1	i morgen	ADP NOUN	nsubj
+3	i nat	ADP NOUN	advmod
+1	i onsdags	ADP NOUN	advmod
+1	i timevis	ADP ADV	advmod
+1	i tirsdags	ADP NOUN	advmod
+14	i år	ADP NOUN	advmod
+1	i år	ADP NOUN	compound:prt
+1	i år	ADP NOUN	nsubj
+3	i årevis	ADP ADV	advmod
+12	i øvrigt	ADP ADV	advmod
+3	ikke desto mindre	ADV ADV ADJ	advmod
+5	med hensyn til	ADP NOUN ADP	case
+2	mere eller mindre	ADV CONJ ADV	advmod
+1	nu til dags	ADV ADP NOUN	advmod
+5	om bord	ADP NOUN	advmod
+2	om end	ADP SCONJ	mark
+1	over bord	ADP NOUN	list
+19	på grund af	ADP NOUN ADP	case
+4	på ny	ADP ADJ	advmod
+2	på tide	ADP NOUN	compound:prt
+39	selv om	ADV ADP	mark
+1	simpelt hen	ADJ ADV	advmod
+15	som om	ADV ADP	mark
+5	stort set	ADV VERB	advmod
+1	til bords	ADP NOUN	nmod:loc
+1	til døde	ADP NOUN	compound:prt
+1	til fulde	ADP NOUN	advmod
+5	til gode	ADP NOUN	compound:prt
+1	til huse	ADP NOUN	advmod
+1	til lands	ADP NOUN	advmod
+1	til rette	ADP NOUN	compound:prt
+1	til rette	ADP NOUN	nmod:loc
+7	til sidst	ADP ADV	advmod
+1	til sidst	ADP ADV	nmod:tmod
+1	til stede	ADP NOUN	acl:relcl
+1	til stede	ADP NOUN	root
+1	til tops	ADP NOUN	nmod:loc
+1	til vejrs	ADP NOUN	advmod
+1	til vejrs	ADP NOUN	nmod:loc

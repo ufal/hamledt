@@ -1,0 +1,6 @@
+1	μάλιστα τὰ	ADV DET	advmod
+1	μετ̓ ἀλλήλων	ADP PRON	conj
+1	παῤ ἕκαστα	ADP ADJ	advmod
+1	ἀποστάντας ἢ	VERB CONJ	conj
+1	ἓν ἓν	ADV ADV	conj
+1	ὄμμασιν εἴ	NOUN CONJ	nmod

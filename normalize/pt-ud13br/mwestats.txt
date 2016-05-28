@@ -1,0 +1,198 @@
+11	a fim de	ADP NOUN ADP	mark
+2	a fim de	DET NOUN ADP	mark
+1	a fim de dar	ADP NOUN ADP VERB	advcl
+1	a menos que	ADP ADV CONJ	mark
+1	a não ser pôr	ADP ADV VERB ADP	case
+1	a não ser que	ADP ADV VERB CONJ	mark
+1	a próxima vez que	DET ADJ NOUN CONJ	mark
+1	afim de	NOUN ADP	mark
+4	agora que	ADV CONJ	mark
+1	ainda que	ADV ADP	case
+1	ainda que	ADV ADP	conj
+2	ainda que	ADV ADP	nmod
+1	ainda que	ADV CONJ	cc
+8	ainda que	ADV CONJ	mark
+1	além da	NOUN ADP	case
+1	além das	NOUN ADP	case
+3	além de	NOUN ADP	case
+1	além de	NOUN ADP	mark
+1	além de	NOUN ADP	nmod
+2	além disso	ADV X	nmod
+2	além disso	NOUN X	nmod
+3	além do	NOUN ADP	case
+1	além dos	NOUN ADP	case
+21	antes da	ADV ADP	case
+1	antes da	ADV ADP	mark
+1	antes das	ADV ADP	case
+2	antes de	ADV ADP	case
+28	antes de	ADV ADP	mark
+1	antes de que	ADV ADP CONJ	mark
+1	antes dele	ADV X	nmod
+3	antes disso	ADV X	nmod
+14	antes do	ADV ADP	case
+1	antes do	ADV CONJ	mark
+2	antes dos	ADV ADP	case
+2	antes que	ADV CONJ	mark
+1	anti islâmico	PART ADJ	amod
+1	ao menos	ADP ADV	advmod
+1	ao mesmo tempo que	ADP ADJ NOUN CONJ	mark
+2	ao passo que	ADP NOUN CONJ	mark
+2	ao que	ADP CONJ	mark
+2	ao redor de	ADP NOUN ADP	advmod
+20	apesar da	ADV ADP	case
+3	apesar da	ADV ADP	mark
+6	apesar das	ADV ADP	case
+7	apesar de	ADV ADP	case
+38	apesar de	ADV ADP	mark
+1	apesar desse	ADV ADP	case
+1	apesar destas	ADV ADP	case
+4	apesar disso	ADV X	nmod
+17	apesar do	ADV ADP	case
+3	apesar do	ADV ADP	mark
+4	apesar dos	ADV ADP	case
+1	assim como	ADV ADP	advmod
+27	assim como	ADV ADP	case
+1	assim como	ADV ADP	conj
+4	assim como	ADV ADP	mark
+5	assim como	ADV ADP	nmod
+2	assim como	ADV ADV	mark
+3	assim como	ADV CONJ	mark
+11	assim que	ADV CONJ	mark
+1	assim que	CONJ CONJ	mark
+10	até que	ADP CONJ	mark
+1	até que	ADV CONJ	mark
+6	bem como	ADV ADP	case
+5	bem como	ADV ADP	nmod
+1	bem como	ADV ADV	nmod
+2	bem como	ADV CONJ	mark
+1	bem como para	ADV ADV ADP	case
+4	cerca de	ADV ADP	advmod
+1	com a finalidade de	ADP DET NOUN ADP	mark
+2	com a intenção de	ADP DET NOUN ADP	mark
+1	com finalidade de	ADP NOUN ADP	mark
+1	com intuito de	ADP NOUN ADP	mark
+1	com o intuito de	ADP DET NOUN ADP	mark
+1	com o objectivo de	ADP DET NOUN ADP	mark
+7	com o objetivo de	ADP DET NOUN ADP	mark
+1	com o propósito de	ADP DET NOUN ADP	mark
+1	com objetivo de	ADP NOUN ADP	case
+2	com objetivo de	ADP NOUN ADP	mark
+1	com vistas a	ADP NOUN ADP	mark
+6	como forma de	ADP NOUN ADP	mark
+1	como meio de	ADP NOUN ADP	mark
+9	como se	CONJ CONJ	mark
+1	da mesma forma que	ADP ADJ NOUN CONJ	mark
+3	dado que	VERB CONJ	mark
+2	de forma a	ADP NOUN ADP	mark
+1	de forma a incluir	ADP NOUN ADP VERB	advcl
+4	de modo a	ADP NOUN ADP	mark
+4	de modo que	ADP NOUN CONJ	mark
+21	depois da	ADV ADP	case
+1	depois da	ADV X	nmod
+1	depois daquele	ADV ADP	case
+20	depois de	ADV ADP	case
+51	depois de	ADV ADP	mark
+2	depois de	ADV CONJ	mark
+1	depois de que	ADV ADP CONJ	mark
+1	depois dessa	ADV X	nmod
+5	depois disso	ADV X	nmod
+1	depois disso	ADV X	root
+1	depois disto	ADV X	nmod
+21	depois do	ADV ADP	case
+1	depois do	ADV ADP	mark
+4	depois dos	ADV ADP	case
+1	depois dos	ADV X	nmod
+1	depois dum	ADV ADP	case
+12	depois que	ADV CONJ	mark
+1	deppis da	ADV ADP	case
+26	desde que	ADP CONJ	mark
+1	devido a	ADP ADP	case
+17	devido a	VERB ADP	case
+1	devido a	VERB ADP	nmod
+1	devido a que	VERB ADP CONJ	mark
+12	devido ao	VERB ADP	case
+6	devido aos	VERB ADP	case
+1	devido as	VERB ADP	case
+11	devido à	VERB ADP	case
+4	devido às	VERB ADP	case
+43	do que	ADP ADP	case
+4	do que	ADP ADP	mark
+6	do que	ADP ADP	nmod
+1	do que	ADP ADP	root
+1	do que	ADP CONJ	case
+11	do que	ADP CONJ	mark
+1	do que	ADP CONJ	nmod
+1	do que	ADP PRON	amod
+1	do que	ADP PROPN	case
+1	em função de	ADP NOUN ADP	case
+1	em razão da	ADP NOUN ADP	case
+1	em razão de	ADP NOUN ADP	case
+1	em razão de	ADP NOUN ADP	mark
+1	em razão dessa	ADP NOUN ADP	case
+3	em razão do	ADP NOUN ADP	case
+6	em torno de	ADP NOUN ADP	advmod
+1	em virtude de	ADP NOUN ADP	mark
+1	em virtude do	ADP NOUN ADP	case
+5	enquanto que	CONJ CONJ	mark
+1	exceto se	ADV CONJ	mark
+1	face à	NOUN ADP	case
+1	frente à	NOUN ADP	case
+1	graças ao	NOUN ADP	case
+1	graças aos	NOUN ADP	case
+1	graças à	NOUN ADP	case
+1	independentemente se	ADV CONJ	mark
+2	isto é	PRON VERB	cc
+50	já que	ADV CONJ	mark
+2	logo que	ADV CONJ	mark
+4	mais de	ADV ADP	advmod
+1	menos da	ADV ADP	advmod
+1	mesmo que	ADV ADP	case
+1	mesmo que	ADV ADP	nmod
+16	mesmo que	ADV CONJ	mark
+2	mesmo se	ADV CONJ	mark
+1	no caso de	ADP NOUN ADP	mark
+1	no sentido da	ADP NOUN ADP	case
+2	no sentido de	ADP NOUN ADP	mark
+1	o mais possível	DET ADV ADJ	advmod
+1	ou seja	CONJ CONJ	cc
+24	ou seja	CONJ VERB	cc
+72	para que	ADP CONJ	mark
+4	pelo fato de	ADP NOUN ADP	mark
+1	pelo fato dele	ADP NOUN ADP	mark
+2	pelo menos	ADP ADV	advmod
+3	pelo que	ADP CONJ	mark
+10	por causa da	ADP NOUN ADP	case
+1	por causa das	ADP NOUN ADP	case
+9	por causa de	ADP NOUN ADP	case
+3	por causa disso	ADP NOUN X	nmod
+8	por causa do	ADP NOUN ADP	case
+5	por conta da	ADP NOUN ADP	case
+7	por conta de	ADP NOUN ADP	case
+1	por conta desse	ADP NOUN ADP	case
+1	por conta disso	ADP NOUN X	nmod
+5	por conta do	ADP NOUN ADP	case
+5	por mais que	ADP ADV CONJ	mark
+2	por volta de	ADP NOUN ADP	advmod
+1	porta voz	VERB NOUN	nsubj
+1	quebra cabeças	VERB NOUN	nmod
+3	sem que	ADP CONJ	mark
+2	sempre que	ADV ADP	mark
+4	sempre que	ADV CONJ	mark
+1	só que	ADV ADP	mark
+3	só que	ADV CONJ	mark
+1	tal como	ADV ADP	case
+1	tal como	ADV ADP	nmod
+3	tanto que	ADV CONJ	mark
+1	tendo em vista que	VERB ADP NOUN CONJ	mark
+1	todas as vezes que	DET DET NOUN CONJ	mark
+1	tão logo	ADV ADV	mark
+1	tão logo	ADV CONJ	mark
+2	uma vez	DET NOUN	mark
+1	uma vez que	DET NOUN ADP	mark
+23	uma vez que	DET NOUN CONJ	mark
+1	uma vez que	DET NOUN PRON	mark
+1	umas vez que	DET NOUN CONJ	mark
+1	vez que	NOUN CONJ	mark
+6	visto que	VERB CONJ	mark
+3	à medida que	ADP NOUN CONJ	mark
+1	à medida que	ADP NOUN PRON	mark

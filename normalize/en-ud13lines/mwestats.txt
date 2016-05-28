@@ -1,0 +1,102 @@
+5	a bit	ADV NOUN	advmod
+9	a few	DET ADJ	det
+1	a great many	PRON ADJ ADJ	nsubj
+2	a lot of	DET NOUN ADP	det
+1	above all	ADV ADV	conj
+1	according to	ADP ADP	advmod
+1	according to	VERB ADP	case
+3	after all	ADV ADV	advmod
+1	all but	ADV ADP	advmod
+1	all but	ADV ADP	case
+1	all important	ADJ ADJ	nsubj
+4	all right	ADV ADJ	advmod
+1	all right	ADV ADJ	root
+6	and so on	ADV ADV ADP	conj
+2	and so on	CONJ ADV ADP	cc
+1	any more	ADV ADV	advmod
+1	anyone else	PRON PRON	nmod
+2	anything else	PRON PRON	nmod
+14	as if	ADP SCONJ	mark
+6	as if	SCONJ SCONJ	mark
+17	as though	ADP SCONJ	mark
+7	as though	SCONJ SCONJ	mark
+5	as well	ADV ADV	advmod
+7	as well as	CONJ ADV ADP	cc
+13	at all	ADV ADV	advmod
+1	at all	ADV ADV	appos
+12	at last	ADV ADV	advmod
+4	at least	ADV ADV	advmod
+16	at once	ADV ADV	advmod
+8	because of	ADP ADP	case
+1	because of	SCONJ ADP	case
+2	by now	ADV ADV	advmod
+1	due to	ADV ADP	case
+7	each other	PRON PRON	dobj
+11	each other	PRON PRON	nmod
+1	each other	PRON PRON	nsubj
+1	even if	SCONJ SCONJ	mark
+1	even though	SCONJ SCONJ	mark
+1	ever since	ADV ADV	mark
+1	ever since	SCONJ ADV	mark
+1	everyone else	PRON PRON	nsubj
+27	for example	ADV NOUN	advmod
+1	for example	ADV NOUN	mark
+1	for instance	ADV NOUN	advmod
+1	for instance	ADV NOUN	mark
+1	hand in hand	ADV ADP NOUN	advmod
+1	here and there	ADV CONJ ADV	advmod
+1	in and out	ADV CONJ ADV	advmod
+1	in case	ADP NOUN	mark
+1	in depth	ADJ NOUN	amod
+2	in fact	ADP NOUN	advmod
+8	in front of	ADP NOUN ADP	case
+3	in order to	PART NOUN ADP	mark
+3	in spite of	ADP NOUN ADP	case
+7	instead of	ADP ADP	case
+1	instead of	ADV ADP	case
+1	less than	ADV ADP	advmod
+1	let alone	CONJ ADV	cc
+1	me to	PRON ADP	dislocated
+1	more or less	ADV CONJ ADV	advmod
+1	more or less	DET CONJ ADV	amod
+2	more than	ADJ ADP	advmod
+2	more than	ADV ADP	advmod
+2	next to	ADP ADP	case
+6	next to	ADV ADP	case
+4	no longer	ADV ADV	advmod
+10	no more than	ADV ADV ADP	advmod
+1	no more than	ADV ADV ADP	neg
+1	no one	PRON PRON	conj
+1	no one	PRON PRON	dobj
+1	no one	PRON PRON	nmod
+9	no one	PRON PRON	nsubj
+1	no one	PRON PRON	nsubjpass
+1	nothing else	PRON PRON	nmod
+1	now and then	ADV CONJ ADV	advmod
+34	of course	ADV ADV	advmod
+1	of course	ADV ADV	appos
+1	of course	ADV ADV	dobj
+1	of course	ADV ADV	root
+2	once again	ADV ADV	advmod
+1	one another	PRON PRON	conj
+1	one another	PRON PRON	dobj
+6	one or more	NUM CONJ ADV	nummod
+32	out of	ADP ADP	case
+8	out of	ADV ADP	case
+1	out of doors	ADV ADP NOUN	advmod
+1	prior to	ADP ADP	case
+1	rather than	CONJ ADP	cc
+2	regardless of	ADP ADP	case
+1	side by side	ADV ADP NOUN	advmod
+1	so far	ADV ADV	advmod
+6	so that	SCONJ SCONJ	mark
+1	something else	PRON PRON	root
+2	such as	ADJ ADP	advmod
+10	such as	ADJ ADP	case
+1	thanks to	ADP ADP	case
+1	united states	PROPN PROPN	conj
+2	united states	PROPN PROPN	nmod
+3	united states	PROPN PROPN	nsubj
+1	up to	ADP ADP	case
+2	up to	ADV ADP	case
+1	whether or not	SCONJ CONJ PART	mark

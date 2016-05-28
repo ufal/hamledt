@@ -1,0 +1,1057 @@
+1	-ai de gând	AUX ADP NOUN	root
+1	-n jur	ADP NOUN	advmod
+1	-nainte de-	ADV ADP	mark
+1	a la	NOUN ADP	case
+1	a. c.	NOUN NOUN	conj
+3	abia dacă	ADV SCONJ	advmod
+1	academia din paris	NOUN ADP PROPN	nmod
+1	academia română	NOUN ADJ	nmod:agent
+1	administrației prezidențiale	NOUN ADJ	nmod
+1	aduce atingere	VERB NOUN	advcl
+2	aduce atingere	VERB NOUN	root
+1	aducea -și aminte	VERB PRON ADV	parataxis
+1	aducea -și aminte	VERB PRON ADV	root
+2	aducea aminte	VERB ADV	root
+1	aducea la cunoștință	VERB ADP NOUN	root
+1	aducă atingere	VERB NOUN	advcl
+10	afară de	ADV ADP	case
+1	afară de	ADV ADP	mark
+1	afară din comun	ADV ADP NOUN	root
+1	afară în de	ADV ADP ADP	case
+1	agenția europeană a medicamentului	NOUN ADJ DET NOUN	nsubj
+2	agenția europeană pentru medicamente	NOUN ADJ ADP NOUN	nsubj
+1	agenția pentru	NOUN ADP	nsubj
+1	agenția spațială nasa	NOUN ADJ NOUN	nsubj
+1	agenției pentru ocuparea forței de muncă	NOUN ADP NOUN NOUN ADP NOUN	nmod
+1	aibă grijă	VERB NOUN	ccomp
+1	aibă loc	VERB NOUN	xcomp
+1	aibă nevoie	VERB NOUN	advcl
+1	ajuns din urmă	VERB ADP NOUN	conj
+1	albine și viespi	NOUN CONJ NOUN	nmod
+18	alături de	ADV ADP	case
+1	am citit pentru dumneavoastră	AUX VERB ADP PRON	nmod
+1	american music awards	ADJ NOUN PROPN	nmod
+1	anul nou	NOUN ADJ	nsubj
+1	aproape că	ADV SCONJ	advmod
+1	aproape de	ADV ADP	case
+1	apucă o	VERB PRON	root
+1	are chef	VERB NOUN	xcomp
+1	are dreptul	VERB NOUN	root
+1	are loc	VERB NOUN	advcl
+1	are loc	VERB NOUN	csubj
+6	are loc	VERB NOUN	root
+1	are nevoie	VERB NOUN	root
+1	are s-	VERB PART	aux
+1	are în plan	VERB ADP NOUN	root
+1	are în vedere	VERB ADP NOUN	xcomp
+1	aruncase privire	VERB NOUN	root
+1	aruncând privire	VERB NOUN	advcl
+1	asemenea de	ADJ ADP	advmod
+1	asociația studenților din timișoara și din comitatul timiș	NOUN NOUN ADP PROPN CONJ ADP NOUN PROPN	nsubjpass
+2	astfel că	ADV SCONJ	mark
+1	astfel de	ADV ADP	amod
+4	astfel încât	ADV SCONJ	advmod
+15	astfel încât	ADV SCONJ	mark
+17	atunci când	ADV ADV	advmod
+1	atunci când	ADV ADV	advmod:tmod
+1	atunci când	ADV ADV	mark
+1	atâta doar că	ADV ADV SCONJ	mark
+1	atâta timp cât	DET NOUN PRON	nmod
+1	au loc	VERB NOUN	root
+1	au nevoie	AUX NOUN	acl
+1	au vârsta	AUX VERB	acl
+1	au în vedere	VERB ADP NOUN	root
+1	autopsia unei de stat	NOUN DET ADP NOUN	conj
+1	avea acces	VERB NOUN	ccomp
+1	avea de gând	VERB ADP NOUN	acl
+1	avea de gând	VERB ADP NOUN	csubj
+1	avea grijă	VERB NOUN	acl
+1	avea gând	VERB NOUN	ccomp
+1	avea habar n-	VERB NOUN PART	root
+1	avea legătură	VERB NOUN	acl
+1	avea loc	VERB NOUN	ccomp
+4	avea loc	VERB NOUN	root
+2	avea nevoie	VERB NOUN	acl
+3	avea nevoie	VERB NOUN	root
+1	avea nevoie	VERB NOUN	xcomp
+4	avea rost	VERB NOUN	root
+1	avea sens	VERB NOUN	ccomp
+1	avea sens	VERB NOUN	root
+1	aveai nevoie	VERB NOUN	root
+1	aveau chef	VERB NOUN	advcl:tcl
+1	aveau loc	VERB NOUN	root
+1	aveau nevoie	VERB NOUN	ccomp
+1	aveau voie	VERB NOUN	root
+1	avem încredere	VERB NOUN	csubj
+1	aveți grijă	VERB NOUN	root
+2	aveți nevoie	VERB NOUN	acl
+1	aveți nevoie	VERB NOUN	ccomp
+1	aveți nevoie	VERB NOUN	root
+1	avu grijă	VERB NOUN	root
+1	avusese loc	VERB NOUN	ccomp
+1	avusese loc	VERB NOUN	root
+1	avusese parte	VERB NOUN	acl
+1	avuseseră loc	VERB NOUN	root
+1	avut de- a face	VERB ADP PART VERB	root
+1	avut grijă	VERB NOUN	csubj
+2	avut loc	VERB NOUN	acl
+2	avut loc	VERB NOUN	ccomp
+1	avut loc	VERB NOUN	parataxis
+9	avut loc	VERB NOUN	root
+1	avut în vedere	VERB ADP NOUN	csubj
+1	avut în vedere	VERB ADP NOUN	nsubj
+1	avut încredere	VERB NOUN	csubj
+1	avute în vedere	VERB ADP NOUN	csubj
+1	avută în vedere	VERB ADP NOUN	csubj
+1	având ca	VERB ADV	advcl
+3	având grijă	VERB NOUN	advcl
+1	având loc	VERB NOUN	advcl
+3	având în vedere	VERB ADP NOUN	advcl
+2	având în vedere	VERB ADP NOUN	nmod
+1	așa ceva	ADV PRON	dobj
+1	așa ceva	ADV PRON	nsubj
+21	așa cum	ADV ADV	advmod
+1	așa cum	ADV ADV	dobj
+1	așa cum	ADV ADV	mark
+1	așa că	ADV SCONJ	advmod
+2	așa că	ADV SCONJ	cc
+4	așa că	ADV SCONJ	mark
+6	așa încât	ADV SCONJ	mark
+1	așa- zicând	ADV VERB	advmod
+1	așa- ziși	ADV ADJ	advmod
+1	ban cu ban	NOUN ADP NOUN	advmod
+1	bate la ochi	VERB ADP NOUN	root
+1	bată -și capul	VERB PRON NOUN	csubj
+2	băga -și nasul	VERB PRON NOUN	acl
+1	băgai de	VERB ADP	root
+1	băgați de	VERB ADP	root
+1	c. a.	NOUN NOUN	nmod
+6	ca atare	ADV ADJ	advmod
+1	ca de	ADV ADP	case
+1	ca de obicei	ADV ADP NOUN	advmod
+1	ca la	ADV ADP	case
+1	ca prin farmec	ADV ADP NOUN	advmod
+1	ca rezultat	ADV NOUN	mwe
+22	ca să	ADV PART	mark
+1	ca să	SCONJ PART	mark
+1	ca vai	ADV INTJ	amod
+13	ca și	ADV CONJ	advmod
+4	ca și	ADV CONJ	case
+5	ca și	ADV CONJ	cc
+3	ca și cum	ADV CONJ ADV	advmod
+5	ca și cum	ADV CONJ ADV	mark
+1	care drept	PRON ADP	advmod
+1	carnavalul de la veneția	NOUN ADP ADP PROPN	nmod:agent
+1	carne proaspătă	NOUN ADJ	nmod
+1	caroline de hanovra	PROPN ADP PROPN	nmod
+1	casei de ajutor reciproc a pensionarilor	NOUN ADP NOUN ADJ DET NOUN	nmod
+1	catedrala mitropolitană	NOUN ADJ	nmod:pmod
+4	ceea ce	PRON PRON	dobj
+2	ceea ce	PRON PRON	nmod
+24	ceea ce	PRON PRON	nsubj
+2	ceea ce	PRON PRON	nsubjpass
+3	cel mult	DET ADV	advmod
+29	cel puțin	DET ADV	advmod
+3	cel puțin	DET ADV	nmod
+1	cel puțin	DET NOUN	advmod
+12	cel puțin	PRON ADV	advmod
+1	cel puțin	PRON ADV	nmod
+2	cel târziu	DET ADV	advmod
+1	cele mai multe	DET ADV PRON	nmod
+1	centrul de transfuziii sanguine	NOUN ADP PROPN ADJ	nsubj
+1	centrul pentru refugiați	NOUN ADP VERB	nmod
+1	cereți sfatul	VERB NOUN	root
+1	cetatea de argint	NOUN ADP NOUN	nmod
+9	chiar dacă	ADV SCONJ	mark
+17	chiar și	ADV CONJ	advmod
+1	chiu cu , cu vai	NOUN ADP PUNCT ADP INTJ	advmod
+1	cine știe ce	PRON VERB ADV	advmod
+5	cine știe ce	PRON VERB DET	amod
+1	cine știe cine	PRON VERB PRON	appos
+1	cine știe unde	PRON VERB ADV	advmod
+1	claie peste grămadă	NOUN ADP NOUN	advmod
+1	coasta de fildeș	NOUN ADP NOUN	nmod:pmod
+1	comisia europeană	NOUN ADJ	nsubj
+1	comisiei europene	NOUN ADJ	nmod
+1	comparativ cu	ADJ ADP	case
+1	conferinței de aderare	NOUN ADP NOUN	nmod
+2	conform cu	ADP ADP	case
+1	conservatorul din cluj	NOUN ADP PROPN	nmod
+1	consiliul de securitate	NOUN ADP NOUN	nsubj
+1	constituție europeană	NOUN ADJ	dobj
+1	corp comun	NOUN ADJ	dobj
+1	corp la corp	NOUN ADP NOUN	nmod
+3	cu adevărat	ADP ADV	advmod
+11	cu ajutorul	ADP NOUN	case
+1	cu atât mai puțin	ADP ADV ADV ADV	advmod
+1	cu cale	ADP NOUN	mwe
+1	cu cât	ADP PRON	advmod
+1	cu dinadinsul	ADP ADV	mark
+15	cu excepția	ADP NOUN	case
+2	cu greu	ADP ADV	advmod
+1	cu grijă	ADP NOUN	advmod
+2	cu precădere	ADP NOUN	advmod
+50	cu privire la	ADP NOUN ADP	case
+2	cu putință	ADP NOUN	advmod
+1	cu regularitate	ADP NOUN	advmod
+1	cu regularitate	ADP NOUN	conj
+4	cu siguranță	ADP NOUN	advmod
+1	cu siguranță	ADP NOUN	root
+1	cu spatele la	ADP NOUN ADP	case
+12	cu toate acestea	ADP PRON PRON	advmod
+1	cu toate acestea	ADP PRON PRON	nmod
+2	cu toate astea	ADP PRON PRON	advmod
+1	cu toate că	ADP PRON SCONJ	advmod
+4	cu toate că	ADP PRON SCONJ	mark
+15	cu totul	ADP PRON	advmod
+4	cu toții	ADP NOUN	nsubj
+1	cu încetul	ADP ADJ	advmod
+1	cu- atât	ADP ADV	cc
+1	cum ar fi	ADV AUX VERB	advmod
+1	cum și	ADV CONJ	cc
+1	curtea europeană a drepturilor omului	NOUN ADJ DET NOUN NOUN	nmod
+1	curtea europeană a drepturilor omului	NOUN ADJ DET NOUN NOUN	nsubj
+1	curtea supremă de justiție	NOUN ADJ ADP NOUN	nsubj
+1	curții de justiție	NOUN ADP NOUN	iobj
+1	curții de justiție	NOUN ADP NOUN	nmod
+2	cuvânt cu cuvânt	NOUN ADP NOUN	advmod
+1	cvartetul molinari	NOUN PROPN	nmod
+1	când și când	ADV CONJ ADV	advmod
+1	cât colo	ADV ADV	advmod
+1	cât de curând	ADV ADP ADV	nmod
+1	cât de cât	ADV ADP ADV	advmod
+1	cât și	ADV CONJ	advmod
+7	cât și	ADV CONJ	cc
+1	cât și	ADV CONJ	cc:preconj
+1	cât și	NOUN CONJ	advmod
+1	cât și	NOUN CONJ	cc
+1	că pentru	SCONJ ADP	mark
+1	căsca gura	VERB NOUN	conj
+1	căuta de ouă	VERB ADP NOUN	conj
+1	căzut de acord	VERB ADP NOUN	root
+1	căzuți la datorie	VERB ADP NOUN	acl
+1	d- a dreapta	ADP PART NOUN	case
+1	da seama	VERB NOUN	ccomp
+1	da în cărți	ADV ADP NOUN	acl
+1	dai seama	VERB NOUN	ccomp
+1	dar și	CONJ CONJ	cc
+1	dat drumul	VERB NOUN	acl
+1	dat seama	VERB NOUN	advcl
+1	dat seama	VERB NOUN	root
+1	dat încet	ADJ ADV	root
+1	dau -mi seama	VERB PRON NOUN	ccomp
+1	dau seama	VERB NOUN	root
+1	dau îi înainte	VERB PRON ADV	conj
+1	dau întâlnire	VERB NOUN	root
+1	de a	ADP DET	case
+22	de a	ADP PART	case
+1	de a	ADP PART	mark
+11	de aceea	ADP PRON	advmod
+1	de aceea	ADP PRON	cc
+1	de aceea	ADP PRON	mark
+1	de aci încolo	ADP ADV ADV	nmod:pmod
+1	de actualitate	ADP NOUN	ccomp
+8	de altfel	ADP ADV	advmod
+1	de apă	ADP NOUN	mwe
+59	de asemenea	ADP ADJ	advmod
+11	de asemenea	ADP ADJ	nmod
+6	de asemenea	ADP ADV	advmod
+2	de asemenea	ADP ADV	nmod
+4	de astă dată	ADP DET NOUN	advmod
+1	de astă-dată	ADP NOUN	advmod
+9	de ce	ADP PRON	advmod
+2	de ce	ADP PRON	dobj
+1	de ce	ADP PRON	nmod
+1	de ce se prăbușesc imperiile	ADP PRON PRON VERB NOUN	appos
+1	de colo-colo	ADP ADV	advmod
+1	de cum	ADP ADV	advmod
+1	de cum	ADP ADV	mark
+3	de curând	ADP ADV	advmod
+1	de când	ADP ADV	mark
+1	de câte ori	ADP ADV NOUN	advmod
+66	de către	ADP ADP	case
+1	de deasupra	ADP ADP	case
+1	de dimineață	ADP NOUN	advmod
+1	de dragoste	ADP NOUN	dobj
+1	de drept	ADP NOUN	advmod
+1	de el	ADP PRON	mwe
+10	de exemplu	ADP NOUN	advmod
+2	de exemplu	ADP NOUN	appos
+1	de exemplu	ADP NOUN	case
+4	de exemplu	ADP NOUN	nmod
+1	de fapt	ADP NOUN	advcl
+11	de fapt	ADP NOUN	advmod
+1	de fapt	ADP NOUN	nmod
+6	de față	ADP NOUN	amod
+1	de fier	ADP NOUN	mwe
+1	de frunte	ADP NOUN	amod
+1	de gros	ADP ADV	mwe
+1	de jos	ADP ADV	name
+1	de jur împrejurul	ADP NOUN ADP	case
+1	de jur-împrejur	ADP ADV	nmod
+297	de la	ADP ADP	case
+1	de la	ADP ADP	conj
+1	de la	ADP ADP	name
+8	de la	ADP ADP	punct
+1	de la bologna	ADP ADP PROPN	mwe
+1	de la sine	ADP ADP PRON	advmod
+1	de lume	ADP NOUN	mwe
+2	de lângă	ADP ADP	case
+1	de mult	ADP ADV	advmod
+18	de obicei	ADP NOUN	advmod
+1	de obște	ADP NOUN	amod
+1	de partea	ADP NOUN	parataxis
+1	de partea	ADP NOUN	root
+57	de pe	ADP ADP	case
+1	de pe la	ADP ADP ADP	case
+1	de pe urma	ADP ADP NOUN	case
+6	de peste	ADP ADP	case
+8	de pildă	ADP NOUN	advmod
+1	de până acum	ADP ADP ADV	advmod
+1	de până la	ADP SCONJ ADP	case
+1	de regulă	ADP NOUN	advmod
+1	de rând	ADP NOUN	amod
+2	de seamă	ADP NOUN	mwe
+8	de sub	ADP ADP	case
+1	de toate	ADP PRON	nsubj
+1	de toată frumusețea	ADP DET NOUN	amod
+1	de tot	ADP DET	case
+4	de tot	ADP PRON	advmod
+1	de treabă	ADP NOUN	amod
+1	de unde	ADP ADV	advmod
+1	de unde	ADP ADV	dobj
+2	de unde	ADP ADV	mark
+1	de unde	ADP ADV	nmod
+1	de unde până unde	ADP ADV ADP ADV	advmod
+1	de unul singur	ADP PRON ADJ	advmod
+1	de vest	ADP NOUN	nmod
+1	de zi cu zi	ADP NOUN ADP NOUN	advmod
+2	de îndată	ADP ADV	advmod
+1	de îndată	ADP ADV	nmod
+5	de îndată ce	ADP ADV PRON	mark
+3	de- a dreptul	ADP PART NOUN	advmod
+4	de- a lungul	ADP PART NOUN	case
+1	de- a lungul	SCONJ AUX NOUN	case
+1	de- abia	ADP ADV	advmod
+1	de- abia	ADP ADV	nmod
+5	de- lungul	ADP NOUN	case
+1	de- npicioarele	SCONJ NOUN	advmod
+1	de-a curmezișul	ADP ADV	case
+1	de-a dreptul	ADP NOUN	advmod
+1	de-a lungul	ADP NOUN	advmod
+1	dea drumul	VERB NOUN	advcl
+1	dea ochii cu noi	VERB NOUN ADP PRON	advcl
+1	dea seama	VERB NOUN	advcl
+1	dea un semn	VERB DET NOUN	ccomp
+1	dea în judecată	VERB ADP NOUN	ccomp
+2	decât dacă	ADV SCONJ	mark
+2	decât să	ADV PART	mark
+1	dedea își în petecul	VERB PRON ADP NOUN	conj
+3	deosebit de	ADV ADP	advmod
+1	deosebit de	VERB ADP	advmod
+1	departe de	ADV ADP	advmod
+1	despre penicilină și timbre	ADP NOUN CONJ NOUN	appos
+3	destul de	ADV ADP	advmod
+1	destul de	ADV ADP	mark
+1	dictatului de la viena	NOUN ADP ADP PROPN	nmod
+1	din belșug	ADP NOUN	advmod
+10	din cadrul	ADP NOUN	case
+20	din cauza	ADP NOUN	case
+1	din cauză că	ADP NOUN SCONJ	mark
+2	din ce în ce	ADP PRON ADP PRON	advmod
+4	din ce în ce mai	ADP PRON ADP PRON ADV	advmod
+1	din cluj	ADP PROPN	mwe
+1	din contră	ADP NOUN	advmod
+5	din când în când	ADP ADV ADP ADV	advmod
+2	din când în când	ADP ADV ADP ADV	advmod:tmod
+1	din fața	ADP NOUN	case
+1	din față	ADP NOUN	advmod
+1	din jurul	ADP NOUN	case
+1	din loc în loc	ADP NOUN ADP NOUN	nmod
+4	din moment ce	ADP NOUN PRON	mark
+1	din nefericire	ADP NOUN	advmod
+25	din nou	ADP ADJ	advmod
+1	din nou	ADP ADJ	nmod
+5	din nou	ADP ADV	advmod
+19	din partea	ADP NOUN	case
+1	din plin	ADP ADV	advmod
+1	din preajma	ADP NOUN	case
+5	din pricina	ADP NOUN	case
+1	din pricina	ADP NOUN	root
+1	din pricină că	ADP NOUN SCONJ	mark
+1	din punct de vedere	ADP NOUN ADP NOUN	case
+1	din punct de vedere	ADP NOUN ADP NOUN	nmod
+1	din păcate	ADP NOUN	advmod
+3	din spatele	ADP NOUN	case
+3	din urmă	ADP NOUN	advmod
+5	din urmă	ADP NOUN	amod
+1	din vedere	ADP NOUN	advmod
+1	din întâmplare	ADP NOUN	advmod
+1	dinainte de	ADV ADP	case
+3	dincolo de	ADV ADP	case
+1	direcția de urbanism	NOUN ADP NOUN	nmod:agent
+1	direcție de asistență	NOUN ADP NOUN	nmod
+1	doar ca	ADV ADV	advmod
+1	drepturilor omului	NOUN NOUN	nmod
+1	ducă până la capăt	VERB ADP ADP NOUN	ccomp
+1	dunării de jos	PROPN ADP ADV	nmod
+1	după aceea	ADP PRON	advcl
+2	după aceea	ADP PRON	advmod
+5	după ce	ADP PRON	advmod
+34	după ce	ADP PRON	mark
+1	după ce	ADP PRON	nmod
+1	după ce	VERB PRON	mark
+1	după ce-	ADP PRON	mark
+2	după cum	ADP ADV	advmod
+17	după cum	ADP ADV	mark
+1	după melci	ADP NOUN	dobj
+1	după un veac de teatru românesc	ADP DET NOUN ADP NOUN ADJ	nmod
+1	dura lex	ADJ NOUN	conj
+1	duse la sfârșit	VERB ADP NOUN	acl
+1	dîndu drumul	VERB NOUN	advcl
+1	dă pe față	VERB ADP NOUN	advcl
+1	dădea -și seama	VERB PRON NOUN	parataxis
+1	dădea -și seama	VERB PRON NOUN	xcomp
+1	dădea buzna	VERB ADV	root
+1	dădea îi înainte	VERB PRON ADV	root
+2	dădea își seama	VERB PRON NOUN	root
+1	dădeai îți seama	VERB PRON NOUN	parataxis
+1	dădu drumul	VERB NOUN	root
+1	dădu la o parte	VERB ADP DET NOUN	conj
+1	dădu seama	VERB NOUN	root
+2	dădu își seama	VERB PRON NOUN	root
+1	dădură buzna	VERB ADV	conj
+1	dăduse își seama	VERB PRON NOUN	conj
+1	dăduse își seama	VERB PRON NOUN	root
+1	dăm seama	VERB NOUN	nsubj
+1	e vorba	VERB NOUN	root
+1	era pe cale	VERB ADP NOUN	acl
+1	era vorba	VERB NOUN	advcl
+1	era în relații	VERB ADP NOUN	advcl
+1	eroi în zdrențe	NOUN ADP NOUN	appos
+4	este cazul	VERB NOUN	advcl
+1	este cu ochii	VERB ADP NOUN	parataxis
+1	este cu ochii	VERB ADP NOUN	root
+1	este la curent	VERB ADP NOUN	root
+1	este necesar	VERB ADJ	root
+2	este necesar	VERB ADV	advcl
+1	este necesar	VERB ADV	root
+1	este nevoie	VERB NOUN	advcl
+1	este potrivit	VERB ADJ	conj
+1	este vorba	VERB NOUN	advcl
+1	este vorba	VERB NOUN	dobj
+3	este vorba	VERB NOUN	root
+1	este în conformitate cu	VERB ADP NOUN ADP	ccomp
+1	este în măsură	VERB ADP NOUN	ccomp
+1	este în vigoare	VERB ADP NOUN	conj
+1	eternități de o clipă	NOUN ADP DET NOUN	xcomp
+1	europa de sud-est	PROPN ADP NOUN	nmod
+1	extrem de	ADV ADP	advmod
+1	fac parte	VERB NOUN	root
+1	fac schimb	VERB NOUN	root
+1	face cruce	VERB NOUN	ccomp:pmod
+1	face față	VERB NOUN	acl
+2	face parte	VERB NOUN	acl
+1	face parte	VERB NOUN	root
+1	face plângere	VERB NOUN	csubj
+1	faci rost	VERB NOUN	csubj
+1	facultatea de drept	NOUN ADP NOUN	nmod:pmod
+1	facultatea de electronică	NOUN ADP NOUN	dobj
+1	facultatea de filologie	NOUN ADP NOUN	nmod
+2	facultatea de filosofie	NOUN ADP NOUN	nmod
+1	facultatea de mecanică	NOUN ADP NOUN	nmod
+1	facultatea de medicină	NOUN ADP NOUN	dobj
+1	facultatea de muzică	NOUN ADP NOUN	nsubjpass
+1	facultății de litere	NOUN ADP NOUN	nmod
+1	facă rost	VERB NOUN	conj
+2	față de	ADP ADP	case
+23	față de	NOUN ADP	case
+1	față de	NOUN ADP	nmod
+3	față în față	NOUN ADP NOUN	advmod
+1	față în față cu	NOUN ADP NOUN ADP	case
+1	federația de fotbal	NOUN ADP NOUN	nsubj
+1	federația de gimnastică	NOUN ADP NOUN	nsubj
+1	femeia cu carnea albă	NOUN ADP NOUN ADJ	nmod
+1	filarmonica de stat	NOUN ADP NOUN	nsubj
+1	fiu pentru	VERB ADP	ccomp
+1	flori de câmp	NOUN ADP NOUN	appos
+1	fost în plasament	VERB ADP NOUN	root
+1	frontul de rezistență revoluționară	NOUN ADP NOUN ADJ	dobj
+1	fugind de neant	VERB ADP NOUN	nmod
+1	fulgeră prin minte	VERB ADP NOUN	root
+1	făcea corp comun	VERB NOUN ADJ	acl
+1	făcea parte	VERB NOUN	advcl
+1	făcea parte	VERB NOUN	conj
+1	făcuse rost	VERB NOUN	conj
+1	făcuseră loc	VERB NOUN	root
+1	făcut ciur	ADJ NOUN	conj
+1	făcut intrarea	VERB NOUN	root
+1	făcut și- apariția	VERB PRON NOUN	root
+1	fără ca	ADP ADV	mark
+1	fără ca	SCONJ ADV	mark
+1	fără de	ADP ADP	case
+1	fără precedent	ADP NOUN	amod
+4	fără să	ADP PART	mark
+1	fără să	CONJ PART	mark
+2	fără să	SCONJ PART	mark
+2	fără îndoială	ADP NOUN	advmod
+1	fără îndoială	ADP NOUN	root
+1	gând de	NOUN ADP	mwe
+1	găsise cu	VERB ADP	acl
+1	găsit de cuviință	VERB ADP NOUN	root
+1	h. g.	NOUN NOUN	nmod
+1	hotărâre de guvern	NOUN ADP NOUN	nmod
+1	i. l.	NOUN NOUN	nmod
+1	ia act	VERB NOUN	root
+1	ia la	VERB ADP	advcl
+1	ia măsuri	VERB NOUN	ccomp
+1	ia măsuri	VERB NOUN	csubj
+1	ia naștere	VERB NOUN	root
+1	ia notă	VERB NOUN	root
+1	ia o	VERB PRON	conj
+1	ia parte	VERB NOUN	advcl
+1	ia parte	VERB NOUN	ccomp
+1	ia în	VERB ADP	csubj
+1	ia în considerare	VERB ADP NOUN	conj
+2	ia în considerare	VERB ADP NOUN	csubj
+1	iei o	VERB PRON	root
+1	iese în relief	VERB ADP NOUN	root
+1	ieși la iveală	VERB ADP NOUN	acl
+1	ieșit la pensie	VERB ADP NOUN	advcl
+1	imediat ce	ADV PRON	mark
+1	in conformitate cu	NOUN NOUN ADP	case
+6	in vitro	NOUN NOUN	advmod
+6	in vitro	NOUN NOUN	amod
+1	in vitro	NOUN NOUN	parataxis
+7	in vivo	NOUN ADV	advmod
+2	in vivo	NOUN ADV	conj
+1	induși în eroare	ADJ ADP NOUN	ccomp
+1	intrarea în vigoare	NOUN ADP NOUN	dobj
+3	intrarea în vigoare	NOUN ADP NOUN	nmod
+2	intrarea în vigoare	NOUN ADP NOUN	nmod:tmod
+1	intrat în vigoare	VERB ADP NOUN	acl
+1	intrat în vigoare	VERB ADP NOUN	root
+1	intră vigoare	VERB NOUN	root
+7	intră în vigoare	VERB ADP NOUN	root
+1	intră în_vigoare	VERB ADV	root
+1	intrării în vigoare	NOUN ADP NOUN	nmod
+1	joacă rol	VERB NOUN	root
+1	la bătaie	ADP NOUN	mwe
+4	la cerere	ADP NOUN	nmod
+1	la culme	ADP NOUN	advmod
+1	la dispoziție	ADP NOUN	mwe
+1	la fața	ADP NOUN	case
+5	la fel	ADP NOUN	advmod
+1	la fel	ADP NOUN	amod
+1	la fel	ADP NOUN	appos
+1	la fel	ADP NOUN	dobj
+1	la fel	ADP NOUN	root
+5	la fel de	ADP NOUN ADP	advmod
+2	la infinit	ADP NOUN	advmod
+1	la loc	ADP NOUN	advmod
+1	la minimum	ADP NOUN	advmod
+1	la o parte	ADP DET NOUN	advmod
+1	la rând	ADP NOUN	amod
+1	la rândul ei	ADP NOUN DET	advmod
+2	la rândul lui	ADP NOUN DET	advmod
+1	la un moment dat	ADP DET NOUN ADJ	advmod
+1	la un moment dat	ADP DET NOUN VERB	advmod
+1	la zi	ADP NOUN	nmod
+2	la început	ADP NOUN	advmod
+1	la întâmplare	ADP NOUN	advmod
+2	la întâmplare	ADP NOUN	nmod
+1	lauda somnului	NOUN NOUN	parataxis
+1	legate de	ADP ADP	case
+1	livrat viu	VERB ADJ	acl
+1	loc la un cu	NOUN ADP DET ADP	case
+1	lua legătura	VERB NOUN	ccomp
+1	luarea aminte	NOUN ADV	dobj
+1	luat -o	VERB PRON	conj
+1	luat ființă	VERB NOUN	root
+1	luat la fugă	VERB ADP NOUN	root
+1	luat parte	VERB NOUN	acl
+4	luat parte	VERB NOUN	root
+1	luat prin surprindere	VERB ADP NOUN	xcomp
+1	luat sfârșit	VERB NOUN	root
+1	luat în considerațiune	VERB ADP NOUN	ccomp:pmod
+1	luate măsuri	ADJ NOUN	csubj
+1	luate în considerare	ADJ ADP NOUN	acl
+1	luate în considerare	ADJ ADP NOUN	advcl
+1	luate în considerare	ADJ ADP NOUN	csubj
+1	luată în considerare	VERB ADP NOUN	csubj
+1	luau ființă	VERB NOUN	root
+1	luau parte	VERB NOUN	ccomp
+1	luați legătura	VERB NOUN	conj
+1	luați măsurile	VERB NOUN	csubj
+1	luând în considerare	VERB ADP NOUN	advcl
+1	luă o	VERB PRON	advcl
+1	luă o	VERB PRON	advcl:tcl
+1	luă o la fugă	VERB PRON ADP NOUN	root
+1	lăsa baltă	VERB NOUN	conj
+1	lăsați în pace	VERB ADP NOUN	root
+21	mai ales	ADV ADV	advmod
+1	mai ales	ADV VERB	advmod
+4	mai cu seamă	ADV ADP NOUN	advmod
+1	mai cu seamă	ADV ADP NOUN	mwe
+4	mai degrabă	ADV ADV	advmod
+1	mai departe	ADV ADV	advmod
+1	mai devreme sau mai târziu	ADV ADV CONJ ADV ADV	advmod
+2	mai mult sau mai puțin	ADV ADV CONJ ADV ADV	advmod
+1	mai nou	ADV ADJ	advmod
+1	mai întâi	ADV ADV	advmod
+1	mai întâi	ADV ADV	advmod:tmod
+2	mai întâi	ADV NUM	advmod
+1	mii lei	NUM NOUN	root
+1	milioane dolari	NUM NOUN	dobj
+1	ministerul de război	NOUN ADP NOUN	nmod
+1	momentul de față	NOUN ADP NOUN	nmod:tmod
+1	muzeul de artă	NOUN ADP NOUN	nmod
+1	mână pe_sub	NOUN ADP	nmod
+2	nici măcar	ADV ADV	advmod
+33	nici o	ADV DET	det
+1	nici pe departe	ADV ADP ADV	advmod
+1	nici un	ADV DET	advmod
+12	nici un	ADV DET	amod
+17	nici un	ADV DET	det
+1	nici una	ADV PRON	dobj
+1	nici una	ADV PRON	nsubj
+1	nici una nici două	ADV PRON ADV NUM	advmod
+1	nici unuia	ADV PRON	advmod
+1	noaptea sfântă	ADV ADJ	dobj
+1	npicioarele a-	NOUN AUX	mwe
+1	nu numai că	PART ADV SCONJ	cc:preconj
+1	nu știu ce	PART VERB DET	advcl
+1	nu știu ce	PART VERB DET	det
+1	nu știu ce	PART VERB PRON	nmod
+1	numai dacă	ADV SCONJ	advmod
+1	numai dacă	ADV SCONJ	mark
+1	numai și numai	ADV CONJ ADV	advmod
+2	o dată	DET NOUN	advmod
+1	o dată ce	DET NOUN PRON	mark
+2	o dată cu	DET NOUN ADP	case
+2	odată ce	ADV PRON	mark
+1	odată cu	ADV ADP	advmod
+8	odată cu	ADV ADP	case
+1	oficiului pentru adopții	NOUN ADP NOUN	nmod
+1	omul de afaceri	NOUN ADP NOUN	appos
+3	ori de câte ori	CONJ ADP ADV CONJ	advmod
+1	ori de câte ori	CONJ ADP ADV CONJ	advmod:tmod
+2	ori de câte ori	CONJ ADP ADV CONJ	mark
+1	ori de câte ori	NOUN ADP DET NOUN	advmod
+1	pare rău	VERB ADV	root
+1	parlamentul de la tiraspol	NOUN ADP ADP PROPN	nsubj
+1	pe alocuri	ADP ADV	advmod
+1	pe ascuns	ADP NOUN	advmod
+1	pe ascuns	ADP VERB	advmod
+3	pe atunci	ADP ADV	advmod
+1	pe bază de	ADP NOUN ADP	case
+1	pe bună dreptate	ADP ADJ NOUN	advmod
+2	pe bună dreptate	ADP ADJ NOUN	root
+4	pe când	ADP ADV	advmod
+4	pe când	ADP ADV	mark
+1	pe datorie	ADP NOUN	advmod
+5	pe de altă parte	ADP ADP DET NOUN	advmod
+2	pe de altă parte	ADP ADP DET NOUN	nmod
+1	pe de o parte	ADP ADP DET NOUN	advmod
+1	pe deasupra	ADP ADV	advmod
+3	pe deplin	ADP ADV	advmod
+1	pe deplin	ADP ADV	nmod
+2	pe dinafară	ADP ADV	advmod
+1	pe dos	ADP NOUN	advmod
+1	pe furiș	ADP ADV	advmod
+1	pe ici pe colo	ADP ADV ADP ADV	advmod
+1	pe jumătate	ADP NOUN	advmod
+10	pe la	ADP ADP	case
+5	pe loc	ADP NOUN	advmod
+1	pe loc	ADP NOUN	root
+15	pe lângă	ADP ADP	case
+1	pe lângă	ADP ADP	mark
+1	pe măsura	ADP NOUN	root
+1	pe măsură	ADP NOUN	nmod
+4	pe măsură ce	ADP NOUN PRON	mark
+1	pe neașteptate	ADP ADJ	advmod
+2	pe nesimțite	ADP ADJ	advmod
+1	pe neștiute	ADP ADJ	advmod
+10	pe parcursul	ADP NOUN	case
+1	pe parcursul	ADP NOUN	conj
+1	pe punctul	ADP NOUN	root
+1	pe scurt	ADP ADV	advmod
+1	pe sfârșite	ADP ADJ	root
+5	pe sub	ADP ADP	case
+4	pe termen lung	ADP NOUN ADJ	advmod
+3	pe termen lung	ADP NOUN ADJ	amod
+1	pe termen lung	ADP NOUN ADJ	conj
+2	pe termen lung	ADP NOUN ADJ	nmod
+1	pe termen scurt	ADP NOUN ADJ	amod
+1	pe termen scurt	ADP NOUN ADV	amod
+1	pe timpul	ADP NOUN	case
+24	pe urmă	ADP NOUN	advmod
+1	pe urmă	ADP NOUN	advmod:tmod
+2	pe zi	ADP NOUN	advmod
+1	pe zi	ADP NOUN	advmod:tmod
+1	pe zi	ADP NOUN	nmod
+2	pe îndelete	ADP ADV	advmod
+1	pe- atunci	ADP ADV	advmod
+2	pentru ca	ADP ADV	case
+25	pentru ca	ADP ADV	mark
+1	pentru că	ADP SCONJ	case
+27	pentru că	ADP SCONJ	mark
+1	pentru medicamente	ADP NOUN	mwe
+1	pentru moment	ADP NOUN	advmod
+2	pentru prima dată	ADP NUM NOUN	advmod
+1	pentru totdeauna	ADP ADV	advmod
+1	pesimismul în literatură	NOUN ADP NOUN	nmod
+1	peste poate	ADP ADV	mark
+1	peste tot	ADP ADV	advmod
+2	peste tot	ADP PRON	advmod
+1	peste tot	ADP PRON	appos
+1	piața de	NOUN ADP	nsubjpass
+1	plin de	ADV ADP	xcomp
+1	plus în	ADV ADP	advmod
+1	poate peste	VERB ADV	advcl
+1	poate peste	VERB ADV	root
+1	porțile de	NOUN ADP	nmod
+1	povestea unei vieți	NOUN DET NOUN	nmod
+1	prealabil în	ADV ADP	advmod
+2	precum și	ADV CONJ	advmod
+44	precum și	ADV CONJ	cc
+1	precum și	ADV CONJ	conj
+1	premiul nobel pentru literatură	NOUN PROPN ADP NOUN	nmod:pmod
+1	premiul stat	NOUN NOUN	nmod:pmod
+4	prin fața	ADP NOUN	case
+17	prin intermediul	ADP NOUN	case
+1	prin preajma	ADP NOUN	case
+9	prin urmare	ADP NOUN	advmod
+1	prin urmare	ADP NOUN	cc
+2	prin urmare	ADP NOUN	nmod
+1	prin urmare	ADP NOUN	nmod:pmod
+1	prinde gust	VERB NOUN	root
+1	procesul de	NOUN ADP	nmod
+1	pun în pericol	VERB ADP NOUN	conj
+1	pun întrebări	VERB NOUN	csubj
+3	punct de vedere	NOUN ADP NOUN	nmod
+1	punct din de vedere	NOUN ADP ADP NOUN	nmod
+1	pune capăt	VERB NOUN	ccomp
+1	pune la dispoziția	VERB ADP NOUN	root
+1	pune piatră peste piatră	VERB NOUN ADP NOUN	acl
+1	pune în aplicare	VERB ADP NOUN	acl
+1	pune în aplicare	VERB ADP NOUN	advcl
+1	pune în aplicare	VERB ADP NOUN	ccomp
+1	pune în gând	VERB ADP NOUN	root
+1	pune în pericol	VERB ADP NOUN	ccomp
+1	pune în scenă	VERB ADP NOUN	acl
+1	puneau mâna	VERB NOUN	conj
+1	puneau întrebare	VERB NOUN	acl
+1	puneau țara la cale	VERB NOUN ADP NOUN	root
+1	punere în aplicare	NOUN ADP NOUN	nmod
+2	punerea pe piață	NOUN ADP NOUN	nmod:tmod
+1	punerea în aplicare	NOUN ADP NOUN	conj
+2	punerea în aplicare	NOUN ADP NOUN	dobj
+6	punerea în aplicare	NOUN ADP NOUN	nmod
+1	punerii în scenă	NOUN ADP NOUN	nmod
+1	punând accentul	VERB NOUN	acl
+1	punând în lumină	VERB ADP NOUN	advcl
+1	pună capăt	VERB NOUN	ccomp
+1	pună la dispoziție	VERB ADP NOUN	ccomp
+1	pună mâna	VERB NOUN	ccomp:pmod
+1	pună mâna	VERB NOUN	root
+1	pur și simplu	ADJ CONJ ADJ	advmod
+1	pur și simplu	ADJ CONJ ADJ	appos
+6	pur și simplu	ADV CONJ ADV	advmod
+1	pus la	VERB ADP	advcl
+1	pus la dispoziție	VERB ADP NOUN	advcl
+1	pus la loc	VERB ADP NOUN	advcl
+1	pus la punct	VERB ADP NOUN	ccomp
+1	pus în libertate	VERB ADP NOUN	root
+1	puse mâna	VERB NOUN	root
+1	pusă la cale	VERB ADP NOUN	acl
+1	pusă în pericol	VERB ADP NOUN	root
+1	pân' la	ADV ADP	case
+1	până acum	ADP ADV	advmod:tmod
+3	până când	ADP ADV	advmod
+1	până când	ADP ADV	case
+4	până când	ADP ADV	mark
+45	până la	ADP ADP	case
+1	până la	ADP ADP	mark
+1	până la	ADP ADP	punct
+2	până la	SCONJ ADP	advmod
+43	până la	SCONJ ADP	case
+1	până la	SCONJ ADP	mark
+1	până la	SCONJ ADP	nmod
+1	până la urmă	ADP ADP NOUN	advmod
+6	până la urmă	SCONJ ADP NOUN	advmod
+1	până una -alta	ADP PRON PRON	advmod
+13	până în	ADP ADP	case
+12	până în	SCONJ ADP	case
+2	până în	SCONJ ADP	nmod:tmod
+1	până în prezent	ADP ADP NOUN	advmod
+1	până în prezent	ADP ADP NOUN	nmod:tmod
+1	până și	ADP CONJ	advmod
+11	până și	SCONJ CONJ	advmod
+1	părere de rău	NOUN ADP NOUN	nmod
+1	referitor la	ADJ ADP	case
+1	regia de	NOUN ADP	nmod:agent
+1	regula în toată	NOUN ADP DET	nmod
+1	reia stăpânire	VERB NOUN	xcomp
+1	revistă ilustrată	NOUN ADJ	nmod
+1	rupt -o de fugă	VERB PRON ADP NOUN	conj
+1	saci de dormit	NOUN ADP NOUN	nmod
+1	scoată în evidență	VERB ADP NOUN	advcl
+1	scoată în relief	VERB ADP NOUN	advcl
+1	scosese la lecție	VERB ADP NOUN	advcl
+1	scot în evidență	VERB ADP NOUN	root
+1	scotea din minți	VERB ADP NOUN	acl
+1	scotea în evidență	VERB ADP NOUN	conj
+1	scrântesc o	VERB PRON	ccomp
+1	simți pe propria -i piele	VERB ADP ADJ PRON NOUN	root
+1	soarele și luna	NOUN CONJ NOUN	nmod
+1	societatea scriitorilor români	NOUN NOUN ADJ	nsubj
+1	societății comerciale	NOUN ADJ	nmod
+1	spitalul de urgență	NOUN ADP NOUN	nmod
+5	spre deosebire de	ADP NOUN ADP	case
+1	sta de vorbă	VERB ADP NOUN	advcl
+1	sta de vorbă	VERB ADP NOUN	ccomp
+1	sta la vorbă	VERB ADP NOUN	ccomp:pmod
+1	sta pe gânduri	VERB ADP NOUN	advcl
+1	stare în	NOUN ADP	conj
+1	stat de	NOUN ADP	mwe
+1	statele unite ale americii	NOUN ADJ DET PROPN	nmod:agent
+1	statelor unite ale americii	NOUN ADJ DET PROPN	iobj
+1	stea de vorbă	VERB ADP NOUN	ccomp
+1	stins din viață	VERB ADP NOUN	root
+1	stă pe loc	VERB ADP NOUN	ccomp
+1	stăpânire sub	NOUN ADP	mwe
+1	stătea în picioare	VERB ADP NOUN	acl
+1	sănătatea publică	NOUN ADJ	conj
+1	sănătății animale	NOUN NOUN	nmod
+1	sărit în sus	VERB ADP ADV	root
+1	tihnă în	NOUN ADP	nmod
+1	tocmai pentru	ADV ADP	case
+4	tot așa	ADV ADV	advmod
+2	tot timpul	ADV NOUN	advmod
+1	tragere de inimă	NOUN ADP NOUN	nmod
+1	tragere la sorți	NOUN ADP NOUN	nmod
+1	trase la răspundere	VERB ADP NOUN	ccomp
+1	trase pe sfoară	VERB ADP NOUN	root
+1	tratatul de neproliferare nucleară	NOUN ADP PROPN ADJ	nmod
+1	trecuse prin cap	VERB ADP NOUN	conj
+1	trecuse prin minte	VERB ADP NOUN	root
+1	trei dizertații ale iscusitului cavaler don quijote de la mancha	NUM NOUN DET ADJ NOUN PROPN PROPN ADP ADP PROPN	dobj
+1	tribunalul de la belgrad	NOUN ADP ADP PROPN	nmod
+1	trăgea cu urechea	VERB ADP NOUN	acl
+1	trăsese cu urechea	VERB ADP NOUN	acl
+1	tunat și fulgerat	VERB CONJ VERB	conj
+1	umbra unui om	NOUN DET NOUN	parataxis
+1	umăr la umăr	NOUN ADP NOUN	advmod
+1	un amor de toamnă	DET NOUN ADP NOUN	nmod
+1	uniunii europene	NOUN ADJ	nmod
+1	uniunii scriitorilor	NOUN NOUN	nmod
+1	universitatea din	NOUN ADP	nsubj
+1	universitatea din poznan	NOUN ADP PROPN	nmod
+1	urmă în cu	NOUN ADP ADP	case
+1	v. d.	NOUN NOUN	nmod
+2	va să zică	AUX PART VERB	advmod
+1	vai de	INTJ ADP	mwe
+1	vechi pădurari	ADJ NOUN	parataxis
+1	veneau în	VERB ADP	advcl
+1	venit vorba	VERB NOUN	root
+1	vine în contact	VERB ADP NOUN	advcl
+1	vină în contact	VERB ADP NOUN	ccomp
+1	vințu de jos	PROPN ADP ADV	nmod
+1	zi cu zi	NOUN ADP NOUN	advmod
+1	zugrăvește mai	VERB ADV	root
+17	împreună cu	ADV ADP	case
+1	împreună cu	ADV ADP	nmod:pmod
+1	în același timp	ADP DET NOUN	advcl
+3	în același timp	ADP DET NOUN	advmod
+1	în același timp	ADP DET NOUN	advmod:tmod
+10	în afara	ADP ADV	case
+6	în afară de	ADP ADV ADP	case
+1	în al doilea rând	ADP DET NUM NOUN	advmod
+1	în al treilea rând	ADP DET NUM NOUN	advmod
+1	în aparență	ADP NOUN	advmod
+1	în așa fel încât	ADP ADJ NOUN CONJ	advmod
+22	în cadrul	ADP NOUN	case
+2	în calitate de	ADP NOUN ADP	case
+1	în caz c-	ADP NOUN SCONJ	mark
+1	în caz că	ADP NOUN SCONJ	mark
+1	în ce privește	ADP PRON VERB	case
+1	în cea mai mare parte	ADP DET ADV ADJ NOUN	advmod
+1	în ceea ce privește	ADP PRON PRON VERB	advmod
+26	în ceea ce privește	ADP PRON PRON VERB	case
+2	în ceea ce privește	ADP PRON PRON VERB	punct
+4	în cele din urmă	ADP PRON ADP NOUN	advmod
+7	în ciuda	ADP NOUN	case
+1	în comparație cu	ADP NOUN ADP	case
+5	în comun	ADP NOUN	advmod
+3	în comun	ADP NOUN	nmod
+1	în concordanță	ADP NOUN	advcl
+1	în concordanță	ADP NOUN	dobj
+94	în conformitate cu	ADP NOUN ADP	case
+7	în conformitate cu	ADP NOUN ADP	punct
+3	în consecință	ADP NOUN	advcl
+8	în consecință	ADP NOUN	advmod
+1	în considerare	ADP NOUN	mwe
+12	în continuare	ADP NOUN	advmod
+1	în continuare	ADP NOUN	amod
+8	în continuare	ADP NOUN	nmod
+4	în cursul	ADP NOUN	case
+1	în cursul	ADP NOUN	nmod:tmod
+3	în curând	ADP ADV	advmod
+2	în curând	ADP ADV	advmod:tmod
+1	în definitiv	ADP ADV	advmod
+1	în detaliu	ADP NOUN	advmod
+1	în detrimentul	ADP NOUN	case
+1	în esență	ADP NOUN	advmod
+3	în favoarea	ADP NOUN	case
+38	în fața	ADP NOUN	case
+1	în față	ADP NOUN	advmod
+1	în față	ADP NOUN	nmod
+3	în final	ADP NOUN	advmod
+1	în fine	ADP NOUN	advmod
+1	în fire	ADP NOUN	mwe
+1	în fond	ADP NOUN	advmod
+1	în fugă	ADP NOUN	advmod
+1	în functie de	ADP NOUN ADP	case
+24	în funcție de	ADP NOUN ADP	case
+1	în funcție de	ADP NOUN ADP	mark
+16	în general	ADP NOUN	advmod
+1	în general	ADP NOUN	nmod
+1	în genere	ADP NOUN	advmod
+1	în gura mare	ADP NOUN ADJ	advmod
+2	în interiorul	ADP NOUN	case
+3	în jos	ADP ADV	advmod
+1	în josul	ADP NOUN	conj
+2	în jur	ADP NOUN	advmod
+2	în jur de	ADP NOUN ADP	advmod
+20	în jurul	ADP NOUN	case
+5	în legătură cu	ADP NOUN ADP	case
+1	în lipsa	ADP NOUN	case
+1	în loc	ADP NOUN	mark
+1	în loc	ADP NOUN	nmod
+3	în loc de	ADP NOUN ADP	case
+1	în lungul	ADP NOUN	case
+1	în majoritate	ADP NOUN	nmod
+1	în mare parte	ADP ADJ NOUN	advmod
+1	în marea trecere	ADP ADJ NOUN	parataxis
+1	în masă	ADP NOUN	advmod
+1	în materie de	ADP NOUN ADP	case
+3	în mijlocul	ADP NOUN	case
+1	în minus	ADP NOUN	conj
+1	în mișcare	ADP NOUN	nmod
+1	în mod	ADP NOUN	case
+1	în mod clar	ADP NOUN ADV	advmod
+2	în mod clar	ADP NOUN ADV	nmod
+1	în mod normal	ADP NOUN ADV	advmod
+1	în măsură	ADP NOUN	advcl
+1	în măsură	ADP NOUN	root
+7	în numele	ADP NOUN	case
+1	în numele	ADP NOUN	nmod
+1	în ordine	ADP NOUN	nmod
+2	în orice caz	ADP DET NOUN	advmod
+1	în orice caz	ADP DET NOUN	nmod
+1	în parte	ADP NOUN	advmod
+1	în parte	ADP NOUN	conj
+1	în parte	ADP NOUN	nmod
+1	în pas	ADP NOUN	amod
+3	în picioare	ADP NOUN	advmod
+7	în plus	ADP ADV	advmod
+1	în plus	ADP ADV	mark
+5	în plus	ADP ADV	nmod
+7	în pofida	ADP NOUN	case
+1	în preajma	ADP NOUN	case
+9	în prezent	ADP NOUN	advmod
+1	în prezent	ADP NOUN	advmod:tmod
+1	în prezent	ADP NOUN	nmod
+1	în prezent	ADP NOUN	nmod:tmod
+7	în primul rând	ADP NUM NOUN	advmod
+3	în principal	ADP ADJ	advmod
+8	în principal	ADP NOUN	advmod
+2	în principal	ADP NOUN	nmod
+1	în principiu	ADP NOUN	advmod
+1	în principiu	ADP NOUN	nmod
+6	în privința	ADP NOUN	case
+4	în raport cu	ADP NOUN ADP	case
+1	în realitate	ADP NOUN	advmod
+1	în regulă	ADP NOUN	ccomp
+4	în schimb	ADP NOUN	advmod
+6	în sfârșit	ADP NOUN	advmod
+1	în siguranță	ADP NOUN	conj
+1	în siguranță	ADP NOUN	root
+5	în spatele	ADP NOUN	case
+5	în special	ADP ADJ	advmod
+1	în special	ADP ADV	advcl
+50	în special	ADP ADV	advmod
+1	în special	ADP ADV	amod
+2	în special	ADP ADV	nmod
+1	în stare	ADP NOUN	advcl
+10	în sus	ADP ADV	advmod
+1	în susul	ADP NOUN	case
+1	în timp	ADP NOUN	mark
+7	în timp ce	ADP NOUN PRON	advmod
+1	în timp ce	ADP NOUN PRON	case
+1	în timp ce	ADP NOUN PRON	cc
+11	în timp ce	ADP NOUN PRON	mark
+1	în timp ce	ADP NOUN PRON	nmod
+46	în timpul	ADP NOUN	case
+1	în timpul	ADP NOUN	conj
+1	în timpul	ADP NOUN	nmod
+2	în tot cazul	ADP DET NOUN	advmod
+1	în total	ADP NOUN	advmod
+1	în totalitate	ADP NOUN	advmod
+1	în totul	ADP PRON	advmod
+24	în urma	ADP NOUN	case
+10	în urmă	ADP NOUN	advmod
+2	în urmă	ADP NOUN	case
+4	în urmă cu	ADP NOUN ADP	case
+47	în vederea	ADP NOUN	case
+1	în viață	ADP NOUN	ccomp
+1	în viață	ADP NOUN	root
+1	în viață	ADP NOUN	xcomp
+4	în vigoare	ADP NOUN	advmod
+2	în vigoare	ADP NOUN	amod
+3	în vigoare	ADP NOUN	xcomp
+1	în virtutea	ADP NOUN	case
+1	în vreme	ADP NOUN	advmod:tmod
+1	în vreme ce	ADP NOUN PRON	mark
+1	în vârstă	ADP NOUN	amod
+2	în zori	ADP NOUN	advmod
+7	în întregime	ADP NOUN	advmod
+2	în întregime	ADP NOUN	nmod
+1	înainte ca	ADP ADV	advmod
+1	înainte ca	ADP ADV	mark
+2	înainte ca	ADV ADV	mark
+1	înainte de	ADV ADP	advmod
+33	înainte de	ADV ADP	case
+24	înainte de	ADV ADP	mark
+2	înainte de	ADV ADP	nmod
+1	înainte de a	ADV ADP PART	case
+1	începând cu	VERB ADP	case
+1	începând din	VERB ADP	case
+1	încetul cu încetul	ADJ ADP ADJ	conj
+1	întocmai ca	ADV ADV	advmod
+3	între timp	ADP NOUN	advmod
+2	între timp	ADP NOUN	nmod
+2	întru totul	ADP PRON	advmod
+1	întîi mai de toate	ADV ADV ADP PRON	advmod
+1	și anume	CONJ ADV	advmod
+1	și anume	CONJ ADV	mark
+1	și așa	ADV ADV	advmod
+1	și așa mai departe	CONJ ADV ADV ADV	advmod
+1	și așa mai departe	CONJ ADV ADV ADV	conj
+2	și totuși	CONJ ADV	advmod
+2	și totuși	CONJ ADV	cc
+1	ții minte	VERB NOUN	ccomp
+1	ții minte	VERB NOUN	ccomp:pmod
+1	ții minte	VERB NOUN	csubj
+1	ține cont	VERB NOUN	nmod
+1	ținea minte	VERB NOUN	conj
+1	țineam minte	VERB NOUN	conj
+1	ținu o	VERB PRON	acl
+1	ținute în seamă	VERB ADP NOUN	csubj
+2	ținând cont	VERB NOUN	advcl
+1	ținând cont	VERB NOUN	nmod
+4	ținând seama	VERB NOUN	advcl
+1	țină cont	VERB NOUN	advcl
+1	țină cont	VERB NOUN	csubj
+1	țină isonul	VERB NOUN	ccomp

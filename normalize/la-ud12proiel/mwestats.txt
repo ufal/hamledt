@@ -1,0 +1,2 @@
+3	ex quo	SCONJ PRON	mark
+4	si quod	SCONJ PRON	mark

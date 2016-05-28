@@ -1,0 +1,15 @@
+1	إِلَى مَا	ADP PRON	case
+1	اننا اننا	X X	mark
+1	بَينَمَا لَم	CONJ PART	mark
+18	بِ اَلإِضَافَةِ	ADP NOUN	case
+6	بِ اَلرَّغمِ	ADP NOUN	case
+1	بِ اَلرَّغمِ	ADP NOUN	mark
+10	بِ اَلقُربِ	ADP NOUN	case
+1	بِ اَلمُقَارَنَةِ	ADP NOUN	case
+1	بِ اَلنَّظَرِ	ADP NOUN	case
+49	بِ اَلنِّسبَةِ	ADP NOUN	case
+1	بِ شَأنِ	ADP NOUN	case
+1	رَغمَ أَنَّ	ADP CONJ	case
+14	عَلَى اَلرَّغمِ	ADP NOUN	case
+1	عَلَى اَلرَّغمِ	ADP NOUN	mark
+2	عَلَى مَقرَبَةٍ	ADP NOUN	case

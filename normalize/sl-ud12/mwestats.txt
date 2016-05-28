@@ -1,0 +1,93 @@
+1	a priori	ADV ADV	advmod
+1	a vendar	CONJ CONJ	cc
+1	ad hoc	ADV ADV	advmod
+6	ampak tudi	CONJ PART	cc
+1	bog ve kako	NOUN VERB ADV	nmod
+1	d. d.	X X	nmod
+3	d. o. o.	X X X	nmod
+1	hočeš nočeš	VERB VERB	advcl
+1	in tako dalje	CONJ ADV ADV	root
+1	in vendar	CONJ CONJ	cc
+1	kadar koli	SCONJ PART	advmod
+1	kadar koli	SCONJ PART	mark
+1	kadar koli	SCONJ PART	nmod
+1	kaj šele	ADV PART	advmod
+11	kakor da	SCONJ SCONJ	mark
+1	kakršen koli	DET PART	det
+1	kakršno koli	DET PART	det
+1	kar se da	ADV PRON VERB	advmod
+2	kateri koli	DET PART	det
+1	katero koli	DET PART	det
+1	kdo ve kako	PRON VERB ADV	nmod
+1	kdor koli	PRON PART	conj
+1	kdove kakšnih	ADV PRON	advmod
+3	kljub temu da	ADP PRON SCONJ	mark
+1	ko da	SCONJ SCONJ	mark
+1	ko dab	SCONJ X	mark
+1	kogar koli	PRON PART	dobj
+1	komaj da	ADV SCONJ	advmod
+27	kot da	SCONJ SCONJ	mark
+8	kot če	SCONJ SCONJ	mark
+1	l. r.	X X	root
+4	le da	PART SCONJ	mark
+1	manj kakor	DET SCONJ	det
+2	manj kot	DET SCONJ	det
+2	marveč tudi	CONJ PART	cc
+29	medtem ko	ADV SCONJ	mark
+16	na primer	ADP NOUN	nmod
+3	namesto da	ADP SCONJ	mark
+25	ne da	PART SCONJ	mark
+1	ne dolgo	PART ADV	advmod
+5	ne glede	PART ADV	advmod
+2	ne le	PART PART	advmod
+6	ne le	PART PART	cc:preconj
+1	ne le	PART PART	mark
+1	ne nazadnje	PART ADV	advmod
+2	ne pa	PART CONJ	cc
+2	ne pa	PART CONJ	mark
+4	ne samo	PART PART	cc:preconj
+1	o. k.	X X	nmod
+1	pa vendar	CONJ ADV	cc
+1	pa vendar	CONJ CONJ	advmod
+4	pa vendar	CONJ CONJ	cc
+3	pač pa	PART CONJ	mark
+22	potem ko	ADV SCONJ	mark
+1	redko katera	ADV PRON	advmod
+1	redko kdo	ADV PRON	nsubj
+1	res da	ADV SCONJ	advmod
+2	s tem da	ADP PRON SCONJ	mark
+1	samo da	PART SCONJ	mark
+2	sedaj ko	ADV SCONJ	mark
+5	t. i.	X X	amod
+3	t. i.	X X	nmod
+1	t. j.	X X	advmod
+24	tako da	ADV SCONJ	mark
+13	tako da	CONJ SCONJ	cc
+10	tako da	CONJ SCONJ	cc:preconj
+5	tako imenovana	ADV ADJ	advmod
+1	tako imenovane	ADV ADJ	advmod
+2	tako imenovanega	ADV ADJ	advmod
+2	tako imenovanem	ADV ADJ	advmod
+2	tako imenovani	ADV ADJ	advmod
+2	tako imenovanih	ADV ADJ	advmod
+2	tako imenovanimi	ADV ADJ	advmod
+2	tako imenovano	ADV ADJ	advmod
+7	tako kot	ADV SCONJ	mark
+1	tako kot da	ADV SCONJ SCONJ	mark
+6	tako rekoč	ADV ADV	advmod
+1	takoj ko	ADV SCONJ	mark
+8	takrat ko	ADV SCONJ	mark
+10	temveč tudi	CONJ PART	cc
+2	več kakor	DET SCONJ	det
+5	več kot	ADV SCONJ	advmod
+43	več kot	DET SCONJ	det
+6	zato da	ADV SCONJ	mark
+2	zato da	CONJ SCONJ	cc
+14	zato ker	ADV SCONJ	mark
+3	zdaj ko	ADV SCONJ	mark
+4	češ da	PART SCONJ	mark
+1	čim dalje	ADV ADV	advmod
+3	še posebno	PART ADV	advmod
+12	še preden	PART SCONJ	mark
+5	šele ko	PART SCONJ	mark
+2	že ko	PART SCONJ	mark

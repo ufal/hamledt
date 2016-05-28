@@ -1,0 +1,691 @@
+1	-ce qu'	PRON PRON	expl
+1	-ce qu'	PRON SCONJ	expl
+1	-ce que	PRON SCONJ	expl
+2	-ce qui	PRON PRON	expl
+1	a chaque fois qu'	ADP DET NOUN SCONJ	mark
+1	a force de	ADP NOUN ADP	case
+1	a lieu	VERB NOUN	root
+1	a minima	ADP ADV	advmod
+1	a priori	ADP ADV	advmod
+1	a titre d'	ADP NOUN ADP	case
+1	a vrai dire	ADP NOUN VERB	advmod
+37	afin d'	ADV ADP	mark
+66	afin de	ADV ADP	mark
+5	afin qu'	ADV SCONJ	mark
+5	afin que	ADV SCONJ	mark
+1	afrique de le sud	PROPN ADP DET NOUN	nmod
+1	ah bon	INTJ ADJ	discourse
+1	ai du mal	VERB DET NOUN	root
+1	ainsi de suite	ADV ADP NOUN	conj
+33	ainsi qu'	ADV SCONJ	cc
+1	ainsi qu'	SCONJ SCONJ	cc
+5	ainsi que	ADV SCONJ	advmod
+119	ainsi que	ADV SCONJ	cc
+1	ainsi que	ADV SCONJ	mark
+1	ainsi que	SCONJ SCONJ	case
+42	alors qu'	ADV SCONJ	mark
+1	alors que	ADV SCONJ	advmod
+80	alors que	ADV SCONJ	mark
+1	après qu'	ADP SCONJ	mark
+2	après qu'	ADV SCONJ	mark
+1	après que	ADP SCONJ	conj
+4	après que	ADP SCONJ	mark
+4	après que	ADV SCONJ	mark
+1	après tout	ADV ADV	advmod
+4	assez de	ADV ADP	det
+2	au-delà d'	ADV ADP	case
+1	au-delà de	ADV ADP	advmod
+13	au-delà de	ADV ADP	case
+1	au-dessous de	ADP ADP	case
+24	au-dessus de	ADP ADP	case
+2	au-dessus de	ADV ADP	case
+2	auprès d'	ADP ADP	case
+1	auprès d'	ADV ADP	case
+14	auprès de	ADP ADP	case
+32	auprès de	ADV ADP	case
+1	aura lieu	VERB NOUN	acl:relcl
+1	auront lieu	VERB NOUN	root
+2	aussi bien	ADV ADV	cc
+1	autant d'	ADV ADP	det
+1	autant d'	ADV DET	advmod
+1	autant de	ADV ADP	advmod
+7	autant de	ADV ADP	det
+1	autant de	ADV DET	advmod
+1	autant qu'	ADV SCONJ	cc
+1	autant que	ADV SCONJ	cc
+2	autour d'	ADP ADP	case
+10	autour d'	ADV ADP	case
+1	autour d'	ADV ADP	conj
+8	autour de	ADP ADP	case
+1	autour de	ADV ADP	advmod
+42	autour de	ADV ADP	case
+1	autre que	ADJ SCONJ	case
+2	autrement dit	ADV VERB	advmod
+1	avais envie	VERB NOUN	root
+2	avant d'	ADP ADP	case
+5	avant d'	ADP ADP	mark
+3	avant d'	ADV ADP	case
+24	avant d'	ADV ADP	mark
+3	avant de	ADP ADP	case
+7	avant de	ADP ADP	mark
+44	avant de	ADV ADP	mark
+2	avant qu'	ADP SCONJ	mark
+4	avant qu'	ADV SCONJ	mark
+6	avant que	ADP SCONJ	mark
+8	avant que	ADV SCONJ	mark
+1	avant tout	ADP ADV	advmod
+1	avant tout	ADP PRON	advmod
+1	avec certitude	ADP NOUN	advmod
+1	avec pour	ADP ADP	case
+1	avoir accès	VERB NOUN	root
+1	ayant peur	VERB NOUN	acl
+12	beaucoup d'	ADV ADP	det
+3	beaucoup de	ADV ADP	advmod
+37	beaucoup de	ADV ADP	det
+1	beaucoup de	ADV ADP	mark
+3	beaucoup de	ADV DET	det
+1	bel et bien	ADJ CONJ ADV	advmod
+3	bel et bien	ADV CONJ ADV	advmod
+6	bien d'	ADV ADP	det
+1	bien de	ADV ADP	det
+2	bien entendu	ADV VERB	advmod
+31	bien qu'	ADV SCONJ	mark
+5	bien que	ADV SCONJ	advmod
+2	bien que	ADV SCONJ	cc
+37	bien que	ADV SCONJ	mark
+1	bien sur	ADV ADP	advmod
+5	bien sûr	ADV ADJ	advmod
+1	bien sûr	ADV ADJ	conj
+4	bien sûr	ADV ADV	advmod
+1	bon enfant	ADJ ADJ	conj
+2	ce qu'	SCONJ SCONJ	mark
+10	ce qui	PRON PRON	nsubj
+1	chercher quelqu'un	VERB PRON	acl
+1	combien de	ADV ADP	det
+1	comme de	ADP ADP	case
+1	comme pour	ADV ADP	case
+1	comme pour	SCONJ ADP	mark
+1	comme s'	SCONJ SCONJ	mark
+2	comme si	SCONJ SCONJ	mark
+1	compte rendu	NOUN NOUN	nmod
+1	compte rendu	NOUN VERB	root
+1	compte tenu de	NOUN ADJ ADP	case
+2	compte tenu de	NOUN VERB ADP	case
+1	compte tenu que	NOUN VERB SCONJ	mark
+1	compte-tenu de	VERB ADP	case
+1	conformément à	ADV ADP	case
+1	conformément à	ADV ADP	conj
+2	contrairement à	ADV ADP	case
+1	contre mauvaise fortune bon coeur	ADP ADJ NOUN ADJ NOUN	dobj
+1	d autant plus qu	ADP ADV ADV SCONJ	mark
+3	d' abord	ADP NOUN	advmod
+20	d' ailleurs	ADP ADV	advmod
+8	d' après	ADP ADP	case
+2	d' après	ADP ADV	case
+1	d' après	ADP ADV	root
+5	d' autant plus	ADP ADV ADV	advmod
+1	d' autant plus que	ADP ADV ADV SCONJ	mark
+1	d' autant plus que	ADP SCONJ ADV SCONJ	mark
+1	d' autant qu'	ADP ADV SCONJ	mark
+3	d' autant que	ADP ADV SCONJ	mark
+1	d' avance	ADP NOUN	advmod
+1	d' emblée	ADP ADV	advmod
+2	d' emblée	ADP NOUN	advmod
+3	d' entre	ADP ADP	case
+1	d' entres	ADP ADP	case
+1	d' ici	ADP ADV	advmod
+1	d' ici	ADP ADV	case
+2	d' ores et déjà	ADP ADV CONJ ADV	advmod
+1	d' un côté	ADP DET NOUN	advmod
+1	dans la mesure où	ADP DET NOUN PRON	mark
+1	dans le but d'	ADP DET NOUN ADP	case
+1	dans le but d'	ADP DET NOUN ADP	mark
+1	dans le but de	ADP DET NOUN ADP	mark
+1	dans le cas où	ADP DET NOUN PRON	mark
+1	davantage d'	ADV ADP	det
+1	davantage de	ADV DET	advmod
+1	de ce fait	ADP PRON NOUN	advmod
+1	de concert	DET NOUN	advmod
+1	de facto	ADP NOUN	advmod
+1	de facto	ADP NOUN	conj
+3	de fait	ADP NOUN	advmod
+1	de façon à ce que	ADP NOUN ADP PRON SCONJ	mark
+2	de jour en jour	ADP NOUN ADP NOUN	advmod
+1	de l' autre	ADP DET NOUN	advmod
+2	de la part de	ADP DET NOUN ADP	case
+2	de le côté de	ADP DET NOUN ADP	case
+1	de le fait de	ADP DET NOUN ADP	case
+1	de le haut de	ADP DET NOUN ADP	case
+1	de le même coup	ADP DET ADV NOUN	advmod
+1	de le point de	ADP DET NOUN ADP	case
+1	de le reste	ADP DET NOUN	advmod
+1	de le tout	ADP DET ADV	advmod
+8	de le tout	ADP DET PRON	advmod
+1	de manière à	ADP NOUN ADP	mark
+2	de mine	ADP NOUN	advmod
+3	de même	ADP ADV	advmod
+1	de même	ADP ADV	mark
+1	de même qu'	ADP ADV SCONJ	cc
+1	de même que	ADP ADV SCONJ	case
+1	de même que	ADP ADV SCONJ	cc
+3	de nouveau	ADP ADJ	advmod
+7	de par	ADP ADP	case
+1	de par	ADP ADP	mark
+1	de part et d' autre de	ADP NOUN CONJ ADP ADJ ADP	case
+1	de peu	ADP ADV	advmod
+16	de plus	ADP ADV	advmod
+17	de plus en plus	ADP ADV ADP ADV	advmod
+2	de plus en plus de	ADP ADV ADP ADV ADP	det
+1	de sitôt	ADP ADV	advmod
+2	de sorte que	ADP NOUN SCONJ	mark
+1	de surcroît	ADP NOUN	advmod
+1	de temps en	ADP NOUN ADP	advmod
+1	de temps en temps	ADP NOUN ADP NOUN	advmod
+1	de toute façon	ADP DET NOUN	advmod
+1	de toutes façons	ADP DET NOUN	advmod
+1	de toutes manières	ADP DET NOUN	advmod
+1	de toutes parts	ADP DET NOUN	advmod
+1	depuis qu'	ADP SCONJ	mark
+1	depuis qu'	ADV SCONJ	mark
+5	depuis que	ADP SCONJ	mark
+2	depuis que	ADV SCONJ	mark
+1	deux -là	NUM PART	nsubj
+1	donnait le jour	VERB DET NOUN	root
+1	donne lieu	VERB NOUN	acl:relcl
+2	dès lors	ADP ADV	advmod
+1	dès lors qu'	ADP ADV SCONJ	mark
+2	dès lors que	ADP ADV SCONJ	mark
+1	dès maintenant	ADP ADV	advmod
+4	dès qu'	ADP SCONJ	mark
+10	dès que	ADP SCONJ	mark
+1	dès que possible	ADP SCONJ ADJ	advmod
+1	en aucune manière	ADP DET NOUN	conj
+1	en avant de	ADP ADV ADP	case
+1	en avez marre	PRON VERB ADV	conj
+1	en bas	ADP NOUN	nmod
+1	en bas de	ADP NOUN ADP	case
+1	en cas d'	ADP NOUN ADP	case
+4	en cas de	ADP NOUN ADP	case
+1	en ce moment	ADP DET NOUN	advmod
+1	en ce qui concerne	ADP PRON PRON VERB	case
+1	en cours	ADP NOUN	advmod
+1	en cours	ADP NOUN	amod
+2	en cours de	ADP NOUN ADP	case
+1	en dehors de	ADP NOUN ADP	case
+1	en dessous de	ADP NOUN ADP	case
+1	en deçà de	ADP ADV ADP	case
+3	en dépit de	ADP NOUN ADP	case
+16	en effet	ADP NOUN	advmod
+1	en effet	ADP NOUN	mark
+1	en face de	ADP NOUN ADP	case
+7	en fait	ADP NOUN	advmod
+2	en faveur de	ADP NOUN ADP	case
+1	en gros	ADP NOUN	advmod
+1	en général	ADP ADJ	advmod
+1	en général	ADP ADV	advmod
+21	en général	ADP NOUN	advmod
+1	en haut	ADP NOUN	nmod
+2	en l' occurrence	ADP DET NOUN	advmod
+1	en masse	ADP NOUN	advmod
+2	en matière d'	ADP NOUN ADP	case
+5	en matière de	ADP NOUN ADP	case
+1	en mesure	ADP VERB	acl:relcl
+1	en mesure d'	ADP NOUN ADP	acl:relcl
+2	en mesure de	ADP NOUN ADP	case
+1	en moyenne	ADP NOUN	advmod
+2	en même temps	ADP ADJ NOUN	advmod
+11	en outre	ADP ADV	advmod
+14	en particulier	ADP ADJ	advmod
+1	en particulier	ADP ADV	advmod
+26	en particulier	ADP NOUN	advmod
+1	en peu de temps	ADP ADV ADP NOUN	advmod
+13	en plus	ADP ADV	advmod
+1	en plus	PRON ADV	advmod
+1	en plus d'	ADP ADV ADP	case
+1	en plus d'	ADP ADV ADP	mark
+1	en plus de	ADP ADV ADP	advmod
+9	en plus de	ADP ADV ADP	case
+1	en plus de	ADP ADV ADP	mark
+2	en priorité	ADP NOUN	advmod
+1	en provenance d'	ADP NOUN ADP	case
+1	en qualité de	ADP NOUN ADP	case
+1	en raison	ADP NOUN	case
+1	en raison d'	ADP NOUN ADP	case
+8	en raison de	ADP NOUN ADP	case
+3	en revanche	ADP NOUN	advmod
+1	en revanche	ADP NOUN	mark
+2	en référence à	ADP NOUN ADP	case
+1	en somme	ADP NOUN	advmod
+12	en tant qu'	ADP ADV SCONJ	case
+61	en tant que	ADP ADV SCONJ	case
+1	en tant que	ADP ADV SCONJ	mark
+1	en tant que'	ADP ADV ADP	mark
+1	en terme d'	ADP NOUN ADP	case
+1	en tout	ADP NOUN	advmod
+2	en tout	ADP PRON	advmod
+4	en tout cas	ADP DET NOUN	advmod
+1	en train de	ADP NOUN ADP	case
+1	en train de	ADP NOUN ADP	mark
+1	en trombe	ADP NOUN	advmod
+1	en vain	ADP ADJ	conj
+1	en vain	ADP NOUN	advmod
+1	en vertu	ADP NOUN	case
+1	en vertu d'	ADP NOUN ADP	conj
+1	en vertu de	ADP NOUN ADP	case
+1	en vigueur depuis	ADP NOUN ADP	case
+1	en vrai	ADP NOUN	advmod
+1	en vue	ADP NOUN	amod
+3	en vue de	ADP NOUN ADP	case
+1	en vue de	ADP NOUN ADP	mark
+1	en-dessous de	ADP ADP	case
+1	encore que	ADV SCONJ	mark
+3	entre autres	ADP NOUN	advmod
+1	entre autres	ADP PRON	advmod
+1	entre deux	ADP NUM	compound
+1	espérance de vie	NOUN ADP NOUN	nsubj
+1	est en train de	AUX ADP NOUN ADP	aux
+1	et bien	CONJ ADV	advmod
+1	et comme	CONJ SCONJ	mark
+1	et pour cause	CONJ ADP NOUN	cc
+3	et pourtant	CONJ ADV	advmod
+1	et pourtant	CONJ ADV	mark
+1	et puis	CONJ ADV	advmod
+1	et qu'	CONJ ADV	cc
+1	eu affaire	VERB NOUN	acl:relcl
+1	eu lieu	VERB NOUN	root
+1	ex officio	ADP NOUN	advmod
+1	excepté pour	ADP ADP	case
+1	excepté que	ADP SCONJ	mark
+3	face à	ADP ADP	case
+15	face à	NOUN ADP	case
+2	faire appel	VERB NOUN	acl
+1	faire face	VERB NOUN	acl
+1	faire face	VERB NOUN	acl:relcl
+1	faire face	VERB NOUN	advcl
+1	faire preuve	VERB NOUN	xcomp
+1	fais partie	VERB NOUN	advcl
+1	fait appel	VERB NOUN	root
+1	fait partie	VERB NOUN	acl:relcl
+1	fait preuve	VERB NOUN	acl:relcl
+1	fait preuve	VERB NOUN	conj
+1	faite maison	ADJ NOUN	ccomp
+1	faits divers	NOUN ADJ	nmod
+1	faute -là	NOUN PART	dobj
+2	faute de	NOUN ADP	case
+5	fois -ci	NOUN PART	nmod
+1	fonction de	NOUN ADP	case
+1	fusil d'	NOUN ADP	dobj
+1	garde à vue	NOUN ADP NOUN	root
+1	globe trotter	NOUN NOUN	nmod
+1	grace à	NOUN ADP	case
+1	grand mère	ADJ NOUN	nsubj
+1	grande dépression	ADJ NOUN	nmod
+1	grosso modo	ADJ NOUN	advmod
+22	grâce à	NOUN ADP	case
+1	grâce à	NOUN ADP	conj
+1	grâce à	NOUN ADP	root
+1	haut de	ADV ADP	case
+1	haut de gamme	NOUN ADP NOUN	amod
+1	histoire de	NOUN ADP	mark
+1	horresco referens	X X	nmod
+1	hors d'	ADP ADP	case
+6	hors de	ADP ADP	case
+2	hors de	ADV ADP	case
+1	hors pair	ADP NOUN	amod
+1	in extremis	ADP NOUN	advmod
+1	iv ème	NUM NUM	nummod
+1	jeu -ci	NOUN PART	nmod
+1	jour pour jour	NOUN ADP NOUN	advmod
+1	jusqu' à	ADP ADP	advmod
+2	jusqu' à	ADP ADP	case
+2	jusqu' à ce qu'	ADP ADP PRON SCONJ	mark
+3	jusqu' à ce qu'	SCONJ ADP PRON SCONJ	mark
+1	jusqu' à ce que	ADP ADP PRON ADP	mark
+7	jusqu' à ce que	ADP ADP PRON SCONJ	mark
+1	jusqu' à quand	ADP ADP SCONJ	advmod
+1	l' audience	DET NOUN	nmod
+1	la plupart de	DET NOUN ADP	advmod
+2	la plupart de	DET NOUN ADP	det
+2	le long de	DET NOUN ADP	case
+1	le long de	DET NOUN ADP	conj
+1	le plus	DET ADV	advmod
+1	loin d'	ADV ADP	case
+2	loin d'	ADV ADP	mark
+7	loin de	ADV ADP	case
+3	loin de	ADV ADP	mark
+1	longtemps que	ADV SCONJ	mark
+42	lors d'	ADV ADP	case
+246	lors de	ADV ADP	case
+1	lors du	ADV DET	case
+1	low cost	ADJ NOUN	compound
+1	main dans la main	NOUN ADP DET NOUN	conj
+1	main forte	NOUN ADJ	dobj
+1	maintenant qu'	ADV SCONJ	mark
+1	maintenant que	ADV SCONJ	mark
+1	mais alors	CONJ ADV	advmod
+1	mais aussi	CONJ ADV	cc
+1	mais également	CONJ ADV	conj
+1	marquer beaucoup	VERB ADV	acl
+2	mettre d' accord	VERB ADP NOUN	acl
+1	mettre le feu	VERB DET NOUN	acl
+1	mieux à même	ADJ ADP ADV	root
+9	moins d'	ADV ADP	advmod
+1	moins d'	ADV ADP	det
+1	moins d'	ADV DET	conj
+25	moins de	ADV ADP	advmod
+4	moins de	ADV ADP	det
+1	moins en moins de	ADV ADP ADV DET	advmod
+1	moment -là	NOUN PART	nmod
+1	moyens métrages	ADJ NOUN	nmod
+1	même s'	ADV PRON	mark
+1	même s'	ADV SCONJ	mark
+16	même si	ADV SCONJ	mark
+1	n' importe quel	PART VERB ADJ	det
+1	n' importe quelle	PART VERB ADJ	det
+1	n' importe quoi	PART VERB PRON	conj
+1	n' importe quoi	PART VERB PRON	nmod
+1	n' importe quoi	PART VERB PRON	parataxis
+1	nombre d'	NOUN ADP	nmod
+1	nombre de	NOUN ADP	det
+1	nombreuses de	ADJ ADP	det
+1	non moins que	ADV ADV SCONJ	cc
+3	non plus	ADV ADV	advmod
+2	non seulement	ADV ADV	cc
+1	on ne peut plus	PRON PART VERB ADV	advmod
+1	ont beau	VERB ADJ	advcl
+1	ou bien	ADV ADV	advmod
+1	outre des	ADV DET	det
+17	par ailleurs	ADP ADV	advmod
+10	par conséquent	ADP ADJ	advmod
+11	par contre	ADP ADP	advmod
+1	par contre	ADP ADP	mark
+1	par contre	ADP NOUN	advmod
+1	par dessus tout	ADP ADV PRON	advmod
+1	par essence	ADP NOUN	advmod
+5	par exemple	ADP NOUN	advmod
+1	par la suite	ADP DET NOUN	advmod
+1	par le biais d'	ADP DET NOUN ADP	case
+1	par le biais de	ADP DET NOUN ADP	case
+7	par rapport à	ADP NOUN ADP	case
+1	parce qu'	ADV SCONJ	advmod
+24	parce qu'	ADV SCONJ	mark
+1	parce que	ADV SCONJ	advmod
+15	parce que	ADV SCONJ	mark
+1	parmi d'	ADP ADP	case
+1	pas de	ADV ADP	det
+5	pas de	ADV ADP	neg
+5	pas de	ADV DET	neg
+1	pas grand chose	ADV ADJ NOUN	root
+1	pas mal	ADV ADV	advmod
+1	pas mal	ADV ADV	det
+1	pas mal de	ADV NOUN ADP	det
+1	pas moins	ADV ADV	advmod
+1	pas moins de	ADV ADV ADP	advmod
+1	pas moins que	ADV ADV SCONJ	advmod
+2	pendant qu'	ADP SCONJ	mark
+6	pendant que	ADP SCONJ	mark
+1	pendant que	ADV SCONJ	mark
+1	petit déjeuner	ADJ NOUN	dobj
+1	petit à petit	ADJ ADP ADJ	advmod
+3	petit à petit	ADV ADP ADV	advmod
+1	petits déjeuners	ADJ NOUN	conj
+1	peu après	ADV ADP	advmod
+5	peu d'	ADV ADP	det
+4	peu de	ADV ADP	advmod
+1	peu de	ADV ADP	case
+22	peu de	ADV ADP	det
+1	peu de	ADV DET	advcl
+2	peu de	ADV DET	det
+8	peu à peu	ADV ADP ADV	advmod
+1	peut être	VERB VERB	advmod
+1	peut-être qu'	ADV SCONJ	advmod
+2	plein de	ADV ADP	det
+19	plus d'	ADV ADP	advmod
+6	plus d'	ADV ADP	det
+116	plus de	ADV ADP	advmod
+1	plus de	ADV ADP	case
+1	plus de	ADV ADP	conj
+25	plus de	ADV ADP	det
+2	plus de	ADV DET	neg
+1	plus ou moins	ADV CONJ ADV	advmod
+5	plus qu'	ADV SCONJ	advmod
+1	plus qu'	ADV SCONJ	mark
+6	plus que	ADV SCONJ	advmod
+1	plus à	ADV ADP	case
+1	plutôt qu'	ADV SCONJ	cc
+1	plutôt qu'	ADV SCONJ	mark
+1	plutôt que	ADV SCONJ	mark
+2	plutôt que de	ADV SCONJ ADP	mark
+1	porte monnaie	NOUN NOUN	nmod
+5	pour autant	ADP ADV	advmod
+1	pour cause d'	ADP NOUN ADP	case
+1	pour l' heure	ADP DET NOUN	advmod
+2	pour l' instant	ADP DET NOUN	advmod
+1	pour le compte des	ADP DET NOUN DET	case
+1	pour le moment	ADP DET NOUN	advmod
+1	pour preuve	ADP NOUN	advmod
+16	pour qu'	ADP SCONJ	mark
+21	pour que	ADP SCONJ	mark
+1	pour un peu	ADP DET ADV	advmod
+1	pour un temps	ADP DET NOUN	nmod
+1	pour une fois	ADP DET NOUN	advmod
+1	proche de	ADJ ADP	case
+1	proprement parler	ADV VERB	advmod
+6	près d'	ADV ADP	advmod
+3	près d'	ADV ADP	case
+2	près de	ADP ADP	advmod
+7	près de	ADP ADP	case
+39	près de	ADV ADP	advmod
+37	près de	ADV ADP	case
+2	près de	ADV ADP	det
+1	prés de	NOUN ADP	advmod
+1	qu' auparavant	SCONJ ADV	advmod
+1	qu' est -ce	PRON VERB PRON	dobj
+4	quand même	SCONJ ADV	advmod
+41	quant à	ADV ADP	case
+1	quel que	ADJ SCONJ	mark
+1	quelle que	ADJ SCONJ	mark
+1	quelle que	PRON SCONJ	nsubj
+1	quelles que	PRON SCONJ	nsubj
+1	quelque chose	DET NOUN	conj
+1	quelques uns	DET NOUN	root
+1	quitte à	ADJ ADP	case
+2	quitte à	ADJ ADP	mark
+1	ras le bol	NOUN DET NOUN	root
+2	relative à	ADJ ADP	case
+1	rien qu'	PRON SCONJ	advmod
+1	salle à manger	NOUN ADP VERB	nmod
+1	sans cesse	ADP NOUN	advmod
+3	sans doute	ADP NOUN	advmod
+1	sans faute	ADP NOUN	advmod
+4	sans qu'	ADP SCONJ	mark
+1	sans qu'	ADV SCONJ	mark
+2	sans que	ADP SCONJ	mark
+1	sauf dans	ADP ADP	case
+1	savoir que	VERB SCONJ	cc
+1	si besoin	SCONJ NOUN	advmod
+1	si bien qu'	ADV ADV SCONJ	mark
+1	si bien que	ADV ADV SCONJ	mark
+1	si ce n' est	SCONJ PRON PART VERB	case
+1	si jamais	SCONJ ADV	mark
+1	si nécessaire	SCONJ ADJ	advmod
+1	sont en train d'	AUX ADP NOUN ADP	aux
+1	sous marin	NOUN NOUN	nmod
+1	sous prétexte qu'	ADP NOUN SCONJ	mark
+1	statu quo	NOUN X	dobj
+1	statu quo	X X	dobj
+2	suffisamment de	ADV ADP	det
+17	suite à	NOUN ADP	case
+1	supérieur à	ADJ ADP	advmod
+1	sur le champ	ADP DET NOUN	advmod
+1	surtout que	ADV SCONJ	advmod
+5	tandis qu'	ADV SCONJ	mark
+56	tandis que	ADV SCONJ	mark
+1	tant d'	ADV ADP	det
+1	tant de	ADV ADP	det
+3	tant qu'	ADV SCONJ	mark
+5	tant que	ADV SCONJ	mark
+1	tel qu'	ADJ ADP	case
+1	tel qu'	ADJ SCONJ	case
+1	tel qu'izu	ADJ PROPN	case
+3	tel que	ADJ SCONJ	case
+2	tel que	ADJ SCONJ	mark
+4	telle qu'	ADJ SCONJ	mark
+1	telle que	ADJ ADV	case
+12	telles que	ADJ SCONJ	case
+1	telles que	ADJ SCONJ	conj
+1	telles quelles	ADJ PRON	advmod
+2	tels que	ADJ ADP	case
+19	tels que	ADJ SCONJ	case
+1	tenant compte	VERB NOUN	advcl
+1	tenir compte	VERB NOUN	advcl
+1	tenir compte	VERB NOUN	ccomp
+1	tous niveaux	DET NOUN	compound
+1	tout autant qu'	ADV ADV SCONJ	advmod
+1	tout casser	PRON VERB	advmod
+2	tout comme	ADV ADP	case
+1	tout d' abord	ADV ADP NOUN	advmod
+1	tout de le long	ADV ADP DET NOUN	advmod
+1	tout de même	ADV ADP ADJ	advmod
+8	tout de même	ADV ADP ADV	advmod
+3	tout de même	ADV ADP ADV	mark
+1	tout de même	PRON ADP ADV	advmod
+1	tout de même	PRON ADP ADV	conj
+1	tout de suite	ADV ADP NOUN	mark
+1	tout de suite	PRON ADP NOUN	advmod
+1	tout droit	ADV ADJ	advmod
+17	tout en	ADV ADP	mark
+1	tout juste	ADV ADV	advmod
+1	tout le monde	DET DET NOUN	dobj
+1	tout le monde	DET DET NOUN	nmod
+2	tout le monde	DET DET NOUN	nsubj
+1	tout le monde	PRON DET NOUN	nsubj
+3	tout simplement	ADV ADV	advmod
+6	tout à fait	ADV ADP NOUN	advmod
+2	tout à le long de	ADV ADP DET NOUN ADP	case
+1	tout à le mieux	NOUN ADP DET NOUN	advmod
+1	trop d'	ADV ADP	det
+2	trop de	ADV ADP	det
+1	tête à tête	NOUN ADP NOUN	nmod
+1	un grand nombre de	DET ADJ NOUN ADP	det
+34	un peu	DET ADV	advmod
+1	un peu	DET NOUN	advmod
+3	un peu de	DET ADV ADP	det
+1	un peu de	DET ADV DET	det
+1	un peu de	DET PRON ADP	det
+1	une fois de plus	DET NOUN ADP ADV	advmod
+1	une fois qu'	DET NOUN SCONJ	mark
+2	viens de	AUX ADP	aux
+1	vient d'	AUX ADP	aux
+1	vient de	AUX ADP	aux
+12	vis-à-vis de	NOUN ADP	case
+1	voix -là	NOUN ADV	nsubj
+1	vu que	VERB SCONJ	mark
+1	vue d'	NOUN ADP	case
+1	y compris	PRON ADV	advmod
+1	y compris	PRON SCONJ	cc
+1	à base d'	ADP NOUN ADP	case
+1	à bien	ADP ADV	advmod
+1	à bord d'	ADP NOUN ADP	case
+1	à cause d'	ADP NOUN ADP	case
+4	à cause de	ADP NOUN ADP	case
+1	à ce jour	ADP DET NOUN	advmod
+1	à ce point	ADP DET NOUN	advmod
+3	à ce qu'	ADP PRON SCONJ	mark
+3	à ce que	ADP PRON SCONJ	mark
+1	à cet effet	ADP DET NOUN	advmod
+1	à chaque fois	ADP DET NOUN	advmod
+1	à chaque fois que	ADP DET NOUN SCONJ	mark
+1	à compter de	ADP VERB ADP	case
+1	à condition qu'	ADP NOUN SCONJ	mark
+4	à coté de	ADP NOUN ADP	case
+1	à coup de	ADP NOUN ADP	case
+2	à côté de	ADP NOUN ADP	case
+1	à fond	ADP NOUN	advmod
+2	à hauteur de	ADP NOUN ADP	case
+1	à juste titre	ADP ADJ NOUN	advmod
+2	à l' instar de	ADP DET NOUN ADP	case
+2	à l' issue de	ADP DET NOUN ADP	case
+1	à l' occasion de	ADP DET NOUN ADP	case
+1	à la faveur d'	ADP DET NOUN ADP	case
+1	à la faveur de	ADP DET NOUN ADP	case
+6	à la fois	ADP DET NOUN	advmod
+3	à la fois	ADP DET NOUN	cc
+1	à la lettre	ADP DET NOUN	advmod
+1	à la mode	ADP DET NOUN	amod
+1	à la suite de	ADP DET NOUN ADP	case
+1	à le bas mot	ADP DET ADJ NOUN	advmod
+4	à le bout de	ADP DET NOUN ADP	case
+2	à le contraire	ADP DET NOUN	advmod
+1	à le cours d'	ADP DET NOUN ADP	case
+6	à le cours de	ADP DET NOUN ADP	case
+1	à le cœur d'	ADP DET NOUN ADP	case
+1	à le delà	ADP DET ADV	advmod
+1	à le delà de	ADP DET ADV ADP	case
+1	à le demeurant	ADP DET VERB	advmod
+2	à le dessus de	ADP DET NOUN ADP	case
+2	à le final	ADP DET NOUN	advmod
+1	à le fond	ADP DET NOUN	advmod
+1	à le jour le jour	ADP DET NOUN DET NOUN	mark
+1	à le large de	ADP DET NOUN ADP	case
+1	à le lieu de	ADP DET NOUN ADP	case
+1	à le lieu de	ADP DET NOUN ADP	mark
+1	à le maximum	ADP DET NOUN	advmod
+1	à le milieu de	ADP DET NOUN ADP	dobj
+14	à le moins	ADP DET ADV	advmod
+1	à le moyen de	ADP DET ADJ ADP	case
+5	à le niveau de	ADP DET NOUN ADP	case
+1	à le pied de	ADP DET NOUN ADP	case
+1	à le plus fort de	ADP DET ADV ADJ ADP	case
+1	à le plus fort de	ADP DET ADV ADV ADP	case
+1	à le plus près	ADP DET ADV ADV	advmod
+1	à le prix de	ADP DET NOUN ADP	case
+1	à le profit d'	ADP DET NOUN ADP	case
+2	à le regard de	ADP DET NOUN ADP	case
+1	à le revoir	ADP DET VERB	conj
+1	à le revoir	ADP DET VERB	nmod
+9	à le sein de	ADP DET NOUN ADP	case
+2	à le sortir d'	ADP DET NOUN ADP	case
+1	à le sujet de	ADP DET NOUN ADP	case
+1	à le terme d'	ADP DET NOUN ADP	case
+2	à le titre de	ADP DET NOUN ADP	case
+1	à le total	ADP DET NOUN	advmod
+1	à le travers d'	ADP DET NOUN ADP	case
+1	à le travers de	ADP DET NOUN ADP	case
+2	à le vu de	ADP DET VERB ADP	case
+2	à le vu des	ADP DET NOUN DET	case
+1	à les côtés de	ADP DET NOUN ADP	case
+1	à les dépens de	ADP DET NOUN ADP	case
+1	à merveille	ADP NOUN	advmod
+1	à mesure que	ADP NOUN SCONJ	mark
+1	à moins d'	ADP ADV ADP	mark
+1	à moins qu'	ADP ADV SCONJ	mark
+2	à moins que	ADP ADV SCONJ	mark
+1	à moitié	ADP NOUN	advmod
+2	à moitié	ADP NOUN	nmod
+2	à même	ADP ADV	case
+23	à nouveau	ADP ADJ	advmod
+1	à nouveau	ADP ADJ	mark
+3	à nouveau	ADP NOUN	advmod
+2	à part	ADP NOUN	case
+1	à partir	ADP VERB	case
+9	à partir d'	ADP VERB ADP	case
+83	à partir de	ADP VERB ADP	case
+1	à partir de le moment où	ADP VERB ADP DET NOUN PRON	mark
+1	à peine	ADP NOUN	advmod
+2	à propos d'	ADP NOUN ADP	case
+1	à propos de	ADP NOUN ADP	case
+1	à proximité	ADP NOUN	advmod
+2	à proximité de	ADP NOUN ADP	case
+1	à présent	ADP ADJ	advmod
+1	à présent	ADP NOUN	advmod
+1	à raison de	ADP NOUN ADP	case
+1	à revers	ADP NOUN	advmod
+1	à titre d'	ADP NOUN ADP	case
+1	à titre de	ADP NOUN ADP	case
+2	à tort	ADP NOUN	advmod
+1	à tout prix	ADP DET NOUN	advmod
+1	à toute force	ADP DET NOUN	advmod
+1	à toute vitesse	ADP DET NOUN	advmod
+28	à travers	ADP NOUN	case
+2	étant donné	AUX VERB	case
