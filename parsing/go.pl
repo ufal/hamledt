@@ -414,7 +414,42 @@ sub create_conll_training_data
 {
     my $treebank = shift;
     # If we work with machine-tagged data, the input files are CoNLL-U and we do not use the cluster.
+    ###!!! Ale musíme zajistit, že budou vypadat stejně jako ta, která při parsingu vyexportuje Treex, tj. XPOS=UPOS a rysy jsou Interset, nikoli Universal Features.
+    ###!!! Takže možná bude lepší je zase protáhnout Treexem.
     if($konfig{milan})
+    {
+        # The ways of identifying treebanks within a language are not compatible.
+        # HamleDT: fi-ud12ftb
+        # UD and Milan: fi_ftb
+        my $udcode = $treebank;
+        if($udcode =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
+        {
+            $udcode = $1;
+            $udcode .= '_'.$2 if(defined($2) && $2 ne '');
+        }
+        print STDERR ("$konfig{datadir}/$udcode/$udcode-ud-train*.conllu\n");
+        my $scriptname = 'create_training_data.sh';
+        open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
+        print SCR ("treex ");
+        my $language = $treebank;
+        $language =~ s/-.*//;
+        print SCR ("Util::SetGlobal language=$language ");
+        print SCR ("Read::CoNLLU from='!$konfig{datadir}/$udcode/$udcode-ud-train*.conllu' ");
+        # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
+        my $writeparam = get_conll_block_parameters();
+        print SCR ("Write::CoNLLX $writeparam ");
+        print SCR ("> train.conll\n");
+        # Prepare a delexicalized training file for experiments with delexicalized parsing.
+        my $fc = get_fc();
+        print SCR ("$konfig{toolsdir}/conll_delexicalize.pl --keep-features=$fc < train.conll > train.delex.conll\n");
+        # Prepare a modified form that can be used by the MST Parser.
+        print SCR ("$scriptdir/conll2mst.pl < train.conll > train.mst\n");
+        close(SCR);
+        chmod(0755, $scriptname) or die("Cannot chmod $scriptname: $!\n");
+        # Send the job to the cluster. It will itself spawn additional cluster jobs (via treex -p) but we do not want to wait here until they're all done.
+        return cluster::qsub('priority' => -200, 'memory' => '1G', 'script' => $scriptname);
+    }
+    elsif(0) ###!!! Předchozí verze přípravy Milanových dat.
     {
         # The ways of identifying treebanks within a language are not compatible.
         # HamleDT: fi-ud12ftb
