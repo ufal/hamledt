@@ -101,7 +101,7 @@ sub get_action
     }
     elsif($action_name eq 'preparse')
     {
-        $action = \&convert_milans_ud_to_treex;
+        $action = \&convert_ud_to_treex;
     }
     elsif($action_name eq 'parse')
     {
@@ -599,38 +599,40 @@ sub train
 #------------------------------------------------------------------------------
 # Converts CoNLL-U to Treex. Used to prepare test data tagged by Milan Straka.
 #------------------------------------------------------------------------------
-sub convert_milans_ud_to_treex
+sub convert_ud_to_treex
 {
-    my $treebank = shift;
-    # Calling this function only makes sense if $konfig{milan} is set.
+    # Calling this function only makes sense if $konfig{milan} or $konfig{delta} is set.
     # If we are working with machine-assigned morphology by Milan Straka, the input files are not in HamleDT and their format is CoNLL-U.
+    # If we are working with tags assigned by the delexicalized tagger, the input files are not in HamleDT and their format is CoNLL-X.
     if($konfig{milan})
     {
-        my $language = $treebank;
-        $language =~ s/-.*//;
-        # The ways of identifying treebanks within a language are not compatible.
-        # HamleDT: fi-ud12ftb
-        # UD and Milan: fi_ftb
-        my $udcode = $treebank;
-        if($udcode =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
-        {
-            $udcode = $1;
-            $udcode .= '_'.$2 if(defined($2) && $2 ne '');
-        }
-        my $scriptname = "ud2trx-$treebank.sh";
+        my $scriptname = "ud2trx-$current{treebank}.sh";
         my $memory = '1G';
         print STDERR ("Creating script $scriptname.\n");
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
         print SCR ("#!/bin/bash\n\n");
         print SCR ("rm -rf testdata\n");
         print SCR ("mkdir -p testdata\n");
-        print SCR ("treex -L$language Read::CoNLLU from='$konfig{datadir}/$udcode/$udcode-ud-test.conllu' lines_per_doc=100 Write::Treex path=testdata file_stem='' compress=1\n");
+        print SCR ("treex -L$current{language} Read::CoNLLU from='$konfig{datadir}/$current{udcode}/$current{udcode}-ud-test.conllu' lines_per_doc=100 Write::Treex path=testdata file_stem='' compress=1\n");
         close(SCR);
         cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname);
     }
+    elsif($konfig{delta})
+    {
+        my $scriptname = "ud2trx-$current{treebank}.sh";
+        my $memory = '1G';
+        print STDERR ("Creating script $scriptname.\n");
+        open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
+        print SCR ("#!/bin/bash\n\n");
+        print SCR ("rm -rf testdata\n");
+        print SCR ("mkdir -p testdata\n");
+        print SCR ("treex -L$current{language} Read::CoNLLX from='$konfig{datadir}/$current{udcode}/dtest/c7-delex.conll' lines_per_doc=100 Write::Treex path=testdata file_stem='' compress=1\n");
+        close(SCR);
+        cluster::qsub('priority' => 0, 'memory' => $memory, 'script' => $scriptname);
+    }
     else
     {
-        die('Action preparse requires --milan');
+        die('Action preparse requires --milan or --delta');
     }
 }
 
