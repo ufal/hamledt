@@ -436,7 +436,7 @@ sub create_conll_training_data
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
         print SCR ("treex ");
         print SCR ("Util::SetGlobal language=$current{language} ");
-        print SCR ("Read::CoNLLU from='!$inputfiles' ");
+        print SCR ("Read::CoNLLU from='!$inputfiles' lines_per_doc=50 ");
         # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
         my $writeparam = get_conll_block_parameters();
         print SCR ("Write::CoNLLX $writeparam ");
@@ -460,7 +460,7 @@ sub create_conll_training_data
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
         print SCR ("treex ");
         print SCR ("Util::SetGlobal language=$current{language} ");
-        print SCR ("Read::CoNLLX from='!$inputfiles' ");
+        print SCR ("Read::CoNLLX from='!$inputfiles' lines_per_doc=50 ");
         # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
         my $writeparam = get_conll_block_parameters();
         print SCR ("Write::CoNLLX $writeparam ");
