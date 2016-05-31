@@ -14,6 +14,8 @@ sub usage
     print STDERR ("\tOptions:\n");
     print STDERR ("\t--wdir folder ... experiment folder.\n");
     print STDERR ("\t--treebanks en,cs,ar ... instead of all treebanks, process only those specified here.\n");
+    print STDERR ("\t--milan ... instead of gold-standard data from HamleDT, take CoNLL-U files with morphology predicted by Milan Straka.\n");
+    print STDERR ("\t--delta ... instead of gold-standard data from HamleDT, take CoNLL-U files with tags predicted by delexicalized tagger.\n");
 }
 
 use utf8;
@@ -33,6 +35,7 @@ use cluster;
 my $wdir; # working folder; typically subfolder of the folder where this script resides
 $konfig{sizes} = '10,20,50,100,200,500,1000,2000,5000'; # default learning curve (number of training sentences)
 $konfig{milan} = 0; # do we want to use the data machine-tagged by Milan Straka?
+$konfig{delta} = 0; # do we want to use the data with tags predicted by the delexicalized tagger?
 GetOptions
 (
     'wdir=s'            => \$wdir,
@@ -40,6 +43,7 @@ GetOptions
     # Each size is a separate experiment in its own folder. Make sure that a model for your sizes exist when you run parsing.
     'sizes=s'           => \$konfig{sizes}, # comma-separated list, e.g. "--sizes 10,20,50,100,200,500,1000,2000,5000,100000
     'milan'             => \$konfig{milan}, # do we want to use the data machine-tagged by Milan Straka?
+    'delta'             => \$konfig{delta}, # do we want to use the data tagged by the delexicalized tagger?
     'help'              => \$konfig{help}
 );
 exit(usage()) if($konfig{help});
@@ -61,6 +65,7 @@ if(!defined($share_dir) || $share_dir eq '')
 # The data is here: /net/work/people/zeman/ud-1.2_tagged-cross/treebank/*-ud-{train,dev,test}.conllu.
 $konfig{datadir} = Treex::Core::Config->share_dir().'/data/resources/hamledt';
 $konfig{datadir} = '/net/work/people/zeman/ud-1.2_tagged-cross' if($konfig{milan});
+$konfig{datadir} = '/net/work/people/zeman/deltacorpus/data/ud' if($konfig{delta});
 $konfig{datadir} =~ s-//-/-;
 print STDERR ("Data folder    = $konfig{datadir}\n");
 my @treebanks = get_treebanks();
@@ -353,7 +358,15 @@ sub loop
     local %current;
     foreach my $treebank (@treebanks)
     {
-        $current{treebank} = $treebank;
+        $current{treebank} = $treebank; # example: fi-ud12ftb
+        $current{language} = $treebank; # example: fi
+        $current{language} =~ s/-.*//;
+        $current{udcode} = $treebank; # example: fi_ftb
+        if($current{udcode} =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
+        {
+            $current{udcode} = $1;
+            $current{udcode} .= '_'.$2 if(defined($2) && $2 ne '');
+        }
         if($konfig{action_name} eq 'pretrain')
         {
             $current{dir} = "$wdir/$treebank";
@@ -412,29 +425,18 @@ sub get_conll_block_parameters
 #------------------------------------------------------------------------------
 sub create_conll_training_data
 {
-    my $treebank = shift;
     # If we work with machine-tagged data, the input files are CoNLL-U and we do not use the cluster.
     ###!!! Ale musíme zajistit, že budou vypadat stejně jako ta, která při parsingu vyexportuje Treex, tj. XPOS=UPOS a rysy jsou Interset, nikoli Universal Features.
     ###!!! Takže možná bude lepší je zase protáhnout Treexem.
     if($konfig{milan})
     {
-        # The ways of identifying treebanks within a language are not compatible.
-        # HamleDT: fi-ud12ftb
-        # UD and Milan: fi_ftb
-        my $udcode = $treebank;
-        if($udcode =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
-        {
-            $udcode = $1;
-            $udcode .= '_'.$2 if(defined($2) && $2 ne '');
-        }
-        print STDERR ("$konfig{datadir}/$udcode/$udcode-ud-train*.conllu\n");
+        my $inputfiles = "$konfig{datadir}/$current{udcode}/$current{udcode}-ud-train*.conllu";
+        print STDERR ("$inputfiles\n");
         my $scriptname = 'create_training_data.sh';
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
         print SCR ("treex ");
-        my $language = $treebank;
-        $language =~ s/-.*//;
-        print SCR ("Util::SetGlobal language=$language ");
-        print SCR ("Read::CoNLLU from='!$konfig{datadir}/$udcode/$udcode-ud-train*.conllu' ");
+        print SCR ("Util::SetGlobal language=$current{language} ");
+        print SCR ("Read::CoNLLU from='!$inputfiles' ");
         # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
         my $writeparam = get_conll_block_parameters();
         print SCR ("Write::CoNLLX $writeparam ");
@@ -449,36 +451,42 @@ sub create_conll_training_data
         # Send the job to the cluster. It will itself spawn additional cluster jobs (via treex -p) but we do not want to wait here until they're all done.
         return cluster::qsub('priority' => -200, 'memory' => '1G', 'script' => $scriptname);
     }
-    elsif(0) ###!!! Předchozí verze přípravy Milanových dat.
+    # Delexikalizovaná data označkovaná Deltaggerem.
+    elsif($konfig{delta})
     {
-        # The ways of identifying treebanks within a language are not compatible.
-        # HamleDT: fi-ud12ftb
-        # UD and Milan: fi_ftb
-        my $udcode = $treebank;
-        if($udcode =~ m/^([a-z]+)-ud\d*([a-z]*)$/)
-        {
-            $udcode = $1;
-            $udcode .= '_'.$2 if(defined($2) && $2 ne '');
-        }
-        print STDERR ("$konfig{datadir}/$udcode/$udcode-ud-train*.conllu\n");
-        system("cat $konfig{datadir}/$udcode/$udcode-ud-train*.conllu | /net/work/people/zeman/unidep/tools/conllu_to_conllx.pl > train.conll");
+        my $inputfiles = "$konfig{datadir}/$current{udcode}/train/c7-delex.conll";
+        print STDERR ("$inputfiles\n");
+        my $scriptname = 'create_training_data.sh';
+        open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
+        print SCR ("treex ");
+        print SCR ("Util::SetGlobal language=$current{language} ");
+        print SCR ("Read::CoNLLX from='!$inputfiles' ");
+        # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
+        my $writeparam = get_conll_block_parameters();
+        print SCR ("Write::CoNLLX $writeparam ");
+        print SCR ("> train.conll\n");
+        # Prepare a delexicalized training file for experiments with delexicalized parsing.
         my $fc = get_fc();
-        system("$konfig{toolsdir}/conll_delexicalize.pl --keep-features=$fc < train.conll > train.delex.conll\n");
-        system("$scriptdir/conll2mst.pl < train.conll > train.mst");
+        print SCR ("$konfig{toolsdir}/conll_delexicalize.pl --keep-features=$fc < train.conll > train.delex.conll\n");
+        # Prepare a modified form that can be used by the MST Parser.
+        print SCR ("$scriptdir/conll2mst.pl < train.conll > train.mst\n");
+        close(SCR);
+        chmod(0755, $scriptname) or die("Cannot chmod $scriptname: $!\n");
+        # Send the job to the cluster. It will itself spawn additional cluster jobs (via treex -p) but we do not want to wait here until they're all done.
+        ###!!! Ondra momentálně pouští na clusteru statisíce úloh, takže se ho pokusíme předběhnout. Jinak by priorita byla -200.
+        return cluster::qsub('priority' => 0, 'memory' => '1G', 'script' => $scriptname);
     }
     # If we work with gold-standard morphology, the input files are Treex and we use the cluster to convert them to CoNLL-X.
     else
     {
-        my $language = $treebank;
-        $language =~ s/-.*//;
         my $scriptname = 'create_training_data.sh';
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
         print SCR ("treex -p -j 20 ");
-        print SCR ("Util::SetGlobal language=$language ");
+        print SCR ("Util::SetGlobal language=$current{language} ");
         # We have to make sure that the (cpos|pos|feat)_attribute is the same for both training and parsing! See below.
         my $writeparam = get_conll_block_parameters();
         print SCR ("Write::CoNLLX $writeparam ");
-        print SCR ("-- $konfig{datadir}/$treebank/treex/02/train/*.treex.gz ");
+        print SCR ("-- $konfig{datadir}/$current{treebank}/treex/02/train/*.treex.gz ");
         print SCR ("> train.conll\n");
         # Prepare a delexicalized training file for experiments with delexicalized parsing.
         my $fc = get_fc();
