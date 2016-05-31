@@ -649,8 +649,9 @@ sub prepare_test_data
     system("rm -rf $testdir");
     system("mkdir -p $testdir");
     # If we are working with machine-assigned morphology by Milan Straka, the input files are not in HamleDT and their format is CoNLL-U.
+    # If we are working with tags predicted by the delexicalized tagger, the input files are not in HamleDT and their format is CoNLL-X.
     # We must have performed the 'preparse' action first, so the data has been converted to Treex and copied to 'testdata'.
-    if($konfig{milan})
+    if($konfig{milan} || $konfig{delta})
     {
         system("cp testdata/*.treex.gz $testdir");
     }
