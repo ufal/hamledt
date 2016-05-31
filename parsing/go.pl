@@ -710,9 +710,6 @@ sub get_parsing_scenario
 #------------------------------------------------------------------------------
 sub parse
 {
-    my $treebank = shift;
-    my $language = $treebank;
-    $language =~ s/-.*//;
     # Prepare the training script and submit the job to the cluster.
     foreach my $parser (get_parsers())
     {
@@ -732,13 +729,13 @@ sub parse
                     # Copy test data to the working folder.
                     # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
                     my $testdir = "$parser-$srctbk-test";
-                    prepare_test_data($treebank, $language, $testdir);
+                    prepare_test_data($current{treebank}, $current{language}, $testdir);
                     my $modeldir = "$wdir/$srctbk";
-                    $scenarios{$srctbk} = get_parsing_scenario($parser, $language, $testdir, $modeldir);
+                    $scenarios{$srctbk} = get_parsing_scenario($parser, $current{language}, $testdir, $modeldir);
                 }
                 else
                 {
-                    print("Skipping delexpair $treebank $srctbk.\n");
+                    print("Skipping delexpair $current{treebank} $srctbk.\n");
                 }
             }
         }
@@ -747,14 +744,14 @@ sub parse
             # Copy test data to the working folder.
             # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
             my $testdir = "$parser-test";
-            prepare_test_data($treebank, $language, $testdir);
-            $scenarios{''} = get_parsing_scenario($parser, $language, $testdir);
+            prepare_test_data($current{treebank}, $current{language}, $testdir);
+            $scenarios{''} = get_parsing_scenario($parser, $current{language}, $testdir);
         }
         foreach my $srctbk (keys(%scenarios))
         {
             my $scenario = $scenarios{$srctbk};
             my $parserst = $srctbk ne '' ? "$parser-$srctbk" : $parser;
-            my $scriptname = "p$parserst-$treebank.sh";
+            my $scriptname = "p$parserst-$current{treebank}.sh";
             my $memory = '16G';
             # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
             my $uas_file = "uas-$parserst.txt";
