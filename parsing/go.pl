@@ -725,7 +725,7 @@ sub parse
             foreach my $srctbk (@treebanks)
             {
                 # Skip delexicalized source models that have not been determined as promising.
-                if($konfig{delexpairs}{$treebank}{$srctbk})
+                if($konfig{delexpairs}{$current{treebank}}{$srctbk})
                 {
                     # Copy test data to the working folder.
                     # Each parser needs its own copy so that they can run in parallel and not overwrite each other's output.
