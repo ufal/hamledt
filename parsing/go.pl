@@ -782,10 +782,8 @@ sub parse
 #------------------------------------------------------------------------------
 sub get_results
 {
-    my $treebank = shift;
+    my $treebank = shift; ###!!! už není potřeba, ale kvůli pozici následujícího parametru zatím ponechávám i tenhle
     my $labeled = shift;
-    my $language = $treebank;
-    $language =~ s/-.*//;
     # Get the list of known parsers. For delexicalized parsing, each source model counts as a separate parser.
     my @parsers = map
     {
@@ -806,7 +804,7 @@ sub get_results
         my $debug = 0;
         if(!open(UAS, $uas_file) && $debug)
         {
-            print STDERR ("Cannot read $treebank/$current{size}/$uas_file: $!\n");
+            print STDERR ("Cannot read $current{treebank}/$current{size}/$uas_file: $!\n");
             next;
         }
         while (<UAS>)
@@ -818,11 +816,11 @@ sub get_results
             # UASpms ... parent, is_member and is_shared_modifier match
             my $x = $labeled ? 'L' : 'U';
             my $selector = $parser =~ m/^dlx/ ? 'dlx' : $parser;
-            if($sys =~ m/^${x}AS([pd](?:ms?)?)\(${language}_${selector},${language}\)$/)
+            if($sys =~ m/^${x}AS([pd](?:ms?)?)\($current{language}_${selector},$current{language}\)$/)
             {
                 my $uasparams = $1;
                 $score = $score ? 100 * $score : 0;
-                $value{$treebank}{$current{size}}{$parser}{$uasparams} = round($score);
+                $value{$current{treebank}}{$current{size}}{$parser}{$uasparams} = round($score);
             }
         }
     }
