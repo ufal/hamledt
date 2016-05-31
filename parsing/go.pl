@@ -507,13 +507,12 @@ sub create_conll_training_data
 #------------------------------------------------------------------------------
 sub train
 {
-    my $treebank = shift;
     my $mcd_dir  = $ENV{TMT_ROOT}."/libs/other/Parser/MST/mstparser-0.4.3b";
     my $malt_jar = '/home/zeman/nastroje/parsery/maltparser-1.8.1/maltparser-1.8.1.jar';
     # Prepare the training script and submit the job to the cluster.
     foreach my $parser (get_parsers())
     {
-        my $scriptname = "$parser-$treebank.sh";
+        my $scriptname = "$parser-$current{treebank}.sh";
         my ($memory, $priority);
         print STDERR ("Creating script $scriptname.\n");
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
