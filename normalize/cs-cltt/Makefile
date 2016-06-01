@@ -1,5 +1,7 @@
 LANGCODE=cs
 TREEBANK=cs-cltt
+UDCODE=cs_cltt
+UDNAME=Czech-CLTT
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
 include ../common.mak
 
