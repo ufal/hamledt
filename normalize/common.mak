@@ -29,7 +29,10 @@ CONLLUDIR = $(DATADIR)/$(SUBDIRCU)
 # Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
 # Do not use the --queue option if you do not live in the ÚFAL network!
 TREEX      = treex -L$(LANGCODE)
-QTREEX     = treex -p --jobs 100 --priority=-50 -L$(LANGCODE) --queue=troja-all.q
+# -q 'all.q@*,ms-all.q@*,troja-all.q@*'
+# --queue=troja-all.q
+# --queue=all.q,ms-all.q,troja-all.q (???)
+QTREEX     = treex -p --jobs 100 --priority=-50 -L$(LANGCODE)
 IMPORTX    = Read::CoNLLX lines_per_doc=100 sid_within_feat=1
 IMPORTU    = Read::CoNLLU lines_per_doc=100
 WRITE0     = Write::Treex file_stem='' compress=1
