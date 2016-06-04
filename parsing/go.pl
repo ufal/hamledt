@@ -453,8 +453,9 @@ sub create_conll_training_data
     }
     # Delexikalizovaná data označkovaná Deltaggerem.
     elsif($konfig{delta})
-    {
-        my $inputfiles = "$konfig{datadir}/$current{udcode}/train/c7-delex.conll";
+    {   ###!!! Označkovali jsme testovací data, ale ne trénovací! A právě ta teď potřebujeme!
+        ###!!!my $inputfiles = "$konfig{datadir}/$current{udcode}/multitrain/c7-$current{udcode}
+        ###!!!my $inputfiles = "$konfig{datadir}/$current{udcode}/train/c7-delex.conll";
         print STDERR ("$inputfiles\n");
         my $scriptname = 'create_training_data.sh';
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
@@ -473,8 +474,7 @@ sub create_conll_training_data
         close(SCR);
         chmod(0755, $scriptname) or die("Cannot chmod $scriptname: $!\n");
         # Send the job to the cluster. It will itself spawn additional cluster jobs (via treex -p) but we do not want to wait here until they're all done.
-        ###!!! Ondra momentálně pouští na clusteru statisíce úloh, takže se ho pokusíme předběhnout. Jinak by priorita byla -200.
-        return cluster::qsub('priority' => 0, 'memory' => '1G', 'script' => $scriptname);
+        return cluster::qsub('priority' => -200, 'memory' => '1G', 'script' => $scriptname);
     }
     # If we work with gold-standard morphology, the input files are Treex and we use the cluster to convert them to CoNLL-X.
     else
