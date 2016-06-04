@@ -453,9 +453,9 @@ sub create_conll_training_data
     }
     # Delexikalizovaná data označkovaná Deltaggerem.
     elsif($konfig{delta})
-    {   ###!!! Označkovali jsme testovací data, ale ne trénovací! A právě ta teď potřebujeme!
-        ###!!!my $inputfiles = "$konfig{datadir}/$current{udcode}/multitrain/c7-$current{udcode}
-        ###!!!my $inputfiles = "$konfig{datadir}/$current{udcode}/train/c7-delex.conll";
+    {
+        my $deltamodel = $current{language} =~ m/^(bg|cs|cu|hr|pl|sl)$/ ? 'csla' : $current{language} =~ m/^(da|de|en|nl|no|sv)$/ ? 'cger' : $current{language} =~ m/^(es|fr|it|pt|ro)$/ ? 'crom' : 'all';
+        my $inputfiles = "$konfig{datadir}/$current{udcode}/train/$deltamodel-$current{udcode}.2.conll";
         print STDERR ("$inputfiles\n");
         my $scriptname = 'create_training_data.sh';
         open(SCR, ">$scriptname") or die("Cannot write $scriptname: $!\n");
