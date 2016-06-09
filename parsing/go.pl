@@ -597,7 +597,7 @@ sub train
                 $parser =~ m/^mdlx_(.+)$/;
                 my $source = $1;
                 print SCR ("$konfig{toolsdir}/split_conll.pl < ../train.$source.delex.conll -head $current{size} train.$source.delex.conll /dev/null\n");
-                my $cmodel = $model.'_'.$source;
+                $model .= '_delex_'.$source;
                 my $command = "java -Xmx26g -jar $malt_jar -i train.$source.delex.conll -c $model $maltsettings\n";
                 print SCR ("echo $command");
                 print SCR ($command);
