@@ -459,6 +459,12 @@ sub create_conll_training_data
         # Send the job to the cluster. It will itself spawn additional cluster jobs (via treex -p) but we do not want to wait here until they're all done.
         return cluster::qsub('priority' => -200, 'memory' => '1G', 'script' => $scriptname);
     }
+    # Delexikalizovaná data z více zdrojových jazyků.
+    # V tomto případě předpokládáme, že data už existují ve formátu CoNLL a byla namixována pomocí leave1out.pl z dříve vyrobených jednojazyčných.
+    elsif($konfig{mdlx})
+    {
+        die("Use leave1out.pl to create training data for multi-source delexicalized parsing.");
+    }
     # Delexikalizovaná data označkovaná Deltaggerem.
     elsif($konfig{delta})
     {
@@ -483,12 +489,6 @@ sub create_conll_training_data
         chmod(0755, $scriptname) or die("Cannot chmod $scriptname: $!\n");
         # Send the job to the cluster. It will itself spawn additional cluster jobs (via treex -p) but we do not want to wait here until they're all done.
         return cluster::qsub('priority' => -200, 'memory' => '1G', 'script' => $scriptname);
-    }
-    # Delexikalizovaná data z více zdrojových jazyků.
-    # V tomto případě předpokládáme, že data už existují ve formátu CoNLL a byla namixována pomocí leave1out.pl z dříve vyrobených jednojazyčných.
-    elsif($konfig{mdlx})
-    {
-        die("Cannot prepare training data for multi-source delexicalized parsing. Use leave1out.pl instead.");
     }
     # If we work with gold-standard morphology, the input files are Treex and we use the cluster to convert them to CoNLL-X.
     else
@@ -596,6 +596,7 @@ sub train
                 # The code of the parser is mdlx_something, e.g. mdlx_all.
                 $parser =~ m/^mdlx_(.+)$/;
                 my $source = $1;
+                print SCR ("$konfig{toolsdir}/split_conll.pl < ../train.$source.delex.conll -head $current{size} train.$source.delex.conll /dev/null\n");
                 my $cmodel = $model.'_'.$source;
                 my $command = "java -Xmx26g -jar $malt_jar -i train.$source.delex.conll -c $model $maltsettings\n";
                 print SCR ("echo $command");
