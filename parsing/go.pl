@@ -36,6 +36,7 @@ my $wdir; # working folder; typically subfolder of the folder where this script 
 $konfig{sizes} = '10,20,50,100,200,500,1000,2000,5000'; # default learning curve (number of training sentences)
 $konfig{milan} = 0; # do we want to use the data machine-tagged by Milan Straka?
 $konfig{delta} = 0; # do we want to use the data with tags predicted by the delexicalized tagger?
+$konfig{mdlx} = 0; # do we want to do multi-source delexicalized parsing, i.e. combined training data?
 GetOptions
 (
     'wdir=s'            => \$wdir,
@@ -44,6 +45,7 @@ GetOptions
     'sizes=s'           => \$konfig{sizes}, # comma-separated list, e.g. "--sizes 10,20,50,100,200,500,1000,2000,5000,100000
     'milan'             => \$konfig{milan}, # do we want to use the data machine-tagged by Milan Straka?
     'delta'             => \$konfig{delta}, # do we want to use the data tagged by the delexicalized tagger?
+    'mdlx'              => \$konfig{mdlx}, # do we want to do multi-source delexicalized parsing?
     'help'              => \$konfig{help}
 );
 exit(usage()) if($konfig{help});
@@ -162,8 +164,14 @@ sub get_treebanks
 #------------------------------------------------------------------------------
 sub get_parsers
 {
-    # We temporarily do not use 'mlt', 'mcd' and 'mcp' (the MST parser by Ryan McDonald).
-    return qw(smf dlx);
+    # We temporarily do not use 'mlt', 'mcd' and 'mcp'
+    # mcd ... MST parser by Ryan McDonald
+    # mcp ... MST parser in projective mode
+    # mlt ... Malt Parser, nivre-eager, no features
+    # smf ... Malt Parser, stack-lazy, Czech feature model
+    # dlx ... same but delexicalized
+    # mdlx_* ... multi-source delexicalized
+    return qw(mdlx_all mdlx_ger mdlx_rom mdlx_sla mdlx_ine mdlx_agl);
 }
 
 
@@ -476,6 +484,12 @@ sub create_conll_training_data
         # Send the job to the cluster. It will itself spawn additional cluster jobs (via treex -p) but we do not want to wait here until they're all done.
         return cluster::qsub('priority' => -200, 'memory' => '1G', 'script' => $scriptname);
     }
+    # Delexikalizovaná data z více zdrojových jazyků.
+    # V tomto případě předpokládáme, že data už existují ve formátu CoNLL a byla namixována pomocí leave1out.pl z dříve vyrobených jednojazyčných.
+    elsif($konfig{mdlx})
+    {
+        die("Cannot prepare training data for multi-source delexicalized parsing. Use leave1out.pl instead.");
+    }
     # If we work with gold-standard morphology, the input files are Treex and we use the cluster to convert them to CoNLL-X.
     else
     {
@@ -548,7 +562,7 @@ sub train
             $memory = '16G';
             $priority = -300;
         }
-        elsif($parser =~ m/^(smf|dlx)$/)
+        elsif($parser =~ m/^(smf|dlx|mdlx_.+)$/)
         {
             # Both smf and dlx are instances of Malt parser. Prepare common settings.
             my $features = $scriptdir.'/malt-feature-models/CzechNonProj-JOHAN-NEW-MODIFIED.xml';
@@ -566,10 +580,24 @@ sub train
                 $memory = '30G';
                 $priority = -90;
             }
-            else # dlx
+            elsif($parser eq 'dlx')
             {
                 $model .= '_delex';
                 my $command = "java -Xmx26g -jar $malt_jar -i train.delex.conll -c $model $maltsettings\n";
+                print SCR ("echo $command");
+                print SCR ($command);
+                # It is more difficult to get a machine with so much memory so we will be less generous with priority.
+                # Often a machine lacks just a few hundred megabytes to be able to provide 31G. Asking for 30G increases our chances to get a machine.
+                $memory = '30G';
+                $priority = -90;
+            }
+            else # Multi-source delexicalized parsing.
+            {
+                # The code of the parser is mdlx_something, e.g. mdlx_all.
+                $parser =~ m/^mdlx_(.+)$/;
+                my $source = $1;
+                my $cmodel = $model.'_'.$source;
+                my $command = "java -Xmx26g -jar $malt_jar -i train.$source.delex.conll -c $model $maltsettings\n";
                 print SCR ("echo $command");
                 print SCR ($command);
                 # It is more difficult to get a machine with so much memory so we will be less generous with priority.
@@ -585,6 +613,7 @@ sub train
         $jobname =~ s/-ud\d*//ig;
         $jobname =~ s/-//g;
         $jobname =~ s/\.sh$//;
+        $jobname =~ s/mdlx_//;
         my $sizetag = $current{size};
         $sizetag =~ s/^\d+0000$/XL/;
         $sizetag =~ s/000$/k/;
