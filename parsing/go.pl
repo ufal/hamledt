@@ -46,6 +46,7 @@ GetOptions
     'milan'             => \$konfig{milan}, # do we want to use the data machine-tagged by Milan Straka?
     'delta'             => \$konfig{delta}, # do we want to use the data tagged by the delexicalized tagger?
     'mdlx'              => \$konfig{mdlx}, # do we want to do multi-source delexicalized parsing?
+    'debug'             => \$konfig{debug}, # do we want to see debugging messages on STDERR?
     'help'              => \$konfig{help}
 );
 exit(usage()) if($konfig{help});
@@ -846,8 +847,7 @@ sub get_results
         # Every parser must have its own UAS file so that they can run in parallel and not overwrite each other's evaluation.
         my $uas_file = "uas-$parser.txt";
         # Read the score from the UAS file. Store it in a global hash called %value.
-        my $debug = 0;
-        if(!open(UAS, $uas_file) && $debug)
+        if(!open(UAS, $uas_file) && $konfig{debug})
         {
             print STDERR ("Cannot read $current{treebank}/$current{size}/$uas_file: $!\n");
             next;
