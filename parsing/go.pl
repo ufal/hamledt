@@ -800,6 +800,7 @@ sub parse
             $jobname =~ s/-ud\d*//ig;
             $jobname =~ s/-//g;
             $jobname =~ s/\.sh$//;
+            $jobname =~ s/mdlx_//;
             cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname, 'name' => $jobname);
         }
     }
