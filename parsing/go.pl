@@ -699,7 +699,7 @@ sub prepare_test_data
 sub get_parsing_scenario
 {
     my $parser = shift; # parser code, e.g. 'mlt' or 'mcd'
-    my $delexicalized = ($parser eq 'dlx'); # we may want to make this a parameter
+    my $delexicalized = ($parser =~ m/dlx/); # we may want to make this a parameter
     my $language = shift; # language, not treebank code
     my $testdir = shift; # where is the test data?
     my $modeldir = shift; # for cross-language delexicalized training: where is the model?
@@ -711,11 +711,20 @@ sub get_parsing_scenario
         mlt => "W2A::ParseMalt model=malt_nivreeager.mco             $writeparam",
         smf => "W2A::ParseMalt model=malt_stacklazy.mco              $writeparam",
         dlx => "W2A::ParseMalt model=${path}malt_stacklazy_delex.mco $writeparam",
+        mdlx_all => "W2A::ParseMalt model=malt_stacklazy_delex_all.mco $writeparam",
+        mdlx_ine => "W2A::ParseMalt model=malt_stacklazy_delex_ine.mco $writeparam",
+        mdlx_ger => "W2A::ParseMalt model=malt_stacklazy_delex_ger.mco $writeparam",
+        mdlx_rom => "W2A::ParseMalt model=malt_stacklazy_delex_rom.mco $writeparam",
+        mdlx_sla => "W2A::ParseMalt model=malt_stacklazy_delex_sla.mco $writeparam",
+        mdlx_agl => "W2A::ParseMalt model=malt_stacklazy_delex_agl.mco $writeparam",
         mcd => "W2A::ParseMST  model_dir=. model=mcd_nonproj_o2.model decodetype=non-proj pos_attribute=conll/pos",
         mcp => "W2A::ParseMST  model_dir=. model=mcd_proj_o2.model    decodetype=proj     pos_attribute=conll/pos",
     );
     my $scenario;
-    $scenario .= "Util::SetGlobal language=$language selector=$parser ";
+    # Zone selector in Treex cannot contain underscore?
+    my $selector = $parser;
+    $selector =~ s/_//g;
+    $scenario .= "Util::SetGlobal language=$language selector=$selector ";
     $scenario .= "Read::Treex from='!$testdir/*.treex.gz' ";
     # If there is a tree with the same name, remove it first.
     $scenario .= "Util::Eval zone='\$zone->remove_tree(\"a\") if \$zone->has_tree(\"a\");' ";
