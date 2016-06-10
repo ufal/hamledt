@@ -172,7 +172,7 @@ sub get_parsers
     # smf ... Malt Parser, stack-lazy, Czech feature model
     # dlx ... same but delexicalized
     # mdlx_* ... multi-source delexicalized
-    return qw(mdlx_all mdlx_ger mdlx_rom mdlx_sla mdlx_ine mdlx_agl);
+    return ('mdlx_all', 'mdlx_ine', 'mdlx_ger', 'mdlx_rom', 'mdlx_sla', 'mdlx_agl');
 }
 
 
@@ -395,7 +395,7 @@ sub loop
                 $current{dir} = "$wdir/$treebank/$size";
                 system("mkdir -p $current{dir}");
                 chdir($current{dir}) or die("Cannot change to $current{dir}: $!\n");
-                &{$action}($treebank);
+                &{$action}();
             }
         }
     }
@@ -828,7 +828,6 @@ sub parse
 #------------------------------------------------------------------------------
 sub get_results
 {
-    my $treebank = shift; ###!!! už není potřeba, ale kvůli pozici následujícího parametru zatím ponechávám i tenhle
     my $labeled = shift;
     # Get the list of known parsers. For delexicalized parsing, each source model counts as a separate parser.
     my @parsers = map
@@ -873,7 +872,7 @@ sub get_results
 sub get_labeled_results
 {
     my $treebank = shift;
-    return get_results($treebank, 1);
+    return get_results(1);
 }
 
 
