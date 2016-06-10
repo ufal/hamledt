@@ -810,6 +810,11 @@ sub parse
             $jobname =~ s/-//g;
             $jobname =~ s/\.sh$//;
             $jobname =~ s/mdlx_//;
+            my $sizetag = $current{size};
+            $sizetag =~ s/^\d+0000$/XL/;
+            $sizetag =~ s/000$/k/;
+            $sizetag =~ s/00$/h/;
+            $jobname .= $sizetag;
             cluster::qsub('priority' => -200, 'memory' => $memory, 'script' => $scriptname, 'name' => $jobname);
         }
     }
