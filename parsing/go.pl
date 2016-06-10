@@ -172,7 +172,7 @@ sub get_parsers
     # smf ... Malt Parser, stack-lazy, Czech feature model
     # dlx ... same but delexicalized
     # mdlx_* ... multi-source delexicalized
-    return ('mdlx_all', 'mdlx_ine', 'mdlx_ger', 'mdlx_rom', 'mdlx_sla', 'mdlx_agl');
+    return ('smf', 'mdlx_all', 'mdlx_ine', 'mdlx_ger', 'mdlx_rom', 'mdlx_sla', 'mdlx_agl');
 }
 
 
@@ -860,6 +860,7 @@ sub get_results
             # UASpms ... parent, is_member and is_shared_modifier match
             my $x = $labeled ? 'L' : 'U';
             my $selector = $parser =~ m/^dlx/ ? 'dlx' : $parser;
+            $selector =~ s/_//g;
             if($sys =~ m/^${x}AS([pd](?:ms?)?)\($current{language}_${selector},$current{language}\)$/)
             {
                 my $uasparams = $1;
