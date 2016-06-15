@@ -172,7 +172,8 @@ sub get_parsers
     # smf ... Malt Parser, stack-lazy, Czech feature model
     # dlx ... same but delexicalized
     # mdlx_* ... multi-source delexicalized
-    return ('smf', 'mdlx_all', 'mdlx_ine', 'mdlx_ger', 'mdlx_rom', 'mdlx_sla', 'mdlx_agl');
+    return ('smf', 'dlx', 'mdlx_all', 'mdlx_ine', 'mdlx_ger', 'mdlx_rom', 'mdlx_sla', 'mdlx_agl');
+    #return ('smf', 'dlx');
 }
 
 

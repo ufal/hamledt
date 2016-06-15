@@ -11,12 +11,12 @@ binmode(STDERR, ':utf8');
 use cluster;
 
 my $wdir = '/net/work/people/zeman/hamledt/parsing/mtag';
-my @languages = qw(bg-ud12 cs-ud12 da-ud12 de-ud12 el-ud12 en-ud12 es-ud12 et-ud12 eu-ud12 fa-ud12 fi-ud12 fi-ud12ftb fr-ud12 ga-ud12 hi-ud12 he-ud12 hr-ud12 hu-ud12 id-ud12 it-ud12 la-ud12 la-ud12itt la-ud12proiel nl-ud12 no-ud12 pl-ud12 pt-ud12 ro-ud12 sl-ud12 sv-ud12 ta-ud12);
+my @languages = qw(ar-ud12 bg-ud12 cs-ud12 cu-ud12 da-ud12 de-ud12 el-ud12 en-ud12 es-ud12 et-ud12 eu-ud12 fa-ud12 fi-ud12 fi-ud12ftb fr-ud12 ga-ud12 got-ud12 grc-ud12 grc-ud12proiel hi-ud12 he-ud12 hr-ud12 hu-ud12 id-ud12 it-ud12 la-ud12 la-ud12itt la-ud12proiel nl-ud12 no-ud12 pl-ud12 pt-ud12 ro-ud12 sl-ud12 sv-ud12 ta-ud12);
 
 my @slavic = qw(be bg cs cu hr mk pl sl sk sr ru uk);
-my @germanic = qw(da de en is nl no sv);
+my @germanic = qw(da de en got is nl no sv);
 my @romance = qw(ca es fr gl it pt ro);
-my @indoeur = (@slavic, @germanic, @romance, qw(el fa ga hi la));
+my @indoeur = (@slavic, @germanic, @romance, qw(el fa ga grc hi la));
 my @agglut = qw(et eu fi hu tr);
 my @c7 = qw(bg ca de el hi hu tr); # We defined this for HamleDT 2.0. UD 1.2 does not have ca and tr.
 
