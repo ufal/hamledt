@@ -1,0 +1,36 @@
+bg    1 3 1 1 2 3 2 2 2 2 = 19
+cs    3 1 1               =  5
+cu    1 1 3               =  5
+da    2 3                 =  5
+de    3 3                 =  6
+el    1                   =  1
+en    1                   =  1
+es    1 2 3 3 3           = 12
+et    1 1 1 1 1           =  5
+eu    1                   =  1
+fi    3 3                 =  6
+fi-f  3                   =  3
+fr    1 2 2 2             =  7
+got   1 2 3 3             =  9
+grc   1                   =  1
+grc-p 1 3 2 2 2           = 10
+he    2 3 3 3             = 11
+hi    3 2                 =  5
+hr    3 1 2 2 1 1 1 2     = 13
+hu    2 2 3 2             =  9
+id    2 1 1               =  4
+it    3 2 2 3             = 10
+la    2 3                 =  5
+la-p  3 2 1 1             =  7
+no    2 1                 =  3
+pl    1 2 2               =  5
+pt    2                   =  2
+ro    3 2 1 1 1           =  8
+sl    2 3 3 3 3 3 3       = 20
+sv    2 3 1 1 2           =  9
+ta    3                   =  3
+
+Nejlepší jazyky do směsi:
+sl:20 - bg:19 - hr:13 - es:12 - he:11 - grc-p:10 - it:10 - got:9 - hu:9 - sv:9
+
+Pozor! Pokud bychom chtěli publikovat výsledky modelu natrénovaného na takto vybrané směsi jazyků, museli bychom směs vybírat podle výsledků na vývojových datech!
