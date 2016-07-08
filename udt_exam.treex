@@ -1,0 +1,2363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treex_document xmlns="http://ufal.mff.cuni.cz/pdt/pml/">
+  <head>
+    <schema href="treex_schema.xml" />
+  </head>
+  <meta/>
+  <bundles>
+    <LM id="s1">
+      <zones>
+        <zone language="ug">
+          <sentence>ئاسماننى كۆپكۈك ، دەريا ، كۆل سۇلىرىنى سۈپسۈزۈك تۇرۇشقا ، دەل - دەرەخلەرنى بۈك - باراقسان بولۇشقا ، ھايۋانلارنى ئەركىن ئازادە ياشاشقا ئىگە قىلىش . . . بىزنىڭ ئورتاق ئارزۇيىمىز .</sentence>
+          <trees>
+            <a_tree id="s1">
+              <ord>0</ord>
+              <children>
+                <LM id="n10">
+                  <form>،</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>,</translit>
+                  <ord>10</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n12">
+                  <form>-</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>-</translit>
+                  <ord>12</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n15">
+                  <children id="n14">
+                    <children id="n3">
+                      <form>،</form>
+                      <lemma>_</lemma>
+                      <tag>PUNCT</tag>
+                      <iset>
+                        <pos>punc</pos>
+                      </iset>
+                      <translit>,</translit>
+                      <ord>3</ord>
+                      <deprel>CL</deprel>
+                      <conll>
+                        <deprel>CL</deprel>
+                        <cpos>PUNCT</cpos>
+                        <pos>Y</pos>
+                        <feat>_</feat>
+                      </conll>
+                      <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                    </children>
+                    <form>بۈك</form>
+                    <lemma>_</lemma>
+                    <tag>ADJ</tag>
+                    <iset>
+                      <pos>adj</pos>
+                    </iset>
+                    <translit>bük</translit>
+                    <ord>14</ord>
+                    <deprel>AUX</deprel>
+                    <conll>
+                      <deprel>AUX</deprel>
+                      <cpos>ADJ</cpos>
+                      <pos>A</pos>
+                      <feat>_</feat>
+                    </conll>
+                    <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                  </children>
+                  <form>-</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>-</translit>
+                  <ord>15</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n18">
+                  <children id="n17">
+                    <children>
+                      <LM id="n9">
+                        <children>
+                          <LM id="n1">
+                            <form>ئاسماننى</form>
+                            <lemma>_</lemma>
+                            <tag>NOUN</tag>
+                            <iset>
+                              <pos>noun</pos>
+                              <nountype>com</nountype>
+                            </iset>
+                            <translit>asmanni</translit>
+                            <ord>1</ord>
+                            <deprel>OBJ</deprel>
+                            <conll>
+                              <deprel>OBJ</deprel>
+                              <cpos>NOUN</cpos>
+                              <pos>N</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </LM>
+                          <LM id="n2">
+                            <form>كۆپكۈك</form>
+                            <lemma>_</lemma>
+                            <tag>VERB</tag>
+                            <iset>
+                              <pos>verb</pos>
+                            </iset>
+                            <translit>köpkük</translit>
+                            <ord>2</ord>
+                            <deprel>ADV</deprel>
+                            <conll>
+                              <deprel>ADV</deprel>
+                              <cpos>VERB</cpos>
+                              <pos>V</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </LM>
+                          <LM id="n8">
+                            <children>
+                              <LM id="n5">
+                                <form>،</form>
+                                <lemma>_</lemma>
+                                <tag>PUNCT</tag>
+                                <iset>
+                                  <pos>punc</pos>
+                                </iset>
+                                <translit>,</translit>
+                                <ord>5</ord>
+                                <deprel>COORD</deprel>
+                                <conll>
+                                  <deprel>COORD</deprel>
+                                  <cpos>PUNCT</cpos>
+                                  <pos>Y</pos>
+                                  <feat>_</feat>
+                                </conll>
+                                <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                              </LM>
+                              <LM id="n6">
+                                <children id="n4">
+                                  <form>دەريا</form>
+                                  <lemma>_</lemma>
+                                  <tag>NOUN</tag>
+                                  <iset>
+                                    <pos>noun</pos>
+                                    <nountype>com</nountype>
+                                  </iset>
+                                  <translit>derya</translit>
+                                  <ord>4</ord>
+                                  <deprel>COORD</deprel>
+                                  <conll>
+                                    <deprel>COORD</deprel>
+                                    <cpos>NOUN</cpos>
+                                    <pos>N</pos>
+                                    <feat>_</feat>
+                                  </conll>
+                                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                                </children>
+                                <form>كۆل</form>
+                                <lemma>_</lemma>
+                                <tag>NOUN</tag>
+                                <iset>
+                                  <pos>noun</pos>
+                                  <nountype>com</nountype>
+                                </iset>
+                                <translit>köl</translit>
+                                <ord>6</ord>
+                                <deprel>CONJ</deprel>
+                                <conll>
+                                  <deprel>CONJ</deprel>
+                                  <cpos>NOUN</cpos>
+                                  <pos>N</pos>
+                                  <feat>_</feat>
+                                </conll>
+                                <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                              </LM>
+                              <LM id="n7">
+                                <form>سۇلىرىنى</form>
+                                <lemma>_</lemma>
+                                <tag>NOUN</tag>
+                                <iset>
+                                  <pos>noun</pos>
+                                  <nountype>com</nountype>
+                                </iset>
+                                <translit>sulirini</translit>
+                                <ord>7</ord>
+                                <deprel>ATT</deprel>
+                                <conll>
+                                  <deprel>ATT</deprel>
+                                  <cpos>NOUN</cpos>
+                                  <pos>N</pos>
+                                  <feat>_</feat>
+                                </conll>
+                                <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                              </LM>
+                            </children>
+                            <form>سۈپسۈزۈك</form>
+                            <lemma>_</lemma>
+                            <tag>ADJ</tag>
+                            <iset>
+                              <pos>adj</pos>
+                            </iset>
+                            <translit>süpsüzük</translit>
+                            <ord>8</ord>
+                            <deprel>CLAS</deprel>
+                            <conll>
+                              <deprel>CLAS</deprel>
+                              <cpos>ADJ</cpos>
+                              <pos>A</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </LM>
+                        </children>
+                        <form>تۇرۇشقا</form>
+                        <lemma>_</lemma>
+                        <tag>VERB</tag>
+                        <iset>
+                          <pos>verb</pos>
+                        </iset>
+                        <translit>turushqa</translit>
+                        <ord>9</ord>
+                        <deprel>COORD</deprel>
+                        <conll>
+                          <deprel>COORD</deprel>
+                          <cpos>VERB</cpos>
+                          <pos>V</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                      <LM id="n13">
+                        <children id="n11">
+                          <form>دەل</form>
+                          <lemma>_</lemma>
+                          <tag>ADV</tag>
+                          <iset>
+                            <pos>adv</pos>
+                          </iset>
+                          <translit>del</translit>
+                          <ord>11</ord>
+                          <deprel>COLL</deprel>
+                          <conll>
+                            <deprel>COLL</deprel>
+                            <cpos>ADV</cpos>
+                            <pos>D</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </children>
+                        <form>دەرەخلەرنى</form>
+                        <lemma>_</lemma>
+                        <tag>NOUN</tag>
+                        <iset>
+                          <pos>noun</pos>
+                          <nountype>com</nountype>
+                        </iset>
+                        <translit>derexlerni</translit>
+                        <ord>13</ord>
+                        <deprel>OBJ</deprel>
+                        <conll>
+                          <deprel>OBJ</deprel>
+                          <cpos>NOUN</cpos>
+                          <pos>N</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                      <LM id="n16">
+                        <form>باراقسان</form>
+                        <lemma>_</lemma>
+                        <tag>ADJ</tag>
+                        <iset>
+                          <pos>adj</pos>
+                        </iset>
+                        <translit>baraqsan</translit>
+                        <ord>16</ord>
+                        <deprel>ADV</deprel>
+                        <conll>
+                          <deprel>ADV</deprel>
+                          <cpos>ADJ</cpos>
+                          <pos>A</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                    </children>
+                    <form>بولۇشقا</form>
+                    <lemma>_</lemma>
+                    <tag>VERB</tag>
+                    <iset>
+                      <pos>verb</pos>
+                    </iset>
+                    <translit>bolushqa</translit>
+                    <ord>17</ord>
+                    <deprel>COP</deprel>
+                    <conll>
+                      <deprel>COP</deprel>
+                      <cpos>VERB</cpos>
+                      <pos>V</pos>
+                      <feat>_</feat>
+                    </conll>
+                    <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                  </children>
+                  <form>،</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>,</translit>
+                  <ord>18</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n25">
+                  <form>.</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>.</translit>
+                  <ord>25</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n26">
+                  <form>.</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>.</translit>
+                  <ord>26</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n27">
+                  <form>.</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>.</translit>
+                  <ord>27</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n31">
+                  <children id="n30">
+                    <children>
+                      <LM id="n24">
+                        <children>
+                          <LM id="n22">
+                            <children>
+                              <LM id="n19">
+                                <form>ھايۋانلارنى</form>
+                                <lemma>_</lemma>
+                                <tag>NOUN</tag>
+                                <iset>
+                                  <pos>noun</pos>
+                                  <nountype>com</nountype>
+                                </iset>
+                                <translit>haywanlarni</translit>
+                                <ord>19</ord>
+                                <deprel>OBJ</deprel>
+                                <conll>
+                                  <deprel>OBJ</deprel>
+                                  <cpos>NOUN</cpos>
+                                  <pos>N</pos>
+                                  <feat>_</feat>
+                                </conll>
+                                <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                              </LM>
+                              <LM id="n21">
+                                <children id="n20">
+                                  <form>ئەركىن</form>
+                                  <lemma>_</lemma>
+                                  <tag>ADJ</tag>
+                                  <iset>
+                                    <pos>adj</pos>
+                                  </iset>
+                                  <translit>erkin</translit>
+                                  <ord>20</ord>
+                                  <deprel>COLL</deprel>
+                                  <conll>
+                                    <deprel>COLL</deprel>
+                                    <cpos>ADJ</cpos>
+                                    <pos>A</pos>
+                                    <feat>_</feat>
+                                  </conll>
+                                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                                </children>
+                                <form>ئازادە</form>
+                                <lemma>_</lemma>
+                                <tag>ADJ</tag>
+                                <iset>
+                                  <pos>adj</pos>
+                                </iset>
+                                <translit>azade</translit>
+                                <ord>21</ord>
+                                <deprel>ADV</deprel>
+                                <conll>
+                                  <deprel>ADV</deprel>
+                                  <cpos>ADJ</cpos>
+                                  <pos>A</pos>
+                                  <feat>_</feat>
+                                </conll>
+                                <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                              </LM>
+                            </children>
+                            <form>ياشاشقا</form>
+                            <lemma>_</lemma>
+                            <tag>NOUN</tag>
+                            <iset>
+                              <pos>noun</pos>
+                              <nountype>com</nountype>
+                            </iset>
+                            <translit>yashashqa</translit>
+                            <ord>22</ord>
+                            <deprel>DAT</deprel>
+                            <conll>
+                              <deprel>DAT</deprel>
+                              <cpos>NOUN</cpos>
+                              <pos>N</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </LM>
+                          <LM id="n23">
+                            <form>ئىگە</form>
+                            <lemma>_</lemma>
+                            <tag>NOUN</tag>
+                            <iset>
+                              <pos>noun</pos>
+                              <nountype>com</nountype>
+                            </iset>
+                            <translit>ige</translit>
+                            <ord>23</ord>
+                            <deprel>COLL</deprel>
+                            <conll>
+                              <deprel>COLL</deprel>
+                              <cpos>NOUN</cpos>
+                              <pos>N</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </LM>
+                        </children>
+                        <form>قىلىش</form>
+                        <lemma>_</lemma>
+                        <tag>VERB</tag>
+                        <iset>
+                          <pos>verb</pos>
+                        </iset>
+                        <translit>qilish</translit>
+                        <ord>24</ord>
+                        <deprel>PRED</deprel>
+                        <conll>
+                          <deprel>PRED</deprel>
+                          <cpos>VERB</cpos>
+                          <pos>V</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                      <LM id="n28">
+                        <form>بىزنىڭ</form>
+                        <lemma>_</lemma>
+                        <tag>PRON</tag>
+                        <iset>
+                          <pos>noun</pos>
+                          <prontype>prn</prontype>
+                        </iset>
+                        <translit>bizning</translit>
+                        <ord>28</ord>
+                        <deprel>POSS</deprel>
+                        <conll>
+                          <deprel>POSS</deprel>
+                          <cpos>PRON</cpos>
+                          <pos>P</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                      <LM id="n29">
+                        <form>ئورتاق</form>
+                        <lemma>_</lemma>
+                        <tag>ADJ</tag>
+                        <iset>
+                          <pos>adj</pos>
+                        </iset>
+                        <translit>ortaq</translit>
+                        <ord>29</ord>
+                        <deprel>ATT</deprel>
+                        <conll>
+                          <deprel>ATT</deprel>
+                          <cpos>ADJ</cpos>
+                          <pos>A</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                    </children>
+                    <form>ئارزۇيىمىز</form>
+                    <lemma>_</lemma>
+                    <tag>NOUN</tag>
+                    <iset>
+                      <pos>noun</pos>
+                      <nountype>com</nountype>
+                    </iset>
+                    <translit>arzuyimiz</translit>
+                    <ord>30</ord>
+                    <deprel>ROOT</deprel>
+                    <conll>
+                      <deprel>ROOT</deprel>
+                      <cpos>NOUN</cpos>
+                      <pos>N</pos>
+                      <feat>_</feat>
+                    </conll>
+                    <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                  </children>
+                  <form>.</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>.</translit>
+                  <ord>31</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+              </children>
+            </a_tree>
+          </trees>
+        </zone>
+      </zones>
+      <wild_dump>$VAR1 = {
+          'comment' => ''
+        };
+</wild_dump>
+    </LM>
+    <LM id="s2">
+      <zones>
+        <zone language="ug">
+          <sentence>بۇ بۆلەكتىكى تېكىستلەرنى ئوقۇش ئارقىلىق ، كىشىلەرنىڭ ھايۋانلار ۋە ئۆسۈملۈكلەرگە قانداق مۇئامىلە قىلغانلىقى ، ئاقىۋىتىنىڭ قانداق بولغانلىقىنى كۆرۈپ باقايلى ،</sentence>
+          <trees>
+            <a_tree id="s2">
+              <ord>0</ord>
+              <children>
+                <LM id="n37">
+                  <form>،</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>,</translit>
+                  <ord>6</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n45">
+                  <form>،</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>,</translit>
+                  <ord>14</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n51">
+                  <children id="n50">
+                    <children id="n49">
+                      <children>
+                        <LM id="n36">
+                          <children id="n35">
+                            <children id="n34">
+                              <children id="n33">
+                                <children id="n32">
+                                  <form>بۇ</form>
+                                  <lemma>_</lemma>
+                                  <tag>PRON</tag>
+                                  <iset>
+                                    <pos>noun</pos>
+                                    <prontype>prn</prontype>
+                                  </iset>
+                                  <translit>bu</translit>
+                                  <ord>1</ord>
+                                  <deprel>ATT</deprel>
+                                  <conll>
+                                    <deprel>ATT</deprel>
+                                    <cpos>PRON</cpos>
+                                    <pos>P</pos>
+                                    <feat>_</feat>
+                                  </conll>
+                                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                                </children>
+                                <form>بۆلەكتىكى</form>
+                                <lemma>_</lemma>
+                                <tag>NOUN</tag>
+                                <iset>
+                                  <pos>noun</pos>
+                                  <nountype>com</nountype>
+                                </iset>
+                                <translit>bölektiki</translit>
+                                <ord>2</ord>
+                                <deprel>ATT</deprel>
+                                <conll>
+                                  <deprel>ATT</deprel>
+                                  <cpos>NOUN</cpos>
+                                  <pos>N</pos>
+                                  <feat>_</feat>
+                                </conll>
+                                <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                              </children>
+                              <form>تېكىستلەرنى</form>
+                              <lemma>_</lemma>
+                              <tag>NOUN</tag>
+                              <iset>
+                                <pos>noun</pos>
+                                <nountype>com</nountype>
+                              </iset>
+                              <translit>tëkistlerni</translit>
+                              <ord>3</ord>
+                              <deprel>OBJ</deprel>
+                              <conll>
+                                <deprel>OBJ</deprel>
+                                <cpos>NOUN</cpos>
+                                <pos>N</pos>
+                                <feat>_</feat>
+                              </conll>
+                              <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                            </children>
+                            <form>ئوقۇش</form>
+                            <lemma>_</lemma>
+                            <tag>VERB</tag>
+                            <iset>
+                              <pos>verb</pos>
+                            </iset>
+                            <translit>oqush</translit>
+                            <ord>4</ord>
+                            <deprel>POST</deprel>
+                            <conll>
+                              <deprel>POST</deprel>
+                              <cpos>VERB</cpos>
+                              <pos>V</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </children>
+                          <form>ئارقىلىق</form>
+                          <lemma>_</lemma>
+                          <tag>ADP</tag>
+                          <iset>
+                            <pos>adp</pos>
+                          </iset>
+                          <translit>arqiliq</translit>
+                          <ord>5</ord>
+                          <deprel>ADV</deprel>
+                          <conll>
+                            <deprel>ADV</deprel>
+                            <cpos>ADP</cpos>
+                            <pos>R</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </LM>
+                        <LM id="n48">
+                          <children>
+                            <LM id="n44">
+                              <children>
+                                <LM id="n38">
+                                  <form>كىشىلەرنىڭ</form>
+                                  <lemma>_</lemma>
+                                  <tag>NOUN</tag>
+                                  <iset>
+                                    <pos>noun</pos>
+                                    <nountype>com</nountype>
+                                  </iset>
+                                  <translit>kishilerning</translit>
+                                  <ord>7</ord>
+                                  <deprel>POSS</deprel>
+                                  <conll>
+                                    <deprel>POSS</deprel>
+                                    <cpos>NOUN</cpos>
+                                    <pos>N</pos>
+                                    <feat>_</feat>
+                                  </conll>
+                                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                                </LM>
+                                <LM id="n41">
+                                  <children>
+                                    <LM id="n39">
+                                      <form>ھايۋانلار</form>
+                                      <lemma>_</lemma>
+                                      <tag>NOUN</tag>
+                                      <iset>
+                                        <pos>noun</pos>
+                                        <nountype>com</nountype>
+                                      </iset>
+                                      <translit>haywanlar</translit>
+                                      <ord>8</ord>
+                                      <deprel>COORD</deprel>
+                                      <conll>
+                                        <deprel>COORD</deprel>
+                                        <cpos>NOUN</cpos>
+                                        <pos>N</pos>
+                                        <feat>_</feat>
+                                      </conll>
+                                      <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                                    </LM>
+                                    <LM id="n40">
+                                      <form>ۋە</form>
+                                      <lemma>_</lemma>
+                                      <tag>CONJ</tag>
+                                      <iset>
+                                        <pos>conj</pos>
+                                        <conjtype>coor</conjtype>
+                                      </iset>
+                                      <translit>we</translit>
+                                      <ord>9</ord>
+                                      <deprel>CONJ</deprel>
+                                      <conll>
+                                        <deprel>CONJ</deprel>
+                                        <cpos>CONJ</cpos>
+                                        <pos>C</pos>
+                                        <feat>_</feat>
+                                      </conll>
+                                      <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                                    </LM>
+                                  </children>
+                                  <form>ئۆسۈملۈكلەرگە</form>
+                                  <lemma>_</lemma>
+                                  <tag>NOUN</tag>
+                                  <iset>
+                                    <pos>noun</pos>
+                                    <nountype>com</nountype>
+                                  </iset>
+                                  <translit>ösümlüklerge</translit>
+                                  <ord>10</ord>
+                                  <deprel>DAT</deprel>
+                                  <conll>
+                                    <deprel>DAT</deprel>
+                                    <cpos>NOUN</cpos>
+                                    <pos>N</pos>
+                                    <feat>_</feat>
+                                  </conll>
+                                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                                </LM>
+                                <LM id="n42">
+                                  <form>قانداق</form>
+                                  <lemma>_</lemma>
+                                  <tag>PRON</tag>
+                                  <iset>
+                                    <pos>noun</pos>
+                                    <prontype>prn</prontype>
+                                  </iset>
+                                  <translit>qandaq</translit>
+                                  <ord>11</ord>
+                                  <deprel>ADV</deprel>
+                                  <conll>
+                                    <deprel>ADV</deprel>
+                                    <cpos>PRON</cpos>
+                                    <pos>P</pos>
+                                    <feat>_</feat>
+                                  </conll>
+                                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                                </LM>
+                                <LM id="n43">
+                                  <form>مۇئامىلە</form>
+                                  <lemma>_</lemma>
+                                  <tag>NOUN</tag>
+                                  <iset>
+                                    <pos>noun</pos>
+                                    <nountype>com</nountype>
+                                  </iset>
+                                  <translit>muamile</translit>
+                                  <ord>12</ord>
+                                  <deprel>COLL</deprel>
+                                  <conll>
+                                    <deprel>COLL</deprel>
+                                    <cpos>NOUN</cpos>
+                                    <pos>N</pos>
+                                    <feat>_</feat>
+                                  </conll>
+                                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                                </LM>
+                              </children>
+                              <form>قىلغانلىقى</form>
+                              <lemma>_</lemma>
+                              <tag>VERB</tag>
+                              <iset>
+                                <pos>verb</pos>
+                              </iset>
+                              <translit>qilghanliqi</translit>
+                              <ord>13</ord>
+                              <deprel>COORD</deprel>
+                              <conll>
+                                <deprel>COORD</deprel>
+                                <cpos>VERB</cpos>
+                                <pos>V</pos>
+                                <feat>_</feat>
+                              </conll>
+                              <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                            </LM>
+                            <LM id="n46">
+                              <form>ئاقىۋىتىنىڭ</form>
+                              <lemma>_</lemma>
+                              <tag>NOUN</tag>
+                              <iset>
+                                <pos>noun</pos>
+                                <nountype>com</nountype>
+                              </iset>
+                              <translit>aqiwitining</translit>
+                              <ord>15</ord>
+                              <deprel>POSS</deprel>
+                              <conll>
+                                <deprel>POSS</deprel>
+                                <cpos>NOUN</cpos>
+                                <pos>N</pos>
+                                <feat>_</feat>
+                              </conll>
+                              <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                            </LM>
+                            <LM id="n47">
+                              <form>قانداق</form>
+                              <lemma>_</lemma>
+                              <tag>PRON</tag>
+                              <iset>
+                                <pos>noun</pos>
+                                <prontype>prn</prontype>
+                              </iset>
+                              <translit>qandaq</translit>
+                              <ord>16</ord>
+                              <deprel>ADV</deprel>
+                              <conll>
+                                <deprel>ADV</deprel>
+                                <cpos>PRON</cpos>
+                                <pos>P</pos>
+                                <feat>_</feat>
+                              </conll>
+                              <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                            </LM>
+                          </children>
+                          <form>بولغانلىقىنى</form>
+                          <lemma>_</lemma>
+                          <tag>VERB</tag>
+                          <iset>
+                            <pos>verb</pos>
+                          </iset>
+                          <translit>bolghanliqini</translit>
+                          <ord>17</ord>
+                          <deprel>OBJ</deprel>
+                          <conll>
+                            <deprel>OBJ</deprel>
+                            <cpos>VERB</cpos>
+                            <pos>V</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </LM>
+                      </children>
+                      <form>كۆرۈپ</form>
+                      <lemma>_</lemma>
+                      <tag>VERB</tag>
+                      <iset>
+                        <pos>verb</pos>
+                      </iset>
+                      <translit>körüp</translit>
+                      <ord>18</ord>
+                      <deprel>AUX</deprel>
+                      <conll>
+                        <deprel>AUX</deprel>
+                        <cpos>VERB</cpos>
+                        <pos>V</pos>
+                        <feat>_</feat>
+                      </conll>
+                      <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                    </children>
+                    <form>باقايلى</form>
+                    <lemma>_</lemma>
+                    <tag>VERB</tag>
+                    <iset>
+                      <pos>verb</pos>
+                    </iset>
+                    <translit>baqayli</translit>
+                    <ord>19</ord>
+                    <deprel>ROOT</deprel>
+                    <conll>
+                      <deprel>ROOT</deprel>
+                      <cpos>VERB</cpos>
+                      <pos>V</pos>
+                      <feat>_</feat>
+                    </conll>
+                    <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                  </children>
+                  <form>،</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>,</translit>
+                  <ord>20</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+              </children>
+            </a_tree>
+          </trees>
+        </zone>
+      </zones>
+      <wild_dump>$VAR1 = {
+          'comment' => ''
+        };
+</wild_dump>
+    </LM>
+    <LM id="s3">
+      <zones>
+        <zone language="ug">
+          <sentence>يەنە ئەتراپىمىزدىكى مۇھىتنى ياخشى كۆزىتىپ ، مۇھىتنى قوغداش ئۈچۈن نېمىلەرنى قىلالايدىغانلىقىمىز توغرۇلۇق ئويلىنىپ باقايلى .</sentence>
+          <trees>
+            <a_tree id="s3">
+              <ord>0</ord>
+              <children>
+                <LM id="n57">
+                  <form>،</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>,</translit>
+                  <ord>6</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n66">
+                  <children id="n65">
+                    <children id="n64">
+                      <children>
+                        <LM id="n52">
+                          <form>يەنە</form>
+                          <lemma>_</lemma>
+                          <tag>ADV</tag>
+                          <iset>
+                            <pos>adv</pos>
+                          </iset>
+                          <translit>yene</translit>
+                          <ord>1</ord>
+                          <deprel>CONJ</deprel>
+                          <conll>
+                            <deprel>CONJ</deprel>
+                            <cpos>ADV</cpos>
+                            <pos>D</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </LM>
+                        <LM id="n56">
+                          <children>
+                            <LM id="n54">
+                              <children id="n53">
+                                <form>ئەتراپىمىزدىكى</form>
+                                <lemma>_</lemma>
+                                <tag>NOUN</tag>
+                                <iset>
+                                  <pos>noun</pos>
+                                  <nountype>com</nountype>
+                                </iset>
+                                <translit>etrapimizdiki</translit>
+                                <ord>2</ord>
+                                <deprel>ATT</deprel>
+                                <conll>
+                                  <deprel>ATT</deprel>
+                                  <cpos>NOUN</cpos>
+                                  <pos>N</pos>
+                                  <feat>_</feat>
+                                </conll>
+                                <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                              </children>
+                              <form>مۇھىتنى</form>
+                              <lemma>_</lemma>
+                              <tag>NOUN</tag>
+                              <iset>
+                                <pos>noun</pos>
+                                <nountype>com</nountype>
+                              </iset>
+                              <translit>muhitni</translit>
+                              <ord>3</ord>
+                              <deprel>OBJ</deprel>
+                              <conll>
+                                <deprel>OBJ</deprel>
+                                <cpos>NOUN</cpos>
+                                <pos>N</pos>
+                                <feat>_</feat>
+                              </conll>
+                              <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                            </LM>
+                            <LM id="n55">
+                              <form>ياخشى</form>
+                              <lemma>_</lemma>
+                              <tag>ADJ</tag>
+                              <iset>
+                                <pos>adj</pos>
+                              </iset>
+                              <translit>yaxshi</translit>
+                              <ord>4</ord>
+                              <deprel>ADV</deprel>
+                              <conll>
+                                <deprel>ADV</deprel>
+                                <cpos>ADJ</cpos>
+                                <pos>A</pos>
+                                <feat>_</feat>
+                              </conll>
+                              <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                            </LM>
+                          </children>
+                          <form>كۆزىتىپ</form>
+                          <lemma>_</lemma>
+                          <tag>VERB</tag>
+                          <iset>
+                            <pos>verb</pos>
+                          </iset>
+                          <translit>közitip</translit>
+                          <ord>5</ord>
+                          <deprel>ADV</deprel>
+                          <conll>
+                            <deprel>ADV</deprel>
+                            <cpos>VERB</cpos>
+                            <pos>V</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </LM>
+                        <LM id="n63">
+                          <children id="n62">
+                            <children>
+                              <LM id="n60">
+                                <children id="n59">
+                                  <children id="n58">
+                                    <form>مۇھىتنى</form>
+                                    <lemma>_</lemma>
+                                    <tag>NOUN</tag>
+                                    <iset>
+                                      <pos>noun</pos>
+                                      <nountype>com</nountype>
+                                    </iset>
+                                    <translit>muhitni</translit>
+                                    <ord>7</ord>
+                                    <deprel>OBJ</deprel>
+                                    <conll>
+                                      <deprel>OBJ</deprel>
+                                      <cpos>NOUN</cpos>
+                                      <pos>N</pos>
+                                      <feat>_</feat>
+                                    </conll>
+                                    <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                                  </children>
+                                  <form>قوغداش</form>
+                                  <lemma>_</lemma>
+                                  <tag>VERB</tag>
+                                  <iset>
+                                    <pos>verb</pos>
+                                  </iset>
+                                  <translit>qoghdash</translit>
+                                  <ord>8</ord>
+                                  <deprel>POST</deprel>
+                                  <conll>
+                                    <deprel>POST</deprel>
+                                    <cpos>VERB</cpos>
+                                    <pos>V</pos>
+                                    <feat>_</feat>
+                                  </conll>
+                                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                                </children>
+                                <form>ئۈچۈن</form>
+                                <lemma>_</lemma>
+                                <tag>CONJ</tag>
+                                <iset>
+                                  <pos>conj</pos>
+                                  <conjtype>coor</conjtype>
+                                </iset>
+                                <translit>üchün</translit>
+                                <ord>9</ord>
+                                <deprel>ADV</deprel>
+                                <conll>
+                                  <deprel>ADV</deprel>
+                                  <cpos>CONJ</cpos>
+                                  <pos>C</pos>
+                                  <feat>_</feat>
+                                </conll>
+                                <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                              </LM>
+                              <LM id="n61">
+                                <form>نېمىلەرنى</form>
+                                <lemma>_</lemma>
+                                <tag>PRON</tag>
+                                <iset>
+                                  <pos>noun</pos>
+                                  <prontype>prn</prontype>
+                                </iset>
+                                <translit>nëmilerni</translit>
+                                <ord>10</ord>
+                                <deprel>OBJ</deprel>
+                                <conll>
+                                  <deprel>OBJ</deprel>
+                                  <cpos>PRON</cpos>
+                                  <pos>P</pos>
+                                  <feat>_</feat>
+                                </conll>
+                                <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                              </LM>
+                            </children>
+                            <form>قىلالايدىغانلىقىمىز</form>
+                            <lemma>_</lemma>
+                            <tag>VERB</tag>
+                            <iset>
+                              <pos>verb</pos>
+                            </iset>
+                            <translit>qilalaydighanliqimiz</translit>
+                            <ord>11</ord>
+                            <deprel>POST</deprel>
+                            <conll>
+                              <deprel>POST</deprel>
+                              <cpos>VERB</cpos>
+                              <pos>V</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </children>
+                          <form>توغرۇلۇق</form>
+                          <lemma>_</lemma>
+                          <tag>ADP</tag>
+                          <iset>
+                            <pos>adp</pos>
+                          </iset>
+                          <translit>toghruluq</translit>
+                          <ord>12</ord>
+                          <deprel>ADV</deprel>
+                          <conll>
+                            <deprel>ADV</deprel>
+                            <cpos>ADP</cpos>
+                            <pos>R</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </LM>
+                      </children>
+                      <form>ئويلىنىپ</form>
+                      <lemma>_</lemma>
+                      <tag>VERB</tag>
+                      <iset>
+                        <pos>verb</pos>
+                      </iset>
+                      <translit>oylinip</translit>
+                      <ord>13</ord>
+                      <deprel>AUX</deprel>
+                      <conll>
+                        <deprel>AUX</deprel>
+                        <cpos>VERB</cpos>
+                        <pos>V</pos>
+                        <feat>_</feat>
+                      </conll>
+                      <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                    </children>
+                    <form>باقايلى</form>
+                    <lemma>_</lemma>
+                    <tag>VERB</tag>
+                    <iset>
+                      <pos>verb</pos>
+                    </iset>
+                    <translit>baqayli</translit>
+                    <ord>14</ord>
+                    <deprel>ROOT</deprel>
+                    <conll>
+                      <deprel>ROOT</deprel>
+                      <cpos>VERB</cpos>
+                      <pos>V</pos>
+                      <feat>_</feat>
+                    </conll>
+                    <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                  </children>
+                  <form>.</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>.</translit>
+                  <ord>15</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+              </children>
+            </a_tree>
+          </trees>
+        </zone>
+      </zones>
+      <wild_dump>$VAR1 = {
+          'comment' => ''
+        };
+</wild_dump>
+    </LM>
+    <LM id="s4">
+      <zones>
+        <zone language="ug">
+          <sentence>بىر يىلى باھار كۈنلىرىنىڭ بىرىدە ، شىۋېتسارىيىنىڭ بىر ۋوگزالىدا ھاۋا تەڭشىگۈچ ئورنىتىلغان چىرايلىق ، ئازادە بىر پويىز قوزغىلىش ئالدىدا تۇراتتى .</sentence>
+          <trees>
+            <a_tree id="s4">
+              <ord>0</ord>
+              <children>
+                <LM id="n68">
+                  <children id="n67">
+                    <form>بىر</form>
+                    <lemma>_</lemma>
+                    <tag>NUM</tag>
+                    <iset>
+                      <pos>num</pos>
+                      <numtype>card</numtype>
+                    </iset>
+                    <translit>bir</translit>
+                    <ord>1</ord>
+                    <deprel>ATT</deprel>
+                    <conll>
+                      <deprel>ATT</deprel>
+                      <cpos>NUM</cpos>
+                      <pos>M</pos>
+                      <feat>_</feat>
+                    </conll>
+                    <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                  </children>
+                  <form>يىلى</form>
+                  <lemma>_</lemma>
+                  <tag>NOUN</tag>
+                  <iset>
+                    <pos>noun</pos>
+                    <nountype>com</nountype>
+                  </iset>
+                  <translit>yili</translit>
+                  <ord>2</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>NOUN</cpos>
+                    <pos>N</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n72">
+                  <form>،</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>,</translit>
+                  <ord>6</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n80">
+                  <form>،</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>,</translit>
+                  <ord>14</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n87">
+                  <children id="n86">
+                    <children>
+                      <LM id="n71">
+                        <children id="n70">
+                          <children id="n69">
+                            <form>باھار</form>
+                            <lemma>_</lemma>
+                            <tag>NOUN</tag>
+                            <iset>
+                              <pos>noun</pos>
+                              <nountype>com</nountype>
+                            </iset>
+                            <translit>bahar</translit>
+                            <ord>3</ord>
+                            <deprel>CLAS</deprel>
+                            <conll>
+                              <deprel>CLAS</deprel>
+                              <cpos>NOUN</cpos>
+                              <pos>N</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </children>
+                          <form>كۈنلىرىنىڭ</form>
+                          <lemma>_</lemma>
+                          <tag>NOUN</tag>
+                          <iset>
+                            <pos>noun</pos>
+                            <nountype>com</nountype>
+                          </iset>
+                          <translit>künlirining</translit>
+                          <ord>4</ord>
+                          <deprel>POSS</deprel>
+                          <conll>
+                            <deprel>POSS</deprel>
+                            <cpos>NOUN</cpos>
+                            <pos>N</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </children>
+                        <form>بىرىدە</form>
+                        <lemma>_</lemma>
+                        <tag>NUM</tag>
+                        <iset>
+                          <pos>num</pos>
+                          <numtype>card</numtype>
+                        </iset>
+                        <translit>biride</translit>
+                        <ord>5</ord>
+                        <deprel>LOC</deprel>
+                        <conll>
+                          <deprel>LOC</deprel>
+                          <cpos>NUM</cpos>
+                          <pos>M</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                      <LM id="n75">
+                        <children>
+                          <LM id="n73">
+                            <form>شىۋېتسارىيىنىڭ</form>
+                            <lemma>_</lemma>
+                            <tag>NOUN</tag>
+                            <iset>
+                              <pos>noun</pos>
+                              <nountype>com</nountype>
+                            </iset>
+                            <translit>shiwëtsariyining</translit>
+                            <ord>7</ord>
+                            <deprel>POSS</deprel>
+                            <conll>
+                              <deprel>POSS</deprel>
+                              <cpos>NOUN</cpos>
+                              <pos>N</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </LM>
+                          <LM id="n74">
+                            <form>بىر</form>
+                            <lemma>_</lemma>
+                            <tag>NUM</tag>
+                            <iset>
+                              <pos>num</pos>
+                              <numtype>card</numtype>
+                            </iset>
+                            <translit>bir</translit>
+                            <ord>8</ord>
+                            <deprel>ATT</deprel>
+                            <conll>
+                              <deprel>ATT</deprel>
+                              <cpos>NUM</cpos>
+                              <pos>M</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </LM>
+                        </children>
+                        <form>ۋوگزالىدا</form>
+                        <lemma>_</lemma>
+                        <tag>NOUN</tag>
+                        <iset>
+                          <pos>noun</pos>
+                          <nountype>com</nountype>
+                        </iset>
+                        <translit>wogzalida</translit>
+                        <ord>9</ord>
+                        <deprel>LOC</deprel>
+                        <conll>
+                          <deprel>LOC</deprel>
+                          <cpos>NOUN</cpos>
+                          <pos>N</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                      <LM id="n83">
+                        <children>
+                          <LM id="n78">
+                            <children id="n77">
+                              <children id="n76">
+                                <form>ھاۋا</form>
+                                <lemma>_</lemma>
+                                <tag>NOUN</tag>
+                                <iset>
+                                  <pos>noun</pos>
+                                  <nountype>com</nountype>
+                                </iset>
+                                <translit>hawa</translit>
+                                <ord>10</ord>
+                                <deprel>OBJ</deprel>
+                                <conll>
+                                  <deprel>OBJ</deprel>
+                                  <cpos>NOUN</cpos>
+                                  <pos>N</pos>
+                                  <feat>_</feat>
+                                </conll>
+                                <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                              </children>
+                              <form>تەڭشىگۈچ</form>
+                              <lemma>_</lemma>
+                              <tag>NOUN</tag>
+                              <iset>
+                                <pos>noun</pos>
+                                <nountype>com</nountype>
+                              </iset>
+                              <translit>tengshigüch</translit>
+                              <ord>11</ord>
+                              <deprel>SUBJ</deprel>
+                              <conll>
+                                <deprel>SUBJ</deprel>
+                                <cpos>NOUN</cpos>
+                                <pos>N</pos>
+                                <feat>_</feat>
+                              </conll>
+                              <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                            </children>
+                            <form>ئورنىتىلغان</form>
+                            <lemma>_</lemma>
+                            <tag>NOUN</tag>
+                            <iset>
+                              <pos>noun</pos>
+                              <nountype>com</nountype>
+                            </iset>
+                            <translit>ornitilghan</translit>
+                            <ord>12</ord>
+                            <deprel>ATT</deprel>
+                            <conll>
+                              <deprel>ATT</deprel>
+                              <cpos>NOUN</cpos>
+                              <pos>N</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </LM>
+                          <LM id="n81">
+                            <children id="n79">
+                              <form>چىرايلىق</form>
+                              <lemma>_</lemma>
+                              <tag>ADJ</tag>
+                              <iset>
+                                <pos>adj</pos>
+                              </iset>
+                              <translit>chirayliq</translit>
+                              <ord>13</ord>
+                              <deprel>COORD</deprel>
+                              <conll>
+                                <deprel>COORD</deprel>
+                                <cpos>ADJ</cpos>
+                                <pos>A</pos>
+                                <feat>_</feat>
+                              </conll>
+                              <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                            </children>
+                            <form>ئازادە</form>
+                            <lemma>_</lemma>
+                            <tag>ADJ</tag>
+                            <iset>
+                              <pos>adj</pos>
+                            </iset>
+                            <translit>azade</translit>
+                            <ord>15</ord>
+                            <deprel>ATT</deprel>
+                            <conll>
+                              <deprel>ATT</deprel>
+                              <cpos>ADJ</cpos>
+                              <pos>A</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </LM>
+                          <LM id="n82">
+                            <form>بىر</form>
+                            <lemma>_</lemma>
+                            <tag>NUM</tag>
+                            <iset>
+                              <pos>num</pos>
+                              <numtype>card</numtype>
+                            </iset>
+                            <translit>bir</translit>
+                            <ord>16</ord>
+                            <deprel>ATT</deprel>
+                            <conll>
+                              <deprel>ATT</deprel>
+                              <cpos>NUM</cpos>
+                              <pos>M</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </LM>
+                        </children>
+                        <form>پويىز</form>
+                        <lemma>_</lemma>
+                        <tag>NOUN</tag>
+                        <iset>
+                          <pos>noun</pos>
+                          <nountype>com</nountype>
+                        </iset>
+                        <translit>poyiz</translit>
+                        <ord>17</ord>
+                        <deprel>SUBJ</deprel>
+                        <conll>
+                          <deprel>SUBJ</deprel>
+                          <cpos>NOUN</cpos>
+                          <pos>N</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                      <LM id="n85">
+                        <children id="n84">
+                          <form>قوزغىلىش</form>
+                          <lemma>_</lemma>
+                          <tag>VERB</tag>
+                          <iset>
+                            <pos>verb</pos>
+                          </iset>
+                          <translit>qozghilish</translit>
+                          <ord>18</ord>
+                          <deprel>POST</deprel>
+                          <conll>
+                            <deprel>POST</deprel>
+                            <cpos>VERB</cpos>
+                            <pos>V</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </children>
+                        <form>ئالدىدا</form>
+                        <lemma>_</lemma>
+                        <tag>NOUN</tag>
+                        <iset>
+                          <pos>noun</pos>
+                          <nountype>com</nountype>
+                        </iset>
+                        <translit>aldida</translit>
+                        <ord>19</ord>
+                        <deprel>LOC</deprel>
+                        <conll>
+                          <deprel>LOC</deprel>
+                          <cpos>NOUN</cpos>
+                          <pos>N</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                    </children>
+                    <form>تۇراتتى</form>
+                    <lemma>_</lemma>
+                    <tag>VERB</tag>
+                    <iset>
+                      <pos>verb</pos>
+                    </iset>
+                    <translit>turatti</translit>
+                    <ord>20</ord>
+                    <deprel>ROOT</deprel>
+                    <conll>
+                      <deprel>ROOT</deprel>
+                      <cpos>VERB</cpos>
+                      <pos>V</pos>
+                      <feat>_</feat>
+                    </conll>
+                    <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                  </children>
+                  <form>.</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>.</translit>
+                  <ord>21</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+              </children>
+            </a_tree>
+          </trees>
+        </zone>
+      </zones>
+      <wild_dump>$VAR1 = {
+          'comment' => ''
+        };
+</wild_dump>
+    </LM>
+    <LM id="s5">
+      <zones>
+        <zone language="ug">
+          <sentence>ۋوگزال سۇپىسى ئۇزاتقۇچىلار بىلەن تولۇپ كەتكەنىدى .</sentence>
+          <trees>
+            <a_tree id="s5">
+              <ord>0</ord>
+              <children id="n94">
+                <children id="n93">
+                  <children id="n92">
+                    <children>
+                      <LM id="n89">
+                        <children id="n88">
+                          <form>ۋوگزال</form>
+                          <lemma>_</lemma>
+                          <tag>NOUN</tag>
+                          <iset>
+                            <pos>noun</pos>
+                            <nountype>com</nountype>
+                          </iset>
+                          <translit>wogzal</translit>
+                          <ord>1</ord>
+                          <deprel>CLAS</deprel>
+                          <conll>
+                            <deprel>CLAS</deprel>
+                            <cpos>NOUN</cpos>
+                            <pos>N</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </children>
+                        <form>سۇپىسى</form>
+                        <lemma>_</lemma>
+                        <tag>NOUN</tag>
+                        <iset>
+                          <pos>noun</pos>
+                          <nountype>com</nountype>
+                        </iset>
+                        <translit>supisi</translit>
+                        <ord>2</ord>
+                        <deprel>SUBJ</deprel>
+                        <conll>
+                          <deprel>SUBJ</deprel>
+                          <cpos>NOUN</cpos>
+                          <pos>N</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                      <LM id="n91">
+                        <children id="n90">
+                          <form>ئۇزاتقۇچىلار</form>
+                          <lemma>_</lemma>
+                          <tag>NOUN</tag>
+                          <iset>
+                            <pos>noun</pos>
+                            <nountype>com</nountype>
+                          </iset>
+                          <translit>uzatquchilar</translit>
+                          <ord>3</ord>
+                          <deprel>POST</deprel>
+                          <conll>
+                            <deprel>POST</deprel>
+                            <cpos>NOUN</cpos>
+                            <pos>N</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </children>
+                        <form>بىلەن</form>
+                        <lemma>_</lemma>
+                        <tag>ADP</tag>
+                        <iset>
+                          <pos>adp</pos>
+                        </iset>
+                        <translit>bilen</translit>
+                        <ord>4</ord>
+                        <deprel>ADV</deprel>
+                        <conll>
+                          <deprel>ADV</deprel>
+                          <cpos>ADP</cpos>
+                          <pos>R</pos>
+                          <feat>_</feat>
+                        </conll>
+                        <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                      </LM>
+                    </children>
+                    <form>تولۇپ</form>
+                    <lemma>_</lemma>
+                    <tag>VERB</tag>
+                    <iset>
+                      <pos>verb</pos>
+                    </iset>
+                    <translit>tolup</translit>
+                    <ord>5</ord>
+                    <deprel>AUX</deprel>
+                    <conll>
+                      <deprel>AUX</deprel>
+                      <cpos>VERB</cpos>
+                      <pos>V</pos>
+                      <feat>_</feat>
+                    </conll>
+                    <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                  </children>
+                  <form>كەتكەنىدى</form>
+                  <lemma>_</lemma>
+                  <tag>VERB</tag>
+                  <iset>
+                    <pos>verb</pos>
+                  </iset>
+                  <translit>ketkenidi</translit>
+                  <ord>6</ord>
+                  <deprel>ROOT</deprel>
+                  <conll>
+                    <deprel>ROOT</deprel>
+                    <cpos>VERB</cpos>
+                    <pos>V</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </children>
+                <form>.</form>
+                <lemma>_</lemma>
+                <tag>PUNCT</tag>
+                <iset>
+                  <pos>punc</pos>
+                </iset>
+                <translit>.</translit>
+                <ord>7</ord>
+                <deprel>void</deprel>
+                <conll>
+                  <deprel>void</deprel>
+                  <cpos>PUNCT</cpos>
+                  <pos>Y</pos>
+                  <feat>_</feat>
+                </conll>
+                <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+              </children>
+            </a_tree>
+          </trees>
+        </zone>
+      </zones>
+      <wild_dump>$VAR1 = {
+          'comment' => ''
+        };
+</wild_dump>
+    </LM>
+    <LM id="s6">
+      <zones>
+        <zone language="ug">
+          <sentence>ئۇلارنىڭ ئۇزاتماقچى بولغىنى ئۆزگىچە مىھمان - قارلىغاچلار ئىدى .</sentence>
+          <trees>
+            <a_tree id="s6">
+              <ord>0</ord>
+              <children>
+                <LM id="n100">
+                  <form>-</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>-</translit>
+                  <ord>6</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+                <LM id="n103">
+                  <children id="n102">
+                    <children id="n101">
+                      <children>
+                        <LM id="n97">
+                          <children>
+                            <LM id="n95">
+                              <form>ئۇلارنىڭ</form>
+                              <lemma>_</lemma>
+                              <tag>PRON</tag>
+                              <iset>
+                                <pos>noun</pos>
+                                <prontype>prn</prontype>
+                              </iset>
+                              <translit>ularning</translit>
+                              <ord>1</ord>
+                              <deprel>POSS</deprel>
+                              <conll>
+                                <deprel>POSS</deprel>
+                                <cpos>PRON</cpos>
+                                <pos>P</pos>
+                                <feat>_</feat>
+                              </conll>
+                              <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                            </LM>
+                            <LM id="n96">
+                              <form>ئۇزاتماقچى</form>
+                              <lemma>_</lemma>
+                              <tag>NOUN</tag>
+                              <iset>
+                                <pos>noun</pos>
+                                <nountype>com</nountype>
+                              </iset>
+                              <translit>uzatmaqchi</translit>
+                              <ord>2</ord>
+                              <deprel>COP</deprel>
+                              <conll>
+                                <deprel>COP</deprel>
+                                <cpos>NOUN</cpos>
+                                <pos>N</pos>
+                                <feat>_</feat>
+                              </conll>
+                              <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                            </LM>
+                          </children>
+                          <form>بولغىنى</form>
+                          <lemma>_</lemma>
+                          <tag>VERB</tag>
+                          <iset>
+                            <pos>verb</pos>
+                          </iset>
+                          <translit>bolghini</translit>
+                          <ord>3</ord>
+                          <deprel>PRED</deprel>
+                          <conll>
+                            <deprel>PRED</deprel>
+                            <cpos>VERB</cpos>
+                            <pos>V</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </LM>
+                        <LM id="n99">
+                          <children id="n98">
+                            <form>ئۆزگىچە</form>
+                            <lemma>_</lemma>
+                            <tag>ADJ</tag>
+                            <iset>
+                              <pos>adj</pos>
+                            </iset>
+                            <translit>özgiche</translit>
+                            <ord>4</ord>
+                            <deprel>ATT</deprel>
+                            <conll>
+                              <deprel>ATT</deprel>
+                              <cpos>ADJ</cpos>
+                              <pos>A</pos>
+                              <feat>_</feat>
+                            </conll>
+                            <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                          </children>
+                          <form>مىھمان</form>
+                          <lemma>_</lemma>
+                          <tag>NOUN</tag>
+                          <iset>
+                            <pos>noun</pos>
+                            <nountype>com</nountype>
+                          </iset>
+                          <translit>mihman</translit>
+                          <ord>5</ord>
+                          <deprel>APPOS</deprel>
+                          <conll>
+                            <deprel>APPOS</deprel>
+                            <cpos>NOUN</cpos>
+                            <pos>N</pos>
+                            <feat>_</feat>
+                          </conll>
+                          <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                        </LM>
+                      </children>
+                      <form>قارلىغاچلار</form>
+                      <lemma>_</lemma>
+                      <tag>NOUN</tag>
+                      <iset>
+                        <pos>noun</pos>
+                        <nountype>com</nountype>
+                      </iset>
+                      <translit>qarlighachlar</translit>
+                      <ord>7</ord>
+                      <deprel>COP</deprel>
+                      <conll>
+                        <deprel>COP</deprel>
+                        <cpos>NOUN</cpos>
+                        <pos>N</pos>
+                        <feat>_</feat>
+                      </conll>
+                      <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                    </children>
+                    <form>ئىدى</form>
+                    <lemma>_</lemma>
+                    <tag>VERB</tag>
+                    <iset>
+                      <pos>verb</pos>
+                    </iset>
+                    <translit>idi</translit>
+                    <ord>8</ord>
+                    <deprel>ROOT</deprel>
+                    <conll>
+                      <deprel>ROOT</deprel>
+                      <cpos>VERB</cpos>
+                      <pos>V</pos>
+                      <feat>_</feat>
+                    </conll>
+                    <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                  </children>
+                  <form>.</form>
+                  <lemma>_</lemma>
+                  <tag>PUNCT</tag>
+                  <iset>
+                    <pos>punc</pos>
+                  </iset>
+                  <translit>.</translit>
+                  <ord>9</ord>
+                  <deprel>void</deprel>
+                  <conll>
+                    <deprel>void</deprel>
+                    <cpos>PUNCT</cpos>
+                    <pos>Y</pos>
+                    <feat>_</feat>
+                  </conll>
+                  <wild_dump>$VAR1 = {
+          'lemma_translit' => '_'
+        };
+</wild_dump>
+                </LM>
+              </children>
+            </a_tree>
+          </trees>
+        </zone>
+      </zones>
+      <wild_dump>$VAR1 = {
+          'comment' => ''
+        };
+</wild_dump>
+    </LM>
+  </bundles>
+</treex_document>

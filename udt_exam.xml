@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Sentences>
+  <Sentence ID="1">
+    <Word ID="1" Lem="ئاسماننى" Morph="ئاسماننى" Inf=" " Rel="9,1,OBJ" POSName="ئىسىم" POS="N">ئاسماننى</Word>
+    <Word ID="2" Lem="كۆپكۈك" Morph="كۆپكۈك" Inf=" " Rel="9,1,ADV" POSName="پېئىل" POS="V">كۆپكۈك</Word>
+    <Word ID="3" Lem="،" Morph="،" Inf=" " Rel="14,1,CL" POSName="تىنىش بەلگىلىرى" POS="Y">،</Word>
+    <Word ID="4" Lem="دەريا" Morph="دەريا" Inf=" " Rel="6,1,COORD" POSName="ئىسىم" POS="N">دەريا</Word>
+    <Word ID="5" Lem="،" Morph="،" Inf=" " Rel="8,1,COORD" POSName="تىنىش بەلگىلىرى" POS="Y">،</Word>
+    <Word ID="6" Lem="كۆل" Morph="كۆل" Inf=" " Rel="8,1,CONJ" POSName="ئىسىم" POS="N">كۆل</Word>
+    <Word ID="7" Lem="سۇلىرىنى" Morph="سۇلىرىنى" Inf=" " Rel="8,1,ATT" POSName="ئىسىم" POS="N">سۇلىرىنى</Word>
+    <Word ID="8" Lem="سۈپسۈزۈك" Morph="سۈپسۈزۈك" Inf=" " Rel="9,1,CLAS" POSName="سۈپەت" POS="A">سۈپسۈزۈك</Word>
+    <Word ID="9" Lem="تۇرۇشقا" Morph="تۇرۇشقا" Inf=" " Rel="17,1,COORD" POSName="پېئىل" POS="V">تۇرۇشقا</Word>
+    <Word ID="10" Lem="،" Morph="،" Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">،</Word>
+    <Word ID="11" Lem="دەل" Morph="دەل" Inf=" " Rel="13,1,COLL" POSName="رەۋىش" POS="D">دەل</Word>
+    <Word ID="12" Lem="-" Morph="-" Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">-</Word>
+    <Word ID="13" Lem="دەرەخلەرنى" Morph="دەرەخلەرنى" Inf=" " Rel="17,1,OBJ" POSName="ئىسىم" POS="N">دەرەخلەرنى</Word>
+    <Word ID="14" Lem="بۈك" Morph="بۈك" Inf=" " Rel="15,1,AUX" POSName="سۈپەت" POS="A">بۈك</Word>
+    <Word ID="15" Lem="-" Morph="-" Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">-</Word>
+    <Word ID="16" Lem="باراقسان" Morph="باراقسان" Inf=" " Rel="17,1,ADV" POSName="سۈپەت" POS="A">باراقسان</Word>
+    <Word ID="17" Lem="بولۇشقا" Morph="بولۇشقا" Inf=" " Rel="18,1,COP" POSName="پېئىل" POS="V">بولۇشقا</Word>
+    <Word ID="18" Lem="،" Morph="،" Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">،</Word>
+    <Word ID="19" Lem="ھايۋانلارنى" Morph="ھايۋانلارنى" Inf=" " Rel="22,1,OBJ" POSName="ئىسىم" POS="N">ھايۋانلارنى</Word>
+    <Word ID="20" Lem="ئەركىن" Morph="ئەركىن" Inf=" " Rel="21,1,COLL" POSName="سۈپەت" POS="A">ئەركىن</Word>
+    <Word ID="21" Lem="ئازادە" Morph="ئازادە" Inf=" " Rel="22,1,ADV" POSName="سۈپەت" POS="A">ئازادە</Word>
+    <Word ID="22" Lem="ياشاشقا" Morph="ياشاشقا" Inf=" " Rel="24,1,DAT" POSName="ئىسىم" POS="N">ياشاشقا</Word>
+    <Word ID="23" Lem="ئىگە" Morph="ئىگە" Inf=" " Rel="24,1,COLL" POSName="ئىسىم" POS="N">ئىگە</Word>
+    <Word ID="24" Lem="قىلىش" Morph="قىلىش" Inf=" " Rel="30,1,PRED" POSName="پېئىل" POS="V">قىلىش</Word>
+    <Word ID="25" Lem="." Morph="." Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">.</Word>
+    <Word ID="26" Lem="." Morph="." Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">.</Word>
+    <Word ID="27" Lem="." Morph="." Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">.</Word>
+    <Word ID="28" Lem="بىزنىڭ" Morph="بىزنىڭ" Inf=" " Rel="30,1,POSS" POSName="ئالماش" POS="P">بىزنىڭ</Word>
+    <Word ID="29" Lem="ئورتاق" Morph="ئورتاق" Inf=" " Rel="30,1,ATT" POSName="سۈپەت" POS="A">ئورتاق</Word>
+    <Word ID="30" Lem="ئارزۇيىمىز" Morph="ئارزۇيىمىز" Inf=" " Rel="31,1,ROOT" POSName="ئىسىم" POS="N">ئارزۇيىمىز</Word>
+    <Word ID="31" Lem="." Morph="." Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">.</Word>
+  </Sentence>
+  <Sentence ID="2">
+    <Word ID="1" Lem="بۇ" Morph="بۇ" Inf=" " Rel="2,1,ATT" POSName="ئالماش" POS="P">بۇ</Word>
+    <Word ID="2" Lem="بۆلەكتىكى" Morph="بۆلەكتىكى" Inf=" " Rel="3,1,ATT" POSName="ئىسىم" POS="N">بۆلەكتىكى</Word>
+    <Word ID="3" Lem="تېكىستلەرنى" Morph="تېكىستلەرنى" Inf=" " Rel="4,1,OBJ" POSName="ئىسىم" POS="N">تېكىستلەرنى</Word>
+    <Word ID="4" Lem="ئوقۇش" Morph="ئوقۇش" Inf=" " Rel="5,1,POST" POSName="پېئىل" POS="V">ئوقۇش</Word>
+    <Word ID="5" Lem="ئارقىلىق" Morph="ئارقىلىق" Inf=" " Rel="18,1,ADV" POSName="تىركەلمە" POS="R">ئارقىلىق</Word>
+    <Word ID="6" Lem="،" Morph="،" Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">،</Word>
+    <Word ID="7" Lem="كىشىلەرنىڭ" Morph="كىشىلەرنىڭ" Inf=" " Rel="13,1,POSS" POSName="ئىسىم" POS="N">كىشىلەرنىڭ</Word>
+    <Word ID="8" Lem="ھايۋانلار" Morph="ھايۋانلار" Inf=" " Rel="10,1,COORD" POSName="ئىسىم" POS="N">ھايۋانلار</Word>
+    <Word ID="9" Lem="ۋە" Morph="ۋە" Inf=" " Rel="10,1,CONJ" POSName="باغلىغۇچى" POS="C">ۋە</Word>
+    <Word ID="10" Lem="ئۆسۈملۈكلەرگە" Morph="ئۆسۈملۈكلەرگە" Inf=" " Rel="13,1,DAT" POSName="ئىسىم" POS="N">ئۆسۈملۈكلەرگە</Word>
+    <Word ID="11" Lem="قانداق" Morph="قانداق" Inf=" " Rel="13,1,ADV" POSName="ئالماش" POS="P">قانداق</Word>
+    <Word ID="12" Lem="مۇئامىلە" Morph="مۇئامىلە" Inf=" " Rel="13,1,COLL" POSName="ئىسىم" POS="N">مۇئامىلە</Word>
+    <Word ID="13" Lem="قىلغانلىقى" Morph="قىلغانلىقى" Inf=" " Rel="17,1,COORD" POSName="پېئىل" POS="V">قىلغانلىقى</Word>
+    <Word ID="14" Lem="،" Morph="،" Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">،</Word>
+    <Word ID="15" Lem="ئاقىۋىتىنىڭ" Morph="ئاقىۋىتىنىڭ" Inf=" " Rel="17,1,POSS" POSName="ئىسىم" POS="N">ئاقىۋىتىنىڭ</Word>
+    <Word ID="16" Lem="قانداق" Morph="قانداق" Inf=" " Rel="17,1,ADV" POSName="ئالماش" POS="P">قانداق</Word>
+    <Word ID="17" Lem="بولغانلىقىنى" Morph="بولغانلىقىنى" Inf=" " Rel="18,1,OBJ" POSName="پېئىل" POS="V">بولغانلىقىنى</Word>
+    <Word ID="18" Lem="كۆرۈپ" Morph="كۆرۈپ" Inf=" " Rel="19,1,AUX" POSName="پېئىل" POS="V">كۆرۈپ</Word>
+    <Word ID="19" Lem="باقايلى" Morph="باقايلى" Inf=" " Rel="20,1,ROOT" POSName="پېئىل" POS="V">باقايلى</Word>
+    <Word ID="20" Lem="،" Morph="،" Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">،</Word>
+  </Sentence>
+  <Sentence ID="3">
+    <Word ID="1" Lem="يەنە" Morph="يەنە" Inf=" " Rel="13,1,CONJ" POSName="رەۋىش" POS="D">يەنە</Word>
+    <Word ID="2" Lem="ئەتراپىمىزدىكى" Morph="ئەتراپىمىزدىكى" Inf=" " Rel="3,1,ATT" POSName="ئىسىم" POS="N">ئەتراپىمىزدىكى</Word>
+    <Word ID="3" Lem="مۇھىتنى" Morph="مۇھىتنى" Inf=" " Rel="5,1,OBJ" POSName="ئىسىم" POS="N">مۇھىتنى</Word>
+    <Word ID="4" Lem="ياخشى" Morph="ياخشى" Inf=" " Rel="5,1,ADV" POSName="سۈپەت" POS="A">ياخشى</Word>
+    <Word ID="5" Lem="كۆزىتىپ" Morph="كۆزىتىپ" Inf=" " Rel="13,1,ADV" POSName="پېئىل" POS="V">كۆزىتىپ</Word>
+    <Word ID="6" Lem="،" Morph="،" Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">،</Word>
+    <Word ID="7" Lem="مۇھىتنى" Morph="مۇھىتنى" Inf=" " Rel="8,1,OBJ" POSName="ئىسىم" POS="N">مۇھىتنى</Word>
+    <Word ID="8" Lem="قوغداش" Morph="قوغداش" Inf=" " Rel="9,1,POST" POSName="پېئىل" POS="V">قوغداش</Word>
+    <Word ID="9" Lem="ئۈچۈن" Morph="ئۈچۈن" Inf=" " Rel="11,1,ADV" POSName="باغلىغۇچى" POS="C">ئۈچۈن</Word>
+    <Word ID="10" Lem="نېمىلەرنى" Morph="نېمىلەرنى" Inf=" " Rel="11,1,OBJ" POSName="ئالماش" POS="P">نېمىلەرنى</Word>
+    <Word ID="11" Lem="قىلالايدىغانلىقىمىز" Morph="قىلالايدىغانلىقىمىز" Inf=" " Rel="12,1,POST" POSName="پېئىل" POS="V">قىلالايدىغانلىقىمىز</Word>
+    <Word ID="12" Lem="توغرۇلۇق" Morph="توغرۇلۇق" Inf=" " Rel="13,1,ADV" POSName="تىركەلمە" POS="R">توغرۇلۇق</Word>
+    <Word ID="13" Lem="ئويلىنىپ" Morph="ئويلىنىپ" Inf=" " Rel="14,1,AUX" POSName="پېئىل" POS="V">ئويلىنىپ</Word>
+    <Word ID="14" Lem="باقايلى" Morph="باقايلى" Inf=" " Rel="15,1,ROOT" POSName="پېئىل" POS="V">باقايلى</Word>
+    <Word ID="15" Lem="." Morph="." Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">.</Word>
+  </Sentence>
+  <Sentence ID="4">
+    <Word ID="1" Lem="بىر" Morph="بىر" Inf=" " Rel="2,1,ATT" POSName="سان" POS="M">بىر</Word>
+    <Word ID="2" Lem="يىلى" Morph="يىلى" Inf=" " Rel="-1,1,void" POSName="ئىسىم" POS="N">يىلى</Word>
+    <Word ID="3" Lem="باھار" Morph="باھار" Inf=" " Rel="4,1,CLAS" POSName="ئىسىم" POS="N">باھار</Word>
+    <Word ID="4" Lem="كۈنلىرىنىڭ" Morph="كۈنلىرىنىڭ" Inf=" " Rel="5,1,POSS" POSName="ئىسىم" POS="N">كۈنلىرىنىڭ</Word>
+    <Word ID="5" Lem="بىرىدە" Morph="بىرىدە" Inf=" " Rel="20,1,LOC" POSName="سان" POS="M">بىرىدە</Word>
+    <Word ID="6" Lem="،" Morph="،" Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">،</Word>
+    <Word ID="7" Lem="شىۋېتسارىيىنىڭ" Morph="شىۋېتسارىيىنىڭ" Inf=" " Rel="9,1,POSS" POSName="ئىسىم" POS="N">شىۋېتسارىيىنىڭ</Word>
+    <Word ID="8" Lem="بىر" Morph="بىر" Inf=" " Rel="9,1,ATT" POSName="سان" POS="M">بىر</Word>
+    <Word ID="9" Lem="ۋوگزالىدا" Morph="ۋوگزالىدا" Inf=" " Rel="20,1,LOC" POSName="ئىسىم" POS="N">ۋوگزالىدا</Word>
+    <Word ID="10" Lem="ھاۋا" Morph="ھاۋا" Inf=" " Rel="11,1,OBJ" POSName="ئىسىم" POS="N">ھاۋا</Word>
+    <Word ID="11" Lem="تەڭشىگۈچ" Morph="تەڭشىگۈچ" Inf=" " Rel="12,1,SUBJ" POSName="ئىسىم" POS="N">تەڭشىگۈچ</Word>
+    <Word ID="12" Lem="ئورنىتىلغان" Morph="ئورنىتىلغان" Inf=" " Rel="17,1,ATT" POSName="ئىسىم" POS="N">ئورنىتىلغان</Word>
+    <Word ID="13" Lem="چىرايلىق" Morph="چىرايلىق" Inf=" " Rel="15,1,COORD" POSName="سۈپەت" POS="A">چىرايلىق</Word>
+    <Word ID="14" Lem="،" Morph="،" Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">،</Word>
+    <Word ID="15" Lem="ئازادە" Morph="ئازادە" Inf=" " Rel="17,1,ATT" POSName="سۈپەت" POS="A">ئازادە</Word>
+    <Word ID="16" Lem="بىر" Morph="بىر" Inf=" " Rel="17,1,ATT" POSName="سان" POS="M">بىر</Word>
+    <Word ID="17" Lem="پويىز" Morph="پويىز" Inf=" " Rel="20,1,SUBJ" POSName="ئىسىم" POS="N">پويىز</Word>
+    <Word ID="18" Lem="قوزغىلىش" Morph="قوزغىلىش" Inf=" " Rel="19,1,POST" POSName="پېئىل" POS="V">قوزغىلىش</Word>
+    <Word ID="19" Lem="ئالدىدا" Morph="ئالدىدا" Inf=" " Rel="20,1,LOC" POSName="ئىسىم" POS="N">ئالدىدا</Word>
+    <Word ID="20" Lem="تۇراتتى" Morph="تۇراتتى" Inf=" " Rel="21,1,ROOT" POSName="پېئىل" POS="V">تۇراتتى</Word>
+    <Word ID="21" Lem="." Morph="." Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">.</Word>
+  </Sentence>
+  <Sentence ID="5">
+    <Word ID="1" Lem="ۋوگزال" Morph="ۋوگزال" Inf=" " Rel="2,1,CLAS" POSName="ئىسىم" POS="N">ۋوگزال</Word>
+    <Word ID="2" Lem="سۇپىسى" Morph="سۇپىسى" Inf=" " Rel="5,1,SUBJ" POSName="ئىسىم" POS="N">سۇپىسى</Word>
+    <Word ID="3" Lem="ئۇزاتقۇچىلار" Morph="ئۇزاتقۇچىلار" Inf=" " Rel="4,1,POST" POSName="ئىسىم" POS="N">ئۇزاتقۇچىلار</Word>
+    <Word ID="4" Lem="بىلەن" Morph="بىلەن" Inf=" " Rel="5,1,ADV" POSName="تىركەلمە" POS="R">بىلەن</Word>
+    <Word ID="5" Lem="تولۇپ" Morph="تولۇپ" Inf=" " Rel="6,1,AUX" POSName="پېئىل" POS="V">تولۇپ</Word>
+    <Word ID="6" Lem="كەتكەنىدى" Morph="كەتكەنىدى" Inf=" " Rel="7,1,ROOT" POSName="پېئىل" POS="V">كەتكەنىدى</Word>
+    <Word ID="7" Lem="." Morph="." Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">.</Word>
+  </Sentence>
+  <Sentence ID="6">
+    <Word ID="1" Lem="ئۇلارنىڭ" Morph="ئۇلارنىڭ" Inf=" " Rel="3,1,POSS" POSName="ئالماش" POS="P">ئۇلارنىڭ</Word>
+    <Word ID="2" Lem="ئۇزاتماقچى" Morph="ئۇزاتماقچى" Inf=" " Rel="3,1,COP" POSName="ئىسىم" POS="N">ئۇزاتماقچى</Word>
+    <Word ID="3" Lem="بولغىنى" Morph="بولغىنى" Inf=" " Rel="7,1,PRED" POSName="پېئىل" POS="V">بولغىنى</Word>
+    <Word ID="4" Lem="ئۆزگىچە" Morph="ئۆزگىچە" Inf=" " Rel="5,1,ATT" POSName="سۈپەت" POS="A">ئۆزگىچە</Word>
+    <Word ID="5" Lem="مىھمان" Morph="مىھمان" Inf=" " Rel="7,1,APPOS" POSName="ئىسىم" POS="N">مىھمان</Word>
+    <Word ID="6" Lem="-" Morph="-" Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">-</Word>
+    <Word ID="7" Lem="قارلىغاچلار" Morph="قارلىغاچلار" Inf=" " Rel="8,1,COP" POSName="ئىسىم" POS="N">قارلىغاچلار</Word>
+    <Word ID="8" Lem="ئىدى" Morph="ئىدى" Inf=" " Rel="9,1,ROOT" POSName="پېئىل" POS="V">ئىدى</Word>
+    <Word ID="9" Lem="." Morph="." Inf=" " Rel="-1,1,void" POSName="تىنىش بەلگىلىرى" POS="Y">.</Word>
+  </Sentence>
+</Sentences>

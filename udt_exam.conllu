@@ -1,0 +1,115 @@
+# sent_id s1
+1	ئاسماننى	_	NOUN	N	_	9	OBJ	_	_
+2	كۆپكۈك	_	VERB	V	_	9	ADV	_	_
+3	،	_	PUNCT	Y	_	14	CL	_	_
+4	دەريا	_	NOUN	N	_	6	COORD	_	_
+5	،	_	PUNCT	Y	_	8	COORD	_	_
+6	كۆل	_	NOUN	N	_	8	CONJ	_	_
+7	سۇلىرىنى	_	NOUN	N	_	8	ATT	_	_
+8	سۈپسۈزۈك	_	ADJ	A	_	9	CLAS	_	_
+9	تۇرۇشقا	_	VERB	V	_	17	COORD	_	_
+10	،	_	PUNCT	Y	_	0	void	_	_
+11	دەل	_	ADV	D	_	13	COLL	_	_
+12	-	_	PUNCT	Y	_	0	void	_	_
+13	دەرەخلەرنى	_	NOUN	N	_	17	OBJ	_	_
+14	بۈك	_	ADJ	A	_	15	AUX	_	_
+15	-	_	PUNCT	Y	_	0	void	_	_
+16	باراقسان	_	ADJ	A	_	17	ADV	_	_
+17	بولۇشقا	_	VERB	V	_	18	COP	_	_
+18	،	_	PUNCT	Y	_	0	void	_	_
+19	ھايۋانلارنى	_	NOUN	N	_	22	OBJ	_	_
+20	ئەركىن	_	ADJ	A	_	21	COLL	_	_
+21	ئازادە	_	ADJ	A	_	22	ADV	_	_
+22	ياشاشقا	_	NOUN	N	_	24	DAT	_	_
+23	ئىگە	_	NOUN	N	_	24	COLL	_	_
+24	قىلىش	_	VERB	V	_	30	PRED	_	_
+25	.	_	PUNCT	Y	_	0	void	_	_
+26	.	_	PUNCT	Y	_	0	void	_	_
+27	.	_	PUNCT	Y	_	0	void	_	_
+28	بىزنىڭ	_	PRON	P	_	30	POSS	_	_
+29	ئورتاق	_	ADJ	A	_	30	ATT	_	_
+30	ئارزۇيىمىز	_	NOUN	N	_	31	ROOT	_	_
+31	.	_	PUNCT	Y	_	0	void	_	_
+
+# sent_id s2
+1	بۇ	_	PRON	P	_	2	ATT	_	_
+2	بۆلەكتىكى	_	NOUN	N	_	3	ATT	_	_
+3	تېكىستلەرنى	_	NOUN	N	_	4	OBJ	_	_
+4	ئوقۇش	_	VERB	V	_	5	POST	_	_
+5	ئارقىلىق	_	ADP	R	_	18	ADV	_	_
+6	،	_	PUNCT	Y	_	0	void	_	_
+7	كىشىلەرنىڭ	_	NOUN	N	_	13	POSS	_	_
+8	ھايۋانلار	_	NOUN	N	_	10	COORD	_	_
+9	ۋە	_	CONJ	C	_	10	CONJ	_	_
+10	ئۆسۈملۈكلەرگە	_	NOUN	N	_	13	DAT	_	_
+11	قانداق	_	PRON	P	_	13	ADV	_	_
+12	مۇئامىلە	_	NOUN	N	_	13	COLL	_	_
+13	قىلغانلىقى	_	VERB	V	_	17	COORD	_	_
+14	،	_	PUNCT	Y	_	0	void	_	_
+15	ئاقىۋىتىنىڭ	_	NOUN	N	_	17	POSS	_	_
+16	قانداق	_	PRON	P	_	17	ADV	_	_
+17	بولغانلىقىنى	_	VERB	V	_	18	OBJ	_	_
+18	كۆرۈپ	_	VERB	V	_	19	AUX	_	_
+19	باقايلى	_	VERB	V	_	20	ROOT	_	_
+20	،	_	PUNCT	Y	_	0	void	_	_
+
+# sent_id s3
+1	يەنە	_	ADV	D	_	13	CONJ	_	_
+2	ئەتراپىمىزدىكى	_	NOUN	N	_	3	ATT	_	_
+3	مۇھىتنى	_	NOUN	N	_	5	OBJ	_	_
+4	ياخشى	_	ADJ	A	_	5	ADV	_	_
+5	كۆزىتىپ	_	VERB	V	_	13	ADV	_	_
+6	،	_	PUNCT	Y	_	0	void	_	_
+7	مۇھىتنى	_	NOUN	N	_	8	OBJ	_	_
+8	قوغداش	_	VERB	V	_	9	POST	_	_
+9	ئۈچۈن	_	CONJ	C	_	11	ADV	_	_
+10	نېمىلەرنى	_	PRON	P	_	11	OBJ	_	_
+11	قىلالايدىغانلىقىمىز	_	VERB	V	_	12	POST	_	_
+12	توغرۇلۇق	_	ADP	R	_	13	ADV	_	_
+13	ئويلىنىپ	_	VERB	V	_	14	AUX	_	_
+14	باقايلى	_	VERB	V	_	15	ROOT	_	_
+15	.	_	PUNCT	Y	_	0	void	_	_
+
+# sent_id s4
+1	بىر	_	NUM	M	_	2	ATT	_	_
+2	يىلى	_	NOUN	N	_	0	void	_	_
+3	باھار	_	NOUN	N	_	4	CLAS	_	_
+4	كۈنلىرىنىڭ	_	NOUN	N	_	5	POSS	_	_
+5	بىرىدە	_	NUM	M	_	20	LOC	_	_
+6	،	_	PUNCT	Y	_	0	void	_	_
+7	شىۋېتسارىيىنىڭ	_	NOUN	N	_	9	POSS	_	_
+8	بىر	_	NUM	M	_	9	ATT	_	_
+9	ۋوگزالىدا	_	NOUN	N	_	20	LOC	_	_
+10	ھاۋا	_	NOUN	N	_	11	OBJ	_	_
+11	تەڭشىگۈچ	_	NOUN	N	_	12	SUBJ	_	_
+12	ئورنىتىلغان	_	NOUN	N	_	17	ATT	_	_
+13	چىرايلىق	_	ADJ	A	_	15	COORD	_	_
+14	،	_	PUNCT	Y	_	0	void	_	_
+15	ئازادە	_	ADJ	A	_	17	ATT	_	_
+16	بىر	_	NUM	M	_	17	ATT	_	_
+17	پويىز	_	NOUN	N	_	20	SUBJ	_	_
+18	قوزغىلىش	_	VERB	V	_	19	POST	_	_
+19	ئالدىدا	_	NOUN	N	_	20	LOC	_	_
+20	تۇراتتى	_	VERB	V	_	21	ROOT	_	_
+21	.	_	PUNCT	Y	_	0	void	_	_
+
+# sent_id s5
+1	ۋوگزال	_	NOUN	N	_	2	CLAS	_	_
+2	سۇپىسى	_	NOUN	N	_	5	SUBJ	_	_
+3	ئۇزاتقۇچىلار	_	NOUN	N	_	4	POST	_	_
+4	بىلەن	_	ADP	R	_	5	ADV	_	_
+5	تولۇپ	_	VERB	V	_	6	AUX	_	_
+6	كەتكەنىدى	_	VERB	V	_	7	ROOT	_	_
+7	.	_	PUNCT	Y	_	0	void	_	_
+
+# sent_id s6
+1	ئۇلارنىڭ	_	PRON	P	_	3	POSS	_	_
+2	ئۇزاتماقچى	_	NOUN	N	_	3	COP	_	_
+3	بولغىنى	_	VERB	V	_	7	PRED	_	_
+4	ئۆزگىچە	_	ADJ	A	_	5	ATT	_	_
+5	مىھمان	_	NOUN	N	_	7	APPOS	_	_
+6	-	_	PUNCT	Y	_	0	void	_	_
+7	قارلىغاچلار	_	NOUN	N	_	8	COP	_	_
+8	ئىدى	_	VERB	V	_	9	ROOT	_	_
+9	.	_	PUNCT	Y	_	0	void	_	_
+
