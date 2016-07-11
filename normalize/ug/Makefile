@@ -2,6 +2,7 @@ LANGCODE=ug
 TREEBANK=ug
 UDCODE=ug
 UDNAME=Uyghur
+POST_UD_BLOCKS=W2W::Translit
 include ../common.mak
 # Temporary source dir for one sample file.
 SOURCEDIR=/net/work/people/zeman/hamledt

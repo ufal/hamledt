@@ -44,7 +44,9 @@ while(<>)
     {
         # The sentence ids seem to be always numeric. Precede them with "s".
         # BTW, are they unique just within their file, or corpus-wide? We need corpus-wide unique ids in UD.
-        print("\# sent_id s$1\n");
+        # Note: if the sentence id is just "s1", and later the CoNLL-U file is read in Treex, there will be complaints about duplicate ids.
+        # That seems to be a bug in Treex. It generates new ids for bundles even if identical ids are already used for trees.
+        print("\# sent_id s$1/ug\n");
     }
     elsif(m:<Word\s(.*)>(.*?)</Word>:)
     {
