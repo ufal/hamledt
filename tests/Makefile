@@ -75,7 +75,7 @@ UTREEBANKS=ar-ud13,bg-ud13,ca-ud13,cs-ud13,cs-ud13cac,cs-ud13cltt,cu-ud13,da-ud1
 ALLTREEBANKS=$(PTREEBANKS),$(UTREEBANKS),$(CTREEBANKS)
 # Either assign $(ALLTREEBANKS) to TREEBANKS, or narrow the selection down to what we currently need to see.
 #TREEBANKS=cs,cs-cac,cs-cltt,ar,ta,ca,es,la-it,nl,pl,pt
-TREEBANKS=$(UTREEBANKS)
+TREEBANKS=sa
 UFILES='!$(HAMLEDT_DATA)/{$(TREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
 
 utests:
