@@ -2,7 +2,7 @@ LANGCODE=sa
 TREEBANK=sa
 UDCODE=sa
 UDNAME=Sanskrit
-#POST_UD_BLOCKS=W2W::Translit
+POST_UD_BLOCKS=W2W::Translit
 include ../common.mak
 # Temporary source dir for one sample file.
 #SOURCEDIR=/net/work/projects/sanskrit
