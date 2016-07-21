@@ -29,17 +29,17 @@ translit::brahmi::inicializovat(\%translit, 2304, $scientific);
 # Vlastní přepis standardního vstupu ve formátu CoNLL-U.
 while(<>)
 {
-    unless(m/^#/ || m/^\d+-\d+/ || m/^\s*$/)
+    unless(m/^#/ || m/^\s*$/)
     {
         s/\r?\n$//;
         my @pole = split(/\t/, $_);
         # Přepsat FORM a LEMMA. Ostatní položky nechat na pokoji, např. morfologickou značku chceme nechat v latince.
-        $pole[1] = translit::prevest(\%prevod, $pole[1], $maxl) unless($pole[1] eq 'NULL');
-        $pole[2] = translit::prevest(\%prevod, $pole[2], $maxl) unless($pole[2] eq 'NULL');
+        $pole[1] = translit::prevest(\%prevod, $pole[1], $maxl) unless($pole[1] =~ m/^(_|NULL)$/);
+        $pole[2] = translit::prevest(\%prevod, $pole[2], $maxl) unless($pole[2] =~ m/^(_|NULL)$/);
         if($tl)
         {
-            $pole[1] = translit::prevest(\%translit, $pole[1], 2) unless($pole[1] eq 'NULL');
-            $pole[2] = translit::prevest(\%translit, $pole[2], 2) unless($pole[2] eq 'NULL');
+            $pole[1] = translit::prevest(\%translit, $pole[1], 2) unless($pole[1] =~ m/^(_|NULL)$/);
+            $pole[2] = translit::prevest(\%translit, $pole[2], 2) unless($pole[2] =~ m/^(_|NULL)$/);
         }
         $_ = join("\t", @pole)."\n";
     }
