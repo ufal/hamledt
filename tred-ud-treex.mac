@@ -1,0 +1,173 @@
+###!!! Momentalne vkladam tento soubor z:
+###!!! C:\Users\Dan\AppData\Roaming\.tred.d\extensions\easytreex\contrib\treex\contrib.mac
+# Treex_mode is the default mode that will be active if we open a Treex file.
+# Let's add our macros to that mode.
+#package Treex_mode;
+# Návod k psaní maker v Tredu: https://ufal.mff.cuni.cz/pdt2.0/doc/tools/tred/ar01s14.html
+
+# UD data: on setting deprel we want to make sure that similar conflicting attributes are empty.
+sub set_deprel
+{
+    my $node = shift;
+    my $deprel = shift;
+    $node->{deprel} = $deprel;
+    $node->{afun} = '';
+    $node->set_attr('conll/deprel', '');
+}
+
+#insert set_deprel_acl as menu Set deprel to acl
+#bind   set_deprel_acl to key q
+sub set_deprel_acl
+{
+    set_deprel($this, 'acl');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_advmod as menu Set deprel to advmod
+#bind   set_deprel_advmod to key v
+sub set_deprel_advmod
+{
+    set_deprel($this, 'advmod');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_advmod_emph as menu Set deprel to advmod:emph
+#bind   set_deprel_advmod_emph to key f
+sub set_deprel_advmod_emph
+{
+    set_deprel($this, 'advmod:emph');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_appos as menu Set deprel to appos
+#bind   set_deprel_appos to key o
+sub set_deprel_appos
+{
+    set_deprel($this, 'appos');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_aux as menu Set deprel to aux
+#bind   set_deprel_aux to key a
+sub set_deprel_aux
+{
+    set_deprel($this, 'aux');
+    # The input annotation of the Upper Sorbian data lacks the AUX tag. All auxiliary verbs are tagged VERB.
+    $this->{tag} = 'AUX';
+    $this->set_attr('conll/cpos', 'AUX');
+    $this->set_attr('iset/verbtype', 'aux');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_auxpass_reflex as menu Set deprel to auxpass:reflex
+#bind   set_deprel_auxpass_reflex to key p
+sub set_deprel_auxpass_reflex
+{
+    set_deprel($this, 'auxpass:reflex');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_conj as menu Set deprel to conj
+#bind   set_deprel_conj to key j
+sub set_deprel_conj
+{
+    set_deprel($this, 'conj');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_cop as menu Set deprel to cop
+#bind   set_deprel_cop to key c
+sub set_deprel_cop
+{
+    set_deprel($this, 'cop');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_dobj as menu Set deprel to dobj
+#bind   set_deprel_dobj to key d
+sub set_deprel_dobj
+{
+    set_deprel($this, 'dobj');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_expl as menu Set deprel to expl
+#bind   set_deprel_expl to key e
+sub set_deprel_expl
+{
+    set_deprel($this, 'expl');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_iobj as menu Set deprel to iobj
+#bind   set_deprel_iobj to key i
+sub set_deprel_iobj
+{
+    set_deprel($this, 'iobj');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_name as menu Set deprel to name
+#bind   set_deprel_name to key n
+sub set_deprel_name
+{
+    set_deprel($this, 'name');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_nmod as menu Set deprel to nmod
+#bind   set_deprel_nmod to key m
+sub set_deprel_nmod
+{
+    set_deprel($this, 'nmod');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_nsubj as menu Set deprel to nsubj
+#bind   set_deprel_nsubj to key s
+sub set_deprel_nsubj
+{
+    set_deprel($this, 'nsubj');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_parataxis as menu Set deprel to parataxis
+#bind   set_deprel_parataxis to key P
+sub set_deprel_parataxis
+{
+    set_deprel($this, 'parataxis');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_root as menu Set deprel to root
+#bind   set_deprel_root to key r
+sub set_deprel_root
+{
+    set_deprel($this, 'root');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_xcomp as menu Set deprel to xcomp
+#bind   set_deprel_xcomp to key x
+sub set_deprel_xcomp
+{
+    set_deprel($this, 'xcomp');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
