@@ -7,12 +7,12 @@ include ../common.mak
 # Temporary source dir for one sample file.
 #SOURCEDIR=/net/work/projects/sanskrit
 SOURCEDIR=/net/work/people/zeman/unidep/UD_Sanskrit
-WX2UTF   = perl -I /home/zeman/lib $(TMT_ROOT)/tools/format_convertors/conll_to_conll/conll_wx2utf.pl -l hi
+SLP2UTF  = perl -I /home/zeman/lib ../../conllu_slp2utf.pl -l sa
 
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	cat $(SOURCEDIR)/sa-ud-sample.conllu | $(WX2UTF) > $(IN)/train.conllu
+	cat $(SOURCEDIR)/sa-ud-sample.conllu | $(SLP2UTF) > $(IN)/train.conllu
 	cp $(IN)/train.conllu $(IN)/dev.conllu
 	cp $(IN)/train.conllu $(IN)/test.conllu
 

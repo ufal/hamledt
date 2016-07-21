@@ -2,7 +2,7 @@ LANGCODE=grc
 TREEBANK=grc
 include ../common.mak
 XML2CONLL = $(TMT_ROOT)/tools/format_convertors/xml_to_conll/xml_to_conll.pl
-BETACODE  = $(TMT_ROOT)/tools/format_convertors/conll_to_conll/beta2unicode.pl
+BETACODE  = ../../beta2unicode.pl
 DECYCLE   = ../conll_break_cycles.pl
 
 #/net/data/ancient-greek-dt/1.2/data$ for i in *.xml ; do echo $i `grep '<word' $i | wc -l` ; done
@@ -37,7 +37,7 @@ source:
 	$(XML2CONLL) -i $(IN)/1999.01.0131.xml | $(BETACODE) | $(DECYCLE) > $(IN)/1999.01.0131.conll
 	$(XML2CONLL) -i $(IN)/1999.01.0133.xml | $(BETACODE) | $(DECYCLE) > $(IN)/1999.01.0133.conll
 	$(XML2CONLL) -i $(IN)/1999.01.0135.xml | $(BETACODE) | $(DECYCLE) > $(IN)/1999.01.0135.conll
-	$(XML2CONLL) -i $(IN)/1999.01.0183.xml | $(BETACODE) | $(DECYCLE) > $(IN)/1999.01.0183.conll	
+	$(XML2CONLL) -i $(IN)/1999.01.0183.xml | $(BETACODE) | $(DECYCLE) > $(IN)/1999.01.0183.conll
 	cat $(IN)/19*.conll > $(IN)/train.conll
 	$(XML2CONLL) -i $(IN)/dev.xml  | $(BETACODE) | $(DECYCLE) > $(IN)/dev.conll
 	$(XML2CONLL) -i $(IN)/test.xml | $(BETACODE) | $(DECYCLE) > $(IN)/test.conll
