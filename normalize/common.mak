@@ -128,7 +128,7 @@ export_conllu:
 # and we cannot use the common export_conllu target which reads from DIR2, not DIR3.
 ###!!! Due to a bug in Treex::Core::Node::Interset we must write CoNLLU before Treex.
 ###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
-correct:
+fixud:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
 	        HamleDT::$(UCLANG)::FixUD \
 	        Write::CoNLLU substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
