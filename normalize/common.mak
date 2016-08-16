@@ -135,6 +135,12 @@ fixud:
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} compress=1
 	../export_ud.sh $(UDCODE) $(UDNAME)
 
+export:
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
+		Write::CoNLLU substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1
+	../export_ud.sh $(UDCODE) $(UDNAME)
+
+
 # Export for PML-TQ: Treex files but smaller (50 trees per file) and all in one folder.
 # Further processing occurs in /net/work/projects/pmltq/data/hamledt.
 # We do not use parallel treex here because it cannot work with undefined total number of documents. And the reader does not know in advance how many documents it will read.
