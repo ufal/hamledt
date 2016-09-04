@@ -90,6 +90,7 @@ while(<>)
         die("Word ID needed but not found: '$word'") if(!defined($wid));
         $word = '_' if(!defined($word) || $word eq '');
         $lemma = '_' if(!defined($lemma) || $lemma eq '');
+        $lemma = '"' if($word eq '"' && $lemma eq '&quot;');
         if($lemma ne $word)
         {
             print STDERR ("WOW. Word '$word', lemma '$lemma'\n");
