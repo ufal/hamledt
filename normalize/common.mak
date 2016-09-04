@@ -130,6 +130,7 @@ export_conllu:
 ###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
 fixud:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
+	        A2A::CopyAtree source_selector='' selector='orig' \
 	        HamleDT::$(UCLANG)::FixUD \
 	        Write::CoNLLU substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} compress=1

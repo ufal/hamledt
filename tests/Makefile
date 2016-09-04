@@ -65,7 +65,7 @@ PFILES='!$(HAMLEDT_DATA)/{$(PTREEBANKS)}/treex/01/$(SETS)/*.treex.gz'
 # C-treebanks are under correction. They come from the last release of UD and are being improved for the next release.
 # They do not have Prague style in 01 but they have two UD folders: 02 is the input and 03 is the corrected output.
 # The way it is written we cannot test both 02 and 03 at the same time: we would see errors from both aggregated under one treebank code.
-CTREEBANKS=es-ud12,hi-ud12
+CTREEBANKS=ug
 CFILES='!$(HAMLEDT_DATA)/{$(CTREEBANKS)}/treex/03/$(SETS)/*.treex.gz'
 # U-treebanks come from the last official release of Universal Dependencies. They do not have a Prague conversion.
 # UD tests can be run on P-treebanks, U-treebanks and C-treebanks because all three have the UD version in 02.
@@ -75,7 +75,7 @@ UTREEBANKS=ar-ud13,bg-ud13,ca-ud13,cs-ud13,cs-ud13cac,cs-ud13cltt,cu-ud13,da-ud1
 ALLTREEBANKS=$(PTREEBANKS),$(UTREEBANKS),$(CTREEBANKS)
 # Either assign $(ALLTREEBANKS) to TREEBANKS, or narrow the selection down to what we currently need to see.
 #TREEBANKS=cs,cs-cac,cs-cltt,ar,ta,ca,es,la-it,nl,pl,pt
-TREEBANKS=sa
+TREEBANKS=ug
 UFILES='!$(HAMLEDT_DATA)/{$(TREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
 
 utests:

@@ -15,6 +15,12 @@ binmode(STDERR, ':utf8');
 my @tokens = ([]);
 while(<>)
 {
+    # Skip comment lines.
+    if(m/^\#/)
+    {
+        print;
+        next;
+    }
     # Remove the line break.
     s/\r?\n$//;
     # Empty line separates sentences.

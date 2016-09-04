@@ -10,7 +10,7 @@ SOURCEDIR=/net/work/people/zeman/hamledt
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	$(SOURCEDIR)/ugdt_xml_to_conllu.pl < $(SOURCEDIR)/Result_POS.xml | ../conll_break_cycles.pl > $(IN)/train.conllu
+	$(SOURCEDIR)/ugdt_xml_to_conllu.pl < $(SOURCEDIR)/Result_POS.xml | conll_break_cycles.pl > $(IN)/train.conllu
 	#cp $(IN)/train.conllu $(IN)/dev.conllu
 	#cp $(IN)/train.conllu $(IN)/test.conllu
 
