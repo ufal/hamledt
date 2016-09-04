@@ -26,13 +26,16 @@ binmode(STDERR, ':utf8');
 my %posmap =
 (
     'N' => 'NOUN',  # noun isim ئىسىم
-    'V' => 'VERB',  # verb pzh'zhl پېئىل
-    'A' => 'ADJ',   # adjective svpet سۈپەت
+    'V' => 'VERB',  # verb pzh'zhl / pë'il پېئىل
+    'A' => 'ADJ',   # adjective süpet سۈپەت
     'P' => 'PRON',  # pronoun almash ئالماش
+    'Q' => 'DET',   # quantifier miqtar مىقدار سۆز
     'M' => 'NUM',   # numeral san سان
     'D' => 'ADV',   # adverb rewish رەۋىش
     'R' => 'ADP',   # postposition tirkelme تىركەلمە
     'C' => 'CONJ',  # conjunction baghlighuchi باغلىغۇچى
+    'T' => 'PART',  # tone yüklime يۈكلىمە (??? example: "de")
+    'E' => 'INTJ',  # exclamation imliq söz ئىملىق سۆز / ündesh
     'Y' => 'PUNCT', #
 );
 
