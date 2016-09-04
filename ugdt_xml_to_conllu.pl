@@ -25,18 +25,21 @@ binmode(STDERR, ':utf8');
 # http://www.aclweb.org/anthology/Y03-1025
 my %posmap =
 (
-    'N' => 'NOUN',  # noun isim ئىسىم
-    'V' => 'VERB',  # verb pzh'zhl / pë'il پېئىل
-    'A' => 'ADJ',   # adjective süpet سۈپەت
-    'P' => 'PRON',  # pronoun almash ئالماش
-    'Q' => 'DET',   # quantifier miqtar مىقدار سۆز
-    'M' => 'NUM',   # numeral san سان
-    'D' => 'ADV',   # adverb rewish رەۋىش
-    'R' => 'ADP',   # postposition tirkelme تىركەلمە
-    'C' => 'CONJ',  # conjunction baghlighuchi باغلىغۇچى
-    'T' => 'PART',  # tone yüklime يۈكلىمە (??? example: "de")
-    'E' => 'INTJ',  # exclamation imliq söz ئىملىق سۆز / ündesh
-    'Y' => 'PUNCT', #
+    'N'  => 'NOUN',  # noun isim ئىسىم
+    'V'  => 'VERB',  # verb pzh'zhl / pë'il پېئىل
+    'A'  => 'ADJ',   # adjective süpet سۈپەت
+    'LW' => 'ADJ',   # verbal adjective lewzan ... söz-herp سۆز-ھەرپ
+    'P'  => 'PRON',  # pronoun almash ئالماش
+    'Q'  => 'DET',   # quantifier miqtar مىقدار سۆز
+    'M'  => 'NUM',   # numeral san سان
+    'D'  => 'ADV',   # adverb rewish رەۋىش
+    'R'  => 'ADP',   # postposition tirkelme تىركەلمە
+    'C'  => 'CONJ',  # conjunction baghlighuchi باغلىغۇچى
+    'T'  => 'PART',  # tone yüklime يۈكلىمە (??? example: "de")
+    'E'  => 'INTJ',  # exclamation imliq söz ئىملىق سۆز / ündesh
+    'I'  => 'INTJ',  # onomatopoeia teqlid söz تەقلىد سۆز
+    'X'  => 'X',     # extra / surplus / residual qoshumche قوشۇمچە
+    'Y'  => 'PUNCT', #
 );
 
 while(<>)
