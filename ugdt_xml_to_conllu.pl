@@ -23,23 +23,24 @@ binmode(STDERR, ':utf8');
 
 # Some help with Uighur parts of speech but not the same tagset:
 # http://www.aclweb.org/anthology/Y03-1025
+# This tagset is now also available in Interset.
 my %posmap =
 (
-    'N'  => 'NOUN',  # noun isim ئىسىم
-    'V'  => 'VERB',  # verb pzh'zhl / pë'il پېئىل
-    'A'  => 'ADJ',   # adjective süpet سۈپەت
-    'LW' => 'ADJ',   # verbal adjective lewzan ... söz-herp سۆز-ھەرپ
-    'P'  => 'PRON',  # pronoun almash ئالماش
-    'Q'  => 'DET',   # quantifier miqtar مىقدار سۆز
-    'M'  => 'NUM',   # numeral san سان
-    'D'  => 'ADV',   # adverb rewish رەۋىش
-    'R'  => 'ADP',   # postposition tirkelme تىركەلمە
-    'C'  => 'CONJ',  # conjunction baghlighuchi باغلىغۇچى
-    'T'  => 'PART',  # tone yüklime يۈكلىمە (??? example: "de")
-    'E'  => 'INTJ',  # exclamation imliq söz ئىملىق سۆز / ündesh
-    'I'  => 'INTJ',  # onomatopoeia teqlid söz تەقلىد سۆز
-    'X'  => 'X',     # extra / surplus / residual qoshumche قوشۇمچە
-    'Y'  => 'PUNCT', #
+    'N'  => 'NOUN',  # noun / isim ئىسىم
+    'V'  => 'VERB',  # verb / pzh'zhl (?) / pë'il پېئىل
+    'A'  => 'ADJ',   # adjective / süpet سۈپەت
+    'LW' => 'ADJ',   # verbal adjective / lewzan ... söz-herp سۆز-ھەرپ (there was only one occurrence in the corpus and it was later removed)
+    'P'  => 'PRON',  # pronoun / almash ئالماش
+    'Q'  => 'DET',   # quantifier / miqtar söz مىقدار سۆز
+    'M'  => 'NUM',   # numeral / san سان
+    'D'  => 'ADV',   # adverb / rewish رەۋىش
+    'R'  => 'ADP',   # postposition / tirkelme تىركەلمە
+    'C'  => 'CONJ',  # conjunction / baghlighuchi باغلىغۇچى
+    'T'  => 'PART',  # particle / yüklime يۈكلىمە (e.g. the question particle "mu", or "too")
+    'E'  => 'INTJ',  # exclamation / imliq söz ئىملىق سۆز / ündesh # uf, wow, cool
+    'I'  => 'INTJ',  # onomatopoeia (imitative word) / teqlid söz تەقلىد سۆز # nock nock (on the door) etc.
+    'X'  => 'X',     # extra / surplus / residual / qoshumche قوشۇمچە
+    'Y'  => 'PUNCT', # punctuation / tinish belgiliri تىنىش بەلگىلىرى
 );
 
 while(<>)
