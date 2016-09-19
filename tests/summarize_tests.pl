@@ -11,7 +11,7 @@ while (<>) {
     chomp;
     my ($test,$file) = split;
     $file =~ /hamledt\/([-a-z0-9]+)/
-        or die "file doesn't match expected pattern: $file";
+        or warn "file path doesn't match expected pattern: $file";
     my $treebank = $1;
     $count{$treebank}{$test}++;
     $count{$treebank}{TOTAL}++;

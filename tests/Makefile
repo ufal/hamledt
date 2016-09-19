@@ -77,11 +77,13 @@ ALLTREEBANKS=$(PTREEBANKS),$(UTREEBANKS),$(CTREEBANKS)
 #TREEBANKS=cs,cs-cac,cs-cltt,ar,ta,ca,es,la-it,nl,pl,pt
 TREEBANKS=ug
 UFILES='!$(HAMLEDT_DATA)/{$(TREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
+# Manually checked Uyghur files:
+UGFILES='!/net/work/people/zeman/unidep/UD_Uyghur/manually-checked-treex/*.treex.gz'
 
 utests:
 	@date
 	treex $(CLUSTER) \
-	Util::SetGlobal Read::Treex from=$(UFILES) $(UTESTS) 2> test.err > $(TESTLOG)
+	Util::SetGlobal Read::Treex from=$(UGFILES) $(UTESTS) 2> test.err > $(TESTLOG)
 	@date
 
 ctests:
