@@ -1,5 +1,7 @@
 LANGCODE=sk
 TREEBANK=sk
+UDCODE=sk
+UDNAME=Slovak
 include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/slovallex
