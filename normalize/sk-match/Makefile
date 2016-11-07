@@ -5,7 +5,7 @@ include ../common.mak
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	cat /net/work/people/zeman/hamledt/normalize/sk/stb.conll | /net/work/people/zeman/parsing/tools/split_conll.pl -phead 80 $(IN)/train.conll $(IN)/dt.conll
+	cat /net/data/treebanks/sk/stb-match.conll | /net/work/people/zeman/parsing/tools/split_conll.pl -phead 80 $(IN)/train.conll $(IN)/dt.conll
 	cat $(IN)/dt.conll | /net/work/people/zeman/parsing/tools/split_conll.pl -phead 50 $(IN)/dev.conll $(IN)/test.conll
 
 treex:
