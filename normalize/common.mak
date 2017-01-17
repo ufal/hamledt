@@ -101,6 +101,7 @@ orig_to_ud:
 	    HamleDT::$(UCLANG)::GoogleToUdep \
 	    Write::CoNLLU substitute={$(SUBDIR0)}{$(SUBDIRCU)} compress=1 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=1
+	../export_ud.sh $(UDCODE) $(UDNAME)
 
 # Convert the trees to Universal Dependencies and store the result in 02.
 # Export the result at the same time also to the CoNLL-U format (we need it for everything to be released).

@@ -1,5 +1,7 @@
 LANGCODE=pt
 TREEBANK=pt-udt2
+UDCODE=pt_br
+UDNAME=Portuguese-BR
 HARMONIZE=HarmonizeGoogle
 include ../common.mak
 SOURCEDIR=/net/data/treebanks/universal_treebanks_v2.0/std/pt-br
