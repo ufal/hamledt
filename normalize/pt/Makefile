@@ -1,5 +1,7 @@
 LANGCODE=pt
 TREEBANK=pt
+UDCODE=pt
+UDNAME=Portuguese
 include ../common.mak
 
 source:

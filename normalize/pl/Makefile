@@ -1,5 +1,7 @@
 LANGCODE=pl
 TREEBANK=pl
+UDCODE=pl
+UDNAME=Polish
 include ../common.mak
 SRCDIR=/a/LRC_TMP/hamledt/data_translations/not_yet_hamledt_treebanks/pl
 TOOLS=/net/work/people/zeman/parsing/tools
