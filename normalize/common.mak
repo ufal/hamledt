@@ -131,7 +131,16 @@ export_conllu:
 fixud:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
+	        HamleDT::UD1To2 \
 	        HamleDT::$(UCLANG)::FixUD \
+	        Write::CoNLLU substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
+	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} compress=1
+	../export_ud.sh $(UDCODE) $(UDNAME)
+
+ud1to2:
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
+	        A2A::CopyAtree source_selector='' selector='orig' \
+	        HamleDT::UD1To2 \
 	        Write::CoNLLU substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} compress=1
 	../export_ud.sh $(UDCODE) $(UDNAME)
