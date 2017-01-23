@@ -1,5 +1,7 @@
 LANGCODE=ar
 TREEBANK=ar
+UDCODE=ar
+UDNAME=Arabic
 include ../common.mak
 
 PADTDIR=/net/projects/padt/data/Prague

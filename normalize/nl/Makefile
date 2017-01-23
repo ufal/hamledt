@@ -1,5 +1,7 @@
 LANGCODE=nl
 TREEBANK=nl
+UDCODE=nl
+UDNAME=Dutch
 include ../common.mak
 
 source:
