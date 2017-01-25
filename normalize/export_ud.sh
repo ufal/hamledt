@@ -23,6 +23,7 @@ fi
 UDDIR=/net/work/people/zeman/unidep
 UDTOOLS=$UDDIR/tools
 mkdir -p $UDDIR/UD_$lname
+cat *.conllu | $UDTOOLS/check_sentence_ids.pl
 cat *.conllu | $UDTOOLS/conllu-stats.pl > $UDDIR/UD_$lname/stats.xml
 for i in *.conllu ; do
   echo $i
