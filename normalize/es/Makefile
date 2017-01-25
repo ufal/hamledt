@@ -5,6 +5,7 @@ UDNAME=Spanish-AnCora
 include ../common.mak
 
 IMPORTX = Read::CoNLL2009 lines_per_doc=100
+POST_IMPORTX_BLOCKS = W2W::EstimateNoSpaceAfter
 
 source:
 	mkdir -p $(DATADIR)

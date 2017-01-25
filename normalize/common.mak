@@ -44,6 +44,9 @@ TRAIN      = $(IN)/train.conll
 DEV        = $(IN)/dev.conll
 TEST       = $(IN)/test.conll
 
+# If a treebank requires postprocessing after import from CoNLL-X/CoNLL-2009, the treebank-specific Makefile must override the value of POST_IMPORTX_BLOCKS.
+# (This does not currently apply to import from CoNLL-U.)
+POST_IMPORTX_BLOCKS ?=
 # If a treebank requires preprocessing before conversion to UD, the treebank-specific Makefile must override the value of PRE_UD_BLOCKS.
 # If a treebank requires postprocessing after conversion to UD, the treebank-specific Makefile must override the value of POST_UD_BLOCKS.
 # Example: PRE_UD_BLOCKS=HamleDT::CS::SplitFusedWords
@@ -68,9 +71,9 @@ dirs:
 # Otherwise, define the treebank-specific "treex" goal as dependent
 # on "conll_to_treex".
 conll_to_treex:
-	$(TREEX) $(IMPORTX) from=$(IN)/train.conll sid_prefix=train- Filter::RemoveEmptySentences $(WRITE0) path=$(DIR0)/train/
-	$(TREEX) $(IMPORTX) from=$(IN)/dev.conll   sid_prefix=dev-   Filter::RemoveEmptySentences $(WRITE0) path=$(DIR0)/dev/
-	$(TREEX) $(IMPORTX) from=$(IN)/test.conll  sid_prefix=test-  Filter::RemoveEmptySentences $(WRITE0) path=$(DIR0)/test/
+	$(TREEX) $(IMPORTX) from=$(IN)/train.conll sid_prefix=train- Filter::RemoveEmptySentences $(POST_IMPORTX_BLOCKS) $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORTX) from=$(IN)/dev.conll   sid_prefix=dev-   Filter::RemoveEmptySentences $(POST_IMPORTX_BLOCKS) $(WRITE0) path=$(DIR0)/dev/
+	$(TREEX) $(IMPORTX) from=$(IN)/test.conll  sid_prefix=test-  Filter::RemoveEmptySentences $(POST_IMPORTX_BLOCKS) $(WRITE0) path=$(DIR0)/test/
 
 # If the source data is already in Universal Dependencies, do not convert it to the Prague style and then back to UD.
 # Read UD directly instead. Note that there will be just one tree per sentence, not three.
