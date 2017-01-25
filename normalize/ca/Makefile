@@ -1,5 +1,7 @@
 LANGCODE=ca
 TREEBANK=ca
+UDCODE=ca
+UDNAME=Catalan
 include ../common.mak
 
 IMPORTX = Read::CoNLL2009 lines_per_doc=100

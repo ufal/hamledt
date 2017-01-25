@@ -1,5 +1,7 @@
 LANGCODE=es
 TREEBANK=es
+UDCODE=es_ancora
+UDNAME=Spanish-AnCora
 include ../common.mak
 
 IMPORTX = Read::CoNLL2009 lines_per_doc=100
