@@ -26,7 +26,7 @@ UTESTS = \
 	HamleDT::Test::UD::MaxOneSubject \
 	HamleDT::Test::UD::MaxOneDirectObject \
 	HamleDT::Test::UD::LeftToRightRelations \
-	HamleDT::Test::UD::CopulaIsVerb \
+	HamleDT::Test::UD::CopulaIsAux \
 	HamleDT::Test::UD::AuxChain \
 	HamleDT::Test::UD::AuxpassImpliesSubjpass \
 	HamleDT::Test::UD::Punctuation \
@@ -76,7 +76,7 @@ UTREEBANKS=ar-ud14,bg-ud14,ca-ud14,cop-ud14,cs-ud14,cs-ud14cac,cs-ud14cltt,cu-ud
 ALLTREEBANKS=$(PTREEBANKS),$(UTREEBANKS),$(CTREEBANKS)
 # Either assign $(ALLTREEBANKS) to TREEBANKS, or narrow the selection down to what we currently need to see.
 #TREEBANKS=cs,cs-cac,cs-cltt,ar,ta,ca,es,la-it,nl,pl,pt
-TREEBANKS=ca,es,nl
+TREEBANKS=cs,cs-cac,cs-cltt,sk,pl,ar,ta,ca,es,pt,nl
 UFILES='!$(HAMLEDT_DATA)/{$(TREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
 # Manually checked Uyghur files:
 UGFILES='!/net/work/people/zeman/unidep/UD_Uyghur/manually-checked-treex/*.treex.gz'
