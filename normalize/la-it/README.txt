@@ -123,3 +123,17 @@ cat dev2.conll dev3.conll | wc_conll.pl
 400 sentences, 6040 tokens (previously 400 sentences, 6020 tokens)
 cat test2.conll test3.conll | wc_conll.pl
 395 sentences, 7071 tokens (previously 394 sentences, 7056 tokens)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+DATA SPLIT FOR UD V2:
+
+For the CoNLL 2017 shared task we require that development and test data contain
+at least 10000 words each, thus we must re-split the data once again.
+split_conll.pl < ittb-scg-sids.conll --head 700 dev.conll testtrain-scg.conll
+split_conll.pl < testtrain-scg.conll --head 750 test.conll train-scg.conll
+cat train-scg.conll ittb-forma-sids.conll > train.conll
+
+for i in *.conll ; do echo $i `wc_conll.pl $i` ; done
+train.conll 15808 sentences, 270403 tokens
+dev.conll 700 sentences, 10331 tokens
+test.conll 750 sentences, 10561 tokens
