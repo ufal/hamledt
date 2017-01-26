@@ -6,6 +6,8 @@ HARMONIZE=HarmonizeIT
 include ../common.mak
 SRCDIR=/net/data/treebanks/la/it-tb-2016-05-04
 
+POST_IMPORTX_BLOCKS = W2W::EstimateNoSpaceAfter
+
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
