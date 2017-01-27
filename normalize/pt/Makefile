@@ -4,6 +4,9 @@ UDCODE=pt
 UDNAME=Portuguese
 include ../common.mak
 
+POST_IMPORTX_BLOCKS = W2W::EstimateNoSpaceAfter
+POST_UD_BLOCKS=HamleDT::PL::SplitFusedWords
+
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
