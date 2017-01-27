@@ -4,7 +4,7 @@ UDCODE=pl
 UDNAME=Polish
 include ../common.mak
 SRCDIR=/a/LRC_TMP/hamledt/data_translations/not_yet_hamledt_treebanks/pl
-TOOLS=/net/work/people/zeman/parsing/tools
+TOOLS=/home/zeman/tools
 
 POST_IMPORTX_BLOCKS = W2W::EstimateNoSpaceAfter
 
