@@ -7,6 +7,7 @@ SRCDIR=/a/LRC_TMP/hamledt/data_translations/not_yet_hamledt_treebanks/pl
 TOOLS=/home/zeman/tools
 
 POST_IMPORTX_BLOCKS = W2W::EstimateNoSpaceAfter
+POST_UD_BLOCKS=HamleDT::PL::SplitFusedWords
 
 source:
 	mkdir -p $(DATADIR)
