@@ -4,6 +4,8 @@ UDCODE=sk
 UDNAME=Slovak
 include ../common.mak
 
+POST_IMPORTX_BLOCKS = W2W::EstimateNoSpaceAfter
+
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
