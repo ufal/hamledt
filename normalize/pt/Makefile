@@ -5,7 +5,7 @@ UDNAME=Portuguese
 include ../common.mak
 
 POST_IMPORTX_BLOCKS = W2W::EstimateNoSpaceAfter
-POST_UD_BLOCKS=HamleDT::PL::SplitFusedWords
+POST_UD_BLOCKS=HamleDT::PT::SplitFusedWords
 
 source:
 	mkdir -p $(DATADIR)
