@@ -4,8 +4,6 @@ UDCODE=sk
 UDNAME=Slovak
 include ../common.mak
 
-POST_IMPORTX_BLOCKS = W2W::EstimateNoSpaceAfter
-
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
@@ -13,9 +11,9 @@ source:
 	cat $(IN)/dt.conll | /net/work/people/zeman/parsing/tools/split_conll.pl -phead 50 $(IN)/dev.conll $(IN)/test.conll
 
 treex:
-	$(TREEX) $(IMPORTX) is_member_within_afun=1 is_parenthesis_root_within_afun=1 from=$(IN)/train.conll Filter::RemoveEmptySentences $(WRITE0) path=$(DIR0)/train/
-	$(TREEX) $(IMPORTX) is_member_within_afun=1 is_parenthesis_root_within_afun=1 from=$(IN)/dev.conll   Filter::RemoveEmptySentences $(WRITE0) path=$(DIR0)/dev/
-	$(TREEX) $(IMPORTX) is_member_within_afun=1 is_parenthesis_root_within_afun=1 from=$(IN)/test.conll  Filter::RemoveEmptySentences $(WRITE0) path=$(DIR0)/test/
+	$(TREEX) $(IMPORTX) is_member_within_afun=1 is_parenthesis_root_within_afun=1 from=$(IN)/train.conll Filter::RemoveEmptySentences W2W::EstimateNoSpaceAfter $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORTX) is_member_within_afun=1 is_parenthesis_root_within_afun=1 from=$(IN)/dev.conll   Filter::RemoveEmptySentences W2W::EstimateNoSpaceAfter $(WRITE0) path=$(DIR0)/dev/
+	$(TREEX) $(IMPORTX) is_member_within_afun=1 is_parenthesis_root_within_afun=1 from=$(IN)/test.conll  Filter::RemoveEmptySentences W2W::EstimateNoSpaceAfter $(WRITE0) path=$(DIR0)/test/
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud
