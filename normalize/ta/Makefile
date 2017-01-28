@@ -19,9 +19,9 @@ source:
 TRANSLIT=W2W::TA::Transliteration use_enc_map=latin_2_utf8 mark_latin=0 W2W::Translit W2W::EstimateNoSpaceAfter
 DETOKDIR=$(HAMLEDT)/normalize/ta/detokenized
 treex:
-	$(TREEX) $(IMPORTX) from=$(IN)/train.conll $(TRANSLIT) HamleDT::TA::ReadDetokenizedSentences from=$(DETOKDIR)/train.ta $(WRITE0) path=$(DIR0)/train/
-	$(TREEX) $(IMPORTX) from=$(IN)/dev.conll   $(TRANSLIT) HamleDT::TA::ReadDetokenizedSentences from=$(DETOKDIR)/dev.ta   $(WRITE0) path=$(DIR0)/dev/
-	$(TREEX) $(IMPORTX) from=$(IN)/test.conll  $(TRANSLIT) HamleDT::TA::ReadDetokenizedSentences from=$(DETOKDIR)/test.ta  $(WRITE0) path=$(DIR0)/test/
+	$(TREEX) $(IMPORTX) from=$(IN)/train.conll sid_prefix=train- $(TRANSLIT) HamleDT::TA::ReadDetokenizedSentences from=$(DETOKDIR)/train.ta $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORTX) from=$(IN)/dev.conll   sid_prefix=dev-   $(TRANSLIT) HamleDT::TA::ReadDetokenizedSentences from=$(DETOKDIR)/dev.ta   $(WRITE0) path=$(DIR0)/dev/
+	$(TREEX) $(IMPORTX) from=$(IN)/test.conll  sid_prefix=test-  $(TRANSLIT) HamleDT::TA::ReadDetokenizedSentences from=$(DETOKDIR)/test.ta  $(WRITE0) path=$(DIR0)/test/
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud
