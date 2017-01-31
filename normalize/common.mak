@@ -102,6 +102,7 @@ orig_to_ud:
 	    Read::Treex from='!$(DIR0)/{train,dev,test}/*.treex.gz' \
 	    A2A::CopyAtree source_selector='' selector='orig' \
 	    HamleDT::$(UCLANG)::GoogleToUdep \
+	    $(POST_UD_BLOCKS) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR0)}{$(SUBDIRCU)} compress=1 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=1
 	../export_ud.sh $(UDCODE) $(UDNAME)
