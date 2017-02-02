@@ -10,15 +10,17 @@
 
 lcode=$1
 lname=$2
-zcat data/conllu/dev/*.conllu.gz > $lcode-ud-dev.conllu
-zcat data/conllu/test/*.conllu.gz > $lcode-ud-test.conllu
 if [ "$lcode" == "cs" ] ; then
-  zcat data/conllu/train/cmpr94*.conllu.gz > cs-ud-train-c.conllu
-  zcat data/conllu/train/ln*.conllu.gz > cs-ud-train-l.conllu
-  zcat data/conllu/train/mf9*.conllu.gz > cs-ud-train-m.conllu
-  zcat data/conllu/train/vesm9*.conllu.gz > cs-ud-train-v.conllu
+  zcat data/conllu/train/cmpr94*.conllu.gz | ../conllu_docpar_from_sentid.pl > cs-ud-train-c.conllu
+  zcat data/conllu/train/ln*.conllu.gz     | ../conllu_docpar_from_sentid.pl > cs-ud-train-l.conllu
+  zcat data/conllu/train/mf9*.conllu.gz    | ../conllu_docpar_from_sentid.pl > cs-ud-train-m.conllu
+  zcat data/conllu/train/vesm9*.conllu.gz  | ../conllu_docpar_from_sentid.pl > cs-ud-train-v.conllu
+  zcat data/conllu/dev/*.conllu.gz         | ../conllu_docpar_from_sentid.pl > cs-ud-dev.conllu
+  zcat data/conllu/test/*.conllu.gz        | ../conllu_docpar_from_sentid.pl > cs-ud-test.conllu
 else
   zcat data/conllu/train/*.conllu.gz > $lcode-ud-train.conllu
+  zcat data/conllu/dev/*.conllu.gz > $lcode-ud-dev.conllu
+  zcat data/conllu/test/*.conllu.gz > $lcode-ud-test.conllu
 fi
 UDDIR=/net/work/people/zeman/unidep
 UDTOOLS=$UDDIR/tools
