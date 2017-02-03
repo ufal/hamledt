@@ -5,10 +5,10 @@ UDNAME=Spanish
 include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)
-# We have to change the data split between 1.4 and 2.0 by moving 152 sentences from dev to test.
+# We have to change the data split between 1.4 and 2.0 by moving sentences from dev to test.
 source:
 	cp $(SOURCEDIR)/$(UDCODE)-ud-train.conllu data/source/train.conllu
-	split_conll.pl < $(SOURCEDIR)/$(UDCODE)-ud-dev.conllu -head 1500 data/source/dev.conllu data/source/devtotest.conllu
+	split_conll.pl < $(SOURCEDIR)/$(UDCODE)-ud-dev.conllu -head 1400 data/source/dev.conllu data/source/devtotest.conllu
 	cat data/source/devtotest.conllu $(SOURCEDIR)/$(UDCODE)-ud-test.conllu > data/source/test.conllu
 
 # Do not convert Universal Dependencies to the Prague style and then back to UD. Instead, read directly UD.
