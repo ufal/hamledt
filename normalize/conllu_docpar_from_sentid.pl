@@ -6,6 +6,8 @@
 # ln94200-100-p1s1
 # mf920901-001-p1s1A
 # vesm9211-001-p1s1
+# Prague Arabic Dependency Treebank:
+# afp.20000715.0001:p2u1
 # Copyright © 2017 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
@@ -32,6 +34,23 @@ while(<>)
     {
         my $sid = $1;
         if($sid =~ m/^((.+)-p\d+)s[0-9A-Z]+$/)
+        {
+            my $pid = $1;
+            my $did = $2;
+            if($did ne $current_did)
+            {
+                print("# newdoc id = $did\n");
+                $current_did = $did;
+            }
+            if($pid ne $current_pid)
+            {
+                print("# newpar id = $pid\n");
+                $current_pid = $pid;
+            }
+            print("# sent_id = $sid\n");
+        }
+        # Prague Arabic Dependency Treebank
+        elsif($sid =~ m/^((.+):p\d+)u[0-9A-Z]+$/)
         {
             my $pid = $1;
             my $did = $2;
