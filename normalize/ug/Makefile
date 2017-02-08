@@ -31,5 +31,5 @@ ud: conllu_to_treex
 # Postprocessing:
 # - The folder with the manually checked Treex files has its own Makefile.
 #   Running "make all" there will run the validator and convert the files to UD v1 CoNLL-U.
+#   I have now extended the Treex command there to convert the data to UD v2.
 #   The CoNLL-U file is saved to the main part of the repository.
-###!!! But we now also need to convert the file to UD v2!
