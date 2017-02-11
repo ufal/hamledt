@@ -23,9 +23,9 @@ elif [ "$lcode" == "ar" ] || [ "$lcode" == "cs_cac" ] ; then
   zcat data/conllu/test/*.conllu.gz  | ../conllu_docpar_from_sentid.pl > $lcode-ud-test.conllu
 elif [ "$lcode" == "hr" ] ; then
   # Udapi can convert what we cannot: some of the remnant relations.
-  zcat data/conllu/train/*.conllu.gz | udapy -s ud.Convert1to2 > $lcode-ud-train.conllu
-  zcat data/conllu/dev/*.conllu.gz   | udapy -s ud.Convert1to2 > $lcode-ud-dev.conllu
-  zcat data/conllu/test/*.conllu.gz  | udapy -s ud.Convert1to2 > $lcode-ud-test.conllu
+  zcat data/conllu/train/*.conllu.gz | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $lcode-ud-train.conllu
+  zcat data/conllu/dev/*.conllu.gz   | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $lcode-ud-dev.conllu
+  zcat data/conllu/test/*.conllu.gz  | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $lcode-ud-test.conllu
 else
   zcat data/conllu/train/*.conllu.gz > $lcode-ud-train.conllu
   zcat data/conllu/dev/*.conllu.gz > $lcode-ud-dev.conllu
