@@ -4,7 +4,7 @@ UDCODE=ja
 UDNAME=Japanese
 include ../common.mak
 
-SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)
+SOURCEDIR=/net/work/people/zeman/unidep/UD_Japanese-2017-02-15
 source:
 	cp $(SOURCEDIR)/$(UDCODE)-ud-train.conllu data/source/train.conllu
 	cp $(SOURCEDIR)/$(UDCODE)-ud-dev.conllu data/source/dev.conllu
