@@ -8,7 +8,10 @@ PADTDIR=/net/projects/padt/data/Prague
 PADTSUBDIRS={AEP,ASB,EAT,HYT,NHR,XIN}
 # The training-test data split has been prepared using the Print::TestFileNames Treex block.
 # export PADTDIR=/net/projects/padt/data/Prague
+### OLD:
 # treex -Lar Read::PADT schema_dir=$TREEX/lib/Treex/Block/Read/PADT_schema 'from=!'$PADTDIR'/{AEP,ASB,EAT,HYT,NHR,XIN}/*.syntax.pml' Print::TestFileNames dev=1 > testfilereport.txt
+### NEW:
+# treex -Lar Read::PADT schema_dir=$TREEX/lib/Treex/Block/Read/PADT_schema 'from=!'$PADTDIR'/{AEP,ASB,EAT,HYT,NHR,XIN}/*.syntax.pml' HamleDT::AR::TestFileNames dev=1 dima=Overlap_between_XArabicUD_and_PAUDT.txt > testfilereport.txt
 # cat testfilereport.txt | grep -P '^DEVFILE' | cut -f2 > devfilelist.txt
 # cat testfilereport.txt | grep -P '^TESTFILE' | cut -f2 > testfilelist.txt
 
