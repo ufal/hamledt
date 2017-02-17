@@ -1,0 +1,172 @@
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040407.0002	415
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040407.0003	365
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040407.0013	474
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040407.0016	558
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040407.0026	471
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040407.0030	682
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040531.0006	191
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040531.0013	703
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040531.0015	195
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040531.0023	397
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040628.0050	482
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040628.0051	177
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040628.0056	166
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040628.0063	194
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040705.0001	502
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040705.0004	509
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040705.0011	340
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040705.0014	589
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040705.0017	708
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040705.0030	329
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040715.0008	84
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040715.0010	335
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040715.0012	177
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040715.0016	329
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040715.0019	253
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040715.0026	222
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040715.0027	132
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040715.0033	147
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040715.0035	309
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040715.0039	350
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0007	349
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0012	562
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0019	172
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0024	103
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0028	229
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0031	353
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0046	157
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0052	213
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0053	346
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0059	492
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0064	226
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0071	1156
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040726.0072	683
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040809.0030	179
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040809.0032	881
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040809.0062	609
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040809.0076	1259
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040809.0077	484
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040819.0003	656
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040819.0023	208
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040819.0026	362
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040819.0029	487
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040819.0034	109
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040906.0001	295
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040906.0005	168
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040906.0010	215
+DEVFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040906.0013	1291
+TESTFILE	/net/projects/padt/data/Prague/AEP/UMH_ARB_20040906.0014	1017
+TESTFILE	/net/projects/padt/data/Prague/ASB/ASB_ARB_20041005.0017	281
+DEVFILE	/net/projects/padt/data/Prague/ASB/ASB_ARB_20041010.0015	292
+TESTFILE	/net/projects/padt/data/Prague/ASB/ASB_ARB_20041013.0022	435
+DEVFILE	/net/projects/padt/data/Prague/ASB/ASB_ARB_20041016.0019	284
+DEVFILE	/net/projects/padt/data/Prague/ASB/ASB_ARB_20041019.0014	350
+TESTFILE	/net/projects/padt/data/Prague/ASB/ASB_ARB_20041020.0001	305
+TESTFILE	/net/projects/padt/data/Prague/ASB/ASB_ARB_20041022.0016	480
+DEVFILE	/net/projects/padt/data/Prague/ASB/ASB_ARB_20041023.0012	342
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0001	560	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0002	440	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0003	134	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0004	216	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0005	235	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0006	264	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0008	121	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0009	346	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0010	271	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0011	241	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0012	430	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0013	232	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0014	321	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0015	151	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0016	710	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0017	185	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0019	248	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0020	104	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0021	338	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0022	271	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0023	211	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0025	203	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0026	124	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0027	128	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0029	622	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0030	631	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0031	296	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0032	119	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0033	336	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0034	236	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0035	193	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0036	422	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0037	168	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0038	318	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0039	228	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0040	294	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0041	114	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0042	480	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0044	253	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0045	266	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0048	267	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0049	468	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0050	266	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0051	222	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0052	362	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0053	78	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0055	115	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0056	96	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0057	92	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0058	262	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0059	338	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0060	322	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0061	418	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0062	331	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0063	66	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0064	161	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0065	86	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0066	41	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0067	222	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0068	112	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0069	133	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0070	191	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0071	164	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0072	453	DIMA
+DEVFILE	/net/projects/padt/data/Prague/EAT/AFP_ARB_20000715.0073	161	DIMA
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010204.0082	236
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010207.0075	923
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010208.0022	204
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010211.0080	468
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010214.0068	638
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010225.0097	329
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010407.0221	1295
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010417.0149	635
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010422.0178	516
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010423.0163	316
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010425.0156	915
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010911.0008	1132
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20010912.0068	255
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20011007.0087	357
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20011108.0027	783
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20011225.0099	210
+TESTFILE	/net/projects/padt/data/Prague/HYT/HYT_ARB_20020116.0063	262
+TESTFILE	/net/projects/padt/data/Prague/NHR/NHR_ARB_20021101.0005	647
+TESTFILE	/net/projects/padt/data/Prague/NHR/NHR_ARB_20021130.0096	685
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030501.0016	216
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030501.0028	95
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030501.0042	129
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030501.0081	289
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0026	202
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0037	137
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0047	80
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0052	204
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0126	187
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0135	543
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0158	114
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0166	101
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0171	178
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0179	168
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0183	171
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030503.0190	307
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030509.0142	247
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030509.0153	141
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030509.0160	156
+TESTFILE	/net/projects/padt/data/Prague/XIN/XIN_ARB_20030511.0181	330
+TOTAL 874 files, DEV 101 files (11 %), TEST 69 files (7 %)
+TOTAL 282384 tokens, DEV 30239 tokens (10 %), TEST 28264 tokens (10 %)
