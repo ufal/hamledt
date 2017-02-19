@@ -7,7 +7,7 @@ include ../common.mak
 SOURCEDIR=/net/data/treebanks/lt/ALKSNIS_v2
 # Currently we select only a subset of the available documents.
 source:
-	for i in $(SOURCEDIR)/*/*.pml ; do cp $i $(IN) ; done
+	for i in $(SOURCEDIR)/*/*.pml ; do echo cp $i $(IN) ; cp $i $(IN) ; done
 
 SCHEMADIR=$(SOURCEDIR)/antisDplus_schema.pml
 treex:
