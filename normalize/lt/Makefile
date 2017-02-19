@@ -5,14 +5,18 @@ UDNAME=Lithuanian
 include ../common.mak
 
 SOURCEDIR=/net/data/treebanks/lt/ALKSNIS_v2
-# Currently we select only a subset of the available documents.
+SCHEMADIR=$(SOURCEDIR)/antisDplus_schema.pml
+# Problem: The data files contain references to the schema. Either the schema
+# must lie next to the data files (but then Treex will think it is another data
+# file) or it cannot be read by our reader.
 source:
 	for i in $(SOURCEDIR)/{administrative_docs,fiction,general_periodicals,specialised_periodicals}/*.pml ; do echo cp $$i $(IN) ; cp $$i $(IN) ; done
+	gzip $(IN)/*.pml
+	gunzip $(IN)/antisDplus_schema.pml.gz
 
-SCHEMADIR=$(SOURCEDIR)/antisDplus_schema.pml
 treex:
 	$(TREEX) \
-		Read::AlksnisPML schema_dir=$(SCHEMADIR) from='!$(IN)/*.pml' \
+		Read::AlksnisPML schema_dir=$(SCHEMADIR) from='!$(IN)/*.pml.gz' \
 		W2W::EstimateNoSpaceAfter \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/train/ compress=1
