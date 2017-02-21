@@ -96,6 +96,18 @@ while(<>)
             }
             print("# sent_id = $sid\n");
         }
+        # Ancient Greek Dependency Treebank
+        # tlg0008.tlg001.perseus-grc1.13.tb.xml@1163
+        elsif($sid =~ m/^(.+)\@\d+$/)
+        {
+            my $did = $1;
+            if($did ne $current_did)
+            {
+                print("# newdoc id = $did\n");
+                $current_did = $did;
+            }
+            print("# sent_id = $sid\n");
+        }
         else
         {
             print STDERR ("Unexpected sentence id '$sid'\n");
