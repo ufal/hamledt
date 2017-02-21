@@ -110,7 +110,12 @@ while(<>)
         }
         else
         {
-            print STDERR ("Unexpected sentence id '$sid'\n");
+            # Do not complain about PROIEL sentence ids. They are plain integers
+            # but in PROIEL we have document ids from the source attribute.
+            unless($sid =~ m/^\d+$/ && $current_did ne '')
+            {
+                print STDERR ("Unexpected sentence id '$sid'\n");
+            }
             print("# sent_id = $sid\n");
         }
     }
