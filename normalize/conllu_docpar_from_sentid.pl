@@ -114,6 +114,19 @@ while(<>)
             print("# sent_id = $sid\n");
         }
     }
+    # PROIEL treebanks have an attribute called "source". When it changes we have a new document.
+    elsif(m/^\#\s*source\s*=\s*(.+)/)
+    {
+        my $did = $1;
+        if($did ne $current_did)
+        {
+            my $xdid = $did;
+            $xdid =~ s/\s+/_/g;
+            print("# newdoc id = $xdid\n");
+            $current_did = $did;
+        }
+        print("# source = $did\n");
+    }
     else
     {
         print("$_\n");
