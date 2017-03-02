@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # Creates folders and Makefiles for a new release of Universal Dependencies.
-# Copyright © 2016 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2016, 2017 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 use utf8;
@@ -13,8 +13,8 @@ binmode(STDERR, ':utf8');
 use lib '/net/work/people/zeman/unidep/tools';
 use udlib;
 
-my $RELEASE = 1.4; # number to compare with the first release number in READMEs
-my $CRELEASE = '14'; # compact string for HamleDT path, e.g. '14' for 'cs-ud14' (Czech in release 1.4)
+my $RELEASE = 2.0; # number to compare with the first release number in READMEs
+my $CRELEASE = '20'; # compact string for HamleDT path, e.g. '14' for 'cs-ud14' (Czech in release 1.4)
 
 # We do not take the official release in /net/data because we test wether the UD_ folders are git repositories.
 my $udpath = '/net/work/people/zeman/unidep';
