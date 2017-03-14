@@ -56,7 +56,7 @@ if(!defined($wdir))
     die('Unknown working folder');
 }
 
-$konfig{toolsdir} = '/net/work/people/zeman/parsing/tools';
+$konfig{toolsdir} = '/home/zeman/tools';
 my $scriptdir = dzsys::get_script_path();
 my $share_dir = Treex::Core::Config->share_dir();
 if(!defined($share_dir) || $share_dir eq '')
@@ -176,8 +176,8 @@ sub get_parsers
     # smf ... Malt Parser, stack-lazy, Czech feature model
     # dlx ... same but delexicalized
     # mdlx_* ... multi-source delexicalized
-    return ('smf', 'dlx', 'mdlx_all', 'mdlx_ine', 'mdlx_ger', 'mdlx_rom', 'mdlx_sla', 'mdlx_agl');
-    #return ('smf', 'dlx');
+    #return ('smf', 'dlx', 'mdlx_all', 'mdlx_ine', 'mdlx_ger', 'mdlx_rom', 'mdlx_sla', 'mdlx_agl');
+    return ('smf', 'dlx');
 }
 
 
@@ -693,7 +693,7 @@ sub prepare_test_data
     }
     else
     {
-        system("cp $konfig{datadir}/$treebank/treex/02/test/*.treex.gz $testdir");
+        system("cp $konfig{datadir}/$treebank/treex/02/dev/*.treex.gz $testdir");
     }
 }
 
