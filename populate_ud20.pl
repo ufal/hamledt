@@ -22,6 +22,7 @@ my @folders = udlib::list_ud_folders($udpath);
 print("Found ", scalar(@folders), " UD folders in $udpath.\n");
 foreach my $folder (@folders)
 {
+    next unless($folder =~ m/^UD_(Kazakh|Uyghur)$/);
     my $record = udlib::get_ud_files_and_codes($folder, $udpath);
     # Skip folders without data.
     next if(!defined($record->{lcode}));
@@ -61,9 +62,21 @@ include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/unidep/UD_\$(UDNAME)
 source:
-	cp \$(SOURCEDIR)/\$(UDCODE)-ud-train.conllu data/source/train.conllu
-	cp \$(SOURCEDIR)/\$(UDCODE)-ud-dev.conllu data/source/dev.conllu
-	#cp \$(SOURCEDIR)/\$(UDCODE)-ud-test.conllu data/source/test.conllu
+EOF
+                ;
+                if(-f "$udpath/$folder/$key-ud-train.conllu")
+                {
+                    $makefile .= "\tcp \$(SOURCEDIR)/\$(UDCODE)-ud-train.conllu data/source/train.conllu\n";
+                }
+                if(-f "$udpath/$folder/$key-ud-dev.conllu")
+                {
+                    $makefile .= "\tcp \$(SOURCEDIR)/\$(UDCODE)-ud-dev.conllu data/source/dev.conllu\n";
+                }
+                if(-f "$udpath/$folder/$key-ud-test.conllu")
+                {
+                    $makefile .= "\tcp \$(SOURCEDIR)/\$(UDCODE)-ud-test.conllu data/source/test.conllu\n";
+                }
+                $makefile .= <<EOF
 
 # Do not convert Universal Dependencies to the Prague style and then back to UD. Instead, read directly UD.
 # Note that there will be just one tree per sentence, not three. (There are three trees per sentence for treebanks that are converted via Prague.)

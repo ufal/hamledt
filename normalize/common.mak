@@ -82,9 +82,9 @@ conll_to_treex:
 # For UD treebanks the treebank-specific Makefile should redefine the "ud" goal as dependent on "conllu_to_treex".
 # (See also "prague_to_ud" below.)
 conllu_to_treex:
-	$(TREEX) $(IMPORTU) from=$(IN)/train.conllu sid_prefix=train- $(POST_UD_BLOCKS) $(WRITE0) path=$(DIR2)/train/
-	$(TREEX) $(IMPORTU) from=$(IN)/dev.conllu   sid_prefix=dev-   $(POST_UD_BLOCKS) $(WRITE0) path=$(DIR2)/dev/
-	$(TREEX) $(IMPORTU) from=$(IN)/test.conllu  sid_prefix=test-  $(POST_UD_BLOCKS) $(WRITE0) path=$(DIR2)/test/
+	if [ -f $(IN)/train.conllu ] ; then $(TREEX) $(IMPORTU) from=$(IN)/train.conllu sid_prefix=train- $(POST_UD_BLOCKS) $(WRITE0) path=$(DIR2)/train/ ; fi
+	if [ -f $(IN)/dev.conllu   ] ; then $(TREEX) $(IMPORTU) from=$(IN)/dev.conllu   sid_prefix=dev-   $(POST_UD_BLOCKS) $(WRITE0) path=$(DIR2)/dev/   ; fi
+	if [ -f $(IN)/test.conllu  ] ; then $(TREEX) $(IMPORTU) from=$(IN)/test.conllu  sid_prefix=test-  $(POST_UD_BLOCKS) $(WRITE0) path=$(DIR2)/test/  ; fi
 
 # Convert the trees to the HamleDT/Prague style and store the result in 01.
 UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
