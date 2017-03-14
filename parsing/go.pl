@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # Processes selected treebanks performing selected actions (train, parse, eval, clean etc.)
 # Provides the unified necessary infrastructure for looping through all the sub-experiment subfolders.
-# Copyright © 2011-2016 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2011-2017 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 sub usage
@@ -66,7 +66,8 @@ if(!defined($share_dir) || $share_dir eq '')
 # HamleDT data is in Treex shared disk space. We usually read the UD-converted Treex files, i.e. treebank/treex/02/{train,dev,test}/*.treex.gz.
 # If we want to use machine-assigned morphology instead, we can take CoNLL-U files processed by Milan Straka (9/10-1/10 cross learning).
 # The data is here: /net/work/people/zeman/ud-1.2_tagged-cross/treebank/*-ud-{train,dev,test}.conllu.
-$konfig{datadir} = Treex::Core::Config->share_dir().'/data/resources/hamledt';
+###$konfig{datadir} = Treex::Core::Config->share_dir().'/data/resources/hamledt';
+$konfig{datadir} = '/a/LRC_TMP/zeman/hamledt';
 $konfig{datadir} = '/net/work/people/zeman/ud-1.2_tagged-cross' if($konfig{milan});
 $konfig{datadir} = '/net/work/people/zeman/deltacorpus/data/ud' if($konfig{delta});
 $konfig{datadir} =~ s-//-/-;
@@ -149,7 +150,10 @@ sub get_treebanks
         push(@ud11, 'fi-ud11ftb');
         my @ud12 = map {$_.'-ud12'} qw(ar bg cs cu da de el en es et eu fa fi fr ga got grc he hi hr hu id it la nl no pl pt ro sl sv ta);
         push(@ud12, 'fi-ud12ftb', 'grc-ud12proiel', 'la-ud12itt', 'la-ud12proiel'); # Excluding ja-ud12ktc because it does not contain words and lemmas.
-        return (@ud12);
+        # Exclude ar-ud20nyuad because it does not contain words. Exclude en-ud20esl, ja-ud20ktc and swl because they have not been converted to UD v2.
+        # Exclude kk and ug because they do not contain training data, only a small sample labeled as development data.
+        my @ud20 = map {m/^(.+)_(.+)$/ ? "$1-ud20$2" : "$_-ud20"} qw(ar be bg ca cop cs cs_cac cs_cltt cu da de el en en_lines en_partut es es_ancora et eu fa fi fi_ftb fr fr_partut fr_sequoia ga gl gl_treegal got grc grc_proiel he hi hr hu id it it_partut ja ko la la_ittb la_proiel lt lv nl nl_lassysmall no_bokmaal no_nynorsk pl pt pt_br ro ru ru_syntagrus sa sk sl sl_sst sv sv_lines ta tr uk ur vi zh);
+        return (@ud20);
     }
 }
 
