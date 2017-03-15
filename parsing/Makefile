@@ -25,6 +25,11 @@ train_all: $(subst -ud-train.conll,.mco,$(wildcard $(WDIR)/*-ud-train.conll))
 %.mco: %-ud-train.conll
 	trainmalt.pl $<
 
+parse_all: $(subst -ud-dev.conll,-ud-dev-parsed-malt.conll,$(wildcard $(WDIR)/*-ud-dev.conll))
+
+%-ud-dev-parsed-malt.conll: %-ud-dev.conll
+	cd $(WDIR) ; java -Xmx8g -jar /home/zeman/nastroje/parsery/maltparser-1.8.1/maltparser-1.8.1.jar -c $(*F)-nivreeager -m parse -i $(<F) -o $(@F)
+
 ALL_LANGUAGES=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 #LANGUAGES=$(ALL_LANGUAGES)
 LANGUAGES=ar bg ca da de en es fa hi hu it ja nl pt ro ru sv ta te
