@@ -6,11 +6,14 @@ UDNAMES=Arabic Bulgarian Catalan Czech Czech-CAC Czech-CLTT Old_Church_Slavonic 
 SRCPATHS=$(addprefix /net/data/universal-dependencies-2.0/UD_,$(UDNAMES))
 TRAINFILENAMES=$(addsuffix -ud-train.conllu,$(TREEBANKS))
 TRAINSRCPATHS=$(join $(addsuffix /,$(SRCPATHS)),$(TRAINFILENAMES))
+DEVFILENAMES=$(addsuffix -ud-dev.conllu,$(TREEBANKS))
+DEVSRCPATHS=$(join $(addsuffix /,$(SRCPATHS)),$(DEVFILENAMES))
 WDIR=/net/work/people/zeman/hamledt/parsing/ud2
 
 import_data:
 	mkdir -p $(WDIR)
 	cp $(TRAINSRCPATHS) $(WDIR)
+	cp $(DEVSRCPATHS) $(WDIR)
 
 convert_all: $(subst conllu,conll,$(wildcard $(WDIR)/*.conllu))
 
