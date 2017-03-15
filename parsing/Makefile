@@ -1,7 +1,30 @@
+# Treebanks from CoNLL 2017 shared task (subset of Universal Dependencies 2.0)
+# Skip the 6 treebanks that does not take part in the shared task: ar_nyuad be cop lt sa ta
+# Skip the 8 small treebanks for now (no development data): fr_partut ga gl_treegal kk la sl_sst ug uk
+TREEBANKS=ar bg ca cs cs_cac cs_cltt cu da de el en en_lines en_partut es es_ancora et eu fa fi fi_ftb fr fr_sequoia gl got grc grc_proiel he hi hr hu id it it_partut ja ko la_ittb la_proiel lv nl nl_lassysmall no_bokmaal no_nynorsk pl pt pt_br ro ru ru_syntagrus sk sl sv sv_lines tr ur vi zh
+UDNAMES=Arabic Bulgarian Catalan Czech Czech-CAC Czech-CLTT Old_Church_Slavonic Danish German Greek English English-LinES English-ParTUT Spanish Spanish-AnCora Estonian Basque Persian Finnish Finnish-FTB French French-Sequoia Galician Gothic Ancient_Greek Ancient_Greek-PROIEL Hebrew Hindi Croatian Hungarian Indonesian Italian Italian-ParTUT Japanese Korean Latin-ITTB Latin-PROIEL Latvian Dutch Dutch-LassySmall Norwegian-Bokmaal Norwegian-Nynorsk Polish Portuguese Portuguese-BR Romanian Russian Russian-SynTagRus Slovak Slovenian Swedish Swedish-LinES Turkish Urdu Vietnamese Chinese
+SRCPATHS=$(addprefix /net/data/universal-dependencies-2.0/UD_,$(UDNAMES))
+TRAINFILENAMES=$(addsuffix -ud-train.conllu,$(TREEBANKS))
+TRAINSRCPATHS=$(join $(addsuffix /,$(SRCPATHS)),$(TRAINFILENAMES))
+WDIR=/net/work/people/zeman/hamledt/parsing/ud2
+
+import_data:
+	mkdir -p $(WDIR)
+	cp $(TRAINSRCPATHS) $(WDIR)
+
+convert_all: $(subst conllu,conll,$(wildcard $(WDIR)/*.conllu))
+
+%.conll: %.conllu
+	conllu_to_conllx.pl < $< > $@
+
+train_all: $(subst -ud-train.conll,.mco,$(wildcard $(WDIR)/*-ud-train.conll))
+
+%.mco: %-ud-train.conll
+	trainmalt.pl $<
+
 ALL_LANGUAGES=ar bg bn ca cs da de el en es eu fa fi grc hi hu it ja la nl pt ro ru sl sv ta te tr
 #LANGUAGES=$(ALL_LANGUAGES)
 LANGUAGES=ar bg ca da de en es fa hi hu it ja nl pt ro ru sv ta te
-WDIR=/net/cluster/TMP/marecek/hamledt_parsing
 L=en
 
 train:
