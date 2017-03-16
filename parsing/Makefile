@@ -33,7 +33,9 @@ parse_all: $(subst -ud-dev.conll,-ud-dev-parsed-malt.conll,$(wildcard $(WDIR)/*-
 restore_all: $(subst -ud-dev-parsed-malt.conll,-ud-dev-parsed-malt.conllu,$(wildcard $(WDIR)/*-ud-dev-parsed-malt.conll))
 
 %-ud-dev-parsed-malt.conllu: %-ud-dev-parsed-malt.conll %-ud-dev.conllu
-	restore_conllu_lines.pl $< $*-ud-dev.conllu > $@
+	enforce_single_root.pl < $< > /tmp/x.conll
+	restore_conllu_lines.pl /tmp/x.conll $*-ud-dev.conllu > $@
+	rm /tmp/x.conll
 
 # /net/work/people/zeman/unidep/conll2017/evaluation_script/conll17_ud_eval.py -v gold.conllu system.conllu
 
