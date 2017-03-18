@@ -52,7 +52,7 @@ foreach my $treebank (@treebanks)
     $last_lngcode = $lngcode;
     $i++;
 }
-my $partsize = 22;
+my $partsize = 20;
 my $n = int((scalar(@treebanks) - 1) / $partsize) + 1;
 for(my $i = 0; $i < $n; $i++)
 {
