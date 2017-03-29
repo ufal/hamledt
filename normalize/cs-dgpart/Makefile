@@ -2,6 +2,7 @@ LANGCODE=cs
 TREEBANK=cs-dgpart
 UDCODE=cs_dgpart
 UDNAME=Czech-DGParT
+HARMONIZE=Harmonize change_bundle_id=0
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
 include ../common.mak
 
