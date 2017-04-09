@@ -8,18 +8,36 @@ include ../common.mak
 
 # DFKI-Google Parallel Treebank
 # Intermediate processing of the Czech part: take XPOSTAG+lemma annotation from Milan, process it as if it was Prague Dependency Treebank.
+# prazska rucni morfologie k prevedeni do UD:
+#  /home/straka/small_projects/conll17_cs_data/tagged-2-conllu-xpos/Data_Czech_morpho_1000.conllu
+# naparsovaná verze je v
+#  /home/straka/small_projects/conll17_cs_data/parsed/cs_dgpart-ud-test-parsed.conllu
 
-SOURCE=/home/straka/small_projects/conll17_cs_data/tagged-2-conllu-xpos/Data_Czech_morpho_1000.conllu
-source:
+SOURCE_MORPHO=/home/straka/small_projects/conll17_cs_data/tagged-2-conllu-xpos/Data_Czech_morpho_1000.conllu
+source_morpho:
 	mkdir -p data/source
-	cat $(SOURCE) | perl -pe 'if(m/^\d+\t/) { @f=split(/\t/); $$f[6]=0; $$f[7]="NR"; $$_=join("\t",@f); }' > data/source/test.conllu
+	cat $(SOURCE_MORPHO) | perl -pe 'if(m/^\d+\t/) { @f=split(/\t/); $$f[6]=0; $$f[7]="NR"; $$_=join("\t",@f); }' > data/source/test.conllu
 
-treex:
+SOURCE=/home/straka/small_projects/conll17_cs_data/parsed/cs_dgpart-ud-test-parsed.conllu
+source:
+	cp $(SOURCE) data/source/test.conllu
+
+treex_morpho:
 	$(TREEX) \
 		$(IMPORTU) from='!$(IN)/test.conllu' \
 		Util::Eval anode='$$.set_tag($$.conll_pos)' \
 		Write::Treex clobber=1 path=$(DIR0)/test/ compress=1
 
+# S naparsovanými daty už tohle nevolat, volat raději rovnou make ud, aby to šlo do adresáře treex/02.
+treex:
+	$(TREEX) \
+		$(IMPORTU) from='!$(IN)/test.conllu' \
+		Write::Treex clobber=1 path=$(DIR0)/test/ compress=1
+
 # ud should map either to prague_to_ud, or to conllu_to_treex.
-ud: prague_to_ud
+ud_morpho: prague_to_ud
+
+# Před $(WRITE0) ještě bylo $(POST_UD_BLOCKS), ale to jsou SplitFusedWords, ty už teď vynechávám, protože to už je udělané.
+ud:
+	$(TREEX) $(IMPORTU) from=$(IN)/test.conllu  sid_prefix=test-  $(WRITE0) path=$(DIR2)/test/
 
