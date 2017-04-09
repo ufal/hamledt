@@ -20,7 +20,7 @@ source_morpho:
 
 SOURCE=/home/straka/small_projects/conll17_cs_data/parsed/cs_dgpart-ud-test-parsed.conllu
 source:
-	cp $(SOURCE) data/source/test.conllu
+	cat $(SOURCE) | quot.pl > data/source/test.conllu
 
 treex_morpho:
 	$(TREEX) \
@@ -32,6 +32,7 @@ treex_morpho:
 treex:
 	$(TREEX) \
 		$(IMPORTU) from='!$(IN)/test.conllu' \
+		HamleDT::CS::ToDoPunctuation \
 		Write::Treex clobber=1 path=$(DIR0)/test/ compress=1
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
@@ -39,5 +40,8 @@ ud_morpho: prague_to_ud
 
 # Před $(WRITE0) ještě bylo $(POST_UD_BLOCKS), ale to jsou SplitFusedWords, ty už teď vynechávám, protože to už je udělané.
 ud:
-	$(TREEX) $(IMPORTU) from=$(IN)/test.conllu  sid_prefix=test-  $(WRITE0) path=$(DIR2)/test/
+	$(TREEX) \
+		$(IMPORTU) from=$(IN)/test.conllu \
+		HamleDT::CS::ToDoPunctuation \
+		$(WRITE0) path=$(DIR2)/test/
 
