@@ -45,3 +45,9 @@ ud:
 		HamleDT::CS::ToDoPunctuation \
 		$(WRITE0) path=$(DIR2)/test/
 
+# Po ruční anotaci v Tredu zkopírovat soubory *.treex.gz zpět do $(DIR2) a pustit tohle:
+postprocess:
+	$(QTREEX) \
+		Read::Treex from='!$(DIR2)/test/*.treex.gz' \
+		HamleDT::CS::CollectSentenceText \
+		Write::CoNLLU print_zone_id=0 substitute={$(DIR2)}{$(CONLLUDIR)} compress=1
