@@ -51,3 +51,4 @@ postprocess:
 		Read::Treex from='!$(DIR2)/test/*.treex.gz' \
 		HamleDT::CS::CollectSentenceText \
 		Write::CoNLLU print_zone_id=0 substitute={$(DIR2)}{$(CONLLUDIR)} compress=1
+	../export_ud.sh $(UDCODE) $(UDNAME)
