@@ -52,3 +52,4 @@ postprocess:
 		HamleDT::CS::CollectSentenceText \
 		Write::CoNLLU print_zone_id=0 substitute={$(DIR2)}{$(CONLLUDIR)} compress=1
 	../export_ud.sh $(UDCODE) $(UDNAME)
+	cp /net/work/people/zeman/unidep/UD_$(UDNAME)/$(UDCODE)-ud-test.conllu /net/work/people/zeman/unidep/czech-parallel-ud
