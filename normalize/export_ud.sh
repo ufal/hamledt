@@ -37,7 +37,12 @@ mkdir -p $UDDIR/UD_$lname
 cat *.conllu | $UDTOOLS/check_sentence_ids.pl
 cat *.conllu | $UDTOOLS/conllu-stats.pl > $UDDIR/UD_$lname/stats.xml
 for i in *.conllu ; do
-  echo $i
-  python $UDTOOLS/validate.py --noecho --lang=$lcode $i
-  mv $i $UDDIR/UD_$lname
+  # Some treebanks do not have training data. Skip CoNLL-U files that have zero size.
+  if [ -s $i ] ; then
+    echo $i
+    python $UDTOOLS/validate.py --noecho --lang=$lcode $i
+    mv $i $UDDIR/UD_$lname
+  else
+    rm $i
+  fi
 done
