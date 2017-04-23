@@ -41,6 +41,8 @@ for i in *.conllu ; do
   if [ -s $i ] ; then
     echo $i
     python $UDTOOLS/validate.py --noecho --lang=$lcode $i
+    udapy -HMAC ud.MarkBugs skip=no- < $i > bugs-`basename $i .conllu`.html
+    #udapy -HMAC ud.MarkBugs skip=no- < hsb-ud-test.conllu > bugs-hsb.html 2> >(tee log.txt >&2)
     mv $i $UDDIR/UD_$lname
   else
     rm $i
