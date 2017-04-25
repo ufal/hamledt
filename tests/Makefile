@@ -115,7 +115,7 @@ FILELIST=ttred.$(TTBK).$(TEST).filelist
 # Therefore we output a dummy line first.
 ttred:
 	echo > $(FILELIST)
-	grep hamledt/$(TTBK)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 >> $(FILELIST)
+	grep hamledt-data/$(TTBK)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 >> $(FILELIST)
 	ttred -l $(FILELIST)
 
 # If we work remotely (and remote graphical interface is not available), we may want to save the examples in a treex file,
