@@ -132,7 +132,7 @@ while(<>)
         }
         # Upper Sorbian Treebank: no document ids, just
         # p1s1
-        elsif($sid =~ m/^(p\d+)s[-0-9A-Z]+$/)
+        elsif($sid =~ m/^(p\d+)s[-0-9A-Za-b]+$/)
         {
             my $pid = $1;
             if($pid ne $current_pid)
