@@ -130,6 +130,18 @@ while(<>)
             }
             print("# sent_id = $sid\n");
         }
+        # Upper Sorbian Treebank: no document ids, just
+        # p1s1
+        elsif($sid =~ m/^(p\d+)-s[-0-9A-Z]+$/)
+        {
+            my $pid = $1;
+            if($pid ne $current_pid)
+            {
+                print("# newpar id = $pid\n");
+                $current_pid = $pid;
+            }
+            print("# sent_id = $sid\n");
+        }
         else
         {
             # Do not complain about PROIEL sentence ids. They are plain integers
