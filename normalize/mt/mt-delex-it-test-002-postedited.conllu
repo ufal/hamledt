@@ -1,0 +1,2632 @@
+# sent_id a_tree-mt_dlx-s1-root
+# orig_file_sentence 002#1
+1	Dawn	_	DET	PD	PronType=Dem	4	nsubj	_	_
+2	huma	_	PRON	PP	PronType=Prs	4	expl	_	_
+3	ftit	_	DET	DP	Number=Plur|NumType=Card|PronType=Ind	4	det	_	_
+4	riflessjonijiet	_	NOUN	NN	_	0	root	_	_
+5	li	_	SCONJ	CMP	_	6	mark	_	_
+6	xtaqt	_	VERB	VV	_	4	ccomp	_	_
+7	naqsam	_	VERB	VV	_	6	xcomp	_	_
+8	magħkom	_	PRON	PR	PronType=Prs|Reflex=Yes	7	advmod	_	_
+9	fi	_	ADP	PRP	AdpType=Prep	10	case	_	_
+10	tmiem	_	NOUN	NN	_	6	nmod	_	_
+11	din	_	DET	PD	PronType=Dem	13	det	_	_
+12	is-	_	DET	DDC	Definite=Def|PronType=Art	13	det	_	_
+13	Sena	_	NOUN	NN	_	10	dobj	_	_
+14	Saċerdotali	_	ADJ	MJ	_	13	amod	_	_
+15	,	_	PUNCT	PUN	_	13	punct	_	_
+16	li	_	SCONJ	CMP	_	17	mark	_	_
+17	nixtieqha	_	VERB	VV	_	13	advcl	_	_
+18	tkun	_	AUX	VA	_	17	aux	_	_
+19	il-	_	DET	DDC	Definite=Def|PronType=Art	20	det	_	_
+20	ftuħ	_	NOUN	NN	_	6	nmod	_	_
+21	ta'	_	ADP	PRP	AdpType=Prep	22	case	_	_
+22	era	_	NOUN	NN	_	20	nmod	_	_
+23	saċerdotali	_	ADJ	MJ	_	22	amod	_	_
+24	ġdida	_	ADJ	MJ	_	22	amod	_	_
+25	li	_	SCONJ	CMP	_	28	mark	_	_
+26	matulha	_	VERB	VG	_	28	advcl	_	_
+27	aħna	_	PRON	PP	PronType=Prs	28	nsubj	_	_
+28	nkomplu	_	VERB	VV	_	22	advcl	_	_
+29	nsaħħu	_	VERB	VV	_	28	advcl	_	_
+30	r-	_	DET	DDC	Definite=Def|PronType=Art	31	det	_	_
+31	rabta	_	NOUN	NN	_	29	nsubj	_	_
+32	tagħna	_	DET	PT	Poss=Yes|PronType=Prs	31	nmod	_	_
+33	ma'	_	ADP	PRP	AdpType=Prep	34	case	_	_
+34	Ġesù	_	PROPN	NP	_	31	nmod	_	_
+35	Kristu	_	PROPN	NP	_	34	name	_	_
+36	u	_	CONJ	CC	_	34	cc	_	_
+37	bejnietna	_	ADP	PRP	AdpType=Prep	39	case	_	_
+38	bħala	_	ADV	MV	_	39	advmod	_	_
+39	presbiterju	_	NOUN	NN	_	34	conj	_	_
+40	djoċesan	_	ADJ	MJ	_	39	amod	_	_
+41	.	_	PUNCT	PUN	_	4	punct	_	_
+
+# sent_id a_tree-mt_dlx-s2-root
+# orig_file_sentence 002#2
+1	Għalhekk	_	DET	DS	Number=Sing|PronType=Ind	2	det	_	_
+2	nistiednek	_	NOUN	NN	_	0	root	_	_
+3	għaċ-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	4	case	_	_
+4	ċelebrazzjoni	_	NOUN	NN	_	2	nmod	_	_
+5	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	6	case	_	_
+6	għeluq	_	NOUN	NN	_	4	nmod	_	_
+7	djoċesan	_	ADJ	MJ	_	6	amod	_	_
+8	tas-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	9	case	_	_
+9	Sena	_	NOUN	NN	_	6	nmod	_	_
+10	Saċerdotali	_	ADJ	MJ	_	9	amod	_	_
+11	nhar	_	NOUN	NN	_	9	nmod	_	_
+12	il-	_	DET	DDC	Definite=Def|PronType=Art	13	det	_	_
+13	Ġimgħa	_	PROPN	NP	_	11	nmod	_	_
+14	li	_	SCONJ	CMP	_	15	mark	_	_
+15	ġejja	_	VERB	VP	VerbForm=Part	11	advcl	_	_
+16	,	_	PUNCT	PUN	_	17	punct	_	_
+17	11	_	NUM	NC	NumType=Card	15	advmod	_	_
+18	ta'	_	ADP	PRP	AdpType=Prep	19	case	_	_
+19	Ġunju	_	NOUN	NN	_	17	nmod	_	_
+20	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s3-root
+# orig_file_sentence 002#3
+1	Niltaqgħu	_	VERB	VV	_	0	root	_	_
+2	fis-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	3	case	_	_
+3	Seminarju	_	NOUN	NN	_	1	nmod	_	_
+4	-	_	PUNCT	PUN	_	6	punct	_	_
+5	id-	_	DET	DDC	Definite=Def|PronType=Art	6	det	_	_
+6	dar	_	NOUN	NN	_	3	appos	_	_
+7	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	8	case	_	_
+8	formazzjoni	_	NOUN	NN	_	6	nmod	_	_
+9	tagħna	_	DET	PT	Poss=Yes|PronType=Prs	8	det:poss	_	_
+10	,	_	PUNCT	PUN	_	15	punct	_	_
+11	fejn	_	ADV	MV	_	15	advmod	_	_
+12	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	13	case	_	_
+13	4.30	_	NUM	NC	NumType=Card	15	advmod	_	_
+14	pm	_	VERB	VV	_	13	advmod	_	_
+15	nirreċtaw	_	VERB	VV	_	3	advcl	_	_
+16	it-	_	DET	DDC	Definite=Def|PronType=Art	17	det	_	_
+17	talba	_	NOUN	NN	_	15	dobj	_	_
+18	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	19	case	_	_
+19	Għasar	_	NOUN	NN	_	17	nmod	_	_
+20	quddiem	_	ADP	PRP	AdpType=Prep	21	case	_	_
+21	Ġesù	_	NOUN	NN	_	19	nmod	_	_
+22	Ewkaristija	_	ADJ	MJ	_	21	amod	_	_
+23	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s4-root
+# orig_file_sentence 002#4
+1	Imbagħad	_	ADV	MV	_	2	advmod	_	_
+2	nimxu	_	VERB	VV	_	0	root	_	_
+3	proċessjonalment	_	ADJ	MJ	_	2	amod	_	_
+4	wara	_	ADP	PRP	AdpType=Prep	6	case	_	_
+5	l-	_	DET	DDC	Definite=Def|PronType=Art	6	det	_	_
+6	Ewkaristija	_	NOUN	NN	_	3	nmod	_	_
+7	lejn	_	ADP	PRP	AdpType=Prep	9	case	_	_
+8	il-	_	DET	DDC	Definite=Def|PronType=Art	9	det	_	_
+9	parroċċa	_	NOUN	NN	_	6	nmod	_	_
+10	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	11	case	_	_
+11	Fontana	_	NOUN	NN	_	9	nmod	_	_
+12	fejn	_	ADV	MV	_	13	advmod	_	_
+13	ikollna	_	VERB	VG	_	9	advcl	_	_
+14	ċelebrazzjoni	_	NOUN	NN	_	13	dobj	_	_
+15	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	16	case	_	_
+16	Kelma	_	NOUN	NN	_	14	nmod	_	_
+17	,	_	PUNCT	PUN	_	14	punct	_	_
+18	u	_	CONJ	CC	_	14	cc	_	_
+19	konsagrazzjoni	_	NOUN	NN	_	14	conj	_	_
+20	tagħna	_	DET	PT	Poss=Yes|PronType=Prs	19	nmod	_	_
+21	lill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	22	case	_	_
+22	Qalb	_	NOUN	NN	_	19	nmod	_	_
+23	ta'	_	ADP	PRP	AdpType=Prep	24	case	_	_
+24	Ġesù	_	NOUN	NN	_	22	nmod	_	_
+25	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s5-root
+# orig_file_sentence 002#5
+1	Għal	_	ADP	PRP	AdpType=Prep	4	case	_	_
+2	dan	_	DET	PD	PronType=Dem	4	det	_	_
+3	il-	_	DET	DDC	Definite=Def|PronType=Art	4	det	_	_
+4	għan	_	NOUN	NN	_	5	nmod	_	_
+5	intom	_	VERB	VG	_	0	root	_	_
+6	mistiedna	_	VERB	VP	VerbForm=Part	5	advcl	_	_
+7	ġġibu	_	VERB	VV	_	6	advcl	_	_
+8	magħkom	_	ADP	PRP	AdpType=Prep	9	case	_	_
+9	alba	_	NOUN	NN	_	7	nmod	_	_
+10	u	_	CONJ	CC	_	9	cc	_	_
+11	stola	_	NOUN	NN	_	9	conj	_	_
+12	bajda	_	ADJ	MJ	_	11	amod	_	_
+13	.	_	PUNCT	PUN	_	5	punct	_	_
+
+# sent_id a_tree-mt_dlx-s6-root
+# orig_file_sentence 002#6
+1	Nieħu	_	VERB	VV	_	0	root	_	_
+2	l-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	okkażżjoniwkoll	_	NOUN	NN	_	1	dobj	_	_
+4	biex	_	SCONJ	CS	_	5	mark	_	_
+5	inħeġġiġkom	_	VERB	VV	_	3	advcl	_	_
+6	titolbu	_	VERB	VV	_	5	ccomp	_	_
+7	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	8	case	_	_
+8	ordinandi	_	NOUN	NN	_	6	nmod	_	_
+9	tagħna	_	DET	PT	Poss=Yes|PronType=Prs	8	det:poss	_	_
+10	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	11	case	_	_
+11	okkażżjonital-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	8	nmod	_	_
+12	Ordinazzjoni	_	NOUN	NN	_	11	nmod	_	_
+13	Presbiterali	_	ADJ	MJ	_	12	amod	_	_
+14	ta'	_	ADP	PRP	AdpType=Prep	16	case	_	_
+15	żewġ	_	NUM	NC	NumType=Card	16	nummod	_	_
+16	djakni	_	NOUN	NN	_	12	nmod	_	_
+17	(	_	PUNCT	PUN	_	18	punct	_	_
+18	nhar	_	NOUN	NN	_	16	parataxis	_	_
+19	il-	_	DET	DDC	Definite=Def|PronType=Art	20	det	_	_
+20	Ħadd	_	PROPN	NP	_	18	nmod	_	_
+21	13	_	NUM	NC	NumType=Card	20	nummod	_	_
+22	ta'	_	ADP	PRP	AdpType=Prep	23	case	_	_
+23	Ġunju	_	NOUN	NN	_	21	nmod	_	_
+24	)	_	PUNCT	PUN	_	18	punct	_	_
+25	u	_	CONJ	CC	_	12	cc	_	_
+26	l-	_	DET	DDC	Definite=Def|PronType=Art	27	det	_	_
+27	Ordinazzjoni	_	NOUN	NN	_	12	conj	_	_
+28	Djakonali	_	ADJ	MJ	_	27	amod	_	_
+29	ta'	_	ADP	PRP	AdpType=Prep	31	case	_	_
+30	sitt	_	NUM	NC	NumType=Card	31	nummod	_	_
+31	seminaristi	_	NOUN	NN	_	27	nmod	_	_
+32	(	_	PUNCT	PUN	_	33	punct	_	_
+33	nhar	_	NOUN	NN	_	31	parataxis	_	_
+34	il-	_	DET	DDC	Definite=Def|PronType=Art	35	det	_	_
+35	Ħadd	_	PROPN	NP	_	33	nmod	_	_
+36	20	_	NUM	NC	NumType=Card	35	nummod	_	_
+37	ta'	_	ADP	PRP	AdpType=Prep	38	case	_	_
+38	Ġunju	_	NOUN	NN	_	36	nmod	_	_
+39	)	_	PUNCT	PUN	_	33	punct	_	_
+40	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s7-root
+# orig_file_sentence 002#7
+1	Se	_	PART	PAF	Aspect=Pro	2	aux	_	_
+2	ssir	_	VERB	VV	_	0	root	_	_
+3	Velja	_	NOUN	NN	_	2	nsubj	_	_
+4	ta'	_	ADP	PRP	AdpType=Prep	5	mwe	_	_
+5	talb	_	NOUN	NN	_	3	nmod	_	_
+6	fis-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	7	case	_	_
+7	Seminarju	_	NOUN	NN	_	3	nmod	_	_
+8	nhar	_	NOUN	NN	_	10	case	_	_
+9	is-	_	DET	DDC	Definite=Def|PronType=Art	10	det	_	_
+10	Sibt	_	NOUN	NN	_	2	nmod	_	_
+11	12	_	NUM	NC	NumType=Card	10	nummod	_	_
+12	ta'	_	ADP	PRP	AdpType=Prep	13	case	_	_
+13	Ġunju	_	NOUN	NN	_	11	nmod	_	_
+14	fid-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	15	case	_	_
+15	9	_	NUM	NC	NumType=Card	2	nummod	_	_
+16	pm	_	NOUN	NN	_	15	nmod	_	_
+17	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s8-root
+# orig_file_sentence 002#8
+1	Jalla	_	INTJ	II	_	4	discourse	_	_
+2	l-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	Mulej	_	PROPN	NP	_	4	nsubj	_	_
+4	ikompli	_	VERB	VV	_	0	root	_	_
+5	jżejjen	_	ADV	MV	_	4	advmod	_	_
+6	id-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	djoċesi	_	NOUN	NN	_	4	dobj	_	_
+8	tagħna	_	DET	PT	Poss=Yes|PronType=Prs	7	det:poss	_	_
+9	b'	_	ADP	PRP	AdpType=Prep	10	case	_	_
+10	kotra	_	NOUN	NN	_	4	iobj	_	_
+11	ta'	_	ADP	PRP	AdpType=Prep	12	case	_	_
+12	vokazzjonijiet	_	NOUN	NN	_	10	nmod	_	_
+13	saċerdotali	_	ADJ	MJ	_	12	amod	_	_
+14	,	_	PUNCT	PUN	_	12	punct	_	_
+15	reliġjużi	_	NOUN	NN	_	12	conj	_	_
+16	u	_	CONJ	CC	_	12	cc	_	_
+17	ta'	_	ADP	PRP	AdpType=Prep	18	case	_	_
+18	lajċi	_	NOUN	NN	_	12	conj	_	_
+19	kkonsagrati	_	ADJ	MJ	_	18	amod	_	_
+20	.	_	PUNCT	PUN	_	4	punct	_	_
+
+# sent_id a_tree-mt_dlx-s9-root
+# orig_file_sentence 002#9
+1	Il-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	Mulej	_	PROPN	NP	_	4	nsubj	_	_
+3	Ġesù	_	VERB	VV	_	2	nmod	_	_
+4	jħariskom	_	NOUN	NN	_	0	root	_	_
+5	u	_	CONJ	CC	_	4	cc	_	_
+6	jżommkom	_	NOUN	NN	_	4	conj	_	_
+7	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	8	case	_	_
+8	Qalb	_	NOUN	NN	_	4	nmod	_	_
+9	tiegħu	_	DET	PT	Poss=Yes|PronType=Prs	8	det:poss	_	_
+10	.	_	PUNCT	PUN	_	4	punct	_	_
+
+# sent_id a_tree-mt_dlx-s10-root
+# orig_file_sentence 002#10
+1	Ħafna	_	NOUN	NN	_	7	nsubj	_	_
+2	,	_	PUNCT	PUN	_	5	punct	_	_
+3	speċjalment	_	ADV	MV	_	5	advmod	_	_
+4	il-	_	DET	DDC	Definite=Def|PronType=Art	5	det	_	_
+5	ġenituri	_	NOUN	NN	_	1	appos	_	_
+6	,	_	PUNCT	PUN	_	5	punct	_	_
+7	jaraw	_	VERB	VV	_	0	root	_	_
+8	il-	_	DET	DDC	Definite=Def|PronType=Art	9	det	_	_
+9	vaganzi	_	NOUN	NN	_	7	dobj	_	_
+10	tas-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	11	case	_	_
+11	sajf	_	NOUN	NN	_	9	nmod	_	_
+12	bħala	_	ADV	MV	_	13	advmod	_	_
+13	perijodu	_	VERB	VV	_	7	advcl	_	_
+14	ta'	_	ADP	PRP	AdpType=Prep	15	case	_	_
+15	storbju	_	NOUN	NN	_	13	nmod	_	_
+16	,	_	PUNCT	PUN	_	15	punct	_	_
+17	paniku	_	NOUN	NN	_	15	conj	_	_
+18	fid-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	19	case	_	_
+19	dar	_	NOUN	NN	_	17	nmod	_	_
+20	,	_	PUNCT	PUN	_	13	punct	_	_
+21	u	_	CONJ	CC	_	13	cc	_	_
+22	ħin	_	NOUN	NN	_	13	conj	_	_
+23	liberu	_	ADJ	MJ	_	22	amod	_	_
+24	eċċessiv	_	ADJ	MJ	_	23	amod	_	_
+25	.	_	PUNCT	PUN	_	7	punct	_	_
+
+# sent_id a_tree-mt_dlx-s11-root
+# orig_file_sentence 002#11
+1	Imma	_	CONJ	CC	_	5	cc	_	_
+2	dan	_	DET	PD	PronType=Dem	4	det	_	_
+3	iż-	_	DET	DDC	Definite=Def|PronType=Art	4	det	_	_
+4	żmien	_	NOUN	NN	_	5	nsubj	_	_
+5	jista'	_	VERB	VV	_	0	conj	_	_
+6	faċilment	_	ADV	MV	_	7	advmod	_	_
+7	jinbidel	_	VERB	VV	_	5	ccomp	_	_
+8	f'	_	ADP	PRP	AdpType=Prep	9	case	_	_
+9	perijodu	_	NOUN	NN	_	7	nmod	_	_
+10	divertenti	_	ADJ	MJ	_	9	amod	_	_
+11	u	_	CONJ	CC	_	10	cc	_	_
+12	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	14	case	_	_
+13	istess	_	ADJ	MJ	_	14	amod	_	_
+14	ħin	_	NOUN	NN	_	15	nmod	_	_
+15	edukattiv	_	ADJ	MJ	_	10	conj	_	_
+16	għat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	17	case	_	_
+17	tfal	_	NOUN	NN	_	15	nmod	_	_
+18	.	_	PUNCT	PUN	_	5	punct	_	_
+
+# sent_id a_tree-mt_dlx-s12-root
+# orig_file_sentence 002#12
+1	Hu	_	PRON	PP	PronType=Prs	2	expl	_	_
+2	importanti	_	ADJ	MJ	_	0	root	_	_
+3	li	_	SCONJ	CMP	_	5	mark	_	_
+4	wieħed	_	NUM	NW	NumType=Card,Gen|NumValue=1	5	nsubj	_	_
+5	jinvesti	_	VERB	VV	_	2	csubj	_	_
+6	dan	_	DET	PD	PronType=Dem	8	nsubj	_	_
+7	il-	_	DET	DDC	Definite=Def|PronType=Art	8	det	_	_
+8	ħin	_	NOUN	NN	_	5	dobj	_	_
+9	liberu	_	ADJ	MJ	_	8	amod	_	_
+10	f'	_	ADP	PRP	AdpType=Prep	11	case	_	_
+11	attivitajiet	_	NOUN	NN	_	5	nmod	_	_
+12	li	_	SCONJ	CMP	_	15	mark	_	_
+13	wieħed	_	NUM	NW	NumType=Card,Gen|NumValue=1	15	nsubj	_	_
+14	ma	_	PART	NV	Negative=Neg	15	neg	_	_
+15	jkollux	_	VERB	VV	_	11	advcl	_	_
+16	ħin	_	NOUN	NN	_	15	dobj	_	_
+17	għalihom	_	ADP	PRP	AdpType=Prep	15	nmod	_	_
+18	matul	_	ADP	PRP	AdpType=Prep	20	case	_	_
+19	is-	_	DET	DDC	Definite=Def|PronType=Art	20	det	_	_
+20	sena	_	NOUN	NN	_	15	nmod	_	_
+21	skolastika	_	ADJ	MJ	_	20	amod	_	_
+22	-	_	PUNCT	PUN	_	24	punct	_	_
+23	speċjalment	_	ADV	MV	_	24	advmod	_	_
+24	attivitajiet	_	NOUN	NN	_	11	appos	_	_
+25	soċjo	_	ADJ	MJ	_	24	amod	_	_
+26	-	_	PUNCT	PUN	_	25	punct	_	_
+27	kulturali	_	ADJ	MJ	_	25	conj	_	_
+28	,	_	PUNCT	PUN	_	24	punct	_	_
+29	u	_	CONJ	CC	_	24	cc	_	_
+30	ħin	_	NOUN	NN	_	24	conj	_	_
+31	ta'	_	ADP	PRP	AdpType=Prep	32	case	_	_
+32	kwalità	_	NOUN	NN	_	30	nmod	_	_
+33	bejn	_	ADP	PRP	AdpType=Prep	35	case	_	_
+34	il-	_	DET	DDC	Definite=Def|PronType=Art	35	det	_	_
+35	membri	_	NOUN	NN	_	32	nmod	_	_
+36	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	37	case	_	_
+37	familja	_	NOUN	NN	_	35	nmod	_	_
+38	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s13-root
+# orig_file_sentence 002#13
+1	Fuq	_	ADP	PRP	AdpType=Prep	4	case	_	_
+2	dan	_	DET	PD	PronType=Dem	4	det	_	_
+3	il-	_	DET	DDC	Definite=Def|PronType=Art	4	det	_	_
+4	prinċipju	_	NOUN	NN	_	7	nmod	_	_
+5	,	_	PUNCT	PUN	_	4	punct	_	_
+6	il-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	Fondazzjoni	_	NOUN	NN	_	14	nsubj	_	_
+8	għal	_	ADP	PRP	AdpType=Prep	9	case	_	_
+9	Servizzi	_	NOUN	NN	_	7	nmod	_	_
+10	ta'	_	ADP	PRP	AdpType=Prep	11	case	_	_
+11	Ħarsien	_	NOUN	NN	_	9	nmod	_	_
+12	Soċjali	_	ADJ	MJ	_	11	amod	_	_
+13	kontinwament	_	ADJ	MJ	_	14	advmod	_	_
+14	twassal	_	VERB	VV	_	0	root	_	_
+15	programmi	_	NOUN	NN	_	14	dobj	_	_
+16	u	_	CONJ	CC	_	15	cc	_	_
+17	inizjattivi	_	NOUN	NN	_	15	conj	_	_
+18	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	19	case	_	_
+19	benefiċċju	_	NOUN	NN	_	15	nmod	_	_
+20	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	21	case	_	_
+21	familji	_	NOUN	NN	_	19	nmod	_	_
+22	u	_	CONJ	CC	_	19	cc	_	_
+23	l-	_	DET	DDC	Definite=Def|PronType=Art	24	det	_	_
+24	bżonnijiet	_	NOUN	NN	_	19	conj	_	_
+25	tagħhom	_	DET	PT	Poss=Yes|PronType=Prs	24	det:poss	_	_
+26	.	_	PUNCT	PUN	_	14	punct	_	_
+
+# sent_id a_tree-mt_dlx-s14-root
+# orig_file_sentence 002#14
+1	Din	_	DET	PD	PronType=Dem	3	nsubj	_	_
+2	it-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	tattika	_	NOUN	NN	_	9	nsubj	_	_
+4	bbażata	_	VERB	VP	VerbForm=Part	3	acl	_	_
+5	fuq	_	ADP	PRP	AdpType=Prep	7	case	_	_
+6	il-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	bżonnijiet	_	NOUN	NN	_	4	nmod	_	_
+8	hi	_	PRON	PP	PronType=Prs	9	expl	_	_
+9	rilevanti	_	ADJ	MJ	_	0	root	_	_
+10	b'	_	ADP	PRP	AdpType=Prep	11	case	_	_
+11	mod	_	NOUN	NN	_	9	nmod	_	_
+12	speċjali	_	ADJ	MJ	_	11	amod	_	_
+13	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	14	case	_	_
+14	għotja	_	NOUN	NN	_	11	nmod	_	_
+15	ta'	_	ADP	PRP	AdpType=Prep	16	case	_	_
+16	servizzi	_	NOUN	NN	_	14	nmod	_	_
+17	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	18	case	_	_
+18	komunità	_	NOUN	NN	_	16	nmod	_	_
+19	,	_	PUNCT	PUN	_	28	punct	_	_
+20	fejn	_	ADV	MV	_	28	advmod	_	_
+21	ir-	_	DET	DDC	Definite=Def|PronType=Art	22	det	_	_
+22	riżorsi	_	NOUN	NN	_	28	nsubj	_	_
+23	fi	_	ADP	PRP	AdpType=Prep	24	case	_	_
+24	ħdan	_	NOUN	NN	_	22	nmod	_	_
+25	l-	_	DET	DDC	Definite=Def|PronType=Art	27	det	_	_
+26	istess	_	ADJ	MJ	_	27	amod	_	_
+27	komunità	_	NOUN	NN	_	24	nmod	_	_
+28	jingħaqdu	_	VERB	VV	_	11	advcl	_	_
+29	flimkien	_	ADV	MV	_	28	advmod	_	_
+30	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	31	case	_	_
+31	benefiċċju	_	NOUN	NN	_	28	nmod	_	_
+32	tar-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	33	case	_	_
+33	residenti	_	NOUN	NN	_	31	nmod	_	_
+34	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	35	case	_	_
+35	lokal	_	NOUN	NN	_	33	nmod	_	_
+36	.	_	PUNCT	PUN	_	9	punct	_	_
+
+# sent_id a_tree-mt_dlx-s15-root
+# orig_file_sentence 002#15
+1	Klabbsajf	_	ADV	MV	_	3	nsubj	_	_
+2	hu	_	PRON	PP	PronType=Prs	3	expl	_	_
+3	proġett	_	NOUN	NN	_	0	root	_	_
+4	mibni	_	VERB	VP	VerbForm=Part	3	acl	_	_
+5	fuq	_	ADP	PRP	AdpType=Prep	8	case	_	_
+6	din	_	DET	PD	PronType=Dem	8	det	_	_
+7	l-	_	DET	DDC	Definite=Def|PronType=Art	8	det	_	_
+8	istrateġija	_	NOUN	NN	_	4	nmod	_	_
+9	.	_	PUNCT	PUN	_	3	punct	_	_
+
+# sent_id a_tree-mt_dlx-s16-root
+# orig_file_sentence 002#16
+1	Dan	_	DET	PD	PronType=Dem	3	det	_	_
+2	il-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	proġett	_	NOUN	NN	_	4	nsubj	_	_
+4	oriġina	_	VERB	VV	_	0	root	_	_
+5	madwar	_	ADP	PRP	AdpType=Prep	6	case	_	_
+6	12	_	NUM	NC	NumType=Card	8	nummod	_	_
+7	-il	_	DET	DDC	Definite=Def|PronType=Art	8	det	_	_
+8	sena	_	NOUN	NN	_	9	nsubj	_	_
+9	ilu	_	VERB	VG	_	4	advmod	_	_
+10	meta	_	ADV	MV	_	29	advmod	_	_
+11	grupp	_	NOUN	NN	_	29	nsubj	_	_
+12	ta'	_	ADP	PRP	AdpType=Prep	14	case	_	_
+13	community	_	ADJ	MJ	_	14	amod	_	_
+14	workers	_	NOUN	NN	_	11	nmod	_	_
+15	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	16	case	_	_
+16	Aġenzija	_	NOUN	NN	_	14	nmod	_	_
+17	Appoġġ	_	NOUN	NN	_	16	name	_	_
+18	flimkien	_	ADJ	MJ	_	20	amod	_	_
+19	ma'	_	ADP	PRP	AdpType=Prep	20	case	_	_
+20	grupp	_	NOUN	NN	_	16	nmod	_	_
+21	ta'	_	ADP	PRP	AdpType=Prep	22	case	_	_
+22	ommijiet	_	NOUN	NN	_	20	nmod	_	_
+23	u	_	CONJ	CC	_	22	cc	_	_
+24	ta'	_	ADP	PRP	AdpType=Prep	25	case	_	_
+25	żgħażagħ	_	NOUN	NN	_	22	conj	_	_
+26	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	27	case	_	_
+27	Kottonera	_	NOUN	NN	_	25	nmod	_	_
+28	,	_	PUNCT	PUN	_	25	punct	_	_
+29	ħadmu	_	VERB	VV	_	9	advcl	_	_
+30	flimkien	_	ADV	MV	_	29	advmod	_	_
+31	u	_	CONJ	CC	_	29	cc	_	_
+32	ħolqu	_	VERB	VV	_	29	conj	_	_
+33	proġett	_	NOUN	NN	_	32	dobj	_	_
+34	ta'	_	ADP	PRP	AdpType=Prep	36	case	_	_
+35	summer	_	NOUN	NN	_	36	nmod	_	_
+36	school	_	VERB	VV	_	33	nmod	_	_
+37	għat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	38	case	_	_
+38	tfal	_	NOUN	NN	_	36	nmod	_	_
+39	ġejjin	_	VERB	VP	VerbForm=Part	38	acl	_	_
+40	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	42	case	_	_
+41	istess	_	ADJ	MJ	_	42	amod	_	_
+42	lokalitajiet	_	NOUN	NN	_	39	nmod	_	_
+43	.	_	PUNCT	PUN	_	4	punct	_	_
+
+# sent_id a_tree-mt_dlx-s17-root
+# orig_file_sentence 002#17
+1	Madanakollu	_	ADV	MV	_	7	advmod	_	_
+2	,	_	PUNCT	PUN	_	7	punct	_	_
+3	Klabbsajf	_	CONJ	CC	_	7	nsubj	_	_
+4	mhux	_	PART	NV	Negative=Neg	7	neg	_	_
+5	biss	_	ADV	MV	_	7	advmod	_	_
+6	summer	_	VERB	VV	_	7	advcl	_	_
+7	school	_	VERB	VV	_	0	root	_	_
+8	.	_	PUNCT	PUN	_	7	punct	_	_
+
+# sent_id a_tree-mt_dlx-s18-root
+# orig_file_sentence 002#18
+1	Il-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	programm	_	NOUN	NN	_	11	nsubj	_	_
+3	li	_	SCONJ	CMP	_	4	advmod	_	_
+4	jitħejja	_	NOUN	NN	_	2	acl	_	_
+5	għal	_	ADP	PRP	AdpType=Prep	8	case	_	_
+6	dawn	_	DET	PD	PronType=Dem	8	advmod	_	_
+7	it-	_	DET	DDC	Definite=Def|PronType=Art	8	det	_	_
+8	tfal	_	NOUN	NN	_	4	nsubj	_	_
+9	kull	_	DET	DS	Number=Sing|PronType=Ind	10	det	_	_
+10	sena	_	NOUN	NN	_	4	nmod	_	_
+11	juża	_	ADJ	MJ	_	0	root	_	_
+12	stili	_	ADJ	MJ	_	11	amod	_	_
+13	alternattivi	_	NOUN	NN	_	12	nmod	_	_
+14	ta'	_	ADP	PRP	AdpType=Prep	15	case	_	_
+15	tagħlim	_	NOUN	NN	_	12	nmod	_	_
+16	li	_	SCONJ	CMP	_	17	mark	_	_
+17	jgħinu	_	VERB	VV	_	12	acl	_	_
+18	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	19	case	_	_
+19	istimulazzjoni	_	NOUN	NN	_	17	nmod	_	_
+20	ta'	_	ADP	PRP	AdpType=Prep	21	case	_	_
+21	kreattività	_	NOUN	NN	_	19	nmod	_	_
+22	u	_	CONJ	CC	_	21	cc	_	_
+23	ħsieb	_	NOUN	NN	_	21	conj	_	_
+24	fit-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	25	case	_	_
+25	tfal	_	NOUN	NN	_	19	nmod	_	_
+26	.	_	PUNCT	PUN	_	11	punct	_	_
+
+# sent_id a_tree-mt_dlx-s19-root
+# orig_file_sentence 002#19
+1	Din	_	DET	PD	PronType=Dem	3	advmod	_	_
+2	is-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	sena	_	NOUN	NN	_	9	nmod	_	_
+4	,	_	PUNCT	PUN	_	3	punct	_	_
+5	Klabbsajf	_	CONJ	CC	_	9	nsubjpass	_	_
+6	2010	_	NUM	NC	NumType=Card	5	conj	_	_
+7	qed	_	PART	PAC	Aspect=Prog	9	aux	_	_
+8	jiġi	_	VERB	VV	_	9	auxpass	_	_
+9	organizzat	_	VERB	VP	VerbForm=Part	0	advcl	_	_
+10	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	11	case	_	_
+11	Cottonera	_	PROPN	NP	_	9	nmod	_	_
+12	Community	_	PROPN	NP	_	11	name	_	_
+13	Services	_	PROPN	NP	_	11	name	_	_
+14	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	15	case	_	_
+15	Aġenzija	_	NOUN	NN	_	11	nmod	_	_
+16	Appoġġ	_	NOUN	NN	_	15	mwe	_	_
+17	,	_	PUNCT	PUN	_	9	punct	_	_
+18	b'	_	ADP	PRP	AdpType=Prep	19	case	_	_
+19	kollaborazzjoni	_	NOUN	NN	_	9	nmod	_	_
+20	maċ-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	21	case	_	_
+21	Ċentru	_	NOUN	NN	_	19	nmod	_	_
+22	ta'	_	ADP	PRP	AdpType=Prep	23	case	_	_
+23	Riżorsi	_	NOUN	NN	_	21	nmod	_	_
+24	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	25	case	_	_
+25	Komunità	_	NOUN	NN	_	23	nmod	_	_
+26	-	_	PUNCT	PUN	_	21	punct	_	_
+27	AĊĊESS	_	X	RO	_	21	nmod	_	_
+28	,	_	PUNCT	PUN	_	21	punct	_	_
+29	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	30	case	_	_
+30	Birgu	_	PROPN	NP	_	21	nmod	_	_
+31	,	_	PUNCT	PUN	_	21	punct	_	_
+32	il-	_	DET	DDC	Definite=Def|PronType=Art	33	det	_	_
+33	Kulleġġ	_	NOUN	NN	_	21	conj	_	_
+34	Santa	_	PROPN	NP	_	33	name	_	_
+35	Margerita	_	PROPN	NP	_	33	name	_	_
+36	,	_	PUNCT	PUN	_	21	punct	_	_
+37	u	_	CONJ	CC	_	21	cc	_	_
+38	l-	_	DET	DDC	Definite=Def|PronType=Art	39	det	_	_
+39	Fondazzjoni	_	NOUN	NN	_	21	conj	_	_
+40	għal	_	ADP	PRP	AdpType=Prep	41	case	_	_
+41	Servizzi	_	NOUN	NN	_	39	nmod	_	_
+42	Edukattivi	_	ADJ	MJ	_	41	amod	_	_
+43	.	_	PUNCT	PUN	_	9	punct	_	_
+
+# sent_id a_tree-mt_dlx-s20-root
+# orig_file_sentence 002#20
+1	Klabbsajf	_	ADV	MV	_	2	nsubj	_	_
+2	jenfasizza	_	VERB	VV	_	0	root	_	_
+3	l-	_	DET	DDC	Definite=Def|PronType=Art	4	det	_	_
+4	bżonn	_	NOUN	NN	_	2	dobj	_	_
+5	li	_	SCONJ	CMP	_	9	mark	_	_
+6	t-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	tfal	_	NOUN	NN	_	9	nsubj	_	_
+8	kollha	_	DET	PI	PronType=Ind	9	nsubj	_	_
+9	għandhom	_	VERB	VG	_	4	advcl	_	_
+10	bżonn	_	NOUN	NN	_	4	appos	_	_
+11	li	_	SCONJ	CMP	_	12	mark	_	_
+12	jintegraw	_	VERB	VV	_	10	acl	_	_
+13	u	_	CONJ	CC	_	12	cc	_	_
+14	jissoċjalizzaw	_	VERB	VV	_	12	conj	_	_
+15	ma'	_	ADP	PRP	AdpType=Prep	16	case	_	_
+16	tfal	_	NOUN	NN	_	12	nmod	_	_
+17	oħra	_	ADJ	MJ	_	16	amod	_	_
+18	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s21-root
+# orig_file_sentence 002#21
+1	Attenzjoni	_	NOUN	NN	_	3	nsubjpass	_	_
+2	speċjali	_	ADJ	MJ	_	1	amod	_	_
+3	tingħata	_	VERB	VV	_	0	root	_	_
+4	lil	_	ADP	PRP	AdpType=Prep	7	case	_	_
+5	dawk	_	DET	PD	PronType=Dem	7	det	_	_
+6	it-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	tfal	_	NOUN	NN	_	3	nmod	_	_
+8	li	_	SCONJ	CMP	_	9	mark	_	_
+9	jkollhom	_	VERB	VG	_	7	acl	_	_
+10	diffikultà	_	NOUN	NN	_	9	dobj	_	_
+11	biex	_	SCONJ	CS	_	12	mark	_	_
+12	jintegraw	_	VERB	VV	_	9	advcl	_	_
+13	ma'	_	ADP	PRP	AdpType=Prep	14	case	_	_
+14	dawk	_	DET	PD	PronType=Dem	12	nmod	_	_
+15	ta'	_	ADP	PRP	AdpType=Prep	16	case	_	_
+16	tamparhom	_	NOUN	NN	_	14	nmod	_	_
+17	.	_	PUNCT	PUN	_	3	punct	_	_
+
+# sent_id a_tree-mt_dlx-s22-root
+# orig_file_sentence 002#22
+1	Il-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	voluntiera	_	NOUN	NN	_	5	nsubj	_	_
+3	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	4	case	_	_
+4	proġett	_	NOUN	NN	_	2	nmod	_	_
+5	jipprovdu	_	VERB	VV	_	0	root	_	_
+6	lit-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	7	case	_	_
+7	tfal	_	NOUN	NN	_	5	nmod	_	_
+8	b'	_	ADP	PRP	AdpType=Prep	9	case	_	_
+9	opportunitajiet	_	NOUN	NN	_	5	nmod	_	_
+10	li	_	SCONJ	CMP	_	11	mark	_	_
+11	jiżviluppaw	_	VERB	VV	_	9	acl	_	_
+12	ħiliet	_	NOUN	NN	_	11	dobj	_	_
+13	ġodda	_	ADJ	MJ	_	12	amod	_	_
+14	u	_	CONJ	CC	_	11	cc	_	_
+15	jipparteċipaw	_	VERB	VV	_	11	conj	_	_
+16	f'	_	ADP	PRP	AdpType=Prep	17	case	_	_
+17	attivitajiet	_	NOUN	NN	_	15	nmod	_	_
+18	li	_	SCONJ	CMP	_	21	mark	_	_
+19	normalment	_	ADV	MV	_	21	advmod	_	_
+20	ma	_	PART	NV	Negative=Neg	21	neg	_	_
+21	jagħmlux	_	VERB	VV	_	17	acl	_	_
+22	mal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	23	case	_	_
+23	familja	_	NOUN	NN	_	21	nmod	_	_
+24	tagħhom	_	DET	PT	Poss=Yes|PronType=Prs	23	det:poss	_	_
+25	.	_	PUNCT	PUN	_	5	punct	_	_
+
+# sent_id a_tree-mt_dlx-s23-root
+# orig_file_sentence 002#23
+1	Il-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	voluntiera	_	NOUN	NN	_	10	nsubj	_	_
+3	li	_	SCONJ	CMP	_	4	mark	_	_
+4	jagħtu	_	VERB	VV	_	2	acl	_	_
+5	s-	_	DET	DDC	Definite=Def|PronType=Art	6	det	_	_
+6	sehem	_	NOUN	NN	_	4	dobj	_	_
+7	tagħhom	_	DET	PT	Poss=Yes|PronType=Prs	6	det:poss	_	_
+8	fi	_	ADP	PRP	AdpType=Prep	9	case	_	_
+9	Klabbsajf	_	NOUN	NN	_	6	nmod	_	_
+10	jingħataw	_	VERB	VV	_	0	root	_	_
+11	taħriġ	_	NOUN	NN	_	10	dobj	_	_
+12	minn	_	ADP	PRP	AdpType=Prep	13	mwe	_	_
+13	professjonisti	_	ADJ	MJ	_	11	amod	_	_
+14	fi	_	ADP	PRP	AdpType=Prep	15	case	_	_
+15	ħdan	_	NOUN	NN	_	13	nmod	_	_
+16	l-	_	DET	DDC	Definite=Def|PronType=Art	17	det	_	_
+17	Aġenzija	_	NOUN	NN	_	15	nmod	_	_
+18	Appoġġ	_	NOUN	NN	_	17	mwe	_	_
+19	dwar	_	ADP	PRP	AdpType=Prep	20	case	_	_
+20	sitwazzjonijiet	_	NOUN	NN	_	11	nmod	_	_
+21	u	_	CONJ	CC	_	20	cc	_	_
+22	ċirkostanzi	_	NOUN	NN	_	20	conj	_	_
+23	li	_	SCONJ	CMP	_	24	mark	_	_
+24	jistgħu	_	VERB	VV	_	20	acl	_	_
+25	jiffaċċjaw	_	VERB	VV	_	24	advcl	_	_
+26	matul	_	ADP	PRP	AdpType=Prep	28	case	_	_
+27	il-	_	DET	DDC	Definite=Def|PronType=Art	28	det	_	_
+28	proġett	_	NOUN	NN	_	25	nmod	_	_
+29	.	_	PUNCT	PUN	_	10	punct	_	_
+
+# sent_id a_tree-mt_dlx-s24-root
+# orig_file_sentence 002#24
+1	Dan	_	DET	PD	PronType=Dem	3	nsubj	_	_
+2	it-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	taħriġ	_	NOUN	NN	_	4	nsubj	_	_
+4	jinkludi	_	VERB	VV	_	0	root	_	_
+5	suġġetti	_	NOUN	NN	_	4	dobj	_	_
+6	bħal	_	ADP	PRP	AdpType=Prep	7	case	_	_
+7	empowerment	_	NOUN	NN	_	5	nmod	_	_
+8	,	_	PUNCT	PUN	_	7	punct	_	_
+9	żvilupp	_	NOUN	NN	_	7	conj	_	_
+10	ta'	_	ADP	PRP	AdpType=Prep	11	case	_	_
+11	ħiliet	_	NOUN	NN	_	9	nmod	_	_
+12	personali	_	ADJ	MJ	_	11	amod	_	_
+13	,	_	PUNCT	PUN	_	7	punct	_	_
+14	żvilupp	_	NOUN	NN	_	7	conj	_	_
+15	ta'	_	ADP	PRP	AdpType=Prep	16	case	_	_
+16	ħiliet	_	NOUN	NN	_	14	nmod	_	_
+17	relatati	_	ADJ	MJ	_	16	amod	_	_
+18	mal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	19	case	_	_
+19	proġett	_	NOUN	NN	_	17	nmod	_	_
+20	,	_	PUNCT	PUN	_	7	punct	_	_
+21	żvilupp	_	NOUN	NN	_	7	conj	_	_
+22	tat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	23	case	_	_
+23	tfal	_	NOUN	NN	_	21	nmod	_	_
+24	u	_	CONJ	CC	_	21	cc	_	_
+25	l-	_	DET	DDC	Definite=Def|PronType=Art	26	det	_	_
+26	kura	_	NOUN	NN	_	21	conj	_	_
+27	tagħhom	_	DET	PT	Poss=Yes|PronType=Prs	26	det:poss	_	_
+28	,	_	PUNCT	PUN	_	7	punct	_	_
+29	first	_	VERB	VP	VerbForm=Part	7	conj	_	_
+30	aid	_	VERB	VV	_	29	foreign	_	_
+31	u	_	CONJ	CC	_	7	cc	_	_
+32	team	_	NOUN	NN	_	7	conj	_	_
+33	building	_	NOUN	NN	_	32	foreign	_	_
+34	.	_	PUNCT	PUN	_	4	punct	_	_
+
+# sent_id a_tree-mt_dlx-s25-root
+# orig_file_sentence 002#25
+1	Klabbsajf	_	ADV	MV	_	3	nsubj	_	_
+2	hu	_	PRON	PP	PronType=Prs	3	expl	_	_
+3	opportunità	_	NOUN	NN	_	0	root	_	_
+4	tajba	_	ADJ	MJ	_	3	amod	_	_
+5	biex	_	SCONJ	CS	_	8	mark	_	_
+6	iż-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	żgħażagħ	_	NOUN	NN	_	8	nsubj	_	_
+8	jinvolvu	_	VERB	VV	_	3	acl	_	_
+9	ruħhom	_	PRON	PR	PronType=Prs|Reflex=Yes	8	dobj	_	_
+10	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	11	case	_	_
+11	qasam	_	NOUN	NN	_	8	nmod	_	_
+12	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	13	case	_	_
+13	volontarjat	_	NOUN	NN	_	11	nmod	_	_
+14	u	_	CONJ	CC	_	8	cc	_	_
+15	jesperjenzaw	_	VERB	VV	_	8	conj	_	_
+16	ħidma	_	NOUN	NN	_	15	dobj	_	_
+17	fi	_	ADP	PRP	AdpType=Prep	18	case	_	_
+18	grupp	_	NOUN	NN	_	16	nmod	_	_
+19	.	_	PUNCT	PUN	_	3	punct	_	_
+
+# sent_id a_tree-mt_dlx-s26-root
+# orig_file_sentence 002#26
+1	Din	_	DET	PD	PronType=Dem	3	nsubj	_	_
+2	il-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	ħidma	_	NOUN	NN	_	4	nsubj	_	_
+4	tinvolvi	_	VERB	VV	_	0	root	_	_
+5	ppjanar	_	NOUN	NN	_	4	dobj	_	_
+6	u	_	CONJ	CC	_	5	cc	_	_
+7	organizzazzjoni	_	NOUN	NN	_	5	conj	_	_
+8	ta'	_	ADP	PRP	AdpType=Prep	9	case	_	_
+9	attivitajiet	_	NOUN	NN	_	7	nmod	_	_
+10	għat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	11	case	_	_
+11	tfal	_	NOUN	NN	_	9	nmod	_	_
+12	,	_	PUNCT	PUN	_	5	punct	_	_
+13	kif	_	ADV	MV	_	5	cc	_	_
+14	ukoll	_	ADV	MV	_	5	cc	_	_
+15	superviżjoni	_	NOUN	NN	_	5	conj	_	_
+16	tat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	17	case	_	_
+17	tfal	_	NOUN	NN	_	15	nmod	_	_
+18	li	_	SCONJ	CMP	_	19	mark	_	_
+19	jattendu	_	VERB	VV	_	17	acl	_	_
+20	Klabbsajf	_	ADV	MV	_	19	dobj	_	_
+21	.	_	PUNCT	PUN	_	5	punct	_	_
+
+# sent_id a_tree-mt_dlx-s27-root
+# orig_file_sentence 002#27
+1	L-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	Aġenzija	_	NOUN	NN	_	6	nsubj	_	_
+3	Appoġġ	_	NOUN	NN	_	2	nmod	_	_
+4	bħalissa	_	ADV	MV	_	6	advmod	_	_
+5	qed	_	PART	PAC	Aspect=Prog	6	aux	_	_
+6	tħeġġeġ	_	VERB	VV	_	0	advcl	_	_
+7	żgħażagħ	_	NOUN	NN	_	6	dobj	_	_
+8	li	_	SCONJ	CMP	_	9	mark	_	_
+9	għandhom	_	VERB	VG	_	6	advcl	_	_
+10	'	_	PUNCT	PUN	_	16	punct	_	_
+11	il	_	DET	DDC	Definite=Def|PronType=Art	14	det	_	_
+12	fuq	_	ADP	PRP	AdpType=Prep	14	case	_	_
+13	minn	_	ADP	PRP	AdpType=Prep	12	mwe	_	_
+14	16	_	NUM	NC	NumType=Card	16	nummod	_	_
+15	-il	_	DET	DDC	Definite=Def|PronType=Art	16	det	_	_
+16	sena	_	NOUN	NN	_	9	dobj	_	_
+17	u	_	CONJ	CC	_	9	cc	_	_
+18	li	_	SCONJ	CMP	_	19	mark	_	_
+19	jixtiequ	_	VERB	VV	_	9	conj	_	_
+20	jkunu	_	AUX	VA	_	21	cop	_	_
+21	parti	_	NOUN	NN	_	19	xcomp	_	_
+22	mit-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	23	case	_	_
+23	tim	_	NOUN	NN	_	21	nmod	_	_
+24	ta'	_	ADP	PRP	AdpType=Prep	25	case	_	_
+25	voluntiera	_	NOUN	NN	_	23	nmod	_	_
+26	għal	_	ADP	PRP	AdpType=Prep	27	case	_	_
+27	Klabbsajf	_	PROPN	NP	_	25	nmod	_	_
+28	2010	_	NUM	NC	NumType=Card	27	nmod	_	_
+29	,	_	PUNCT	PUN	_	32	punct	_	_
+30	li	_	SCONJ	CMP	_	32	mark	_	_
+31	se	_	PART	PAF	Aspect=Pro	32	aux	_	_
+32	jsir	_	VERB	VV	_	27	acl	_	_
+33	bejn	_	ADP	PRP	AdpType=Prep	34	case	_	_
+34	Lulju	_	PROPN	NP	_	32	nmod	_	_
+35	u	_	CONJ	CC	_	34	cc	_	_
+36	Settembru	_	PROPN	NP	_	34	conj	_	_
+37	,	_	PUNCT	PUN	_	39	punct	_	_
+38	sabiex	_	SCONJ	CS	_	39	mark	_	_
+39	jikkuntattjawna	_	VERB	VV	_	6	ccomp	_	_
+40	.	_	PUNCT	PUN	_	6	punct	_	_
+
+# sent_id a_tree-mt_dlx-s28-root
+# orig_file_sentence 002#28
+1	Studenti	_	PROPN	NP	_	2	nsubj	_	_
+2	jistgħu	_	VERB	VV	_	0	root	_	_
+3	japplikaw	_	VERB	VV	_	2	xcomp	_	_
+4	ukoll	_	ADV	MV	_	2	advmod	_	_
+5	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s29-root
+# orig_file_sentence 002#29
+1	Jingħata	_	VERB	VV	_	0	root	_	_
+2	t-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	taħriġ	_	NOUN	NN	_	1	dobj	_	_
+4	meħtieġ	_	ADJ	MJ	_	3	amod	_	_
+5	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s30-root
+# orig_file_sentence 002#30
+1	Dawk	_	DET	PD	PronType=Dem	3	nsubj	_	_
+2	interessati	_	ADJ	MJ	_	1	amod	_	_
+3	għandhom	_	VERB	VG	_	0	root	_	_
+4	jikkuntattjaw	_	VERB	VV	_	3	xcomp	_	_
+5	lil	_	ADP	PRP	AdpType=Prep	6	case	_	_
+6	Ilona	_	PROPN	NP	_	4	nmod	_	_
+7	Attard	_	PROPN	NP	_	6	name	_	_
+8	fuq	_	ADP	PRP	AdpType=Prep	9	case	_	_
+9	2398	_	NUM	NC	NumType=Card	4	nmod	_	_
+10	5122	_	NUM	NC	NumType=Card	9	compound	_	_
+11	jew	_	CONJ	CC	_	9	cc	_	_
+12	ilona	_	ADJ	MJ	_	9	conj	_	_
+13	.	_	PUNCT	PUN	_	12	punct	_	_
+14	attard	_	ADJ	MJ	_	12	compound	_	_
+15	@	_	NOUN	NN	_	12	compound	_	_
+16	gov	_	ADJ	MJ	_	12	compound	_	_
+17	.	_	PUNCT	PUN	_	12	punct	_	_
+18	mt	_	NOUN	NN	_	12	compound	_	_
+19	.	_	PUNCT	PUN	_	3	punct	_	_
+
+# sent_id a_tree-mt_dlx-s31-root
+# orig_file_sentence 002#31
+1	Kopja	_	NOUN	NN	_	4	nsubj	_	_
+2	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	3	case	_	_
+3	applikazzjoni	_	NOUN	NN	_	1	nmod	_	_
+4	tinkiseb	_	VERB	VV	_	0	root	_	_
+5	ukoll	_	ADV	MV	_	4	advmod	_	_
+6	mis-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	7	case	_	_
+7	sit	_	NOUN	NN	_	4	nmod	_	_
+8	www	_	VERB	VV	_	7	acl	_	_
+9	.	_	PUNCT	PUN	_	8	punct	_	_
+10	appoġġ	_	NOUN	NN	_	8	compound	_	_
+11	.	_	PUNCT	PUN	_	8	punct	_	_
+12	gov	_	ADJ	MJ	_	8	compound	_	_
+13	.	_	PUNCT	PUN	_	8	punct	_	_
+14	mt	_	NOUN	NN	_	8	compound	_	_
+15	.	_	PUNCT	PUN	_	4	punct	_	_
+16	L-	_	DET	DDC	Definite=Def|PronType=Art	17	det	_	_
+17	applikazzjonijiet	_	NOUN	NN	_	18	nsubj	_	_
+18	għandhom	_	VERB	VG	_	4	parataxis	_	_
+19	jaslu	_	VERB	VV	_	18	xcomp	_	_
+20	sa	_	ADP	PRP	AdpType=Prep	23	case	_	_
+21	mhux	_	PART	NV	Negative=Neg	23	neg	_	_
+22	aktar	_	ADJ	MJ	_	23	amod	_	_
+23	tard	_	ADJ	MJ	_	19	amod	_	_
+24	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	25	case	_	_
+25	aħħar	_	ADJ	MJ	_	23	nmod	_	_
+26	ta'	_	ADP	PRP	AdpType=Prep	27	case	_	_
+27	Ġunju	_	NOUN	NN	_	25	nmod	_	_
+28	.	_	PUNCT	PUN	_	18	punct	_	_
+
+# sent_id a_tree-mt_dlx-s32-root
+# orig_file_sentence 002#32
+1	Aġenzija	_	NOUN	NN	_	4	nsubj	_	_
+2	Appoġġ	_	NOUN	NN	_	1	nmod	_	_
+3	hi	_	PRON	PP	PronType=Prs	4	expl	_	_
+4	parti	_	NOUN	NN	_	0	root	_	_
+5	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	6	case	_	_
+6	Fondazzjoni	_	NOUN	NN	_	4	nmod	_	_
+7	għal	_	ADP	PRP	AdpType=Prep	8	case	_	_
+8	Servizzi	_	NOUN	NN	_	6	nmod	_	_
+9	ta'	_	ADP	PRP	AdpType=Prep	10	case	_	_
+10	Ħarsien	_	NOUN	NN	_	8	nmod	_	_
+11	Soċjali	_	ADJ	MJ	_	10	amod	_	_
+12	,	_	PUNCT	PUN	_	4	punct	_	_
+
+# sent_id a_tree-mt_dlx-s33-root
+# orig_file_sentence 002#33
+1	li	_	SCONJ	CMP	_	2	mark	_	_
+2	tinkorpora	_	VERB	VV	_	0	root	_	_
+3	wkoll	_	ADV	MV	_	2	advmod	_	_
+4	lill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	5	case	_	_
+5	Aġenzija	_	NOUN	NN	_	2	dobj	_	_
+6	Sedqa	_	ADJ	MJ	_	5	amod	_	_
+7	(	_	PUNCT	PUN	_	8	punct	_	_
+8	www	_	VERB	VV	_	5	appos	_	_
+9	.	_	PUNCT	PUN	_	8	punct	_	_
+10	sedqa	_	NOUN	NN	_	8	compound	_	_
+11	.	_	PUNCT	PUN	_	8	punct	_	_
+12	gov	_	ADJ	MJ	_	8	compound	_	_
+13	.	_	PUNCT	PUN	_	8	punct	_	_
+14	mt	_	NOUN	NN	_	8	compound	_	_
+15	)	_	PUNCT	PUN	_	8	punct	_	_
+16	u	_	CONJ	CC	_	2	cc	_	_
+
+# sent_id a_tree-mt_dlx-s34-root
+# orig_file_sentence 002#34
+1	lill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	2	case	_	_
+2	Aġenzija	_	NOUN	NN	_	0	root	_	_
+3	Sapport	_	PROPN	NP	_	2	nmod	_	_
+4	(	_	PUNCT	PUN	_	5	punct	_	_
+5	www	_	VERB	VV	_	2	appos	_	_
+6	.	_	PUNCT	PUN	_	5	punct	_	_
+7	sapport	_	NOUN	NN	_	5	compound	_	_
+8	.	_	PUNCT	PUN	_	5	punct	_	_
+9	gov	_	ADJ	MJ	_	5	compound	_	_
+10	.	_	PUNCT	PUN	_	5	punct	_	_
+11	mt	_	NOUN	NN	_	5	compound	_	_
+12	)	_	PUNCT	PUN	_	5	punct	_	_
+13	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s35-root
+# orig_file_sentence 002#35
+1	It-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	Trattat	_	NOUN	NN	_	14	nsubj	_	_
+3	ta'	_	ADP	PRP	AdpType=Prep	4	case	_	_
+4	Liżbona	_	NOUN	NN	_	2	nmod	_	_
+5	li	_	SCONJ	CMP	_	6	mark	_	_
+6	daħal	_	VERB	VV	_	2	acl	_	_
+7	fis-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	8	case	_	_
+8	seħħ	_	NOUN	NN	_	6	nmod	_	_
+9	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	10	case	_	_
+10	aħħar	_	ADJ	MJ	_	6	nmod	_	_
+11	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	12	case	_	_
+12	2009	_	NUM	NC	NumType=Card	10	nummod	_	_
+13	kien	_	AUX	VA	_	14	cop	_	_
+14	pass	_	NOUN	NN	_	0	root	_	_
+15	il-	_	DET	DDC	Definite=Def|PronType=Art	21	conj	_	_
+16	quddiem	_	ADP	PRP	AdpType=Prep	21	mark	_	_
+17	biex	_	SCONJ	CS	_	21	mark	_	_
+18	l-	_	DET	DDC	Definite=Def|PronType=Art	19	det	_	_
+19	Unjoni	_	NOUN	NN	_	21	nsubj	_	_
+20	Ewropea	_	ADJ	MJ	_	19	amod	_	_
+21	ssir	_	VERB	VV	_	14	acl	_	_
+22	iżjed	_	ADJ	MJ	_	23	amod	_	_
+23	effiċjenti	_	ADJ	MJ	_	21	xcomp	_	_
+24	u	_	CONJ	CC	_	23	cc	_	_
+25	demokratika	_	ADJ	MJ	_	23	conj	_	_
+26	.	_	PUNCT	PUN	_	14	punct	_	_
+
+# sent_id a_tree-mt_dlx-s36-root
+# orig_file_sentence 002#36
+1	Wieħed	_	NUM	NW	NumType=Card,Gen|NumValue=1	0	root	_	_
+2	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	3	case	_	_
+3	oqsma	_	NOUN	NN	_	1	nmod	_	_
+4	li	_	SCONJ	CMP	_	9	mark	_	_
+5	fih	_	ADP	PRP	AdpType=Prep	7	case	_	_
+6	l-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	UE	_	PROPN	RA	Abbr=Yes	9	nmod	_	_
+8	se	_	PART	PAF	Aspect=Pro	9	aux	_	_
+9	tibda	_	VERB	VV	_	3	acl	_	_
+10	tagħti	_	VERB	VV	_	9	xcomp	_	_
+11	kontribut	_	NOUN	NN	_	10	dobj	_	_
+12	akbar	_	ADJ	MJ	_	11	amod	_	_
+13	hu	_	PRON	PP	PronType=Prs	1	expl	_	_
+14	il-	_	DET	DDC	Definite=Def|PronType=Art	15	det	_	_
+15	qasam	_	NOUN	NN	_	1	nsubj	_	_
+16	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	17	case	_	_
+17	isport	_	NOUN	NN	_	15	nmod	_	_
+18	,	_	PUNCT	PUN	_	22	punct	_	_
+19	li	_	SCONJ	CMP	_	22	nsubj	_	_
+20	qabel	_	ADV	MV	_	22	advmod	_	_
+21	kien	_	AUX	VA	_	22	cop	_	_
+22	qasam	_	NOUN	NN	_	15	nsubj	_	_
+23	esklussivament	_	ADV	MV	_	25	advmod	_	_
+24	f'	_	ADP	PRP	AdpType=Prep	25	case	_	_
+25	idejn	_	NOUN	NN	_	22	nmod	_	_
+26	l-	_	DET	DDC	Definite=Def|PronType=Art	27	det	_	_
+27	iStati	_	NOUN	NN	_	25	nmod	_	_
+28	Membri	_	ADJ	MJ	_	27	amod	_	_
+29	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	30	case	_	_
+30	Unjoni	_	NOUN	NN	_	27	nmod	_	_
+31	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s37-root
+# orig_file_sentence 002#37
+1	Fix-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	2	case	_	_
+2	xhur	_	NOUN	NN	_	8	nmod	_	_
+3	li	_	SCONJ	CMP	_	4	nsubj	_	_
+4	ġejjien	_	PRON	PP	PronType=Prs	2	acl	_	_
+5	,	_	PUNCT	PUN	_	4	punct	_	_
+6	se	_	PART	PAF	Aspect=Pro	8	aux	_	_
+7	jkun	_	AUX	VA	_	8	aux	_	_
+8	qiegħed	_	VERB	VP	VerbForm=Part	0	root	_	_
+9	jinħoloq	_	VERB	VV	_	8	xcomp	_	_
+10	qafas	_	NOUN	NN	_	9	dobj	_	_
+11	fuq	_	ADP	PRP	AdpType=Prep	12	case	_	_
+12	livell	_	NOUN	NN	_	10	nmod	_	_
+13	Ewropew	_	VERB	VV	_	12	amod	_	_
+14	li	_	SCONJ	CMP	_	16	nsubj	_	_
+15	se	_	PART	PAF	Aspect=Pro	16	aux	_	_
+16	jwassal	_	VERB	VV	_	10	advcl	_	_
+17	għal	_	ADP	PRP	AdpType=Prep	18	case	_	_
+18	politika	_	NOUN	NN	_	16	nmod	_	_
+19	komuni	_	ADJ	MJ	_	18	amod	_	_
+20	,	_	PUNCT	PUN	_	24	punct	_	_
+21	fejn	_	ADV	MV	_	24	advmod	_	_
+22	ċertu	_	VERB	VG	_	23	amod	_	_
+23	aspetti	_	NOUN	NN	_	24	nsubj	_	_
+24	jiġu	_	VERB	VV	_	18	advcl	_	_
+25	żviluppatibi	_	DET	DS	Number=Sing|PronType=Ind	26	det	_	_
+26	qbil	_	NOUN	NN	_	24	dobj	_	_
+27	bejn	_	ADP	PRP	AdpType=Prep	29	case	_	_
+28	l-	_	DET	DDC	Definite=Def|PronType=Art	29	det	_	_
+29	iStati	_	NOUN	NN	_	26	nmod	_	_
+30	Membri	_	ADJ	MJ	_	29	amod	_	_
+31	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	32	case	_	_
+32	UE	_	PROPN	RA	Abbr=Yes	29	nmod	_	_
+33	.	_	PUNCT	PUN	_	8	punct	_	_
+
+# sent_id a_tree-mt_dlx-s38-root
+# orig_file_sentence 002#38
+1	B'	_	ADP	PRP	AdpType=Prep	2	case	_	_
+2	hekk	_	ADV	MV	_	6	advmod	_	_
+3	ikun	_	AUX	VA	_	6	cop	_	_
+4	hemm	_	ADV	EX	AdvType=Ex	6	expl	_	_
+5	iktar	_	ADJ	MJ	_	6	amod	_	_
+6	koordinazzjoni	_	NOUN	NN	_	0	root	_	_
+7	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	8	case	_	_
+8	Unjoni	_	NOUN	NN	_	6	nmod	_	_
+9	Ewropea	_	ADJ	MJ	_	8	amod	_	_
+10	f'	_	ADP	PRP	AdpType=Prep	13	case	_	_
+11	dan	_	DET	PD	PronType=Dem	13	det	_	_
+12	il-	_	DET	DDC	Definite=Def|PronType=Art	13	det	_	_
+13	qasam	_	NOUN	NN	_	6	nmod	_	_
+14	importanti	_	ADJ	MJ	_	13	amod	_	_
+15	.	_	PUNCT	PUN	_	6	punct	_	_
+
+# sent_id a_tree-mt_dlx-s39-root
+# orig_file_sentence 002#39
+1	Barra	_	ADJ	MJ	_	7	advmod	_	_
+2	mis-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	3	case	_	_
+3	settur	_	NOUN	NN	_	1	nmod	_	_
+4	sportiv	_	ADJ	MJ	_	3	amod	_	_
+5	,	_	PUNCT	PUN	_	1	punct	_	_
+6	dan	_	DET	PD	PronType=Dem	7	nsubj	_	_
+7	għandu	_	VERB	VG	_	0	root	_	_
+8	jseħħ	_	NOUN	NN	_	7	dobj	_	_
+9	ukoll	_	ADV	MV	_	7	advmod	_	_
+10	f'	_	ADP	PRP	AdpType=Prep	11	case	_	_
+11	setturi	_	NOUN	NN	_	7	nmod	_	_
+12	oħra	_	ADJ	MJ	_	11	amod	_	_
+13	,	_	PUNCT	PUN	_	15	punct	_	_
+14	bħat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	15	case	_	_
+15	taħriġ	_	NOUN	NN	_	11	nmod	_	_
+16	vokazzjonali	_	ADJ	MJ	_	15	amod	_	_
+17	,	_	PUNCT	PUN	_	15	punct	_	_
+18	l-	_	DET	DDC	Definite=Def|PronType=Art	19	det	_	_
+19	kultura	_	NOUN	NN	_	15	conj	_	_
+20	u	_	CONJ	CC	_	15	cc	_	_
+21	l-	_	DET	DDC	Definite=Def|PronType=Art	22	det	_	_
+22	edukazzjoni	_	NOUN	NN	_	15	conj	_	_
+23	,	_	PUNCT	PUN	_	15	punct	_	_
+24	is-	_	DET	DDC	Definite=Def|PronType=Art	25	det	_	_
+25	saħħa	_	NOUN	NN	_	15	conj	_	_
+26	kif	_	ADV	MV	_	15	cc	_	_
+27	ukoll	_	ADV	MV	_	26	mwe	_	_
+28	fit-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	29	case	_	_
+29	turiżmu	_	NOUN	NN	_	15	conj	_	_
+30	.	_	PUNCT	PUN	_	7	punct	_	_
+
+# sent_id a_tree-mt_dlx-s40-root
+# orig_file_sentence 002#40
+1	It-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	Trattat	_	NOUN	NN	_	4	nsubj	_	_
+3	ma	_	PART	NV	Negative=Neg	4	aux	_	_
+4	jsemmixbiss	_	VERB	VV	_	0	root	_	_
+5	lil	_	ADP	PRP	AdpType=Prep	6	case	_	_
+6	dawk	_	DET	PD	PronType=Dem	4	nmod	_	_
+7	li	_	SCONJ	CMP	_	8	nsubj	_	_
+8	jipprattikawl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	6	acl	_	_
+9	isport	_	NOUN	NN	_	8	dobj	_	_
+10	b'	_	ADP	PRP	AdpType=Prep	11	case	_	_
+11	mod	_	NOUN	NN	_	8	nmod	_	_
+12	professjonali	_	ADJ	MJ	_	11	amod	_	_
+13	,	_	PUNCT	PUN	_	4	punct	_	_
+14	iżda	_	CONJ	CC	_	4	cc	_	_
+15	jirreferi	_	VERB	VV	_	4	conj	_	_
+16	ukoll	_	ADV	MV	_	15	advmod	_	_
+17	għal	_	ADP	PRP	AdpType=Prep	18	case	_	_
+18	attività	_	NOUN	NN	_	15	nmod	_	_
+19	li	_	SCONJ	CMP	_	20	nsubj	_	_
+20	tista'	_	VERB	VV	_	18	acl	_	_
+21	ttejjeb	_	VERB	VV	_	20	xcomp	_	_
+22	il-	_	DET	DDC	Definite=Def|PronType=Art	23	det	_	_
+23	ħajja	_	NOUN	NN	_	21	dobj	_	_
+24	u	_	CONJ	CC	_	23	cc	_	_
+25	s-	_	DET	DDC	Definite=Def|PronType=Art	26	det	_	_
+26	saħħa	_	NOUN	NN	_	23	conj	_	_
+27	taċ-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	28	case	_	_
+28	ċittadini	_	NOUN	NN	_	26	nmod	_	_
+29	Ewropej	_	ADJ	MJ	_	28	amod	_	_
+30	.	_	PUNCT	PUN	_	4	punct	_	_
+
+# sent_id a_tree-mt_dlx-s41-root
+# orig_file_sentence 002#41
+1	Permezz	_	ADV	MV	_	4	case	_	_
+2	ta'	_	ADP	PRP	AdpType=Prep	1	mwe	_	_
+3	l-	_	DET	DDC	Definite=Def|PronType=Art	4	det	_	_
+4	emendi	_	NOUN	NN	_	20	nmod	_	_
+5	għatt	_	ADJ	MJ	_	7	case	_	_
+6	-	_	PUNCT	PUN	_	5	punct	_	_
+7	trattati	_	NOUN	NN	_	4	nmod	_	_
+8	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	9	case	_	_
+9	UE	_	PROPN	RA	Abbr=Yes	7	nmod	_	_
+10	li	_	SCONJ	CMP	_	11	nsubj	_	_
+11	saru	_	VERB	VV	_	4	advcl	_	_
+12	bis-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	13	case	_	_
+13	saħħa	_	NOUN	NN	_	11	nmod	_	_
+14	tat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	15	case	_	_
+15	Trattat	_	NOUN	NN	_	13	nmod	_	_
+16	ta'	_	ADP	PRP	AdpType=Prep	17	case	_	_
+17	Liżbona	_	PROPN	NP	_	15	nmod	_	_
+18	,	_	PUNCT	PUN	_	4	punct	_	_
+19	l-	_	DET	DDC	Definite=Def|PronType=Art	20	det	_	_
+20	artiklu	_	NOUN	NN	_	30	nsubj	_	_
+21	165	_	NUM	NCI	NumForm=Digit|NumType=Card	20	nummod	_	_
+22	tat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	23	case	_	_
+23	Trattat	_	NOUN	NN	_	20	nmod	_	_
+24	dwar	_	ADP	PRP	AdpType=Prep	26	case	_	_
+25	il-	_	DET	DDC	Definite=Def|PronType=Art	26	det	_	_
+26	Funzjonament	_	NOUN	NN	_	20	nmod	_	_
+27	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	28	case	_	_
+28	UE	_	PROPN	RA	Abbr=Yes	26	nmod	_	_
+29	issa	_	ADV	MV	_	30	advmod	_	_
+30	jistipula	_	CONJ	CR	_	0	root	_	_
+31	li	_	SCONJ	CMP	_	35	mark	_	_
+32	'	_	PUNCT	PUN	_	35	punct	_	_
+33	L-	_	DET	DDC	Definite=Def|PronType=Art	34	det	_	_
+34	Unjoni	_	NOUN	NN	_	35	nsubj	_	_
+35	għandha	_	VERB	VG	_	30	ccomp	_	_
+36	tikkontribwixxi	_	DET	DS	Number=Sing|PronType=Ind	35	xcomp	_	_
+37	għat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	38	case	_	_
+38	tmexxija	_	NOUN	NN	_	36	nmod	_	_
+39	l-	_	DET	DDC	Definite=Def|PronType=Art	40	det	_	_
+40	quddiem	_	ADP	PRP	AdpType=Prep	38	nmod	_	_
+41	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	42	case	_	_
+42	kwistjonijiet	_	NOUN	NN	_	40	nmod	_	_
+43	Ewropej	_	ADJ	MJ	_	42	amod	_	_
+44	ta'	_	ADP	PRP	AdpType=Prep	46	case	_	_
+45	l-	_	DET	DDC	Definite=Def|PronType=Art	46	det	_	_
+46	Isports	_	NOUN	NN	_	42	nmod	_	_
+47	,	_	PUNCT	PUN	_	50	punct	_	_
+48	waqt	_	ADP	PRP	AdpType=Prep	50	case	_	_
+49	li	_	SCONJ	CMP	_	50	mark	_	_
+50	tieħu	_	VERB	VV	_	46	advcl	_	_
+51	in	_	ADJ	MJ	_	52	case	_	_
+52	kunsiderazzjoni	_	ADJ	MJ	_	50	iobj	_	_
+53	n-	_	DET	DDC	Definite=Def|PronType=Art	54	det	_	_
+54	natura	_	NOUN	NN	_	50	dobj	_	_
+55	speċifika	_	ADJ	MJ	_	54	amod	_	_
+56	tiegħu	_	DET	PT	Poss=Yes|PronType=Prs	54	det:poss	_	_
+57	,	_	PUNCT	PUN	_	54	punct	_	_
+58	l-	_	DET	DDC	Definite=Def|PronType=Art	59	det	_	_
+59	istrutturi	_	NOUN	NN	_	54	conj	_	_
+60	tiegħu	_	DET	PT	Poss=Yes|PronType=Prs	59	det:poss	_	_
+61	ibbażati	_	NOUN	NN	_	59	nmod	_	_
+62	fuq	_	ADP	PRP	AdpType=Prep	64	case	_	_
+63	il-	_	DET	DDC	Definite=Def|PronType=Art	64	det	_	_
+64	volontarjat	_	NOUN	NN	_	61	nmod	_	_
+65	u	_	CONJ	CC	_	54	cc	_	_
+66	l-	_	DET	DDC	Definite=Def|PronType=Art	67	det	_	_
+67	funzjoni	_	NOUN	NN	_	54	conj	_	_
+68	soċjali	_	ADJ	MJ	_	67	amod	_	_
+69	u	_	CONJ	CC	_	68	cc	_	_
+70	edukattiva	_	ADJ	MJ	_	68	conj	_	_
+71	tiegħu	_	DET	PT	Poss=Yes|PronType=Prs	67	advmod	_	_
+72	.	_	PUNCT	PUN	_	35	punct	_	_
+73	'	_	PUNCT	PUN	_	35	punct	_	_
+74	B'	_	ADP	PRP	AdpType=Prep	75	case	_	_
+75	hekk	_	ADV	MV	_	83	advmod	_	_
+76	,	_	PUNCT	PUN	_	75	punct	_	_
+77	l-	_	DET	DDC	Definite=Def|PronType=Art	78	det	_	_
+78	azzjoni	_	NOUN	NN	_	83	nsubj	_	_
+79	li	_	SCONJ	CMP	_	81	mark	_	_
+80	ser	_	VERB	VV	_	81	aux	_	_
+81	tibda'	_	VERB	VV	_	78	advcl	_	_
+82	tittieħedsa	_	VERB	VV	_	81	advcl	_	_
+83	twassal	_	VERB	VV	_	30	parataxis	_	_
+84	sabiex	_	SCONJ	CS	_	85	mark	_	_
+85	tinbena	_	VERB	VV	_	83	ccomp	_	_
+86	identità	_	NOUN	NN	_	85	dobj	_	_
+87	Ewropea	_	ADJ	MJ	_	86	amod	_	_
+88	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	89	case	_	_
+89	qasam	_	NOUN	NN	_	86	nmod	_	_
+90	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	91	case	_	_
+91	isport	_	NOUN	NN	_	89	nmod	_	_
+92	u	_	CONJ	CC	_	83	cc	_	_
+93	għalhekk	_	SCONJ	CS	_	83	cc	_	_
+94	,	_	PUNCT	PUN	_	83	punct	_	_
+95	ikun	_	AUX	VA	_	97	aux	_	_
+96	hemm	_	ADV	EX	AdvType=Ex	97	expl	_	_
+97	tisħiħta	_	NOUN	NN	_	83	nmod	_	_
+98	'	_	PUNCT	PUN	_	97	punct	_	_
+99	valuri	_	NOUN	NN	_	97	dobj	_	_
+100	assoċjati	_	ADJ	MJ	_	99	amod	_	_
+101	mal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	102	case	_	_
+102	isport	_	NOUN	NN	_	100	nmod	_	_
+103	.	_	PUNCT	PUN	_	83	punct	_	_
+
+# sent_id a_tree-mt_dlx-s42-root
+# orig_file_sentence 002#42
+1	Ta'	_	ADP	PRP	AdpType=Prep	2	case	_	_
+2	min	_	DET	PW	PronType=Int	3	nmod	_	_
+3	jgħid	_	VERB	VV	_	0	root	_	_
+4	ukoll	_	ADV	MV	_	3	advmod	_	_
+5	li	_	SCONJ	CMP	_	11	mark	_	_
+6	l-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	UE	_	PROPN	RA	Abbr=Yes	11	nsubj	_	_
+8	mhux	_	PART	NV	Negative=Neg	11	neg	_	_
+9	se	_	PART	PAF	Aspect=Pro	11	aux	_	_
+10	tkun	_	AUX	VA	_	11	aux	_	_
+11	qiegħda	_	VERB	VP	VerbForm=Part	3	ccomp	_	_
+12	tinvolvi	_	VERB	VV	_	11	xcomp	_	_
+13	ruħa	_	NOUN	NN	_	12	dobj	_	_
+14	fuq	_	ADP	PRP	AdpType=Prep	15	case	_	_
+15	livell	_	NOUN	NN	_	12	nmod	_	_
+16	nazzjonali	_	ADJ	MJ	_	15	amod	_	_
+17	u	_	CONJ	CC	_	11	cc	_	_
+18	b'	_	ADP	PRP	AdpType=Prep	19	case	_	_
+19	hekk	_	DET	PD	PronType=Dem	24	advmod	_	_
+20	l-	_	DET	DDC	Definite=Def|PronType=Art	21	det	_	_
+21	entitajiet	_	NOUN	NN	_	24	nsubj	_	_
+22	nazzjonali	_	ADJ	MJ	_	21	amod	_	_
+23	ser	_	VERB	VV	_	24	aux	_	_
+24	jibqa'	_	VERB	VV	_	11	conj	_	_
+25	jkollhom	_	VERB	VG	_	24	xcomp	_	_
+26	kontroll	_	VERB	VV	_	25	xcomp	_	_
+27	ta'	_	ADP	PRP	AdpType=Prep	29	mark	_	_
+28	kif	_	ADV	MV	_	29	advmod	_	_
+29	tiġi	_	VERB	VV	_	26	ccomp	_	_
+30	mnheddija	_	NOUN	NN	_	29	dobj	_	_
+31	u	_	CONJ	CC	_	30	cc	_	_
+32	mħaddma	_	VERB	VV	_	30	conj	_	_
+33	l-	_	DET	DDC	Definite=Def|PronType=Art	34	det	_	_
+34	politika	_	NOUN	NN	_	30	dobj	_	_
+35	nazzjonali	_	ADJ	MJ	_	34	amod	_	_
+36	.	_	PUNCT	PUN	_	3	punct	_	_
+
+# sent_id a_tree-mt_dlx-s43-root
+# orig_file_sentence 002#43
+1	L-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	azzjoni	_	NOUN	NN	_	7	nsubjpass	_	_
+3	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	4	case	_	_
+4	UE	_	PROPN	RA	Abbr=Yes	2	nmod	_	_
+5	se	_	PART	PAF	Aspect=Pro	7	aux	_	_
+6	tkun	_	AUX	VA	_	7	auxpass	_	_
+7	immirata	_	VERB	VP	VerbForm=Part	0	root	_	_
+8	lejn	_	ADP	PRP	AdpType=Prep	11	case	_	_
+9	'	_	PUNCT	PUN	_	11	punct	_	_
+10	l-	_	DET	DDC	Definite=Def|PronType=Art	11	det	_	_
+11	iżvilupp	_	NOUN	NN	_	7	nmod	_	_
+12	tad-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	13	case	_	_
+13	dimensjoni	_	NOUN	NN	_	11	nmod	_	_
+14	Ewropea	_	ADJ	MJ	_	13	amod	_	_
+15	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	16	case	_	_
+16	isport	_	NOUN	NN	_	11	nmod	_	_
+17	,	_	PUNCT	PUN	_	20	punct	_	_
+18	billi	_	SCONJ	CS	_	20	mark	_	_
+19	tkun	_	AUX	VA	_	20	aux	_	_
+20	promossa	_	VERB	VV	_	16	advcl	_	_
+21	l-	_	DET	DDC	Definite=Def|PronType=Art	22	det	_	_
+22	ġustizzja	_	NOUN	NN	_	20	dobj	_	_
+23	u	_	CONJ	CC	_	22	cc	_	_
+24	t-	_	DET	DDC	Definite=Def|PronType=Art	25	det	_	_
+25	trasparenza	_	NOUN	NN	_	22	conj	_	_
+26	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	27	case	_	_
+27	kompetizzjonijiet	_	NOUN	NN	_	22	nmod	_	_
+28	sportivi	_	ADJ	MJ	_	27	amod	_	_
+29	u	_	CONJ	CC	_	22	cc	_	_
+30	l-	_	DET	DDC	Definite=Def|PronType=Art	31	det	_	_
+31	koperazzjoni	_	NOUN	NN	_	22	conj	_	_
+32	bejn	_	ADP	PRP	AdpType=Prep	34	case	_	_
+33	il-	_	DET	DDC	Definite=Def|PronType=Art	34	det	_	_
+34	korpi	_	NOUN	NN	_	31	nmod	_	_
+35	responsabbli	_	ADJ	MJ	_	34	amod	_	_
+36	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	37	case	_	_
+37	isport	_	NOUN	NN	_	34	nmod	_	_
+38	,	_	PUNCT	PUN	_	20	punct	_	_
+39	u	_	CONJ	CC	_	20	cc	_	_
+40	billi	_	SCONJ	CS	_	41	mark	_	_
+41	tkun	_	AUX	VA	_	20	conj	_	_
+
+# sent_id a_tree-mt_dlx-s44-root
+# orig_file_sentence 002#44
+1	protetta	_	VERB	VV	_	0	root	_	_
+2	l-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	integrità	_	NOUN	NN	_	1	dobj	_	_
+4	fiżika	_	ADJ	MJ	_	3	amod	_	_
+5	u	_	CONJ	CC	_	4	cc	_	_
+6	morali	_	ADJ	MJ	_	4	conj	_	_
+7	ta'	_	ADP	PRP	AdpType=Prep	9	case	_	_
+8	l-	_	DET	DDC	Definite=Def|PronType=Art	9	det	_	_
+9	isportivi	_	NOUN	NN	_	3	nmod	_	_
+10	,	_	PUNCT	PUN	_	16	punct	_	_
+11	speċjalment	_	ADV	MV	_	16	advmod	_	_
+12	ta'	_	ADP	PRP	AdpType=Prep	16	case	_	_
+13	dawk	_	DET	PD	PronType=Dem	16	det	_	_
+14	l-	_	DET	DDC	Definite=Def|PronType=Art	16	det	_	_
+15	aktar	_	ADJ	MJ	_	16	amod	_	_
+16	żgħażagħ	_	NOUN	NN	_	9	appos	_	_
+17	fosthom	_	ADP	PRP	AdpType=Prep	16	dep	_	_
+18	.	_	PUNCT	PUN	_	1	punct	_	_
+19	'	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s45-root
+# orig_file_sentence 002#45
+1	Diversi	_	ADJ	MJ	_	2	amod	_	_
+2	organizzazzjonijietEwropej	_	ADJ	MJ	_	19	nsubj	_	_
+3	u	_	CONJ	CC	_	2	cc	_	_
+4	oħrajn	_	ADJ	MJ	_	2	conj	_	_
+5	internazzjonali	_	ADJ	MJ	_	4	amod	_	_
+6	,	_	PUNCT	PUN	_	9	punct	_	_
+7	fosthom	_	ADP	PRP	AdpType=Prep	9	case	_	_
+8	il-	_	DET	DDC	Definite=Def|PronType=Art	9	det	_	_
+9	G	_	NOUN	NN	_	2	appos	_	_
+10	-	_	PUNCT	PUN	_	9	punct	_	_
+11	14	_	NUM	NC	NumType=Card	9	nummod	_	_
+12	,	_	PUNCT	PUN	_	9	punct	_	_
+13	il-	_	DET	DDC	Definite=Def|PronType=Art	14	det	_	_
+14	FIFA	_	PROPN	NP	_	9	conj	_	_
+15	u	_	CONJ	CC	_	9	cc	_	_
+16	l-	_	DET	DDC	Definite=Def|PronType=Art	17	det	_	_
+17	IOC	_	PROPN	RA	Abbr=Yes	9	conj	_	_
+18	,	_	PUNCT	PUN	_	9	punct	_	_
+19	faħħru	_	VERB	VV	_	0	root	_	_
+20	l-	_	DET	DDC	Definite=Def|PronType=Art	21	det	_	_
+21	qbil	_	NOUN	NN	_	19	dobj	_	_
+22	li	_	SCONJ	CMP	_	23	mark	_	_
+23	sar	_	VERB	VV	_	21	acl	_	_
+24	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	25	case	_	_
+25	iStati	_	NOUN	NN	_	23	nmod	_	_
+26	Membri	_	ADJ	MJ	_	25	amod	_	_
+27	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	28	case	_	_
+28	UE	_	PROPN	RA	Abbr=Yes	25	nmod	_	_
+29	.	_	PUNCT	PUN	_	19	punct	_	_
+
+# sent_id a_tree-mt_dlx-s46-root
+# orig_file_sentence 002#46
+1	Il-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	proċess	_	NOUN	NN	_	21	nsubj	_	_
+3	ta	_	VERB	VV	_	5	case	_	_
+4	'	_	PUNCT	PUN	_	5	punct	_	_
+5	konsultazzjoni	_	NOUN	NN	_	2	nmod	_	_
+6	li	_	SCONJ	CMP	_	7	nsubj	_	_
+7	beda	_	VERB	VV	_	5	acl	_	_
+8	iktar	_	ADJ	MJ	_	9	advmod	_	_
+9	kmieni	_	ADJ	MJ	_	7	advmod	_	_
+10	din	_	DET	PD	PronType=Dem	12	det	_	_
+11	is-	_	DET	DDC	Definite=Def|PronType=Art	12	det	_	_
+12	sena	_	NOUN	NN	_	7	dobj	_	_
+13	u	_	CONJ	CC	_	7	cc	_	_
+14	li	_	SCONJ	CMP	_	15	nsubj	_	_
+15	għalaq	_	VERB	VV	_	7	conj	_	_
+16	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	17	case	_	_
+17	1	_	NUM	NC	NumType=Card	15	nummod	_	_
+18	ta	_	VERB	VV	_	20	case	_	_
+19	'	_	PUNCT	PUN	_	20	punct	_	_
+20	Ġunju	_	NOUN	NN	_	17	nmod	_	_
+21	enfasizza	_	VERB	VV	_	0	root	_	_
+22	l-	_	DET	DDC	Definite=Def|PronType=Art	23	det	_	_
+23	parteċipazzjoni	_	NOUN	NN	_	21	dobj	_	_
+24	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	25	case	_	_
+25	għaqdiet	_	NOUN	NN	_	23	nmod	_	_
+26	sportivi	_	ADJ	MJ	_	25	amod	_	_
+27	u	_	CONJ	CC	_	25	cc	_	_
+28	taċ-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	29	case	_	_
+29	ċittadini	_	NOUN	NN	_	25	conj	_	_
+30	,	_	PUNCT	PUN	_	21	punct	_	_
+31	b'	_	ADP	PRP	AdpType=Prep	32	case	_	_
+32	hekk	_	ADV	MV	_	21	cc	_	_
+33	,	_	PUNCT	PUN	_	21	punct	_	_
+34	iċ-	_	DET	DDC	Definite=Def|PronType=Art	35	det	_	_
+35	ċittadini	_	NOUN	NN	_	37	nsubj	_	_
+36	Ewropej	_	ADJ	MJ	_	35	amod	_	_
+37	ingħataw	_	VERB	VV	_	21	conj	_	_
+38	leħen	_	NOUN	NN	_	37	dobj	_	_
+39	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	40	case	_	_
+40	bini	_	NOUN	NN	_	38	nmod	_	_
+41	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	42	case	_	_
+42	politika	_	NOUN	NN	_	40	nmod	_	_
+43	li	_	SCONJ	CMP	_	44	mark	_	_
+44	twassal	_	VERB	VV	_	37	advcl	_	_
+45	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	46	case	_	_
+46	iżvillup	_	NOUN	NN	_	44	nmod	_	_
+47	personali	_	ADJ	MJ	_	46	amod	_	_
+48	f'	_	ADP	PRP	AdpType=Prep	50	case	_	_
+49	diversi	_	ADJ	MJ	_	50	amod	_	_
+50	oqsma	_	NOUN	NN	_	46	nmod	_	_
+51	.	_	PUNCT	PUN	_	21	punct	_	_
+
+# sent_id a_tree-mt_dlx-s47-root
+# orig_file_sentence 002#47
+1	'	_	PUNCT	PUN	_	3	punct	_	_
+2	Int	_	ADV	MV	_	3	nsubj	_	_
+3	tgħodd	_	VERB	VV	_	0	root	_	_
+4	għaliex	_	SCONJ	CS	_	6	mark	_	_
+5	inti	_	VERB	VV	_	6	nsubj	_	_
+6	int	_	ADV	MV	_	3	advcl	_	_
+7	,	_	PUNCT	PUN	_	6	punct	_	_
+8	u	_	CONJ	CC	_	6	cc	_	_
+9	tibqa'	_	VERB	VV	_	6	conj	_	_
+10	tgħodd	_	VERB	VV	_	9	xcomp	_	_
+11	sal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	13	case	_	_
+12	aħħar	_	ADJ	MJ	_	13	amod	_	_
+13	nifs	_	NOUN	NN	_	9	nmod	_	_
+14	ta'	_	ADP	PRP	AdpType=Prep	15	case	_	_
+15	ħajtek	_	NOUN	NN	_	13	nmod	_	_
+16	.	_	PUNCT	PUN	_	3	punct	_	_
+17	'	_	PUNCT	PUN	_	3	punct	_	_
+
+# sent_id a_tree-mt_dlx-s48-root
+# orig_file_sentence 002#48
+1	Hekk	_	ADV	MV	_	2	advmod	_	_
+2	issostni	_	VERB	VV	_	0	root	_	_
+3	Dr	_	PROPN	RA	Abbr=Yes	2	nsubj	_	_
+4	Cicely	_	PROPN	NP	_	3	name	_	_
+5	Saunders	_	PROPN	NP	_	3	name	_	_
+6	,	_	PUNCT	PUN	_	8	punct	_	_
+7	il-	_	DET	DDC	Definite=Def|PronType=Art	8	det	_	_
+8	moħħ	_	NOUN	NN	_	3	conj	_	_
+9	wara	_	ADP	PRP	AdpType=Prep	11	case	_	_
+10	l-	_	DET	DDC	Definite=Def|PronType=Art	11	det	_	_
+11	kunċett	_	NOUN	NN	_	8	nmod	_	_
+12	ta'	_	ADP	PRP	AdpType=Prep	13	case	_	_
+13	kura	_	NOUN	NN	_	11	nmod	_	_
+14	totali	_	ADJ	MJ	_	13	amod	_	_
+15	u	_	CONJ	CC	_	11	cc	_	_
+16	t-	_	DET	DDC	Definite=Def|PronType=Art	17	det	_	_
+17	teknika	_	ADJ	MJ	_	11	conj	_	_
+18	ta'	_	ADP	PRP	AdpType=Prep	19	case	_	_
+19	kontroll	_	DET	PI	PronType=Ind	17	nmod	_	_
+20	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	21	case	_	_
+21	uġigħ	_	NOUN	NN	_	19	nmod	_	_
+22	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s49-root
+# orig_file_sentence 002#49
+1	Saunders	_	PROPN	NP	_	4	nsubj	_	_
+2	kienet	_	AUX	VA	_	4	cop	_	_
+3	il-	_	DET	DDC	Definite=Def|PronType=Art	4	det	_	_
+4	fundatriċi	_	ADJ	MJ	_	0	root	_	_
+5	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	6	case	_	_
+6	Modern	_	PROPN	NP	_	4	nmod	_	_
+7	Hospice	_	PROPN	NP	_	6	nmod	_	_
+8	Movement	_	PROPN	NP	_	6	name	_	_
+9	,	_	PUNCT	PUN	_	11	punct	_	_
+10	li	_	SCONJ	CMP	_	11	nsubj	_	_
+11	twaqqaf	_	VERB	VV	_	4	advcl	_	_
+12	fir-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	13	case	_	_
+13	Renju	_	NOUN	NN	_	11	nmod	_	_
+14	Unit	_	NOUN	NN	_	13	name	_	_
+15	,	_	PUNCT	PUN	_	17	punct	_	_
+16	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	17	case	_	_
+17	1967	_	NUM	NCI	NumForm=Digit|NumType=Card	11	nmod	_	_
+18	.	_	PUNCT	PUN	_	4	punct	_	_
+
+# sent_id a_tree-mt_dlx-s50-root
+# orig_file_sentence 002#50
+1	Saunders	_	PROPN	NP	_	2	nsubj	_	_
+2	ħarġet	_	VERB	VV	_	0	root	_	_
+3	bl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	4	case	_	_
+4	idea	_	NOUN	NN	_	2	nmod	_	_
+5	ta'	_	ADP	PRP	AdpType=Prep	7	case	_	_
+6	'	_	PUNCT	PUN	_	7	punct	_	_
+7	wġigħ	_	NOUN	NN	_	4	nmod	_	_
+8	totali	_	ADJ	MJ	_	7	amod	_	_
+9	'	_	PUNCT	PUN	_	7	punct	_	_
+10	,	_	PUNCT	PUN	_	14	punct	_	_
+11	li	_	SCONJ	CMP	_	14	mark	_	_
+12	biha	_	ADP	PRP	AdpType=Prep	13	case	_	_
+13	riedet	_	NOUN	NN	_	14	nsubj	_	_
+14	tfisser	_	VERB	VV	_	4	acl:relcl	_	_
+15	li	_	SCONJ	CMP	_	17	case	_	_
+16	l-	_	DET	DDC	Definite=Def|PronType=Art	17	det	_	_
+17	uġigħ	_	NOUN	NN	_	14	dobj	_	_
+18	mhuwiex	_	PART	NV	Negative=Neg	21	cc	_	_
+19	biss	_	ADV	MV	_	18	mwe	_	_
+20	dak	_	DET	PD	PronType=Dem	21	det	_	_
+21	fiżiku	_	NOUN	NN	_	17	nmod	_	_
+22	,	_	PUNCT	PUN	_	21	punct	_	_
+23	imma	_	CONJ	CC	_	21	cc	_	_
+24	anki	_	ADV	MV	_	25	advmod	_	_
+25	mentali	_	ADJ	MJ	_	21	conj	_	_
+26	,	_	PUNCT	PUN	_	25	punct	_	_
+27	soċjali	_	ADJ	MJ	_	25	conj	_	_
+28	u	_	CONJ	CC	_	25	cc	_	_
+29	spiritwali	_	NOUN	NN	_	25	conj	_	_
+30	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s51-root
+# orig_file_sentence 002#51
+1	Fuq	_	ADP	PRP	AdpType=Prep	4	case	_	_
+2	l-	_	DET	DDC	Definite=Def|PronType=Art	4	det	_	_
+3	istess	_	ADJ	MJ	_	4	amod	_	_
+4	linji	_	NOUN	NN	_	14	nmod	_	_
+5	,	_	PUNCT	PUN	_	4	punct	_	_
+6	l-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	Organizzazzjoni	_	NOUN	NN	_	14	nsubj	_	_
+8	Mondjali	_	ADJ	MJ	_	7	amod	_	_
+9	tas-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	10	case	_	_
+10	Saħħa	_	NOUN	NN	_	7	nmod	_	_
+11	-	_	PUNCT	PUN	_	12	punct	_	_
+12	WHO	_	PROPN	RA	Abbr=Yes	7	appos	_	_
+13	,	_	PUNCT	PUN	_	12	punct	_	_
+14	tiddefinixxi	_	DET	DS	Number=Sing|PronType=Ind	0	root	_	_
+15	l-	_	DET	DDC	Definite=Def|PronType=Art	16	det	_	_
+16	kura	_	NOUN	NN	_	14	dobj	_	_
+17	palljattiva	_	ADJ	MJ	_	16	amod	_	_
+18	bħala	_	ADV	MV	_	21	advmod	_	_
+19	'	_	PUNCT	PUN	_	21	punct	_	_
+20	l-	_	DET	DDC	Definite=Def|PronType=Art	21	det	_	_
+21	kura	_	NOUN	NN	_	14	xcomp	_	_
+22	totali	_	ADJ	MJ	_	21	amod	_	_
+23	u	_	CONJ	CC	_	22	cc	_	_
+24	attiva	_	NOUN	NN	_	22	conj	_	_
+25	ta'	_	ADP	PRP	AdpType=Prep	26	case	_	_
+26	pazjenti	_	NOUN	NN	_	21	nmod	_	_
+27	li	_	SCONJ	CMP	_	32	mark	_	_
+28	l-	_	DET	DDC	Definite=Def|PronType=Art	29	det	_	_
+29	marda	_	NOUN	NN	_	32	nsubj	_	_
+30	tagħhom	_	DET	PT	Poss=Yes|PronType=Prs	29	det:poss	_	_
+31	ma	_	PART	NV	Negative=Neg	32	neg	_	_
+32	tweġibx	_	VERB	VV	_	26	acl	_	_
+33	aktar	_	ADJ	MJ	_	35	advcl	_	_
+34	għat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	35	case	_	_
+35	trattament	_	NOUN	NN	_	32	nmod	_	_
+36	ta'	_	ADP	PRP	AdpType=Prep	37	case	_	_
+37	kura	_	NOUN	NN	_	35	nmod	_	_
+38	,	_	PUNCT	PUN	_	32	punct	_	_
+39	u	_	CONJ	CC	_	32	cc	_	_
+40	allura	_	ADV	MV	_	43	advmod	_	_
+41	l-	_	DET	DDC	Definite=Def|PronType=Art	42	det	_	_
+42	iskop	_	NOUN	NN	_	43	nsubj	_	_
+43	għandu	_	VERB	VG	_	32	conj	_	_
+44	jkun	_	AUX	VA	_	43	aux	_	_
+45	l-	_	DET	DDC	Definite=Def|PronType=Art	47	det	_	_
+46	aħjar	_	ADJ	MJ	_	47	amod	_	_
+47	kwalità	_	NOUN	NN	_	43	dobj	_	_
+48	ta'	_	ADP	PRP	AdpType=Prep	49	case	_	_
+49	ħajja	_	NOUN	NN	_	47	nmod	_	_
+50	għalihom	_	ADP	PRP	AdpType=Prep	49	nmod	_	_
+51	u	_	CONJ	CC	_	49	cc	_	_
+52	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	53	case	_	_
+53	familji	_	NOUN	NN	_	49	conj	_	_
+54	tagħhom	_	DET	PT	Poss=Yes|PronType=Prs	53	det:poss	_	_
+55	'	_	PUNCT	PUN	_	21	punct	_	_
+56	.	_	PUNCT	PUN	_	14	nmod	_	_
+
+# sent_id a_tree-mt_dlx-s52-root
+# orig_file_sentence 002#52
+1	Dwar	_	ADP	PRP	AdpType=Prep	4	case	_	_
+2	dan	_	DET	PD	PronType=Dem	4	det	_	_
+3	il-	_	DET	DDC	Definite=Def|PronType=Art	4	det	_	_
+4	kunċett	_	NOUN	NN	_	13	nmod	_	_
+5	ta'	_	ADP	PRP	AdpType=Prep	7	case	_	_
+6	'	_	PUNCT	PUN	_	7	punct	_	_
+7	kura	_	NOUN	NN	_	4	nmod	_	_
+8	totali	_	ADJ	MJ	_	7	amod	_	_
+9	'	_	PUNCT	PUN	_	7	punct	_	_
+10	,	_	PUNCT	PUN	_	4	punct	_	_
+11	IL-	_	DET	DDC	Definite=Def|PronType=Art	12	det	_	_
+12	ĠENSillum	_	NOUN	NN	_	13	nsubj	_	_
+13	tkellmet	_	VERB	VV	_	0	root	_	_
+14	ma'	_	ADP	PRP	AdpType=Prep	15	case	_	_
+15	Antoinette	_	PROPN	NP	_	13	nmod	_	_
+16	Sħaħ	_	PROPN	NP	_	15	name	_	_
+17	,	_	PUNCT	PUN	_	19	punct	_	_
+18	il-	_	DET	DDC	Definite=Def|PronType=Art	19	det	_	_
+19	Ġeneral	_	PROPN	NP	_	15	appos	_	_
+20	Manager	_	PROPN	NP	_	19	name	_	_
+21	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	22	case	_	_
+22	Malta	_	PROPN	NP	_	19	nmod	_	_
+23	Hospice	_	PROPN	NP	_	22	name	_	_
+24	Movement	_	PROPN	NP	_	22	name	_	_
+25	,	_	PUNCT	PUN	_	19	punct	_	_
+26	li	_	SCONJ	CMP	_	27	nsubj	_	_
+27	twaqqaf	_	VERB	VV	_	15	advcl	_	_
+28	f'	_	ADP	PRP	AdpType=Prep	29	case	_	_
+29	Malta	_	PROPN	NP	_	27	nmod	_	_
+30	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	31	case	_	_
+31	1989	_	NUM	NC	NumType=Card	27	nummod	_	_
+32	bħala	_	ADV	MV	_	33	advmod	_	_
+33	organizzazzjoni	_	NOUN	NN	_	27	xcomp	_	_
+34	volontarja	_	ADJ	MJ	_	33	amod	_	_
+35	.	_	PUNCT	PUN	_	13	punct	_	_
+
+# sent_id a_tree-mt_dlx-s53-root
+# orig_file_sentence 002#53
+1	Il-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	Hospice	_	PROPN	NP	_	4	nsubj	_	_
+3	Movement	_	PROPN	NP	_	2	name	_	_
+4	joffri	_	VERB	VV	_	0	root	_	_
+5	servizzi	_	NOUN	NN	_	4	dobj	_	_
+6	ta'	_	ADP	PRP	AdpType=Prep	7	case	_	_
+7	kura	_	NOUN	NN	_	5	nmod	_	_
+8	,	_	PUNCT	PUN	_	9	punct	_	_
+9	maħsubin	_	VERB	VP	VerbForm=Part	7	acl	_	_
+10	l-	_	DET	DDC	Definite=Def|PronType=Art	11	det	_	_
+11	aktar	_	ADJ	MJ	_	13	advmod	_	_
+12	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	13	case	_	_
+13	pazjenti	_	NOUN	NN	_	9	nmod	_	_
+14	bil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	15	case	_	_
+15	kanċer	_	NOUN	NN	_	13	nmod	_	_
+16	,	_	PUNCT	PUN	_	22	punct	_	_
+17	waqt	_	ADP	PRP	AdpType=Prep	22	mark	_	_
+18	li	_	SCONJ	CMP	_	22	mark	_	_
+19	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	21	case	_	_
+20	istess	_	ADJ	MJ	_	21	amod	_	_
+21	waqt	_	NOUN	NN	_	22	nmod	_	_
+22	joffri	_	VERB	VV	_	4	advcl	_	_
+23	wkoll	_	ADV	MV	_	22	advmod	_	_
+24	appoġġ	_	NOUN	NN	_	22	dobj	_	_
+25	lill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	26	case	_	_
+26	familji	_	NOUN	NN	_	22	iobj	_	_
+27	tagħhom	_	DET	PT	Poss=Yes|PronType=Prs	26	det:poss	_	_
+28	.	_	PUNCT	PUN	_	4	punct	_	_
+
+# sent_id a_tree-mt_dlx-s54-root
+# orig_file_sentence 002#54
+1	'	_	PUNCT	PUN	_	2	punct	_	_
+2	Nemmnu	_	VERB	VV	_	14	ccomp	_	_
+3	bis-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	4	case	_	_
+4	sħiħ	_	NOUN	NN	_	2	nmod	_	_
+5	li	_	SCONJ	CMP	_	10	mark	_	_
+6	l-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	pazjenti	_	NOUN	NN	_	10	nsubj	_	_
+8	tagħna	_	DET	PT	Poss=Yes|PronType=Prs	7	det	_	_
+9	huma	_	PRON	PP	PronType=Prs	10	expl	_	_
+10	individwi	_	ADJ	MJ	_	2	ccomp	_	_
+11	uniċi	_	ADJ	MJ	_	10	amod	_	_
+12	,	_	PUNCT	PUN	_	2	punct	_	_
+13	'	_	PUNCT	PUN	_	2	punct	_	_
+14	sostnietSħaħ	_	VERB	VV	_	0	root	_	_
+15	ma'	_	ADP	PRP	AdpType=Prep	17	case	_	_
+16	IL-	_	DET	DDC	Definite=Def|PronType=Art	17	det	_	_
+17	ĠENSillum	_	NOUN	NN	_	14	nmod	_	_
+18	.	_	PUNCT	PUN	_	14	punct	_	_
+
+# sent_id a_tree-mt_dlx-s55-root
+# orig_file_sentence 002#55
+1	'	_	PUNCT	PUN	_	5	punc	_	_
+2	Il-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	Moviment	_	NOUN	NN	_	5	nsubj	_	_
+4	tagħna	_	DET	PT	Poss=Yes|PronType=Prs	3	nsubj	_	_
+5	jirrispetta	_	VERB	VV	_	0	root	_	_
+6	l-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	indipendenza	_	NOUN	NN	_	5	dobj	_	_
+8	,	_	PUNCT	PUN	_	7	punct	_	_
+9	id-	_	DET	DDC	Definite=Def|PronType=Art	10	det	_	_
+10	dinjità	_	NOUN	NN	_	7	conj	_	_
+11	u	_	CONJ	CC	_	7	cc	_	_
+12	l-	_	DET	DDC	Definite=Def|PronType=Art	13	det	_	_
+13	kwalità	_	NOUN	NN	_	7	conj	_	_
+14	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	15	case	_	_
+15	ħajja	_	NOUN	NN	_	13	nmod	_	_
+16	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	17	case	_	_
+17	pazjent	_	NOUN	NN	_	7	nmod	_	_
+18	,	_	PUNCT	PUN	_	5	punct	_	_
+19	u	_	CONJ	CC	_	5	cc	_	_
+20	jwieġeb	_	VERB	VV	_	5	conj	_	_
+21	b'	_	ADP	PRP	AdpType=Prep	22	case	_	_
+22	mod	_	NOUN	NN	_	20	nmod	_	_
+23	sensittiv	_	ADJ	MJ	_	22	amod	_	_
+24	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	25	case	_	_
+25	għażliet	_	NOUN	NN	_	23	nmod	_	_
+26	tiegħu	_	DET	PT	Poss=Yes|PronType=Prs	25	det:poss	_	_
+27	,	_	PUNCT	PUN	_	30	punct	_	_
+28	waqt	_	ADP	PRP	AdpType=Prep	30	mark	_	_
+29	li	_	SCONJ	CMP	_	30	mark	_	_
+30	joffri	_	VERB	VV	_	20	advcl	_	_
+31	appoġġ	_	NOUN	NN	_	30	dobj	_	_
+32	spiritwali	_	ADJ	MJ	_	31	amod	_	_
+33	u	_	CONJ	CC	_	32	cc	_	_
+34	prattiku	_	ADJ	MJ	_	32	conj	_	_
+35	.	_	PUNCT	PUN	_	5	punct	_	_
+
+# sent_id a_tree-mt_dlx-s56-root
+# orig_file_sentence 002#56
+1	Dan	_	DET	PD	PronType=Dem	2	det	_	_
+2	kollu	_	DET	PI	PronType=Ind	3	nsubjpass	_	_
+3	jsir	_	VERB	VV	_	0	root	_	_
+4	permezz	_	ADV	MV	_	3	advmod	_	_
+5	ta'	_	ADP	PRP	AdpType=Prep	6	case	_	_
+6	tim	_	NOUN	NN	_	3	nmod	_	_
+7	ta'	_	ADP	PRP	AdpType=Prep	9	case	_	_
+8	professjonisti	_	ADJ	MJ	_	9	amod	_	_
+9	mħarrġa	_	NOUN	NN	_	6	nmod	_	_
+10	f'	_	ADP	PRP	AdpType=Prep	11	case	_	_
+11	oqsma	_	NOUN	NN	_	9	nmod	_	_
+12	differenti	_	ADJ	MJ	_	11	amod	_	_
+13	u	_	CONJ	CC	_	12	cc	_	_
+14	speċjalizzati	_	ADJ	MJ	_	12	conj	_	_
+15	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	16	case	_	_
+16	kura	_	NOUN	NN	_	11	nmod	_	_
+17	,	_	PUNCT	PUN	_	19	punct	_	_
+18	bħal	_	CONJ	CC	_	19	cc	_	_
+19	tobba	_	NOUN	NN	_	9	appos	_	_
+20	,	_	PUNCT	PUN	_	19	punct	_	_
+21	infermiera	_	NOUN	NN	_	19	conj	_	_
+22	u	_	CONJ	CC	_	19	cc	_	_
+23	social	_	VERB	VV	_	19	conj	_	_
+24	workers	_	NOUN	NN	_	23	foreign	_	_
+25	.	_	PUNCT	PUN	_	3	punct	_	_
+26	'	_	PUNCT	PUN	_	3	punct	_	_
+
+# sent_id a_tree-mt_dlx-s57-root
+# orig_file_sentence 002#57
+1	Sħaħ	_	ADJ	MJ	_	2	nsubj	_	_
+2	kompliet	_	VERB	VV	_	0	root	_	_
+3	tispjega	_	VERB	VV	_	2	ccomp	_	_
+4	li	_	SCONJ	CMP	_	8	mark	_	_
+5	l-	_	DET	DDC	Definite=Def|PronType=Art	6	det	_	_
+6	Moviment	_	NOUN	NN	_	8	nsubj	_	_
+7	hu	_	PRON	PP	PronType=Prs	8	expl	_	_
+8	ispirat	_	VERB	VP	VerbForm=Part	3	ccomp	_	_
+9	minn	_	ADP	PRP	AdpType=Prep	10	case	_	_
+10	valuri	_	NOUN	NN	_	8	nmod	_	_
+11	Nsara	_	NOUN	NN	_	10	nmod	_	_
+12	,	_	PUNCT	PUN	_	8	punct	_	_
+13	u	_	CONJ	CC	_	8	cc	_	_
+14	jagħmel	_	VERB	VV	_	8	conj	_	_
+15	dak	_	DET	PD	PronType=Dem	17	dobj	_	_
+16	kollu	_	DET	PI	PronType=Ind	17	advmod	_	_
+17	possibbli	_	ADJ	MJ	_	14	amod	_	_
+18	biex	_	SCONJ	CS	_	19	mark	_	_
+19	jipprovdi	_	VERB	VV	_	17	advcl	_	_
+20	l-	_	DET	DDC	Definite=Def|PronType=Art	22	det	_	_
+21	ogħla	_	ADJ	MJ	_	22	amod	_	_
+22	livell	_	NOUN	NN	_	19	dobj	_	_
+23	possibbli	_	ADJ	MJ	_	22	amod	_	_
+24	ta'	_	ADP	PRP	AdpType=Prep	25	case	_	_
+25	kura	_	NOUN	NN	_	22	nmod	_	_
+26	paljattiva	_	ADJ	MJ	_	25	amod	_	_
+27	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	28	case	_	_
+28	persuni	_	NOUN	NN	_	19	nmod	_	_
+29	bil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	30	case	_	_
+30	kanċer	_	NOUN	NN	_	28	nmod	_	_
+31	,	_	PUNCT	PUN	_	30	punct	_	_
+32	jew	_	CONJ	CC	_	30	cc	_	_
+33	bil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	34	case	_	_
+34	motor	_	X	RFW	Foreign=Foreign	30	nmod	_	_
+35	neuron	_	X	RFW	Foreign=Foreign	34	foreign	_	_
+36	disease	_	X	RFW	Foreign=Foreign	34	foreign	_	_
+37	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s58-root
+# orig_file_sentence 002#58
+1	Barra	_	ADJ	MJ	_	8	advmod	_	_
+2	minn	_	ADP	PRP	AdpType=Prep	1	mwe	_	_
+3	hekk	_	ADV	MV	_	1	mwe	_	_
+4	,	_	PUNCT	PUN	_	1	punct	_	_
+5	il-	_	DET	DDC	Definite=Def|PronType=Art	6	det	_	_
+6	Moviment	_	NOUN	NN	_	8	nsubj	_	_
+7	'	_	PUNCT	PUN	_	8	punct	_	_
+8	jemmen	_	VERB	VV	_	0	root	_	_
+9	li	_	SCONJ	CMP	_	17	mark	_	_
+10	l-	_	DET	DDC	Definite=Def|PronType=Art	11	det	_	_
+11	familji	_	NOUN	NN	_	17	nsubj	_	_
+12	u	_	CONJ	CC	_	11	cc	_	_
+13	l-	_	DET	DDC	Definite=Def|PronType=Art	14	det	_	_
+14	ħbieb	_	NOUN	NN	_	11	conj	_	_
+15	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	16	case	_	_
+16	pazjenti	_	NOUN	NN	_	11	nmod	_	_
+17	għandhom	_	VERB	VG	_	8	ccomp	_	_
+18	il-	_	DET	DDC	Definite=Def|PronType=Art	19	det	_	_
+19	ħtiġijiet	_	NOUN	NN	_	17	dobj	_	_
+20	tagħhom	_	DET	PT	Poss=Yes|PronType=Prs	19	det:poss	_	_
+21	ukoll	_	ADV	MV	_	17	advmod	_	_
+22	,	_	PUNCT	PUN	_	8	punct	_	_
+23	u	_	CONJ	CC	_	8	cc	_	_
+24	għalhekk	_	SCONJ	CS	_	8	cc	_	_
+25	jipprovdi	_	VERB	VV	_	8	conj	_	_
+26	ambjent	_	NOUN	NN	_	25	dobj	_	_
+27	fejn	_	ADV	MV	_	30	advmod	_	_
+28	dawn	_	DET	PD	PronType=Dem	29	advmod	_	_
+29	iħossuhom	_	NOUN	NN	_	30	nsubj	_	_
+30	aċċettati	_	ADJ	MJ	_	26	acl	_	_
+31	u	_	CONJ	CC	_	30	cc	_	_
+32	mħarsa	_	ADJ	MJ	_	30	conj	_	_
+33	.	_	PUNCT	PUN	_	8	punct	_	_
+
+# sent_id a_tree-mt_dlx-s59-root
+# orig_file_sentence 002#59
+1	Hu	_	PRON	PP	PronType=Prs	6	expl	_	_
+2	għalhekk	_	ADV	MV	_	6	advmod	_	_
+3	li	_	SCONJ	CMP	_	6	mark	_	_
+4	l-	_	DET	DDC	Definite=Def|PronType=Art	5	det	_	_
+5	Hospice	_	PROPN	NP	_	6	nsubj	_	_
+6	joffri	_	VERB	VV	_	0	root	_	_
+7	appoġġ	_	NOUN	NN	_	6	dobj	_	_
+8	u	_	CONJ	CC	_	7	cc	_	_
+9	għajnuna	_	NOUN	NN	_	7	conj	_	_
+10	tul	_	ADP	PRP	AdpType=Prep	12	case	_	_
+11	il-	_	DET	DDC	Definite=Def|PronType=Art	12	det	_	_
+12	marda	_	NOUN	NN	_	7	nmod	_	_
+13	u	_	CONJ	CC	_	7	cc	_	_
+14	jekk	_	SCONJ	CS	_	17	mark	_	_
+15	ikun	_	AUX	VA	_	17	aux	_	_
+16	hemm	_	ADV	EX	AdvType=Ex	17	expl	_	_
+17	bżonn	_	NOUN	NN	_	7	conj	_	_
+18	,	_	PUNCT	PUN	_	21	punct	_	_
+19	matul	_	ADP	PRP	AdpType=Prep	21	case	_	_
+20	iż-	_	DET	DDC	Definite=Def|PronType=Art	21	det	_	_
+21	żmien	_	NOUN	NN	_	17	nmod	_	_
+22	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	23	case	_	_
+23	vistu	_	NOUN	NN	_	21	nmod	_	_
+24	'	_	PUNCT	PUN	_	6	punct	_	_
+25	.	_	PUNCT	PUN	_	6	punct	_	_
+
+# sent_id a_tree-mt_dlx-s60-root
+# orig_file_sentence 002#60
+1	Il-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	Malta	_	PROPN	NP	_	5	nsubj	_	_
+3	Hospice	_	PROPN	NP	_	2	name	_	_
+4	Movement	_	PROPN	NP	_	2	name	_	_
+5	jemmen	_	VERB	VV	_	0	root	_	_
+6	ukoll	_	ADV	MV	_	5	advmod	_	_
+7	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	8	case	_	_
+8	ħtieġa	_	NOUN	NN	_	5	nmod	_	_
+9	li	_	SCONJ	CMP	_	10	mark	_	_
+10	jaqsam	_	VERB	VV	_	5	advcl	_	_
+11	ma'	_	ADP	PRP	AdpType=Prep	12	case	_	_
+12	ħaddieħor	_	DET	PI	PronType=Ind	10	nmod	_	_
+13	l-	_	DET	DDC	Definite=Def|PronType=Art	14	det	_	_
+14	esperjenza	_	NOUN	NN	_	10	dobj	_	_
+15	li	_	SCONJ	CMP	_	16	mark	_	_
+16	għandu	_	VERB	VG	_	14	acl	_	_
+17	dwar	_	ADP	PRP	AdpType=Prep	18	case	_	_
+18	kura	_	NOUN	NN	_	16	nmod	_	_
+19	paljattiva	_	ADJ	MJ	_	18	amod	_	_
+20	.	_	PUNCT	PUN	_	5	punct	_	_
+
+# sent_id a_tree-mt_dlx-s61-root
+# orig_file_sentence 002#61
+1	Sħaħ	_	ADJ	MJ	_	2	nsubj	_	_
+2	sostnietma'	_	VERB	VV	_	0	root	_	_
+3	IL-	_	DET	DDC	Definite=Def|PronType=Art	4	det	_	_
+4	ĠENSillum	_	NOUN	NN	_	2	dobj	_	_
+5	li	_	SCONJ	CMP	_	12	mark	_	_
+6	hu	_	PRON	PP	PronType=Prs	12	nsubj	_	_
+7	għalhekk	_	ADV	MV	_	12	advmod	_	_
+8	li	_	SCONJ	CMP	_	12	mark	_	_
+9	waqt	_	ADP	PRP	AdpType=Prep	8	mwe	_	_
+10	li	_	SCONJ	CMP	_	12	mark	_	_
+11	jiġu	_	AUX	VA	_	12	aux	_	_
+12	rispettati	_	VERB	VP	VerbForm=Part	2	ccomp	_	_
+13	d-	_	DET	DDC	Definite=Def|PronType=Art	14	det	_	_
+14	dixxiplini	_	NOUN	NN	_	12	dobj	_	_
+15	u	_	CONJ	CC	_	14	cc	_	_
+16	l-	_	DET	DDC	Definite=Def|PronType=Art	17	det	_	_
+17	aġenziji	_	NOUN	NN	_	14	conj	_	_
+18	kollha	_	DET	PI	PronType=Ind	17	det	_	_
+19	,	_	PUNCT	PUN	_	12	punct	_	_
+20	u	_	CONJ	CC	_	12	cc	_	_
+21	ssir	_	VERB	VV	_	12	conj	_	_
+22	ħidma	_	NOUN	NN	_	21	xcomp	_	_
+23	magħhom	_	ADP	PMP	AdpType=Preppron	22	nmod	_	_
+24	,	_	PUNCT	PUN	_	12	punct	_	_
+25	il-	_	DET	DDC	Definite=Def|PronType=Art	26	det	_	_
+26	Moviment	_	NOUN	NN	_	27	nsubj	_	_
+27	jippromwovi	_	ADJ	MJ	_	12	conj	_	_
+28	u	_	CONJ	CC	_	27	cc	_	_
+29	jipprovdi	_	VERB	VV	_	27	conj	_	_
+30	programmi	_	NOUN	NN	_	27	dobj	_	_
+31	edukattivi	_	ADJ	MJ	_	30	amod	_	_
+32	dwar	_	ADP	PRP	AdpType=Prep	34	case	_	_
+33	il-	_	DET	DDC	Definite=Def|PronType=Art	34	det	_	_
+34	prinċipji	_	NOUN	NN	_	30	nmod	_	_
+35	ta'	_	ADP	PRP	AdpType=Prep	36	case	_	_
+36	kura	_	NOUN	NN	_	34	nmod	_	_
+37	palljattiva	_	ADJ	MJ	_	36	amod	_	_
+38	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	39	case	_	_
+39	benefiċċju	_	NOUN	NN	_	27	nmod	_	_
+40	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	41	case	_	_
+41	komunità	_	NOUN	NN	_	39	nmod	_	_
+42	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s62-root
+# orig_file_sentence 002#62
+1	Huma	_	PRON	PP	PronType=Prs	9	nsubj	_	_
+2	b'	_	ADP	PRP	AdpType=Prep	3	case	_	_
+3	kollox	_	DET	PI	PronType=Ind	1	nmod	_	_
+4	madwar	_	ADP	PRP	AdpType=Prep	5	case	_	_
+5	160	_	NUM	NC	NumType=Card	7	nummod	_	_
+6	il-	_	DET	DDC	Definite=Def|PronType=Art	7	det	_	_
+7	voluntiera	_	NOUN	NN	_	3	root	_	_
+8	li	_	SCONJ	CMP	_	9	mark	_	_
+9	jagħtu	_	VERB	VV	_	0	root	_	_
+10	servizz	_	NOUN	NN	_	9	dobj	_	_
+11	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	12	case	_	_
+12	Malta	_	PROPN	NP	_	9	nmod	_	_
+13	Hospice	_	PROPN	NP	_	12	name	_	_
+14	Movement	_	PROPN	NP	_	12	name	_	_
+15	,	_	PUNCT	PUN	_	18	punct	_	_
+16	li	_	SCONJ	CMP	_	18	nsubj	_	_
+17	bejniethom	_	ADP	PRP	AdpType=Prep	18	nmod	_	_
+18	jagħtu	_	VERB	VV	_	9	advcl	_	_
+19	madwar	_	ADP	PRP	AdpType=Prep	20	case	_	_
+20	600	_	NUM	NC	NumType=Card	21	nummod	_	_
+21	siegħa	_	NOUN	NN	_	18	nmod	_	_
+22	fix-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	23	case	_	_
+23	xahar	_	NOUN	NN	_	21	nmod	_	_
+24	.	_	PUNCT	PUN	_	9	punct	_	_
+
+# sent_id a_tree-mt_dlx-s63-root
+# orig_file_sentence 002#63
+1	Dawn	_	DET	PD	PronType=Dem	2	nsubj	_	_
+2	jaħdmu	_	VERB	VV	_	0	root	_	_
+3	id	_	VERB	VV	_	2	nmod	_	_
+4	f'	_	ADP	PRP	AdpType=Prep	5	case	_	_
+5	id	_	NOUN	NN	_	3	nmod	_	_
+6	ma'	_	ADP	PRP	AdpType=Prep	7	case	_	_
+7	tim	_	NOUN	NN	_	5	nmod	_	_
+8	multi	_	ADJ	MJ	_	10	amod	_	_
+9	-	_	PUNCT	PUN	_	10	punct	_	_
+10	dixxiplinarju	_	NOUN	NN	_	7	nmod	_	_
+11	,	_	PUNCT	PUN	_	10	punct	_	_
+12	'	_	PUNCT	PUN	_	16	punct	_	_
+13	barra	_	ADJ	MJ	_	16	amod	_	_
+14	li	_	SCONJ	CMP	_	16	mark	_	_
+15	s'	_	ADP	PRP	AdpType=Prep	16	mark	_	_
+16	sintendijġibu	_	VERB	VV	_	7	acl	_	_
+17	magħhom	_	ADP	PMP	AdpType=Preppron	16	case	_	_
+18	l-	_	DET	DDC	Definite=Def|PronType=Art	19	det	_	_
+19	esperjenzi	_	NOUN	NN	_	16	nmod	_	_
+20	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	21	case	_	_
+21	ħajja	_	NOUN	NN	_	19	nmod	_	_
+22	u	_	CONJ	CC	_	19	cc	_	_
+23	d-	_	DET	DDC	Definite=Def|PronType=Art	25	det	_	_
+24	diversi	_	ADJ	MJ	_	25	amod	_	_
+25	ħiliet	_	NOUN	NN	_	19	conj	_	_
+26	u	_	CONJ	CC	_	25	cc	_	_
+27	talenti	_	ADJ	MJ	_	25	conj	_	_
+28	tagħhom	_	DET	PT	Poss=Yes|PronType=Prs	25	advmod	_	_
+29	'	_	PUNCT	PUN	_	16	punct	_	_
+30	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s64-root
+# orig_file_sentence 002#64
+1	Skont	_	ADV	MV	_	2	case	_	_
+2	Sħaħ	_	VERB	VV	_	7	advmod	_	_
+3	,	_	PUNCT	PUN	_	2	punct	_	_
+4	il-	_	DET	DDC	Definite=Def|PronType=Art	5	det	_	_
+5	voluntiera	_	NOUN	NN	_	7	nsubj	_	_
+6	huma	_	PRON	PP	PronType=Prs	7	expl	_	_
+7	parti	_	NOUN	NN	_	0	root	_	_
+8	importanti	_	ADJ	MJ	_	7	amod	_	_
+9	wkoll	_	ADV	MV	_	11	advmod	_	_
+10	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	11	case	_	_
+11	kura	_	NOUN	NN	_	7	nmod	_	_
+12	palljattiva	_	NOUN	NN	_	11	nmod	_	_
+13	li	_	SCONJ	CMP	_	14	nsubjpass	_	_
+14	tingħata	_	VERB	VV	_	11	advcl	_	_
+15	lill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	16	case	_	_
+16	pazjenti	_	NOUN	NN	_	14	nmod	_	_
+17	.	_	PUNCT	PUN	_	7	punct	_	_
+
+# sent_id a_tree-mt_dlx-s65-root
+# orig_file_sentence 002#65
+1	IL-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	ĠENSillum	_	NOUN	NN	_	3	nsubj	_	_
+3	staqsiet	_	NOUN	NN	_	0	root	_	_
+4	dwar	_	ADP	PRP	AdpType=Prep	6	case	_	_
+5	il-	_	DET	DDC	Definite=Def|PronType=Art	6	det	_	_
+6	pjanijiet	_	NOUN	NN	_	3	nmod	_	_
+7	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	8	case	_	_
+8	ġejjieni	_	NOUN	NN	_	6	nmod	_	_
+9	.	_	PUNCT	PUN	_	3	punct	_	_
+
+# sent_id a_tree-mt_dlx-s66-root
+# orig_file_sentence 002#66
+1	Sħaħ	_	ADJ	MJ	_	2	nsubj	_	_
+2	wieġbet	_	VERB	VV	_	0	root	_	_
+3	li	_	SCONJ	CMP	_	13	mark	_	_
+4	l-	_	DET	DDC	Definite=Def|PronType=Art	5	det	_	_
+5	għan	_	NOUN	NN	_	13	nsubj	_	_
+6	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	7	case	_	_
+7	Moviment	_	NOUN	NN	_	5	nmod	_	_
+8	hu	_	PRON	PP	PronType=Prs	13	expl	_	_
+9	li	_	SCONJ	CMP	_	13	mark	_	_
+10	fil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	11	case	_	_
+11	ġejjieni	_	NOUN	NN	_	13	nmod	_	_
+12	qarib	_	ADJ	MJ	_	11	amod	_	_
+13	iwessa'	_	VERB	VV	_	2	ccomp	_	_
+14	aktar	_	ADJ	MJ	_	13	xcomp	_	_
+15	is-	_	DET	DDC	Definite=Def|PronType=Art	16	det	_	_
+16	servizzi	_	NOUN	NN	_	13	dobj	_	_
+17	tiegħu	_	DET	PT	Poss=Yes|PronType=Prs	16	det:poss	_	_
+18	,	_	PUNCT	PUN	_	2	punct	_	_
+19	u	_	CONJ	CC	_	2	cc	_	_
+20	kompliet	_	VERB	VV	_	2	conj	_	_
+21	tgħid	_	VERB	VV	_	20	xcomp	_	_
+22	li	_	SCONJ	CMP	_	28	mark	_	_
+23	dalwaqt	_	SCONJ	CS	_	28	advmod	_	_
+24	il-	_	DET	DDC	Definite=Def|PronType=Art	25	det	_	_
+25	kura	_	NOUN	NN	_	28	nmod	_	_
+26	li	_	SCONJ	CMP	_	28	mark	_	_
+27	qed	_	PART	PAC	Aspect=Prog	28	aux	_	_
+28	jagħti	_	VERB	VV	_	21	acl	_	_
+29	l-	_	DET	DDC	Definite=Def|PronType=Art	30	det	_	_
+30	Moviment	_	NOUN	NN	_	28	dobj	_	_
+31	mhux	_	PART	NV	Negative=Neg	33	advmod	_	_
+32	se	_	PART	PAF	Aspect=Pro	33	advmod	_	_
+33	tibqa'	_	VERB	VV	_	28	advcl	_	_
+34	tingħata	_	VERB	VV	_	33	advcl	_	_
+35	lill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	36	case	_	_
+36	pazjenti	_	NOUN	NN	_	34	nmod	_	_
+37	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	38	case	_	_
+38	kanċer	_	NOUN	NN	_	36	nmod	_	_
+39	u	_	CONJ	CC	_	36	cc	_	_
+40	pazjenti	_	NOUN	NN	_	36	conj	_	_
+41	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	42	case	_	_
+42	motor	_	X	RFW	Foreign=Foreign	40	nmod	_	_
+43	neuron	_	X	RFW	Foreign=Foreign	42	foreign	_	_
+44	disease	_	X	RFW	Foreign=Foreign	42	foreign	_	_
+45	biss	_	ADV	MV	_	36	advmod	_	_
+46	,	_	PUNCT	PUN	_	33	punct	_	_
+47	imma	_	CONJ	CC	_	33	cc	_	_
+48	se	_	PART	PAF	Aspect=Pro	49	advmod	_	_
+49	tibda	_	VERB	VV	_	33	conj	_	_
+50	tingħata	_	VERB	VV	_	49	advcl	_	_
+51	wkoll	_	ADV	MV	_	53	advmod	_	_
+52	lill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	53	case	_	_
+53	pazjenti	_	NOUN	NN	_	50	nmod	_	_
+54	li	_	SCONJ	CMP	_	55	nsubj	_	_
+55	għandhom	_	VERB	VG	_	53	advcl	_	_
+56	mard	_	NOUN	NN	_	55	dobj	_	_
+57	terminali	_	ADJ	MJ	_	56	amod	_	_
+58	ieħor	_	ADJ	MJ	_	56	amod	_	_
+59	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s67-root
+# orig_file_sentence 002#67
+1	'	_	PUNCT	PUN	_	2	punct	_	_
+2	Tifhem	_	VERB	VV	_	0	root	_	_
+3	,	_	PUNCT	PUN	_	2	punct	_	_
+4	dan	_	DET	PD	PronType=Dem	6	nsubj	_	_
+5	il-	_	DET	DDC	Definite=Def|PronType=Art	6	det	_	_
+6	Moviment	_	NOUN	NN	_	8	nsubj	_	_
+7	se	_	PART	PAF	Aspect=Pro	8	aux	_	_
+8	jibda	_	VERB	VV	_	2	ccomp	_	_
+9	jagħmlu	_	VERB	VV	_	8	xcomp	_	_
+10	bil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	11	case	_	_
+11	mod	_	NOUN	NN	_	9	nmod	_	_
+12	il-	_	DET	DDC	Definite=Def|PronType=Art	13	det	_	_
+13	mod	_	NOUN	NN	_	11	nmod	_	_
+14	,	_	PUNCT	PUN	_	8	punct	_	_
+15	u	_	CONJ	CC	_	8	cc	_	_
+16	jiddependi	_	VERB	VV	_	8	conj	_	_
+17	minn	_	ADP	PRP	AdpType=Prep	19	case	_	_
+18	ħafna	_	DET	DP	Number=Plur|NumType=Card|PronType=Ind	19	det	_	_
+19	fatturi	_	NOUN	NN	_	16	nmod	_	_
+20	,	_	PUNCT	PUN	_	19	punct	_	_
+21	fosthom	_	ADP	PRP	AdpType=Prep	23	case	_	_
+22	il-	_	DET	DDC	Definite=Def|PronType=Art	23	det	_	_
+23	finanzi	_	NOUN	NN	_	19	nmod	_	_
+24	,	_	PUNCT	PUN	_	19	punct	_	_
+25	lokal	_	NOUN	NN	_	19	conj	_	_
+26	akbar	_	ADJ	MJ	_	25	amod	_	_
+27	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	28	case	_	_
+28	Moviment	_	NOUN	NN	_	25	nmod	_	_
+29	,	_	PUNCT	PUN	_	19	punct	_	_
+30	u	_	CONJ	CC	_	19	cc	_	_
+31	l-	_	DET	DDC	Definite=Def|PronType=Art	32	det	_	_
+32	ingaġġar	_	NOUN	NN	_	19	conj	_	_
+33	ta'	_	ADP	PRP	AdpType=Prep	34	case	_	_
+34	persuni	_	NOUN	NN	_	32	nmod	_	_
+35	kwalifikati	_	ADJ	MJ	_	34	amod	_	_
+36	f'	_	ADP	PRP	AdpType=Prep	39	case	_	_
+37	din	_	DET	PD	PronType=Dem	39	det	_	_
+38	it-	_	DET	DDC	Definite=Def|PronType=Art	39	det	_	_
+39	tip	_	NOUN	NN	_	35	dobj	_	_
+40	ta'	_	ADP	PRP	AdpType=Prep	41	case	_	_
+41	kura	_	NOUN	NN	_	39	nmod	_	_
+42	.	_	PUNCT	PUN	_	2	punct	_	_
+43	'	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s68-root
+# orig_file_sentence 002#68
+1	IL-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	ĠENSillum	_	NOUN	NN	_	3	nsubj	_	_
+3	tkellem	_	VERB	VV	_	0	root	_	_
+4	ukoll	_	ADV	MV	_	3	advmod	_	_
+5	ma'	_	ADP	PRP	AdpType=Prep	6	case	_	_
+6	Johanna	_	PROPN	NP	_	3	nmod	_	_
+7	Calleja	_	PROPN	NP	_	6	name	_	_
+8	,	_	PUNCT	PUN	_	6	punct	_	_
+9	il-	_	DET	DDC	Definite=Def|PronType=Art	10	det	_	_
+10	Fund	_	PROPN	NP	_	6	conj	_	_
+11	Raising	_	PROPN	NP	_	10	foreign	_	_
+12	Co	_	PROPN	NP	_	10	foreign	_	_
+13	-	_	PUNCT	PUN	_	10	punct	_	_
+14	ordinator	_	NOUN	NN	_	10	foreign	_	_
+15	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	16	case	_	_
+16	Moviment	_	NOUN	NN	_	10	nmod	_	_
+17	.	_	PUNCT	PUN	_	3	punct	_	_
+
+# sent_id a_tree-mt_dlx-s69-root
+# orig_file_sentence 002#69
+1	Calleja	_	PROPN	NP	_	2	nsubj	_	_
+2	semmiet	_	NOUN	NN	_	0	root	_	_
+3	is-	_	DET	DDC	Definite=Def|PronType=Art	4	det	_	_
+4	Sunflower	_	PROPN	NP	_	2	dobj	_	_
+5	Fund	_	PROPN	NP	_	4	name	_	_
+6	Raising	_	PROPN	NP	_	4	name	_	_
+7	Campaign	_	PROPN	NP	_	4	name	_	_
+8	,	_	PUNCT	PUN	_	12	punct	_	_
+9	li	_	SCONJ	CMP	_	12	nsubj	_	_
+10	issa	_	ADV	MV	_	12	advmod	_	_
+11	qed	_	PART	PAC	Aspect=Prog	12	aux	_	_
+12	issir	_	VERB	VV	_	4	acl	_	_
+13	kull	_	DET	DS	Number=Sing|PronType=Ind	14	det	_	_
+14	sena	_	NOUN	NN	_	12	nmod	_	_
+15	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s70-root
+# orig_file_sentence 002#70
+1	Il-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	Moviment	_	NOUN	NN	_	5	nsubj	_	_
+3	għadu	_	VERB	VG	_	5	advmod	_	_
+4	kemm	_	SCONJ	CS	_	3	mwe	_	_
+5	ħareġ	_	VERB	VV	_	0	root	_	_
+6	ukoll	_	ADV	MV	_	5	advmod	_	_
+7	sett	_	NOUN	NN	_	5	dobj	_	_
+8	ta'	_	ADP	PRP	AdpType=Prep	9	case	_	_
+9	kartolini	_	NOUN	NN	_	7	nmod	_	_
+10	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	11	case	_	_
+11	Milied	_	PROPN	NP	_	9	nmod	_	_
+12	,	_	PUNCT	PUN	_	13	punct	_	_
+13	riprodotti	_	NOUN	NN	_	9	appos	_	_
+14	minn	_	ADP	PRP	AdpType=Prep	15	case	_	_
+15	pitturi	_	NOUN	NN	_	13	nmod	_	_
+16	oriġinali	_	ADJ	MJ	_	15	amod	_	_
+17	ta'	_	ADP	PRP	AdpType=Prep	19	case	_	_
+18	ħames	_	ADJ	MJ	_	19	nummod	_	_
+19	artisti	_	NOUN	NN	_	16	nmod	_	_
+20	lokali	_	ADJ	MJ	_	19	amod	_	_
+21	magħrufa	_	ADJ	MJ	_	19	amod	_	_
+22	:	_	PUNCT	PUN	_	23	punct	_	_
+23	Joħn	_	PROPN	NP	_	19	appos	_	_
+24	Martin	_	PROPN	NP	_	23	name	_	_
+25	Borġ	_	PROPN	NP	_	23	name	_	_
+26	,	_	PUNCT	PUN	_	23	punct	_	_
+27	Daniel	_	PROPN	NP	_	23	conj	_	_
+28	Joħn	_	PROPN	NP	_	27	name	_	_
+29	Bugeja	_	PROPN	NP	_	27	name	_	_
+30	,	_	PUNCT	PUN	_	23	punct	_	_
+31	Miriam	_	PROPN	NP	_	23	conj	_	_
+32	Ċini	_	PROPN	NP	_	31	name	_	_
+33	,	_	PUNCT	PUN	_	23	punct	_	_
+34	Paul	_	PROPN	NP	_	23	conj	_	_
+35	Galea	_	PROPN	NP	_	34	name	_	_
+36	u	_	CONJ	CC	_	23	cc	_	_
+37	Jane	_	PROPN	NP	_	23	conj	_	_
+38	Micallef	_	PROPN	NP	_	37	name	_	_
+39	.	_	PUNCT	PUN	_	5	punct	_	_
+
+# sent_id a_tree-mt_dlx-s71-root
+# orig_file_sentence 002#71
+1	Wieħed	_	NUM	NW	NumType=Card,Gen|NumValue=1	2	nsubj	_	_
+2	jista'	_	VERB	VV	_	0	root	_	_
+3	jakkwistahom	_	VERB	VV	_	2	xcomp	_	_
+4	għal	_	ADP	PRP	AdpType=Prep	5	case	_	_
+5	donazzjoni	_	NOUN	NN	_	3	nmod	_	_
+6	ta'	_	ADP	PRP	AdpType=Prep	7	case	_	_
+7	€	_	NOUN	NN	_	5	nmod	_	_
+8	0.50	_	NUM	NC	NumType=Card	7	nummod	_	_
+9	kull	_	DET	DS	Number=Sing|PronType=Ind	10	det	_	_
+10	kartolina	_	NOUN	NN	_	3	dobj	_	_
+11	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s72-root
+# orig_file_sentence 002#72
+1	Dawn	_	DET	PD	PronType=Dem	2	nsubj	_	_
+2	jistgħu	_	VERB	VV	_	0	root	_	_
+3	jinġabru	_	VERB	VV	_	2	xcomp	_	_
+4	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	5	case	_	_
+5	Malta	_	PROPN	NP	_	3	nmod	_	_
+6	Hospice	_	PROPN	NP	_	5	name	_	_
+7	Movement	_	PROPN	NP	_	5	name	_	_
+8	,	_	PUNCT	PUN	_	10	punct	_	_
+9	f'	_	ADP	PRP	AdpType=Prep	10	case	_	_
+10	39	_	NUM	NC	NumType=Card	3	advmod	_	_
+11	,	_	PUNCT	PUN	_	10	punct	_	_
+12	Vjal	_	PROPN	NP	_	10	list	_	_
+13	il-	_	DET	DDC	Definite=Def|PronType=Art	14	det	_	_
+14	Bon	_	PROPN	NP	_	12	nmod	_	_
+15	Pastur	_	PROPN	NP	_	14	name	_	_
+16	,	_	PUNCT	PUN	_	10	punct	_	_
+17	Balzan	_	PROPN	NP	_	10	list	_	_
+18	,	_	PUNCT	PUN	_	2	punct	_	_
+19	jew	_	CONJ	CC	_	2	cc	_	_
+20	wieħed	_	NUM	NW	NumType=Card,Gen|NumValue=1	21	nsubj	_	_
+21	jista'	_	VERB	VV	_	2	conj	_	_
+22	jordnahom	_	VERB	VV	_	21	xcomp	_	_
+23	billi	_	SCONJ	CS	_	24	mark	_	_
+24	jċempel	_	VERB	VV	_	22	advcl	_	_
+25	21440085	_	NUM	NC	NumType=Card	24	dobj	_	_
+26	jew	_	CONJ	CC	_	24	cc	_	_
+27	jibgħat	_	VERB	VV	_	24	conj	_	_
+28	email	_	NOUN	NN	_	27	dobj	_	_
+29	lil	_	ADP	PRP	AdpType=Prep	30	case	_	_
+30	frhospice	_	X	RFW	Foreign=Foreign	27	nmod	_	_
+31	@	_	X	RFW	Foreign=Foreign	30	compound	_	_
+32	onvol	_	X	RFW	Foreign=Foreign	30	compound	_	_
+33	.	_	PUNCT	PUN	_	30	punct	_	_
+34	net	_	NOUN	NN	_	30	compound	_	_
+
+# sent_id a_tree-mt_dlx-s73-root
+# orig_file_sentence 002#73
+1	Calleja	_	PROPN	NP	_	2	nsubj	_	_
+2	fakkret	_	VERB	VV	_	0	root	_	_
+3	li	_	SCONJ	CMP	_	8	mark	_	_
+4	l-	_	DET	DDC	Definite=Def|PronType=Art	5	det	_	_
+5	Malta	_	PROPN	NP	_	8	nsubj	_	_
+6	Hospice	_	PROPN	NP	_	5	name	_	_
+7	Movement	_	PROPN	NP	_	5	name	_	_
+8	joffri	_	VERB	VV	_	2	ccomp	_	_
+9	s-	_	DET	DDC	Definite=Def|PronType=Art	10	det	_	_
+10	servizzi	_	NOUN	NN	_	8	dobj	_	_
+11	kollha	_	ADJ	MJ	_	10	amod	_	_
+12	tiegħu	_	DET	PT	Poss=Yes|PronType=Prs	10	det:poss	_	_
+13	bla	_	ADP	PRP	AdpType=Prep	14	case	_	_
+14	ħlas	_	NOUN	NN	_	8	nmod	_	_
+15	,	_	PUNCT	PUN	_	16	punct	_	_
+16	inkluż	_	VERB	VP	VerbForm=Part	8	advcl	_	_
+17	is-	_	DET	DDC	Definite=Def|PronType=Art	18	det	_	_
+18	self	_	NOUN	NN	_	16	dobj	_	_
+19	b'	_	ADP	PRP	AdpType=Prep	20	case	_	_
+20	xejn	_	DET	PI	PronType=Ind	16	nmod	_	_
+21	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	22	case	_	_
+22	apparat	_	NOUN	NN	_	20	nmod	_	_
+23	speċjalizzat	_	VERB	VP	VerbForm=Part	22	acl	_	_
+24	għall-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	25	case	_	_
+25	bżonnijiet	_	NOUN	NN	_	23	nmod	_	_
+26	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	27	case	_	_
+27	pazjenti	_	NOUN	NN	_	25	nmod	_	_
+28	.	_	PUNCT	PUN	_	2	punct	_	_
+
+# sent_id a_tree-mt_dlx-s74-root
+# orig_file_sentence 002#74
+1	'	_	PUNCT	PUN	_	3	punct	_	_
+2	Għaldaqstant	_	DET	DP	Number=Plur|NumType=Card|PronType=Ind	3	advmod	_	_
+3	napprezzawkull	_	ADP	PRP	AdpType=Prep	0	root	_	_
+4	dħul	_	NOUN	NN	_	3	dobj	_	_
+5	li	_	SCONJ	CMP	_	6	dobj	_	_
+6	jkollna	_	VERB	VG	_	4	acl	_	_
+7	,	_	PUNCT	PUN	_	10	punct	_	_
+8	anki	_	ADV	MV	_	10	advmod	_	_
+9	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	10	case	_	_
+10	bejgħ	_	NOUN	NN	_	4	nmod	_	_
+11	ta'	_	ADP	PRP	AdpType=Prep	14	case	_	_
+12	dawn	_	DET	PD	PronType=Dem	14	dobj	_	_
+13	il-	_	DET	DDC	Definite=Def|PronType=Art	14	det	_	_
+14	kartolini	_	NOUN	NN	_	10	nmod	_	_
+15	'	_	PUNCT	PUN	_	3	punct	_	_
+16	.	_	PUNCT	PUN	_	3	punct	_	_
+
+# sent_id a_tree-mt_dlx-s75-root
+# orig_file_sentence 002#75
+1	Mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	2	case	_	_
+2	ktieb	_	NOUN	NN	_	0	root	_	_
+3	'	_	PUNCT	PUN	_	5	punct	_	_
+4	B'	_	ADP	PRP	AdpType=Prep	5	case	_	_
+5	Saħħtek	_	NOUN	NN	_	2	nmod	_	_
+6	u	_	CONJ	CC	_	5	cc	_	_
+7	Rqieqa	_	NOUN	NN	_	5	conj	_	_
+8	'	_	PUNCT	PUN	_	5	punct	_	_
+9	ta'	_	ADP	PRP	AdpType=Prep	10	case	_	_
+10	Susan	_	NOUN	RH	_	2	nmod	_	_
+11	Mulvaney	_	PROPN	NP	_	10	name	_	_
+12	,	_	PUNCT	PUN	_	13	punct	_	_
+13	maħruħ	_	NOUN	NN	_	11	appos	_	_
+14	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	15	case	_	_
+15	Klabb	_	NOUN	NN	_	13	nmod	_	_
+16	tat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	17	case	_	_
+17	Tisjir	_	PROPN	NP	_	15	nmod	_	_
+
+# sent_id a_tree-mt_dlx-s76-root
+# orig_file_sentence 002#76
+1	INGREDJENTI	_	PROPN	NP	_	0	root	_	_
+
+# sent_id a_tree-mt_dlx-s77-root
+# orig_file_sentence 002#77
+1	225	_	NUM	NC	NumType=Card	2	nummod	_	_
+2	gr	_	NOUN	NN	_	0	root	_	_
+3	ħut	_	PROPN	NP	_	2	nmod	_	_
+
+# sent_id a_tree-mt_dlx-s78-root
+# orig_file_sentence 002#78
+1	Melħ	_	PROPN	NP	_	0	root	_	_
+2	u	_	CONJ	CC	_	1	cc	_	_
+3	bżar	_	VERB	VV	_	1	conj	_	_
+
+# sent_id a_tree-mt_dlx-s79-root
+# orig_file_sentence 002#79
+1	25	_	NUM	NC	NumType=Card	2	nummod	_	_
+2	gr	_	NOUN	NN	_	0	root	_	_
+3	faqqiegħ	_	NOUN	NN	_	2	nmod	_	_
+4	(	_	PUNCT	PUN	_	5	punct	_	_
+5	mushrooms	_	X	RO	_	3	appos	_	_
+6	)	_	PUNCT	PUN	_	5	punct	_	_
+
+# sent_id a_tree-mt_dlx-s80-root
+# orig_file_sentence 002#80
+1	Tuffieħa	_	NOUN	NN	_	0	root	_	_
+2	ta'	_	ADP	PRP	AdpType=Prep	3	case	_	_
+3	daqs	_	NOUN	NN	_	1	nmod	_	_
+4	normali	_	ADJ	MJ	_	3	amod	_	_
+
+# sent_id a_tree-mt_dlx-s81-root
+# orig_file_sentence 002#81
+1	15	_	NUM	NC	NumType=Card	2	nummod	_	_
+2	gr	_	NOUN	NN	_	0	root	_	_
+3	marġerina	_	VERB	VV	_	2	nmod	_	_
+4	low	_	VERB	VV	_	3	amod	_	_
+5	-	_	PUNCT	PUN	_	4	punct	_	_
+6	fat	_	VERB	VV	_	4	foreign	_	_
+
+# sent_id a_tree-mt_dlx-s82-root
+# orig_file_sentence 002#82
+1	25	_	NUM	NC	NumType=Card	2	nummod	_	_
+2	gr	_	NOUN	NN	_	0	root	_	_
+3	ġobon	_	PROPN	NP	_	2	nmod	_	_
+4	edam	_	VERB	VV	_	3	nmod	_	_
+5	maħkuk	_	VERB	VV	_	3	acl	_	_
+
+# sent_id a_tree-mt_dlx-s83-root
+# orig_file_sentence 002#83
+1	Żewġ	_	VERB	VV	_	2	nummod	_	_
+2	bananiet	_	NOUN	NN	_	0	root	_	_
+3	kbar	_	ADJ	MJ	_	2	amod	_	_
+
+# sent_id a_tree-mt_dlx-s84-root
+# orig_file_sentence 002#84
+1	METODU	_	NOUN	NN	_	0	root	_	_
+
+# sent_id a_tree-mt_dlx-s85-root
+# orig_file_sentence 002#85
+1	Neħħi	_	ADJ	MJ	_	0	root	_	_
+2	l-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	ġilda	_	NOUN	NN	_	1	dobj	_	_
+4	u	_	CONJ	CC	_	3	cc	_	_
+5	x-	_	DET	DDC	Definite=Def|PronType=Art	6	det	_	_
+6	xewk	_	NOUN	NN	_	3	conj	_	_
+7	mill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	8	case	_	_
+8	ħut	_	NOUN	NN	_	3	nmod	_	_
+9	u	_	CONJ	CC	_	1	cc	_	_
+10	qatta'	_	VERB	VV	_	1	conj	_	_
+11	f'	_	ADP	PRP	AdpType=Prep	12	case	_	_
+12	biċċiet	_	NOUN	NN	_	10	nmod	_	_
+13	ta'	_	ADP	PRP	AdpType=Prep	15	case	_	_
+14	2.5	_	NUM	NC	NumType=Card	15	nummod	_	_
+15	ċm	_	NOUN	NN	_	12	nmod	_	_
+16	jew	_	CONJ	CC	_	15	cc	_	_
+17	pulzier	_	NOUN	NN	_	15	conj	_	_
+18	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s86-root
+# orig_file_sentence 002#86
+1	Qiegħed	_	VERB	VP	VerbForm=Part	0	root	_	_
+2	f'	_	ADP	PRP	AdpType=Prep	3	case	_	_
+3	dixx	_	PART	NV	Negative=Neg	1	nmod	_	_
+4	ovenproof	_	VERB	VV	_	3	amod	_	_
+5	u	_	CONJ	CC	_	1	cc	_	_
+6	żid	_	VERB	VV	_	1	conj	_	_
+7	il-	_	DET	DDC	Definite=Def|PronType=Art	8	det	_	_
+8	melħ	_	NOUN	NN	_	6	dobj	_	_
+9	u	_	CONJ	CC	_	8	cc	_	_
+10	l-	_	DET	DDC	Definite=Def|PronType=Art	11	det	_	_
+11	bżar	_	NOUN	NN	_	8	conj	_	_
+12	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s87-root
+# orig_file_sentence 002#87
+1	Qatta'	_	VERB	VV	_	0	root	_	_
+2	t-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	tadam	_	NOUN	NN	_	1	dobj	_	_
+4	u	_	CONJ	CC	_	3	cc	_	_
+5	l-	_	DET	DDC	Definite=Def|PronType=Art	6	det	_	_
+6	faqqiegħ	_	NOUN	NN	_	3	conj	_	_
+7	irqiq	_	NOUN	NN	_	1	xcomp	_	_
+8	u	_	CONJ	CC	_	1	cc	_	_
+9	qaxxar	_	VERB	VV	_	1	conj	_	_
+10	it-	_	DET	DDC	Definite=Def|PronType=Art	11	det	_	_
+11	tuffieħa	_	NOUN	NN	_	9	dobj	_	_
+12	;	_	PUNCT	PUN	_	1	punct	_	_
+13	neħħilha	_	VERB	VV	_	1	parataxis	_	_
+14	l-	_	DET	DDC	Definite=Def|PronType=Art	15	det	_	_
+15	qalba	_	NOUN	NN	_	13	dobj	_	_
+16	u	_	CONJ	CC	_	15	cc	_	_
+17	qattagħha	_	ADP	PMP	AdpType=Preppron	15	conj	_	_
+18	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s88-root
+# orig_file_sentence 002#88
+1	Qiegħed	_	VERB	VP	VerbForm=Part	0	root	_	_
+2	il-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	ħaxix	_	NOUN	NN	_	1	dobj	_	_
+4	u	_	CONJ	CC	_	3	cc	_	_
+5	l-	_	DET	DDC	Definite=Def|PronType=Art	6	det	_	_
+6	frott	_	NOUN	NN	_	3	conj	_	_
+7	imqatta'	_	VERB	VV	_	3	acl	_	_
+8	fuq	_	ADP	PRP	AdpType=Prep	10	case	_	_
+9	il-	_	DET	DDC	Definite=Def|PronType=Art	10	det	_	_
+10	ħut	_	NOUN	NN	_	1	nmod	_	_
+11	u	_	CONJ	CC	_	1	cc	_	_
+12	żid	_	VERB	VV	_	1	conj	_	_
+13	is-	_	DET	DDC	Definite=Def|PronType=Art	14	det	_	_
+14	cider	_	NOUN	NN	_	12	dobj	_	_
+15	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s89-root
+# orig_file_sentence 002#89
+1	Roxx	_	SCONJ	CS	_	0	root	_	_
+2	kemm	_	SCONJ	CS	_	4	det	_	_
+3	kemm	_	ADV	MV	_	2	mwe	_	_
+4	marġerina	_	VERB	VV	_	1	dobj	_	_
+5	u	_	CONJ	CC	_	1	cc	_	_
+6	għatti	_	VERB	VV	_	1	conj	_	_
+7	d-	_	DET	DDC	Definite=Def|PronType=Art	8	det	_	_
+8	dixx	_	NOUN	NN	_	6	dobj	_	_
+9	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s90-root
+# orig_file_sentence 002#90
+1	Aħmi	_	NOUN	NN	_	0	root	_	_
+2	f'	_	ADP	PRP	AdpType=Prep	4	case	_	_
+3	190	_	NUM	NC	NumType=Card	4	nummod	_	_
+4	C	_	PROPN	NP	_	1	nmod	_	_
+5	,	_	PUNCT	PUN	_	6	punct	_	_
+6	375	_	NUM	NC	NumType=Card	4	appos	_	_
+7	F	_	ADJ	MJ	_	6	amod	_	_
+8	,	_	PUNCT	PUN	_	6	punct	_	_
+9	Gas	_	PROPN	NP	_	6	appos	_	_
+10	Mark	_	PROPN	NP	_	9	name	_	_
+11	5	_	NUM	NC	NumType=Card	9	nummod	_	_
+12	,	_	PUNCT	PUN	_	1	punct	_	_
+13	għal	_	ADP	PRP	AdpType=Prep	14	case	_	_
+14	25	_	NUM	NC	NumType=Card	17	nummod	_	_
+15	-	_	PUNCT	PUN	_	14	punct	_	_
+16	30	_	NUM	NC	NumType=Card	14	conj	_	_
+17	minuta	_	NOUN	NN	_	1	advmod	_	_
+18	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s91-root
+# orig_file_sentence 002#91
+1	Neħħi	_	ADJ	MJ	_	0	root	_	_
+2	ftit	_	DET	DP	Number=Plur|NumType=Card|PronType=Ind	1	det	_	_
+3	mil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	4	case	_	_
+4	likwidu	_	NOUN	NN	_	2	det	_	_
+5	tat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	6	case	_	_
+6	tisjir	_	NOUN	NN	_	4	nsubj	_	_
+7	fi	_	ADP	PRP	AdpType=Prep	8	case	_	_
+8	skutella	_	NOUN	NN	_	1	nmod	_	_
+9	bil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	10	case	_	_
+10	cornflour	_	NOUN	NN	_	8	nmod	_	_
+11	u	_	CONJ	CC	_	1	cc	_	_
+12	ħawwad	_	ADV	MV	_	1	conj	_	_
+13	sakemm	_	SCONJ	CS	_	14	mark	_	_
+14	jinħall	_	VERB	VV	_	12	advcl	_	_
+15	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s92-root
+# orig_file_sentence 002#92
+1	Qiegħed	_	VERB	VP	VerbForm=Part	0	root	_	_
+2	il-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	kumplament	_	NOUN	NN	_	1	dobj	_	_
+4	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	5	case	_	_
+5	likwidu	_	NOUN	NN	_	3	nmod	_	_
+6	bil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	7	case	_	_
+7	mod	_	NOUN	NN	_	5	nmod	_	_
+8	,	_	PUNCT	PUN	_	1	punct	_	_
+9	int	_	ADV	MV	_	11	nsubj	_	_
+10	u	_	CONJ	CC	_	1	cc	_	_
+11	tħawwad	_	VERB	VV	_	1	conj	_	_
+12	,	_	PUNCT	PUN	_	11	punct	_	_
+13	u	_	CONJ	CC	_	1	cc	_	_
+14	ferrgħu	_	VERB	VV	_	1	conj	_	_
+15	f'	_	ADP	PRP	AdpType=Prep	16	case	_	_
+16	kazzola	_	NOUN	NN	_	14	nmod	_	_
+17	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s93-root
+# orig_file_sentence 002#93
+1	Ħallih	_	NOUN	NN	_	0	root	_	_
+2	jagħli	_	ADJ	MJ	_	1	xcomp	_	_
+3	u	_	CONJ	CC	_	1	cc	_	_
+4	ħawwad	_	ADV	MV	_	1	conj	_	_
+5	sakemm	_	SCONJ	CS	_	6	mark	_	_
+6	jagħqad	_	VERB	VV	_	4	advcl	_	_
+7	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s94-root
+# orig_file_sentence 002#94
+1	Sajjar	_	NOUN	NN	_	0	root	_	_
+2	għal	_	ADP	PRP	AdpType=Prep	4	case	_	_
+3	żewġ	_	NUM	NC	NumType=Card	4	nummod	_	_
+4	minuti	_	NOUN	NN	_	1	nmod	_	_
+5	u	_	CONJ	CC	_	1	cc	_	_
+6	ixħet	_	VERB	VV	_	1	conj	_	_
+7	fuq	_	ADP	PRP	AdpType=Prep	9	case	_	_
+8	il-	_	DET	DDC	Definite=Def|PronType=Art	9	det	_	_
+9	ħut	_	NOUN	NN	_	6	nmod	_	_
+10	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s95-root
+# orig_file_sentence 002#95
+1	Roxx	_	SCONJ	CS	_	0	root	_	_
+2	il-	_	DET	DDC	Definite=Def|PronType=Art	3	det	_	_
+3	ġobon	_	PROPN	NP	_	1	conj	_	_
+4	u	_	CONJ	CC	_	1	cc	_	_
+5	qiegħed	_	VERB	VP	VerbForm=Part	1	conj	_	_
+6	taħt	_	ADP	PRP	AdpType=Prep	7	case	_	_
+7	grill	_	NOUN	NN	_	5	nmod	_	_
+8	jaħraq	_	ADJ	MJ	_	7	amod	_	_
+9	sakemm	_	SCONJ	CS	_	10	mark	_	_
+10	jieħu	_	VERB	VV	_	5	advcl	_	_
+11	l-	_	DET	DDC	Definite=Def|PronType=Art	12	det	_	_
+12	lewn	_	NOUN	NN	_	10	dobj	_	_
+13	u	_	CONJ	CC	_	10	cc	_	_
+14	jbaqbaq	_	VERB	VV	_	10	conj	_	_
+15	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s96-root
+# orig_file_sentence 002#96
+1	Żejjen	_	NOUN	NN	_	0	root	_	_
+2	bil-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	3	case	_	_
+3	karfus	_	NOUN	NN	_	1	nmod	_	_
+4	u	_	CONJ	CC	_	1	cc	_	_
+5	servi	_	VERB	VV	_	1	conj	_	_
+6	mal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	7	case	_	_
+7	piżelli	_	NOUN	NN	_	5	nmod	_	_
+8	u	_	CONJ	CC	_	7	cc	_	_
+9	l-	_	DET	DDC	Definite=Def|PronType=Art	10	det	_	_
+10	karrotti	_	NOUN	NN	_	7	conj	_	_
+11	mgħollija	_	ADJ	MJ	_	10	amod	_	_
+12	.	_	PUNCT	PUN	_	1	punct	_	_
+
+# sent_id a_tree-mt_dlx-s97-root
+# orig_file_sentence 002#97
+1	Il-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	kompetizzjoni	_	NOUN	NN	_	7	nsubj	_	_
+3	tat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	4	case	_	_
+4	Tazza	_	NOUN	NN	_	2	nmod	_	_
+5	tad-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	6	case	_	_
+6	Dinja	_	NOUN	NN	_	4	nmod	_	_
+7	bdiet	_	VERB	VV	_	0	root	_	_
+8	ilbieraħ	_	ADV	MV	_	7	advmod	_	_
+9	fl-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	10	case	_	_
+10	Afrika	_	NOUN	NN	_	7	nmod	_	_
+11	t'	_	ADP	PRP	AdpType=Prep	12	case	_	_
+12	Isfel	_	PROPN	NP	_	10	nmod	_	_
+13	.	_	PUNCT	PUN	_	7	punct	_	_
+
+# sent_id a_tree-mt_dlx-s98-root
+# orig_file_sentence 002#98
+1	Id-	_	DET	DDC	Definite=Def|PronType=Art	2	det	_	_
+2	dinja	_	NOUN	NN	_	5	nsubj	_	_
+3	kollha	_	DET	PI	PronType=Ind	2	det	_	_
+4	hija	_	PRON	PP	PronType=Prs	5	expl	_	_
+5	akkanita	_	ADJ	MJ	_	0	root	_	_
+6	biex	_	SCONJ	CS	_	7	mark	_	_
+7	tgħaddi	_	VERB	VV	_	5	ccomp	_	_
+8	xahar	_	NOUN	NN	_	7	dobj	_	_
+9	f'	_	ADP	PRP	AdpType=Prep	10	case	_	_
+10	xalata	_	NOUN	NN	_	7	nmod	_	_
+11	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	12	case	_	_
+12	futbol	_	NOUN	NN	_	10	nmod	_	_
+13	.	_	PUNCT	PUN	_	5	punct	_	_
+
+# sent_id a_tree-mt_dlx-s99-root
+# orig_file_sentence 002#99
+1	Iżda	_	CONJ	CC	_	8	cc	_	_
+2	wara	_	ADP	PRP	AdpType=Prep	4	case	_	_
+3	l-	_	DET	DDC	Definite=Def|PronType=Art	4	det	_	_
+4	briju	_	NOUN	NN	_	8	nmod	_	_
+5	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	6	case	_	_
+6	ballun	_	NOUN	NN	_	4	nmod	_	_
+7	hemm	_	ADV	EX	AdvType=Ex	8	expl	_	_
+8	affarijiet	_	NOUN	NN	_	0	root	_	_
+9	oħra	_	ADJ	MJ	_	8	amod	_	_
+10	li	_	SCONJ	CMP	_	12	nsubj	_	_
+11	qed	_	PART	PAC	Aspect=Prog	12	aux	_	_
+12	jimbarazzaw	_	VERB	VV	_	8	acl	_	_
+13	lill-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	14	case	_	_
+14	President	_	NOUN	NN	_	12	nmod	_	_
+15	Zuma	_	ADJ	MJ	_	14	nmod	_	_
+16	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	17	case	_	_
+17	Afrika	_	NOUN	NN	_	14	nmod	_	_
+18	t'	_	ADP	PRP	AdpType=Prep	19	case	_	_
+19	Isfel	_	PROPN	NP	_	17	nmod	_	_
+20	,	_	PUNCT	PUN	_	8	punct	_	_
+21	u	_	CONJ	CC	_	8	cc	_	_
+22	affarijiet	_	NOUN	NN	_	8	conj	_	_
+23	li	_	SCONJ	CMP	_	24	nsubj	_	_
+24	għandhom	_	VERB	VG	_	22	acl	_	_
+25	iħammru	_	VERB	VV	_	24	xcomp	_	_
+26	wiċċ	_	NOUN	NN	_	25	dobj	_	_
+27	il-	_	DET	DDC	Definite=Def|PronType=Art	28	det	_	_
+28	komunità	_	NOUN	NN	_	26	nmod	_	_
+29	internazzjonali	_	ADJ	MJ	_	28	amod	_	_
+30	:	_	PUNCT	PUN	_	32	punct	_	_
+31	il-	_	DET	DDC	Definite=Def|PronType=Art	32	det	_	_
+32	prostituzzjoni	_	NOUN	NN	_	22	appos	_	_
+33	.	_	PUNCT	PUN	_	8	punct	_	_
+
+# sent_id a_tree-mt_dlx-s100-root
+# orig_file_sentence 002#100
+1	Jiena	_	PROPN	NP	_	2	nsubj	_	_
+2	nittama	_	VERB	VV	_	0	root	_	_
+3	li	_	SCONJ	CMP	_	11	mark	_	_
+4	l-	_	DET	DDC	Definite=Def|PronType=Art	5	det	_	_
+5	kompetizzjoni	_	NOUN	NN	_	11	nsubj	_	_
+6	tat-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	7	case	_	_
+7	Tazza	_	NOUN	NN	_	5	nmod	_	_
+8	tad-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	9	case	_	_
+9	Dinja	_	NOUN	NN	_	7	nmod	_	_
+10	tkun	_	AUX	VA	_	11	cop	_	_
+11	waħda	_	NUM	NW	NumType=Card,Gen|NumValue=1	2	ccomp	_	_
+12	ta'	_	ADP	PRP	AdpType=Prep	13	case	_	_
+13	livell	_	NOUN	NN	_	11	nmod	_	_
+14	għoli	_	ADJ	MJ	_	13	amod	_	_
+15	li	_	SCONJ	CMP	_	16	nsubj	_	_
+16	jixraq	_	VERB	VV	_	13	acl	_	_
+17	lil	_	ADP	PRP	AdpType=Prep	18	case	_	_
+18	kontinent	_	NOUN	NN	_	16	nmod	_	_
+19	li	_	SCONJ	CMP	_	20	nsubj	_	_
+20	għadda	_	VERB	VV	_	18	acl	_	_
+21	minn	_	ADP	PRP	AdpType=Prep	22	case	_	_
+22	tbatijiet	_	NOUN	NN	_	20	nmod	_	_
+23	kbar	_	ADJ	MJ	_	22	amod	_	_
+24	,	_	PUNCT	PUN	_	18	punct	_	_
+25	lil	_	ADP	PRP	AdpType=Prep	26	case	_	_
+26	pajjiż	_	NOUN	NN	_	18	conj	_	_
+27	li	_	SCONJ	CMP	_	28	nsubj	_	_
+28	daq	_	VERB	VV	_	26	acl	_	_
+29	l-	_	DET	DDC	Definite=Def|PronType=Art	30	det	_	_
+30	id	_	NOUN	NN	_	28	dobj	_	_
+31	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	32	case	_	_
+32	ħadid	_	NOUN	NN	_	30	nmod	_	_
+33	-	_	PUNCT	PUN	_	30	punct	_	_
+34	u	_	CONJ	CC	_	30	cc	_	_
+35	n-	_	DET	DDC	Definite=Def|PronType=Art	36	det	_	_
+36	nar	_	NOUN	NN	_	30	conj	_	_
+37	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	38	case	_	_
+38	ixkubetti	_	NOUN	NN	_	36	nmod	_	_
+39	u	_	CONJ	CC	_	30	cc	_	_
+40	d-	_	DET	DDC	Definite=Def|PronType=Art	41	det	_	_
+41	daqqiet	_	NOUN	NN	_	30	conj	_	_
+42	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	43	case	_	_
+43	lembubi	_	NOUN	NN	_	41	nmod	_	_
+44	-	_	PUNCT	PUN	_	46	punct	_	_
+45	tal-	_	ADP	PRPC	AdpType=Prep|Definite=Def|PronType=Art	46	case	_	_
+46	pulizija	_	NOUN	NN	_	43	nmod	_	_
+47	bojod	_	ADJ	MJ	_	46	amod	_	_
+48	.	_	PUNCT	PUN	_	2	punct	_	_
+
