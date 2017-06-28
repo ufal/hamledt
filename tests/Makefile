@@ -77,8 +77,8 @@ U14TREEBANKS=ar-ud14,bg-ud14,ca-ud14,cop-ud14,cs-ud14,cs-ud14cac,cs-ud14cltt,cu-
 UTREEBANKS=ar-ud20,ar-ud20nyuad,be-ud20,bg-ud20,ca-ud20,cop-ud20,cs-ud20,cs-ud20cac,cs-ud20cltt,cu-ud20,da-ud20,de-ud20,el-ud20,en-ud20,en-ud20lines,en-ud20partut,es-ud20,es-ud20ancora,et-ud20,eu-ud20,fa-ud20,fi-ud20,fi-ud20ftb,fr-ud20,fr-ud20partut,fr-ud20sequoia,ga-ud20,gl-ud20,gl-ud20treegal,got-ud20,grc-ud20,grc-ud20proiel,he-ud20,hi-ud20,hr-ud20,hu-ud20,id-ud20,it-ud20,it-ud20partut,ja-ud20,kk-ud20,ko-ud20,la-ud20,la-ud20ittb,la-ud20proiel,lv-ud20,lt-ud20,nl-ud20,nl-ud20lassysmall,no-ud20bokmaal,no-ud20nynorsk,pl-ud20,pt-ud20,pt-ud20br,ro-ud20,ru-ud20,ru-ud20syntagrus,sa-ud20,sk-ud20,sl-ud20,sl-ud20sst,sv-ud20,sv-ud20lines,ta-ud20,tr-ud20,uk-ud20,ug-ud20,ur-ud20,vi-ud20,zh-ud20
 ALLTREEBANKS=$(PTREEBANKS),$(UTREEBANKS),$(CTREEBANKS)
 # Either assign $(ALLTREEBANKS) to TREEBANKS, or narrow the selection down to what we currently need to see.
-#TREEBANKS=cs,cs-cac,cs-cltt,ar,ta,ca,es,la-it,nl,pl,pt
-TREEBANKS=$(UTREEBANKS)
+TREEBANKS=de-ud20
+#TREEBANKS=$(UTREEBANKS)
 UFILES='!$(HAMLEDT_DATA)/{$(TREEBANKS)}/treex/02/$(SETS)/*.treex.gz'
 # Manually checked Uyghur files:
 UGFILES='!/net/work/people/zeman/unidep/UD_Uyghur/manually-checked-treex/*.treex.gz'
@@ -111,12 +111,17 @@ table:
 #TTBK=hi
 #TEST=LeafAux
 FILELIST=ttred.$(TTBK).$(TEST).filelist
+WINFILELIST=wintred.fl
 # A bug in ttred causes it to ignore the first line in the file list.
 # Therefore we output a dummy line first.
 ttred:
 	echo > $(FILELIST)
-	grep hamledt/$(TTBK)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 >> $(FILELIST)
+	grep hamledt-data/$(TTBK)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 >> $(FILELIST)
 	ttred -l $(FILELIST)
+
+wflist:
+	echo > $(WINFILELIST)
+	grep hamledt-data/$(TTBK)/treex $(TESTLOG) | grep -P '^HamleDT::Test::$(TEST)' | cut -f2 | perl -pe 's|/net/work/people/zeman/hamledt-data|C:/Users/Dan/Documents/Lingvistika/Data/treebanks/HamleDT|' >> $(WINFILELIST)
 
 # If we work remotely (and remote graphical interface is not available), we may want to save the examples in a treex file,
 # then download it via sftp and inspect it in a local installation of Tred.

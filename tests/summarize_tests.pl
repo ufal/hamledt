@@ -10,7 +10,7 @@ while (<>) {
     next unless(s/^HamleDT::Test:://);
     chomp;
     my ($test,$file) = split;
-    $file =~ /hamledt\/([-a-z0-9]+)/
+    $file =~ /hamledt-data\/([-a-z0-9]+)/
         or warn "file path doesn't match expected pattern: $file";
     my $treebank = $1;
     $count{$treebank}{$test}++;
