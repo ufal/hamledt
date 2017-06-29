@@ -24,6 +24,7 @@ DIR1      = $(DATADIR)/$(SUBDIR1)
 DIR2      = $(DATADIR)/$(SUBDIR2)
 DIR3      = $(DATADIR)/$(SUBDIR3)
 CONLLUDIR = $(DATADIR)/$(SUBDIRCU)
+PMLTQDIR  = $(DATADIR)/$(SUBDIRPTQ)
 
 # Processing shortcuts.
 # Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
@@ -157,11 +158,17 @@ export:
 	../export_ud.sh $(UDCODE) $(UDNAME)
 
 
+
 # Export for PML-TQ: Treex files but smaller (50 trees per file) and all in one folder.
-# Further processing occurs in /net/work/projects/pmltq/data/hamledt.
+# Further processing occurs in /net/work/projects/pmltq/data/.
 # We do not use parallel treex here because it cannot work with undefined total number of documents. And the reader does not know in advance how many documents it will read.
 pmltq:
 	$(TREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/(.+)(\d\d\d)}{$(SUBDIRPTQ)/$$1-$$2-$$3}' compress=1
+
+PMLTQCODE=$(shell perl -e '$$x = "$(TREEBANK)"; $$x =~ s/-ud20(.)/-ud20-$$1/; $$x =~ s/-ud20//; print $$x;')
+pmltqexport:
+	cp $(PMLTQDIR)/*.treex.gz /net/work/projects/pmltq/data/ud20/treex/$(PMLTQCODE)
+	cd /net/work/projects/pmltq/data/ud20 ; pmltq convert --config=pmltq-$(PMLTQCODE).yml
 
 
 
