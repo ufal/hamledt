@@ -167,6 +167,7 @@ pmltq:
 
 PMLTQCODE=$(shell perl -e '$$x = "$(TREEBANK)"; $$x =~ s/-ud20(.)/-ud20-$$1/; $$x =~ s/-ud20//; print $$x;')
 pmltqexport:
+	rm /net/work/projects/pmltq/data/ud20/treex/$(PMLTQCODE)/*.treex.gz
 	cp $(PMLTQDIR)/*.treex.gz /net/work/projects/pmltq/data/ud20/treex/$(PMLTQCODE)
 	cd /net/work/projects/pmltq/data/ud20 ; pmltq convert --config=pmltq-$(PMLTQCODE).yml
 
