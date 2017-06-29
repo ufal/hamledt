@@ -199,4 +199,4 @@ clean_cluster:
 	rm -rf *-cluster-run-*
 
 clean: clean_cluster
-	rm -rf $(DATADIR)/treex $(DATADIR)/conllu
+	rm -rf $(DATADIR)/*
