@@ -1,0 +1,1151 @@
+# UD Treex macros for Tred
+
+# This macro file should be placed in your personal configuration folder, probably something
+# like the following (replace "Dan" with your own user name):
+#   C:\Users\Dan\AppData\Roaming\tred-ud-treex.mac
+# If you found the file elsewhere, it is probably a backup copy and modifying it will not
+# affect your Tred configuration. If it is located correctly but Tred still fails to load it
+# automatically, try including it from the EasyTreex extension macro file, which should be
+# located at:
+#   C:\Users\Dan\AppData\Roaming\.tred.d\extensions\easytreex\contrib\treex\contrib.mac
+# The macro language is essentially Perl. Documentation of macro writing is at:
+#   https://ufal.mff.cuni.cz/pdt2.0/doc/tools/tred/ar01s14.html
+
+# Treex_mode is the default mode that will be active if we open a Treex file.
+# Let's add our macros to that mode.
+#package Treex_mode;
+
+# This macro file defines keyboard shortcuts to universal POS tags and dependencies.
+# Certain parts are language-dependent and will have to be modified before the macros can be used
+# for another language. One of them is the tagset to be used when setting the XPOS tag.
+# We define it here:
+my $xpostagset = 'de::stts';
+
+# UD data: on setting deprel we want to make sure that similar conflicting attributes are empty.
+sub set_deprel
+{
+    my $node = shift;
+    my $deprel = shift;
+    $node->{deprel} = $deprel;
+    $node->{afun} = '';
+    $node->set_attr('conll/deprel', '');
+}
+
+#insert set_deprel_acl as menu Set deprel to acl
+#bind   set_deprel_acl to key Q
+sub set_deprel_acl
+{
+    set_deprel($this, 'acl');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_advcl as menu Set deprel to advcl
+#bind   set_deprel_advcl to key V
+sub set_deprel_advcl
+{
+    set_deprel($this, 'advcl');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_advmod as menu Set deprel to advmod
+#bind   set_deprel_advmod to key v
+sub set_deprel_advmod
+{
+    set_deprel($this, 'advmod');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_advmod_emph as menu Set deprel to advmod:emph
+#bind   set_deprel_advmod_emph to key h
+sub set_deprel_advmod_emph
+{
+    set_deprel($this, 'advmod:emph');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_amod as menu Set deprel to amod
+#bind   set_deprel_amod to key q
+sub set_deprel_amod
+{
+    set_deprel($this, 'amod');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_appos as menu Set deprel to appos
+#bind   set_deprel_appos to key N
+sub set_deprel_appos
+{
+    set_deprel($this, 'appos');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_aux as menu Set deprel to aux
+#bind   set_deprel_aux to key a
+sub set_deprel_aux
+{
+    set_deprel($this, 'aux');
+    # The input annotation of the Upper Sorbian data lacks the AUX tag. All auxiliary verbs are tagged VERB.
+    $this->{tag} = 'AUX';
+    $this->set_attr('conll/cpos', 'AUX');
+    $this->set_attr('iset/verbtype', 'aux');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_aux_pass as menu Set deprel to aux:pass
+#bind   set_deprel_aux_pass to key A
+sub set_deprel_aux_pass
+{
+    set_deprel($this, 'aux:pass');
+    # The input annotation of the Upper Sorbian data lacks the AUX tag. All auxiliary verbs are tagged VERB.
+    $this->{tag} = 'AUX';
+    $this->set_attr('conll/cpos', 'AUX');
+    $this->set_attr('iset/verbtype', 'aux');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_case as menu Set deprel to case
+#bind   set_deprel_case to key z
+sub set_deprel_case
+{
+    set_deprel($this, 'case');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_cc as menu Set deprel to cc
+#bind   set_deprel_cc to key C
+sub set_deprel_cc
+{
+    set_deprel($this, 'cc');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_ccomp as menu Set deprel to ccomp
+#bind   set_deprel_ccomp to key k
+sub set_deprel_ccomp
+{
+    set_deprel($this, 'ccomp');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_compound as menu Set deprel to compound
+#bind   set_deprel_compound to key u
+sub set_deprel_compound
+{
+    set_deprel($this, 'compound');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_conj as menu Set deprel to conj
+#bind   set_deprel_conj to key j
+sub set_deprel_conj
+{
+    set_deprel($this, 'conj');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_cop as menu Set deprel to cop
+#bind   set_deprel_cop to key c
+sub set_deprel_cop
+{
+    set_deprel($this, 'cop');
+    # The input annotation of the Upper Sorbian data lacks the AUX tag. All auxiliary verbs are tagged VERB.
+    $this->{tag} = 'AUX';
+    $this->set_attr('conll/cpos', 'AUX');
+    $this->set_attr('iset/verbtype', 'aux');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_csubj as menu Set deprel to csubj
+#bind   set_deprel_csubj to key S
+sub set_deprel_csubj
+{
+    set_deprel($this, 'csubj');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_csubj_pass as menu Set deprel to csubj:pass
+#bind   set_deprel_csubj_pass to key Y
+sub set_deprel_csubj_pass
+{
+    set_deprel($this, 'csubj:pass');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_dep as menu Set deprel to dep
+#bind   set_deprel_dep to key ?
+sub set_deprel_dep
+{
+    set_deprel($this, 'dep');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_det as menu Set deprel to det
+#bind   set_deprel_det to key d
+sub set_deprel_det
+{
+    set_deprel($this, 'det');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_det_numgov as menu Set deprel to det:numgov
+#bind   set_deprel_det_numgov to key G
+sub set_deprel_det_numgov
+{
+    set_deprel($this, 'det:numgov');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_det_nummod as menu Set deprel to det:nummod
+#bind   set_deprel_det_nummod to key D
+sub set_deprel_det_nummod
+{
+    set_deprel($this, 'det:nummod');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_discourse as menu Set deprel to discourse
+#bind   set_deprel_discourse to key t
+sub set_deprel_discourse
+{
+    set_deprel($this, 'discourse');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_expl_pass as menu Set deprel to expl:pass
+#bind   set_deprel_expl_pass to key p
+sub set_deprel_expl_pass
+{
+    set_deprel($this, 'expl:pass');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_expl_pv as menu Set deprel to expl:pv
+#bind   set_deprel_expl_pv to key e
+sub set_deprel_expl_pv
+{
+    set_deprel($this, 'expl:pv');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_fixed as menu Set deprel to fixed
+#bind   set_deprel_fixed to key f
+sub set_deprel_fixed
+{
+    set_deprel($this, 'fixed');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_flat as menu Set deprel to flat
+#bind   set_deprel_flat to key F
+sub set_deprel_flat
+{
+    set_deprel($this, 'flat');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_goeswith as menu Set deprel to goeswith
+#bind   set_deprel_goeswith to key g
+sub set_deprel_goeswith
+{
+    set_deprel($this, 'goeswith');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_iobj as menu Set deprel to iobj
+#bind   set_deprel_iobj to key i
+sub set_deprel_iobj
+{
+    set_deprel($this, 'iobj');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_list as menu Set deprel to list
+#bind   set_deprel_list to key l
+sub set_deprel_list
+{
+    set_deprel($this, 'list');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_mark as menu Set deprel to mark
+#bind   set_deprel_mark to key Z
+sub set_deprel_mark
+{
+    set_deprel($this, 'mark');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_nmod as menu Set deprel to nmod
+#bind   set_deprel_nmod to key n
+sub set_deprel_nmod
+{
+    set_deprel($this, 'nmod');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_nsubj as menu Set deprel to nsubj
+#bind   set_deprel_nsubj to key s
+sub set_deprel_nsubj
+{
+    set_deprel($this, 'nsubj');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_nsubj_pass as menu Set deprel to nsubj:pass
+#bind   set_deprel_nsubj_pass to key y
+sub set_deprel_nsubj_pass
+{
+    set_deprel($this, 'nsubj:pass');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_nummod as menu Set deprel to nummod
+#bind   set_deprel_nummod to key m
+sub set_deprel_nummod
+{
+    set_deprel($this, 'nummod');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_nummod_gov as menu Set deprel to nummod:gov
+#bind   set_deprel_nummod_gov to key M
+sub set_deprel_nummod_gov
+{
+    set_deprel($this, 'nummod:gov');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_obj as menu Set deprel to obj
+#bind   set_deprel_obj to key o
+sub set_deprel_obj
+{
+    set_deprel($this, 'obj');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_obl as menu Set deprel to obl
+#bind   set_deprel_obl to key b
+sub set_deprel_obl
+{
+    set_deprel($this, 'obl');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_obl_agent as menu Set deprel to obl:agent
+#bind   set_deprel_obl_agent to key B
+sub set_deprel_obl_agent
+{
+    set_deprel($this, 'obl:agent');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_orphan as menu Set deprel to orphan
+#bind   set_deprel_orphan to key O
+sub set_deprel_orphan
+{
+    set_deprel($this, 'orphan');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_parataxis as menu Set deprel to parataxis
+#bind   set_deprel_parataxis to key P
+sub set_deprel_parataxis
+{
+    set_deprel($this, 'parataxis');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_punct as menu Set deprel to punct
+#bind   set_deprel_punct to key ;
+sub set_deprel_punct
+{
+    set_deprel($this, 'punct');
+    # If we are doing this to a symbol (e.g. "*"), make sure to change the part-of-speech tag as well.
+    $this->{tag} = 'PUNCT';
+    $this->set_attr('conll/cpos', 'PUNCT');
+    $this->set_attr('iset/pos', 'punc');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_root as menu Set deprel to root
+#bind   set_deprel_root to key r
+sub set_deprel_root
+{
+    set_deprel($this, 'root');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_vocative as menu Set deprel to vocative
+#bind   set_deprel_vocative to key T
+sub set_deprel_vocative
+{
+    set_deprel($this, 'vocative');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert set_deprel_xcomp as menu Set deprel to xcomp
+#bind   set_deprel_xcomp to key x
+sub set_deprel_xcomp
+{
+    set_deprel($this, 'xcomp');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+###############################################################################
+# Part-of-speech tags and morphology.
+###############################################################################
+
+#insert set_noun as menu Set upos to NOUN
+#bind   set_noun to key Ctrl+N
+sub set_noun
+{
+    $this->set_tag('NOUN');
+    $this->set_conll_cpos('NOUN');
+    # Limit Interset features to those used for nouns in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'noun';
+    $hash->{nountype} = 'com';
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|animacy|case|foreign|gender|nountype|number|polarity|pos)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_propn as menu Set upos to PROPN
+#bind   set_propn to key Ctrl+Z
+sub set_propn
+{
+    $this->set_tag('PROPN');
+    $this->set_conll_cpos('PROPN');
+    # Limit Interset features to those used for nouns in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'noun';
+    $hash->{nountype} = 'prop';
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|animacy|case|foreign|gender|nametype|nountype|number|polarity|pos)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_adjective as menu Set upos to ADJ
+#bind   set_adjective to key Ctrl+A
+sub set_adjective
+{
+    $this->set_tag('ADJ');
+    $this->set_conll_cpos('ADJ');
+    # Limit Interset features to those used for adjectives in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'adj';
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|animacy|case|degree|foreign|gender|number|polarity|pos)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    if(!defined($hash->{degree}))
+    {
+        $hash->{degree} = 'pos';
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_pronoun as menu Set upos to PRON
+#bind   set_pronoun to key Ctrl+P
+sub set_pronoun
+{
+    $this->set_tag('PRON');
+    $this->set_conll_cpos('PRON');
+    # Limit Interset features to those used for pronouns in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'noun';
+    # We need a non-empty prontype. I am using "prs" because personal pronouns are the core type of pronouns.
+    if(!defined($hash->{prontype}))
+    {
+        $hash->{prontype} = 'prs';
+    }
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|animacy|case|foreign|gender|number|person|pos|poss|possgender|possnumber|prontype|reflex)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_determiner as menu Set upos to DET
+#bind   set_determiner to key Ctrl+D
+sub set_determiner
+{
+    $this->set_tag('DET');
+    $this->set_conll_cpos('DET');
+    # Limit Interset features to those used for adjectives in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'adj';
+    # We need a non-empty prontype. I am using "tot" because this macro is used to retag "každý" ("every") from ADJ to DET.
+    if(!defined($hash->{prontype}))
+    {
+        $hash->{prontype} = 'tot';
+    }
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|animacy|case|foreign|gender|number|numtype|pos|poss|possgender|possnumber|prontype|reflex)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    ###!!! Keep the original Prague tag, i.e. "každý" will have the UPOS DET but its XPOS will preserve the information that in Prague it is tagged as adjective.
+    #$this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_numeral as menu Set upos to NUM
+#bind   set_numeral to key Ctrl+M
+sub set_numeral
+{
+    $this->set_tag('NUM');
+    $this->set_conll_cpos('NUM');
+    # Limit Interset features to those used for cardinal numerals in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'num';
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|animacy|case|foreign|gender|number|numtype|pos|prontype)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_verb as menu Set upos to VERB
+#bind   set_verb to key Ctrl+V
+sub set_verb
+{
+    $this->set_tag('VERB');
+    $this->set_conll_cpos('VERB');
+    # Limit Interset features to those used for verbs in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'verb';
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|animacy|aspect|case|foreign|gender|mood|number|person|polarity|pos|tense|voice)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    if(!defined($hash->{degree}))
+    {
+        $hash->{degree} = 'pos';
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_auxiliary as menu Set upos to AUX
+#bind   set_auxiliary to key Ctrl+U
+sub set_auxiliary
+{
+    $this->set_tag('AUX');
+    $this->set_conll_cpos('AUX');
+    # Limit Interset features to those used for verbs in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'verb';
+    $hash->{verbtype} = 'aux';
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|animacy|aspect|case|foreign|gender|mood|number|person|polarity|pos|tense|voice)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    if(!defined($hash->{degree}))
+    {
+        $hash->{degree} = 'pos';
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_adv as menu Set upos to ADV
+#bind   set_adv to key Ctrl+B
+sub set_adv
+{
+    $this->set_tag('ADV');
+    $this->set_conll_cpos('ADV');
+    # Limit Interset features to those used for adverbs in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'adv';
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|degree|foreign|numtype|polarity|pos|prontype)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_adp as menu Set upos to ADP
+#bind   set_adp to key Ctrl+R
+sub set_adp
+{
+    $this->set_tag('ADP');
+    $this->set_conll_cpos('ADP');
+    # Limit Interset features to those used for prepositions in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'adp';
+    $hash->{adpostype} = 'prep';
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|adpostype|case|foreign|pos)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_cconj as menu Set upos to CCONJ
+#bind   set_cconj to key Ctrl+C
+sub set_cconj
+{
+    $this->set_tag('CCONJ');
+    $this->set_conll_cpos('CCONJ');
+    # Limit Interset features to those used for coordinating conjunctions in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'conj';
+    $hash->{conjtype} = 'coor';
+    foreach my $k (keys(%{$hash}))
+    {
+        #unless($k =~ m/^(abbr|conjtype|foreign|mood|number|person|pos|verbtype)$/)
+        unless($k =~ m/^(conjtype|pos)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_sconj as menu Set upos to SCONJ
+#bind   set_sconj to key Ctrl+S
+sub set_sconj
+{
+    $this->set_tag('SCONJ');
+    $this->set_conll_cpos('SCONJ');
+    # Limit Interset features to those used for coordinating conjunctions in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'conj';
+    $hash->{conjtype} = 'sub';
+    foreach my $k (keys(%{$hash}))
+    {
+        #unless($k =~ m/^(abbr|conjtype|foreign|pos)$/)
+        unless($k =~ m/^(conjtype|pos)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_part as menu Set upos to PART
+#bind   set_part to key Ctrl+T
+sub set_part
+{
+    $this->set_tag('PART');
+    $this->set_conll_cpos('PART');
+    # Limit Interset features to those used with particles in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'part';
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|foreign|pos)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_interjection as menu Set upos to INTJ
+#bind   set_interjection to key Ctrl+I
+sub set_interjection
+{
+    $this->set_tag('INTJ');
+    $this->set_conll_cpos('INTJ');
+    # Limit Interset features to those used with interjections in the Czech tagset.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'int';
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(abbr|foreign|pos)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_symbol as menu Set upos to SYM
+#bind   set_symbol to key Ctrl+Y
+sub set_symbol
+{
+    $this->set_tag('SYM');
+    $this->set_conll_cpos('SYM');
+    # Limit Interset features to those used with symbols.
+    my $hash = $this->iset()->get_hash();
+    $hash->{pos} = 'sym';
+    foreach my $k (keys(%{$hash}))
+    {
+        unless($k =~ m/^(pos)$/)
+        {
+            delete($hash->{$k});
+        }
+    }
+    $this->iset()->set_hash($hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_unknown_pos as menu Set upos to X
+#bind   set_unknown_pos to key Ctrl+X
+sub set_unknown_pos
+{
+    $this->set_tag('X');
+    $this->set_conll_cpos('X');
+    # Limit Interset features to those used with symbols.
+    my %empty_hash;
+    $this->iset()->set_hash(\%empty_hash);
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+###############################################################################
+# Morphological features.
+###############################################################################
+
+#insert set_masculine as menu Set gender to masculine
+#bind   set_masculine to key Ctrl+m
+sub set_masculine
+{
+    $this->iset()->set('gender', 'masc');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_feminine as menu Set gender to feminine
+#bind   set_feminine to key Ctrl+f
+sub set_feminine
+{
+    $this->iset()->set('gender', 'fem');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_neuter as menu Set gender to neuter
+#bind   set_neuter to key Ctrl+o
+sub set_neuter
+{
+    $this->iset()->set('gender', 'neut');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_singular as menu Set number to singular
+#bind   set_singular to key Ctrl+s
+sub set_singular
+{
+    $this->iset()->set('number', 'sing');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_plural as menu Set number to plural
+#bind   set_plural to key Ctrl+p
+sub set_plural
+{
+    $this->iset()->set('number', 'plur');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_nominative as menu Set case to nominative
+#bind   set_nominative to key Ctrl+n
+sub set_nominative
+{
+    $this->iset()->set('case', 'nom');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_genitive as menu Set case to genitive
+#bind   set_genitive to key Ctrl+g
+sub set_genitive
+{
+    $this->iset()->set('case', 'gen');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_dative as menu Set case to dative
+#bind   set_dative to key Ctrl+d
+sub set_dative
+{
+    $this->iset()->set('case', 'dat');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_accusative as menu Set case to accusative
+#bind   set_accusative to key Ctrl+a
+sub set_accusative
+{
+    $this->iset()->set('case', 'acc');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_vocative as menu Set case to vocative
+#bind   set_vocative to key Ctrl+v
+sub set_vocative
+{
+    $this->iset()->set('case', 'voc');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_locative as menu Set case to locative
+#bind   set_locative to key Ctrl+l
+sub set_locative
+{
+    $this->iset()->set('case', 'loc');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_instrumental as menu Set case to instrumental
+#bind   set_instrumental to key Ctrl+i
+sub set_instrumental
+{
+    $this->iset()->set('case', 'ins');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert set_infinitive as menu Set form to infinitive
+#bind   set_infinitive to key Ctrl+j
+sub set_infinitive
+{
+    $this->iset()->set('verbform', 'inf');
+    $this->iset()->clear('mood');
+    $this->iset()->clear('tense');
+    $this->iset()->clear('person');
+    $this->iset()->clear('number');
+    $this->iset()->clear('gender');
+    $this->set_conll_feat(join('|', $this->iset()->get_ufeatures()));
+    $this->set_conll_pos(Lingua::Interset::encode($xpostagset, $this->iset()));
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+###############################################################################
+# Beyond deprels: inserting, removing, moving, splitting and merging nodes.
+###############################################################################
+
+# Remove for example an ungrammatical comma in a sentence?
+# There is also menu Node / Remove Active Node. It seems to lead to a different
+# method than $this->remove() because it does not take care of adjusting the ords
+# of the other nodes (but it does reattach children).
+#insert remove_node as menu Remove node
+#bind   fix_question_mark to key KP_Del
+sub remove_node
+{
+    # If there are children, re-attach them to my parent.
+    my $parent = $this->parent();
+    my @children = $this->children();
+    foreach my $child (@children)
+    {
+        $child->set_parent($parent);
+    }
+    # If we are removing a punctuation symbol, chances are that the left neighbor has no_space_after set and it is no longer valid.
+    # Find the left neighbor.
+    my $root = $this->get_root();
+    my @nodes = grep {$_->ord() < $this->{ord}} ($root->get_descendants({'ordered' => 1}));
+    if(scalar(@nodes) > 0 && $nodes[-1]->no_space_after() && !$this->no_space_after())
+    {
+        $nodes[-1]->set_no_space_after(undef);
+    }
+    # It is not clear whether the method $this->remove() also adjusts the sentence attribute of the current zone.
+    # Before removing, we can adjust it by the following command (provided we have collected the new text in $sentence):
+    # $this->get_zone()->set_sentence($sentence);
+    # However, I don't know how to make it immediately visible in the upper part of the Tred view. It will be saved though.
+    # Remove the node. The method will also take care of decreasing ords of all subsequent nodes.
+    $this->remove();
+    $tredview->recompute_visualization($root->get_bundle());
+}
+
+# Word order.
+#insert move_node_left as menu Move node left
+#bind   move_node_left to key 1
+sub move_node_left
+{
+    die('Ord is already <= 1') if($this->{ord} <= 1);
+    # Find the left neighbor.
+    my $root = $this->get_root();
+    my @nodes = grep {$_->ord() < $this->{ord}} ($root->get_descendants({'ordered' => 1}));
+    if(scalar(@nodes) > 0 && $nodes[-1]->ord() == $this->{ord}-1)
+    {
+        $nodes[-1]->_set_ord($this->{ord});
+    }
+    $this->{ord}--;
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+#insert move_node_right as menu Move node right
+#bind   move_node_right to key 2
+sub move_node_right
+{
+    # Find the right neighbor.
+    my $root = $this->get_root();
+    my @nodes = grep {$_->ord() > $this->{ord}} ($root->get_descendants({'ordered' => 1}));
+    die('Already the last node') if(scalar(@nodes)==0);
+    if($nodes[0]->ord() == $this->{ord}+1)
+    {
+        $nodes[0]->_set_ord($this->{ord});
+    }
+    $this->{ord}++;
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($this->get_bundle());
+}
+
+# Tokenization.
+
+#insert set_no_space_after as menu Set no space after
+#bind set_no_space_after to key Shift+Space
+sub set_no_space_after
+{
+    $this->set_no_space_after(1);
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert clear_no_space_after as menu Clear no space after
+#bind clear_no_space_after to key Space
+sub clear_no_space_after
+{
+    $this->set_no_space_after(undef);
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert merge_node_left as menu Merge node left
+sub merge_node_left
+{
+    die('Ord is already <= 1') if($this->{ord} <= 1);
+    # Find the left neighbor.
+    my $root = $this->get_root();
+    my @nodes = grep {$_->ord() < $this->{ord}} ($root->get_descendants({'ordered' => 1}));
+    if(scalar(@nodes) == 0)
+    {
+        die('No left neighbor found');
+    }
+    my $neighbor = $nodes[-1];
+    if($neighbor->no_space_after())
+    {
+        $neighbor->{form} .= $this->{form};
+        $neighbor->{lemma} .= $this->{lemma};
+    }
+    else
+    {
+        $neighbor->{form} .= ' '.$this->{form};
+        $neighbor->{lemma} .= ' '.$this->{lemma};
+    }
+    $neighbor->set_no_space_after($this->no_space_after());
+    # This macro is currently only used to merge two parts of a long number with spaces ('25 000') and we do not care about part of speech tags and features.
+    # Remove the current node. The method will also take care of decreasing ords of all subsequent nodes.
+    $this->remove();
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root->get_bundle());
+}
+
+#insert clone_node_right as menu Clone node right
+sub clone_node_right
+{
+    die('Cannot clone root') if($this->is_root());
+    my $clone = $this->create_child();
+    $clone->set_form($this->form());
+    $clone->set_lemma($this->lemma());
+    $clone->set_tag($this->tag());
+    $clone->set_conll_pos($this->conll_pos());
+    my $iset = $this->iset()->get_hash();
+    $clone->iset()->set_hash($iset);
+    $clone->set_conll_cpos($this->conll_cpos());
+    $clone->set_conll_feat($this->conll_feat());
+    $clone->set_deprel($this->deprel());
+    $clone->set_afun($this->afun());
+    $clone->set_conll_deprel($this->conll_deprel());
+    $clone->set_translit($this->translit());
+    $clone->set_gloss($this->gloss());
+    # Shift all nodes to the right and make space for the cloned node.
+    my @nodes = $this->get_root()->get_descendants({'ordered' => 1});
+    foreach my $node (@nodes)
+    {
+        if($node->ord() > $this->ord())
+        {
+            $node->_set_ord($node->ord()+1);
+        }
+    }
+    $clone->_set_ord($this->ord()+1);
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
+
+#insert fix_question_mark as menu Fix question mark
+#bind   fix_question_mark to key ?
+sub fix_question_mark
+{
+    die('This is not *') unless($this->{form} eq '*');
+    $this->{form} = '?';
+    $this->{lemma} = '?';
+    set_deprel($this, 'punct');
+    # If we are doing this to a symbol (e.g. "*"), make sure to change the part-of-speech tag as well.
+    $this->{tag} = 'PUNCT';
+    $this->set_attr('conll/cpos', 'PUNCT');
+    $this->set_attr('iset/pos', 'punc');
+    # The visible labels are pre-computed be the Treex extension and are not automatically updated after node attributes change.
+    $tredview->recompute_visualization($root);
+}
