@@ -42,6 +42,7 @@ UTESTS = \
 	HamleDT::Test::UD::Subjunctions \
 	HamleDT::Test::UD::CcIsConjunction \
 	HamleDT::Test::UD::CcIsLeaf \
+	HamleDT::Test::UD::CcDependsOnFollowingConjunct \
 	HamleDT::Test::UD::PronounIsNotMark \
 	HamleDT::Test::UD::AdverbIsNotNmod \
 	HamleDT::Test::UD::CompoundPrepositions \
