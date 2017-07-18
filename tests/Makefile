@@ -22,7 +22,7 @@ SETS={train,dev,test}
 # We must specify the processing phase that we want to test: 01 = Prague conversion, 02 = UD conversion, 03 = corrected UD.
 # Obviously the UD tests should be applied to 02 or 03 but not to 01. 02 is the default (some treebanks don't have 03).
 # The way it is written we cannot test both 02 and 03 at the same time: we would see errors from both aggregated under one treebank code.
-PHASE=02
+PHASE=03
 UFILES='!$(HAMLEDT_DATA)/{$(TREEBANKS)}/treex/$(PHASE)/$(SETS)/*.treex.gz'
 
 # P-treebanks are those that have the Prague conversion in 01, i.e. those whose UD version is created via Prague.
