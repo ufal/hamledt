@@ -61,7 +61,7 @@ Výsledkem je 1601 treexových souborů.
 
 Následující příkaz rovnou vyfiltruje věty, kde se oba anotátoři zcela shodují, a uloží je do stb-filtered (některé soubory mohou zůstat bez stromů).
 
-treex -p -j100 -Lsk Read::Treex from='!/net/work/people/zeman/stb-merged/*/*.treex.gz' Eval::InterAnnotatorAgreement Write::Treex substitute='{stb-merged}{stb-filtered}' > iaa.log
+treex -p -j100 -Lsk Read::Treex from='!/net/data/treebanks/sk/stb-merged/*/*.treex.gz' Eval::InterAnnotatorAgreement Write::Treex substitute='{stb-merged}{stb-filtered}' > iaa.log
 perl -e 'while(<>) { chomp; my($x,$i)=split(/\t/,$_); $h{$x} += $i; } @k=sort(keys(%h)); foreach my $k (@k) { print "$k\t$h{$k}\n" }' < iaa.log
 
 complete_match  10604
