@@ -10,7 +10,7 @@ SOURCEDIR=FicTree
 # Convert it to CoNLL-X so that we can use the standard Treex reader.
 source:
 	cat $(SOURCEDIR)/*.vert | \
-		perl -CDS -pe 's/^([0-9]+?)\t(.*?)\t(.*?)\t(.*?)\t([0-9]+?)\t(.*?)$/$1\t$2\t$3\t$4\t$4\t_\t$5\t$6\t_\t_/' \
+		perl -CDS -pe 's/^([0-9]+?)\t(.*?)\t(.*?)\t(.*?)\t([0-9]+?)\t(.*?)$$/$$1\t$$2\t$$3\t$$4\t$$4\t_\t$$5\t$$6\t_\t_/' \
 		> data/source/test.conll
 
 treex: conll_to_treex
