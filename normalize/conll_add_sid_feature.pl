@@ -38,16 +38,16 @@ foreach my $file (@files)
         while(<IFILE>)
         {
             my @f = split(/\t/, $_);
-            # In CoNLL-X, features are column index 6.
-            if(scalar(@f) >= 7)
+            # In CoNLL-X, features are column index 5.
+            if(scalar(@f) >= 6)
             {
                 my @feats;
-                unless($f[6] eq '_')
+                unless($f[5] eq '_')
                 {
-                    @feats = split(/\|/, $f[6]);
+                    @feats = split(/\|/, $f[5]);
                 }
                 push(@feats, "sid=$basename-s$sid");
-                $f[6] = join('|', @feats);
+                $f[5] = join('|', @feats);
                 $_ = join("\t", @f);
             }
             print OFILE;
