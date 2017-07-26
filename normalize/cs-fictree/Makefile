@@ -12,7 +12,7 @@ include ../common.mak
 # It is no longer needed because the second version we got is already converted to CoNLL-X.
 SOURCEDIR=FicTree_CoNLLx
 source:
-	cat $(SOURCEDIR)/*.vert > data/source/test.conll
+	cat $(SOURCEDIR)/*.conll > data/source/test.conll
 
 treex: conll_to_treex
 
