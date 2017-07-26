@@ -11,11 +11,13 @@ include ../common.mak
 # Convert it to CoNLL-X so that we can use the standard Treex reader.
 # perl -CDS -pe 's/^([0-9]+?)\t(.*?)\t(.*?)\t(.*?)\t([0-9]+?)\t(.*?)$$/$$1\t$$2\t$$3\t$$4\t$$4\t_\t$$5\t$$6\t_\t_/'
 # It is no longer needed because the second version we got is already converted to CoNLL-X.
-SOURCEDIR=FicTree_CoNLLx
+SOURCEDIR=FicTree_sid
 source:
 	cat $(SOURCEDIR)/*.conll > data/source/test.conll
 
-treex: conll_to_treex
+# We do not use the conll_to_treex goal from common.mak because we want the sentence ids to contain original file names.
+treex:
+	$(TREEX) $(IMPORTX) from=$(IN)/test.conll sid_within_feat=1 $(POST_IMPORTX_BLOCKS) $(WRITE0) path=$(DIR0)/test/
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud
