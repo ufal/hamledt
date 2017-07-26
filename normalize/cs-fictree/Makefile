@@ -2,6 +2,7 @@ LANGCODE=cs
 TREEBANK=cs-fictree
 UDCODE=cs_fictree
 UDNAME=Czech-FicTree
+HARMONIZE=HarmonizeFicTree
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
 include ../common.mak
 
