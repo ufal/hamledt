@@ -5,13 +5,14 @@ UDNAME=Czech-FicTree
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
 include ../common.mak
 
-SOURCEDIR=FicTree
+# The first version we got from ÚTKL was in their vertical format and we converted it to CoNLL-X like this:
 # The .vert format used in ÚTKL is like CoNLL but it has only 6 columns: ID FORM LEMMA TAG HEAD DEPREL.
 # Convert it to CoNLL-X so that we can use the standard Treex reader.
+# perl -CDS -pe 's/^([0-9]+?)\t(.*?)\t(.*?)\t(.*?)\t([0-9]+?)\t(.*?)$$/$$1\t$$2\t$$3\t$$4\t$$4\t_\t$$5\t$$6\t_\t_/'
+# It is no longer needed because the second version we got is already converted to CoNLL-X.
+SOURCEDIR=FicTree_CoNLLx
 source:
-	cat $(SOURCEDIR)/*.vert | \
-		perl -CDS -pe 's/^([0-9]+?)\t(.*?)\t(.*?)\t(.*?)\t([0-9]+?)\t(.*?)$$/$$1\t$$2\t$$3\t$$4\t$$4\t_\t$$5\t$$6\t_\t_/' \
-		> data/source/test.conll
+	cat $(SOURCEDIR)/*.vert > data/source/test.conll
 
 treex: conll_to_treex
 
