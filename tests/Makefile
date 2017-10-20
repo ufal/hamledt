@@ -16,13 +16,13 @@ U14TREEBANKS=ar-ud14,bg-ud14,ca-ud14,cop-ud14,cs-ud14,cs-ud14cac,cs-ud14cltt,cu-
 UTREEBANKS=ar-ud20,ar-ud20nyuad,be-ud20,bg-ud20,ca-ud20,cop-ud20,cs-ud20,cs-ud20cac,cs-ud20cltt,cu-ud20,da-ud20,de-ud20,el-ud20,en-ud20,en-ud20lines,en-ud20partut,es-ud20,es-ud20ancora,et-ud20,eu-ud20,fa-ud20,fi-ud20,fi-ud20ftb,fr-ud20,fr-ud20partut,fr-ud20sequoia,ga-ud20,gl-ud20,gl-ud20treegal,got-ud20,grc-ud20,grc-ud20proiel,he-ud20,hi-ud20,hr-ud20,hu-ud20,id-ud20,it-ud20,it-ud20partut,ja-ud20,kk-ud20,ko-ud20,la-ud20,la-ud20ittb,la-ud20proiel,lv-ud20,lt-ud20,nl-ud20,nl-ud20lassysmall,no-ud20bokmaal,no-ud20nynorsk,pl-ud20,pt-ud20,pt-ud20br,ro-ud20,ru-ud20,ru-ud20syntagrus,sa-ud20,sk-ud20,sl-ud20,sl-ud20sst,sv-ud20,sv-ud20lines,ta-ud20,tr-ud20,uk-ud20,ug-ud20,ur-ud20,vi-ud20,zh-ud20
 # The tests will be performed on treebanks listed in the TREEBANKS variable.
 # We can either set it using one or more of the lists defined above, or list our own subset that we want to test now.
-TREEBANKS=sr-ud20
+TREEBANKS=cs-fictree
 # We can restrict the tests to training/development/test data only. All three portions are tested by default.
 SETS={train,dev,test}
 # We must specify the processing phase that we want to test: 01 = Prague conversion, 02 = UD conversion, 03 = corrected UD.
 # Obviously the UD tests should be applied to 02 or 03 but not to 01. 02 is the default (some treebanks don't have 03).
 # The way it is written we cannot test both 02 and 03 at the same time: we would see errors from both aggregated under one treebank code.
-PHASE=03
+PHASE=02
 UFILES='!$(HAMLEDT_DATA)/{$(TREEBANKS)}/treex/$(PHASE)/$(SETS)/*.treex.gz'
 
 # P-treebanks are those that have the Prague conversion in 01, i.e. those whose UD version is created via Prague.
