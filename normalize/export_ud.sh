@@ -36,13 +36,13 @@ UDTOOLS=$UDDIR/tools
 mkdir -p $UDDIR/UD_$lname
 cat *.conllu | $UDTOOLS/check_sentence_ids.pl
 cat *.conllu | $UDTOOLS/conllu-stats.pl > $UDDIR/UD_$lname/stats.xml
+cat *.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
+#udapy -HMAC ud.MarkBugs skip=no- < hsb-ud-test.conllu > bugs-hsb.html 2> >(tee log.txt >&2)
 for i in *.conllu ; do
   # Some treebanks do not have training data. Skip CoNLL-U files that have zero size.
   if [ -s $i ] ; then
     echo $i
     python $UDTOOLS/validate.py --noecho --lang=$lcode $i
-    udapy -HMAC ud.MarkBugs skip=no- < $i > bugs-`basename $i .conllu`.html
-    #udapy -HMAC ud.MarkBugs skip=no- < hsb-ud-test.conllu > bugs-hsb.html 2> >(tee log.txt >&2)
     mv $i $UDDIR/UD_$lname
   else
     rm $i
