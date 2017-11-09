@@ -8,6 +8,8 @@
 # vesm9211-001-p1s1
 # Czech Academic Corpus:
 # a01w-s1
+# Czech FicTree: three digits before sentence number are chunk number.
+# laskaneX000-s1
 # Prague Arabic Dependency Treebank:
 # afp.20000715.0001:p2u1
 # Copyright © 2017 Dan Zeman <zeman@ufal.mff.cuni.cz>
@@ -49,6 +51,24 @@ while(<>)
         {
             my $pid = $1;
             my $did = $2;
+            if($did ne $current_did)
+            {
+                print("# newdoc id = $did\n");
+                $current_did = $did;
+            }
+            if($pid ne $current_pid)
+            {
+                print("# newpar id = $pid\n");
+                $current_pid = $pid;
+            }
+            print("# sent_id = $sid\n");
+        }
+        # Czech FicTree
+        elsif($sid =~ m/^(.+?)(\d\d\d)-s[0-9A-Z]+$/)
+        {
+            my $did = $1;
+            my $pid = $2; # chunk id rather than paragraph id; chunks are shuffled randomly within document
+            $pid = $did.$pid;
             if($did ne $current_did)
             {
                 print("# newdoc id = $did\n");

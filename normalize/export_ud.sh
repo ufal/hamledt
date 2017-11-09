@@ -17,7 +17,7 @@ if [ "$lcode" == "cs" ] ; then
   zcat data/conllu/train/vesm9*.conllu.gz  | ../conllu_docpar_from_sentid.pl > cs-ud-train-v.conllu
   zcat data/conllu/dev/*.conllu.gz         | ../conllu_docpar_from_sentid.pl > cs-ud-dev.conllu
   zcat data/conllu/test/*.conllu.gz        | ../conllu_docpar_from_sentid.pl > cs-ud-test.conllu
-elif [ "$lcode" == "ar" ] || [ "$lcode" == "cs_cac" ] ; then
+elif [ "$lcode" == "ar" ] || [ "$lcode" == "cs_cac" ] || [ "$lcode" == "cs_fictree" ] ; then
   zcat data/conllu/train/*.conllu.gz | ../conllu_docpar_from_sentid.pl > $lcode-ud-train.conllu
   zcat data/conllu/dev/*.conllu.gz   | ../conllu_docpar_from_sentid.pl > $lcode-ud-dev.conllu
   zcat data/conllu/test/*.conllu.gz  | ../conllu_docpar_from_sentid.pl > $lcode-ud-test.conllu
