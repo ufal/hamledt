@@ -12,7 +12,7 @@ include ../common.mak
 # perl -CDS -pe 's/^([0-9]+?)\t(.*?)\t(.*?)\t(.*?)\t([0-9]+?)\t(.*?)$$/$$1\t$$2\t$$3\t$$4\t$$4\t_\t$$5\t$$6\t_\t_/'
 # It is no longer needed because the second version we got is already converted to CoNLL-X.
 source:
-	./catsource.sh > data/source/test.conll
+	./catsource.sh
 
 # We do not use the conll_to_treex goal from common.mak because we want the sentence ids to contain original file names.
 treex:
