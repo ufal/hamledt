@@ -16,7 +16,9 @@ source:
 
 # We do not use the conll_to_treex goal from common.mak because we want the sentence ids to contain original file names.
 treex:
-	$(TREEX) $(IMPORTX) from=$(IN)/test.conll sid_within_feat=1 $(POST_IMPORTX_BLOCKS) $(WRITE0) path=$(DIR0)/test/
+	$(TREEX) $(IMPORTX) from=$(IN)/train.conll sid_within_feat=1 $(POST_IMPORTX_BLOCKS) $(WRITE0) path=$(DIR0)/train/
+	$(TREEX) $(IMPORTX) from=$(IN)/dev.conll   sid_within_feat=1 $(POST_IMPORTX_BLOCKS) $(WRITE0) path=$(DIR0)/dev/
+	$(TREEX) $(IMPORTX) from=$(IN)/test.conll  sid_within_feat=1 $(POST_IMPORTX_BLOCKS) $(WRITE0) path=$(DIR0)/test/
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud
