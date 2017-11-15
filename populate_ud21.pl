@@ -21,6 +21,7 @@ my $CRELEASE = '21'; # compact string for HamleDT path, e.g. '14' for 'cs-ud14' 
 my $udpath = '/net/work/people/zeman/unidep';
 my @folders = udlib::list_ud_folders($udpath);
 print("Found ", scalar(@folders), " UD folders in $udpath.\n");
+my @hamledtfolders;
 foreach my $folder (@folders)
 {
     my $record = udlib::get_ud_files_and_codes($folder, $udpath);
@@ -48,6 +49,7 @@ foreach my $folder (@folders)
             my $lctreebank = $record->{tcode};
             my $key = $record->{code};
             my $hfolder = "$langcode-ud$CRELEASE$lctreebank";
+            push(@hamledtfolders, $hfolder);
             print("$folder --> $hfolder\n");
             if(1) # can be switched off for dry runs
             {
@@ -92,3 +94,30 @@ EOF
         closedir(DIR);
     }
 }
+# The Makefile in $HAMLEDT/normalize needs a list of all treebanks in the current UD release.
+# Generate the list so that it does not have to be typed manually.
+my $makefile_path = '/net/work/people/zeman/hamledt/normalize/Makefile';
+my $makefile_contents;
+open(MAKEFILE, $makefile_path) or die("Cannot read $makefile_path: $!");
+while(<MAKEFILE>)
+{
+    if(m/^TREEBANKS_UD$CRELEASE\s*=/)
+    {
+        # Discard the previous list, if any.
+    }
+    elsif(m/^TREEBANKS\s*=/)
+    {
+        my $list = "TREEBANKS_UD$CRELEASE = ".join(' ', @hamledtfolders)."\n";
+        print STDERR ($list);
+        $makefile_contents .= $list;
+        $makefile_contents .= "TREEBANKS = \$(TREEBANKS_UD$CRELEASE)\n";
+    }
+    else
+    {
+        $makefile_contents .= $_;
+    }
+}
+close(MAKEFILE);
+open(MAKEFILE, ">$makefile_path") or die("Cannot write $makefile_path: $!");
+print MAKEFILE ($makefile_contents);
+close(MAKEFILE);
