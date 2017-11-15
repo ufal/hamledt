@@ -49,7 +49,7 @@ foreach my $folder (@folders)
             my $key = $record->{code};
             my $hfolder = "$langcode-ud$CRELEASE$lctreebank";
             print("$folder --> $hfolder\n");
-            if(0) # can be switched off for dry runs
+            if(1) # can be switched off for dry runs
             {
                 my $hpath = "/net/work/people/zeman/hamledt/normalize/$hfolder";
                 system("mkdir -p $hpath");
