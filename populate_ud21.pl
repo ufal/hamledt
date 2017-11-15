@@ -18,6 +18,12 @@ my $CRELEASE = '21'; # compact string for HamleDT path, e.g. '14' for 'cs-ud14' 
 
 # We do not take the official release in /net/data because we test wether the UD_ folders are git repositories.
 ###!!! 14.11.2017 DZ: Ale nějak mi teď není jasné, proč to testujeme. Je k něčemu potřeba, abychom data brali z gitového repozitáře?
+###!!! Jedno možné vysvětlení, proč jsem se rozhodl brát data z /net/work/people/zeman/unidep místo z /net/data:
+###!!! Pokud se rozhodnu některé treebanky vylepšovat blokem FixUD a pokud to dělám v několika kolech třeba s mezilehlou ruční editací,
+###!!! budu asi chtít, aby source path v Makefilu ukazovala na /net/work/people/zeman/unidep, abych si při druhém a dalším make source
+###!!! bral data upravená v minulých kolech a ne ta, která byla součástí posledního vydání.
+###!!! Ale pokud je tohle jediný důvod, tak možná nestojí za to. Nanejvýš bych mohl alternativní cestu do Makefilu vygenerovat
+###!!! do jiné proměnné, aby byla v případě potřeby po ruce.
 my $udpath = '/net/work/people/zeman/unidep';
 my @folders = udlib::list_ud_folders($udpath);
 print("Found ", scalar(@folders), " UD folders in $udpath.\n");
