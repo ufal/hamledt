@@ -29,13 +29,15 @@ if(!defined($udrel) || !defined($lname) || !defined($ltcode))
     print STDERR ("Usage: generate_pmltq_yml_for_ud.pl --udrel 21 --lname 'Ancient Greek' [--tname PROIEL] --ltcode grc_proiel\n");
     die("Missing options");
 }
+my $udreldec = $udrel;
+$udreldec =~ s/^(\d)(\d+)$/$1.$2/;
 $lcode = $ltcode;
 $lcode =~ s/_.*//;
 $folder = $ltcode;
 $folder =~ s/_/-/;
 
 print("---\n");
-print("title: 'Universal Dependencies 2.0 – $lname");
+print("title: 'Universal Dependencies $udreldec – $lname");
 print(" – $tname") if(defined($tname) && $tname ne '');
 print("'\n");
 print("treebank_id: ud$udrel_$ltcode\n");
