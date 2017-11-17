@@ -91,17 +91,20 @@ foreach my $folder (@folders)
     my $script = "\#!/bin/bash\n";
     $script .= "cd /net/work/projects/pmltq/data/ud$udrel\n";
     $script .= "date\n";
-    $script .= "echo pmltq webdelete --config=\"$yamlfilename\"\n";
-    $script .= "pmltq webdelete --config=\"$yamlfilename\"\n";
-    $script .= "echo pmltq delete --config=\"$yamlfilename\"\n";
-    $script .= "pmltq delete --config=\"$yamlfilename\"\n";
     if($cluster)
     {
+        # PMLTQ does not create the output folder if it does not exist.
+        # Moreover, it emits a confusing message that $output_dir is undefined (although the config file defines it).
+        $script .= "mkdir -p sql_dump/$folder\n";
         $script .= "echo pmltq convert --config=\"$yamlfilename\"\n";
         $script .= "pmltq convert --config=\"$yamlfilename\"\n";
     }
     else
     {
+        $script .= "echo pmltq webdelete --config=\"$yamlfilename\"\n";
+        $script .= "pmltq webdelete --config=\"$yamlfilename\"\n";
+        $script .= "echo pmltq delete --config=\"$yamlfilename\"\n";
+        $script .= "pmltq delete --config=\"$yamlfilename\"\n";
         $script .= "echo pmltq initdb --config=\"$yamlfilename\"\n";
         $script .= "pmltq initdb --config=\"$yamlfilename\"\n";
         $script .= "echo pmltq load --config=\"$yamlfilename\"\n";
