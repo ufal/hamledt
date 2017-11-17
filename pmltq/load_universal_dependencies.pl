@@ -14,6 +14,16 @@ use cluster;
 use lib '/net/work/people/zeman/unidep/tools';
 use udlib;
 
+sub usage
+{
+    print STDERR ("Usage: perl $0 --cluster\n");
+    print STDERR ("       ... run pmltq convert on all UD treebanks in parallel on the cluster\n");
+    print STDERR ("       ... you must run this from the cluster head node (lrc1 or lrc2)\n");
+    print STDERR ("       perl $0\n");
+    print STDERR ("       ... without --cluster it will run pmltq load and the rest of actions\n");
+    print STDERR ("       ... you must be somewhere with DBD::Pg module (not on the cluster)\n");
+}
+
 my $udrel = '21'; # to be used in treebank id ("ud21"), paths etc.
 my $cluster = 0;
 GetOptions
