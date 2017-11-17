@@ -1,0 +1,404 @@
+ID1	FORM	LEMMA	CPOSTAG	NTRANS	FEATS	HEAD	DEPREL	HLEMMA	PHIL
+1	?MUNUS.LUGAL	MUNUS.LUGAL	NOUN	[MUNUS.LUGA]L	Gender=com|Number=sing	7	nsubj	hassussara-	Integr=1|Lang=Sum
+2	Kanis	Kanis	PROPN	URU.Ka-ni-is	Case=nom|Gender=com|Number=sing	1	nmod	_	Det=14|Integr=0|Lang=Hit
+3	30	30	NUM	30	NumType=card	4	nummod	_	Integr=0|Lang=Hit
+4	DUMU.MEŠ	DUMU	NOUN	DUMU.MEŠ	Gender=com|Number=plur	7	dobj	pulla-	Integr=0|Lang=Sum
+5	1-EN	1	NUM	I-EN	Number=card	6	nummod	eka-	Integr=0|Lang=Akk
+6	MU-anti	_	NOUN	MU-an-ti	Case=dat|Gender=com|Number=sing	7	nmod	wit-	Integr=0|Lang=Sum
+7	h?sta	has-	VERB	ha-a-as-ta	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hit
+									
+1	UMMA	_	ADV	UM-MA	_	0	root	kissan	Integr=0|Lang=Akk
+2-3	ŠI=MA	_	_	ŠI-MA	_	_	_	_	_
+2	ŠI	ŠI	PRON	_	Case=nom|Gender=fem|Number=plur|Person=3|PronType=pers	1	nsubj	_	Integr=0|Lang=Akk
+3	MA	MA	PART	_	Clitic=yes	2	discourse	_	Integr=0|Lang=Akk
+4-5	k?=wa	_	_	[ki]-i-wa	_	_	_	_	_
+4	k?	k?-	PRON	_	Case=nom|Gender=neut|Number=sing|PronType=dem	1	parataxis	_	Integr=1|Lang=Hit
+5	wa	wa	PART	_		4	discourse	_	Integr=0|Lang=Hit
+6	kuit	kui-	DET	ku-it	Case=acc|Gender=neut|Number=sing|PronType=rel	7	det	_	Integr=0|Lang=Hit
+7	walkuan	walkuan-	NOUN	wa-al-ku-an	Case=acc|Gender=neut|Number=sing	4	dobj	_	Integr=0|Lang=Hit
+8	h?suhun	has-	VERB	ha-a-as-hu-un	Mood=ind|Number=sing|Person=1|Tense=past|VerbForm=fin|Voice=act	1	acl	_	Integr=0|Lang=Hit
+									
+1	tuppus	tuppa-	NOUN	tup-pu-us	Case=acc|Gender=com|Number=plur	3	dobj	_	Integr=0|Lang=Hit
+2	sakanda	sakkar-	NOUN	sa-kan-da	Case=inst|Gender=neut|Number=sing	3	nmod	_	Integr=0|Lang=Hit
+3	sunnas	sunna-	VERB	su-un-na-as	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hit
+									
+1	nu	nu	CONJ	nu	_	5	cc	_	Integr=0|Lang=Hit
+2-3	DUMU.MEŠ=ŠU	_	_	DUMU.MEŠ-ŠU	_	_	_	_	_
+2	DUMU.MEŠ	DUMU	NOUN	_	Gender=com|Number=plur	5	dobj	pulla-	Integr=0|Lang=Sum
+3	ŠU	ŠU	DET	_	Clitic=yes|Gender=m|Number=sing|Person=3|Poss=yes|PronType=prs	2	nmod	sis	Integr=0|Lang=Akk
+4	andan	andan	ADV	an-da-an	_	5	advmod	_	Integr=0|Lang=Hit
+5	zik?t	zik-	VERB	zi-ke-e-et	Mood=ind|Number=sg|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hit
+									
+1-2	su=us	_	_	[s]u-us	_	_	_	_	_
+1	su	su	CONJ	_	_	4	cc	_	Integr=1|Lang=Hit
+2	us	as	PRON	_	Case=acc|Clitic=yes|Gender=com|Number=plur|Person=3|PronType=prs	4	dobj	_	Integr=0|Lang=Hit
+3	åD-a	ID	NOUN	ID-a	Case=dir|Gender=com|Number=sg	4	nmod	hapa-	Integr=0|Lang=Sum
+4	tarnas	tarna-	VERB	tar-na-as	Mood= ind|Number=sing|Person=3sg|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hit
+									
+1-2	åD-s=a	_	_	åD-sa	_	_	_	_	_
+1	åD-s	åD	NOUN	_	Case=nom|Gender=com|Number=sing	7	nsubj	_	Integr=0|Lang=Sum
+2	a	(m)a	PART	_	Clitic=yes	1	discourse	_	Integr=0|Lang=HIt
+3	ANA	ANA	ADP	A-NA	_	4	case	_	Integr=0|Lang=Akk
+4	A.AB.BA	A.AB.BA	NOUN	A.AB.BA	Gender=com|Number=sing	7	nmod	aruna-	Integr=0|Lang=Sum
+5	KUR	KUR	NOUN	KUR	Gender=neut|Number=sing	4	nmod	utne-	Integr=0|Lang=Sum
+6	Zalpuwa	Zalpa-	PROPN	URU.Za-al-pu-wa	Case=gen|Gender=com|Number=|NumType=sing	5	nmod	_	Det=14|Integr=0|Lang=Hit
+7	p?das	peda-	VERB	pé-e-da-a[s]	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=1|Lang=Hit
+									Integr=|Lang=
+1-2	DINGIR.DIDLI-s=a	_	_	[DING]IR.DIDLI-sa	_	_	_	_	_
+1	DINGIR.DIDLI-s	DINGIR	NOUN	_	Case=nom|Gender=com|Number=plur	6	nsubj	siu-	Integr=1|Lang=Sum
+2	a	(m)a	PART	_	Clitic=yes	1	discourse	_	Integr=0|Lang=Hit
+3	DUMU.MES-us	DUMU	NOUN	DUMU.MES-us	Case=acc|Gender=com|Number=plur	6	dobj	pulla-	Integr=0|Lang=Sum
+4	A.AB.BA-az	A.AB.BA	NOUN	A.AB.BA-az	Case=abl|Gender=com|Number=sing	6	nmod	aruna-	Integr=0|Lang=Sum
+5	sar?	sar?	ADP	sa-ra-a	_	6	compound	_	Integr=0|Lang=Hit
+6	d?ir	da-	VERB	da-a-ir	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hit
+									
+1-2	su=us	_	_	su-us	_	_	_	_	_
+1	su	su	CONJ	_	_	3	cc	_	Integr=0|Lang=Hit
+2	us	as	PRON	_	Case=acc|Clitic=yes|Gender=com|Number=plur|Person=3|PronType=prs	3	dobj	_	Integr=0|Lang=Hit
+3	sallanuskir	sallanusk-	VERB	sa-al-la-nu-us-kir	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hit
+									
+1	m?n	m?n	SCONJ	ma-a-an	_	4	mark	_	Integr=0|Lang=Hitt
+2	MU.HI.A	MU	NOUN	MU.HI.A	Gender=com|Number=plur	4	nsubj	wit-	Integr=0|Lang=Sum
+3	istarna	istarna	ADV	is-tar-na	_	4	advmod	_	Integr=0|Lang=Hitt
+4	p?ir	pai1-	VERB	pa-a-ir	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=|Voice=|	10	advcl	_	Integr=0|Lang=Hitt
+5	nu	nu	CONJ	nu	_	10	discourse	_	Integr=0|Lang=Hitt
+6	MUNUS.LUGAL	MUNUS.LUGAL	NOUN	M[UNUS.LUGA]L	Gender=com|Number=sing	10	nsubj	hassussara-	Integr=1|Lang=Sum
+7	namma	namma	ADV	nam-ma	_	10	advmod	_	Integr=0|Lang=Hitt
+8	30	30	NUM	30	NumType=card	9	nummod	_	Integr=0|Lang=Hitt
+9	MUNUS.DUMU	MUNUS.DUMU	NOUN	MUNUS.DUMU	Gender=com	10	dobj	_	Integr=0|Lang=Sum
+10	h?sta	has-	VERB	ha-a-as-ta	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	su=us	_	_	su-us	_	_	_	_	_
+1	su	su	CONJ	_	_	5	cc	_	Integr=0|Lang=Hit
+2	us	as	PRON	_	Case=acc|Clitic=yes|Gender=com|Number=plur|Person=3|PronType=prs	5	dobj	_	Integr=0|Lang=Hit
+3-4	apas=ila	_	_	a-pa-si-la	_	_	_	_	_
+3	apas	ap?-	PRON	_	Case=nom|Gender=com|Number=sing|PronType=dem	5	nsubj	_	Integr=0|Lang=Hitt
+4	ila	ila	PART	_	Clitic=yes	3	discourse		
+5	sallanuskat	sallanusk-	VERB	sa-al-la-nu-us-kat	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	DUMU.NITA.MEŠ	DUMU.NITA	NOUN	DUMU.NITA.MEŠ	Gender=com|Number=plur	4	nsubj	pulla-	Integr=0|Lang=Sum
+2	?ppa	?ppa	ADV	a[-ap-p]a	_	4	nmod	_	Integr=1|Lang=Hitt
+3	N?sa	N?sa	PROPN	URU.Ne-e-sa	Case=dir|Gender=com|Number=sing	4	nmod	_	Det=14|Integr=0|Lang=Hitt
+4	iyanzi	iya1-, iya2-	VERB	ia-an-zi	Mood=ind|Number=plur|Person=3|Tense=pres|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	nu	nu	CONJ	nu	_	3	cc	_	Integr=0|Lang=Hitt
+2	ANŠE-in	ANŠE	NOUN	ANŠE-in	Case=acc|Gender=com|Number=sing	3	dobj	targasna-	Integr=0|Lang=Sum
+3	nannianzi	nanna-	VERB	na-an-ni-an-zi	Mood=ind|Number=plur|Person=3|Tense=pres|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	m?n	m?n	SCONJ	ma-a-an	_	3	mark	_	Integr=0|Lang=Hitt
+2	Tamarra	Tamarra	PROPN	URU.Ta-ma-ar[-]	Case=dir|Gender=com|Number=sing	3	nmod	_	Det=14|Integr=1|Lang=Hitt
+3	arir	ar-	VERB	a-ri-ir	Mood= ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	5	advcl	_	Integr=0|Lang=Hitt
+4	nu	nu	CONJ	nu	_	5	discourse	_	Integr=0|Lang=Hitt
+5	tarsikanzi	tarsk-	VERB	tar-si-kan-zi	Mood=Ind|Number=plur|Person=3|Tense=pres|VerbForm=fin|Voice=act	0	root		Integr=0|Lang=Hitt
+6-7	k?ni=wa	_	_	ka-a-ni-wa	_	_	_	_	_
+6	k?ni	kani	ADV	_	_	9	advmod	_	Integr=0|Lang=Hitt
+7	wa	wa	PART	_	Clitic=yes	9	discourse	_	Integr=0|Lang=Hitt
+8	tunnakkis	tunnakessar	NOUN	tu-un-na-ak-ki-is	Case=dat|Gender=neut|Number=sing	6	appos	_	Integr=0|Lang=Hitt
+9	inutten	inu-/enu-	VERB	i-nu-ut-te-en	Mood=impv|Number=plur|Person=2|Tense=past|VerbForm=fin|Voice=act	5	parataxis	_	Integr=0|Lang=Hitt
+									
+1-2	nu=wa	_	_	nu-w[a]	_	_	_	_	_
+1	nu	nu	CONJ	_	_	4	cc	_	Integr=0|Lang=Hitt
+2	wa	wa	PART	_	Clitic=yes	4	discourse	_	Integr=1|Lang=Hitt
+3	ANŠE-is	ANŠE	NOUN	[ANŠ]E-is	Case=nom|Gender=com|Number=sing	4	nsubj	targasna-	Integr=1|Lang=Sum
+4	arkatta	ark-	VERB	ar-kat-ta	Mood=ind|Number=sing|Person=3|Tense=pres|VerbForm=fin|Voice=mid	0	root	_	Integr=0|Lang=Hitt
+									
+1	UMMA	UMMA	ADV	UM-MA	_	0	root	kissan	Integr=0|Lang=Akk
+2	LÚ.MEŠ	LÚ	NOUN	LÚ.MEŠ	Gender=com|Number=plur	1	nsubj	pesna-	Integr=0|Lang=Sum
+3	URU.LIM	URU	NOUN	URU.LIM	Case=gen|Gender=neut|Number=sing	2	nmod	happira-	Integr=0|Lang=Sum
+4	kuwapit	kuwapit	ADV	ku-wa-pí-it	PronType=rel	5	nmod	_	Integr=0|Lang=Hitt
+5	aumen	aus-	VERB	a-ú-me-en	Mood=ind|Number=plur|Person=1|Tense=past|VerbForm=fin|Voice=act	8	acl	_	Integr=0|Lang=Hitt
+6	nu	nu	CONJ	nu	_	8	discourse	_	Integr=0|Lang=Hitt
+7	ANŠE-is	ANŠE	NOUN	ANŠE-is	Case=nom|Gender=com|Number=sing	8	nsubj	targasna-	Integr=0|Lang=Hitt
+8	arkatta	ark-	VERB	[ar-k]a-ta	Mood=ind|Number=sing|Person=3|Tense=pres|VerbForm=fin|Voice=mid	1	parataxis	_	Integr=0|Lang=Hitt
+				_					
+1	UMMA	UMMA	ADV	UM-MA	_	0	root	kissan	Integr=0|Lang=Akk
+2	DUMU.MEŠ	DUMU	NOUN	DUMU.MEŠ	Gender=com|Number=plur	1	nsubj	pulla-	Integr=0|Lang=Sum
+3-4	wes=a	_	_	ú-e-sa	_	_	_	_	_
+3	wes	?k	PRON	_	Case=nom|Number=plur|Person=1|PronType=prs	6	nsubj	_	Integr=0|Lang=Hitt
+4	a	(m)a	PART	_	Clitic=yes	3	discourse	_	Integr=0|Lang=Hitt
+5	kuwapit	kuwapit	ADV	ku-wa-pí-it	PronType=rel	6	nmod	_	Integr=0|Lang=Hitt
+6	aumen	aus-	VERB	a-ú-me-en	Mood=ind|Number=plur|Person=1|Tense=past|VerbForm=fin|Voice=act	11	acl	_	Integr=0|Lang=Hitt
+7	nu	nu	CONJ	nu	_	11	discourse	_	Integr=0|Lang=Hitt
+8-9	MUNUS=za	_	_	MUNUS-za	_	_	_	_	_
+8	MUNUS	MUNUS	NOUN	_	Gender=com|Number=sing	11	nsubj	kuinna-	Integr=0|Lang=Sum
+9	za	za	PART	_	Clitic=yes	11	discourse	_	Integr=0|Lang=Hitt
+10	DUMU.NITA	DUMU	NOUN	DUMU.NITA	Gender=com|Number=sing	11	dobj	pulla-	Integr=0|Lang=Sum
+11	h?si	has-	VERB	ha-a-si	Mood=ind|Number=sing|Person=3|Tense=pres|VerbForm=fin|Voice=act	1	parataxis	_	Integr=0|Lang=Hitt
+									
+1-2	nu=za	_	_	nu-uz-za	_	_	_	_	_
+1	nu	nu	CONJ	_	_	5	cc	_	Integr=0|Lang=Hitt
+2	za	za	PART	_	Clitic=yes	5	discourse	_	Integr=0|Lang=Hitt
+3	anzas	?k	PRON	an-za-as	Case=acc|Number=plur|Person=1|PronType=prs	5	dobj	_	Integr=0|Lang=Hitt
+4	1=ŠU	1=ŠU	ADV	1-ŠU	_	5	nmod	_	Integr=0|Lang=Akk
+5	h?sta	has-	VERB	ha-a-as-ta	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									Integr=0|Lang=Hitt
+1	UMMA	UMMA	ADV	UM-MA	_	0	root	kissan	Integr=0|Lang=Akk
+2	LÚ.MEŠ	LÚ	NOUN	LÚ.MEŠ	Gender=com|Number=plur	1	nsubj	pesna-	Integr=0|Lang=Sum
+3	URU.LIM	URU	NOUN	URU.LIM	Case=gen|Gender=neut|Number=sing	2	nmod	happira-	Integr=0|Lang=Sum
+4	?sma	?sma	ADV	a-as-ma	_	11	discourse	_	Integr=0|Lang=Hitt
+5	anzel	?k	PRON	an-ze-[el]	Case=gen|Number=plur|Person=1|PronType=prs	6	nmod	_	Integr=01|Lang=Hitt
+6	?MUNUS.LUGAL	MUNUS.LUGAL	NOUN	[MUNUS.]LUGAL	Gender=com	11	nsubj	hassussara-	Integr=1|Lang=Sum
+7	Kanis	Kanis	PROPN	URU.Ka-ni-is	Case=nom|Gender=com|Number=sing	6	nmod	_	Det=14|Integr=0|Lang=Hit
+8	30	30	NUM	30	NumType=card	9	nummod	_	Integr=0|Lang=Hitt
+9	MUNUS.DUMU	MUNUS.DUMU	NOUN	MUNUS.DUMU	Gender=com	11	dobj	_	Integr=0|Lang=Sum
+10	1=ŠU	1=ŠU	ADV	1-ŠU	_	11	nmod	_	Integr=0|Lang=Akk
+11	h?sta	has-	VERB	ha-a-as-ta	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	?	?	CONJ	?	_	3	cc	_	Integr=0|Lang=Akk
+2	DUMU.NITA.MEŠ	DUMU.NITA	NOUN	DUMU.NITA.MEŠ	Gender=com|Number=plur	3	nsubj	pulla-	Integr=0|Lang=Sum
+3	merir	mer-	VERB	me-ri-ir	Mood= ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	nu=za	_	_	nu-uz-za	_	_	_	_	_
+1	nu	nu	CONJ	_	_	7	cc	_	Integr=0|Lang=Hitt
+2	za	za	PART	_	Clitic=yes	7	discourse	_	Integr=0|Lang=Hitt
+3	DUMU.NITA.MEŠ	DUMU	NOUN	DUMU.NITA.MEŠ	Gender=com|Number=plur	7	nsubj	_	Integr=0|Lang=Hitt
+4-5	karti=smi	_	_	kar-ti-is-mi					
+4	karti	ker	NOUN	_	Case=dat|Gender=neut|Number=sing	7	nmod	_	Integr=0|Lang=Hitt
+5	smi	sis	DET	_	Case=dat|Clitic=yes|Gender=neut|Number=plur|Person=3|Poss=yes|PronType=prs	4	nmod	_	Integr=0|Lang=Hitt
+6	peran	pera	ADP	pé-ra-an	_	4	case	_	Integr=0|Lang=Hitt
+7	m?mir	mema-	VERB	me-e-mi-ir	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+8-9	kuin=wa	_	_	ku-in-wa	_	_	_	_	_
+8	kuin	kui-	PRON	_	Case=acc|Gender=com|Number=sing|PronType=int	10	dobj	_	Integr=0|Lang=Hitt
+9	wa	wa	PART	_	Clitic=yes	10	discourse	_	Integr=0|Lang=Hitt
+10	sanhiskeweni	sanhisk-	VERB	sa-an-hi-is-ki-u-e-ni	Mood=ind|Number=plur|Person=1|Tense=pres|VerbForm=fin|Voice=act	7	parataxis	_	Integr=0|Lang=Hitt
+									
+1-3	UMMA=NI=san	_	_	UM-MA-NI-sa-an	_	_	_	_	_
+1	UMMA	UMMU	NOUN	_	Case=acc|Definiteness= red|Gender=fem|Number=sing	4	dobj	anna-	Integr=0|Lang=Akk
+2	NI	NI	DET	_	Clitic=yes|Number=plur|Person=1|Poss=yes|PronType=prs	1	nmod		
+3	san	san	PART	_	Clitic=yes	4	discourse	_	Integr=0|Lang=Hitt
+4	wemiyawen	wemiya-	VERB	ú-e-mi-ya-u-en	Mood=ind|Number=plur|Person=1|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	uwatten	uwa-	VERB	ú-wa-at-te-en	Mood=imp|Number=plur|Person=2|Tense=pres|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+2	N?sa	N?sa	PROPN	URU.Ne-e-sa	Case=dir|Gender=com|Number=sing	3	nmod	_	Det=14|Integr=0|Lang=Hitt
+3	paiwani	pai1-	VERB	pa-i-wa-ni	Mood=imp|Number=plur|Person=1|Tense=pres|VerbForm=fin|Voice=act	1	parataxis	_	Integr=0|Lang=Hitt
+									
+1	m?n	m?n	SCONJ	ma-a-an	_	3	mark	_	Integr=0|Lang=Hitt
+2	N?sa	N?sa	PROPN	URU.Ne-e-sa	Case=dir|Gender=com|Number=sing	3	nmod	_	Det=14|Integr=0|Lang=Hitt
+3	p?ir	pai1-	VERB	pa-a-ir	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	9	advcl	_	Integr=0|Lang=Hitt
+4-5	nu=smas	_	_	nu-us-ma-as	_	_	_	_	_
+4	nu	nu	CONJ	_	_	9	discourse	_	Integr=0|Lang=Hitt
+5	smas	as	PRON	_	Case=dat|Clitic=yes|Gender=com|Person=3|PronType=prs	9	iobj	_	Integr=0|Lang=Hitt
+6	DINGIR.DIDLI-es	DINGIR	NOUN	DINGIR.DIDLI-es	Case=nom|Gender=com|Number=plur	9	nsubj	siu-	Integr=0|Lang=Sum
+7	tama?n	tamai-	ADJ	ta-ma-i-in	Case=acc|Gender=com|Number=sing	8	amod	_	Integr=0|Lang=Hitt
+8	kar?tan	karat-	NOUN	ka-ra-a-ta-an	Case=acc|Gender=com|Number=sing	9	dobj	_	Integr=0|Lang=Hitt
+9	da?r	dai-	VERB	da-i-ir	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	nu	nu	CONJ	nu	_	6	cc	_	Integr=0|Lang=Hitt
+2-3	AMA=ŠUNU	_	_	AMA-ŠU-NU	_	_	_	_	_
+2	AMA	AMA	NOUN	_	Gender=com|Number=sing	6	nsubj	anna-	Integr=0|Lang=Sum
+3	ŠUNU	ŠU	PRON	_	Clitic=yes|Number=plur|Person=3|Poss=yes|PronType=prs	3	nmod	sis	Integr=0|Lang=Akk
+4	[]-us	_	NOUN	[x x-u]s	Case=acc|Gender=com|Number=plur	6	dobj	_	Integr=1
+5	natta	natta	PART	na-at-ta	_	6	neg	_	Integr=0|Lang=Hitt
+6	ganeszi	kanes-	VERB	ga-né-es-zi	Mood=ind|Number=sing|Person=3|Tense=pres|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	nu=za	_	_	nu-uz-za	_	_	_	_	_
+1	nu	nu	CONJ	_	_	8	cc	_	Integr=0|Lang=Hitt
+2	za	za	PART	_	Clitic=yes	8	discourse	_	Integr=0|Lang=Hitt
+3-4	DUMU.MUNUS.MEŠ=ŠA	_	_	DUMU.MUNUS.MEŠ-ŠA					
+3	DUMU.MUNUS.MEŠ	DUMU.MUNU	NOUN	_	Gender=com|Number=plur	8	dobj	pulla-	Integr=0|Lang=Sum
+4	ŠA	ŠU	PRON	_	Clitic=yes|Gender=fem|Number=sing|Person=3|Poss=yes|PronType=prs	3	nmod	_	Integr=0|Lang=Akk
+5	ANA	ANA	ADP	ANA	_	6	case	_	Integr=0|Lang=Akk
+6-7	DUMU.NITA.MEŠ=ŠA	_	_	DUMU.NITA.MEŠ-ŠA	_	_	_	_	_
+6	DUMU.NITA.MEŠ	DUMU.NITA	NOUN	_	Gender=com|Number=plur	8	iobj	_	Integr=0|Lang=Sum
+7	ŠA	ŠU	PRON	_	Clitic=yes|Gender=fem|Number=sing|Person=3|Poss=yes|PronType=prs	6	nmod	_	Integr=0|Lang=Akk
+8	pais	pai2-	VERB	pa-is	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	hantezziyas	hantezzia-	ADJ	[ha-an-te-e]z-zi-as	Case=nom|Gender=com|Number=plur	2	amod	_	Integr=0|Lang=Hitt
+2	DUMU.MEŠ	DUMU	NOUN	DUMU.MEŠ	Gender=com|Number=plur	6	nsubj	pulla-	Integr=0|Lang=Hitt
+3-4	nekus=smus	_	_	né-ku-us-mu-us	_	_	_	_	_
+3	nekus	neka-	NOUN	_	Case=acc|Gender=com|Number=plur	6	dobj	_	Integr=0|Lang=Hitt
+4	smus	sis	PRON	_	Case=acc|Clitic=yes|Gender=com|Number=plur|Person=3|Poss=yes|PronType=prs	3	nmod	_	Integr=0|Lang=Hitt
+5	natta	natta	PART	na-at-ta	_	6	neg	_	Integr=0|Lang=Hitt
+6	ganessir	kanes-	VERB	ga-né-es-sir	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+				_					
+1-3	appeziyas=a=san	_	_	ap-pé-ez-zi-ya-sa-as-sa-an	_	_	_	_	_
+1	appeziyas	appeziya-	ADJ	_	Case=nom|Gender=com|Number=sing	0	root	_	Integr=0|Lang=Hitt
+2	a	(m)a	PART	_	Clitic=yes	1	discourse	_	Integr=0|Lang=Hitt
+3	san	san	PART	_	Clitic=yes	1	discourse	_	Integr=1|Lang=Hitt
+4-5	k?s=za	_	_	[x x ku]-u?-us-za	_	_	_	_	_
+4	k?s	k?-	DET		Case=acc|Gender=com|Number=plur|PronType=dem	6	det	_	Integr=0|Lang=Hitt
+5	za	za	PART	_	Clitic=yes	8	discourse	_	Integr=0|Lang=Hitt
+6-7	n?kus=summus	_	_	né-e-ku-sum-mu-us	_	_	_	_	_
+6	nekus	neka-	NOUN	_	Case=acc|Gender=com|Number=plur	8	dobj	_	Integr=0|Lang=Hitt
+7	summus	mis	PRON	_	Case=acc|Clitic=yes|Gender=com|Number=plur|Person=1|Poss=yes|PronType=prs	6	nmod	_	Integr=0|Lang=Hitt
+8	dask?weni	da-	VERB	da-as-ke-e-u-e-n[i]	Mood=ind|Number=plur|Person=1|Tense=pres|VerbForm=fin|Voice=act	1	parataxis	_	Integr=1|Lang=Hitt
+				_					
+1	nu	nu	CONJ	[n]u	_	3	cc	_	Integr=1|Lang=Hitt
+2	l?	l?	PART	le-e	_	3	neg	_	Integr=0|Lang=Hitt
+3	saliktumari	salik-	VERB	sa-li-ik-tu-ma-ri	Mood=ind|Number=plur|Person=2|Tense=pres|VerbForm=fin|Voice=mid	0	root	_	Integr=0|Lang=Hitt
+									
+1	nu	nu	CONJ	nu	_	3	cc	_	Integr=0|Lang=Hitt
+2-3	katti=smi	_	_	k[at-t]i-is-mi					
+2	katti	katta	ADP	_	_	3	case	_	Integr=1|Lang=Hitt
+3	smi	sis	PRON	_	Case=dat|Clitic=yes|Gender=com|Number=plur|Person=3|Poss=yes|PronType=prs	4	nmod	_	Integr=0|Lang=Hitt
+4	se-[]	se-	VERB	s[e-]	VerbForm=fin	0	root	_	Integr=1|Lang=Hitt
+									
+1	Happis	Happis	PROPN	m.Ha-ap-pí-is	Case=nom|Gender=com|Number=sing	5	nsubj	_	Det=16|Integr=0|Lang=Hitt
+2	ANA	ANA	ADP	A-NA	_	3	case	_	Integr=0|Lang=Akk
+3	LÚ.MEŠ	LÚ	NOUN	LÚ.MEŠ	Gender=com|Number=plur	5	nmod	pesna-	Integr=0|Lang=Sum
+4	Zalpa	Zalpa	PROPN	URU.Za-al-pa	Case=nom|Gender=com|Number=sing	3	nmod	_	Det=14|Integr=0|Lang=Hitt
+5	tarskizzi	tar-	VERB	tar-si-ki-iz-zi	Mood=ind|Number=sing|Person=3|Tense=pres|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+6-7	?k=wa	_	_	ú-uk-wa	_	_	_	_	_
+6	?k	?k	PRON		Case=nom|Number=sing|Person=1|PronType=prs	11	nsubj	_	Integr=0|Lang=Hitt
+7	wa	wa	PART	_	Clitic=yes	11	discourse	_	Integr=0|Lang=Hitt
+8-9	atti=mi	_	_	a[t-ti-]-m[i]	_	_	_	_	_
+8	atti	atta-	NOUN	_	Case=dat|Gender=com|Number=sing	11	nmod	_	Integr=1|Lang=Hitt
+9	mi	mis	PRON	_	Case=dat|Clitic=yes|Number=sing|Person=1|Poss=yes|PronType=prs	8	nmod	_	Integr=1|Lang=Hitt
+10	natta	natta	PART	[na-at-t]a	_	11	neg	_	Integr=1|Lang=Hitt
+11	?ssus	?ssu-	ADJ	a-as-su-us	Case=nom|Gender=com|Number=sing	5	parataxis	_	Integr=0|Lang=Hitt
+									
+1-2	su=wa	_	_	su-wa	_	_	_	_	_
+1	su	su	CONJ	_	_	5	cc	_	Integr=0|Lang=Hitt
+2	wa	wa	PART	_	Clitic=yes	5	discourse	_	Integr=0|Lang=Hitt
+3	Hattusa	Hattusa	PROPN	URU.Ha-at-tu-sa	Case=dir|Gender=com|Number=sing	5	nmod	_	Det=14|Integr=0|Lang=Hitt
+4	henkani	henkan-	NOUN	hé-en-ga-ni	Case=dat|Gender=neut|Number=sing	5	nmod	_	Integr=0|Lang=Hitt
+5	p?un	pai1-	VERB	pa-a-un	Mood=ind|Number=sing|Person=1|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	?	?	CONJ	?	_	0	root	_	Integr=0|Lang=Hitt
+2	DUMU.MEŠ	DUMU	NOUN	DUMU.MEŠ	Gender=com|Number=sing	1	nsubj	_	Integr=0|Lang=Hitt
+3	Zalpa	Zalpa	_	URU.Za-al-pa	Case=dir|Gender=com|Number=sing	1	nmod	_	Integr=0|Lang=Hitt
+4-5	katti=mi	_	_	kat-tim-mi	_	_	_	_	_
+4	katti	katta	ADP	_	_	5	case	_	Integr=0|Lang=Hitt
+5	mi	mis	PRON	_	Case=dat|Clitic=yes|Number=sing|Person=1|Poss=yes|PronType=prs	1	nmod	_	Integr=0|Lang=Hitt
+									
+1	1.ME	1.ME	NUM	1.ME	NumType=card	2	nummod	_	Integr=0|Lang=Akk
+2-3	ERIN.MEŠ=za	_	_	ERIN.MEŠ-za	_	_	_	_	_
+2	ERIN.MEŠ	ERIN	NOUN	_	Gender=com|Number=plur	0	root	_	Integr=0|Lang=Sum
+3	za	za	PART	_	Clitic=yes	2	discourse	_	Integr=0|Lang=Hitt
+4-5	e=a	_	_	e-a	_	_	_	_	_
+4	e	a-	PRON	_	Case=nom|Gender=com|Number=plur|Person=3|PronType=prs	2	nsubj	_	_
+5	a	(m)a	PART	_	Clitic=yes	4	discourse	_	Integr=0|Lang=Hitt
+6	natta	natta	PART	na-at-ta	_	2	neg	_	Integr=0|Lang=Hitt
+									
+1-2	su=wa			su-wa	_	_	_	_	_
+1	su	su	CONJ	_	_	5	cc	_	Integr=0|Lang=Hitt
+2	wa	wa	PART	_	Clitic=yes	5	discourse	_	Integr=0|Lang=Hitt
+3	kuit	kuit	ADV	ku-it	_	5	advmod	_	Integr=0|Lang=Hitt
+4	natta	natta	PART	na-at-ta	_	5	neg	_	Integr=0|Lang=Hitt
+5	akir	ak-	VERB	a-kir	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	LUGAL-s=a	_	_	LUGAL-sa	_	_	_	_	_
+1	LUGAL-s	LUGAL	NOUN	_	Case=nom|Gender=com|Number=sing	3	nsubj	hassu-	Integr=0|Lang=Sum
+2	a	(m)a	PART	_	Clitic=yes	3	discourse	_	Integr=0|Lang=Hitt
+3	IŠME	IŠME	VERB	IŠ-ME	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	istamas-	Integr=0|Lang=Hitt
+									
+1-2	s=as	_	_	sa-as	_	_	_	_	_
+1	s	su	CONJ	_	_	3	cc	_	Integr=0|Lang=Hitt
+2	as	as	PRON	_	Case=nom|Clitic=yes|Gender=com|Number=sing|Person=3|PronType=prs	3	nsubj	_	Integr=0|Lang=Hitt
+3	iyannnis	iya1-	VERB	ia-an-ni-is	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	Harahasu=as	_	_	URU.ha-ra-ah-su-as	_	_	_	_	_
+1	Harahasu	Harahasu	PROPN	_	Case=dir|Gender=com|Number=sing	3	nmod	_	Det=14|Integr=0|Lang=Hitt
+2	as	as	PRON	_	Case=nom|Clitic=yes|Gender=com|Number=sing|Person=3|PronType=prs	3	nsubj	_	Integr=0|Lang=Hitt
+3	?rsa	ar-	VERB	a-ar-sa	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	?	?	CONJ	?	_	5	cc	_	Integr=0|Lang=Akk
+2	ÉRIN.MEŠ	ÉRIN	NOUN	ÉRIN.MEŠ	Gender=com|Number=plur	5	nsubj	_	Integr=0|Lang=Sum
+3	Zalpa	Zalpa	PROPN	URU.Za-al-pa	Case=dir|Gender=com|Number=sing	5	nmod	_	Det=14|Integr=0|Lang=Hitt
+4	menahhanda	menahhanda	ADV	me-na-ah-ha-an-da	_	5	advmod	_	Integr=0|Lang=Hitt
+5	wit	uwa-	VERB	ú-it	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	s=an	_	_	sa-an	_	_	_	_	_
+1	s	su	CONJ	_	_	4	cc	_	Integr=0|Lang=Hitt
+2	an	as	PRON	_	Case=acc|Clitic=yes|Gender=com|Number=sing|Person=3|PronType=prs	4	dobj	_	Integr=0|Lang=Hitt
+3	LUGAL-us	LUGAL	NOUN	LUGAL-us	Case=nom|Gender=com|Number=sing	4	nsubj	hassu-	Integr=0|Lang=Sum
+4	hullit	hullai-	VERB	hu-ul-li-it	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	Happiss=a			m.Ha-ap-pí-sa					
+1	Happiss	Happis	PROPN	_	Case=nom|Gender=com|Number=sing	3	nsubj	_	Det=16|Integr=0|Lang=Hitt
+2	a	_	_	_	Clitic=yes	1	discourse	_	Integr=0|Lang=Hitt
+3	isparzasta	ispart-	VERB	is-pár-za-as-ta	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	Tamnassun=a	_	_	m.Ta-am-na-as-su-na	_	_	_	_	_
+1	Tamnassun	Tamnassus	PROPN		Case=acc|Gender=com|Number=sing	4	dobj	_	Det=16Integr=0|Lang=Hitt
+2	a	(m)a	PART	_	Clitic=yes	1	discourse	_	Integr=0|Lang=Hitt
+3	husuwantan	huis-	VERB	hu-su-wa-an-ta-an	Case=acc|Gender=com|Number=sing|Tense=pres|VerbForm=part	1	xcompl	_	Integr=0|Lang=Hitt
+4	IS?BATU	IS?BAT	VERB	IS?-BA-TU	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	ep-	Integr=0|Lang=Hitt
+									
+1-2	s=an	_	_	sa-an	_	_	_	_	_
+1	s	su	CONJ	_	_	4	cc	_	Integr=0|Lang=Hitt
+2	an	as	PRON	_	Case=acc|Clitic=yes|Gender=com|Number=sing|Person=3|PronType=prs	4	dobj	_	Integr=0|Lang=Hitt
+3	Hattusa	Hattusa	PROPN	URU.Ha-at-tu-sa	Case=dir|Gender=com|Number=sing	4	nmod	_	Det=14|Integr=0|Lang=Hitt
+4	uwatet	uwa-	VERB	ú-wa-te-et	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	INA	INA	ADP	I-NA	_	2	case	_	Integr=0|Lang=Akk
+2	MU	MU 	noun	MU	Gender=com|Number=sing	5	nmod	wit	Integr=0|Lang=Sum
+3	3.KAM	3	NUM	3.KAM	NumType=ord	2	nummod	_	Integr=0|Lang=Hitt
+4	LUGAL-us	LUGAL	NOUN	LUGAL-us	Case=nom|Gender=com|Number=sing	5	nsubj	hassu-	Integr=0|Lang=Sum
+5	pait	pai1-	VERB	pa-it	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	Zalpan	Zalpa	PROPN	URU.Za-al-pa-an	Case=acc|Gender=com|Number=sing	3	dobj	_	Det=14|Integr=0|Lang=Hitt
+2	arahzanda	arahzanda	ADV	a-ra-ah-za-an-da	_	3	advmod	_	Integr=0|Lang=Hitt
+3	wetet	wet-	VERB	ú-e-te-et	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	MU	MU 	noun	MU	Gender=com|Number=sing	4	nmod	wit	Integr=0|Lang=Sum
+2	2.KAM	3	NUM	2.KAM	NumType=card	1	nummod	_	Integr=0|Lang=Hitt
+3	kattan	kattan	ADV	kat-ta-an	_	4	advmod	_	Integr=0|Lang=Hitt
+4	?sta	es-	VERB	e-es-ta	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	Tabarnan	Tabarna	PROPN	m.Ta-ba-ar-na-an	Case=acc|Gender=com|Number=sing	5	dobj	_	Det=16|Integr=0|Lang=Hitt
+2-3	Happinn=a	_	_	m.Ha-ap-pí-in-na	_	_	_	_	_
+2	Happinn	Happis	PROPN	_	Case=acc|Gender=com|Number=sing	1	conj	_	Integr=0|Lang=Hitt
+3	a	(y)a	CONJ	_	Clitic=yes	2	cc	_	Integr=0|Lang=Hitt
+4	katta	katta	ADV	kat-ta-an	_	5	advmod	_	Integr=0|Lang=Hitt
+5	wikta	wek-	VERB	ú-ik-ta	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	?	?	CONJ	?	_	5	cc	_	Integr=0|Lang=Akk
+2	LÚ.MEŠ	LÚ	NOUN	LÚ.MEŠ	Gender=com|Number=plur	5	nsubj	pesna-	Integr=0|Lang=Sum
+3	URU.LIM	URU	NOUN	URU.LIM	Case=gen|Gender=com|Number=sing	2	nmod	_	Integr=0|Lang=Sum
+4	natta	natta	PART	na-at-ta	_	5	neg	natta	Integr=0|Lang=Akk
+5	pianzi	pai2-	VERB	pí-an-zi	Mood=ind|Number=plur|Person=3|Tense=pres|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	su=us	_	_	su-us	_	_	_	_	_
+1	su	su	CONJ		_	3	cc	_	Integr=0|Lang=Hitt
+2	us	as	PRON	_	Case=acc|Clitic=yes|Gender=com|Number=plur|Person=3|PronType=prs	3	dobj	_	Integr=0|Lang=Hitt
+3	tamessir	tames-	VERB	ta-me-es-sir	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	s=e	_	_	se	_	_	_	_	_
+1	s	su	CONJ		_	3	cc	_	Integr=0|Lang=Hitt
+2	e	as	PRON	_	Case=nom|Clitic=yes|Gender=com|Number=plur|Person=3|PronType=prs	3	nsubj	_	Integr=0|Lang=Hitt
+3	akir	ak-	VERB	a-kir	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	LUGAL-us	LUGAL	NOUN	LUGAL-us	Case=nom|Gender=com|Number=sing	5	nsubj	hassu-	Integr=0|Lang=Sum
+2	Hattusa	Hattusa	PROPN	URU.Ha-at-tu-sa	Case=dir|Gender=com|Number=sing	5	nmod	_	Det=14|Integr=0|Lang=Hitt
+3	DINGIR.DIDLI-as	DINGIR	NOUN	DINGIR.DIDLI-as	Case=dat|Gender=com|Number=plur	4	dobj	siu-	Integr=0|Lang=Sum
+4	aruwanzi	aruwai-	VERB	a-ru-wa-an-zi	VerbForm=inf	5	advcl	_	Integr=0|Lang=Hitt
+5	w?t	uwa-	VERB	ú-e-et	Mood=ind|Number=plur|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	?	?	CONJ	?	_	5	cc	_	Integr=0|Lang=Akk
+2	LUGAL	LUGAL	NOUN	LUGAL	Gender=com|Number=sing	5	nsubj	hassu-	Integr=0|Lang=Sum
+3	ŠU.GI	ŠU.GI	ADJ	ŠU.GI	Gender=com|Number=sing	2	amod	miyahhuwant-	Integr=0|Lang=Sum
+4	apiya	apiya	ADV	a-pí-ya	_	5	advmod	_	Integr=0|Lang=Hitt
+5	t?lis	tala-	VERB	ta-a-li-is	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	s=as		_	sa-as	_	_	_	_	_
+1	s	su	CONJ	_	_	5	cc	_	Integr=0|Lang=Hitt
+2	as	as	PRON	_	Case=nom|Clitic=yes|Gender=com|Number=sing|Person=3|PronType=prs	5	nsubj	_	Integr=0|Lang=Hitt
+3	sar?	sar?	ADV	sa-ra-a	_	5	advmod	_	Integr=0|Lang=Hitt
+4	URU-ya	URU	NOUN	URU-ya	Case=dat|Gender=com|Number=sing	5	nmod	happira-	Integr=0|Lang=Sum
+5	pait	pai1-	VERB	pa-it	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1-2	?k=wa	_	_	ú-uk-wa	_	_	_	_	_
+1	?k	?k	PRON	_	Case=nom|Number=sing|Person=1|PronType=prs	5	nsubj	_	Integr=0|Lang=Hitt
+2	wa	wa	PART	_	Clitic=yes	5	discourse	_	Integr=0|Lang=Hitt
+3-4	LUGAL-us=smis	_	_	LUGAL-us-mi-is	_	_	_	_	_
+3	LUGAL-us	LUGAL	NOUN	_	Case=nom|Gender=com|Number=sing	5	xcomp	hassu-	Integr=0|Lang=Sum
+4	smis	tis	PRON	_	Case=nom|Clitic=yes|Number=plur|Person=2|Poss=yes|PronType=prs	3	nmod	_	Integr=0|Lang=Hitt
+5	kisha	kis-	VERB	ki-is-ha	Mood=ind|Number=sing|Person=1|Tense=pres|VerbForm=fin|Voice=mid	0	root	_	Integr=0|Lang=Hitt
+									
+1	?	?	CONJ	?	_	0	root	_	Integr=0|Lang=Akk
+2	ÉRIN.MEŠ	ERIN	NOUN	ÉRIN.MEŠ	Gender=com|Number=plur	1	nsubj	_	Integr=0|Lang=Sum
+3-4	katti=smi	_	_	kat-ti-is-mi	_	_	_	_	_
+3	katti	katta	ADP	_	_	4	case	_	Integr=0|Lang=Hitt
+4	smi	_	_	_	Case=dat|Clitic=yes|Number=plur|Person=2|Poss=yes|PronType=prs	1	nmod	_	Integr=0|Lang=Hitt
+									
+1	nu	nu	CONJ	nu	_	3	cc	_	Integr=0|Lang=Hitt
+2	URU-an	URU	NOUN	URU-an	Case=acc|Gender=com|Number=sing	3	dobj	happira-	Integr=0|Lang=Sum
+3	harnikta	hark-	VERB	har-ni-ik-ta	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=0|Lang=Hitt
+									
+1	m?n	m?n	SCONJ	[ma-a-]an	_	2	mark	_	Integr=1|Lang=Hitt
+2	lukkattati	luk-	VERB	lu-uk-kat-ta-ti	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=mid	4	advcl	_	Integr=0|Lang=Hitt
+3	Zalpa	Zalpa	PROPN	URU.Za-al-pa	Case=dir|Gender=com|Number=sing	4	nmod	_	Integr=0|Lang=Hitt
+4	pait	pai1-	VERB	pa-i[t]	Mood=ind|Number=sing|Person=3|Tense=past|VerbForm=fin|Voice=act	0	root	_	Integr=1|Lang=Hitt
+									
+									
