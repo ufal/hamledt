@@ -80,7 +80,7 @@ foreach my $folder (@folders)
     }
     my $yamlfilename = "pmltq-$ltcode.yml";
     print("$i.\t$folder\t$ltcode\t$ltname\t$lname\t$tname\t$yamlfilename\n");
-    my $command = "../../bin/generate_pmltq_yml_for_ud.pl --ltcode $ltcode --lname '$lname'";
+    my $command = "../../bin/generate_pmltq_yml_for_ud.pl --udrel $udrel --ltcode $ltcode --lname '$lname'";
     $command .= " --tname '$tname'" unless($tname eq '');
     $command .= " > $yamlfilename";
     print("\t$command\n");

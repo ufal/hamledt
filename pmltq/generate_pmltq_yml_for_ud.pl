@@ -10,6 +10,7 @@ binmode(STDOUT, ':utf8');
 binmode(STDERR, ':utf8');
 use Getopt::Long;
 
+my $udrel;  # e.g. "21"; to be used in treebank id ("ud21"), paths etc.
 my $lname;       # = 'Ancient Greek';
 my $tname = '';  # = 'PROIEL';
 my $lcode;  # = 'grc';
@@ -18,13 +19,14 @@ my $folder; # = 'grc-proiel'; # language and treebank code separated by hyphen
 
 GetOptions
 (
+    'udrel=s'  => \$udrel,
     'lname=s'  => \$lname,
     'tname=s'  => \$tname,
     'ltcode=s' => \$ltcode
 );
-if(!defined($lname) || !defined($ltcode))
+if(!defined($udrel) || !defined($lname) || !defined($ltcode))
 {
-    print STDERR ("Usage: generate_pmltq_yml_for_ud.pl --lname 'Ancient Greek' [--tname PROIEL] --ltcode grc_proiel\n");
+    print STDERR ("Usage: generate_pmltq_yml_for_ud.pl --udrel 21 --lname 'Ancient Greek' [--tname PROIEL] --ltcode grc_proiel\n");
     die("Missing options");
 }
 $lcode = $ltcode;
@@ -36,7 +38,7 @@ print("---\n");
 print("title: 'Universal Dependencies 2.0 – $lname");
 print(" – $tname") if(defined($tname) && $tname ne '');
 print("'\n");
-print("treebank_id: ud20_$ltcode\n");
+print("treebank_id: ud$udrel_$ltcode\n");
 print("homepage: 'http://universaldependencies.org/#$lcode'\n");
 print("description: 'Universal Dependencies is a project that is developing cross-linguistically consistent treebank annotation for many languages, with the goal of facilitating multilingual parser development, cross-lingual learning, and parsing research from a language typology perspective.'\n");
 print("isFree: 'true'\n");
@@ -50,10 +52,10 @@ print("output_dir: 'sql_dump/$folder'\n");
 print("layers:\n");
 print("  -\n");
 print("    name: treex_document\n");
-# The data will be stored on the euler.ms.mff.cuni.cz server in /opt/pmltq-data/ud20/treex/ga.
+# The data will be stored on the euler.ms.mff.cuni.cz server in /opt/pmltq-data/ud$udrel/treex/ga.
 # Assuming that PMLTQ knows that the data folder on the server is /opt/pmltq-data,
-# here we should provide the relative path, i.e. "ud20/treex/ga".
-print("    path: 'ud20/treex/$folder'\n");
+# here we should provide the relative path, i.e. "ud$udrel/treex/ga".
+print("    path: 'ud$udrel/treex/$folder'\n");
 print("    data: '*.treex.gz'\n");
 print <<EOF
     references:
@@ -83,7 +85,7 @@ print("db:\n");
 print("  host: euler.ms.mff.cuni.cz\n");
 print("  port: 5432\n");
 print("  user: 'pmltq'\n");
-print("  name: ud20_$ltcode\n");
+print("  name: ud$udrel_$ltcode\n");
 print("web_api:\n");
 print("  url: 'https://lindat.mff.cuni.cz/services/pmltq/'\n");
 print("  dbserver: 'euler'\n");
