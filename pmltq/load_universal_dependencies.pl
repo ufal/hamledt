@@ -27,8 +27,11 @@ GetOptions
 
 # Assumption:
 # - All UD treebanks have been converted to small Treex files using the HamleDT infrastructure.
-# - The Treex files have been copied to /net/work/projects/pmltq/data/ud20 using the get_ud.sh script.
-my $data = "/net/work/projects/pmltq/data/ud$udrel/treex";
+# - The Treex files have been copied to /net/work/projects/pmltq/data/ud$udrel using the get_ud.sh script.
+# We must work in the treebank folder under pmltq. We will generate files there.
+my $wdir = "/net/work/projects/pmltq/data/ud$udrel";
+my $data = "$wdir/treex";
+chdir($wdir) or die("Cannot enter $wdir: $!");
 my $ltcodes_from_json = udlib::get_ltcode_hash('/net/work/people/zeman/unidep');
 # The JSON hash converts names to codes. We need the reverse conversion.
 # $lcodes->{'Finnish-FTB'} eq 'fi_ftb'
@@ -72,29 +75,35 @@ foreach my $folder (@folders)
     $command .= " > $yamlfilename";
     print("\t$command\n");
     system($command);
-    # Prepare script that will do everything for one UD treebank and that can be submitted to the cluster.
+    # We want to run the Treex-to-SQL conversion on the cluster and spare some time.
+    # We cannot run on the cluster the actual loading of the data to the database
+    # because the DBD::Pg module is not properly installed on the cluster.
     my $script = "\#!/bin/bash\n";
-    $script .= "cd /net/work/projects/pmltq/data/ud21\n";
+    $script .= "cd /net/work/projects/pmltq/data/ud$udrel\n";
     $script .= "date\n";
     $script .= "echo pmltq webdelete --config=\"$yamlfilename\"\n";
     $script .= "pmltq webdelete --config=\"$yamlfilename\"\n";
     $script .= "echo pmltq delete --config=\"$yamlfilename\"\n";
     $script .= "pmltq delete --config=\"$yamlfilename\"\n";
-    ###!!! We have done the conversion on the cluster. Skip it now and do everything else.
-    ###!!! (We cannot do db load from the cluster because the DBD::Pg module is not properly installed there.)
-    #$script .= "echo pmltq convert --config=\"$yamlfilename\"\n";
-    #$script .= "pmltq convert --config=\"$yamlfilename\"\n";
-    $script .= "echo pmltq initdb --config=\"$yamlfilename\"\n";
-    $script .= "pmltq initdb --config=\"$yamlfilename\"\n";
-    $script .= "echo pmltq load --config=\"$yamlfilename\"\n";
-    $script .= "pmltq load --config=\"$yamlfilename\"\n";
-    $script .= "echo pmltq verify --config=\"$yamlfilename\"\n";
-    $script .= "pmltq verify --config=\"$yamlfilename\"\n";
-    $script .= "echo pmltq webload --config=\"$yamlfilename\"\n";
-    $script .= "pmltq webload --config=\"$yamlfilename\"\n";
-    $script .= "echo pmltq webverify --config=\"$yamlfilename\"\n";
-    $script .= "pmltq webverify --config=\"$yamlfilename\"\n";
-    $script .= "date\n";
+    if($cluster)
+    {
+        $script .= "echo pmltq convert --config=\"$yamlfilename\"\n";
+        $script .= "pmltq convert --config=\"$yamlfilename\"\n";
+    }
+    else
+    {
+        $script .= "echo pmltq initdb --config=\"$yamlfilename\"\n";
+        $script .= "pmltq initdb --config=\"$yamlfilename\"\n";
+        $script .= "echo pmltq load --config=\"$yamlfilename\"\n";
+        $script .= "pmltq load --config=\"$yamlfilename\"\n";
+        $script .= "echo pmltq verify --config=\"$yamlfilename\"\n";
+        $script .= "pmltq verify --config=\"$yamlfilename\"\n";
+        $script .= "echo pmltq webload --config=\"$yamlfilename\"\n";
+        $script .= "pmltq webload --config=\"$yamlfilename\"\n";
+        $script .= "echo pmltq webverify --config=\"$yamlfilename\"\n";
+        $script .= "pmltq webverify --config=\"$yamlfilename\"\n";
+        $script .= "date\n";
+    }
     my $scriptname = "process-$ltcode.sh";
     open(SCRIPT, "> $scriptname") or die("Cannot write '$scriptname': $!");
     print SCRIPT ($script);
@@ -102,7 +111,6 @@ foreach my $folder (@folders)
     chmod(0755, $scriptname) or die("Cannot chmod 0755 '$scriptname': $!");
     # Cluster or local processing?
     # We must be logged in to lrc1 or lrc2 to be able to submit jobs to the cluster.
-    ###!!! Bohužel na clusteru nefunguje DBD::Pg, takže tam proběhne jen pmltq convert a pak to havaruje na pmltq initdb.
     if($cluster)
     {
         my $jobid = cluster::qsub('script' => $scriptname, 'name' => $ltcode);
