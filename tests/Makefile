@@ -17,14 +17,15 @@ U20TREEBANKS=ar-ud20,ar-ud20nyuad,be-ud20,bg-ud20,ca-ud20,cop-ud20,cs-ud20,cs-ud
 UTREEBANKS=af-ud21,ar-ud21,ar-ud21nyuad,ar-ud21pud,be-ud21,bg-ud21,bxr-ud21,ca-ud21,cop-ud21,cs-ud21,cs-ud21cac,cs-ud21cltt,cs-ud21fictree,cs-ud21pud,cu-ud21,da-ud21,de-ud21,de-ud21pud,el-ud21,en-ud21,en-ud21esl,en-ud21lines,en-ud21partut,en-ud21pud,es-ud21,es-ud21ancora,es-ud21pud,et-ud21,eu-ud21,fa-ud21,fi-ud21,fi-ud21ftb,fi-ud21pud,fr-ud21,fr-ud21ftb,fr-ud21partut,fr-ud21pud,fr-ud21sequoia,ga-ud21,gl-ud21,gl-ud21treegal,got-ud21,grc-ud21,grc-ud21proiel,he-ud21,hi-ud21,hi-ud21pud,hr-ud21,hsb-ud21,hu-ud21,id-ud21,it-ud21,it-ud21partut,it-ud21postwita,it-ud21pud,ja-ud21,ja-ud21ktc,ja-ud21pud,kk-ud21,kmr-ud21,ko-ud21,la-ud21,la-ud21ittb,la-ud21proiel,lt-ud21,lv-ud21,mr-ud21,nl-ud21,nl-ud21lassysmall,no-ud21bokmaal,no-ud21nynorsk,no-ud21nynorsklia,pl-ud21,pt-ud21,pt-ud21br,pt-ud21pud,ro-ud21,ro-ud21nonstandard,ru-ud21,ru-ud21pud,ru-ud21syntagrus,sa-ud21,sk-ud21,sl-ud21,sl-ud21sst,sme-ud21,sr-ud21,sv-ud21,sv-ud21lines,sv-ud21pud,swl-ud21,ta-ud21,te-ud21,tr-ud21,tr-ud21pud,ug-ud21,uk-ud21,ur-ud21,vi-ud21,yue-ud21,zh-ud21,zh-ud21cfl,zh-ud21hk,zh-ud21pud
 # The tests will be performed on treebanks listed in the TREEBANKS variable.
 # We can either set it using one or more of the lists defined above, or list our own subset that we want to test now.
-TREEBANKS=$(UTREEBANKS)
+#TREEBANKS=$(UTREEBANKS)
+TREEBANKS=ar
 # We can restrict the tests to training/development/test data only. All three portions are tested by default.
 SETS={train,dev,test}
 # We must specify the processing phase that we want to test: 01 = Prague conversion, 02 = UD conversion, 03 = corrected UD.
 # Obviously the UD tests should be applied to 02 or 03 but not to 01. 02 is the default (some treebanks don't have 03).
 # The way it is written we cannot test both 02 and 03 at the same time: we would see errors from both aggregated under one treebank code.
 PHASE=02
-UFILES='!$(HAMLEDT_DATA)/{$(TREEBANKS)}/treex/$(PHASE)/$(SETS)/*.treex.gz'
+UFILES='!$(HAMLEDT_DATA)/{$(TREEBANKS)}/treex/$(PHASE)/$(SETS)/*.treex'
 
 # P-treebanks are those that have the Prague conversion in 01, i.e. those whose UD version is created via Prague.
 #PTREEBANKS=ar,bn,ca,cs,de,en,es,et,fa,grc,hi,ja,la,la-it,nl,pl,pt,ro,ru,sk,sl,ta,te,tr

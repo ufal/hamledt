@@ -36,8 +36,8 @@ TREEX      = treex -L$(LANGCODE)
 QTREEX     = treex -p --queue=ms-all.q --jobs 100 --priority=-50 -L$(LANGCODE)
 IMPORTX    = Read::CoNLLX lines_per_doc=100 sid_within_feat=1
 IMPORTU    = Read::CoNLLU lines_per_doc=100
-WRITE0     = Write::Treex file_stem='' compress=1
-WRITE      = Write::Treex compress=1
+WRITE0     = Write::Treex file_stem=''
+WRITE      = Write::Treex
 # Treebank-specific Makefiles must override the value of HARMONIZE if their harmonization block is not called Harmonize.
 # They must do so before they include common.mak.
 HARMONIZE ?= Harmonize
@@ -91,7 +91,7 @@ conllu_to_treex:
 UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
 SCEN1 = A2A::CopyAtree source_selector='' selector='orig' HamleDT::$(UCLANG)::$(HARMONIZE)
 prague:
-	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} -- '!$(DIR0)/{train,dev,test}/*.treex.gz'
+	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} -- '!$(DIR0)/{train,dev,test}/*.treex'
 
 # Convert the original non-Prague trees directly to Universal Dependencies and store the result in 02.
 # Export the result at the same time also to the CoNLL-U format (we need it for everything to be released).
@@ -115,13 +115,14 @@ orig_to_ud:
 # Otherwise, if reading directly data published in Universal Dependencies, make "ud" dependent on "conllu_to_treex".
 ###!!! Due to a bug in Treex::Core::Node::Interset we must write CoNLLU before Treex.
 ###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
+###!!! Due to some other weird bug I'm trying to read .treex (instead of .treex.gz) now.
 SCEN2 = A2A::CopyAtree source_selector='' selector='prague' $(PRE_UD_BLOCKS) HamleDT::Udep $(POST_UD_BLOCKS)
 prague_to_ud:
 	$(QTREEX) \
-	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex.gz' \
+	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
 	    $(SCEN2) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
-	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=1
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)}
 	../export_ud.sh $(UDCODE) $(UDNAME)
 
 # This goal exports the harmonized trees in the CoNLL-U format, which is more useful for ordinary users.
@@ -141,7 +142,7 @@ fixud:
 	        HamleDT::UD1To2 \
 	        HamleDT::$(UCLANG)::FixUD \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
-	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} compress=1
+	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
 	../export_ud.sh $(UDCODE) $(UDNAME)
 
 ud1to2:
@@ -149,7 +150,7 @@ ud1to2:
 	        A2A::CopyAtree source_selector='' selector='orig' \
 	        HamleDT::UD1To2 \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
-	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} compress=1
+	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
 	../export_ud.sh $(UDCODE) $(UDNAME)
 
 export:
