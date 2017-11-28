@@ -36,8 +36,8 @@ TREEX      = treex -L$(LANGCODE)
 QTREEX     = treex -p --queue=ms-all.q --jobs 100 --priority=-50 -L$(LANGCODE)
 IMPORTX    = Read::CoNLLX lines_per_doc=100 sid_within_feat=1
 IMPORTU    = Read::CoNLLU lines_per_doc=100
-WRITE0     = Write::Treex file_stem=''
-WRITE      = Write::Treex
+WRITE0     = Write::Treex file_stem='' compress=0
+WRITE      = Write::Treex compress=0
 # Treebank-specific Makefiles must override the value of HARMONIZE if their harmonization block is not called Harmonize.
 # They must do so before they include common.mak.
 HARMONIZE ?= Harmonize
@@ -91,7 +91,7 @@ conllu_to_treex:
 UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
 SCEN1 = A2A::CopyAtree source_selector='' selector='orig' HamleDT::$(UCLANG)::$(HARMONIZE)
 prague:
-	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} -- '!$(DIR0)/{train,dev,test}/*.treex'
+	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} compress=0 -- '!$(DIR0)/{train,dev,test}/*.treex'
 
 # Convert the original non-Prague trees directly to Universal Dependencies and store the result in 02.
 # Export the result at the same time also to the CoNLL-U format (we need it for everything to be released).
@@ -105,7 +105,7 @@ orig_to_ud:
 	    HamleDT::$(UCLANG)::GoogleToUdep \
 	    $(POST_UD_BLOCKS) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR0)}{$(SUBDIRCU)} compress=1 \
-	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=1
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
 	../export_ud.sh $(UDCODE) $(UDNAME)
 
 # Convert the trees to Universal Dependencies and store the result in 02.
@@ -122,12 +122,12 @@ prague_to_ud:
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
 	    $(SCEN2) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
-	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)}
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
 	../export_ud.sh $(UDCODE) $(UDNAME)
 
 # This goal exports the harmonized trees in the CoNLL-U format, which is more useful for ordinary users.
 export_conllu:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Write::CoNLLU print_zone_id=0 substitute={$(DIR2)}{$(CONLLUDIR)} compress=1
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' Write::CoNLLU print_zone_id=0 substitute={$(DIR2)}{$(CONLLUDIR)} compress=1
 
 # Improving UD data for the next release.
 # It takes UD as input, improves it and saves it to a new folder.
@@ -154,7 +154,7 @@ ud1to2:
 	../export_ud.sh $(UDCODE) $(UDNAME)
 
 export:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
 		Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1
 	../export_ud.sh $(UDCODE) $(UDNAME)
 

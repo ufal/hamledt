@@ -32,10 +32,12 @@ source:
 
 # Temporarily reverting to PADT r349, which has some unannotated sentences but it also has morphology in state that we can process.
 # Note that different revisions of PADT use different XML schemas, so relying on the schemas copied to Treex may not succeed.
+###!!! 28.11.2017: Temporarily working with uncompressed files. Cluster + gzip often ends with an error (content past document end, Treex::PML::Backend::PML).
 treex:
 	$(QTREEX) Read::PADT schema_dir=$(PADTDIR) 'from=!$(IN)/train/*.syntax.pml' A2A::RemoveUnannotatedSentences Write::Treex path=$(DIR0)/train
 	$(QTREEX) Read::PADT schema_dir=$(PADTDIR) 'from=!$(IN)/dev/*.syntax.pml'   A2A::RemoveUnannotatedSentences Write::Treex path=$(DIR0)/dev
 	$(QTREEX) Read::PADT schema_dir=$(PADTDIR) 'from=!$(IN)/test/*.syntax.pml'  A2A::RemoveUnannotatedSentences Write::Treex path=$(DIR0)/test
+	gunzip $(DIR0)/{train,dev,test}/*.treex.gz
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud
