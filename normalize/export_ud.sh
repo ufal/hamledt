@@ -3,33 +3,33 @@
 
 # Usage:
 #   cd $HAMLEDT/normalize/cs
-#   ../export_ud.sh cs Czech
-# If this is not the default treebank for the language:
+#   ../export_ud.sh cs cs_pdt Czech-PDT
 #   cd $HAMLEDT/normalize/la-it
-#   ../export_ud.sh la_itt Latin-ITT
+#   ../export_ud.sh la la_itt Latin-ITT
 
 lcode=$1
-lname=$2
-if [ "$lcode" == "cs" ] ; then
-  zcat data/conllu/train/cmpr94*.conllu.gz | ../conllu_docpar_from_sentid.pl > cs-ud-train-c.conllu
-  zcat data/conllu/train/ln*.conllu.gz     | ../conllu_docpar_from_sentid.pl > cs-ud-train-l.conllu
-  zcat data/conllu/train/mf9*.conllu.gz    | ../conllu_docpar_from_sentid.pl > cs-ud-train-m.conllu
-  zcat data/conllu/train/vesm9*.conllu.gz  | ../conllu_docpar_from_sentid.pl > cs-ud-train-v.conllu
-  zcat data/conllu/dev/*.conllu.gz         | ../conllu_docpar_from_sentid.pl > cs-ud-dev.conllu
-  zcat data/conllu/test/*.conllu.gz        | ../conllu_docpar_from_sentid.pl > cs-ud-test.conllu
-elif [ "$lcode" == "ar" ] || [ "$lcode" == "cs_cac" ] || [ "$lcode" == "cs_fictree" ] ; then
-  zcat data/conllu/train/*.conllu.gz | ../conllu_docpar_from_sentid.pl > $lcode-ud-train.conllu
-  zcat data/conllu/dev/*.conllu.gz   | ../conllu_docpar_from_sentid.pl > $lcode-ud-dev.conllu
-  zcat data/conllu/test/*.conllu.gz  | ../conllu_docpar_from_sentid.pl > $lcode-ud-test.conllu
-elif [ "$lcode" == "hr" ] || [ "$lcode" == "el" ] ; then
+ltcode=$2
+lname=$3
+if [ "$ltcode" == "cs_pdt" ] ; then
+  zcat data/conllu/train/cmpr94*.conllu.gz | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-c.conllu
+  zcat data/conllu/train/ln*.conllu.gz     | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-l.conllu
+  zcat data/conllu/train/mf9*.conllu.gz    | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-m.conllu
+  zcat data/conllu/train/vesm9*.conllu.gz  | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-v.conllu
+  zcat data/conllu/dev/*.conllu.gz         | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
+  zcat data/conllu/test/*.conllu.gz        | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
+elif [ "$ltcode" == "ar_padt" ] || [ "$ltcode" == "cs_cac" ] || [ "$ltcode" == "cs_fictree" ] ; then
+  zcat data/conllu/train/*.conllu.gz | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train.conllu
+  zcat data/conllu/dev/*.conllu.gz   | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
+  zcat data/conllu/test/*.conllu.gz  | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
+elif [ "$ltcode" == "hr" ] || [ "$ltcode" == "el" ] ; then
   # Udapi can convert what we cannot: some of the remnant relations.
-  zcat data/conllu/train/*.conllu.gz | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $lcode-ud-train.conllu
-  zcat data/conllu/dev/*.conllu.gz   | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $lcode-ud-dev.conllu
-  zcat data/conllu/test/*.conllu.gz  | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $lcode-ud-test.conllu
+  zcat data/conllu/train/*.conllu.gz | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $ltcode-ud-train.conllu
+  zcat data/conllu/dev/*.conllu.gz   | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $ltcode-ud-dev.conllu
+  zcat data/conllu/test/*.conllu.gz  | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $ltcode-ud-test.conllu
 else
-  zcat data/conllu/train/*.conllu.gz > $lcode-ud-train.conllu
-  zcat data/conllu/dev/*.conllu.gz > $lcode-ud-dev.conllu
-  zcat data/conllu/test/*.conllu.gz > $lcode-ud-test.conllu
+  zcat data/conllu/train/*.conllu.gz > $ltcode-ud-train.conllu
+  zcat data/conllu/dev/*.conllu.gz > $ltcode-ud-dev.conllu
+  zcat data/conllu/test/*.conllu.gz > $ltcode-ud-test.conllu
 fi
 UDDIR=/net/work/people/zeman/unidep
 UDTOOLS=$UDDIR/tools
