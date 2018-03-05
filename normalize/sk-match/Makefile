@@ -1,7 +1,7 @@
 LANGCODE=sk
 TREEBANK=sk-match
-UDCODE=sk
-UDNAME=Slovak
+UDCODE=sk_snk
+UDNAME=Slovak-SNK
 include ../common.mak
 
 source:
