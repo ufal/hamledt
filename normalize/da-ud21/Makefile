@@ -1,7 +1,7 @@
 LANGCODE=da
 TREEBANK=da-ud21
-UDCODE=da
-UDNAME=Danish
+UDCODE=da_ddt
+UDNAME=Danish-DDT
 include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)
