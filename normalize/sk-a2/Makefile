@@ -10,7 +10,7 @@ source:
 	cp $(SOURCEDIR)/*/*.treex.gz $(IN)
 
 treex:
-	$(TREEX) \
+	$(QTREEX) \
 		Read::Treex from='!$(IN)/*.treex.gz' \
 		A2A::CopyAtree source_selector='annotator1' \
 		Write::Treex path=$(DIR0)/test/ compress=1

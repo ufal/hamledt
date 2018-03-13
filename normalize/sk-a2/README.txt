@@ -1,108 +1,11 @@
 Slovak National Corpus (SNK)
 
-We got this data on request, directly from the authors, for two purposes:
-experiments with Slovak t-layer and Slovallex (Jan-Feb 2014 visit of Daniela Majchráková at ÚFAL, working with Eda
-    Bejček and Ondra Dušek)
-experiments with HamleDT (Zdeněk Žabokrtský asked Radovan Garabík, the main contact person, about this)
+This folder takes the Treex data in which annotations from two annotators are
+combined side-by-side in two zones, annotator1 and annotator2. See
+../sk-match/poznamky.txt for details of how the data has been prepared. In
+particular, trees that had some problems or that had been annotated only by
+one annotator have not been included.
 
-License: no agreement at the moment; so: research only, do not distribute, cite their paper in publications.
-The treebank has not been released yet. The data we have often contain two independent annotations of the same file,
-unmerged. In these cases we take always "Annotator 1". Some texts have just one annotation.
-
-https://svn.ms.mff.cuni.cz/svn/slovallex/trunk/
-/ha/home/zeman/network/slovallex
-
-As there is no official training/test data split, we designed our own.
-Every tenth file goes to test, the immediately following file goes to development.
-The rest goes to train.
-
-training size    = 51913 sentences, 814561 tokens
-development size =  5833 sentences,  93404 tokens
-test size        =  5492 sentences,  85903 tokens
-
-
-
-Morphology (lemmas and tags) seems to be mostly annotated manually. Agáta Karčová (see copy of her message below) has
-confirmed this for seven texts. Dan Zeman inspected sample files of all texts and found only one (BallekPomocnik) that
-apparently was tagged automatically. One other text (DominoForum) seemed to have manual morphology but severely
-damaged sentence segmentation. Provided that one file is a good representative of all other files in the same folder,
-all texts but these two seem to be reasonably trustworthy.
-
-
-
-Subject: informácia o syntakticky anotovaných textoch
-Date: Fri, 14 Feb 2014 16:09:06 +0100
-From: Agata Karcova <agatak@korpus.juls.savba.sk>
-To: Jan Hajič <hajic@ufal.mff.cuni.cz>
-
-Dobrý deň,
-
-posielam základné informácie o opravách syntakticky anotovaných textov
-(R. Brída, A. Karčová), ktoré sme nahrali do repozitára SVN (R. Garabík).
-Prvú časť súborov sme nahrávali koncom januára 2014, druhú časť 13.
-februára 2014.
-Pred nahratím sme urobili niekoľko kontrol a základných opráv, ktoré sa
-zameriavali hlavne na to, aby:
-
-- každý text bol vo formátoch a, m, w
-- texty, ktoré boli zanotované dvojmo, boli rozdelené do priečinkov
-anotator1, anotator2
-- názvy súborov navzájom korešpondovali a každý obsahoval informáciu o
-anotátorovi (identifikátor je názov súboru po znak '_')
-- boli zaradené len zanotované súbory (v niektorých sa ešte môžu
-objavovať otázniky (???) namiesto určenia vetného člena, ale nemali by
-tam byť celé nezanotované súbory)
-- texty neobsahovali chybne kódované znaky (opravili sme niekoľko
-chybných lem aj tvarov, zle kódované úvodzovky; niekoľko chybných znakov
-však pravdepodobne ostalo)
-
-Ďalej sme vyradili defektné súbory (nedali sa otvoriť), súbory s tým
-istým kódom, ale rozličným počtom slov a pod.
-
-V prvom termíne sme do hlavného adresára nahrali tieto súbory s textami
-(všetky sú párne, t. j. zanotované dvoma anotátormi):
-
-BallekPomocnik
-blogSME
-Durovic
-Inzine
-MilosFerko
-MilosFerko2
-MojaPrvaLaska
-Mucska
-Orwell1984
-Patmos
-ProgramVyhlasenie
-PsiaKoza
-RaczovaOslov
-Rozpravky
-SME
-Wikipedia
-
-V druhom termíne sme do hlavného adresára pridali adresár Wikipedia2
-(ďalšie texty z Wikipédie anotované dvojmo); do adresára
-'single_annotator' sme nahrali ďalšie texty zanotované len jedným
-anotátorom:
-
-blogSME
-DominoForum
-HvoreckyLovciaZberaci
-KralikMorus
-Lenco
-RaczovaRoman
-Stavebnictvo
-zber1-zvysne (ide o súbory, ktoré sme odfiltrovali z 1. súboru textov;
-nie sú defektné, len nemajú pár)
-
-Chcela by som upozorniť aj na skutočnosť, že iba niektoré texty, ktoré
-sú syntakticky anotované, boli predtým ručne morfologicky anotované
-(Orwell1984, MojaPrvaLaska, Mucska, MilosFerko, MilosFerko2, Patmos,
-PsiaKoza a niektoré ďalšie).
-
-Prajem vám úspešný deň.
-
-S pozdravom
-
-Agáta Karčová
-SNK JÚĽŠ SAV v Bratislave
-
+The normalization in this folder takes trees from one annotator and ignores
+trees from the other, although they stay in the Treex files in their original
+zones.
