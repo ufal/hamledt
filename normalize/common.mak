@@ -125,6 +125,15 @@ prague_to_ud:
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
+prague_to_ud_enhanced:
+	$(QTREEX) \
+	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
+	    $(SCEN2) \
+	    A2A::CopyBasicToEnhancedUD \
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
+	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
+
 # This goal exports the harmonized trees in the CoNLL-U format, which is more useful for ordinary users.
 export_conllu:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' Write::CoNLLU print_zone_id=0 substitute={$(DIR2)}{$(CONLLUDIR)} compress=1
