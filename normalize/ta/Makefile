@@ -1,7 +1,7 @@
 LANGCODE=ta
 TREEBANK=ta
-UDCODE=ta
-UDNAME=Tamil
+UDCODE=ta_ttb
+UDNAME=Tamil-TTB
 include ../common.mak
 TOOLS=/net/work/people/zeman/parsing/tools
 
