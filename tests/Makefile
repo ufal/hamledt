@@ -18,7 +18,7 @@ UTREEBANKS=af-ud21,ar-ud21,ar-ud21nyuad,ar-ud21pud,be-ud21,bg-ud21,bxr-ud21,ca-u
 # The tests will be performed on treebanks listed in the TREEBANKS variable.
 # We can either set it using one or more of the lists defined above, or list our own subset that we want to test now.
 #TREEBANKS=$(UTREEBANKS)
-TREEBANKS=ar
+TREEBANKS=de-ud20,es-ud20,fr-ud20,fr-ud21
 # We can restrict the tests to training/development/test data only. All three portions are tested by default.
 SETS={train,dev,test}
 # We must specify the processing phase that we want to test: 01 = Prague conversion, 02 = UD conversion, 03 = corrected UD.
