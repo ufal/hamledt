@@ -2,6 +2,7 @@ LANGCODE=ko
 TREEBANK=ko-pud
 UDCODE=ko_pud
 UDNAME=Korean-PUD
+POST_UD_BLOCKS=W2W::Translit
 include ../common.mak
 SOURCEDIR=/net/work/people/zeman/unidep/parallel-treebanks/ud2
 
