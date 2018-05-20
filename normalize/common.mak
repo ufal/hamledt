@@ -33,7 +33,8 @@ TREEX      = treex -L$(LANGCODE)
 # -q 'all.q@*,ms-all.q@*,troja-all.q@*'
 # --queue=troja-all.q
 # --queue=ms-all.q,troja-all.q (???)
-QTREEX     = treex -p --queue=ms-all.q --jobs 100 --priority=-50 -L$(LANGCODE)
+# Omit the --queue option when testing the new andromeda cluster. The old queue names are unknown there.
+QTREEX     = treex -p --jobs 100 --priority=-50 -L$(LANGCODE)
 IMPORTX    = Read::CoNLLX lines_per_doc=100 sid_within_feat=1
 IMPORTU    = Read::CoNLLU lines_per_doc=100
 WRITE0     = Write::Treex file_stem='' compress=0
