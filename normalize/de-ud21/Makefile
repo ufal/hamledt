@@ -1,7 +1,7 @@
 LANGCODE=de
 TREEBANK=de-ud21
-UDCODE=de
-UDNAME=German
+UDCODE=de_gsd
+UDNAME=German-GSD
 include ../common.mak
 
 SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)
