@@ -39,5 +39,5 @@ treex:
 	$(QTREEX) Read::PADT schema_dir=$(PADTDIR) 'from=!$(IN)/test/*.syntax.pml'  A2A::RemoveUnannotatedSentences Write::Treex path=$(DIR0)/test
 	gunzip $(DIR0)/{train,dev,test}/*.treex.gz
 
-# ud should map either to prague_to_ud, or to conllu_to_treex.
-ud: prague_to_ud
+# ud should map either to prague_to_ud, or to prague_to_ud_enhanced, or to conllu_to_treex.
+ud: prague_to_ud_enhanced
