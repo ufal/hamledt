@@ -92,7 +92,7 @@ conllu_to_treex:
 UCLANG = $(shell perl -e 'print uc("$(LANGCODE)");')
 SCEN1 = A2A::CopyAtree source_selector='' selector='orig' HamleDT::$(UCLANG)::$(HARMONIZE)
 prague:
-	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} compress=0 -- '!$(DIR0)/{train,dev,test}/*.treex.gz'
+	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} compress=0 -- '!$(DIR0)/{train,dev,test}/*.treex'
 
 # Convert the original non-Prague trees directly to Universal Dependencies and store the result in 02.
 # Export the result at the same time also to the CoNLL-U format (we need it for everything to be released).
