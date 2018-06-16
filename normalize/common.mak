@@ -213,8 +213,9 @@ mwestats:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Print::MweStats | perl -e 'while(<>) { $$h{$$_}++ } @k = sort(keys(%h)); foreach my $$k (@k) { print("$$h{$$k}\t$$k"); }' > mwestats.txt
 
 
-clean_cluster:
+clean:
 	rm -rf *-cluster-run-*
+	rm bugs.html
 
-clean: clean_cluster
+remove_data:
 	rm -rf $(DATADIR)/*
