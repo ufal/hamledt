@@ -1,13 +1,15 @@
-LANGCODE=es
-TREEBANK=es-ud21
-UDCODE=es_gsd
-UDNAME=Spanish-GSD
+LANGCODE=ga
+TREEBANK=ga-ud22idt
+UDCODE=ga_idt
+UDNAME=Irish-IDT
 include ../common.mak
 
-SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)
+SOURCEDIR=/net/data/universal-dependencies-2.2/UD_$(UDNAME)
+ALTSRCDIR1=/net/data/universal-dependencies-2.2/UD_$(UDNAME)
+ALTSRCDIR2=/net/work/people/zeman/udep/UD_$(UDNAME)
+
 source:
 	cp $(SOURCEDIR)/$(UDCODE)-ud-train.conllu data/source/train.conllu
-	cp $(SOURCEDIR)/$(UDCODE)-ud-dev.conllu data/source/dev.conllu
 	cp $(SOURCEDIR)/$(UDCODE)-ud-test.conllu data/source/test.conllu
 
 # Do not convert Universal Dependencies to the Prague style and then back to UD. Instead, read directly UD.

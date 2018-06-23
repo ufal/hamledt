@@ -1,10 +1,13 @@
-LANGCODE=es
-TREEBANK=es-ud21
-UDCODE=es_gsd
-UDNAME=Spanish-GSD
+LANGCODE=ja
+TREEBANK=ja-ud22bccwj
+UDCODE=ja_bccwj
+UDNAME=Japanese-BCCWJ
 include ../common.mak
 
-SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)
+SOURCEDIR=/net/data/universal-dependencies-2.2/UD_$(UDNAME)
+ALTSRCDIR1=/net/data/universal-dependencies-2.2/UD_$(UDNAME)
+ALTSRCDIR2=/net/work/people/zeman/udep/UD_$(UDNAME)
+
 source:
 	cp $(SOURCEDIR)/$(UDCODE)-ud-train.conllu data/source/train.conllu
 	cp $(SOURCEDIR)/$(UDCODE)-ud-dev.conllu data/source/dev.conllu

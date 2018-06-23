@@ -1,10 +1,13 @@
-LANGCODE=es
-TREEBANK=es-ud21
-UDCODE=es_gsd
-UDNAME=Spanish-GSD
+LANGCODE=eu
+TREEBANK=eu-ud22bdt
+UDCODE=eu_bdt
+UDNAME=Basque-BDT
 include ../common.mak
 
-SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)
+SOURCEDIR=/net/data/universal-dependencies-2.2/UD_$(UDNAME)
+ALTSRCDIR1=/net/data/universal-dependencies-2.2/UD_$(UDNAME)
+ALTSRCDIR2=/net/work/people/zeman/udep/UD_$(UDNAME)
+
 source:
 	cp $(SOURCEDIR)/$(UDCODE)-ud-train.conllu data/source/train.conllu
 	cp $(SOURCEDIR)/$(UDCODE)-ud-dev.conllu data/source/dev.conllu
