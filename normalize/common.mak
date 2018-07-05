@@ -172,8 +172,12 @@ export:
 # Export for PML-TQ: Treex files but smaller (50 trees per file) and all in one folder.
 # Further processing occurs in /net/work/projects/pmltq/data/.
 # We do not use parallel treex here because it cannot work with undefined total number of documents. And the reader does not know in advance how many documents it will read.
+# Add the language_treebank code as a prefix of every node's id. This will enable indexing all UD treebanks as one huge corpus.
+# We cannot change the id in the same run where we split the large documents into smaller ones because then Treex would try to
+# reindex nodes in document but the document would not exist at that moment.
 pmltq:
-	$(TREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/(.+)(\d\d\d)}{$(SUBDIRPTQ)/$$1-$$2-$$3}' compress=1
+	$(TREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/(.+)(\d\d\d)}{$(SUBDIRPTQ)/$$1-$$2-$$3}' compress=1
+	$(TREEX) -s Read::Treex from='!$(PMLTQDIR)/*.treex.gz' W2W::AddNodeIdPrefix prefix=$(UDCODE)/
 
 PMLTQCODE=$(shell perl -e '$$x = "$(TREEBANK)"; $$x =~ s/-ud20(.)/-ud20-$$1/; $$x =~ s/-ud20//; print $$x;')
 pmltqexport:
