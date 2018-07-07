@@ -33,8 +33,6 @@ foreach my $folder (@folders)
     my $record = udlib::get_ud_files_and_codes($folder, $udpath);
     # Skip folders without data.
     next if(!defined($record->{lcode}));
-    ###!!! Second round: process only three treebanks that arrived late.
-    next unless($record->{lcode} eq 'am' || $record->{lcode} eq 'yo' || $record->{lcode} eq 'es' && $record->{tcode} eq 'gsd');
     # The name of the folder: 'UD_' + language name + optional treebank identifier.
     # Example: UD_Ancient_Greek-PROIEL
     my $language = $record->{lname};
