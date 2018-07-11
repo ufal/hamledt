@@ -75,6 +75,8 @@ foreach my $folder (@folders)
     my $lname = $lcode2name{$lcode};
     if(!defined($lname))
     {
+        print STDERR ("lcode = $lcode\n");
+        print STDERR (join(', ', sort(keys(%lcode2name))), "\n");
         die("Cannot determine language code for folder '$folder'");
     }
     # Treebank name and code only differ in case (CamelCase vs. all lowercase).
