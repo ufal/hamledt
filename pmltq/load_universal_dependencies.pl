@@ -43,7 +43,6 @@ my $wdir = "/net/work/projects/pmltq/data/ud$udrel";
 my $data = "$wdir/treex";
 chdir($wdir) or die("Cannot enter $wdir: $!");
 my $languages = udlib::get_language_hash('/net/work/people/zeman/unidep/docs-automation/codes_and_flags.yaml');
-print STDERR (join(', ', sort(keys(%{$languages}))), "\n");
 # The language hash converts names to codes. We need the reverse conversion.
 # $lcode2name{'Ancient Greek'} eq 'grc'
 my %lcode2name;
@@ -76,9 +75,7 @@ foreach my $folder (@folders)
     my $lname = $lcode2name{$lcode};
     if(!defined($lname))
     {
-        print STDERR ("lcode = $lcode\n");
-        print STDERR (join(', ', sort(keys(%lcode2name))), "\n");
-        die("Cannot determine language code for folder '$folder'");
+        die("Cannot determine language name for folder '$folder'");
     }
     # Treebank name and code only differ in case (CamelCase vs. all lowercase).
     # We currently do not have a list of tbkname => TbkName correspondences.
