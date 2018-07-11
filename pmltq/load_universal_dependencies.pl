@@ -49,7 +49,7 @@ print STDERR (join(', ', sort(keys(%{$languages}))), "\n");
 my %lcode2name;
 foreach my $lname (keys(%{$languages}))
 {
-    $lcode2name{$languages->{$lname}} = $lname;
+    $lcode2name{$languages->{$lname}{lcode}} = $lname;
 }
 # Not all UD currently existing UD treebanks will be processed (e.g. dev-only versions or non-free treebanks will be skipped).
 # Get the list of treebanks actually copied to the data folder.
