@@ -43,6 +43,7 @@ my $wdir = "/net/work/projects/pmltq/data/ud$udrel";
 my $data = "$wdir/treex";
 chdir($wdir) or die("Cannot enter $wdir: $!");
 my $languages = udlib::get_language_hash('/net/work/people/zeman/unidep');
+print STDERR (join(', ', sort(keys(%{$languages}))), "\n");
 # The language hash converts names to codes. We need the reverse conversion.
 # $lcode2name{'Ancient Greek'} eq 'grc'
 my %lcode2name;
