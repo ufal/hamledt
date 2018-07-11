@@ -42,13 +42,13 @@ GetOptions
 my $wdir = "/net/work/projects/pmltq/data/ud$udrel";
 my $data = "$wdir/treex";
 chdir($wdir) or die("Cannot enter $wdir: $!");
-my $ltcodes_from_json = udlib::get_ltcode_hash('/net/work/people/zeman/unidep');
-# The JSON hash converts names to codes. We need the reverse conversion.
-# $lcodes->{'Finnish-FTB'} eq 'fi_ftb'
-my %ltcode2name;
-foreach my $ltname (keys(%{$ltcodes_from_json}))
+my $languages = udlib::get_language_hash('/net/work/people/zeman/unidep');
+# The language hash converts names to codes. We need the reverse conversion.
+# $lcode2name{'Ancient Greek'} eq 'grc'
+my %lcode2name;
+foreach my $lname (keys(%{$languages}))
 {
-    $ltcode2name{$ltcodes_from_json->{$ltname}} = $ltname;
+    $lcode2name{$languages->{$lname}} = $lname;
 }
 # Not all UD currently existing UD treebanks will be processed (e.g. dev-only versions or non-free treebanks will be skipped).
 # Get the list of treebanks actually copied to the data folder.
@@ -59,25 +59,27 @@ my $i = 0;
 foreach my $folder (@folders)
 {
     my $ltcode = $folder;
-    $ltcode =~ s/-/_/;
+    my $lcode = $ltcode;
+    my $tcode = '';
+    if($ltcode =~ m/^([a-z]+)-([a-z]+)$/)
+    {
+        $lcode = $1;
+        $tcode = $2;
+    }
+    # If we wanted to process only a subset of the treebanks, check that this one is listed.
     if(scalar(@only)>0 && !grep {$_ eq $ltcode} (@only))
     {
         next;
     }
     $i++;
-    my $ltname = $ltcode2name{$ltcode};
-    if(!defined($ltname))
+    my $lname = $lcode2name{$lcode};
+    if(!defined($lname))
     {
-        die("Cannot determine language and treebank code for folder '$folder'");
+        die("Cannot determine language code for folder '$folder'");
     }
-    my $lname = $ltname;
-    $lname =~ s/-.*//;
-    $lname =~ s/_/ /g;
-    my $tname = '';
-    if($ltname =~ m/-(.+)$/)
-    {
-        $tname = $1;
-    }
+    # Treebank name and code only differ in case (CamelCase vs. all lowercase).
+    # We currently do not have a list of tbkname => TbkName correspondences.
+    my $tname = $tcode;
     my $yamlfilename = "pmltq-$ltcode.yml";
     print("$i.\t$folder\t$ltcode\t$ltname\t$lname\t$tname\t$yamlfilename\n");
     my $command = "../../bin/generate_pmltq_yml_for_ud.pl --udrel $udrel --ltcode $ltcode --lname '$lname'";
