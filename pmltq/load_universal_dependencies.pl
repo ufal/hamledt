@@ -22,6 +22,9 @@ sub usage
     print STDERR ("       perl $0\n");
     print STDERR ("       ... without --cluster it will run pmltq load and the rest of actions\n");
     print STDERR ("       ... you must be somewhere with DBD::Pg module (not on the cluster)\n");
+    print STDERR ("       perl $0 --configonly\n");
+    print STDERR ("       ... generates the YAML configuration file for every treebank but does not do anything else\n");
+    print STDERR ("       ... useful for checking that the configuration is correct before we attempt to use it\n");
     print STDERR ("       perl $0 --clean\n");
     print STDERR ("       ... it will run pmltq delete and webdelete, without attempting to re-upload\n");
     print STDERR ("       ... if we messed up names in the previous attempt, run the cleanup first, then use the fixed script with new names to re-upload\n");
@@ -30,10 +33,12 @@ sub usage
 my $udrel = '22'; # to be used in treebank id ("ud22"), paths etc.
 my $clean = 0;
 my $cluster = 0;
+my $configonly = 0;
 GetOptions
 (
-    'clean'   => \$clean,
-    'cluster' => \$cluster
+    'clean'      => \$clean,
+    'cluster'    => \$cluster,
+    'configonly' => \$configonly
 );
 
 # Treebank codes to process. If this list does not exist or is empty, all treebanks will be processed.
@@ -66,10 +71,10 @@ foreach my $folder (@folders)
     my $ltcode = $folder;
     # In names of treebank folders for PML-TQ, language code is separated from treebank code by a hyphen ('-').
     # However, the script generate_pmltq_yml_for_ud.pl expects a code as in names of UD CoNLL-U files, separated by underscore ('_').
-    ###!!! TEMPORARILY BLOCKING! $ltcode =~ s/-/_/;
+    $ltcode =~ s/-/_/;
     my $lcode = $ltcode;
     my $tcode = '';
-    if($ltcode =~ m/^([a-z]+)-([a-z]+)$/)
+    if($ltcode =~ m/^([a-z]+)_([a-z]+)$/)
     {
         $lcode = $1;
         $tcode = $2;
@@ -95,6 +100,8 @@ foreach my $folder (@folders)
     $command .= " > $yamlfilename";
     print("\t$command\n");
     system($command);
+    # Do not create and run a script if we only want to generate the config files.
+    next if($configonly);
     # We want to run the Treex-to-SQL conversion on the cluster and spare some time.
     # We cannot run on the cluster the actual loading of the data to the database
     # because the DBD::Pg module is not properly installed on the cluster.
