@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
 # Generates the pmltq.yml configuration file for a UD treebank.
+# To be called in a loop from load_universal_dependencies.pl.
 # Copyright © 2017 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
