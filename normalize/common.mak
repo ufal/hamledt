@@ -177,7 +177,7 @@ export:
 # reindex nodes in document but the document would not exist at that moment.
 pmltq:
 	$(TREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/(.+)(\d\d\d)}{$(SUBDIRPTQ)/$$1-$$2-$$3}' compress=1
-	$(TREEX) -s Read::Treex from='!$(PMLTQDIR)/*.treex.gz' W2W::AddNodeIdPrefix prefix=$(UDCODE)/
+	$(TREEX) -s Read::Treex from='!$(PMLTQDIR)/*.treex.gz' W2W::AddNodeIdPrefix prefix=$(UDCODE)/ scsubst=1
 
 PMLTQCODE=$(shell perl -e '$$x = "$(TREEBANK)"; $$x =~ s/-ud20(.)/-ud20-$$1/; $$x =~ s/-ud20//; print $$x;')
 pmltqexport:
