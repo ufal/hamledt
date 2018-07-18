@@ -34,6 +34,12 @@ my $udreldec = $udrel;
 $udreldec =~ s/^(\d)(\d+)$/$1.$2/;
 $lcode = $ltcode;
 $lcode =~ s/_.*//;
+$tcode = $ltcode;
+$tcode =~ s/^.*_//;
+# The treebank textual "icon" in the web interface is also based on the $pmltqcode.
+# It contains one or two lines, the rest is lost. Line breaks are underscores and boundaries between letters and digits.
+# Hence, "udyo_ytb22" means that the icon will have two lines, "UDYO" and "YTB". There is no way of also displaying "22", and not joining "YO" with "YTB".
+$pmltqcode = "ud${lcode}_${tcode}${udrel}";
 $folder = $ltcode;
 $folder =~ s/_/-/;
 
@@ -41,7 +47,7 @@ print("---\n");
 print("title: 'Universal Dependencies $udreldec – $lname");
 print(" – $tname") if(defined($tname) && $tname ne '');
 print("'\n");
-print("treebank_id: ud${udrel}_$ltcode\n");
+print("treebank_id: $pmltqcode\n");
 print("homepage: 'http://universaldependencies.org/#$lcode'\n");
 print("description: 'Universal Dependencies is a project that is developing cross-linguistically consistent treebank annotation for many languages, with the goal of facilitating multilingual parser development, cross-lingual learning, and parsing research from a language typology perspective.'\n");
 print("isFree: 'true'\n");
@@ -88,7 +94,7 @@ print("db:\n");
 print("  host: euler.ms.mff.cuni.cz\n");
 print("  port: 5432\n");
 print("  user: 'pmltq'\n");
-print("  name: ud${udrel}_$ltcode\n");
+print("  name: $pmltqcode\n");
 print("web_api:\n");
 print("  url: 'https://lindat.mff.cuni.cz/services/pmltq/'\n");
 print("  dbserver: 'euler'\n");
