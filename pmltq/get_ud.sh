@@ -7,6 +7,7 @@ tmtsharedir="/net/projects/tectomt_shared/data"
 hamledt2dir="$tmtsharedir/archive/hamledt/2.0_2014-05-24_treex-r12700"
 hamledt3dir="$tmtsharedir/resources/hamledt"
 uddir="/net/work/people/zeman/hamledt-data"
+resourcedir="/net/work/people/zeman/treex/lib/Treex/Core/share/tred_extension/treex/resources"
 
 udrel="22"
 forpmltqdir="$pmltqdir/ud$udrel/treex"
@@ -25,4 +26,6 @@ for tbkpath in $uddir/*-ud$udrel* ; do
     cp $tbkpath/pmltq/*.treex.gz $forpmltqdir/$withoutud
   fi
 done
-
+# We will need access to the Treex schema when processing the data. Link the schema to the working folder.
+cd $forpmltqdir
+ln -s $resourcedir
