@@ -52,6 +52,7 @@ GetOptions
 my $wdir = "/net/work/projects/pmltq/data/ud$udrel";
 my $data = "$wdir/treex";
 chdir($wdir) or die("Cannot enter $wdir: $!");
+# Get mapping between language codes and names.
 my $languages = udlib::get_language_hash('/net/work/people/zeman/unidep/docs-automation/codes_and_flags.yaml');
 # The language hash converts names to codes. We need the reverse conversion.
 # $lcode2name{'Ancient Greek'} eq 'grc'
@@ -59,6 +60,16 @@ my %lcode2name;
 foreach my $lname (keys(%{$languages}))
 {
     $lcode2name{$languages->{$lname}{lcode}} = $lname;
+}
+# Get mapping between treebank codes and names (they differ only in letter case).
+# Normally we would see the treebank name in the folder name. But folder names
+# in PMLTQ are different from UD releases, so we must look in a UD folder.
+my @udfolders = udlib::list_ud_folders('/net/work/people/zeman/unidep');
+my %tcode2name;
+foreach my $folder (@udfolders)
+{
+    my $record = udlib::get_ud_files_and_codes($folder, '/net/work/people/zeman/unidep');
+    $tcode2name{$record->{tcode}} = $record->{tname};
 }
 # Not all UD currently existing UD treebanks will be processed (e.g. dev-only versions or non-free treebanks will be skipped).
 # Get the list of treebanks actually copied to the data folder.
@@ -92,7 +103,11 @@ foreach my $folder (@folders)
     }
     # Treebank name and code only differ in case (CamelCase vs. all lowercase).
     # We currently do not have a list of tbkname => TbkName correspondences.
-    my $tname = $tcode;
+    my $tname = $tcode2name{$tcode};
+    if(!defined($tname))
+    {
+        die("Cannot determine treebank name for folder '$folder'");
+    }
     my $yamlfilename = "pmltq-$ltcode.yml";
     print("$i.\t$folder\t$ltcode\t$ltname\t$lname\t$tname\t$yamlfilename\n");
     my $command = "../../bin/generate_pmltq_yml_for_ud.pl --udrel $udrel --ltcode $ltcode --lname '$lname'";
