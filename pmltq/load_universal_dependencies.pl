@@ -43,7 +43,7 @@ GetOptions
 
 # Treebank codes to process. If this list does not exist or is empty, all treebanks will be processed.
 #my @only = qw(ar be bg cs ca cop cs_cac cs_cltt cu da de el en_lines en_partut en es_ancora es et eu fa fi fi_ftb fr fr_partut fr_sequoia ga gl gl_treegal got grc grc_proiel he hi hr hu id it it_partut ja kk ko la la_ittb la_proiel lt lv nl nl_lassysmall no_bokmaal no_nynorsk pl pt pt_br ro ru ru_syntagrus sa sk sl sl_sst sv sv_lines ta tr ug uk ur vi zh);
-my @only = qw(wbp_ufal yo_ytb);
+my @only = qw(zh_hk);
 
 # Assumption:
 # - All UD treebanks have been converted to small Treex files using the HamleDT infrastructure.
@@ -79,6 +79,7 @@ closedir(DIR);
 my $i = 0;
 foreach my $folder (@folders)
 {
+    next if($folder eq 'resources');
     my $ltcode = $folder;
     # In names of treebank folders for PML-TQ, language code is separated from treebank code by a hyphen ('-').
     # However, the script generate_pmltq_yml_for_ud.pl expects a code as in names of UD CoNLL-U files, separated by underscore ('_').

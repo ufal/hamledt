@@ -55,7 +55,7 @@ print("isAllLogged: 'true'\n");
 print("isPublic: 'true'\n");
 print("isFeatured: 'false'\n");
 print("languages:\n  - $lcode\n");
-print("tags:\n  - 'Universal Dependencies'\n");
+print("tags:\n  - 'Universal Dependencies ${udreldec}'\n");
 print("data_dir: 'treex/$folder'\n");
 print("output_dir: 'sql_dump/$folder'\n");
 print("layers:\n");
