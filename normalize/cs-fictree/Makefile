@@ -21,4 +21,4 @@ treex:
 	$(TREEX) $(IMPORTX) from=$(IN)/test.conll  sid_within_feat=1 $(POST_IMPORTX_BLOCKS) $(WRITE0) path=$(DIR0)/test/
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
-ud: prague_to_ud
+ud: prague_to_ud_enhanced
