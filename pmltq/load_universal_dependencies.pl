@@ -17,9 +17,10 @@ use udlib;
 sub usage
 {
     my $er = '23'; # example release number
-    print STDERR ("Usage: perl $0 --release $er --cluster\n");
+    print STDERR ("Usage: perl $0 --release $er --cluster [cs_pdt cs_cac]\n");
     print STDERR ("       ... run pmltq convert on all UD treebanks in parallel on the cluster\n");
     print STDERR ("       ... you must run this from the cluster head node (sol1 to sol10)\n");
+    print STDERR ("       ... optional args: codes of treebanks to process (default: all)\n");
     print STDERR ("       perl $0 --release $er\n");
     print STDERR ("       ... without --cluster it will run pmltq load and the rest of actions\n");
     print STDERR ("       ... you must be somewhere with DBD::Pg module (not on the cluster)\n");
@@ -52,7 +53,7 @@ if(!defined($udrel) || $udrel !~ m/^2[0-9]$/)
 
 # Treebank codes to process. If this list does not exist or is empty, all treebanks will be processed.
 #my @only = qw(ar be bg cs ca cop cs_cac cs_cltt cu da de el en_lines en_partut en es_ancora es et eu fa fi fi_ftb fr fr_partut fr_sequoia ga gl gl_treegal got grc grc_proiel he hi hr hu id it it_partut ja kk ko la la_ittb la_proiel lt lv nl nl_lassysmall no_bokmaal no_nynorsk pl pt pt_br ro ru ru_syntagrus sa sk sl sl_sst sv sv_lines ta tr ug uk ur vi zh);
-#my @only = qw(zh_hk);
+my @only = @ARGV;
 
 # Assumption:
 # - All UD treebanks have been converted to small Treex files using the HamleDT infrastructure.
