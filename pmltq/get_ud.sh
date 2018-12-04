@@ -3,7 +3,7 @@
 # 2015, 2016, 2017, 2018 Dan Zeman <zeman@ufal.mff.cuni.cz>
 
 # Usage: $0 [--release 22 --only cs-cac] # limiting it to one treebank, identified by its target name
-udrel="22" # default: UD 2.2
+udrel="23" # default: UD 2.3
 POSITIONAL=()
 while [[ $# -gt 0 ]]
 do
@@ -43,13 +43,15 @@ else
 fi
 mkdir -p $forpmltqdir
 
-# Excluding UD_Arabic-NYUAD, UD_English-ESL, UD_French-FTB, UD_Japanese-BCCWJ and UD_Japanese-KTC because it does not include the underlying word forms (license issues).
+# Excluding
+#   UD_Arabic-NYUAD, UD_English-ESL, UD_French-FTB, UD_Hindi_English-HIENCS, UD_Japanese-BCCWJ and UD_Japanese-KTC
+# because they do not include the underlying word forms (license issues).
 # Pokus o automatické zjištění, jaké vlastně treebanky v novém vydání Universal Dependencies máme.
 for tbkpath in $uddir/*-ud$udrel* ; do
   tbk=`basename $tbkpath`
   withoutud=`echo -n $tbk | sed s/-ud$udrel/-/ | sed 's/-$//'`
   if [[ -z "$ONLY" ]] || [[ "$withoutud" == "$ONLY" ]] ; then
-    if [ "$withoutud" != "ar-nyuad" ] && [ "$withoutud" != "en-esl" ] && [ "$withoutud" != "fr-ftb" ] && [ "$withoutud" != "ja-bccwj" ] && [ "$withoutud" != "ja-ktc" ] ; then
+    if [ "$withoutud" != "ar-nyuad" ] && [ "$withoutud" != "en-esl" ] && [ "$withoutud" != "fr-ftb" ] && [ "$withoutud" != "qhe-hiencs" ] && [ "$withoutud" != "ja-bccwj" ] && [ "$withoutud" != "ja-ktc" ] ; then
       echo Universal Dependencies $udrel $tbk '-->' $withoutud
       mkdir -p $forpmltqdir/$withoutud
       cp $tbkpath/pmltq/*.treex.gz $forpmltqdir/$withoutud
@@ -59,8 +61,8 @@ for tbkpath in $uddir/*-ud$udrel* ; do
     fi
   fi
 done
-# We will need access to the Treex schema when processing the data. Link the schema to the working folder.
-cd $forpmltqdir
+# We will need access to the Treex schema when processing the data. Link the schema to the working folder (not to the "treex" subfolder!)
+cd $forpmltqdir/..
 if [[ ! -e "resources" ]] ; then
   ln -s $resourcedir
 fi

@@ -16,34 +16,43 @@ use udlib;
 
 sub usage
 {
-    print STDERR ("Usage: perl $0 --cluster\n");
+    my $er = '23'; # example release number
+    print STDERR ("Usage: perl $0 --release $er --cluster\n");
     print STDERR ("       ... run pmltq convert on all UD treebanks in parallel on the cluster\n");
     print STDERR ("       ... you must run this from the cluster head node (sol1 to sol10)\n");
-    print STDERR ("       perl $0\n");
+    print STDERR ("       perl $0 --release $er\n");
     print STDERR ("       ... without --cluster it will run pmltq load and the rest of actions\n");
     print STDERR ("       ... you must be somewhere with DBD::Pg module (not on the cluster)\n");
-    print STDERR ("       perl $0 --configonly\n");
+    print STDERR ("       perl $0 --release $er --configonly\n");
     print STDERR ("       ... generates the YAML configuration file for every treebank but does not do anything else\n");
     print STDERR ("       ... useful for checking that the configuration is correct before we attempt to use it\n");
-    print STDERR ("       perl $0 --clean\n");
+    print STDERR ("       perl $0 --release $er --clean\n");
     print STDERR ("       ... it will run pmltq delete and webdelete, without attempting to re-upload\n");
-    print STDERR ("       ... if we messed up names in the previous attempt, run the cleanup first, then use the fixed script with new names to re-upload\n");
+    print STDERR ("       ... if we messed up names in the previous attempt, run the cleanup first,\n");
+    print STDERR ("       ... then use the fixed script with new names to re-upload\n");
 }
 
-my $udrel = '22'; # to be used in treebank id ("ud22"), paths etc.
+my $udrel; # e.g. '22' for UD release 2.2; to be used in treebank id ("ud22"), paths etc.
 my $clean = 0;
 my $cluster = 0;
 my $configonly = 0;
 GetOptions
 (
+    'release=s'  => \$udrel,
     'clean'      => \$clean,
     'cluster'    => \$cluster,
     'configonly' => \$configonly
 );
+if(!defined($udrel) || $udrel !~ m/^2[0-9]$/)
+{
+    print STDERR ("Missing or wrong release number. Expected e.g. '22' for UD release 2.2.\n");
+    usage();
+    die;
+}
 
 # Treebank codes to process. If this list does not exist or is empty, all treebanks will be processed.
 #my @only = qw(ar be bg cs ca cop cs_cac cs_cltt cu da de el en_lines en_partut en es_ancora es et eu fa fi fi_ftb fr fr_partut fr_sequoia ga gl gl_treegal got grc grc_proiel he hi hr hu id it it_partut ja kk ko la la_ittb la_proiel lt lv nl nl_lassysmall no_bokmaal no_nynorsk pl pt pt_br ro ru ru_syntagrus sa sk sl sl_sst sv sv_lines ta tr ug uk ur vi zh);
-my @only = qw(zh_hk);
+#my @only = qw(zh_hk);
 
 # Assumption:
 # - All UD treebanks have been converted to small Treex files using the HamleDT infrastructure.
@@ -71,7 +80,7 @@ foreach my $folder (@udfolders)
     my $record = udlib::get_ud_files_and_codes($folder, '/net/work/people/zeman/unidep');
     $tcode2name{$record->{tcode}} = $record->{tname};
 }
-# Not all UD currently existing UD treebanks will be processed (e.g. dev-only versions or non-free treebanks will be skipped).
+# Not all currently existing UD treebanks will be processed (e.g. dev-only versions or non-free treebanks will be skipped).
 # Get the list of treebanks actually copied to the data folder.
 opendir(DIR, $data) or die('Cannot read the contents of the data folder');
 my @folders = sort(grep {-d "$data/$_" && m/^[a-z]/} (readdir(DIR)));
