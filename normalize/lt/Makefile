@@ -1,7 +1,7 @@
 LANGCODE=lt
 TREEBANK=lt
-UDCODE=lt
-UDNAME=Lithuanian
+UDCODE=lt_alksnis
+UDNAME=Lithuanian-ALKSNIS
 include ../common.mak
 
 SOURCEDIR=/net/data/treebanks/lt/ALKSNIS_v2
