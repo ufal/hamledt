@@ -33,8 +33,8 @@ TREEX      = treex -L$(LANGCODE)
 # -q 'all.q@*,ms-all.q@*,troja-all.q@*'
 # --queue=troja-all.q
 # --queue=ms-all.q,troja-all.q (???)
-# Omit the --queue option when testing the new andromeda cluster. The old queue names are unknown there.
-QTREEX     = treex -p --jobs 100 --priority=-50 -L$(LANGCODE)
+# The --qsub="-m n" option should prevent the cluster from sending me 100 mails when 100 jobs crash on an error.
+QTREEX     = treex -p --jobs 100 --priority=-50 --qsub="-m n" -L$(LANGCODE)
 IMPORTX    = Read::CoNLLX lines_per_doc=100 sid_within_feat=1
 IMPORTU    = Read::CoNLLU lines_per_doc=100
 WRITE0     = Write::Treex file_stem='' compress=0
