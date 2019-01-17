@@ -2,6 +2,7 @@ LANGCODE=lt
 TREEBANK=lt
 UDCODE=lt_alksnis
 UDNAME=Lithuanian-ALKSNIS
+POST_UD_BLOCKS=HamleDT::Punctuation
 include ../common.mak
 
 SOURCEDIR=/net/data/treebanks/lt/ALKSNIS_v2
