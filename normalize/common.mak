@@ -148,7 +148,7 @@ export_conllu:
 fixud:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
-		W2W::EstimateNoSpaceAfter \
+	        W2W::EstimateNoSpaceAfter \
 	        HamleDT::$(UCLANG)::FixUD \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
