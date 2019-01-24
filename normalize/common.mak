@@ -150,6 +150,7 @@ fixud:
 	        A2A::CopyAtree source_selector='' selector='orig' \
 	        W2W::EstimateNoSpaceAfter \
 	        HamleDT::$(UCLANG)::FixUD \
+	        HamleDT::Punctuation \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
