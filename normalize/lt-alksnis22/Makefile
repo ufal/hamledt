@@ -50,29 +50,31 @@ TESTFILES=Vengrija,parazitine,kd1-11,kd1-12,kd1-13,kd1-14,kd1-15,kd1-16,kd1-17,k
 # must lie next to the data files (but then Treex will think it is another data
 # file) or it cannot be read by our reader.
 source:
-	for i in $(SOURCEDIR)/{documents,fiction,general-press,specialized-press}/*.pml ; do echo cp $$i $(IN) ; cp $$i $(IN) ; done
+	for i in $(SOURCEDIR)/{documents,fiction,general-press,specialized-press}/*.pml ; do echo cp $$i $(IN)/`basename $$i _2019-01-14.pml`.pml ; cp $$i $(IN)/`basename $$i _2019-01-14.pml`.pml ; done
+	mv $(IN)/AlksnisSchema-1.3.pml.pml $(IN)/AlksnisSchema-1.3.pml
 	gzip $(IN)/*.pml
 	gunzip $(IN)/AlksnisSchema-1.3.pml.gz
 
 treex:
 	$(TREEX) \
-		Read::AlksnisPML schema_dir=$(SCHEMADIR) from='!$(IN)/{$(TRAINFILES)}_2019-01-14.pml.gz' \
+		Read::AlksnisPML schema_dir=$(SCHEMADIR) from='!$(IN)/{$(TRAINFILES)}.pml.gz' \
 		W2W::RemoveLeadingTrailingSpaces \
 		W2W::EstimateNoSpaceAfter \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/train/
 	$(TREEX) \
-		Read::AlksnisPML schema_dir=$(SCHEMADIR) from='!$(IN)/{$(DEVFILES)}_2019-01-14.pml.gz' \
+		Read::AlksnisPML schema_dir=$(SCHEMADIR) from='!$(IN)/{$(DEVFILES)}.pml.gz' \
 		W2W::RemoveLeadingTrailingSpaces \
 		W2W::EstimateNoSpaceAfter \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/dev/
 	$(TREEX) \
-		Read::AlksnisPML schema_dir=$(SCHEMADIR) from='!$(IN)/{$(TESTFILES)}_2019-01-14.pml.gz' \
+		Read::AlksnisPML schema_dir=$(SCHEMADIR) from='!$(IN)/{$(TESTFILES)}.pml.gz' \
 		W2W::RemoveLeadingTrailingSpaces \
 		W2W::EstimateNoSpaceAfter \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/
+	gunzip $(DIR0)/{train,dev,test}/*.treex.gz
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud_enhanced
