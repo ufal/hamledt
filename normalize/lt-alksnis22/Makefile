@@ -1,5 +1,5 @@
 LANGCODE=lt
-TREEBANK=lt
+TREEBANK=lt-alksnis22
 UDCODE=lt_alksnis
 UDNAME=Lithuanian-ALKSNIS
 POST_UD_BLOCKS=HamleDT::Punctuation
