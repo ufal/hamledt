@@ -2,6 +2,7 @@ LANGCODE=lt
 TREEBANK=lt-alksnis22
 UDCODE=lt_alksnis
 UDNAME=Lithuanian-ALKSNIS
+HARMONIZE=Harmonize iset_driver=lt::jablonskis
 POST_UD_BLOCKS=HamleDT::Punctuation
 include ../common.mak
 
@@ -42,9 +43,9 @@ SCHEMADIR=$(SOURCEDIR)/AlksnisSchema-1.3.pml
   # Parulskis-1 Parulskis-2 Parulskis-3 Parulskis-4 Parulskis-5 Parulskis-6 Parulskis-7
   # Serelyte-1 Serelyte-2 Serelyte-3 Serelyte-4 Serelyte-5
 
-TRAINFILES=AMvadovu,GMO,Haitis,Prancuzija,balandzio,baznyciomis,biudzetas,ivaizdis,jubarkietis,patikimiausi,kalbeti_ar_tyleti,myliu_savo_kuna,pikti_tevai,sveikai_maitintis,2005_daugiabuciu,Jonuskaite,Katkus-1,Katkus-2,Kuncinas,Navakas-1,Navakas-2,Parulskis-1,Parulskis-2,Parulskis-3,Parulskis-4,Parulskis-5,Parulskis-6,Parulskis-7
+TRAINFILES=AMvadovu,GMO,Haitis,Prancuzija,balandzio,baznyciomis,biudzetas,ivaizdis,jubarkietis,patikimiausi,kalbeti_ar_tyleti,myliu_savo_kuna,pikti_tevai,sveikai_maitintis,2005_daugiabuciu,Jonuskaite,Katkus-1,Katkus-2,Navakas-1,Navakas-2,Parulskis-1,Parulskis-2,Parulskis-3,Parulskis-4,Parulskis-5,Parulskis-6,Parulskis-7
 DEVFILES=Estija,dviraciu,kd1-1,kd1-2,kd1-3,kd1-4,kd1-5,kd1-6,kd1-7,kd1-8,kd1-9,kd1-10,biuras_namuose,2004_AM_Isak,2009_komunikatas,Serelyte-1,Serelyte-3
-TESTFILES=Vengrija,parazitine,kd1-11,kd1-12,kd1-13,kd1-14,kd1-15,kd1-16,kd1-17,kd1-18,kd1-19,kd1-20,galvos_skausmas,sventems,2009_KM_Isak,Serelyte-2,Serelyte-4,Serelyte-5
+TESTFILES=Vengrija,parazitine,kd1-11,kd1-12,kd1-13,kd1-14,kd1-15,kd1-16,kd1-17,kd1-18,kd1-19,kd1-20,galvos_skausmas,sventems,2009_KM_Isak,Kuncinas,Serelyte-2,Serelyte-4,Serelyte-5
 
 # Problem: The data files contain references to the schema. Either the schema
 # must lie next to the data files (but then Treex will think it is another data

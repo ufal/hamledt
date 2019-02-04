@@ -36,19 +36,19 @@ source:
 
 treex:
 	$(TREEX) \
-		Read::AlksnisPML schema_dir=$(SCHEMADIR) from='!$(IN)/{AMvadovu_V1,GMO_V1,Haitis_V1,Prancuzija_V1,balandzio_V1,baznyciomis_V1,biudzetas_V1,ivaizdis_V1,jubarkietis_V1,patikimiausi_V1,kalbeti_ar_tyleti_V1,pikti_tevai_V1,savo_kuna_V1,sveikai_maitintis_V1,daugiabuciu_V1,Jonuskaite_V2,Katkus-1_V2,Katkus-2_V2,Kuncinas_V2,Navakas-1_V2,Navakas-2_V2,Parulskis-1_V2,Parulskis-2_V2,Parulskis-3-V2,Parulskis-4_V2,Parulskis-5-V2,Parulskis-6_V2,Parulskis-7_V2}.pml.gz' \
+		Read::AlksnisPML schema_dir=$(SCHEMADIR) schema_version=antisDplus_schema from='!$(IN)/{AMvadovu_V1,GMO_V1,Haitis_V1,Prancuzija_V1,balandzio_V1,baznyciomis_V1,biudzetas_V1,ivaizdis_V1,jubarkietis_V1,patikimiausi_V1,kalbeti_ar_tyleti_V1,pikti_tevai_V1,savo_kuna_V1,sveikai_maitintis_V1,daugiabuciu_V1,Jonuskaite_V2,Katkus-1_V2,Katkus-2_V2,Navakas-1_V2,Navakas-2_V2,Parulskis-1_V2,Parulskis-2_V2,Parulskis-3-V2,Parulskis-4_V2,Parulskis-5-V2,Parulskis-6_V2,Parulskis-7_V2}.pml.gz' \
 		W2W::RemoveLeadingTrailingSpaces \
 		W2W::EstimateNoSpaceAfter \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/train/
 	$(TREEX) \
-		Read::AlksnisPML schema_dir=$(SCHEMADIR) from='!$(IN)/{Estija_V1,dviraciu_V1,tb1-1_V2,tb1-2-V2,tb1-3-V2,tb1-4_V2,tb1-5_V2,tb1-6_V2,tb1-7_V2,tb1-8_V2,tb1-9_V2,tb1-10_V2,biuras_namuose_V1,2004-AM-Isak_V1,2009_komunikatas_V2,Serelyte-1_V2,Serelyte-3_V2}.pml.gz' \
+		Read::AlksnisPML schema_dir=$(SCHEMADIR) schema_version=antisDplus_schema from='!$(IN)/{Estija_V1,dviraciu_V1,tb1-1_V2,tb1-2-V2,tb1-3-V2,tb1-4_V2,tb1-5_V2,tb1-6_V2,tb1-7_V2,tb1-8_V2,tb1-9_V2,tb1-10_V2,biuras_namuose_V1,2004-AM-Isak_V1,2009_komunikatas_V2,Serelyte-1_V2,Serelyte-3_V2}.pml.gz' \
 		W2W::RemoveLeadingTrailingSpaces \
 		W2W::EstimateNoSpaceAfter \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/dev/
 	$(TREEX) \
-		Read::AlksnisPML schema_dir=$(SCHEMADIR) from='!$(IN)/{Vengrija_V1,parazitine_V1,tb1-11_V2,tb1-12_V2,tb1-13_V2,tb1-14_V2,tb1-15_V2,tb1-16_V2,tb1-17_V2,tb1-18-V2,tb1-19_V2,tb1-20_V2,galvos_skausmas_V1,sventems_V1,2009-KM-Isak_V1,komunikatas_V1,Serelyte-2_V2,Serelyte-4_V2,Serelyte-5_V2}.pml.gz' \
+		Read::AlksnisPML schema_dir=$(SCHEMADIR) schema_version=antisDplus_schema from='!$(IN)/{Vengrija_V1,parazitine_V1,tb1-11_V2,tb1-12_V2,tb1-13_V2,tb1-14_V2,tb1-15_V2,tb1-16_V2,tb1-17_V2,tb1-18-V2,tb1-19_V2,tb1-20_V2,galvos_skausmas_V1,sventems_V1,2009-KM-Isak_V1,Kuncinas_V2,Serelyte-2_V2,Serelyte-4_V2,Serelyte-5_V2}.pml.gz' \
 		W2W::RemoveLeadingTrailingSpaces \
 		W2W::EstimateNoSpaceAfter \
 		A2A::FillCoNLLAttributes \
