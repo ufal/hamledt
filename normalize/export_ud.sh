@@ -35,7 +35,7 @@ UDDIR=/net/work/people/zeman/unidep
 UDTOOLS=$UDDIR/tools
 mkdir -p $UDDIR/UD_$lname
 cat *.conllu | $UDTOOLS/check_sentence_ids.pl
-cat *.conllu | $UDTOOLS/conllu-stats.pl > $UDDIR/UD_$lname/stats.xml
+$UDTOOLS/conllu-stats.pl *.conllu > $UDDIR/UD_$lname/stats.xml
 cat *.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
 #udapy -HMAC ud.MarkBugs skip=no- < hsb-ud-test.conllu > bugs-hsb.html 2> >(tee log.txt >&2)
 for i in *.conllu ; do
