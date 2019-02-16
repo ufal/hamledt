@@ -4,12 +4,14 @@ UDCODE=ta_ttb
 UDNAME=Tamil-TTB
 include ../common.mak
 TOOLS=/net/work/people/zeman/parsing/tools
+SOURCEDIR=/net/work/people/zeman/tamiltb/data
 
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	$(TOOLS)/split_conll.pl < /net/data/TamilTB/train.conll -head 400 $(IN)/train.conll $(IN)/dev.conll
-	ln -s /net/data/TamilTB/test.conll $(IN)/test.conll
+	ln -s $(SOURCEDIR)/train.conll $(IN)/train.conll
+	ln -s $(SOURCEDIR)/dev.conll $(IN)/dev.conll
+	ln -s $(SOURCEDIR)/test.conll $(IN)/test.conll
 
 # The import of Tamil data to Treex differs from other languages in that we
 # also transliterate the cased Latin back to the Tamil script in UTF-8, and
