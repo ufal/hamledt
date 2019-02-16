@@ -220,7 +220,7 @@ mwestats:
 
 clean:
 	rm -rf *-cluster-run-*
-	rm bugs.html
+	rm -f bugs.html
 
 remove_data:
 	rm -rf $(DATADIR)/*
