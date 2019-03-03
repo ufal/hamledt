@@ -28,7 +28,7 @@ SCHEMADIR=$(SOURCEDIR)/antisDplus_schema.pml
   # Serelyte-1_V2.pml Serelyte-2_V2.pml Serelyte-3_V2.pml Serelyte-4_V2.pml Serelyte-5_V2.pml
 
 TRAINFILES=AMvadovu,GMO,Haitis,Prancuzija,balandzio,baznyciomis,biudzetas,ivaizdis,jubarkietis,patikimiausi,kalbeti_ar_tyleti,savo_kuna,pikti_tevai,sveikai_maitintis,daugiabuciu,Jonuskaite,Katkus-1,Katkus-2,Navakas-1,Navakas-2,Parulskis-1,Parulskis-2,Parulskis-3,Parulskis-4,Parulskis-5,Parulskis-6,Parulskis-7
-DEVFILES=Estija,dviraciu,tb1-1,tb1-2,tb1-3,tb1-4,tb1-5,tb1-6,tb1-7,tb1-8,tb1-9,tb1-10,biuras_namuose,2004_AM_Isak,2009_komunikatas,Serelyte-1,Serelyte-3
+DEVFILES=Estija,dviraciu,tb1-1_,tb1-2_,tb1-3_,tb1-4_,tb1-5_,tb1-6_,tb1-7_,tb1-8_,tb1-9_,tb1-10,biuras_namuose,2004_AM_Isak,2009_komunikatas,Serelyte-1,Serelyte-3
 TESTFILES=Vengrija,parazitine,tb1-11,tb1-12,tb1-13,tb1-14,tb1-15,tb1-16,tb1-17,tb1-18,tb1-19,tb1-20,galvos_skausmas,sventems,2009-KM-Isak,Kuncinas,Serelyte-2,Serelyte-4,Serelyte-5
 
 # Problem: The data files contain references to the schema. Either the schema
