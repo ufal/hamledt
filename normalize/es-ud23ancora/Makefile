@@ -4,9 +4,9 @@ UDCODE=es_ancora
 UDNAME=Spanish-AnCora
 include ../common.mak
 
-SOURCEDIR=/net/work/people/zeman/udep/UD_$(UDNAME)
+SOURCEDIR=/net/work/people/zeman/unidep/UD_$(UDNAME)
 ALTSRCDIR1=/net/data/universal-dependencies-2.3/UD_$(UDNAME)
-ALTSRCDIR2=/net/work/people/zeman/udep/UD_$(UDNAME)
+ALTSRCDIR2=/net/work/people/zeman/unidep/UD_$(UDNAME)
 
 source:
 	cp $(SOURCEDIR)/$(UDCODE)-ud-train.conllu data/source/train.conllu
