@@ -2,7 +2,7 @@ LANGCODE=cs
 TREEBANK=cs
 UDCODE=cs_pdt
 UDNAME=Czech-PDT
-POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
+POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
 SOURCEDIR=/net/projects/pdt/pdt30/data
@@ -32,4 +32,3 @@ treex:
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud_enhanced
-
