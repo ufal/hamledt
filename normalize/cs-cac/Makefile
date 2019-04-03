@@ -2,7 +2,7 @@ LANGCODE=cs
 TREEBANK=cs-cac
 UDCODE=cs_cac
 UDNAME=Czech-CAC
-POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
+POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
 SOURCEDIR=/net/projects/cac/cac20/data/pml

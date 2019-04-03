@@ -2,7 +2,7 @@ LANGCODE=cs
 TREEBANK=cs-cltt
 UDCODE=cs_cltt
 UDNAME=Czech-CLTT
-POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
+POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
 SOURCEDIR=/net/data/treebanks/cs/cltt

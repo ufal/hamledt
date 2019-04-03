@@ -3,7 +3,7 @@ TREEBANK=cs-fictree
 UDCODE=cs_fictree
 UDNAME=Czech-FicTree
 HARMONIZE=HarmonizeFicTree
-POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords
+POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
 # The first version we got from ÚTKL was in their vertical format and we converted it to CoNLL-X like this:
