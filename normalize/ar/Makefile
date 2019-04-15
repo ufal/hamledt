@@ -2,6 +2,7 @@ LANGCODE=ar
 TREEBANK=ar
 UDCODE=ar_padt
 UDNAME=Arabic-PADT
+POST_UD_BLOCKS=HamleDT::AR::FixUD
 include ../common.mak
 
 PADTDIR=/net/projects/padt/data/Prague
