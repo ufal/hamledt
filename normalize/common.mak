@@ -145,10 +145,11 @@ export_conllu:
 # and we cannot use the common export_conllu target which reads from DIR2, not DIR3.
 ###!!! Due to a bug in Treex::Core::Node::Interset we must write CoNLLU before Treex.
 ###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
+###!!! 2019-04-15: Removing W2W::EstimateNoSpaceAfter (it was immediately after A2A::CopyAtree).
+###!!!   It damages some data, e.g., removes the space after Unicode closing double quote in German PUD.
 fixud:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
-	        W2W::EstimateNoSpaceAfter \
 	        HamleDT::$(UCLANG)::FixUD \
 	        HamleDT::Punctuation \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
