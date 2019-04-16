@@ -2,7 +2,8 @@ LANGCODE=ar
 TREEBANK=ar
 UDCODE=ar_padt
 UDNAME=Arabic-PADT
-POST_UD_BLOCKS=HamleDT::AR::FixUD
+# The Punctuation block is a standard part of the UD scenario but it is run before our FixUD, while we also need it afterwards.
+POST_UD_BLOCKS=HamleDT::AR::FixUD HamleDT::Punctuation
 include ../common.mak
 
 PADTDIR=/net/projects/padt/data/Prague
