@@ -75,9 +75,9 @@ UDCODE=$key
 UDNAME=$udname
 include ../common.mak
 
-SOURCEDIR=$udpath/UD_\$(UDNAME)
 ALTSRCDIR1=/net/data/universal-dependencies-$RELEASE/UD_\$(UDNAME)
 ALTSRCDIR2=/net/work/people/zeman/unidep/UD_\$(UDNAME)
+SOURCEDIR=\$(ALTSRCDIR1)
 
 source:
 EOF
