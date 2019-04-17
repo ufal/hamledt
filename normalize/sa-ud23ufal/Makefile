@@ -4,9 +4,9 @@ UDCODE=sa_ufal
 UDNAME=Sanskrit-UFAL
 include ../common.mak
 
-SOURCEDIR=/net/data/universal-dependencies-2.3/UD_$(UDNAME)
 ALTSRCDIR1=/net/data/universal-dependencies-2.3/UD_$(UDNAME)
-ALTSRCDIR2=/net/work/people/zeman/udep/UD_$(UDNAME)
+ALTSRCDIR2=/net/work/people/zeman/unidep/UD_$(UDNAME)
+SOURCEDIR=$(ALTSRCDIR2)
 
 source:
 	cp $(SOURCEDIR)/$(UDCODE)-ud-test.conllu data/source/test.conllu
