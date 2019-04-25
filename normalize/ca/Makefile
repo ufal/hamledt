@@ -18,3 +18,6 @@ treex: conll_to_treex
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud
+	@echo DO NOT GENERATE UD FROM THIS FOLDER UNLESS YOU KNOW WHAT YOU ARE DOING!
+	@echo UD_Catalan-AnCora has been edited after the conversion.
+	@echo A new conversion would destroy the changes that were done externally.
