@@ -16,4 +16,4 @@ treex:
 	$(TREEX) $(IMPORTX) is_member_within_afun=1 is_parenthesis_root_within_afun=1 from=$(IN)/test.conll  sid_prefix=test-  Filter::RemoveEmptySentences W2W::EstimateNoSpaceAfter $(WRITE0) path=$(DIR0)/test/
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
-ud: prague_to_ud
+ud: prague_to_ud_enhanced
