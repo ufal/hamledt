@@ -1,7 +1,8 @@
 LANGCODE=pl
 TREEBANK=pl
-UDCODE=pl
-UDNAME=Polish
+UDCODE=pl_sz
+UDNAME=Polish-SZ
+POST_UD_BLOCKS=HamleDT::PL::FixUD
 include ../common.mak
 SRCDIR=/a/LRC_TMP/hamledt/data_translations/not_yet_hamledt_treebanks/pl
 TOOLS=/home/zeman/tools
