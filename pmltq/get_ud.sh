@@ -1,9 +1,9 @@
 #!/bin/bash
 # This script copies HamleDT and Universal Dependencies treebanks in the Treex format to the PML-TQ import folder.
-# 2015, 2016, 2017, 2018 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# 2015, 2016, 2017, 2018, 2019 Dan Zeman <zeman@ufal.mff.cuni.cz>
 
-# Usage: $0 [--release 22 --only cs-cac] # limiting it to one treebank, identified by its target name
-udrel="23" # default: UD 2.3
+# Usage: $0 [--release 24 --only cs-cac] # limiting it to one treebank, identified by its target name
+udrel="24" # default: UD 2.4
 POSITIONAL=()
 while [[ $# -gt 0 ]]
 do
@@ -66,4 +66,3 @@ cd $forpmltqdir/..
 if [[ ! -e "resources" ]] ; then
   ln -s $resourcedir
 fi
-
