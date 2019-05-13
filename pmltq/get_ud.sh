@@ -51,7 +51,7 @@ for tbkpath in $uddir/*-ud$udrel* ; do
   tbk=`basename $tbkpath`
   withoutud=`echo -n $tbk | sed s/-ud$udrel/-/ | sed 's/-$//'`
   if [[ -z "$ONLY" ]] || [[ "$withoutud" == "$ONLY" ]] ; then
-    if [ "$withoutud" != "ar-nyuad" ] && [ "$withoutud" != "en-esl" ] && [ "$withoutud" != "fr-ftb" ] && [ "$withoutud" != "qhe-hiencs" ] && [ "$withoutud" != "ja-bccwj" ] && [ "$withoutud" != "ja-ktc" ] ; then
+    if [ "$withoutud" != "ar-nyuad" ] && [ "$withoutud" != "en-esl" ] && [ "$withoutud" != "fr-ftb" ] && [ "$withoutud" != "gun-dooley" ] && [ "$withoutud" != "qhe-hiencs" ] && [ "$withoutud" != "ja-bccwj" ] && [ "$withoutud" != "ja-ktc" ] ; then
       echo Universal Dependencies $udrel $tbk '-->' $withoutud
       mkdir -p $forpmltqdir/$withoutud
       cp $tbkpath/pmltq/*.treex.gz $forpmltqdir/$withoutud
