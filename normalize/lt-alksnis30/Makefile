@@ -1,12 +1,12 @@
 LANGCODE=lt
-TREEBANK=lt-alksnis22
+TREEBANK=lt-alksnis30
 UDCODE=lt_alksnis
 UDNAME=Lithuanian-ALKSNIS
 HARMONIZE=Harmonize iset_driver=lt::jablonskis
 POST_UD_BLOCKS=HamleDT::Punctuation
 include ../common.mak
 
-SOURCEDIR=/net/data/treebanks/lt/Alksnis_2.2
+SOURCEDIR=/net/data/treebanks/lt/alksnis-v3.0
 SCHEMADIR=$(SOURCEDIR)/AlksnisSchema-1.3.pml
 
 # There are four folders with different sources and genres.
