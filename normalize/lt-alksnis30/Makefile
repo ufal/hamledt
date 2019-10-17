@@ -35,10 +35,9 @@ TESTFILES=Vengrija,parazitine,kd1-11,kd1-12,kd1-13,kd1-14,kd1-15,kd1-16,kd1-17,k
 # must lie next to the data files (but then Treex will think it is another data
 # file) or it cannot be read by our reader.
 source:
-	for i in $(SOURCEDIR)/{documents,fiction,general-press,specialized-press}/*.pml ; do echo cp $$i $(IN)/`basename $$i _2019-01-14.pml`.pml ; cp $$i $(IN)/`basename $$i _2019-01-14.pml`.pml ; done
-	mv $(IN)/AlksnisSchema-1.3.pml.pml $(IN)/AlksnisSchema-1.3.pml
+	for i in $(SOURCEDIR)/{administraciniai_dokumentai,grozine_literatura,moksline_literatura,bendroji_periodika,specialioji_periodika}/*.pml ; do echo cp $$i $(IN) ; cp $$i $(IN) ; done
 	gzip $(IN)/*.pml
-	gunzip $(IN)/AlksnisSchema-1.3.pml.gz
+	gunzip $(IN)/AlksnisSchema-3.0.pml.gz
 
 treex:
 	$(TREEX) \
