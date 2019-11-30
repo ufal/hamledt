@@ -87,6 +87,7 @@ foreach my $folder (@udfolders)
     $summary =~ s/'/ /g; # '
     $summary =~ s/^\s+//s;
     $summary =~ s/\s+$//s;
+    $summary =~ s/\s+/ /gs;
     $ltcode2summary{$record1->{ltcode}} = $summary;
     print("\$ltcode2summary{$record1->{ltcode}} = '$ltcode2summary{$record1->{ltcode}}'\n");
 }
