@@ -89,7 +89,6 @@ foreach my $folder (@udfolders)
     $summary =~ s/\s+$//s;
     $summary =~ s/\s+/ /gs;
     $ltcode2summary{$record1->{ltcode}} = $summary;
-    print("\$ltcode2summary{$record1->{ltcode}} = '$ltcode2summary{$record1->{ltcode}}'\n");
 }
 # Not all currently existing UD treebanks will be processed (e.g. dev-only versions or non-free treebanks will be skipped).
 # Get the list of treebanks actually copied to the data folder.
@@ -104,7 +103,6 @@ foreach my $folder (@folders)
     # In names of treebank folders for PML-TQ, language code is separated from treebank code by a hyphen ('-').
     # However, the script generate_pmltq_yml_for_ud.pl expects a code as in names of UD CoNLL-U files, separated by underscore ('_').
     $ltcode =~ s/-/_/;
-    print("\$ltcode2summary{$ltcode} = '$ltcode2summary{$ltcode}'\n");
     my $lcode = $ltcode;
     my $tcode = '';
     if($ltcode =~ m/^([a-z]+)_([a-z]+)$/)
