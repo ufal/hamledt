@@ -85,6 +85,7 @@ foreach my $folder (@udfolders)
     $summary{$folder} = defined($record2->{summary}) ? $record2->{summary} : $folder;
     # We want to be able to put the summary on a command line in single quotes.
     $summary{$folder} =~ s/'/ /g; # '
+    print("\$summary{$folder} = '$summary{$folder}'\n");
 }
 # Not all currently existing UD treebanks will be processed (e.g. dev-only versions or non-free treebanks will be skipped).
 # Get the list of treebanks actually copied to the data folder.
@@ -95,6 +96,7 @@ my $i = 0;
 foreach my $folder (@folders)
 {
     next if($folder eq 'resources');
+    print("\$summary{$folder} = '$summary{$folder}'\n");
     my $ltcode = $folder;
     # In names of treebank folders for PML-TQ, language code is separated from treebank code by a hyphen ('-').
     # However, the script generate_pmltq_yml_for_ud.pl expects a code as in names of UD CoNLL-U files, separated by underscore ('_').
