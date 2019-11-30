@@ -17,13 +17,15 @@ my $tname = '';  # = 'PROIEL';
 my $lcode;  # = 'grc';
 my $ltcode; # = 'grc_proiel'; # language and treebank code separated by underscore
 my $folder; # = 'grc-proiel'; # language and treebank code separated by hyphen
+my $summary = 'Universal Dependencies is a project that is developing cross-linguistically consistent treebank annotation for many languages, with the goal of facilitating multilingual parser development, cross-lingual learning, and parsing research from a language typology perspective.';
 
 GetOptions
 (
-    'udrel=s'  => \$udrel,
-    'lname=s'  => \$lname,
-    'tname=s'  => \$tname,
-    'ltcode=s' => \$ltcode
+    'udrel=s'   => \$udrel,
+    'lname=s'   => \$lname,
+    'tname=s'   => \$tname,
+    'ltcode=s'  => \$ltcode,
+    'summary=s' => \$summary
 );
 if(!defined($udrel) || !defined($lname) || !defined($ltcode))
 {
@@ -49,7 +51,7 @@ print(" – $tname") if(defined($tname) && $tname ne '');
 print("'\n");
 print("treebank_id: $pmltqcode\n");
 print("homepage: 'http://universaldependencies.org/#$lcode'\n");
-print("description: 'Universal Dependencies is a project that is developing cross-linguistically consistent treebank annotation for many languages, with the goal of facilitating multilingual parser development, cross-lingual learning, and parsing research from a language typology perspective.'\n");
+print("description: '$summary'\n");
 print("isFree: 'true'\n");
 print("isAllLogged: 'true'\n");
 print("isPublic: 'true'\n");

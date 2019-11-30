@@ -16,7 +16,7 @@ use udlib;
 
 sub usage
 {
-    my $er = '23'; # example release number
+    my $er = '25'; # example release number
     print STDERR ("Usage: perl $0 --release $er --cluster [cs_pdt cs_cac]\n");
     print STDERR ("       ... run pmltq convert on all UD treebanks in parallel on the cluster\n");
     print STDERR ("       ... you must run this from the cluster head node (sol1 to sol10)\n");
@@ -76,10 +76,15 @@ foreach my $lname (keys(%{$languages}))
 # in PMLTQ are different from UD releases, so we must look in a UD folder.
 my @udfolders = udlib::list_ud_folders('/net/work/people/zeman/unidep');
 my %tcode2name;
+my %summary;
 foreach my $folder (@udfolders)
 {
-    my $record = udlib::get_ud_files_and_codes($folder, '/net/work/people/zeman/unidep');
-    $tcode2name{$record->{tcode}} = $record->{tname};
+    my $record1 = udlib::get_ud_files_and_codes($folder, '/net/work/people/zeman/unidep');
+    $tcode2name{$record1->{tcode}} = $record1->{tname};
+    my $record2 = udlib::read_readme($folder, '/net/work/people/zeman/unidep');
+    $summary{$folder} = defined($record2->{summary}) ? $record2->{summary} : $folder;
+    # We want to be able to put the summary on a command line in single quotes.
+    $summary{$folder} =~ s/'/ /g; # '
 }
 # Not all currently existing UD treebanks will be processed (e.g. dev-only versions or non-free treebanks will be skipped).
 # Get the list of treebanks actually copied to the data folder.
@@ -123,6 +128,7 @@ foreach my $folder (@folders)
     print("$i.\t$folder\t$ltcode\t$ltname\t$lname\t$tname\t$yamlfilename\n");
     my $command = "../../bin/generate_pmltq_yml_for_ud.pl --udrel $udrel --ltcode $ltcode --lname '$lname'";
     $command .= " --tname '$tname'" unless($tname eq '');
+    $command .= " --summary '$summary{$folder}'";
     $command .= " > $yamlfilename";
     print("\t$command\n");
     system($command);
