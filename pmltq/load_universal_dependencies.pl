@@ -82,9 +82,12 @@ foreach my $folder (@udfolders)
     my $record1 = udlib::get_ud_files_and_codes($folder, '/net/work/people/zeman/unidep');
     $tcode2name{$record1->{tcode}} = $record1->{tname};
     my $record2 = udlib::read_readme($folder, '/net/work/people/zeman/unidep');
-    $ltcode2summary{$record1->{ltcode}} = defined($record2->{sections}{summary}) ? $record2->{sections}{summary} : $folder;
+    my $summary = defined($record2->{sections}{summary}) ? $record2->{sections}{summary} : $folder;
     # We want to be able to put the summary on a command line in single quotes.
-    $ltcode2summary{$record1->{ltcode}} =~ s/'/ /g; # '
+    $summary =~ s/'/ /g; # '
+    $summary =~ s/^\s+//s;
+    $summary =~ s/\s+$//s;
+    $ltcode2summary{$record1->{ltcode}} = $summary;
     print("\$ltcode2summary{$record1->{ltcode}} = '$ltcode2summary{$record1->{ltcode}}'\n");
 }
 # Not all currently existing UD treebanks will be processed (e.g. dev-only versions or non-free treebanks will be skipped).
