@@ -76,18 +76,16 @@ foreach my $lname (keys(%{$languages}))
 # in PMLTQ are different from UD releases, so we must look in a UD folder.
 my @udfolders = udlib::list_ud_folders('/net/work/people/zeman/unidep');
 my %tcode2name;
-my %summary;
+my %ltcode2summary;
 foreach my $folder (@udfolders)
 {
     my $record1 = udlib::get_ud_files_and_codes($folder, '/net/work/people/zeman/unidep');
     $tcode2name{$record1->{tcode}} = $record1->{tname};
     my $record2 = udlib::read_readme($folder, '/net/work/people/zeman/unidep');
-    $summary{$folder} = defined($record2->{summary}) ? $record2->{summary} : $folder;
+    $ltcode2summary{$record1->{ltcode}} = defined($record2->{sections}{summary}) ? $record2->{sections}{summary} : $folder;
     # We want to be able to put the summary on a command line in single quotes.
-    $summary{$folder} =~ s/'/ /g; # '
-    print("\$summary{$folder} = '$summary{$folder}'\n");
-    print(join(', ', sort(keys(%{$record2}))), "\n");
-    print(join(', ', sort(keys(%{$record2->{sections}}))), "\n");
+    $ltcode2summary{$record1->{ltcode}} =~ s/'/ /g; # '
+    print("\$ltcode2summary{$record1->{ltcode}} = '$ltcode2summary{$record1->{ltcode}}'\n");
 }
 # Not all currently existing UD treebanks will be processed (e.g. dev-only versions or non-free treebanks will be skipped).
 # Get the list of treebanks actually copied to the data folder.
@@ -98,11 +96,11 @@ my $i = 0;
 foreach my $folder (@folders)
 {
     next if($folder eq 'resources');
-    print("\$summary{$folder} = '$summary{$folder}'\n");
     my $ltcode = $folder;
     # In names of treebank folders for PML-TQ, language code is separated from treebank code by a hyphen ('-').
     # However, the script generate_pmltq_yml_for_ud.pl expects a code as in names of UD CoNLL-U files, separated by underscore ('_').
     $ltcode =~ s/-/_/;
+    print("\$ltcode2summary{$ltcode} = '$ltcode2summary{$ltcode}'\n");
     my $lcode = $ltcode;
     my $tcode = '';
     if($ltcode =~ m/^([a-z]+)_([a-z]+)$/)
@@ -132,7 +130,7 @@ foreach my $folder (@folders)
     print("$i.\t$folder\t$ltcode\t$ltname\t$lname\t$tname\t$yamlfilename\n");
     my $command = "../../bin/generate_pmltq_yml_for_ud.pl --udrel $udrel --ltcode $ltcode --lname '$lname'";
     $command .= " --tname '$tname'" unless($tname eq '');
-    $command .= " --summary '$summary{$folder}'";
+    $command .= " --summary '$ltcode2summary{$ltcode}'";
     $command .= " > $yamlfilename";
     print("\t$command\n");
     system($command);
