@@ -86,6 +86,7 @@ foreach my $folder (@udfolders)
     # We want to be able to put the summary on a command line in single quotes.
     $summary{$folder} =~ s/'/ /g; # '
     print("\$summary{$folder} = '$summary{$folder}'\n");
+    print(sort(keys(%{$record2})), "\n");
 }
 # Not all currently existing UD treebanks will be processed (e.g. dev-only versions or non-free treebanks will be skipped).
 # Get the list of treebanks actually copied to the data folder.
