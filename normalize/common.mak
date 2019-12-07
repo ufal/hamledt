@@ -162,6 +162,16 @@ fixud:
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
+fixud_enhanced:
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
+	        A2A::CopyAtree source_selector='' selector='orig' \
+	        HamleDT::$(UCLANG)::FixUD \
+	        HamleDT::Punctuation \
+	        A2A::CopyBasicToEnhancedUD \
+	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
+	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
+	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
+
 ud1to2:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
