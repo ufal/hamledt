@@ -137,6 +137,7 @@ prague_to_ud_enhanced:
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
 	    $(SCEN2) \
 	    A2A::CopyBasicToEnhancedUD \
+	    A2A::AddEnhancedUD \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
@@ -168,6 +169,7 @@ fixud_enhanced:
 	        HamleDT::$(UCLANG)::FixUD \
 	        HamleDT::Punctuation \
 	        A2A::CopyBasicToEnhancedUD \
+	        A2A::AddEnhancedUD \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
