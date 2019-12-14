@@ -3,7 +3,7 @@ TREEBANK=lt-alksnis30
 UDCODE=lt_alksnis
 UDNAME=Lithuanian-ALKSNIS
 HARMONIZE=Harmonize iset_driver=lt::jablonskis
-POST_UD_BLOCKS=HamleDT::Punctuation
+POST_UD_BLOCKS=HamleDT::Punctuation HamleDT::LT::FixUD
 include ../common.mak
 
 SOURCEDIR=/net/data/treebanks/lt/alksnis-v3.0
