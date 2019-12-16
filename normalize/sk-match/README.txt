@@ -3,6 +3,9 @@ where they were available and took only those sentences where the two annotators
 data should be the most reliable part of the treebank but it is biased towards short and easy sentences. This part
 is processed here as sk-match.
 
+IMPORTANT: IF YOU NEED TO RE-RUN (AND POSSIBLY MODIFY) THE PROCESSING OF THE ORIGINAL DATA RECEIVED FROM BRATISLAVA,
+GO TO ../sk/ AND CHECK THE FILE poznamky.txt (IN CZECH).
+
 The rest of this README file is the original README.txt I wrote for the Slovak Treebank in HamleDT:
 
 =======================================================================================================================
