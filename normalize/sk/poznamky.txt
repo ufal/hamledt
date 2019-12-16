@@ -92,7 +92,9 @@ průměrná délka věty přes vybrané věty = 10,0 tokenů
    Vzít zónu sk_annotator1 (ta druhá je její přesnou kopií).
 
 treex -p -j100 Util::SetGlobal language=sk selector=annotator1 if_missing_bundles=ignore Read::Treex from='!/net/data/treebanks/sk/stb-filtered/*/*.treex.gz' Util::Eval anode='my $id = $.id; $id =~ s/^sk-annotator1-//; $.set_conll_feat("id=$id");' Write::CoNLLX is_member_within_afun=1 is_parenthesis_root_within_afun=1 substitute='{stb-filtered}{stb-filtered-conll}'
-cat /net/data/treebanks/sk/stb-filtered-conll/*/*.conll > stb-match.conll
+for i in stb-filtered-conll/*/*.conll ; do j=`basename $i` ; d=`dirname $i | sed 's/conll/ids/'` ; mkdir -p $d ; perl -pe '$dir=lc("'$d'"); $dir =~ s:^stb-filtered-ids/::; $file="'$j'"; $an="(barbora[hs]|bugajova|hrenakova|hudekova|jankal|janovicka|kandarcova|kandracova|katarinag|mz|olejkarova|safarikova|tencerova|valachova)(_fsnew)?"; $file =~ s/(.+)_${an}_\1_${an}/$1/; $file =~ s/\.conll$//; $file =~ s/_kdok\.fsnew//; s:\tid=(.*?)\t:\tid=$dir/$file/$1\t:' < $i > $d/$j ; done
+cat /net/data/treebanks/sk/stb-filtered-ids/*/*.conll > stb-match.conll
+perl -e 'while(<>) { if(m/\tid=(.*?)\t/) { my $id = $1; if(exists($h{$id})) { print("DUPLICATE ID $id\n"); } $h{$id}++ } } my $n = scalar(keys(%h)); print("TOTAL $n UNIQUE IDS\n");' < stb-match.conll
 
 10. Prohnat treebank hamledtí normalizací a zejména testy, jestli neobjeví nějaké další problémy.
 
