@@ -13,7 +13,12 @@ use lib '/home/zeman/lib';
 use dzsys; # saferun
 
 # SVN: https://svn.ms.mff.cuni.cz/svn/slovallex/trunk/
-my $zdrojova_cesta = '/net/work/people/zeman/stb-conll';
+my $zdrojova_cesta = '/net/data/treebanks/sk/stb-conll';
+if(scalar(@ARGV) >= 1)
+{
+    $zdrojova_cesta = shift(@ARGV);
+    print("Reading from source path '$zdrojova_cesta'\n");
+}
 my @slozky = dzsys::get_subfolders($zdrojova_cesta);
 foreach my $slozka (@slozky)
 {
