@@ -55,6 +55,8 @@ sub process_sentence
     # The common prefix will then end with "w" but we do not want the sentence id
     # to include it.
     $sid =~ s/(s\d+)w$/$1/;
+    # Sentence ids in Universal Dependencies should not contain slashes.
+    $sid =~ s-/-:-g;
     # Too short a prefix is suspicious. It should include folder and file name!
     if(length($sid) < 5)
     {
