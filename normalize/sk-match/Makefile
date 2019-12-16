@@ -8,8 +8,8 @@ include ../common.mak
 source:
 	mkdir -p $(DATADIR)
 	mkdir -p $(IN)
-	cat /net/data/treebanks/sk/stb-match.conll | /net/work/people/zeman/parsing/tools/split_conll.pl -phead 80 $(IN)/train.conll $(IN)/dt.conll
-	cat $(IN)/dt.conll | /net/work/people/zeman/parsing/tools/split_conll.pl -phead 50 $(IN)/dev.conll $(IN)/test.conll
+	cat /net/data/treebanks/sk/stb-match.conll | /home/zeman/tools/split_conll.pl -phead 80 $(IN)/train.conll $(IN)/dt.conll
+	cat $(IN)/dt.conll | /home/zeman/tools/split_conll.pl -phead 50 $(IN)/dev.conll $(IN)/test.conll
 
 treex:
 	$(TREEX) $(IMPORTX) is_member_within_afun=1 is_parenthesis_root_within_afun=1 from=$(IN)/train.conll sid_prefix=train- Filter::RemoveEmptySentences W2W::EstimateNoSpaceAfter $(WRITE0) path=$(DIR0)/train/
