@@ -82,7 +82,8 @@ sub process_sentence
         {
             my @f = split(/\t/, $line);
             my @feats = ();
-            @feats = grep {!m/^sid=/} (split(/\|/, $f[5])) unless($f[5] eq '_');
+            ###!!! We may or may not want to keep the original word ids in the FEATS column, but we definitely want to make sure there are no other sids.
+            @feats = grep {!m/^s?id=/} (split(/\|/, $f[5])) unless($f[5] eq '_');
             push(@feats, "sid=$sid");
             $f[5] = join('|', @feats);
             $line = join("\t", @f);
