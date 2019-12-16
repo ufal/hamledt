@@ -50,6 +50,11 @@ sub process_sentence
         }
     }
     my $sid = get_common_prefix(@wids);
+    # In many corpus files, the word id ends with something like "p2s9w15" where
+    # p2 is the paragraph number, s9 the sentence number and w15 the word number.
+    # The common prefix will then end with "w" but we do not want the sentence id
+    # to include it.
+    $sid =~ s/(s\d+)w$/$1/;
     # Too short a prefix is suspicious. It should include folder and file name!
     if(length($sid) < 5)
     {
