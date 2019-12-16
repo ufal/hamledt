@@ -39,7 +39,7 @@ sub process_sentence
         {
             my @f = split(/\t/, $line);
             my $feats = $f[5];
-            my @featsids = grep {m/^id=.+/} (split(/\|/, $feats);
+            my @featsids = grep {m/^id=.+/} (split(/\|/, $feats));
             foreach my $id (@featsids)
             {
                 if($id =~ m/^id=(.+)$/)
