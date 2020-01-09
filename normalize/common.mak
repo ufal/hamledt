@@ -174,6 +174,19 @@ fixud_enhanced:
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
+# Some UD treebanks already have some enhanced dependencies and we only want to add
+# the missing enhancements. We thus must not call A2A::CopyBasicToEnhanced, which
+# would overwrite the existing enhancements!
+fixud_some_enhanced:
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
+	        A2A::CopyAtree source_selector='' selector='orig' \
+	        HamleDT::$(UCLANG)::FixUD \
+	        HamleDT::Punctuation \
+	        A2A::AddEnhancedUD \
+	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
+	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
+	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
+
 ud1to2:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
