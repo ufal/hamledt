@@ -5,7 +5,9 @@
 #   cd $HAMLEDT/normalize/cs
 #   ../export_ud.sh cs cs_pdt Czech-PDT
 #   cd $HAMLEDT/normalize/la-it
-#   ../export_ud.sh la la_itt Latin-ITT
+#   ../export_ud.sh la la_ittb Latin-ITTB
+#   cd $HAMLEDT/normalize/uk-ud25iu
+#   UDDIR=/net/work/people/zeman/unidep/forks ../export_ud.sh uk uk_iu Ukrainian-IU 
 
 lcode=$1
 ltcode=$2
@@ -31,7 +33,9 @@ else
   zcat data/conllu/dev/*.conllu.gz > $ltcode-ud-dev.conllu
   zcat data/conllu/test/*.conllu.gz > $ltcode-ud-test.conllu
 fi
-UDDIR=/net/work/people/zeman/unidep
+if [ -z "$UDDIR" ] ; then
+  UDDIR=/net/work/people/zeman/unidep
+fi
 UDTOOLS=$UDDIR/tools
 mkdir -p $UDDIR/UD_$lname
 cat *.conllu | $UDTOOLS/check_sentence_ids.pl
