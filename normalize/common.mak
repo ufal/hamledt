@@ -176,13 +176,14 @@ fixud_enhanced:
 
 # Some UD treebanks already have some enhanced dependencies and we only want to add
 # the missing enhancements. We thus must not call A2A::CopyBasicToEnhanced, which
-# would overwrite the existing enhancements!
+# would overwrite the existing enhancements! The calling Makefile should define the
+# variable ENHANCEMENTS, e.g.: ENHANCEMENTS="case=1 coord=0 xsubj=0 relcl=0 empty=0"
 fixud_some_enhanced:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
 	        HamleDT::$(UCLANG)::FixUD \
 	        HamleDT::Punctuation \
-	        A2A::AddEnhancedUD \
+	        A2A::AddEnhancedUD $(ENHANCEMENTS) \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
