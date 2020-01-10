@@ -186,7 +186,7 @@ fixud_some_enhanced:
 	        A2A::AddEnhancedUD $(ENHANCEMENTS) \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
-	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
+	UDDIR=$(UDDIR) ../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 ud1to2:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
