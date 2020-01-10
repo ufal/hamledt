@@ -182,7 +182,6 @@ fixud_some_enhanced:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
 	        HamleDT::$(UCLANG)::FixUD \
-	        HamleDT::Punctuation \
 	        A2A::AddEnhancedUD $(ENHANCEMENTS) \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
