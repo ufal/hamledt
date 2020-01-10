@@ -177,7 +177,7 @@ fixud_enhanced:
 # Some UD treebanks already have some enhanced dependencies and we only want to add
 # the missing enhancements. We thus must not call A2A::CopyBasicToEnhanced, which
 # would overwrite the existing enhancements! The calling Makefile should define the
-# variable ENHANCEMENTS, e.g.: ENHANCEMENTS="case=1 coord=0 xsubj=0 relcl=0 empty=0"
+# variable ENHANCEMENTS, e.g.: ENHANCEMENTS=case=1 coord=0 xsubj=0 relcl=0 empty=0
 fixud_some_enhanced:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
