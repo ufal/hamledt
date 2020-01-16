@@ -2,6 +2,9 @@ LANGCODE=fi
 TREEBANK=fi-ud25tdt
 UDCODE=fi_tdt
 UDNAME=Finnish-TDT
+# I do not maintain this UD treebank so I should modify my own fork instead of the official repository.
+UDDIR=/net/work/people/zeman/unidep/forks
+ENHANCEMENTS=case=1 coord=0 xsubj=0 relcl=1 empty=0
 include ../common.mak
 
 ALTSRCDIR1=/net/data/universal-dependencies-2.5/UD_$(UDNAME)
