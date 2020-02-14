@@ -2,6 +2,9 @@ LANGCODE=et
 TREEBANK=et-ud25edt
 UDCODE=et_edt
 UDNAME=Estonian-EDT
+# I do not maintain this UD treebank so I should modify my own fork instead of the official repository.
+UDDIR=/net/work/people/zeman/unidep/forks
+ENHANCEMENTS=case=1 xsubj=1
 include ../common.mak
 
 ALTSRCDIR1=/net/data/universal-dependencies-2.5/UD_$(UDNAME)
