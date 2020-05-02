@@ -6,7 +6,7 @@ include ../common.mak
 
 ALTSRCDIR1=/net/data/universal-dependencies-2.5/UD_$(UDNAME)
 ALTSRCDIR2=/net/work/people/zeman/unidep/UD_$(UDNAME)
-SOURCEDIR=$(ALTSRCDIR1)
+SOURCEDIR=$(ALTSRCDIR2)
 
 source:
 	cp $(SOURCEDIR)/$(UDCODE)-ud-train.conllu data/source/train.conllu
