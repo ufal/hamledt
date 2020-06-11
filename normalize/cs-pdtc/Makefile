@@ -18,7 +18,8 @@ source:
 	ln -s $(SOURCEDIR)/PDTSC/data/*.[amw] $(IN)/train
 	ln -s $(SOURCEDIR)/PCEDT/data/*.[amw] $(IN)/train
 
-SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
+#SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
+SCHEMADIR=/net/work/people/zeman/pdtc/tred-extension/pdt_c_m/resources
 treex:
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/*.a' \
