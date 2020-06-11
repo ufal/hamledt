@@ -18,21 +18,20 @@ source:
 	ln -s $(SOURCEDIR)/PDTSC/data/*.[amw] $(IN)/train
 	ln -s $(SOURCEDIR)/PCEDT/data/*.[amw] $(IN)/train
 
-#SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
-SCHEMADIR=/net/work/people/zeman/pdtc/tred-extension/pdt_c_m/resources
+SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
 treex:
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/*.a' \
 		A2A::FillCoNLLAttributes \
-		Write::Treex clobber=1 path=$(DIR0)/train/ compress=1
+		Write::Treex clobber=1 path=$(DIR0)/train/
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/dev/*.a' \
 		A2A::FillCoNLLAttributes \
-		Write::Treex clobber=1 path=$(DIR0)/dev/ compress=1
+		Write::Treex clobber=1 path=$(DIR0)/dev/
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/test/*.a' \
 		A2A::FillCoNLLAttributes \
-		Write::Treex clobber=1 path=$(DIR0)/test/  compress=1
+		Write::Treex clobber=1 path=$(DIR0)/test/
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud_enhanced
