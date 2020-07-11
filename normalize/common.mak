@@ -54,6 +54,9 @@ POST_IMPORTX_BLOCKS ?=
 # Example: PRE_UD_BLOCKS=HamleDT::CS::SplitFusedWords
 PRE_UD_BLOCKS  ?=
 POST_UD_BLOCKS ?=
+# Analogously, if a treebank requires extra blocks around the language-specific FixUD block, override the following.
+PRE_FIXUD_BLOCKS  ?=
+POST_FIXUD_BLOCKS ?=
 
 check-source:
 	[ -d $(IN) ] || (echo new $(LANGCODE) && make source)
@@ -157,7 +160,9 @@ export_conllu:
 fixud:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
+	        $(PRE_FIXUD_BLOCKS) \
 	        HamleDT::$(UCLANG)::FixUD \
+	        $(POST_FIXUD_BLOCKS) \
 	        HamleDT::Punctuation \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
@@ -166,7 +171,9 @@ fixud:
 fixud_enhanced:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
+	        $(PRE_FIXUD_BLOCKS) \
 	        HamleDT::$(UCLANG)::FixUD \
+	        $(POST_FIXUD_BLOCKS) \
 	        HamleDT::Punctuation \
 	        A2A::CopyBasicToEnhancedUD \
 	        A2A::AddEnhancedUD \

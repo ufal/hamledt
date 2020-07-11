@@ -2,6 +2,7 @@ LANGCODE=de
 TREEBANK=de-ud26gsd
 UDCODE=de_gsd
 UDNAME=German-GSD
+PRE_FIXUD_BLOCKS=HamleDT::SetMiscNEFromPropn
 include ../common.mak
 
 ALTSRCDIR1=/net/data/universal-dependencies-2.6/UD_$(UDNAME)
