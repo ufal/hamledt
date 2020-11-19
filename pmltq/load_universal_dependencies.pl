@@ -130,7 +130,8 @@ foreach my $folder (@folders)
     }
     my $yamlfilename = "pmltq-$ltcode.yml";
     print("$i.\t$folder\t$ltcode\t$ltname\t$lname\t$tname\t$yamlfilename\n");
-    my $command = "../../bin/generate_pmltq_yml_for_ud.pl --udrel $udrel --ltcode $ltcode --lname '$lname'";
+    # perl -CA is needed so that the summary is read from the command line in UTF-8
+    my $command = "perl -CDSA ../../bin/generate_pmltq_yml_for_ud.pl --udrel $udrel --ltcode $ltcode --lname '$lname'";
     $command .= " --tname '$tname'" unless($tname eq '');
     $command .= " --summary '$ltcode2summary{$ltcode}'";
     $command .= " > $yamlfilename";

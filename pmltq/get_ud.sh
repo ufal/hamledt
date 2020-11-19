@@ -3,7 +3,7 @@
 # 2015, 2016, 2017, 2018, 2019, 2020 Dan Zeman <zeman@ufal.mff.cuni.cz>
 
 # Usage: $0 [--release 26 --only cs-cac] # limiting it to one treebank, identified by its target name
-udrel="26" # default: UD 2.6
+udrel="27" # default: UD 2.7
 POSITIONAL=()
 while [[ $# -gt 0 ]]
 do
