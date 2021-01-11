@@ -22,15 +22,15 @@ source:
 SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
 treex:
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/train/*.a.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/train/*.t.gz' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/train/ compress=1
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/dev/*.a.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/dev/*.t.gz' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/dev/ compress=1
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/test/*.a.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/test/*.t.gz' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/  compress=1
 
