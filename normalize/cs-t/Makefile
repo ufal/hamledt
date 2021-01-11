@@ -19,7 +19,7 @@ source:
 	ln -s $(SOURCEDIR)/tamw/dtest/ln94200_103.[tamw].gz $(IN)/dev
 	ln -s $(SOURCEDIR)/tamw/etest/ln94200_104.[tamw].gz $(IN)/test
 
-SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
+SCHEMADIR=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema
 treex:
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/train/*.t.gz' \
