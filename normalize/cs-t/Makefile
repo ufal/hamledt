@@ -3,6 +3,7 @@ TREEBANK=cs-t
 UDCODE=cs_pdt
 # Czech-PDTT is the same repo as Czech-PDT, but temporarily switched to the branch 'tecto'.
 UDNAME=Czech-PDTT
+PRE_UD_BLOCKS=T2A::GenerateA2TRefs
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
