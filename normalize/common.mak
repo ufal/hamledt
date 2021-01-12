@@ -140,6 +140,7 @@ prague_to_ud_enhanced:
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
 	    $(SCEN2) \
 	    A2A::CopyBasicToEnhancedUD \
+	    T2A::GenerateEmptyNodes \
 	    A2A::AddEnhancedUD \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
