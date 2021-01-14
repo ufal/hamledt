@@ -143,6 +143,7 @@ prague_to_ud_enhanced:
 	    T2A::GenerateEmptyNodes \
 	    A2A::AddEnhancedUD \
 	    A2A::CorefClusters \
+	    A2A::CorefMentionHeads \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
