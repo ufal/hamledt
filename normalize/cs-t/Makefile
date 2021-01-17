@@ -13,15 +13,16 @@ source:
 	mkdir -p data/source/train
 	mkdir -p data/source/dev
 	mkdir -p data/source/test
+	# Odkomentovat jedno nebo druhé. Zpracování celých dat zde:
+	ln -s $(SOURCEDIR)/tamw/train-[1-8]/*.[tamw].gz $(IN)/train
+	ln -s $(SOURCEDIR)/tamw/dtest/*.[tamw].gz $(IN)/dev
+	ln -s $(SOURCEDIR)/tamw/etest/*.[tamw].gz $(IN)/test
 	# Na testy zatím nechat jen pár souborů, aby to bylo rychlejší.
-	#ln -s $(SOURCEDIR)/tamw/train-[1-8]/*.[tamw].gz $(IN)/train
-	#ln -s $(SOURCEDIR)/tamw/dtest/*.[tamw].gz $(IN)/dev
-	#ln -s $(SOURCEDIR)/tamw/etest/*.[tamw].gz $(IN)/test
-	ln -s $(SOURCEDIR)/tamw/train-1/ln94200_105.[tamw].gz $(IN)/train
-	ln -s $(SOURCEDIR)/tamw/dtest/ln94200_103.[tamw].gz $(IN)/dev
-	ln -s $(SOURCEDIR)/tamw/etest/ln94200_104.[tamw].gz $(IN)/test
-	ln -s $(SOURCEDIR)/tamw/train-1/cmpr9410_001.[tamw].gz $(IN)/train
-	ln -s $(SOURCEDIR)/tamw/train-1/mf920922_004.[tamw].gz $(IN)/train
+	#ln -s $(SOURCEDIR)/tamw/train-1/ln94200_105.[tamw].gz $(IN)/train
+	#ln -s $(SOURCEDIR)/tamw/dtest/ln94200_103.[tamw].gz $(IN)/dev
+	#ln -s $(SOURCEDIR)/tamw/etest/ln94200_104.[tamw].gz $(IN)/test
+	#ln -s $(SOURCEDIR)/tamw/train-1/cmpr9410_001.[tamw].gz $(IN)/train
+	#ln -s $(SOURCEDIR)/tamw/train-1/mf920922_004.[tamw].gz $(IN)/train
 	# Vesmír vůbec nemá tektogramatické anotace, takže do train-v nemáme jak přispět.
 
 SCHEMADIR=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema
