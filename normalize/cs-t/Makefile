@@ -45,3 +45,27 @@ treex:
 ud: prague_to_ud_enhanced
 	# Copy the new data to the Coref-UD project folder.
 	cp /net/work/people/zeman/unidep/UD_$(UDNAME)/*.conllu /net/work/projects/corefud/data/cs-pdt
+
+# If we need to debug a specific error, we can process just one document
+# instead of waiting hours for the whole corpus to compile.
+DEBUGPART=dev
+DEBUGFILE=ln94206_45
+udebug:
+	$(TREEX) \
+	    Read::Treex from='$(DIR1)/$(DEBUGPART)/$(DEBUGFILE).treex' \
+	    A2A::CopyAtree source_selector='' selector='prague' \
+	    T2A::GenerateA2TRefs \
+	    HamleDT::Udep \
+	    HamleDT::CS::SplitFusedWords \
+	    HamleDT::CS::FixUD \
+	    HamleDT::Punctuation \
+	    A2A::CopyBasicToEnhancedUD \
+	    T2A::GenerateEmptyNodes \
+	    A2A::AddEnhancedUD \
+	    A2A::CorefClusters \
+	    A2A::RemoveUnusedEmptyNodes \
+	    A2A::CorefMentions \
+	    A2A::CorefMentionHeads \
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
+	zcat $(CONLLUDIR)/$(DEBUGPART)/$(DEBUGFILE).conllu.gz > /net/work/people/zeman/corefud/data/cs-pdt/$(DEBUGFILE).conllu
