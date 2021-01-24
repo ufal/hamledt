@@ -48,8 +48,8 @@ ud: prague_to_ud_enhanced
 
 # If we need to debug a specific error, we can process just one document
 # instead of waiting hours for the whole corpus to compile.
-DEBUGPART=dev
-DEBUGFILE=ln94206_45
+DEBUGPART=test
+DEBUGFILE=ln94200_46
 udebug:
 	$(TREEX) \
 	    Read::Treex from='$(DIR1)/$(DEBUGPART)/$(DEBUGFILE).treex' \
