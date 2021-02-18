@@ -44,7 +44,9 @@ treex:
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud_enhanced
 	# Copy the new data to the Coref-UD project folder.
-	cp /net/work/people/zeman/unidep/UD_$(UDNAME)/*.conllu /net/work/projects/corefud/data/cs-pdt
+	cat /net/work/people/zeman/unidep/UD_$(UDNAME)/$(UDCODE)-ud-train-[clm].conllu > /net/work/projects/corefud/data/cs-pdt/$(UDCODE)-ud-train.conllu
+	cp /net/work/people/zeman/unidep/UD_$(UDNAME)/$(UDCODE)-ud-dev.conllu /net/work/projects/corefud/data/cs-pdt
+	cp /net/work/people/zeman/unidep/UD_$(UDNAME)/$(UDCODE)-ud-test.conllu /net/work/projects/corefud/data/cs-pdt
 
 # If we need to debug a specific error, we can process just one document
 # instead of waiting hours for the whole corpus to compile.
