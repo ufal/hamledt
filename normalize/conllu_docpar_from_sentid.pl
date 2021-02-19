@@ -65,6 +65,19 @@ while(<>)
             }
             print("# sent_id = $sid\n");
         }
+        # Czech and English PCEDT
+        # This is similar to CAC and other corpora but we must catch it before FicTree, otherwise FicTree
+        # will take the last three digits of the document number as paragraph number.
+        elsif($sid =~ m/^(wsj-\d+)-s[0-9A-Z]+$/)
+        {
+            my $did = $1;
+            if($did ne $current_did)
+            {
+                print("# newdoc id = $did\n");
+                $current_did = $did;
+            }
+            print("# sent_id = $sid\n");
+        }
         # Czech FicTree
         elsif($sid =~ m/^(.+?)(\d\d\d)-s[0-9A-Z]+$/)
         {
@@ -83,7 +96,7 @@ while(<>)
             }
             print("# sent_id = $sid\n");
         }
-        # Czech Academic Corpus and PCEDT.
+        # Czech Academic Corpus.
         elsif($sid =~ m/^(.+)-s[0-9A-Z]+$/)
         {
             my $did = $1;
