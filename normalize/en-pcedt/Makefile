@@ -2,6 +2,7 @@ LANGCODE=en
 TREEBANK=en-pcedt
 UDCODE=en_pcedt
 UDNAME=English-PCEDT
+HARMONIZE=HarmonizePCEDT
 PRE_UD_BLOCKS=T2A::GenerateA2TRefs
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
@@ -17,9 +18,9 @@ source:
 	ln -s $(SOURCEDIR)/{19,20,21}/*.treex.gz $(IN)/dev
 	ln -s $(SOURCEDIR)/{22,23,24}/*.treex.gz $(IN)/test
 	# Na testy zatím nechat jen pár souborů, aby to bylo rychlejší.
-	#ln -s $(SOURCEDIR)/tamw/train-1/ln94200_105.[tamw].gz $(IN)/train
-	#ln -s $(SOURCEDIR)/tamw/dtest/ln94200_103.[tamw].gz $(IN)/dev
-	#ln -s $(SOURCEDIR)/tamw/etest/ln94200_104.[tamw].gz $(IN)/test
+	#ln -s $(SOURCEDIR)/00/wsj_0001.treex.gz $(IN)/train
+	#ln -s $(SOURCEDIR)/19/wsj_1900.treex.gz $(IN)/dev
+	#ln -s $(SOURCEDIR)/22/wsj_2200.treex.gz $(IN)/test
 
 SCHEMADIR=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema
 treex:
