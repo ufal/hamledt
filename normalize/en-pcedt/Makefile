@@ -4,7 +4,6 @@ UDCODE=en_pcedt
 UDNAME=English-PCEDT
 HARMONIZE=HarmonizePCEDT
 PRE_UD_BLOCKS=T2A::GenerateA2TRefs
-POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
 SOURCEDIR=/net/data/pcedt2.0/data
