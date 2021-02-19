@@ -7,7 +7,7 @@
 #   cd $HAMLEDT/normalize/la-it
 #   ../export_ud.sh la la_ittb Latin-ITTB
 #   cd $HAMLEDT/normalize/uk-ud25iu
-#   UDDIR=/net/work/people/zeman/unidep/forks ../export_ud.sh uk uk_iu Ukrainian-IU 
+#   UDDIR=/net/work/people/zeman/unidep/forks ../export_ud.sh uk uk_iu Ukrainian-IU
 
 lcode=$1
 ltcode=$2
@@ -19,7 +19,7 @@ if [ "$ltcode" == "cs_pdt" ] ; then
   zcat data/conllu/train/vesm9*.conllu.gz  | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-v.conllu
   zcat data/conllu/dev/*.conllu.gz         | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
   zcat data/conllu/test/*.conllu.gz        | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
-elif [ "$ltcode" == "ar_padt" ] || [ "$ltcode" == "cs_cac" ] || [ "$ltcode" == "cs_fictree" ] || [ "$ltcode" == "lt_alksnis" ] ; then
+elif [ "$ltcode" == "ar_padt" ] || [ "$ltcode" == "cs_cac" ] || [ "$ltcode" == "cs_fictree" ] || [ "$ltcode" == "cs_pcedt" ] || [ "$ltcode" == "en_pcedt" ] || [ "$ltcode" == "lt_alksnis" ] ; then
   zcat data/conllu/train/*.conllu.gz | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train.conllu
   zcat data/conllu/dev/*.conllu.gz   | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
   zcat data/conllu/test/*.conllu.gz  | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu

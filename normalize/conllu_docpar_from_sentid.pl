@@ -10,6 +10,8 @@
 # a01w-s1
 # Czech FicTree: three digits before sentence number are chunk number.
 # laskaneX000-s1
+# Czech and English PCEDT:
+# wsj-1900-s7
 # Prague Arabic Dependency Treebank:
 # afp.20000715.0001:p2u1
 # Copyright © 2017 Dan Zeman <zeman@ufal.mff.cuni.cz>
@@ -81,7 +83,7 @@ while(<>)
             }
             print("# sent_id = $sid\n");
         }
-        # Czech Academic Corpus
+        # Czech Academic Corpus and PCEDT.
         elsif($sid =~ m/^(.+)-s[0-9A-Z]+$/)
         {
             my $did = $1;
