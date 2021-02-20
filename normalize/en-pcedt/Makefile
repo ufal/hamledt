@@ -6,7 +6,10 @@ HARMONIZE=HarmonizePCEDT
 PRE_UD_BLOCKS=T2A::GenerateA2TRefs
 include ../common.mak
 
-SOURCEDIR=/net/data/pcedt2.0/data
+# Michal Novák: Co sa tyka anglicke, najnovsia nepracovna verzia je v PCEDT 2.0 Coref.
+# V medzicase ale pracujeme na release PCEDT 3.0, takze ak raz budeme moct vydat aj anglicku stranu, moze sa pouzit uz ta z PCEDT 3.0.
+#SOURCEDIR=/net/data/pcedt2.0/data
+SOURCEDIR=/net/data/pcedt2.0-coref/data
 # subdirs: 00-24
 source:
 	mkdir -p data/source/train
