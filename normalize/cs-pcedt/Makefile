@@ -6,20 +6,25 @@ PRE_UD_BLOCKS=T2A::GenerateA2TRefs
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
-SOURCEDIR=/net/data/pcedt2.0/data
+# An updated version of the Czech part of PCEDT 2.0 has been published as part of PDT-C 1.0.
+#SOURCEDIR=/net/data/pcedt2.0/data
+SOURCEDIR=/net/data/pdt-c-1.0/data/PCEDT/treex
 # subdirs: 00-24
 source:
 	mkdir -p data/source/train
 	mkdir -p data/source/dev
 	mkdir -p data/source/test
 	# Odkomentovat jedno nebo druhé. Zpracování celých dat zde:
-	ln -s $(SOURCEDIR)/{0[0-9],1[0-8]}/*.treex.gz $(IN)/train
-	ln -s $(SOURCEDIR)/{19,20,21}/*.treex.gz $(IN)/dev
-	ln -s $(SOURCEDIR)/{22,23,24}/*.treex.gz $(IN)/test
+	ln -s $(SOURCEDIR)/wsj{0[0-9],1[0-8]}.cz.treex.gz $(IN)/train
+	ln -s $(SOURCEDIR)/wsj{19,20,21}.cz.treex.gz $(IN)/dev
+	ln -s $(SOURCEDIR)/wsj{22,23,24}.cz.treex.gz $(IN)/test
+	for i in $(IN)/train/*.cz.treex.gz ; do mv $$i $(IN)/train/`basename $$i .cz.treex.gz`.treex.gz ; done
+	for i in $(IN)/dev/*.cz.treex.gz ; do mv $$i $(IN)/dev/`basename $$i .cz.treex.gz`.treex.gz ; done
+	for i in $(IN)/test/*.cz.treex.gz ; do mv $$i $(IN)/test/`basename $$i .cz.treex.gz`.treex.gz ; done
 	# Na testy zatím nechat jen pár souborů, aby to bylo rychlejší.
-	#ln -s $(SOURCEDIR)/tamw/train-1/ln94200_105.[tamw].gz $(IN)/train
-	#ln -s $(SOURCEDIR)/tamw/dtest/ln94200_103.[tamw].gz $(IN)/dev
-	#ln -s $(SOURCEDIR)/tamw/etest/ln94200_104.[tamw].gz $(IN)/test
+	#ln -s $(SOURCEDIR)/wsj2200.cz.treex.gz $(IN)/train
+	#ln -s $(SOURCEDIR)/wsj1901.cz.treex.gz $(IN)/dev
+	#ln -s $(SOURCEDIR)/wsj2201.cz.treex.gz $(IN)/test
 
 SCHEMADIR=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema
 treex:
