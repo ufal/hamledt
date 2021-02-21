@@ -7,7 +7,9 @@ PRE_UD_BLOCKS=T2A::GenerateA2TRefs
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
-SOURCEDIR=/net/projects/pdt/pdt35/PDT3.5/data
+# Switching from PDT 3.5 to PDT-C.
+#SOURCEDIR=/net/projects/pdt/pdt35/PDT3.5/data
+SOURCEDIR=/net/data/pdt-c-1.0/data/PDT/pml
 # subdirs: amw, tamw / train-[1-8] dtest etest / *.a.gz
 source:
 	mkdir -p data/source/train
