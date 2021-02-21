@@ -15,9 +15,9 @@ source:
 	mkdir -p data/source/dev
 	mkdir -p data/source/test
 	# Odkomentovat jedno nebo druhé. Zpracování celých dat zde:
-	ln -s $(SOURCEDIR)/wsj{0[0-9],1[0-8]}.cz.treex.gz $(IN)/train
-	ln -s $(SOURCEDIR)/wsj{19,20,21}.cz.treex.gz $(IN)/dev
-	ln -s $(SOURCEDIR)/wsj{22,23,24}.cz.treex.gz $(IN)/test
+	ln -s $(SOURCEDIR)/wsj{0[0-9],1[0-8]}[0-9][0-9].cz.treex.gz $(IN)/train
+	ln -s $(SOURCEDIR)/wsj{19,20,21}[0-9][0-9].cz.treex.gz $(IN)/dev
+	ln -s $(SOURCEDIR)/wsj{22,23,24}[0-9][0-9].cz.treex.gz $(IN)/test
 	for i in $(IN)/train/*.cz.treex.gz ; do mv $$i $(IN)/train/`basename $$i .cz.treex.gz`.treex.gz ; done
 	for i in $(IN)/dev/*.cz.treex.gz ; do mv $$i $(IN)/dev/`basename $$i .cz.treex.gz`.treex.gz ; done
 	for i in $(IN)/test/*.cz.treex.gz ; do mv $$i $(IN)/test/`basename $$i .cz.treex.gz`.treex.gz ; done
