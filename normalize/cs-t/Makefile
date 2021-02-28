@@ -73,3 +73,14 @@ udebug:
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
 	zcat $(CONLLUDIR)/$(DEBUGPART)/$(DEBUGFILE).conllu.gz > /net/work/people/zeman/corefud/data/cs-pdt/$(DEBUGFILE).conllu
+
+# Generate valency frames with effective children for Kira.
+# First option: read directly PDT data. But then the printed ords and lemmas will not correspond to Universal Dependencies.
+#     Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/{train,dev,test}/*.t.gz'
+# Second option: read the data converted to UD. Tectogrammatical trees and their correspondence to a-nodes should still hold but the a-trees are in UD style.
+#     Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex'
+frames_for_kira:
+	$(QTREEX) \
+	    Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
+	    Print::ValencyFramesForKira | tee frames.txt
+
