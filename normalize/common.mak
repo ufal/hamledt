@@ -136,7 +136,7 @@ prague_to_ud:
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 prague_to_ud_enhanced:
-	echo `date` make prague to ud enhanced started | tee -a time.log
+	@echo `date` make prague to ud enhanced started | tee -a time.log
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
 	    $(SCEN2) \
