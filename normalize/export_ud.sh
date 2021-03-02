@@ -13,20 +13,7 @@ echo `date` export_ud.sh started | tee -a time.log
 lcode=$1
 ltcode=$2
 lname=$3
-if [ "$ltcode" == "cs_pdt_gzipped" ] ; then ###!!! temporarily blocked via the '_gzipped' suffix
-  echo `date` zcat train-c started | tee -a time.log
-  zcat data/conllu/train/cmpr94*.conllu.gz | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-c.conllu
-  echo `date` zcat train-l started | tee -a time.log
-  zcat data/conllu/train/ln*.conllu.gz     | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-l.conllu
-  echo `date` zcat train-m started | tee -a time.log
-  zcat data/conllu/train/mf9*.conllu.gz    | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-m.conllu
-  echo `date` zcat train-v started | tee -a time.log
-  zcat data/conllu/train/vesm9*.conllu.gz  | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-v.conllu
-  echo `date` zcat dev started | tee -a time.log
-  zcat data/conllu/dev/*.conllu.gz         | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
-  echo `date` zcat test started | tee -a time.log
-  zcat data/conllu/test/*.conllu.gz        | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
-elif [ "$ltcode" == "cs_pdt" ] ; then
+if [ "$ltcode" == "cs_pdt" ] ; then
   echo `date` cat train-c started | tee -a time.log
   cat data/conllu/train/cmpr94*.conllu | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-c.conllu
   echo `date` cat train-l started | tee -a time.log
@@ -40,27 +27,27 @@ elif [ "$ltcode" == "cs_pdt" ] ; then
   echo `date` cat test started | tee -a time.log
   cat data/conllu/test/*.conllu        | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
 elif [ "$ltcode" == "ar_padt" ] || [ "$ltcode" == "cs_cac" ] || [ "$ltcode" == "cs_fictree" ] || [ "$ltcode" == "cs_pcedt" ] || [ "$ltcode" == "en_pcedt" ] || [ "$ltcode" == "lt_alksnis" ] ; then
-  echo `date` zcat train started | tee -a time.log
-  zcat data/conllu/train/*.conllu.gz | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train.conllu
-  echo `date` zcat dev started | tee -a time.log
-  zcat data/conllu/dev/*.conllu.gz   | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
-  echo `date` zcat test started | tee -a time.log
-  zcat data/conllu/test/*.conllu.gz  | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
+  echo `date` cat train started | tee -a time.log
+  cat data/conllu/train/*.conllu | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train.conllu
+  echo `date` cat dev started | tee -a time.log
+  cat data/conllu/dev/*.conllu   | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
+  echo `date` cat test started | tee -a time.log
+  cat data/conllu/test/*.conllu  | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
 elif [ "$ltcode" == "hr" ] || [ "$ltcode" == "el" ] ; then
   # Udapi can convert what we cannot: some of the remnant relations.
-  echo `date` zcat train started | tee -a time.log
-  zcat data/conllu/train/*.conllu.gz | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $ltcode-ud-train.conllu
-  echo `date` zcat dev started | tee -a time.log
-  zcat data/conllu/dev/*.conllu.gz   | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $ltcode-ud-dev.conllu
-  echo `date` zcat test started | tee -a time.log
-  zcat data/conllu/test/*.conllu.gz  | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $ltcode-ud-test.conllu
+  echo `date` cat train started | tee -a time.log
+  cat data/conllu/train/*.conllu | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $ltcode-ud-train.conllu
+  echo `date` cat dev started | tee -a time.log
+  cat data/conllu/dev/*.conllu   | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $ltcode-ud-dev.conllu
+  echo `date` cat test started | tee -a time.log
+  cat data/conllu/test/*.conllu  | udapy -s ud.Convert1to2 | perl -pe 's/\tremnant\t/\tdep:remnant\t/' > $ltcode-ud-test.conllu
 else
-  echo `date` zcat train started | tee -a time.log
-  zcat data/conllu/train/*.conllu.gz > $ltcode-ud-train.conllu
-  echo `date` zcat dev started | tee -a time.log
-  zcat data/conllu/dev/*.conllu.gz > $ltcode-ud-dev.conllu
-  echo `date` zcat test started | tee -a time.log
-  zcat data/conllu/test/*.conllu.gz > $ltcode-ud-test.conllu
+  echo `date` cat train started | tee -a time.log
+  cat data/conllu/train/*.conllu > $ltcode-ud-train.conllu
+  echo `date` cat dev started | tee -a time.log
+  cat data/conllu/dev/*.conllu > $ltcode-ud-dev.conllu
+  echo `date` cat test started | tee -a time.log
+  cat data/conllu/test/*.conllu > $ltcode-ud-test.conllu
 fi
 if [ -z "$UDDIR" ] ; then
   UDDIR=/net/work/people/zeman/unidep
