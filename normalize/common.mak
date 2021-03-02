@@ -147,7 +147,7 @@ prague_to_ud_enhanced:
 	    A2A::RemoveUnusedEmptyNodes \
 	    A2A::CorefMentions \
 	    A2A::CorefMentionHeads \
-	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 

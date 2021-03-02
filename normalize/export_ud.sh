@@ -13,7 +13,7 @@ echo `date` export_ud.sh started | tee -a time.log
 lcode=$1
 ltcode=$2
 lname=$3
-if [ "$ltcode" == "cs_pdt" ] ; then
+if [ "$ltcode" == "cs_pdt_gzipped" ] ; then ###!!! temporarily blocked via the '_gzipped' suffix
   echo `date` zcat train-c started | tee -a time.log
   zcat data/conllu/train/cmpr94*.conllu.gz | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-c.conllu
   echo `date` zcat train-l started | tee -a time.log
@@ -26,6 +26,19 @@ if [ "$ltcode" == "cs_pdt" ] ; then
   zcat data/conllu/dev/*.conllu.gz         | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
   echo `date` zcat test started | tee -a time.log
   zcat data/conllu/test/*.conllu.gz        | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
+elif [ "$ltcode" == "cs_pdt" ] ; then
+  echo `date` cat train-c started | tee -a time.log
+  cat data/conllu/train/cmpr94*.conllu | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-c.conllu
+  echo `date` cat train-l started | tee -a time.log
+  cat data/conllu/train/ln*.conllu     | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-l.conllu
+  echo `date` cat train-m started | tee -a time.log
+  cat data/conllu/train/mf9*.conllu    | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-m.conllu
+  echo `date` cat train-v started | tee -a time.log
+  cat data/conllu/train/vesm9*.conllu  | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-v.conllu
+  echo `date` cat dev started | tee -a time.log
+  cat data/conllu/dev/*.conllu         | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
+  echo `date` cat test started | tee -a time.log
+  cat data/conllu/test/*.conllu        | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
 elif [ "$ltcode" == "ar_padt" ] || [ "$ltcode" == "cs_cac" ] || [ "$ltcode" == "cs_fictree" ] || [ "$ltcode" == "cs_pcedt" ] || [ "$ltcode" == "en_pcedt" ] || [ "$ltcode" == "lt_alksnis" ] ; then
   echo `date` zcat train started | tee -a time.log
   zcat data/conllu/train/*.conllu.gz | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train.conllu
