@@ -124,8 +124,10 @@ SCEN2 = \
     A2A::CopyAtree source_selector='' selector='prague' \
     $(PRE_UD_BLOCKS) \
     HamleDT::Udep \
-    $(POST_UD_BLOCKS) \
-    HamleDT::Punctuation
+    $(POST_UD_BLOCKS)
+###!!! I am temporarily removing HamleDT::Punctuation because it can introduce bugs by reattaching punctuation to the artificial root.
+###!!! It happened in Czech PCEDT, four sentences of training data, e.g., wsj0090.
+#    HamleDT::Punctuation
 
 prague_to_ud:
 	$(QTREEX) \
