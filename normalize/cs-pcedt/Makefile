@@ -45,8 +45,8 @@ ud: prague_to_ud_enhanced
 
 # If we need to debug a specific error, we can process just one document
 # instead of waiting hours for the whole corpus to compile.
-DEBUGPART=test
-DEBUGFILE=ln94205_91
+DEBUGPART=train
+DEBUGFILE=wsj0090
 udebug:
 	$(TREEX) \
 	    Read::Treex from='$(DIR1)/$(DEBUGPART)/$(DEBUGFILE).treex' \
@@ -63,6 +63,7 @@ udebug:
 	    A2A::RemoveUnusedEmptyNodes \
 	    A2A::CorefMentions \
 	    A2A::CorefMentionHeads \
-	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
-	zcat $(CONLLUDIR)/$(DEBUGPART)/$(DEBUGFILE).conllu.gz > /net/work/people/zeman/corefud/data/cs-pdt/$(DEBUGFILE).conllu
+	validate.py --level 2 --lang $(LANGCODE) $(CONLLUDIR)/$(DEBUGPART)/$(DEBUGFILE).conllu
+	#cp $(CONLLUDIR)/$(DEBUGPART)/$(DEBUGFILE).conllu /net/work/people/zeman/corefud/data/cs-pcedt/$(DEBUGFILE).conllu
