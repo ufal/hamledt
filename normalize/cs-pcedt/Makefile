@@ -46,16 +46,17 @@ ud: prague_to_ud_enhanced
 # If we need to debug a specific error, we can process just one document
 # instead of waiting hours for the whole corpus to compile.
 DEBUGPART=train
-DEBUGFILE=wsj0090
+DEBUGFILE=wsj1057
+###!!! Za CS::FixUD zkouším vynechat HamleDT::Punctuation.
 udebug:
 	$(TREEX) \
 	    Read::Treex from='$(DIR1)/$(DEBUGPART)/$(DEBUGFILE).treex' \
 	    A2A::CopyAtree source_selector='' selector='prague' \
 	    T2A::GenerateA2TRefs \
 	    HamleDT::Udep \
+	    Util::Eval anode='if($$.deprel() eq "coord") {$$.set_deprel("dep");}' \
 	    HamleDT::CS::SplitFusedWords \
 	    HamleDT::CS::FixUD \
-	    HamleDT::Punctuation \
 	    A2A::CopyBasicToEnhancedUD \
 	    T2A::GenerateEmptyNodes \
 	    A2A::AddEnhancedUD \
