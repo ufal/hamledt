@@ -3,7 +3,9 @@ TREEBANK=cs-pcedt
 UDCODE=cs_pcedt
 UDNAME=Czech-PCEDT
 PRE_UD_BLOCKS=T2A::GenerateA2TRefs
-POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
+# Due to errors in the original annotation, some instances of coordination could not be converted
+# and the relation stayed labeled 'coord', which is invalid in Universal Dependencies. Get rid of them.
+POST_UD_BLOCKS=Util::Eval anode='if($$.deprel() eq "coord") {$$.set_deprel("dep");}' HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
 # An updated version of the Czech part of PCEDT 2.0 has been published as part of PDT-C 1.0.
