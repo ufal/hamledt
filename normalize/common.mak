@@ -155,7 +155,7 @@ prague_to_ud_enhanced:
 
 # This goal exports the harmonized trees in the CoNLL-U format, which is more useful for ordinary users.
 export_conllu:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' Write::CoNLLU print_zone_id=0 substitute={$(DIR2)}{$(CONLLUDIR)} compress=1
+	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' Write::CoNLLU print_zone_id=0 substitute={$(DIR2)}{$(CONLLUDIR)} compress=0
 
 # Improving UD data for the next release.
 # It takes UD as input, improves it and saves it to a new folder.
