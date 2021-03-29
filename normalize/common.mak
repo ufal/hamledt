@@ -108,7 +108,7 @@ orig_to_ud:
 	    A2A::CopyAtree source_selector='' selector='orig' \
 	    HamleDT::$(UCLANG)::GoogleToUdep \
 	    $(POST_UD_BLOCKS) \
-	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR0)}{$(SUBDIRCU)} compress=1 \
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR0)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
@@ -133,7 +133,7 @@ prague_to_ud:
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
 	    $(SCEN2) \
-	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=1 \
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
@@ -172,7 +172,7 @@ fixud:
 	        HamleDT::$(UCLANG)::FixUD \
 	        $(POST_FIXUD_BLOCKS) \
 	        HamleDT::Punctuation \
-	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
+	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
@@ -185,7 +185,7 @@ fixud_enhanced:
 	        HamleDT::Punctuation \
 	        A2A::CopyBasicToEnhancedUD \
 	        A2A::AddEnhancedUD \
-	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
+	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
@@ -198,7 +198,7 @@ fixud_some_enhanced:
 	        A2A::CopyAtree source_selector='' selector='orig' \
 	        HamleDT::$(UCLANG)::FixUD \
 	        A2A::AddEnhancedUD $(ENHANCEMENTS) \
-	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
+	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
 	UDDIR=$(UDDIR) ../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
@@ -206,13 +206,13 @@ ud1to2:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
 	        HamleDT::UD1To2 \
-	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1 \
+	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0 \
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 export:
 	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
-		Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=1
+		Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 
