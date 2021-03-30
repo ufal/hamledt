@@ -2,6 +2,7 @@ LANGCODE=ta
 TREEBANK=ta-ud27ttb
 UDCODE=ta_ttb
 UDNAME=Tamil-TTB
+ENHANCEMENTS=case=1 coord=0 xsubj=0 relcl=1 empty=0
 include ../common.mak
 
 ALTSRCDIR1=/net/data/universal-dependencies-2.7/UD_$(UDNAME)
