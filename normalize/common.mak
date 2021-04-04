@@ -143,6 +143,20 @@ prague_to_ud_enhanced:
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
 	    $(SCEN2) \
 	    A2A::CopyBasicToEnhancedUD \
+	    A2A::AddEnhancedUD \
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
+	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
+
+# CorefUD needs the tectogrammatical layer of Prague annotation style.
+# We cannot use this target for parts of PDT (Vesmír, what else?) and
+# for non-PDT treebanks such as CAC, CLTT and FicTree.
+prague_tecto_to_ud_enhanced:
+	@echo `date` make prague to ud enhanced started | tee -a time.log
+	$(QTREEX) \
+	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
+	    $(SCEN2) \
+	    A2A::CopyBasicToEnhancedUD \
 	    T2A::GenerateEmptyNodes \
 	    A2A::AddEnhancedUD \
 	    A2A::CorefClusters \
