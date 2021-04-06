@@ -13,19 +13,29 @@ echo `date` export_ud.sh started | tee -a time.log
 lcode=$1
 ltcode=$2
 lname=$3
+if [ -z "$UDDIR" ] ; then
+  UDDIR=/net/work/people/zeman/unidep
+fi
+UDTOOLS=$UDDIR/tools
 if [ "$ltcode" == "cs_pdt" ] ; then
   echo `date` cat train-c started | tee -a time.log
   cat data/conllu/train/cmpr94*.conllu | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-c.conllu
+  $UDTOOLS/fix-space-after-paragraph.pl $ltcode-ud-train-c.conllu
   echo `date` cat train-l started | tee -a time.log
   cat data/conllu/train/ln*.conllu     | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-l.conllu
+  $UDTOOLS/fix-space-after-paragraph.pl $ltcode-ud-train-l.conllu
   echo `date` cat train-m started | tee -a time.log
   cat data/conllu/train/mf9*.conllu    | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-m.conllu
+  $UDTOOLS/fix-space-after-paragraph.pl $ltcode-ud-train-m.conllu
   echo `date` cat train-v started | tee -a time.log
   cat data/conllu/train/vesm9*.conllu  | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train-v.conllu
+  $UDTOOLS/fix-space-after-paragraph.pl $ltcode-ud-train-v.conllu
   echo `date` cat dev started | tee -a time.log
   cat data/conllu/dev/*.conllu         | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
+  $UDTOOLS/fix-space-after-paragraph.pl $ltcode-ud-dev.conllu
   echo `date` cat test started | tee -a time.log
   cat data/conllu/test/*.conllu        | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
+  $UDTOOLS/fix-space-after-paragraph.pl $ltcode-ud-test.conllu
 elif [ "$ltcode" == "ar_padt" ] || [ "$ltcode" == "cs_cac" ] || [ "$ltcode" == "cs_fictree" ] || [ "$ltcode" == "cs_pcedt" ] || [ "$ltcode" == "en_pcedt" ] || [ "$ltcode" == "lt_alksnis" ] ; then
   echo `date` cat train started | tee -a time.log
   cat data/conllu/train/*.conllu | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train.conllu
@@ -49,10 +59,6 @@ else
   echo `date` cat test started | tee -a time.log
   cat data/conllu/test/*.conllu > $ltcode-ud-test.conllu
 fi
-if [ -z "$UDDIR" ] ; then
-  UDDIR=/net/work/people/zeman/unidep
-fi
-UDTOOLS=$UDDIR/tools
 mkdir -p $UDDIR/UD_$lname
 echo `date` check sentence ids started | tee -a time.log
 cat *.conllu | $UDTOOLS/check_sentence_ids.pl
