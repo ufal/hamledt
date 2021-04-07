@@ -2,7 +2,7 @@ LANGCODE=sk
 TREEBANK=sk-match
 UDCODE=sk_snk
 UDNAME=Slovak-SNK
-POST_UD_BLOCKS=HamleDT::SK::FixUD
+POST_UD_BLOCKS=HamleDT::SK::SplitFusedWords HamleDT::SK::FixUD
 include ../common.mak
 
 source:
