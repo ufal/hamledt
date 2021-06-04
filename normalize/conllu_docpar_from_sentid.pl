@@ -40,8 +40,8 @@ my $source = 0;
 my $format = 'guess';
 GetOptions
 (
-    'source' => \$source,
-    'format' => \$format
+    'source'   => \$source,
+    'format=s' => \$format
 );
 
 my $current_did = '';
