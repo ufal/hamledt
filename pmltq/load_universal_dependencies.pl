@@ -82,7 +82,7 @@ foreach my $folder (@udfolders)
     my $record1 = udlib::get_ud_files_and_codes($folder, '/net/work/people/zeman/unidep');
     $tcode2name{$record1->{tcode}} = $record1->{tname};
     my $record2 = udlib::read_readme($folder, '/net/work/people/zeman/unidep');
-    my $summary = defined($record2->{sections}{summary}) ? $record2->{sections}{summary} : $folder;
+    my $summary = defined($record2->{sections}{summary_plaintext}) ? $record2->{sections}{summary_plaintext} : $folder;
     # We want to be able to put the summary on a command line in single quotes.
     $summary =~ s/'/ /g; # '
     $summary =~ s/^\s+//s;
