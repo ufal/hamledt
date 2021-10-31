@@ -2,6 +2,7 @@ LANGCODE=ru
 TREEBANK=ru-ud28syntagrus
 UDCODE=ru_syntagrus
 UDNAME=Russian-SynTagRus
+ENHANCEMENTS=case=1 coord=1 xsubj=1 relcl=1 empty=0
 include ../common.mak
 
 ALTSRCDIR1=/net/data/universal-dependencies-2.8/UD_$(UDNAME)
