@@ -3,7 +3,7 @@
 # 2015, 2016, 2017, 2018, 2019, 2020, 2021 Dan Zeman <zeman@ufal.mff.cuni.cz>
 
 # Usage: $0 [--release 26 --only cs-cac] # limiting it to one treebank, identified by its target name
-udrel="28" # default: UD 2.8
+udrel="29" # default: UD 2.9
 POSITIONAL=()
 while [[ $# -gt 0 ]]
 do
@@ -54,7 +54,7 @@ for tbkpath in $uddir/*-ud$udrel* ; do
   tbk=`basename $tbkpath`
   withoutud=`echo -n $tbk | sed s/-ud$udrel/-/ | sed 's/-$//'`
   if [[ -z "$ONLY" ]] || [[ "$withoutud" == "$ONLY" ]] ; then
-    if [ "$withoutud" != "ar-nyuad" ] && [ "$withoutud" != "en-esl" ] && [ "$withoutud" != "en-gumreddit" ] && [ "$withoutud" != "fr-ftb" ] && [ "$withoutud" != "gun-dooley" ] && [ "$withoutud" != "qhe-hiencs" ] && [ "$withoutud" != "ja-bccwj" ] && [ "$withoutud" != "ja-ktc" ] ; then
+    if [ "$withoutud" != "ar-nyuad" ] && [ "$withoutud" != "en-esl" ] && [ "$withoutud" != "en-gumreddit" ] && [ "$withoutud" != "fr-ftb" ] && [ "$withoutud" != "gun-dooley" ] && [ "$withoutud" != "qhe-hiencs" ] && [ "$withoutud" != "ja-bccwj" ] && [ "$withoutud" != "ja-bccwjluw" ] && [ "$withoutud" != "ja-ktc" ] ; then
       echo Universal Dependencies $udrel $tbk '-->' $withoutud
       mkdir -p $forpmltqdir/$withoutud
       cp $tbkpath/pmltq/*.treex.gz $forpmltqdir/$withoutud
