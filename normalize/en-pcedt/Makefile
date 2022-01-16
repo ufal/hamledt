@@ -16,9 +16,9 @@ source:
 	mkdir -p data/source/dev
 	mkdir -p data/source/test
 	# Odkomentovat jedno nebo druhé. Zpracování celých dat zde:
-	ln -s $(SOURCEDIR)/{0[0-9],1[0-8]}/*.treex.gz $(IN)/train
-	ln -s $(SOURCEDIR)/{19,20,21}/*.treex.gz $(IN)/dev
-	ln -s $(SOURCEDIR)/{22,23,24}/*.treex.gz $(IN)/test
+	ln -s $(SOURCEDIR)/{0[2-9],1[0-9],2[01]}/*.treex.gz $(IN)/train
+	ln -s $(SOURCEDIR)/{00,01,22,24}/*.treex.gz $(IN)/dev
+	ln -s $(SOURCEDIR)/23/*.treex.gz $(IN)/test
 	# Na testy zatím nechat jen pár souborů, aby to bylo rychlejší.
 	#ln -s $(SOURCEDIR)/00/wsj_0001.treex.gz $(IN)/train
 	#ln -s $(SOURCEDIR)/19/wsj_1900.treex.gz $(IN)/dev
