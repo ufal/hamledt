@@ -2,6 +2,9 @@ LANGCODE=cs
 TREEBANK=cs-t
 UDCODE=cs_pdt
 # Czech-PDTT is the same repo as Czech-PDT, but temporarily switched to the branch 'tecto'.
+# We actually need to name the folder NonUD_Czech-PDTT rather than UD_Czech-PDTT because
+# we want the UD release builder to ignore it. But common.mak is not prepared to do that,
+# so we will have to rename the folder down here.
 UDNAME=Czech-PDTT
 PRE_UD_BLOCKS=T2A::GenerateA2TRefs
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
@@ -45,10 +48,13 @@ treex:
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_tecto_to_ud_enhanced
+	# Use a NonUD* name for the target subfolder of unidep because the UD release builder must ignore it at the moment.
+	mv /net/work/people/zeman/unidep/UD_$(UDNAME)/* /net/work/people/zeman/unidep/NonUD_$(UDNAME)
+	rm -rf /net/work/people/zeman/unidep/UD_$(UDNAME)
 	# Copy the new data to the Coref-UD project folder.
-	cat /net/work/people/zeman/unidep/UD_$(UDNAME)/$(UDCODE)-ud-train-[clm].conllu > /net/work/projects/corefud/data/cs-pdt/$(UDCODE)-ud-train.conllu
-	cp /net/work/people/zeman/unidep/UD_$(UDNAME)/$(UDCODE)-ud-dev.conllu /net/work/projects/corefud/data/cs-pdt
-	cp /net/work/people/zeman/unidep/UD_$(UDNAME)/$(UDCODE)-ud-test.conllu /net/work/projects/corefud/data/cs-pdt
+	cat /net/work/people/zeman/unidep/NonUD_$(UDNAME)/$(UDCODE)-ud-train-[clm].conllu > /net/work/projects/corefud/data/cs-pdt/$(UDCODE)-ud-train.conllu
+	cp /net/work/people/zeman/unidep/NonUD_$(UDNAME)/$(UDCODE)-ud-dev.conllu /net/work/projects/corefud/data/cs-pdt
+	cp /net/work/people/zeman/unidep/NonUD_$(UDNAME)/$(UDCODE)-ud-test.conllu /net/work/projects/corefud/data/cs-pdt
 
 # If we need to debug a specific error, we can process just one document
 # instead of waiting hours for the whole corpus to compile.
