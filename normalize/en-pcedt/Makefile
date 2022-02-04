@@ -34,8 +34,8 @@ treex:
 	cp $(IN)/test/*.treex.gz $(DIR0)/test
 	gunzip $(DIR0)/test/*.treex.gz
 
-# ud should map either to prague_to_ud, or to conllu_to_treex.
-ud: prague_to_ud_enhanced
+# ud should map either to prague_(tecto_)to_ud(_enhanced), or to conllu_to_treex.
+ud: prague_tecto_to_ud_enhanced
 	# Copy the new data to the Coref-UD project folder.
 	cp /net/work/people/zeman/unidep/UD_$(UDNAME)/*.conllu /net/work/projects/corefud/data/en-pcedt
 
