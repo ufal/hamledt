@@ -71,6 +71,9 @@ for i in *.conllu ; do
   # Some treebanks do not have training data. Skip CoNLL-U files that have zero size.
   if [ -s $i ] ; then
     echo `date` validate $i started | tee -a time.log
+    # If the corpus contains coreference annotation, use Udapi to convert it to the new format.
+    udapy -s read.OldCorefUD corefud.FixInterleaved < $i > fixed.conllu
+    mv fixed.conllu $i
     python3 $UDTOOLS/validate.py --lang=$lcode $i
     mv $i $UDDIR/UD_$lname
   else
