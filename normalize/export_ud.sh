@@ -72,7 +72,7 @@ for i in *.conllu ; do
   if [ -s $i ] ; then
     echo `date` validate $i started | tee -a time.log
     # If the corpus contains coreference annotation, use Udapi to convert it to the new format.
-    udapy -s read.OldCorefUD corefud.FixInterleaved corefud.MergeSameSpan corefud.MoveHead < $i > fixed.conllu
+    udapy -s read.OldCorefUD corefud.FixInterleaved corefud.MergeSameSpan util.Eval node='for m in node.coref_mentions: m.head = m.words[0]' corefud.MoveHead < $i > fixed.conllu
     mv fixed.conllu $i
     python3 $UDTOOLS/validate.py --lang=$lcode $i
     mv $i $UDDIR/UD_$lname
