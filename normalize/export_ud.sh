@@ -82,7 +82,7 @@ for i in *.conllu ; do
     cp $i $i.debug
     # If the corpus contains coreference annotation, use Udapi to convert it to the new format.
     ###!!! Ideally we should not rely on Udapi's corefud.FixInterleaved, but at present we cannot avoid the situations that the block solves.
-    udapy -s read.OldCorefUD corefud.FixInterleaved corefud.MergeSameSpan util.Eval node='for m in node.coref_mentions: m.head = m.words[0]' corefud.MoveHead $FIXEDEPRELS < $i > fixed.conllu
+    udapy -s read.OldCorefUD corefud.FixInterleaved util.Eval node='for m in node.coref_mentions: m.head = m.words[0]' corefud.MoveHead $FIXEDEPRELS < $i > fixed.conllu
     mv fixed.conllu $i
     python3 $UDTOOLS/validate.py --lang=$lcode --coref $i
     mv $i $UDDIR/UD_$lname
