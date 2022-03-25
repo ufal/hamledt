@@ -2,6 +2,7 @@ LANGCODE=cs
 TREEBANK=cs-pdtc
 UDCODE=cs_pdtc
 UDNAME=Czech-PDTC
+HARMONIZE=Harmonize iset_driver=cs::pdtc
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
