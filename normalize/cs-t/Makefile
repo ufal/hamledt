@@ -6,6 +6,7 @@ UDCODE=cs_pdt
 # we want the UD release builder to ignore it. But common.mak is not prepared to do that,
 # so we will have to rename the folder down here.
 UDNAME=Czech-PDTT
+HARMONIZE=Harmonize iset_driver=cs::pdtc
 PRE_UD_BLOCKS=T2A::GenerateA2TRefs
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
