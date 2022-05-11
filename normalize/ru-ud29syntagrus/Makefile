@@ -2,11 +2,12 @@ LANGCODE=ru
 TREEBANK=ru-ud29syntagrus
 UDCODE=ru_syntagrus
 UDNAME=Russian-SynTagRus
+ENHANCEMENTS=case=1 coord=1 xsubj=1 relcl=1 empty=0
 include ../common.mak
 
 ALTSRCDIR1=/net/data/universal-dependencies-2.9/UD_$(UDNAME)
 ALTSRCDIR2=/net/work/people/zeman/unidep/UD_$(UDNAME)
-SOURCEDIR=$(ALTSRCDIR1)
+SOURCEDIR=$(ALTSRCDIR2)
 
 source:
 	cp $(SOURCEDIR)/$(UDCODE)-ud-train.conllu data/source/train.conllu
