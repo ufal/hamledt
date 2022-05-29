@@ -87,3 +87,7 @@ qconllu-%:
 clean:
 	rm -f *-normalize.o* *-prague.o* *-ud.o* .qsubmit*
 	rm -rf */???-cluster-run-*
+	rm -rf */bugs.html
+	rm -rf */time.log
+	rm -rf */*.conllu.{debug,bak}
+

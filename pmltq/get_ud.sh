@@ -3,7 +3,7 @@
 # 2015, 2016, 2017, 2018, 2019, 2020, 2021 Dan Zeman <zeman@ufal.mff.cuni.cz>
 
 # Usage: $0 [--release 26 --only cs-cac] # limiting it to one treebank, identified by its target name
-udrel="29" # default: UD 2.9
+udrel="210" # default: UD 2.10
 POSITIONAL=()
 while [[ $# -gt 0 ]]
 do
@@ -44,7 +44,7 @@ fi
 mkdir -p $forpmltqdir
 
 # Excluding
-#   UD_Arabic-NYUAD, UD_English-ESL, UD_French-FTB, UD_Hindi_English-HIENCS, UD_Japanese-BCCWJ, UD_Japanese-KTC,
+#   UD_Arabic-NYUAD, UD_English-ESL, UD_French-FTB, UD_Hindi_English-HIENCS, UD_Japanese-BCCWJ, UD_Japanese-BCCWJLUW, UD_Japanese-KTC,
 #   UD_Mbya_Guarani-Dooley and UD_English-GUMReddit
 # because they do not include the underlying word forms (license issues).
 # Check the text-less treebanks like this (do not forget to update the release number):

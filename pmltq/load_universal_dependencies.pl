@@ -44,7 +44,7 @@ GetOptions
     'cluster'    => \$cluster,
     'configonly' => \$configonly
 );
-if(!defined($udrel) || $udrel !~ m/^2[0-9]$/)
+if(!defined($udrel) || $udrel !~ m/^2[0-9][0-9]?$/)
 {
     print STDERR ("Missing or wrong release number. Expected e.g. '22' for UD release 2.2.\n");
     usage();
