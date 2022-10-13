@@ -34,7 +34,10 @@ TREEX      = treex -L$(LANGCODE)
 # --queue=troja-all.q
 # --queue=ms-all.q,troja-all.q (???)
 # The --qsub="-m n" option should prevent the cluster from sending me 100 mails when 100 jobs crash on an error.
-QTREEX     = treex -p --jobs 100 --priority=-50 --qsub="-m n" -L$(LANGCODE)
+###!!! As of October 2022, the LRC cluster at ÚFAL migrates to new software and QTREEX no longer works.
+###!!! Unless it is adapted to SLURM, we have to use plain TREEX instead of QTREEX.
+#QTREEX     = treex -p --jobs 100 --priority=-50 --qsub="-m n" -L$(LANGCODE)
+QTREEX     = $(TREEX)
 IMPORTX    = Read::CoNLLX lines_per_doc=100 sid_within_feat=1
 IMPORTU    = Read::CoNLLU lines_per_doc=100
 WRITE0     = Write::Treex file_stem='' compress=0
