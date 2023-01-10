@@ -22,7 +22,4 @@ In an e-mail from 2016-05-12, Vincent mentioned their upcoming LREC (Portorož) 
 * new annotation layer: accounting entities
 * new annotation layer: semantic entity relations
 https://github.com/ufal/cltt ... GitHub repository with Vincent's tools for CLTT but not with the data
-
-If we want to fix annotation errors that were not fixed in CLTT 2.0, we should create a GitHub repository
-and clone it in /net/work/projects, or we could add the PML data to Vincent's repository and version it
-there.
+I added part of the data (sentences/pml/*.[amw]) to the repository and cloned it to /net/work/projects/cltt/data/sentences/pml so that errors can be fixed upstream and versioned.

@@ -8,8 +8,11 @@ include ../common.mak
 
 SOURCEDIR_CLTT10=/net/data/treebanks/cs/cltt-1.0
 SCHEMADIR_CLTT10=/net/data/treebanks/cs/cltt-1.0
-SOURCEDIR=/net/data/treebanks/cs/cltt-2.0/sentences/pml
-SCHEMADIR=/net/data/treebanks/cs/cltt-2.0/sentences/pml
+SOURCEDIR_CLTT20=/net/data/treebanks/cs/cltt-2.0/sentences/pml
+SCHEMADIR_CLTT20=/net/data/treebanks/cs/cltt-2.0/sentences/pml
+# Instead of the officially released CLTT 2.0, we now take the data from the development version where additional errors have been fixed.
+SOURCEDIR=/net/work/projects/cltt/data/sentences/pml
+SCHEMADIR=/net/work/projects/cltt/data/sentences/pml
 
 # There is no official train / dev / test data split.
 # document_01_001.a
