@@ -76,8 +76,9 @@ foreach my $f (@files_treex)
     $ijob = 0 if($ijob >= $njobs);
 }
 # Submit the jobs to the cluster.
-my @jobids = ();
+my @chunks = ();
 my $command = join(' ', ('treex', @ARGV));
+my $i = 1;
 for my $j (@jobfiles)
 {
     # Do not submit empty jobs if there are fewer files than the pre-set $njobs.
@@ -87,6 +88,9 @@ for my $j (@jobfiles)
     my $fcommand = "$command -- $files";
     my $jobid = cluster::qsub('name' => $jobname, 'command' => $fcommand);
     print STDERR ("$jobid: $n files\n");
-    push(@jobids, $jobid);
+    push(@chunks, {'number' => $i++, 'job_id' => $jobid});
 }
-cluster::waitfor(5, @jobids);
+while(cluster::qstat_resubmit(\@chunks))
+{
+    sleep(5);
+}
