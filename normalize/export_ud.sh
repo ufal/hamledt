@@ -43,6 +43,13 @@ elif [ "$ltcode" == "ar_padt" ] || [ "$ltcode" == "cs_cac" ] || [ "$ltcode" == "
   cat data/conllu/dev/*.conllu   | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
   echo `date` cat test started | tee -a time.log
   cat data/conllu/test/*.conllu  | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
+elif [ "$ltcode" == "cs_cltt" ] ; then
+  echo `date` cat train started | tee -a time.log
+  cat data/conllu/train/*.conllu | reset_old_sentence_ids.pl | ../conllu_docpar_from_sentid.pl > $ltcode-ud-train.conllu
+  echo `date` cat dev started | tee -a time.log
+  cat data/conllu/dev/*.conllu   | reset_old_sentence_ids.pl | ../conllu_docpar_from_sentid.pl > $ltcode-ud-dev.conllu
+  echo `date` cat test started | tee -a time.log
+  cat data/conllu/test/*.conllu  | reset_old_sentence_ids.pl | ../conllu_docpar_from_sentid.pl > $ltcode-ud-test.conllu
 elif [ "$ltcode" == "hr" ] || [ "$ltcode" == "el" ] ; then
   # Udapi can convert what we cannot: some of the remnant relations.
   echo `date` cat train started | tee -a time.log
