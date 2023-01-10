@@ -26,10 +26,10 @@ source:
 	mkdir -p data/source/train
 	mkdir -p data/source/dev
 	mkdir -p data/source/test
-	cp $(SOURCEDIR)/document_01_00[1-6].treex.gz $(IN)/train
-	cp $(SOURCEDIR)/document_01_00[7-9].treex.gz $(IN)/dev
-	cp $(SOURCEDIR)/document_02_00[1-2].treex.gz $(IN)/dev
-	cp $(SOURCEDIR)/document_02_00[3-8].treex.gz $(IN)/test
+	cp $(SOURCEDIR)/document_01_00[1-6].[amw] $(IN)/train
+	cp $(SOURCEDIR)/document_01_00[7-9].[amw] $(IN)/dev
+	cp $(SOURCEDIR)/document_02_00[1-2].[amw] $(IN)/dev
+	cp $(SOURCEDIR)/document_02_00[3-8].[amw] $(IN)/test
 
 treex_cltt10:
 	$(TREEX) \
