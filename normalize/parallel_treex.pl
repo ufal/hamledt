@@ -24,22 +24,41 @@ sub usage
     print STDERR ("    The input files are 'data/{00,01,...}/{train,dev,test}/*.treex'.\n");
 }
 
-my $input_step = '00';
+my $input_step;
 if(scalar(@ARGV) > 0 && $ARGV[0] =~ m/^[0-9][0-9]$/)
 {
     $input_step = shift(@ARGV);
 }
+# This script may be called the same way as the original treex -p was called.
+# Then the call ends with '--' and the glob pattern for the input files. We want
+# to remove this part (it will be later replaced with the lists of files in
+# chunks) but we can also infer the input step from it.
+# -- '!/net/work/people/zeman/hamledt-data/cs-cltt/treex/00/{train,dev,test}/*.treex'
+if(scalar(@ARGV) > 1 && $ARGV[-2] eq '--')
+{
+    my $pattern = pop(@ARGV);
+    if($pattern =~ m:/treex/(0[0-9])/:)
+    {
+        $input_step = $1;
+    }
+    pop(@ARGV); # remove the '--'
+}
+elsif(scalar(@ARGV) > 1 && $ARGV[0] eq 'Read::Treex' && $ARGV[1] =~ m/^from=/)
+{
+    shift(@ARGV); # remove 'Read::Treex'
+    my $pattern = shift(@ARGV);
+    if($pattern =~ m:/treex/(0[0-9])/:)
+    {
+        $input_step = $1;
+    }
+}
+if(!defined($input_step))
+{
+    die("Unknown HamleDT input step");
+}
 if(scalar(@ARGV) == 0)
 {
-    ###!!! A Treex scenario for debugging.
-    # make prague (for cs-cltt) = treex -Lcs A2A::CopyAtree source_selector='' selector='orig' HamleDT::CS::Harmonize iset_driver=cs::pdt Write::Treex substitute={00}{01} compress=0 -- '!/net/work/people/zeman/hamledt-data/cs-cltt/treex/00/{train,dev,test}/*.treex'
-    @ARGV =
-    (
-        '-Lcs',
-        "A2A::CopyAtree source_selector='' selector='orig'",
-        "HamleDT::CS::Harmonize iset_driver=cs::pdt",
-        "Write::Treex substitute={00}{01} compress=0"
-    );
+    die("Unknown Treex scenario");
 }
 
 # Typically we either run make prague or make ud. The former converts the input

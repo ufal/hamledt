@@ -37,7 +37,7 @@ TREEX      = treex -L$(LANGCODE)
 ###!!! As of October 2022, the LRC cluster at ÚFAL migrates to new software and QTREEX no longer works.
 ###!!! Unless it is adapted to SLURM, we have to use plain TREEX instead of QTREEX.
 #QTREEX     = treex -p --jobs 100 --priority=-50 --qsub="-m n" -L$(LANGCODE)
-QTREEX     = $(TREEX)
+QTREEX     = ../parallel_treex.pl
 IMPORTX    = Read::CoNLLX lines_per_doc=100 sid_within_feat=1
 IMPORTU    = Read::CoNLLU lines_per_doc=100
 WRITE0     = Write::Treex file_stem='' compress=0
