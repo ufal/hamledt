@@ -9,6 +9,7 @@ use open ':utf8';
 binmode(STDIN, ':utf8');
 binmode(STDOUT, ':utf8');
 binmode(STDERR, ':utf8');
+use Cwd;
 use cluster; # Dan's library for the ÚFAL cluster
 
 sub usage
@@ -23,7 +24,7 @@ sub usage
     print STDERR ("    The input files are 'data/{00,01,...}/{train,dev,test}/*.treex'.\n");
 }
 
-my $input_step = '01';
+my $input_step = '00';
 if(scalar(@ARGV) > 0 && $ARGV[0] =~ m/^[0-9][0-9]$/)
 {
     $input_step = shift(@ARGV);
@@ -61,6 +62,9 @@ if($ntg > 0)
 {
     die("Processing treebanks with gzipped Treex files is currently not supported");
 }
+# The job names on the cluster will be derived from the current treebank folder.
+my $jobname = getcwd();
+$jobname =~ s:^.+/([^/]+)$:$1:;
 # For each planned job, collect the names of the files it will process.
 my $njobs = 300;
 my @jobfiles = ();
@@ -80,6 +84,6 @@ for my $j (@jobfiles)
     last if($n == 0);
     my $files = join(' ', @{$j});
     my $fcommand = "$command -- $files";
-    my $jobid = cluster::qsub('command' => $fcommand);
+    my $jobid = cluster::qsub('name' => $jobname, 'command' => $fcommand);
     print STDERR ("$jobid: $n files\n");
 }
