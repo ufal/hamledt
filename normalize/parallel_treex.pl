@@ -98,7 +98,8 @@ foreach my $chunk (@chunks)
     }
     else
     {
-        my $lastline = chomp(`tail -1 $logfile`);
+        my $lastline = `tail -1 $logfile`;
+        chomp($lastline);
         if($lastline !~ m/Execution succeeded\./)
         {
             print STDERR ("ERROR: last line of $logfile is '$lastline'.\n");
