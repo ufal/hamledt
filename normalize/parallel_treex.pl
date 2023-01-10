@@ -90,6 +90,7 @@ while(cluster::qstat_resubmit(\@chunks))
 }
 # Make sure that all chunks were processed successfully.
 my $ok = 1;
+my $nw = 0;
 foreach my $chunk (@chunks)
 {
     my $logfile = "$jobname.$$.o$chunk->{job_id}";
@@ -100,6 +101,11 @@ foreach my $chunk (@chunks)
     }
     else
     {
+        # If there are warnings, print them.
+        my $warnings = `grep -P '^TREEX-WARN' $logfile`;
+        print STDERR ($warnings);
+        chomp($warnings);
+        $nw += scalar(split(/\n/, $warnings));
         my $lastline = `tail -1 $logfile`;
         chomp($lastline);
         if($lastline !~ m/Execution succeeded\./)
@@ -108,6 +114,10 @@ foreach my $chunk (@chunks)
             $ok = 0;
         }
     }
+}
+if($nw)
+{
+    print STDERR ("There were $nw warnings.\n");
 }
 if($ok)
 {
