@@ -8,7 +8,8 @@ include ../common.mak
 
 SOURCEDIR_CLTT10=/net/data/treebanks/cs/cltt-1.0
 SCHEMADIR_CLTT10=/net/data/treebanks/cs/cltt-1.0
-SOURCEDIR=/net/data/treebanks/cs/cltt-2.0/sentences/treex
+SOURCEDIR=/net/data/treebanks/cs/cltt-2.0/sentences/pml
+SCHEMADIR=/net/data/treebanks/cs/cltt-2.0/sentences/pml
 
 # There is no official train / dev / test data split.
 # document_01_001.a
@@ -44,13 +45,28 @@ treex_cltt10:
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/  compress=0
 
-treex:
+# Just copying Treex files from CLTT 2.0 (sentences/treex instead of sentences/pml) does not work because some details are different from what we expect.
+treex_cltt20_fromtreex:
 	rm -f $(DIR0)/{train,dev,test}/*.treex
 	rm -f $(DIR0)/{train,dev,test}/*.treex.gz
 	cp $(IN)/train/*.treex.gz $(DIR0)/train
 	cp $(IN)/dev/*.treex.gz $(DIR0)/dev
 	cp $(IN)/test/*.treex.gz $(DIR0)/test
 	gunzip $(DIR0)/{train,dev,test}/*.treex.gz
+
+treex:
+	$(TREEX) \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/*.a' \
+		A2A::FillCoNLLAttributes \
+		Write::Treex clobber=1 path=$(DIR0)/train/ compress=0
+	$(TREEX) \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/dev/*.a' \
+		A2A::FillCoNLLAttributes \
+		Write::Treex clobber=1 path=$(DIR0)/dev/ compress=0
+	$(TREEX) \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/test/*.a' \
+		A2A::FillCoNLLAttributes \
+		Write::Treex clobber=1 path=$(DIR0)/test/  compress=0
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud
