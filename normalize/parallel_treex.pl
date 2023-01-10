@@ -89,12 +89,14 @@ while(cluster::qstat_resubmit(\@chunks))
     sleep(5);
 }
 # Make sure that all chunks were processed successfully.
+my $ok = 1;
 foreach my $chunk (@chunks)
 {
     my $logfile = "$jobname.$$.o$chunk->{job_id}";
     if(!-f $logfile)
     {
         print STDERR ("ERROR: $logfile does not exist.\n");
+        $ok = 0;
     }
     else
     {
@@ -103,8 +105,13 @@ foreach my $chunk (@chunks)
         if($lastline !~ m/Execution succeeded\./)
         {
             print STDERR ("ERROR: last line of $logfile is '$lastline'.\n");
+            $ok = 0;
         }
     }
+}
+if($ok)
+{
+    print STDERR ("All jobs executed successfully.\n");
 }
 
 
