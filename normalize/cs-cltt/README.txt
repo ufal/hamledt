@@ -1,5 +1,5 @@
 Czech Legal Text Treebank 1.0
-released via LINDAT/CLARIN on 31.12.2013
+released via LINDAT/CLARIN on 18.10.2015
 http://hdl.handle.net/11234/1-1516
 https://ufal.mff.cuni.cz/czech-legal-text-treebank
 
@@ -19,7 +19,7 @@ In an e-mail from 2017-02-19, Vincent wrote that he was planning to return to CL
 In an e-mail from 2016-05-12, Vincent mentioned their upcoming LREC (Portorož) poster about CLTT; the paper should mention also the UD conversion.
 I do not remember whether I took the source directly from Lindat or it was a folder somewhere on the ÚFAL network.
 
-CLTT 2.0 (not yet converted here):
+CLTT 2.0 (released via LINDAT/CLARIN on 1.9.2017, not yet converted here):
 http://hdl.handle.net/11234/1-2498
 * same text as CLTT 1.0 (although changes in tokenization and sentence segmentation may lead to slightly different statistics)
 * fixed some annotation errors?
@@ -27,3 +27,5 @@ http://hdl.handle.net/11234/1-2498
 * new annotation layer: semantic entity relations
 
 If we want to fix annotation errors, we should first switch to CLTT 2.0 and see if they were fixed by Vincent in the meantime!
+Otherwise, here is a GitHub repository where the treebank was developed:
+https://github.com/ufal/cltt

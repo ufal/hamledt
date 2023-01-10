@@ -6,32 +6,51 @@ HARMONIZE=Harmonize iset_driver=cs::pdt
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
-SOURCEDIR=/net/data/treebanks/cs/cltt
-SCHEMADIR=/net/data/treebanks/cs/cltt
+SOURCEDIR_CLTT10=/net/data/treebanks/cs/cltt-1.0
+SCHEMADIR_CLTT10=/net/data/treebanks/cs/cltt-1.0
+SOURCEDIR=/net/data/treebanks/cs/cltt-2.0/sentences/treex
+
 # There is no official train / dev / test data split.
 # document_01_001.a
+source_cltt10:
+	mkdir -p data/source/train
+	mkdir -p data/source/dev
+	mkdir -p data/source/test
+	cp $(SOURCEDIR_CLTT10)/document_01_00[1-6].[amw] $(IN)/train
+	cp $(SOURCEDIR_CLTT10)/document_01_00[7-9].[amw] $(IN)/dev
+	cp $(SOURCEDIR_CLTT10)/document_02_00[1-2].[amw] $(IN)/dev
+	cp $(SOURCEDIR_CLTT10)/document_02_00[3-8].[amw] $(IN)/test
+
 source:
 	mkdir -p data/source/train
 	mkdir -p data/source/dev
 	mkdir -p data/source/test
-	cp $(SOURCEDIR)/document_01_00[1-6].[amw] $(IN)/train
-	cp $(SOURCEDIR)/document_01_00[7-9].[amw] $(IN)/dev
-	cp $(SOURCEDIR)/document_02_00[1-2].[amw] $(IN)/dev
-	cp $(SOURCEDIR)/document_02_00[3-8].[amw] $(IN)/test
+	cp $(SOURCEDIR)/document_01_00[1-6].treex.gz $(IN)/train
+	cp $(SOURCEDIR)/document_01_00[7-9].treex.gz $(IN)/dev
+	cp $(SOURCEDIR)/document_02_00[1-2].treex.gz $(IN)/dev
+	cp $(SOURCEDIR)/document_02_00[3-8].treex.gz $(IN)/test
 
-treex:
+treex_cltt10:
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/*.a' \
+		Read::PDT schema_dir=$(SCHEMADIR_CLTT10) top_layer=a from='!$(IN)/train/*.a' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/train/ compress=0
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/dev/*.a' \
+		Read::PDT schema_dir=$(SCHEMADIR_CLTT10) top_layer=a from='!$(IN)/dev/*.a' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/dev/ compress=0
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/test/*.a' \
+		Read::PDT schema_dir=$(SCHEMADIR_CLTT10) top_layer=a from='!$(IN)/test/*.a' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/  compress=0
+
+treex:
+	rm -f $(DIR0)/{train,dev,test}/*.treex
+	rm -f $(DIR0)/{train,dev,test}/*.treex.gz
+	cp $(IN)/train/*.treex.gz $(DIR0)/train
+	cp $(IN)/dev/*.treex.gz $(DIR0)/dev
+	cp $(IN)/test/*.treex.gz $(DIR0)/test
+	gunzip $(DIR0)/{train,dev,test}/*.treex.gz
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud: prague_to_ud
