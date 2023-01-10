@@ -33,7 +33,7 @@ TREEX      = treex -L$(LANGCODE)
 # Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
 # The --qsub="-m n" option should prevent the cluster from sending me 100 mails when 100 jobs crash on an error.
 #QTREEX     = treex -p --jobs 100 --priority=-50 --qsub="-m n" -L$(LANGCODE)
-QTREEX     = ../parallel_treex.pl
+QTREEX     = ../parallel_treex.pl -L$(LANGCODE)
 IMPORTX    = Read::CoNLLX lines_per_doc=100 sid_within_feat=1
 IMPORTU    = Read::CoNLLU lines_per_doc=100
 WRITE0     = Write::Treex file_stem='' compress=0

@@ -14,8 +14,10 @@ use cluster; # Dan's library for the ÚFAL cluster
 
 sub usage
 {
-    print STDERR ("Usage: parallel_treex.pl <input_step> <scenario>\n");
-    print STDERR ("    <input_step> is one of:\n");
+    print STDERR ("Usage: parallel_treex.pl <scenario>\n");
+    print STDERR ("    This script may be called the same way as the original treex -p was called.\n");
+    print STDERR ("    However, it is only prepared for the HamleDT ecosystem. It is not a general wrapper.\n");
+    print STDERR ("    The input step (00, 01, ...) will be derived from the path to input files present on the command line.\n");
     print STDERR ("        00 ... the unharmonized Treex files\n");
     print STDERR ("        01 ... the Prague-style HamleDT files (default)\n");
     print STDERR ("        02 ... the Universal Dependencies Treex files\n");
@@ -24,34 +26,7 @@ sub usage
     print STDERR ("    The input files are 'data/{00,01,...}/{train,dev,test}/*.treex'.\n");
 }
 
-my $input_step;
-if(scalar(@ARGV) > 0 && $ARGV[0] =~ m/^[0-9][0-9]$/)
-{
-    $input_step = shift(@ARGV);
-}
-# This script may be called the same way as the original treex -p was called.
-# Then the call ends with '--' and the glob pattern for the input files. We want
-# to remove this part (it will be later replaced with the lists of files in
-# chunks) but we can also infer the input step from it.
-# -- '!/net/work/people/zeman/hamledt-data/cs-cltt/treex/00/{train,dev,test}/*.treex'
-if(scalar(@ARGV) > 1 && $ARGV[-2] eq '--')
-{
-    my $pattern = pop(@ARGV);
-    if($pattern =~ m:/treex/(0[0-9])/:)
-    {
-        $input_step = $1;
-    }
-    pop(@ARGV); # remove the '--'
-}
-elsif(scalar(@ARGV) > 1 && $ARGV[0] eq 'Read::Treex' && $ARGV[1] =~ m/^from=/)
-{
-    shift(@ARGV); # remove 'Read::Treex'
-    my $pattern = shift(@ARGV);
-    if($pattern =~ m:/treex/(0[0-9])/:)
-    {
-        $input_step = $1;
-    }
-}
+my $input_step = get_input_step_and_discard_reader(); # modifies @ARGV in-place
 if(!defined($input_step))
 {
     die("Unknown HamleDT input step");
@@ -112,4 +87,84 @@ for my $j (@jobfiles)
 while(cluster::qstat_resubmit(\@chunks))
 {
     sleep(5);
+}
+
+
+
+#------------------------------------------------------------------------------
+# Scans the @ARGV for either the Read::Treex block or the list of files at the
+# end. Removes this from @ARGV. Derives the input step number from the file
+# pattern and returns it.
+#------------------------------------------------------------------------------
+sub get_input_step_and_discard_reader
+{
+    my @new_argv = ();
+    my $pattern = '';
+    my $state = 'normal';
+    foreach my $arg (@ARGV)
+    {
+        # The reader is not necessarily the first item in @ARGV. There can be
+        # also options, such as -Lcs.
+        if($state eq 'reader')
+        {
+            # :: signals a name of a block, i.e., no longer a parameter of the reader.
+            if($arg =~ m/::/)
+            {
+                $state = 'normal';
+            }
+            elsif($arg =~ m/^from=/)
+            {
+                $pattern = $arg;
+            }
+        }
+        if($state eq 'infilelist')
+        {
+            # Any input file or file pattern should contain the path we are
+            # looking for, so we do not have to remember them all.
+            $pattern = $arg;
+        }
+        if($state eq 'normal')
+        {
+            if($arg eq 'Read::Treex')
+            {
+                $state = 'reader';
+                next;
+            }
+            if($arg eq '--')
+            {
+                $state = 'infilelist';
+                next;
+            }
+            push(@new_argv, $arg);
+        }
+    }
+    @ARGV = @new_argv;
+    my $input_step;
+    if($pattern =~ m:/treex/(0[0-9])/:)
+    {
+        $input_step = $1;
+    }
+    return $input_step;
+}
+# Then the call ends with '--' and the glob pattern for the input files. We want
+# to remove this part (it will be later replaced with the lists of files in
+# chunks) but we can also infer the input step from it.
+# -- '!/net/work/people/zeman/hamledt-data/cs-cltt/treex/00/{train,dev,test}/*.treex'
+if(scalar(@ARGV) > 1 && $ARGV[-2] eq '--')
+{
+    my $pattern = pop(@ARGV);
+    if($pattern =~ m:/treex/(0[0-9])/:)
+    {
+        $input_step = $1;
+    }
+    pop(@ARGV); # remove the '--'
+}
+elsif(scalar(@ARGV) > 1 && $ARGV[0] eq 'Read::Treex' && $ARGV[1] =~ m/^from=/)
+{
+    shift(@ARGV); # remove 'Read::Treex'
+    my $pattern = shift(@ARGV);
+    if($pattern =~ m:/treex/(0[0-9])/:)
+    {
+        $input_step = $1;
+    }
 }
