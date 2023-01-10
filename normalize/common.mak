@@ -27,15 +27,11 @@ CONLLUDIR = $(DATADIR)/$(SUBDIRCU)
 PMLTQDIR  = $(DATADIR)/$(SUBDIRPTQ)
 
 # Processing shortcuts.
-# Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
-# Do not use the --queue option if you do not live in the ÚFAL network!
 TREEX      = treex -L$(LANGCODE)
-# -q 'all.q@*,ms-all.q@*,troja-all.q@*'
-# --queue=troja-all.q
-# --queue=ms-all.q,troja-all.q (???)
-# The --qsub="-m n" option should prevent the cluster from sending me 100 mails when 100 jobs crash on an error.
 ###!!! As of October 2022, the LRC cluster at ÚFAL migrates to new software and QTREEX no longer works.
-###!!! Unless it is adapted to SLURM, we have to use plain TREEX instead of QTREEX.
+###!!! Unless it is adapted to SLURM, we have to use our own parallelization wrapper.
+# Ordinary users can set --priority from -1023 to 0 (0 being the highest priority). Treex default is -100.
+# The --qsub="-m n" option should prevent the cluster from sending me 100 mails when 100 jobs crash on an error.
 #QTREEX     = treex -p --jobs 100 --priority=-50 --qsub="-m n" -L$(LANGCODE)
 QTREEX     = ../parallel_treex.pl
 IMPORTX    = Read::CoNLLX lines_per_doc=100 sid_within_feat=1
