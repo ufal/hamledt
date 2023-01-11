@@ -77,7 +77,7 @@ for(my $ijob = 0; $ijob < $njobs; $ijob++)
 }
 # Submit the jobs to the cluster.
 my @chunks = ();
-my $command = join(' ', ('treex', @ARGV));
+my $command = join(' ', ('treex', escape_argv_elements(@ARGV)));
 my $i = 1;
 for my $j (@jobfiles)
 {
@@ -209,25 +209,44 @@ sub get_input_step_and_discard_reader
     }
     return $input_step;
 }
-# Then the call ends with '--' and the glob pattern for the input files. We want
-# to remove this part (it will be later replaced with the lists of files in
-# chunks) but we can also infer the input step from it.
-# -- '!/net/work/people/zeman/hamledt-data/cs-cltt/treex/00/{train,dev,test}/*.treex'
-if(scalar(@ARGV) > 1 && $ARGV[-2] eq '--')
+
+
+
+#------------------------------------------------------------------------------
+# Escapes one or more @ARGV elements so that they can be passed again via
+# commandline. For example, if someone called us with this command-line argument
+# (a parameter of Util::Eval):
+#     anode='if($.deprel() eq "coord") {$.set_deprel("dep");}'
+# we will find it without the apostrophes in @ARGV:
+#     anode=if($.deprel() eq "coord") {$.set_deprel("dep");}
+# So we must put the apostrophes back.
+#------------------------------------------------------------------------------
+sub escape_argv_elements
 {
-    my $pattern = pop(@ARGV);
-    if($pattern =~ m:/treex/(0[0-9])/:)
+    return map
     {
-        $input_step = $1;
+        my $argv = $_;
+        # Treex block name is OK.
+        if(m/^[A-Za-z_0-9:]+$/)
+        {
+            # Do nothing.
+        }
+        # Treex block parameter could have apostrophes around everything but it is natural to only put them around the value, if necessary.
+        elsif(m/^([a-z_A-Z0-9]+)=(.*)$/)
+        {
+            my $parameter = $1;
+            my $value = $2;
+            if($value !~ m/^[a-z_A-Z0-9]*$/)
+            {
+                $argv = "$parameter='$value'";
+            }
+        }
+        # We do not expect anything else but if we encounter it, let's escape it, too.
+        else
+        {
+            $argv = "'$argv'";
+        }
+        $argv
     }
-    pop(@ARGV); # remove the '--'
-}
-elsif(scalar(@ARGV) > 1 && $ARGV[0] eq 'Read::Treex' && $ARGV[1] =~ m/^from=/)
-{
-    shift(@ARGV); # remove 'Read::Treex'
-    my $pattern = shift(@ARGV);
-    if($pattern =~ m:/treex/(0[0-9])/:)
-    {
-        $input_step = $1;
-    }
+    (@_);
 }
