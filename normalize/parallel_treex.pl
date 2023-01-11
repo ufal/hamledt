@@ -117,7 +117,7 @@ foreach my $chunk (@chunks)
         foreach my $line (split(/\n/, $treexlog))
         {
             # TREEX-INFO:     4.531:  Document 1/7 data/treex/01/test/wsj2393 loaded from data/treex/01/test/wsj2393.treex
-            if($line =~ m/^\# TREEX-INFO:.*Document \d+\/\d+ (data\S+) loaded from/)
+            if($line =~ m/^TREEX-INFO:.*Document \d+\/\d+ (data\S+) loaded from/)
             {
                 $docname = $1;
                 $docname = '...'.substr($docname, length($docname)-17) if(length($docname) > 20);
@@ -125,7 +125,7 @@ foreach my $chunk (@chunks)
             }
             push(@loglines, "$chunk->{job_id} $docname $line\n");
             # TREEX-INFO:     5.506:  Saving to data/conllu/test/wsj2393.conllu
-            if($line =~ m/^\# TREEX-INFO:.*Saving to data\S+/)
+            if($line =~ m/^TREEX-INFO:.*Saving to data\S+/)
             {
                 # If the scenario ends with multiple writers, only the first one
                 # will have the docname prepended but that is no disaster.
