@@ -112,10 +112,29 @@ foreach my $chunk (@chunks)
         # If there are warnings, print them.
         my $treexlog = `grep -P '^TREEX-' $logfile`;
         chomp($treexlog);
-        my @loglines = map {"$chunk->{job_id}: $_\n"} (split(/\n/, $treexlog));
-        $nw += scalar(grep {m/^\d+: TREEX-WARN/} (@loglines));
-        $ne += scalar(grep {m/^\d+: TREEX-FATAL/} (@loglines));
-        push(@warnings, grep {m/^\d+: TREEX-(WARN|FATAL)/} (@loglines));
+        my @loglines = ();
+        my $docname = ' ' x 20;
+        foreach my $line (split(/\n/, $treexlog))
+        {
+            # TREEX-INFO:     4.531:  Document 1/7 data/treex/01/test/wsj2393 loaded from data/treex/01/test/wsj2393.treex
+            if($line =~ m/^\# TREEX-INFO:.*Document \d+\/\d+ (data\S+) loaded from/)
+            {
+                $docname = $1;
+                $docname = '...'.substr($docname, length($docname)-17) if(length($docname) > 20);
+                $docname .= (' ' x (20-length($docname))) if(length($docname) < 20);
+            }
+            push(@loglines, "$chunk->{job_id} $docname $line\n");
+            # TREEX-INFO:     5.506:  Saving to data/conllu/test/wsj2393.conllu
+            if($line =~ m/^\# TREEX-INFO:.*Saving to data\S+/)
+            {
+                # If the scenario ends with multiple writers, only the first one
+                # will have the docname prepended but that is no disaster.
+                $docname = ' ' x 20;
+            }
+        }
+        $nw += scalar(grep {m/TREEX-WARN/} (@loglines));
+        $ne += scalar(grep {m/TREEX-FATAL/} (@loglines));
+        push(@warnings, grep {m/TREEX-(WARN|FATAL)/} (@loglines));
         $treexlog = join('', @loglines);
         print STDERR ($treexlog);
         my $lastline = `tail -1 $logfile`;
