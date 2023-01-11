@@ -98,6 +98,7 @@ while(cluster::qstat_resubmit(\@chunks))
 my $ok = 1;
 my $nw = 0;
 my $ne = 0;
+my @warnings = ();
 foreach my $chunk (@chunks)
 {
     my $logfile = "$jobname.$$.o$chunk->{job_id}";
@@ -111,10 +112,11 @@ foreach my $chunk (@chunks)
         # If there are warnings, print them.
         my $treexlog = `grep -P '^TREEX-' $logfile`;
         chomp($treexlog);
-        my @loglines = split(/\n/, $treexlog);
-        $nw += scalar(grep {m/^TREEX-WARN/} (@loglines));
-        $ne += scalar(grep {m/^TREEX-FATAL/} (@loglines));
-        $treexlog = join('', map {"$chunk->{job_id}: $_\n"} (@loglines));
+        my @loglines = map {"$chunk->{job_id}: $_\n"} (split(/\n/, $treexlog));
+        $nw += scalar(grep {m/^\d+: TREEX-WARN/} (@loglines));
+        $ne += scalar(grep {m/^\d+: TREEX-FATAL/} (@loglines));
+        push(@warnings, grep {m/^\d+: TREEX-(WARN|FATAL)/} (@loglines));
+        $treexlog = join('', @loglines);
         print STDERR ($treexlog);
         my $lastline = `tail -1 $logfile`;
         chomp($lastline);
@@ -124,6 +126,14 @@ foreach my $chunk (@chunks)
             $ok = 0;
         }
     }
+}
+# Print warnings and fatal errors again so that the user does not have to search
+# for them among the thousands of TREEX-INFO lines above.
+if($nw || $ne)
+{
+    print STDERR ("-------------------------------------------------------------------------------\n");
+    print STDERR (join('', @warnings));
+    print STDERR ("-------------------------------------------------------------------------------\n");
 }
 if($nw)
 {
