@@ -61,13 +61,19 @@ my $jobname = getcwd();
 $jobname =~ s:^.+/([^/]+)$:$1:;
 # For each planned job, collect the names of the files it will process.
 my $njobs = 300;
+my $min_files_per_job = int($nt / $njobs);
+my $n_jobs_extra_file = $nt % $njobs;
 my @jobfiles = ();
-my $ijob = 0;
-foreach my $f (@files_treex)
+for(my $ijob = 0; $ijob < $njobs; $ijob++)
 {
-    push(@{$jobfiles[$ijob]}, $f);
-    $ijob++;
-    $ijob = 0 if($ijob >= $njobs);
+    my $n_files_this_job = $min_files_per_job;
+    if($n_jobs_extra_file > 0)
+    {
+        $n_files_this_job++;
+        $n_jobs_extra_file--;
+    }
+    die if(scalar(@files_treex) < $n_files_this_job); # sanity check
+    push(@{$jobfiles[$ijob]}, splice(@files_treex, 0, $n_files_this_job));
 }
 # Submit the jobs to the cluster.
 my @chunks = ();
@@ -91,6 +97,7 @@ while(cluster::qstat_resubmit(\@chunks))
 # Make sure that all chunks were processed successfully.
 my $ok = 1;
 my $nw = 0;
+my $ne = 0;
 foreach my $chunk (@chunks)
 {
     my $logfile = "$jobname.$$.o$chunk->{job_id}";
@@ -102,10 +109,13 @@ foreach my $chunk (@chunks)
     else
     {
         # If there are warnings, print them.
-        my $warnings = `grep -P '^TREEX-WARN' $logfile`;
-        print STDERR ($warnings);
-        chomp($warnings);
-        $nw += scalar(split(/\n/, $warnings));
+        my $treexlog = `grep -P '^TREEX-' $logfile`;
+        chomp($treexlog);
+        my @loglines = split(/\n/, $treexlog);
+        $nw += scalar(grep {m/^TREEX-WARN/} (@loglines));
+        $ne += scalar(grep {m/^TREEX-FATAL/} (@loglines));
+        $treexlog = join('', map {"$chunk->{job_id}: $_\n"} (@loglines));
+        print STDERR ($treexlog);
         my $lastline = `tail -1 $logfile`;
         chomp($lastline);
         if($lastline !~ m/Execution succeeded\./)
@@ -119,9 +129,17 @@ if($nw)
 {
     print STDERR ("There were $nw warnings.\n");
 }
+if($ne)
+{
+    print STDERR ("There were $ne fatal errors.\n");
+}
 if($ok)
 {
     print STDERR ("All jobs executed successfully.\n");
+}
+else
+{
+    print STDERR ("At least one of the jobs failed.\n");
 }
 
 
