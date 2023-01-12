@@ -283,6 +283,7 @@ clean:
 	rm -f *.conllu.bak
 	rm -f *.conllu.debug
 	rm -f bugs.html
+	rm -f time.log
 
 remove_data:
 	rm -rf $(DATADIR)/*
