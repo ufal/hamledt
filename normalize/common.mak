@@ -279,6 +279,9 @@ mwestats:
 
 clean:
 	rm -rf *-cluster-run-*
+	rm -f *.o[0-9]*
+	rm -f *.conllu.bak
+	rm -f *.conllu.debug
 	rm -f bugs.html
 
 remove_data:
