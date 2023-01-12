@@ -72,4 +72,4 @@ treex:
 		Write::Treex clobber=1 path=$(DIR0)/test/  compress=0
 
 # ud should map either to prague_to_ud, or to conllu_to_treex.
-ud: prague_to_ud
+ud: prague_to_ud_enhanced
