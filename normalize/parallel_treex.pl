@@ -169,6 +169,7 @@ if($ok)
 else
 {
     print STDERR ("At least one of the jobs failed.\n");
+    die;
 }
 
 
