@@ -99,6 +99,7 @@ my $ok = 1;
 my $nw = 0;
 my $ne = 0;
 my @warnings = ();
+my @logfiles_with_errors = ();
 foreach my $chunk (@chunks)
 {
     my $logfile = "$jobname.$$.o$chunk->{job_id}";
@@ -142,6 +143,7 @@ foreach my $chunk (@chunks)
         if($lastline !~ m/Execution succeeded\./)
         {
             print STDERR ("ERROR: last line of $logfile is '$lastline'.\n");
+            push(@logfiles_with_errors, $logfile);
             $ok = 0;
         }
     }
@@ -169,6 +171,7 @@ if($ok)
 else
 {
     print STDERR ("At least one of the jobs failed.\n");
+    print STDERR ("See ".join(', ', @logfiles_with_errors).".\n");
     die;
 }
 
