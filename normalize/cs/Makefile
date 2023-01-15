@@ -2,11 +2,14 @@ LANGCODE=cs
 TREEBANK=cs
 UDCODE=cs_pdt
 UDNAME=Czech-PDT
-HARMONIZE=Harmonize iset_driver=cs::pdt
+HARMONIZE=Harmonize iset_driver=cs::pdtc
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
-SOURCEDIR=/net/projects/pdt/pdt30/data
+# Switching from PDT 3.0 to PDT-C.
+#SOURCEDIR=/net/projects/pdt/pdt30/data
+#SOURCEDIR=/net/projects/pdt/pdt35/PDT3.5/data
+SOURCEDIR=/net/data/pdt-c-1.0/data/PDT/pml
 # subdirs: amw, tamw / train-[1-8] dtest etest / *.a.gz
 source:
 	mkdir -p data/source/train
@@ -16,7 +19,8 @@ source:
 	ln -s $(SOURCEDIR)/{tamw,amw}/dtest/*.[amw].gz $(IN)/dev
 	ln -s $(SOURCEDIR)/{tamw,amw}/etest/*.[amw].gz $(IN)/test
 
-SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
+#SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
+SCHEMADIR=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema
 treex:
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/*.a.gz' \
