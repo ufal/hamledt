@@ -60,7 +60,11 @@ if($ntg > 0)
 my $jobname = getcwd();
 $jobname =~ s:^.+/([^/]+)$:$1:;
 # For each planned job, collect the names of the files it will process.
-my $njobs = 300;
+###!!! Původně jsem tady měl 300 úloh a fungovalo to, ale 15.1.2023 odpoledne
+###!!! se mi najednou začalo opakovaně stávat, že jen 123 úloh naběhlo, zatímco
+###!!! zbývajících 177 skončilo, zřejmě napořád, ve stavu pending (launch
+###!!! failed requeued held). Tak zkusím odeslat jen 100 úloh najednou.
+my $njobs = 100;
 my $min_files_per_job = int($nt / $njobs);
 my $n_jobs_extra_file = $nt % $njobs;
 my @jobfiles = ();
