@@ -64,6 +64,11 @@ $jobname =~ s:^.+/([^/]+)$:$1:;
 ###!!! se mi najednou začalo opakovaně stávat, že jen 123 úloh naběhlo, zatímco
 ###!!! zbývajících 177 skončilo, zřejmě napořád, ve stavu pending (launch
 ###!!! failed requeued held). Tak zkusím odeslat jen 100 úloh najednou.
+###!!! To zřejmě pomohlo, akorát ten výpočet samozřejmě trvá déle.
+###!!! Googlením jsem zjistil, že ten problém může být způsoben různými věcmi,
+###!!! např. přetížením plánovače. Taky že ten stav úlohy je míněn pro uživatele
+###!!! ke kontrole a nemusí nutně znamenat, že tahle úloha je ztracená. Mělo by
+###!!! být možné ji oživit pomocí scontrol release $job_id.
 my $njobs = 100;
 my $min_files_per_job = int($nt / $njobs);
 my $n_jobs_extra_file = $nt % $njobs;
