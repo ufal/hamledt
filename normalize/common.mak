@@ -25,6 +25,10 @@ DIR2      = $(DATADIR)/$(SUBDIR2)
 DIR3      = $(DATADIR)/$(SUBDIR3)
 CONLLUDIR = $(DATADIR)/$(SUBDIRCU)
 PMLTQDIR  = $(DATADIR)/$(SUBDIRPTQ)
+# If OUTCOMPRESS is compress=1, then INPATTERN should say *.treex.gz. Treebank-
+# specific Makefiles can override these variables before including common.mak.
+OUTCOMPRESS ?= compress=0
+INPATTERN   ?= {train,dev,test}/*.treex
 
 # Processing shortcuts.
 TREEX      = treex -L$(LANGCODE)
@@ -37,8 +41,8 @@ UCLANG     = $(shell perl -e 'print uc("$(LANGCODE)");')
 QTREEX     = ../parallel_treex.pl -L$(LANGCODE)
 IMPORTX    = Read::CoNLLX lines_per_doc=100 sid_within_feat=1
 IMPORTU    = Read::CoNLLU lines_per_doc=100
-WRITE0     = Write::Treex file_stem='' compress=0
-WRITE      = Write::Treex compress=0
+WRITE0     = Write::Treex file_stem='' $(OUTCOMPRESS)
+WRITE      = Write::Treex $(OUTCOMPRESS)
 # Treebank-specific Makefiles must override the value of HARMONIZE if their harmonization block is not called Harmonize.
 # They must do so before they include common.mak.
 HARMONIZE ?= Harmonize
@@ -98,12 +102,12 @@ conllu_to_treex:
 ###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
 orig_to_ud:
 	$(QTREEX) \
-	    Read::Treex from='!$(DIR0)/{train,dev,test}/*.treex.gz' \
+	    Read::Treex from='!$(DIR0)/$(INPATTERN)' \
 	    A2A::CopyAtree source_selector='' selector='orig' \
 	    HamleDT::$(UCLANG)::GoogleToUdep \
 	    $(POST_UD_BLOCKS) \
-	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR0)}{$(SUBDIRCU)} compress=0 \
-	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR0)}{$(SUBDIRCU)} $(OUTCOMPRESS) \
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 ###############################################################################
@@ -116,7 +120,10 @@ SCEN1 = \
     HamleDT::$(UCLANG)::$(HARMONIZE)
 
 prague:
-	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} compress=0 -- '!$(DIR0)/{train,dev,test}/*.treex'
+	$(QTREEX) \
+	    Read::Treex from='!$(DIR0)/$(INPATTERN)' \
+	    $(SCEN1) \
+	    Write::Treex substitute={00}{01} $(OUTCOMPRESS)
 
 ###############################################################################
 # PRAGUE TO UD
@@ -146,10 +153,10 @@ SCEN2E = \
 ###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
 prague_to_ud:
 	$(QTREEX) \
-	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
+	    Read::Treex from='!$(DIR1)/$(INPATTERN)' \
 	    $(SCEN2B) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
-	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 ###!!! Due to a bug in Treex::Core::Node::Interset we must write CoNLLU before Treex.
@@ -157,10 +164,10 @@ prague_to_ud:
 prague_to_ud_enhanced:
 	@echo `date` make prague to ud enhanced started | tee -a time.log
 	$(QTREEX) \
-	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
+	    Read::Treex from='!$(DIR1)/$(INPATTERN)' \
 	    $(SCEN2E) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
-	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 ###############################################################################
@@ -187,10 +194,10 @@ SCEN2TE = \
 prague_tecto_to_ud_enhanced:
 	@echo `date` make prague to ud enhanced started | tee -a time.log
 	$(QTREEX) \
-	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
+	    Read::Treex from='!$(DIR1)/$(INPATTERN)' \
 	    $(SCEN2TE) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
-	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 ###############################################################################
@@ -206,18 +213,20 @@ prague_tecto_to_ud_enhanced:
 ###!!! 2019-04-15: Removing W2W::EstimateNoSpaceAfter (it was immediately after A2A::CopyAtree).
 ###!!!   It damages some data, e.g., removes the space after Unicode closing double quote in German PUD.
 fixud:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
+	$(QTREEX) \
+	        Read::Treex from='!$(DIR2)/$(INPATTERN)' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
 	        $(PRE_FIXUD_BLOCKS) \
 	        HamleDT::$(UCLANG)::FixUD \
 	        $(POST_FIXUD_BLOCKS) \
 	        HamleDT::Punctuation \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0 \
-	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
+	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} $(OUTCOMPRESS)
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 fixud_enhanced:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
+	$(QTREEX) \
+	        Read::Treex from='!$(DIR2)/$(INPATTERN)' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
 	        $(PRE_FIXUD_BLOCKS) \
 	        HamleDT::$(UCLANG)::FixUD \
@@ -226,7 +235,7 @@ fixud_enhanced:
 	        A2A::CopyBasicToEnhancedUD \
 	        A2A::AddEnhancedUD \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0 \
-	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
+	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} $(OUTCOMPRESS)
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 # Some UD treebanks already have some enhanced dependencies and we only want to add
@@ -234,31 +243,33 @@ fixud_enhanced:
 # would overwrite the existing enhancements! The calling Makefile should define the
 # variable ENHANCEMENTS, e.g.: ENHANCEMENTS=case=1 coord=0 xsubj=0 relcl=0 empty=0
 fixud_some_enhanced:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
+	$(QTREEX) \
+	        Read::Treex from='!$(DIR2)/$(INPATTERN)' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
 	        HamleDT::$(UCLANG)::FixUD \
 	        A2A::AddEnhancedUD $(ENHANCEMENTS) \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0 \
-	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
+	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} $(OUTCOMPRESS)
 	UDDIR=$(UDDIR) ../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 ud1to2:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' \
+	$(QTREEX) \
+	        Read::Treex from='!$(DIR2)/$(INPATTERN)' \
 	        A2A::CopyAtree source_selector='' selector='orig' \
 	        HamleDT::UD1To2 \
 	        Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0 \
-	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)}
+	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} $(OUTCOMPRESS)
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
 # This goal exports the harmonized trees in the CoNLL-U format, which is more useful for ordinary users.
 export_conllu:
 	$(QTREEX) \
-	    Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
+	    Read::Treex from='!$(DIR2)/$(INPATTERN)' \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0
 
 export:
 	$(QTREEX) \
-	    Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' \
+	    Read::Treex from='!$(DIR2)/$(INPATTERN)' \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
@@ -271,7 +282,7 @@ export:
 # We cannot change the id in the same run where we split the large documents into smaller ones because then Treex would try to
 # reindex nodes in document but the document would not exist at that moment.
 pmltq:
-	$(TREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/(.+)(\d\d\d)}{$(SUBDIRPTQ)/$$1-$$2-$$3}' compress=1
+	$(TREEX) Read::Treex from='!$(DIR2)/$(INPATTERN)' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/(.+)(\d\d\d)}{$(SUBDIRPTQ)/$$1-$$2-$$3}' compress=1
 	$(TREEX) -s Read::Treex from='!$(PMLTQDIR)/*.treex.gz' W2W::AddNodeIdPrefix prefix=$(UDCODE)/ scsubst=1
 
 PMLTQCODE=$(shell perl -e '$$x = "$(TREEBANK)"; $$x =~ s/-ud20(.)/-ud20-$$1/; $$x =~ s/-ud20//; print $$x;')
@@ -295,21 +306,21 @@ stats:
 	grep 'XXX NODE XXX' test-wcl.txt | wc -l
 
 morphostats:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Util::Eval anode='print($$.form, "\t", $$.lemma, "\n");' |\
+	$(QTREEX) Read::Treex from='!$(DIR2)/$(INPATTERN)' Util::Eval anode='print($$.form, "\t", $$.lemma, "\n");' |\
 		grep -v -P '\d' |\
 		perl -e 'while(<>) { s/\r?\n$$//; if(m/^(.+\t(.+))$$/) { $$f{lc($$1)}++; $$l{lc($$2)}++; } } $$nf=scalar(keys(%f)); $$nl=scalar(keys(%l)); $$r=($$nl==0)?0:($$nf/$$nl); print("$$nf forms, $$nl lemmas, mr=$$r\n");' |\
 		tee morphostats.txt
 
 featurestats:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Util::Eval anode='my $$f = join("|", $$.iset()->get_ufeatures()); print($$f, "\n") if(defined($$f));' |\
+	$(QTREEX) Read::Treex from='!$(DIR2)/$(INPATTERN)' Util::Eval anode='my $$f = join("|", $$.iset()->get_ufeatures()); print($$f, "\n") if(defined($$f));' |\
 		perl -e 'while(<>) { s/\r?\n$$//; @f=split(/\|/, $$_); foreach $$fv (@f) { $$h{$$fv}++ }} @k=sort(keys(%h)); foreach my $$k (@k) { print("$$k\t$$h{$$k}\n"); }' |\
 		tee featurestats.txt
 
 deprelstats:
-	$(TREEX) Read::Treex from='!$(DIR0)/{train,dev,test}/*.treex.gz' Print::DeprelStats > deprelstats.txt
+	$(TREEX) Read::Treex from='!$(DIR0)/$(INPATTERN)' Print::DeprelStats > deprelstats.txt
 
 mwestats:
-	$(QTREEX) Read::Treex from='!$(DIR2)/{train,dev,test}/*.treex.gz' Print::MweStats | perl -e 'while(<>) { $$h{$$_}++ } @k = sort(keys(%h)); foreach my $$k (@k) { print("$$h{$$k}\t$$k"); }' > mwestats.txt
+	$(QTREEX) Read::Treex from='!$(DIR2)/$(INPATTERN)' Print::MweStats | perl -e 'while(<>) { $$h{$$_}++ } @k = sort(keys(%h)); foreach my $$k (@k) { print("$$h{$$k}\t$$k"); }' > mwestats.txt
 
 
 clean:

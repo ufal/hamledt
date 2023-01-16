@@ -2,6 +2,7 @@ LANGCODE=cs
 TREEBANK=cs
 UDCODE=cs_pdt
 UDNAME=Czech-PDT
+INPATTERN={train,dev,test}/{tamw,amw}/*.treex
 HARMONIZE=Harmonize iset_driver=cs::pdtc
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
@@ -82,10 +83,6 @@ treex_mix:
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/amw/  compress=0
 
-# We cannot run 'make prague' from common.mak because the input path is different.
-prague_mix:
-	$(QTREEX) $(SCEN1) Write::Treex substitute={00}{01} compress=0 -- '!$(DIR0)/{train,dev,test}/{tamw,amw}/*.treex'
-
 # ud should map either to prague_to_ud, or to conllu_to_treex.
 ud_a: prague_to_ud_enhanced
 
@@ -99,19 +96,20 @@ ud_t: prague_tecto_to_ud_enhanced
 	cp /net/work/people/zeman/unidep/NonUD_$(UDNAME)/$(UDCODE)-ud-test.conllu /net/work/projects/corefud/data/cs-pdt
 
 # We cannot run 'make prague_to_ud_enhanced' or 'make prague_tecto_to_ud_enhanced'
-# from common.mak because the input path is different.
-ud_mix:
+# from common.mak because the input path is different: extra /amw or /tamw.
+# When writing CoNLL-U files (not Treex files), we remove the /t?amw folder.
+ud:
 	@echo `date` make prague anal to ud enhanced started | tee -a time.log
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/amw/*.treex' \
 	    $(SCEN2E) \
-	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
-	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} substitute={/amw}{} compress=0 \
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
 	@echo `date` make prague tecto to ud enhanced started | tee -a time.log
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/tamw/*.treex' \
 	    $(SCEN2TE) \
-	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
-	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} substitute={/tamw}{} compress=0 \
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
 	@echo `date` treex ended | tee -a time.log
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
