@@ -109,7 +109,6 @@ ud_mix:
 	    A2A::AddEnhancedUD \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
-	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 	@echo `date` make prague to ud enhanced started | tee -a time.log
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/*.treex' \
