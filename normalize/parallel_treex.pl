@@ -240,9 +240,9 @@ sub get_input_pattern_and_discard_reader
     # Treex can read various types of files. At present, we assume that this
     # script is only called on .treex files. But it can be easily modified to
     # work with other files, too.
-    if($pattern !~ s/\/\.treex(\.gz)?$//)
+    if($pattern !~ s/\/\*\.treex(\.gz)?$//)
     {
-        die("Input file pattern '$pattern' does not end with '.treex'");
+        die("Input file pattern '$pattern' does not end with '/*.treex'");
     }
     return $pattern;
 }
