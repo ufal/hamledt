@@ -120,6 +120,7 @@ SCEN1 = \
     HamleDT::$(UCLANG)::$(HARMONIZE)
 
 prague:
+	rm -rf $(DIR1)/$(INPATTERN)
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR0)/$(INPATTERN)' \
 	    $(SCEN1) \
@@ -152,6 +153,7 @@ SCEN2E = \
 ###!!! Due to a bug in Treex::Core::Node::Interset we must write CoNLLU before Treex.
 ###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
 prague_to_ud:
+	rm -rf $(DIR2)/$(INPATTERN)
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/$(INPATTERN)' \
 	    $(SCEN2B) \
@@ -163,6 +165,7 @@ prague_to_ud:
 ###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
 prague_to_ud_enhanced:
 	@echo `date` make prague to ud enhanced started | tee -a time.log
+	rm -rf $(DIR2)/$(INPATTERN)
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/$(INPATTERN)' \
 	    $(SCEN2E) \
@@ -193,6 +196,7 @@ SCEN2TE = \
 # for non-PDT treebanks such as CAC, CLTT and FicTree.
 prague_tecto_to_ud_enhanced:
 	@echo `date` make prague to ud enhanced started | tee -a time.log
+	rm -rf $(DIR2)/$(INPATTERN)
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/$(INPATTERN)' \
 	    $(SCEN2TE) \
