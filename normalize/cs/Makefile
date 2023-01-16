@@ -99,17 +99,21 @@ ud_t: prague_tecto_to_ud_enhanced
 # from common.mak because the input path is different: extra /amw or /tamw.
 # When writing CoNLL-U files (not Treex files), we remove the /t?amw folder.
 ud:
+	rm -rf $(DIR2)/{train,dev,test}/{tamw,amw}/*
+	rm -rf $(CONLLUDIR)/{train,dev,test}/*
 	@echo `date` make prague anal to ud enhanced started | tee -a time.log
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/amw/*.treex' \
 	    $(SCEN2E) \
-	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} substitute={/amw}{} compress=0 \
-	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
+	    Write::Treex substitute={$(SUBDIR1)}{$(SUBDIR2)} $(OUTCOMPRESS)
 	@echo `date` make prague tecto to ud enhanced started | tee -a time.log
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/tamw/*.treex' \
 	    $(SCEN2TE) \
-	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} substitute={/tamw}{} compress=0 \
-	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
+	    Write::Treex substitute={$(SUBDIR1)}{$(SUBDIR2)} $(OUTCOMPRESS)
+	@echo `date` make export conllu started | tee -a time.log
+	$(QTREEX) \
+	    Read::Treex from='!$(DIR2)/{train,dev,test}/{tamw,amw}/*.treex' \
+	    Write::CoNLLU print_zone_id=0 substitute='{$(SUBDIR2)/(train|dev|test)/t?amw/}{$(SUBDIRCU)/\1/}' compress=0
 	@echo `date` treex ended | tee -a time.log
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
