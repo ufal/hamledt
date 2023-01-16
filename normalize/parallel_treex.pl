@@ -17,19 +17,17 @@ sub usage
     print STDERR ("Usage: parallel_treex.pl <scenario>\n");
     print STDERR ("    This script may be called the same way as the original treex -p was called.\n");
     print STDERR ("    However, it is only prepared for the HamleDT ecosystem. It is not a general wrapper.\n");
-    print STDERR ("    The input step (00, 01, ...) will be derived from the path to input files present on the command line.\n");
-    print STDERR ("        00 ... the unharmonized Treex files\n");
-    print STDERR ("        01 ... the Prague-style HamleDT files (default)\n");
-    print STDERR ("        02 ... the Universal Dependencies Treex files\n");
     print STDERR ("    <scenario> will be passed to treex as is.\n");
     print STDERR ("    List of input files will be appended at the end.\n");
     print STDERR ("    The input files are 'data/{00,01,...}/{train,dev,test}/*.treex'.\n");
+    print STDERR ("    Parallel Treex can use even a different path (if found after Read::Treex or at the\n");
+    print STDERR ("    end of the scenario) but it expects the path to end with '/*.treex'.\n");
 }
 
-my $input_step = get_input_step_and_discard_reader(); # modifies @ARGV in-place
-if(!defined($input_step))
+my $input_pattern = get_input_pattern_and_discard_reader(); # modifies @ARGV in-place
+if(!defined($input_pattern))
 {
-    die("Unknown HamleDT input step");
+    die("Unknown HamleDT input pattern");
 }
 if(scalar(@ARGV) == 0)
 {
@@ -43,15 +41,15 @@ if(scalar(@ARGV) == 0)
 # data/treex/{00,01,02}/{train,dev,test}/*.treex (or *.treex.gz)
 # The total number of files can range from 1 to over 5000.
 
-if(!-d "data/treex/$input_step")
+if(!-d 'data/treex')
 {
-    die("Cannot find 'data/treex/$input_step'");
+    die("Cannot find 'data/treex'");
 }
-my @files_treex = glob("data/treex/$input_step/{train,dev,test}/*.treex");
-my @files_treex_gz = glob("data/treex/$input_step/{train,dev,test}/*.treex.gz");
+my @files_treex = glob("$input_pattern/*.treex");
+my @files_treex_gz = glob("$input_pattern/*.treex.gz");
 my $nt = scalar(@files_treex);
 my $ntg = scalar(@files_treex_gz);
-print("In data/treex/$input_step, there are $nt treex files and $ntg treex.gz files (train, dev and test combined).\n");
+print("In $input_pattern, there are $nt treex files and $ntg treex.gz files (train, dev and test combined).\n");
 if($ntg > 0)
 {
     die("Processing treebanks with gzipped Treex files is currently not supported");
@@ -191,7 +189,7 @@ else
 # end. Removes this from @ARGV. Derives the input step number from the file
 # pattern and returns it.
 #------------------------------------------------------------------------------
-sub get_input_step_and_discard_reader
+sub get_input_pattern_and_discard_reader
 {
     my @new_argv = ();
     my $pattern = '';
@@ -234,12 +232,19 @@ sub get_input_step_and_discard_reader
         }
     }
     @ARGV = @new_argv;
-    my $input_step;
-    if($pattern =~ m:/treex/(0[0-9])/:)
+    $pattern =~ s/^from=//;
+    # Treex uses the exclamation mark to signal that the path contains wildcards
+    # that should be resolved. We assume that this is always the case and ignore
+    # the exclamation mark.
+    $pattern =~ s/^\!//;
+    # Treex can read various types of files. At present, we assume that this
+    # script is only called on .treex files. But it can be easily modified to
+    # work with other files, too.
+    if($pattern !~ s/\/\.treex(\.gz)?$//)
     {
-        $input_step = $1;
+        die("Input file pattern '$pattern' does not end with '.treex'");
     }
-    return $input_step;
+    return $pattern;
 }
 
 
