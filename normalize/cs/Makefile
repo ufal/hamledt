@@ -3,7 +3,6 @@ TREEBANK=cs
 UDCODE=cs_pdt
 UDNAME=Czech-PDT
 HARMONIZE=Harmonize iset_driver=cs::pdtc
-PRE_UD_BLOCKS=T2A::GenerateA2TRefs
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
@@ -105,21 +104,13 @@ ud_mix:
 	@echo `date` make prague anal to ud enhanced started | tee -a time.log
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/amw/*.treex' \
-	    $(SCEN2) \
-	    A2A::CopyBasicToEnhancedUD \
-	    A2A::AddEnhancedUD \
+	    $(SCEN2E) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
 	@echo `date` make prague tecto to ud enhanced started | tee -a time.log
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/tamw/*.treex' \
-	    $(SCEN2) \
-	    A2A::CopyBasicToEnhancedUD \
-	    T2A::GenerateEmptyNodes \
-	    A2A::AddEnhancedUD \
-	    A2A::CorefClusters \
-	    A2A::RemoveUnusedEmptyNodes \
-	    A2A::CorefMentions \
+	    $(SCEN2TE) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} compress=0
 	@echo `date` treex ended | tee -a time.log
