@@ -107,16 +107,14 @@ treex_to_ud:
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/amw/*.treex' \
 	    $(SCEN2E) \
-	    Write::Treex substitute={$(SUBDIR1)}{$(SUBDIR2)} $(OUTCOMPRESS)
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
 	@echo `date` make prague tecto to ud enhanced started | tee -a time.log
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/tamw/*.treex' \
 	    $(SCEN2TE) \
-	    Write::Treex substitute={$(SUBDIR1)}{$(SUBDIR2)} $(OUTCOMPRESS)
-	@echo `date` make export conllu started | tee -a time.log
-	$(QTREEX) \
-	    Read::Treex from='!$(DIR2)/{train,dev,test}/{tamw,amw}/*.treex' \
-	    Write::CoNLLU print_zone_id=0 substitute='{$(SUBDIR2)/(train|dev|test)/t?amw/}{$(SUBDIRCU)/\1/}' compress=0
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
 	@echo `date` treex ended | tee -a time.log
 
 # We need our own export (instead of default_ud_export) because PDT is large,
@@ -127,20 +125,29 @@ export: ud_export default_ud_postprocessing
 
 ud_export:
 	@echo `date` cat train-c started | tee -a time.log
-	cat $(CONLLUDIR)/train/cmpr94*.conllu | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-c.conllu
+	cat $(CONLLUDIR)/train/tamw/cmpr*.conllu | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-ct.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-ct.conllu
+	cat $(CONLLUDIR)/train/amw/cmpr*.conllu  | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-c.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-c.conllu
 	@echo `date` cat train-l started | tee -a time.log
-	cat $(CONLLUDIR)/train/ln*.conllu     | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-l.conllu
+	cat $(CONLLUDIR)/train/tamw/ln*.conllu   | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-lt.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-lt.conllu
+	cat $(CONLLUDIR)/train/amw/ln*.conllu    | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-l.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-l.conllu
 	@echo `date` cat train-m started | tee -a time.log
-	cat $(CONLLUDIR)/train/mf9*.conllu    | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-m.conllu
+	cat $(CONLLUDIR)/train/tamw/mf*.conllu   | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-mt.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-mt.conllu
+	cat $(CONLLUDIR)/train/amw/mf*.conllu    | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-m.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-m.conllu
 	@echo `date` cat train-v started | tee -a time.log
-	cat $(CONLLUDIR)/train/vesm9*.conllu  | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-v.conllu
+	# There is no -train-vt.conllu.
+	cat $(CONLLUDIR)/train/amw/vesm*.conllu  | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-v.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-v.conllu
 	@echo `date` cat dev started | tee -a time.log
-	cat $(CONLLUDIR)/dev/*.conllu         | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-dev.conllu
+	cat $(CONLLUDIR)/dev/tamw/*.conllu       | ../conllu_docpar_from_sentid.pl >  $(UDCODE)-ud-dev.conllu
+	cat $(CONLLUDIR)/dev/amw/*.conllu        | ../conllu_docpar_from_sentid.pl >> $(UDCODE)-ud-dev.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-dev.conllu
 	@echo `date` cat test started | tee -a time.log
-	cat $(CONLLUDIR)/test/*.conllu        | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-test.conllu
+	cat $(CONLLUDIR)/test/tamw/*.conllu      | ../conllu_docpar_from_sentid.pl >  $(UDCODE)-ud-test.conllu
+	cat $(CONLLUDIR)/test/amw/*.conllu       | ../conllu_docpar_from_sentid.pl >> $(UDCODE)-ud-test.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-test.conllu

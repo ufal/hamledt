@@ -155,13 +155,14 @@ SCEN2E = \
 ###!!! Due to a bug in Treex::Core::Node::Interset we must write CoNLLU before Treex.
 ###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
 prague_to_ud:
+	@echo `date` make prague to ud started | tee -a time.log
 	rm -rf $(DIR2)/$(INPATTERN)
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/$(INPATTERN)' \
 	    $(SCEN2B) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
-	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
+	@echo `date` treex ended | tee -a time.log
 
 ###!!! Due to a bug in Treex::Core::Node::Interset we must write CoNLLU before Treex.
 ###!!! After Write::Treex the Interset feature structure is corrupt (although the treex file is written correctly).
@@ -173,7 +174,7 @@ prague_to_ud_enhanced:
 	    $(SCEN2E) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
-	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
+	@echo `date` treex ended | tee -a time.log
 
 ###############################################################################
 # PRAGUE TECTOGRAMMATICAL LAYER TO UD
@@ -204,7 +205,7 @@ prague_tecto_to_ud_enhanced:
 	    $(SCEN2TE) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
-	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
+	@echo `date` treex ended | tee -a time.log
 
 ###############################################################################
 # UD TO FIXED UD
