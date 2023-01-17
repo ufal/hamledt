@@ -6,6 +6,7 @@ INPATTERN={train,dev,test}/{tamw,amw}/*.treex
 HARMONIZE=Harmonize iset_driver=cs::pdtc
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
+COREFUDDIR = /net/work/projects/corefud/data/cs-pdt
 
 # Switching from PDT 3.0 to PDT-C.
 #SOURCEDIR=/net/projects/pdt/pdt30/data
@@ -87,14 +88,17 @@ treex_mix:
 # We cannot run 'make prague_to_ud_enhanced' or 'make prague_tecto_to_ud_enhanced'
 # from common.mak because the input path is different: extra /amw or /tamw.
 ud: treex_a_to_ud treex_t_to_ud export
+	# Copy the new data to the Coref-UD project folder.
+	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-train-[clm]t.conllu > $(COREFUDDIR)/$(UDCODE)-ud-train.conllu
+	cp $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-dev.conllu $(COREFUDDIR)
+	cp $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-test.conllu $(COREFUDDIR)
 
 # Running ud_a would mean that we collect all data but use only the a-layer
 # even where t-layer is avaliable, as we were doing it until UD v2.11.
 ud_a: prague_to_ud_enhanced export
 
-# CorefUD: Only update the tectogrammatical part in the main UD folder, but also
+# CorefUD: Only update the tectogrammatical part in the main UD folder and
 # copy the result to the folder where CorefUD data are collected.
-COREFUDDIR = /net/work/projects/corefud/data/cs-pdt
 corefud: treex_t_to_ud export
 	# Copy the new data to the Coref-UD project folder.
 	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-train-[clm]t.conllu > $(COREFUDDIR)/$(UDCODE)-ud-train.conllu
