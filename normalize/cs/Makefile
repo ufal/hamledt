@@ -133,22 +133,22 @@ ud_export:
 	@echo `date` cat train-c started | tee -a time.log
 	cat $(CONLLUDIR)/train/tamw/cmpr*.conllu | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-ct.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-ct.conllu
-	cat $(CONLLUDIR)/train/amw/cmpr*.conllu  | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-c.conllu
-	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-c.conllu
+	cat $(CONLLUDIR)/train/amw/cmpr*.conllu  | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-ca.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-ca.conllu
 	@echo `date` cat train-l started | tee -a time.log
 	cat $(CONLLUDIR)/train/tamw/ln*.conllu   | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-lt.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-lt.conllu
-	cat $(CONLLUDIR)/train/amw/ln*.conllu    | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-l.conllu
-	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-l.conllu
+	cat $(CONLLUDIR)/train/amw/ln*.conllu    | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-la.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-la.conllu
 	@echo `date` cat train-m started | tee -a time.log
 	cat $(CONLLUDIR)/train/tamw/mf*.conllu   | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-mt.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-mt.conllu
-	cat $(CONLLUDIR)/train/amw/mf*.conllu    | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-m.conllu
-	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-m.conllu
+	cat $(CONLLUDIR)/train/amw/mf*.conllu    | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-ma.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-ma.conllu
 	@echo `date` cat train-v started | tee -a time.log
 	# There is no -train-vt.conllu.
-	cat $(CONLLUDIR)/train/amw/vesm*.conllu  | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-v.conllu
-	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-v.conllu
+	cat $(CONLLUDIR)/train/amw/vesm*.conllu  | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-va.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-va.conllu
 	@echo `date` cat dev started | tee -a time.log
 	cat $(CONLLUDIR)/dev/tamw/*.conllu       | ../conllu_docpar_from_sentid.pl >  $(UDCODE)-ud-dev.conllu
 	cat $(CONLLUDIR)/dev/amw/*.conllu        | ../conllu_docpar_from_sentid.pl >> $(UDCODE)-ud-dev.conllu
