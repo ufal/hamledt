@@ -308,7 +308,7 @@ default_ud_postprocessing:
 	@echo `date` udapy mark bugs started | tee -a time.log
 	cat *.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
 	@echo `date` validation started | tee -a time.log
-	$(UDTOOLS)/validate.py --lang=$(LANGCODE) --coref $(UDDIR)/UD_$(UDNAME)/*.conllu
+	$(UDTOOLS)/validate.py --lang=$(LANGCODE) --coref $(UDDIR)/UD_$(UDNAME)/*.conllu 2>&1 | tee validation.log
 	@echo `date` export_ud.sh ended | tee -a time.log
 
 
@@ -367,7 +367,7 @@ clean:
 	rm -f *.conllu.bak
 	rm -f *.conllu.debug
 	rm -f bugs.html
-	rm -f time.log
+	rm -f *.log
 
 remove_data:
 	rm -rf $(DATADIR)/*
