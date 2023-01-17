@@ -83,32 +83,38 @@ treex_mix:
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/amw/  compress=0
 
-# ud should map either to prague_to_ud, or to conllu_to_treex.
-ud_a: prague_to_ud_enhanced
-
-ud_t: prague_tecto_to_ud_enhanced
-	# Use a NonUD* name for the target subfolder of unidep because the UD release builder must ignore it at the moment.
-	mv /net/work/people/zeman/unidep/UD_$(UDNAME)/* /net/work/people/zeman/unidep/NonUD_$(UDNAME)
-	rm -rf /net/work/people/zeman/unidep/UD_$(UDNAME)
-	# Copy the new data to the Coref-UD project folder.
-	cat /net/work/people/zeman/unidep/NonUD_$(UDNAME)/$(UDCODE)-ud-train-[clm].conllu > /net/work/projects/corefud/data/cs-pdt/$(UDCODE)-ud-train.conllu
-	cp /net/work/people/zeman/unidep/NonUD_$(UDNAME)/$(UDCODE)-ud-dev.conllu /net/work/projects/corefud/data/cs-pdt
-	cp /net/work/people/zeman/unidep/NonUD_$(UDNAME)/$(UDCODE)-ud-test.conllu /net/work/projects/corefud/data/cs-pdt
-
+# ud should normally map either to prague_to_ud_enhanced, or to conllu_to_treex.
 # We cannot run 'make prague_to_ud_enhanced' or 'make prague_tecto_to_ud_enhanced'
 # from common.mak because the input path is different: extra /amw or /tamw.
-# When writing CoNLL-U files (not Treex files), we remove the /t?amw folder.
-ud: treex_to_ud export
+ud: treex_a_to_ud treex_t_to_ud export
 
-treex_to_ud:
-	rm -rf $(DIR2)/{train,dev,test}/{tamw,amw}/*
-	rm -rf $(CONLLUDIR)/{train,dev,test}/*
+# Running ud_a would mean that we collect all data but use only the a-layer
+# even where t-layer is avaliable, as we were doing it until UD v2.11.
+ud_a: prague_to_ud_enhanced export
+
+# CorefUD: Only update the tectogrammatical part in the main UD folder, but also
+# copy the result to the folder where CorefUD data are collected.
+COREFUDDIR = /net/work/projects/corefud/data/cs-pdt
+corefud: treex_t_to_ud export
+	# Copy the new data to the Coref-UD project folder.
+	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-train-[clm]t.conllu > $(COREFUDDIR)/$(UDCODE)-ud-train.conllu
+	cp $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-dev.conllu $(COREFUDDIR)
+	cp $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-test.conllu $(COREFUDDIR)
+
+treex_a_to_ud:
+	rm -rf $(DIR2)/{train,dev,test}/amw/*
+	rm -rf $(CONLLUDIR)/{train,dev,test}/amw/*
 	@echo `date` make prague anal to ud enhanced started | tee -a time.log
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/amw/*.treex' \
 	    $(SCEN2E) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
+	@echo `date` treex ended | tee -a time.log
+
+treex_t_to_ud:
+	rm -rf $(DIR2)/{train,dev,test}/tamw/*
+	rm -rf $(CONLLUDIR)/{train,dev,test}/tamw/*
 	@echo `date` make prague tecto to ud enhanced started | tee -a time.log
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/tamw/*.treex' \
