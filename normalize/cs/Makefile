@@ -98,7 +98,9 @@ ud_t: prague_tecto_to_ud_enhanced
 # We cannot run 'make prague_to_ud_enhanced' or 'make prague_tecto_to_ud_enhanced'
 # from common.mak because the input path is different: extra /amw or /tamw.
 # When writing CoNLL-U files (not Treex files), we remove the /t?amw folder.
-ud:
+ud: treex_to_ud export
+
+treex_to_ud:
 	rm -rf $(DIR2)/{train,dev,test}/{tamw,amw}/*
 	rm -rf $(CONLLUDIR)/{train,dev,test}/*
 	@echo `date` make prague anal to ud enhanced started | tee -a time.log
@@ -116,4 +118,39 @@ ud:
 	    Read::Treex from='!$(DIR2)/{train,dev,test}/{tamw,amw}/*.treex' \
 	    Write::CoNLLU print_zone_id=0 substitute='{$(SUBDIR2)/(train|dev|test)/t?amw/}{$(SUBDIRCU)/\1/}' compress=0
 	@echo `date` treex ended | tee -a time.log
-	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
+
+# We need our own export (instead of default_ud_export) because PDT is large,
+# its train portion must be split into several files, and we need specific
+# post-processing, too.
+UDAPISCEN = read.OldCorefUD corefud.FixInterleaved util.Eval node='for m in node.coref_mentions: m.head = m.words[0]' corefud.MoveHead ud.cs.FixEdeprels
+export:
+	@echo `date` cat train-c started | tee -a time.log
+	cat $(CONLLUDIR)/train/cmpr94*.conllu | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-c.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-c.conllu
+	@echo `date` cat train-l started | tee -a time.log
+	cat $(CONLLUDIR)/train/ln*.conllu     | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-l.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-l.conllu
+	@echo `date` cat train-m started | tee -a time.log
+	cat $(CONLLUDIR)/train/mf9*.conllu    | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-m.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-m.conllu
+	@echo `date` cat train-v started | tee -a time.log
+	cat $(CONLLUDIR)/train/vesm9*.conllu  | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-v.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-v.conllu
+	@echo `date` cat dev started | tee -a time.log
+	cat $(CONLLUDIR)/dev/*.conllu         | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-dev.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-dev.conllu
+	@echo `date` cat test started | tee -a time.log
+	cat $(CONLLUDIR)/test/*.conllu        | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-test.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-test.conllu
+	@echo `date` check sentence ids started | tee -a time.log
+	cat *.conllu | $(UDTOOLS)/check_sentence_ids.pl
+	@echo `date` conllu stats started | tee -a time.log
+	$(UDTOOLS)/conllu-stats.pl *.conllu > $(UDDIR)/UD_$(UDNAME)/stats.xml
+	@echo `date` udapy mark bugs started | tee -a time.log
+	cat *.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
+	@echo `date` udapy postprocessing started | tee -a time.log
+	# Skip CoNLL-U files that have zero size (some treebanks lack train and dev).
+	for i in *.conllu ; do if [ -s $$i ] ; then cp $$i $$i.debug ; udapy -s $(UDAPISCEN) < $$i > fixed.conllu ; mv fixed.conllu $$i ; mv $$i $(UDDIR)/UD_$(UDNAME) ; else rm $$i ; fi ; done
+	@echo `date` validation started | tee -a time.log
+	$(UDTOOLS)/validate.py --lang=$(LANGCODE) --coref $(UDDIR)/UD_$(UDNAME)/*.conllu
+	@echo `date` export_ud.sh ended | tee -a time.log

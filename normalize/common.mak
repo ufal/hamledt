@@ -11,6 +11,8 @@ SHELL=/bin/bash
 # You may want to put something like this in your .bash_profile:
 # export HAMLEDT_DATA=/net/projects/tectomt_shared/data/resources/hamledt
 DATADIR   = $(HAMLEDT_DATA)/$(TREEBANK)
+UDDIR    ?= /net/work/people/zeman/unidep
+UDTOOLS   = $(UDDIR)/tools
 SUBDIRIN  = source
 SUBDIR0   = treex/00
 SUBDIR1   = treex/01
@@ -265,17 +267,46 @@ ud1to2:
 	        Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR3)} $(OUTCOMPRESS)
 	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
 
-# This goal exports the harmonized trees in the CoNLL-U format, which is more useful for ordinary users.
+###############################################################################
+# EXPORT TO CONLL-U
+# Many of the above targets will save the files both as Treex and as CoNLL-U.
+# Here we can request Treex-to-CoNLL-U conversion without doing anything else
+# with the Treex files first. More importantly, subsequent concatenation of the
+# CoNLL-U files and postprocessing of the large UD files is defined here.
+###############################################################################
+
 export_conllu:
 	$(QTREEX) \
 	    Read::Treex from='!$(DIR2)/$(INPATTERN)' \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0
 
-export:
-	$(QTREEX) \
-	    Read::Treex from='!$(DIR2)/$(INPATTERN)' \
-	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0
-	../export_ud.sh $(LANGCODE) $(UDCODE) $(UDNAME)
+# A treebank-specific Makefile should either make its "export" goal dependent
+# on this one, or define its own if it requires different input paths, output
+# file names, postprocessing steps etc. (Note: These steps used to be
+# implemented in export_ud.sh but it was inconvenient to code treebank-specific
+# branches there.) If the treebank-specific postprocessing is limited to a
+# specific Udapi scenario, the treebank can define UDAPISCEN before including
+# common.mak, then use this default target. Example:
+# UDAPISCEN = ud.cs.FixEdeprels
+default_ud_export:
+	@echo `date` cat train started | tee -a time.log
+	cat $(CONLLUDIR)/train/*.conllu > $(UDCODE)-ud-train.conllu
+	@echo `date` cat dev started | tee -a time.log
+	cat $(CONLLUDIR)/*.conllu > $(UDCODE)-ud-dev.conllu
+	@echo `date` cat test started | tee -a time.log
+	cat $(CONLLUDIR)/test/*.conllu > $(UDCODE)-ud-test.conllu
+	@echo `date` check sentence ids started | tee -a time.log
+	cat *.conllu | $(UDTOOLS)/check_sentence_ids.pl
+	@echo `date` conllu stats started | tee -a time.log
+	$(UDTOOLS)/conllu-stats.pl *.conllu > $(UDDIR)/UD_$(UDNAME)/stats.xml
+	@echo `date` udapy mark bugs started | tee -a time.log
+	cat *.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
+	@echo `date` udapy postprocessing started | tee -a time.log
+	# Skip CoNLL-U files that have zero size (some treebanks lack train and dev).
+	for i in *.conllu ; do if [ -s $$i ] ; then cp $$i $$i.debug ; udapy -s $(UDAPISCEN) < $$i > fixed.conllu ; mv fixed.conllu $$i ; mv $$i $(UDDIR)/UD_$(UDNAME) ; else rm $$i ; fi ; done
+	@echo `date` validation started | tee -a time.log
+	$(UDTOOLS)/validate.py --lang=$(LANGCODE) --coref $(UDDIR)/UD_$(UDNAME)/*.conllu
+	@echo `date` export_ud.sh ended | tee -a time.log
 
 
 
