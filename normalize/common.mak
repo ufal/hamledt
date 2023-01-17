@@ -280,14 +280,11 @@ export_conllu:
 	    Read::Treex from='!$(DIR2)/$(INPATTERN)' \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR2)}{$(SUBDIRCU)} compress=0
 
-# A treebank-specific Makefile should either make its "export" goal dependent
-# on this one, or define its own if it requires different input paths, output
-# file names, postprocessing steps etc. (Note: These steps used to be
-# implemented in export_ud.sh but it was inconvenient to code treebank-specific
-# branches there.) If the treebank-specific postprocessing is limited to a
-# specific Udapi scenario, the treebank can define UDAPISCEN before including
-# common.mak, then use this default target. Example:
-# UDAPISCEN = ud.cs.FixEdeprels
+# A treebank-specific Makefile should either make its "export" target dependent
+# on default_ud_export and default_ud_postprocessing, or define its own if it
+# requires different input paths, output file names, postprocessing steps etc.
+# (Note: These steps used to be implemented in export_ud.sh but it was
+# inconvenient to code treebank-specific branches there.)
 default_ud_export:
 	@echo `date` cat train started | tee -a time.log
 	cat $(CONLLUDIR)/train/*.conllu > $(UDCODE)-ud-train.conllu
@@ -295,15 +292,21 @@ default_ud_export:
 	cat $(CONLLUDIR)/*.conllu > $(UDCODE)-ud-dev.conllu
 	@echo `date` cat test started | tee -a time.log
 	cat $(CONLLUDIR)/test/*.conllu > $(UDCODE)-ud-test.conllu
+
+# If the treebank-specific postprocessing is limited to a specific Udapi
+# scenario, the treebank can define UDAPISCEN before including common.mak, then
+# use this default target. Example:
+# UDAPISCEN = ud.cs.FixEdeprels
+default_ud_postprocessing:
 	@echo `date` check sentence ids started | tee -a time.log
 	cat *.conllu | $(UDTOOLS)/check_sentence_ids.pl
 	@echo `date` conllu stats started | tee -a time.log
 	$(UDTOOLS)/conllu-stats.pl *.conllu > $(UDDIR)/UD_$(UDNAME)/stats.xml
-	@echo `date` udapy mark bugs started | tee -a time.log
-	cat *.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
 	@echo `date` udapy postprocessing started | tee -a time.log
 	# Skip CoNLL-U files that have zero size (some treebanks lack train and dev).
 	for i in *.conllu ; do if [ -s $$i ] ; then cp $$i $$i.debug ; udapy -s $(UDAPISCEN) < $$i > fixed.conllu ; mv fixed.conllu $$i ; mv $$i $(UDDIR)/UD_$(UDNAME) ; else rm $$i ; fi ; done
+	@echo `date` udapy mark bugs started | tee -a time.log
+	cat *.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
 	@echo `date` validation started | tee -a time.log
 	$(UDTOOLS)/validate.py --lang=$(LANGCODE) --coref $(UDDIR)/UD_$(UDNAME)/*.conllu
 	@echo `date` export_ud.sh ended | tee -a time.log
