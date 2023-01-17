@@ -298,15 +298,15 @@ default_ud_export:
 # use this default target. Example:
 # UDAPISCEN = ud.cs.FixEdeprels
 default_ud_postprocessing:
-	@echo `date` check sentence ids started | tee -a time.log
-	cat *.conllu | $(UDTOOLS)/check_sentence_ids.pl
-	@echo `date` conllu stats started | tee -a time.log
-	$(UDTOOLS)/conllu-stats.pl *.conllu > $(UDDIR)/UD_$(UDNAME)/stats.xml
 	@echo `date` udapy postprocessing started | tee -a time.log
 	# Skip CoNLL-U files that have zero size (some treebanks lack train and dev).
 	for i in *.conllu ; do if [ -s $$i ] ; then cp $$i $$i.debug ; udapy -s $(UDAPISCEN) < $$i > fixed.conllu ; mv fixed.conllu $$i ; mv $$i $(UDDIR)/UD_$(UDNAME) ; else rm $$i ; fi ; done
+	@echo `date` conllu stats started | tee -a time.log
+	$(UDTOOLS)/conllu-stats.pl $(UDDIR)/UD_$(UDNAME)/*.conllu > $(UDDIR)/UD_$(UDNAME)/stats.xml
 	@echo `date` udapy mark bugs started | tee -a time.log
-	cat *.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
+	cat $(UDDIR)/UD_$(UDNAME)/*.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
+	@echo `date` check sentence ids started | tee -a time.log
+	cat $(UDDIR)/UD_$(UDNAME)/*.conllu | $(UDTOOLS)/check_sentence_ids.pl
 	@echo `date` validation started | tee -a time.log
 	$(UDTOOLS)/validate.py --lang=$(LANGCODE) --coref $(UDDIR)/UD_$(UDNAME)/*.conllu 2>&1 | tee validation.log
 	@echo `date` export_ud.sh ended | tee -a time.log
