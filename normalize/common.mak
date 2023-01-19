@@ -189,6 +189,7 @@ SCEN2TE = \
     HamleDT::Punctuation \
     A2A::CopyBasicToEnhancedUD \
     T2A::GenerateEmptyNodes \
+    T2A::AmodCoordEnhancedUD \
     A2A::AddEnhancedUD \
     A2A::CorefClusters \
     A2A::RemoveUnusedEmptyNodes \
