@@ -99,6 +99,7 @@ for my $j (@jobfiles)
 }
 while(cluster::qstat_resubmit(\@chunks))
 {
+    stop_if_job_failed(@chunks);
     sleep(5);
 }
 # Make sure that all chunks were processed successfully.
@@ -286,4 +287,52 @@ sub escape_argv_elements
         $argv
     }
     (@_);
+}
+
+
+
+#------------------------------------------------------------------------------
+# Stop waiting if a job failed.
+#------------------------------------------------------------------------------
+sub stop_if_job_failed
+{
+    my @chunks = @_;
+    foreach my $chunk (@chunks)
+    {
+        my $logfile = "$jobname.$$.o$chunk->{job_id}";
+        if(-f $logfile)
+        {
+            # If there are warnings, print them.
+            my $treexlog = `grep -P '^TREEX-' $logfile`;
+            chomp($treexlog);
+            my @loglines = ();
+            my $docname = ' ' x 20;
+            foreach my $line (split(/\n/, $treexlog))
+            {
+                # TREEX-INFO:     4.531:  Document 1/7 data/treex/01/test/wsj2393 loaded from data/treex/01/test/wsj2393.treex
+                if($line =~ m/^TREEX-INFO:.*Document \d+\/\d+ (data\S+) loaded from/)
+                {
+                    $docname = $1;
+                    $docname = '...'.substr($docname, length($docname)-17) if(length($docname) > 20);
+                    $docname .= (' ' x (20-length($docname))) if(length($docname) < 20);
+                }
+                push(@loglines, "$chunk->{job_id} $docname $line\n");
+                # TREEX-INFO:     5.506:  Saving to data/conllu/test/wsj2393.conllu
+                if($line =~ m/^TREEX-INFO:.*Saving to data\S+/)
+                {
+                    # If the scenario ends with multiple writers, only the first one
+                    # will have the docname prepended but that is no disaster.
+                    $docname = ' ' x 20;
+                }
+            }
+            if(scalar(grep {m/TREEX-FATAL/} (@loglines)) >= 1)
+            {
+                my $treexlog = join('', @loglines);
+                print STDERR ($treexlog);
+                print STDERR ("At least one of the jobs failed.\n");
+                print STDERR ("See $logfile.\n");
+                die;
+            }
+        }
+    }
 }
