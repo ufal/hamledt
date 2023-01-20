@@ -15,14 +15,9 @@ source:
 	mkdir -p data/source/train
 	mkdir -p data/source/dev
 	mkdir -p data/source/test
-	# Odkomentovat jedno nebo druhé. Zpracování celých dat zde:
 	ln -s $(SOURCEDIR)/{0[2-9],1[0-9],2[01]}/*.treex.gz $(IN)/train
 	ln -s $(SOURCEDIR)/{00,01,22,24}/*.treex.gz $(IN)/dev
 	ln -s $(SOURCEDIR)/23/*.treex.gz $(IN)/test
-	# Na testy zatím nechat jen pár souborů, aby to bylo rychlejší.
-	#ln -s $(SOURCEDIR)/00/wsj_0001.treex.gz $(IN)/train
-	#ln -s $(SOURCEDIR)/19/wsj_1900.treex.gz $(IN)/dev
-	#ln -s $(SOURCEDIR)/22/wsj_2200.treex.gz $(IN)/test
 
 SCHEMADIR=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema
 treex:
@@ -35,9 +30,25 @@ treex:
 	gunzip $(DIR0)/test/*.treex.gz
 
 # ud should map either to prague_(tecto_)to_ud(_enhanced), or to conllu_to_treex.
-ud: prague_tecto_to_ud_enhanced
+ud: prague_tecto_to_ud_enhanced export
 	# Copy the new data to the Coref-UD project folder.
 	cp /net/work/people/zeman/unidep/UD_$(UDNAME)/*.conllu /net/work/projects/corefud/data/en-pcedt
+
+# We need our own export (instead of default_ud_export) because PDT is large,
+# its train portion must be split into several files, and we need specific
+# post-processing, too.
+###!!! We should get rid of corefud.FixInterleaved because it is possible to have legitimate interleaved same-entity mentions.
+###!!! https://github.com/ufal/corefUD/issues/25#issuecomment-1386793600
+UDAPISCEN = read.OldCorefUD corefud.FixInterleaved util.Eval node='for m in node.coref_mentions: m.head = m.words[0]' corefud.MoveHead
+export: ud_export default_ud_postprocessing
+
+ud_export:
+	@echo `date` cat train started | tee -a time.log
+	cat data/conllu/train/*.conllu | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train.conllu
+	@echo `date` cat dev started | tee -a time.log
+	cat data/conllu/dev/*.conllu   | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-dev.conllu
+	@echo `date` cat test started | tee -a time.log
+	cat data/conllu/test/*.conllu  | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-test.conllu
 
 # If we need to debug a specific error, we can process just one document
 # instead of waiting hours for the whole corpus to compile.
