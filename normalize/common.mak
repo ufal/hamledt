@@ -190,6 +190,7 @@ SCEN2TE = \
     A2A::CopyBasicToEnhancedUD \
     T2A::GenerateEmptyNodes \
     T2A::AmodCoordEnhancedUD \
+    T2A::CopyFunctorsToMisc \
     A2A::AddEnhancedUD \
     A2A::CorefClusters \
     A2A::RemoveUnusedEmptyNodes \
