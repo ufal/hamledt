@@ -146,7 +146,8 @@ foreach my $chunk (@chunks)
         push(@warnings, grep {m/TREEX-(WARN|FATAL)/} (@loglines));
         $treexlog = join('', @loglines);
         print STDERR ($treexlog);
-        my $lastline = `tail -1 $logfile`;
+        # Sometimes SLURM reports some internal problems after Treex has successfully finished its job; let's ignore this.
+        my $lastline = `grep -v '^slurmstepd:' $logfile | tail -1`;
         chomp($lastline);
         if($lastline !~ m/Execution succeeded\./)
         {
