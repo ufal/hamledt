@@ -88,10 +88,10 @@ treex_mix:
 # We cannot run 'make prague_to_ud_enhanced' or 'make prague_tecto_to_ud_enhanced'
 # from common.mak because the input path is different: extra /amw or /tamw.
 ud: treex_a_to_ud treex_t_to_ud export
-	# Copy the new data to the Coref-UD project folder.
+	# Copy the new data to the Coref-UD project folder. Exclude Vesmír from dev and test, it does not have t-layer and coreference.
 	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-train-[clm]t.conllu > $(COREFUDDIR)/$(UDCODE)-ud-train.conllu
-	cp $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-dev.conllu $(COREFUDDIR)
-	cp $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-test.conllu $(COREFUDDIR)
+	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-dev.conllu  | udapy -s util.Filter keep_tree='not re.match(r"^vesm", tree.sent_id)' > $(COREFUDDIR)/$(UDCODE)-ud-dev.conllu
+	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-test.conllu | udapy -s util.Filter keep_tree='not re.match(r"^vesm", tree.sent_id)' > $(COREFUDDIR)/$(UDCODE)-ud-test.conllu
 
 # Running ud_a would mean that we collect all data but use only the a-layer
 # even where t-layer is avaliable, as we were doing it until UD v2.11.
@@ -100,10 +100,10 @@ ud_a: prague_to_ud_enhanced export
 # CorefUD: Only update the tectogrammatical part in the main UD folder and
 # copy the result to the folder where CorefUD data are collected.
 corefud: treex_t_to_ud export
-	# Copy the new data to the Coref-UD project folder.
+	# Copy the new data to the Coref-UD project folder. Exclude Vesmír from dev and test, it does not have t-layer and coreference.
 	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-train-[clm]t.conllu > $(COREFUDDIR)/$(UDCODE)-ud-train.conllu
-	cp $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-dev.conllu $(COREFUDDIR)
-	cp $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-test.conllu $(COREFUDDIR)
+	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-dev.conllu  | udapy -s util.Filter keep_tree='not re.match(r"^vesm", tree.sent_id)' > $(COREFUDDIR)/$(UDCODE)-ud-dev.conllu
+	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-test.conllu | udapy -s util.Filter keep_tree='not re.match(r"^vesm", tree.sent_id)' > $(COREFUDDIR)/$(UDCODE)-ud-test.conllu
 
 treex_a_to_ud:
 	rm -rf $(DIR2)/{train,dev,test}/amw/*
