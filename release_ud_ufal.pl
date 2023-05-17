@@ -71,6 +71,8 @@ print("Add to $treexpath/lib/Treex/Core/Types.pm:\n");
 foreach my $udl (@udlangnames)
 {
     my $lcode = $udlanguages->{$udl}{lcode};
+    # In Types.pm the hash is called %EXTRA_LANG_CODES and it only contains three-letter codes.
+    next if(length($lcode) < 3);
     if(!exists($known_codes{$lcode}))
     {
         print("    '$lcode'     \"$udl\",\n");
