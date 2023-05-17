@@ -16,7 +16,7 @@ use udlib; # from Universal Dependencies tools repository
 
 sub usage
 {
-    print STDERR ("$0 --release 2.12\n");
+    print STDERR ("Usage: $0 --release 2.12\n");
 }
 
 my $udpath = '/net/work/people/zeman/unidep'; # clones of all UD repos, as well as the packed releases, are here
