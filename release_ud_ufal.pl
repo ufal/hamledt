@@ -31,11 +31,11 @@ GetOptions
 # Check that Treex knows all language codes that are used in UD.
 chdir($treexpath) or die("Cannot go to '$treexpath': $!");
 dzsys::saferun("git pull --no-edit") or die;
-chdir('treex/lib/Treex/Core') or die("Cannot go to '$treexpath/treex/lib/Treex/Core': $!");
+chdir('lib/Treex/Core') or die("Cannot go to '$treexpath/treex/lib/Treex/Core': $!");
 my $udlanguages = udlib::get_language_hash($udpath.'/docs-automation/codes_and_flags.yaml');
 my $n_missing_codes = 0;
 my %known_codes;
-open(XMLSCHEMA, 'share/tred_extension/treex/resources/treex_subschema_langcodes.xml') or die("Cannot read '$treexpath/treex/lib/Treex/Core/share/tred_extension/treex/resources/treex_subschema_langcodes.xml': $!");
+open(XMLSCHEMA, 'share/tred_extension/treex/resources/treex_subschema_langcodes.xml') or die("Cannot read '$treexpath/lib/Treex/Core/share/tred_extension/treex/resources/treex_subschema_langcodes.xml': $!");
 while(<XMLSCHEMA>)
 {
     # <value>cs</value> <!-- Czech -->
@@ -46,7 +46,7 @@ while(<XMLSCHEMA>)
 }
 close(XMLSCHEMA);
 my @udlangnames = sort {$udlanguages->{$a}{family} cmp $udlanguages->{$b}{family}} (keys(%{$udlanguages}));
-print("Add to $treexpath/treex/lib/Treex/Core/share/tred_extension/treex/resources/treex_subschema_langcodes.xml:\n");
+print("Add to $treexpath/lib/Treex/Core/share/tred_extension/treex/resources/treex_subschema_langcodes.xml:\n");
 foreach my $udl (@udlangnames)
 {
     my $lcode = $udlanguages->{$udl}{lcode};
@@ -57,7 +57,7 @@ foreach my $udl (@udlangnames)
     }
 }
 %known_codes = ();
-open(TYPES, 'Types.pm') or die("Cannot read '$treexpath/treex/lib/Treex/Core/Types.pm': $!");
+open(TYPES, 'Types.pm') or die("Cannot read '$treexpath/lib/Treex/Core/Types.pm': $!");
 while(<TYPES>)
 {
     # 'abq'     => "Abaza",
@@ -67,7 +67,7 @@ while(<TYPES>)
     }
 }
 close(TYPES);
-print("Add to $treexpath/treex/lib/Treex/Core/Types.pm:\n");
+print("Add to $treexpath/lib/Treex/Core/Types.pm:\n");
 foreach my $udl (@udlangnames)
 {
     my $lcode = $udlanguages->{$udl}{lcode};
