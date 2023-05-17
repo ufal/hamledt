@@ -75,7 +75,7 @@ foreach my $udl (@udlangnames)
     next if(length($lcode) < 3);
     if(!exists($known_codes{$lcode}))
     {
-        print("    '$lcode'     \"$udl\",\n");
+        print("    '$lcode'     => \"$udl\",\n");
         $n_missing_codes++;
     }
 }
