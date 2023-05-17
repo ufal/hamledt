@@ -67,6 +67,7 @@ while(<TYPES>)
     }
 }
 close(TYPES);
+@udlangnames = sort {$udlanguages->{$a}{lcode} cmp $udlanguages->{$b}{lcode}} (keys(%{$udlanguages}));
 print("Add to $treexpath/lib/Treex/Core/Types.pm:\n");
 foreach my $udl (@udlangnames)
 {
