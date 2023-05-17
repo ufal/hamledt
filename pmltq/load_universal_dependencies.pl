@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # Imports Universal Dependencies to the PML-TQ server at Lindat.
-# Copyright © 2017, 2018 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2017, 2018, 2023 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 use utf8;

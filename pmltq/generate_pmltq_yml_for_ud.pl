@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # Generates the pmltq.yml configuration file for a UD treebank.
 # To be called in a loop from load_universal_dependencies.pl.
-# Copyright © 2017 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2017, 2023 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 use utf8;
@@ -92,14 +92,22 @@ print <<EOF
 EOF
 ;
 print("sys_db: postgres\n");
+# Postgres responds on port 5432 of the machine that used to be known as euler
+# (euler.ms.mff.cuni.cz). Since January 2023, euler no longer has a public IP
+# address, accessing it is thus more difficult. We have to create an SSH tunnel
+# like this:
+#    ssh -t -L 15432:127.0.0.1:5432 pmltq@10.10.51.124
+# The tunnel must stay active throughout the time when local pmltq is supposed
+# to communicate with Postgres on euler. Then the configuration can pretend
+# that Postgres is running locally, on the port we defined in the tunnel.
 print("db:\n");
-print("  host: euler.ms.mff.cuni.cz\n");
-print("  port: 5432\n");
+print("  host: localhost\n");
+print("  port: 15432\n");
 print("  user: 'pmltq'\n");
 print("  name: $pmltqcode\n");
 print("web_api:\n");
 print("  url: 'https://lindat.mff.cuni.cz/services/pmltq/'\n");
-print("  dbserver: 'euler'\n");
+print("  dbserver: '10.10.51.124'\n");
 print("  user: 'DanZeman'\n");
 print("  password: 'klZ2yDWoAN'\n"); ###!!! Raději neukládat ve zdrojáku, ale předávat z příkazového řádku!
 print("test_query:\n");
