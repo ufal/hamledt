@@ -37,16 +37,26 @@ my $udrel; # e.g. '22' for UD release 2.2; to be used in treebank id ("ud22"), p
 my $clean = 0;
 my $cluster = 0;
 my $configonly = 0;
+my $user;   # admin user name on the PML-TQ server, e.g., 'DanZeman'
+my $password; # admin password; note that it will be saved unencrypted in the resulting configuration file
 GetOptions
 (
     'release=s'  => \$udrel,
     'clean'      => \$clean,
     'cluster'    => \$cluster,
-    'configonly' => \$configonly
+    'configonly' => \$configonly,
+    'user=s'     => \$user,
+    'password=s' => \$password
 );
 if(!defined($udrel) || $udrel !~ m/^2[0-9][0-9]?$/)
 {
     print STDERR ("Missing or wrong release number. Expected e.g. '22' for UD release 2.2.\n");
+    usage();
+    die;
+}
+if(!defined($user) || !defined($password))
+{
+    print STDERR ("Missing user name or password of an administrator of the PML-TQ web service.\n");
     usage();
     die;
 }
@@ -134,6 +144,7 @@ foreach my $folder (@folders)
     my $command = "perl -CDSA ../../bin/generate_pmltq_yml_for_ud.pl --udrel $udrel --ltcode $ltcode --lname '$lname'";
     $command .= " --tname '$tname'" unless($tname eq '');
     $command .= " --summary '$ltcode2summary{$ltcode}'";
+    $command .= " --user '$user' --password '$password'";
     $command .= " > $yamlfilename";
     print("\t$command\n");
     system($command);

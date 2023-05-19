@@ -18,18 +18,22 @@ my $lcode;  # = 'grc';
 my $ltcode; # = 'grc_proiel'; # language and treebank code separated by underscore
 my $folder; # = 'grc-proiel'; # language and treebank code separated by hyphen
 my $summary = 'Universal Dependencies is a project that is developing cross-linguistically consistent treebank annotation for many languages, with the goal of facilitating multilingual parser development, cross-lingual learning, and parsing research from a language typology perspective.';
+my $user;   # admin user name on the PML-TQ server, e.g., 'DanZeman'
+my $password; # admin password; note that it will be saved unencrypted in the resulting configuration file
 
 GetOptions
 (
-    'udrel=s'   => \$udrel,
-    'lname=s'   => \$lname,
-    'tname=s'   => \$tname,
-    'ltcode=s'  => \$ltcode,
-    'summary=s' => \$summary
+    'udrel=s'    => \$udrel,
+    'lname=s'    => \$lname,
+    'tname=s'    => \$tname,
+    'ltcode=s'   => \$ltcode,
+    'summary=s'  => \$summary,
+    'user=s'     => \$user,
+    'password=s' => \$password
 );
-if(!defined($udrel) || !defined($lname) || !defined($ltcode))
+if(!defined($udrel) || !defined($lname) || !defined($ltcode) || !defined($user) || !defined($password))
 {
-    print STDERR ("Usage: generate_pmltq_yml_for_ud.pl --udrel 21 --lname 'Ancient Greek' [--tname PROIEL] --ltcode grc_proiel\n");
+    print STDERR ("Usage: generate_pmltq_yml_for_ud.pl --udrel 21 --lname 'Ancient Greek' [--tname PROIEL] --ltcode grc_proiel --user UserName --password PassWord\n");
     die("Missing options");
 }
 my $udreldec = $udrel;
@@ -105,11 +109,14 @@ print("  host: localhost\n");
 print("  port: 15432\n");
 print("  user: 'pmltq'\n");
 print("  name: $pmltqcode\n");
+# web_api / dbserver is still 'euler' because that is the name of the server
+# as registered in the API. The list of database servers (with just one item)
+# is available at http://lindat.mff.cuni.cz/services/pmltq/admin.html#/servers/list
 print("web_api:\n");
 print("  url: 'https://lindat.mff.cuni.cz/services/pmltq/'\n");
-print("  dbserver: '10.10.51.124'\n");
-print("  user: 'DanZeman'\n");
-print("  password: 'klZ2yDWoAN'\n"); ###!!! Raději neukládat ve zdrojáku, ale předávat z příkazového řádku!
+print("  dbserver: 'euler'\n");
+print("  user: '$user'\n");
+print("  password: '$password'\n");
 print("test_query:\n");
 print("  queries:\n");
 print("    -\n");
