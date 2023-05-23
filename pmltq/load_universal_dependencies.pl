@@ -50,6 +50,7 @@ GetOptions
     'clean'      => \$clean,
     'cluster'    => \$cluster,
     'configonly' => \$configonly,
+    'dbonly'     => \$dbonly,
     'user=s'     => \$user,
     'password=s' => \$password
 );
