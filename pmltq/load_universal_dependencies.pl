@@ -27,6 +27,10 @@ sub usage
     print STDERR ("       perl $0 --release $er --configonly\n");
     print STDERR ("       ... generates the YAML configuration file for every treebank but does not do anything else\n");
     print STDERR ("       ... useful for checking that the configuration is correct before we attempt to use it\n");
+    print STDERR ("       perl $0 --release $er --dbonly\n");
+    print STDERR ("       ... generates the YAML configuration and runs delete, initdb, load, verify\n");
+    print STDERR ("       ... that is, database is updated but the web interface is left intact\n");
+    print STDERR ("       ... (we need this temporarily because the web operations became extremely slow)\n");
     print STDERR ("       perl $0 --release $er --clean\n");
     print STDERR ("       ... it will run pmltq delete and webdelete, without attempting to re-upload\n");
     print STDERR ("       ... if we messed up names in the previous attempt, run the cleanup first,\n");
@@ -37,6 +41,7 @@ my $udrel; # e.g. '22' for UD release 2.2; to be used in treebank id ("ud22"), p
 my $clean = 0;
 my $cluster = 0;
 my $configonly = 0;
+my $dbonly = 0;
 my $user;   # admin user name on the PML-TQ server, e.g., 'DanZeman'
 my $password; # admin password; note that it will be saved unencrypted in the resulting configuration file
 GetOptions
@@ -170,6 +175,18 @@ foreach my $folder (@folders)
         $script .= "mkdir -p sql_dump/$folder\n";
         $script .= "echo pmltq convert --config=\"$yamlfilename\"\n";
         $script .= "pmltq convert --config=\"$yamlfilename\"\n";
+    }
+    elsif($dbonly)
+    {
+        $script .= "echo pmltq delete --config=\"$yamlfilename\"\n";
+        $script .= "pmltq delete --config=\"$yamlfilename\"\n";
+        $script .= "echo pmltq initdb --config=\"$yamlfilename\"\n";
+        $script .= "pmltq initdb --config=\"$yamlfilename\"\n";
+        $script .= "echo pmltq load --config=\"$yamlfilename\"\n";
+        $script .= "pmltq load --config=\"$yamlfilename\"\n";
+        $script .= "echo pmltq verify --config=\"$yamlfilename\"\n";
+        $script .= "pmltq verify --config=\"$yamlfilename\"\n";
+        $script .= "date\n";
     }
     else
     {
