@@ -126,3 +126,24 @@ foreach my $lcode (@lcodes)
         print("NEW '$lcode'$filler => '$langstyles{$lcode}',\n");
     }
 }
+# Group languages that have the same flag.
+my %styles;
+my @styles;
+my @lcodes = sort(keys(%langstyles));
+foreach my $lcode (@lcodes)
+{
+    my $style = $langstyles{$lcode};
+    if(!exists($styles{$style}))
+    {
+        push(@styles, $style);
+    }
+    push(@{$styles{$style}}, $lcode);
+}
+# Compile the final style string.
+my $stylestring = $lang;
+$stylestring .= join(',', map {'.lang.'.$_} (@lcodes)).$langall;
+foreach my $style (@styles)
+{
+    $stylestring .= join(',', map {'.lang.'.$_} (@{$styles{$style}})).'{'.$style.'}';
+}
+print("$stylestring\n");
