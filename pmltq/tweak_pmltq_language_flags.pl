@@ -147,3 +147,22 @@ foreach my $style (@styles)
     $stylestring .= join(',', map {'.lang.'.$_} (@{$styles{$style}})).'{'.$style.'}';
 }
 print("$stylestring\n");
+# Modify the style file.
+my $stylefile = '067a15c7538a679f56989044170937c9-admin.css';
+if(-f $stylefile)
+{
+    my $sfcontent;
+    open(SF, $stylefile) or die("Cannot read '$stylefile': $!");
+    while(<SF>)
+    {
+        if(s/\.lang.*//)
+        {
+            $_ .= $stylestring."\n";
+        }
+        $sfcontent .= $_;
+    }
+    close(SF);
+    open(SF, ">$stylefile") or die("Cannot write '$stylefile': $!");
+    print SF ($sfcontent);
+    close(SF);
+}
