@@ -96,4 +96,29 @@ foreach my $lcode (@lcodes)
     my $style = join(';', sort(split(/;/, join(';', @{$langstyles{$lcode}}))));
     my $filler = length($lcode) == 2 ? ' ' : '';
     print("    '$lcode'$filler => '$style',\n");
+    $langstyles{$lcode} = $style;
+}
+
+# For languages that are known in UD, label the styles by country/flag codes.
+my @lcodes = sort(keys(%{$udlanguages}));
+my %flags;
+foreach my $lcode (@lcodes)
+{
+    my $fcode = $udlanguages->{$lcode}{flag};
+    if(!exists($flags{$fcode}) && exists($langstyles{$lcode}))
+    {
+        $flags{$fcode} = $langstyles{$lcode};
+    }
+}
+# For languages that are known in UD but did not have a style so far, check
+# whether the flag has its style because of another language.
+foreach my $lcode (@lcodes)
+{
+    my $fcode = $udlanguages->{$lcode}{flag};
+    if(exists($flags{$fcode}) && !exists($langstyles{$lcode}))
+    {
+        $langstyles{$lcode} = $flags{$fcode};
+        my $filler = length($lcode) == 2 ? ' ' : '';
+        print("NEW '$lcode'$filler => '$langstyles{$lcode}',\n");
+    }
 }
