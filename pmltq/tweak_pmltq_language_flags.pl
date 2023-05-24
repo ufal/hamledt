@@ -155,11 +155,12 @@ if(-f $stylefile)
     open(SF, $stylefile) or die("Cannot read '$stylefile': $!");
     while(<SF>)
     {
+        chomp;
         if(s/\.lang.*//)
         {
-            $_ .= $stylestring."\n";
+            $_ .= $stylestring;
         }
-        $sfcontent .= $_;
+        $sfcontent .= $_."\n";
     }
     close(SF);
     open(SF, ">$stylefile") or die("Cannot write '$stylefile': $!");
