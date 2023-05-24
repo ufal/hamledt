@@ -94,5 +94,6 @@ my @lcodes = sort(keys(%langstyles));
 foreach my $lcode (@lcodes)
 {
     my $style = join(';', sort(split(/;/, join(';', @{$langstyles{$lcode}}))));
-    print("    '$lcode' => '$style',\n");
+    my $filler = length($lcode) == 2 ? ' ' : '';
+    print("    '$lcode'$filler => '$style',\n");
 }
