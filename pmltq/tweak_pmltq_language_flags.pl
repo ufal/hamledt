@@ -68,40 +68,7 @@ foreach my $lcode (@lcodes0)
 }
 
 # Parse the individual styles copied from the original file.
-my @current_languages;
-my %langstyles;
-while($langstyles00 ne '')
-{
-    if($langstyles00 =~ s/^\.lang\.([a-z]+)//)
-    {
-        push(@current_languages, $1);
-    }
-    elsif($langstyles00 =~ s/^,//)
-    {
-        # Do nothing.
-    }
-    elsif($langstyles00 =~ s/^\{(.*?)\}//)
-    {
-        my $style = $1;
-        foreach my $l (@current_languages)
-        {
-            push(@{$langstyles{$l}}, $style);
-        }
-        @current_languages = ();
-    }
-    else
-    {
-        die("Cannot parse '$langstyles00'");
-    }
-}
-my @lcodes = sort(keys(%langstyles));
-foreach my $lcode (@lcodes)
-{
-    my $style = join(';', sort(split(/;/, join(';', @{$langstyles{$lcode}}))));
-    my $filler = length($lcode) == 2 ? ' ' : '';
-    print("    '$lcode'$filler => '$style',\n");
-    $langstyles{$lcode} = $style;
-}
+my $langstyles = parse_styles($langstyles00);
 
 # For languages that are known in UD, label the styles by country/flag codes.
 my @lcodes = sort(keys(%{$udlanguages}));
@@ -109,9 +76,9 @@ my %flags;
 foreach my $lcode (@lcodes)
 {
     my $fcode = $udlanguages->{$lcode}{flag};
-    if(!exists($flags{$fcode}) && exists($langstyles{$lcode}))
+    if(!exists($flags{$fcode}) && exists($langstyles->{$lcode}))
     {
-        $flags{$fcode} = $langstyles{$lcode};
+        $flags{$fcode} = $langstyles->{$lcode};
     }
 }
 # For languages that are known in UD but did not have a style so far, check
@@ -119,20 +86,20 @@ foreach my $lcode (@lcodes)
 foreach my $lcode (@lcodes)
 {
     my $fcode = $udlanguages->{$lcode}{flag};
-    if(exists($flags{$fcode}) && !exists($langstyles{$lcode}))
+    if(exists($flags{$fcode}) && !exists($langstyles->{$lcode}))
     {
-        $langstyles{$lcode} = $flags{$fcode};
+        $langstyles->{$lcode} = $flags{$fcode};
         my $filler = length($lcode) == 2 ? ' ' : '';
-        print("NEW '$lcode'$filler => '$langstyles{$lcode}',\n");
+        print("NEW '$lcode'$filler => '$langstyles->{$lcode}',\n");
     }
 }
 # Group languages that have the same flag.
 my %styles;
 my @styles;
-my @lcodes = sort(keys(%langstyles));
+my @lcodes = sort(keys(%{$langstyles}));
 foreach my $lcode (@lcodes)
 {
-    my $style = $langstyles{$lcode};
+    my $style = $langstyles->{$lcode};
     if(!exists($styles{$style}))
     {
         push(@styles, $style);
@@ -166,4 +133,51 @@ if(-f $stylefile)
     open(SF, ">$stylefile") or die("Cannot write '$stylefile': $!");
     print SF ($sfcontent);
     close(SF);
+}
+
+
+
+#------------------------------------------------------------------------------
+# Parses language flag styles from a CSS string. Returns a hash indexed by
+# language codes, where the value is a style string (semicolon-separated, no
+# curly brackets around).
+#------------------------------------------------------------------------------
+sub parse_styles
+{
+    my $css = shift; # should contain only .lang or .lang.xx, the style in {}, and nothing else (not even extra spaces or line breaks)
+    my @current_languages;
+    my %langstyles;
+    while($css ne '')
+    {
+        if($css =~ s/^\.lang\.([a-z]+)//)
+        {
+            push(@current_languages, $1);
+        }
+        elsif($css =~ s/^,//)
+        {
+            # Do nothing.
+        }
+        elsif($css =~ s/^\{(.*?)\}//)
+        {
+            my $style = $1;
+            foreach my $l (@current_languages)
+            {
+                push(@{$langstyles{$l}}, $style);
+            }
+            @current_languages = ();
+        }
+        else
+        {
+            die("Cannot parse '$css'");
+        }
+    }
+    my @lcodes = sort(keys(%langstyles));
+    foreach my $lcode (@lcodes)
+    {
+        my $style = join(';', sort {$a =~ m/^width/i && $b =~ m/^height/i ? -1 : $a =~ m/^height/i && $b =~ m/^width/i ? 1 : $a cmp $b} (split(/;/, join(';', @{$langstyles{$lcode}}))));
+        #my $filler = length($lcode) == 2 ? ' ' : '';
+        #print("    '$lcode'$filler => '$style',\n");
+        $langstyles{$lcode} = $style;
+    }
+    return \%langstyles;
 }
