@@ -208,7 +208,7 @@ sub print_flag_styles_as_perl_source
     {
         my $l = length($fcode);
         my $filler = ' ' x ($maxl-$l);
-        print("    '$fcode$filler' => '$flagstyles->{$fcode}',\n");
+        print("    '$fcode'$filler => '$flagstyles->{$fcode}',\n");
     }
     print("};\n");
 }
