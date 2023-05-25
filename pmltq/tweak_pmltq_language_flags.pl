@@ -44,11 +44,6 @@ if(!defined($udlanglistpath))
 # /opt/pmltq-web/067a15c7538a679f56989044170937c9-admin.css.map
 # but I don't think the other file is important for us.
 
-# Main .lang style.
-my $lang = '.lang{display:inline-block;vertical-align:baseline;margin:0 .5em 0 0;text-decoration:inherit;speak:none;font-smoothing:antialiased;-webkit-backface-visibility:hidden;backface-visibility:hidden}';
-# Common style for all language subclasses.
-my $langall = '{background-image:url(24c3ea8e1c7e63e7cebcdc15ebaa3873.png);background-repeat:no-repeat}';
-
 # All languages for which the system currently knows flags. Note that there may
 # be languages that are not yet registered in the UD infrastructure.
 my $langstyles0 = '.lang.ab,.lang.af,.lang.aii,.lang.ajp,.lang.akk,.lang.am,.lang.apu,.lang.aqz,.lang.ar,.lang.as,.lang.az,.lang.ba,.lang.be,.lang.bg,.lang.bho,.lang.bm,.lang.bn,.lang.bo,.lang.br,.lang.bxr,.lang.ca,.lang.ce,.lang.ckb,.lang.ckt,.lang.co,.lang.cop,.lang.cs,.lang.cu,.lang.cv,.lang.cy,.lang.da,.lang.dar,.lang.de,.lang.dsb,.lang.el,.lang.en,.lang.eo,.lang.es,.lang.et,.lang.eu,.lang.fa,.lang.fi,.lang.fo,.lang.fr,.lang.fro,.lang.fy,.lang.ga,.lang.gd,.lang.gl,.lang.got,.lang.grc,.lang.gsw,.lang.gu,.lang.gun,.lang.hak,.lang.he,.lang.hi,.lang.hr,.lang.hsb,.lang.hu,.lang.hy,.lang.id,.lang.is,.lang.it,.lang.ja,.lang.ka,.lang.kaa,.lang.kfm,.lang.kk,.lang.km,.lang.kmr,.lang.kn,.lang.ko,.lang.koi,.lang.kpv,.lang.krl,.lang.ks,.lang.ky,.lang.la,.lang.lb,.lang.lo,.lang.lt,.lang.lv,.lang.lzh,.lang.mdf,.lang.mk,.lang.ml,.lang.mn,.lang.mr,.lang.mt,.lang.my,.lang.myu,.lang.myv,.lang.ne,.lang.nl,.lang.nn,.lang.no,.lang.nyq,.lang.oc,.lang.olo,.lang.or,.lang.orv,.lang.os,.lang.otk,.lang.pa,.lang.pbv,.lang.pcm,.lang.pl,.lang.ps,.lang.pt,.lang.qhe,.lang.qtd,.lang.rm,.lang.rmn,.lang.ro,.lang.ru,.lang.sa,.lang.sah,.lang.sc,.lang.sd,.lang.shp,.lang.sk,.lang.sl,.lang.sme,.lang.sms,.lang.so,.lang.soj,.lang.sq,.lang.sr,.lang.sv,.lang.sw,.lang.swl,.lang.ta,.lang.te,.lang.tg,.lang.th,.lang.tk,.lang.tl,.lang.tpn,.lang.tr,.lang.tt,.lang.ug,.lang.uk,.lang.ur,.lang.uz,.lang.vi,.lang.wbp,.lang.wo,.lang.xal,.lang.yi,.lang.yo,.lang.yue,.lang.zh';
@@ -57,6 +52,108 @@ my $langstyles00 = '.lang.grc{background-position:-109px 0}.lang.grc,.lang.yue{w
 
 # Get the list of languages known in UD.
 my $udlanguages = udlib::get_language_hash_by_lcodes($udlanglistpath);
+
+my $flagstyles =
+{
+    'AL'            => 'background-position:-72px 0;width:15px;height:11px',
+    'AM'            => 'background-position:-159px 0;width:22px;height:11px',
+    'AU-ABORIGINAL' => 'background-position:-210px -99px;width:22px;height:11px',
+    'BD'            => 'background-position:-42px -11px;width:18px;height:11px',
+    'BG'            => 'background-position:-94px -11px;width:18px;height:11px',
+    'BR'            => 'background-position:-126px 0;width:16px;height:11px',
+    'BY'            => 'background-position:-20px -11px;width:22px;height:11px',
+    'BYZ'           => 'background-position:-52px -33px;width:11px;height:11px',
+    'CH'            => 'background-position:-167px -88px;width:11px;height:11px',
+    'CN'            => 'background-position:-154px -99px;width:17px;height:11px',
+    'CN-QING'       => 'background-position:-254px -11px;width:17px;height:11px',
+    'COP'           => 'background-position:0 -22px;width:11px;height:11px',
+    'CZ'            => 'background-position:-51px -22px;width:17px;height:11px',
+    'DE'            => 'background-position:-34px -33px;width:18px;height:11px',
+    'DK'            => 'background-position:-68px -22px;width:15px;height:11px',
+    'EE'            => 'background-position:-178px -22px;width:17px;height:11px',
+    'ES'            => 'background-position:-97px -88px;width:17px;height:11px',
+    'ES-CT'         => 'background-position:-168px -11px;width:17px;height:11px',
+    'ES-GA'         => 'background-position:0 -33px;width:17px;height:11px',
+    'ES-PV'         => 'background-position:0 -11px;width:20px;height:11px',
+    'ET'            => 'background-position:-87px 0;width:22px;height:11px',
+    'FI'            => 'background-position:-210px -22px;width:18px;height:11px',
+    'FO'            => 'background-position:-195px -22px;width:15px;height:11px',
+    'FR'            => 'background-position:-228px -22px;width:17px;height:11px',
+    'FR-BRE'        => 'background-position:-77px -11px;width:17px;height:11px',
+    'FR-OCC'        => 'background-position:-73px -66px;width:17px;height:11px',
+    'FR-ROYAL'      => 'background-position:-107px -66px;width:17px;height:11px',
+    'GB'            => 'background-position:-117px -22px;width:22px;height:11px',
+    'GB-SCT'        => 'background-position:-147px -77px;width:18px;height:11px',
+    'GB-WLS'        => 'background-position:-232px -99px;width:17px;height:11px',
+    'GE'            => 'background-position:-17px -33px;width:17px;height:11px',
+    'GR'            => 'background-position:-63px -33px;width:17px;height:11px',
+    'HK'            => 'background-position:-151px -11px;width:17px;height:11px',
+    'HR'            => 'background-position:-29px -22px;width:22px;height:11px',
+    'HSB'           => 'background-position:-119px -99px;width:18px;height:11px',
+    'HU'            => 'background-position:-163px -33px;width:22px;height:11px',
+    'ID'            => 'background-position:-200px -33px;width:17px;height:11px',
+    'IE'            => 'background-position:-217px -33px;width:22px;height:11px',
+    'IL'            => 'background-position:-114px -33px;width:15px;height:11px',
+    'IN'            => 'background-position:-181px 0;width:17px;height:11px',
+    'IQ'            => 'background-position:-39px 0;width:17px;height:11px',
+    'IQ-AII'        => 'background-position:-198px 0;width:17px;height:11px',
+    'IQ-KRD'        => 'background-position:-58px -88px;width:17px;height:11px',
+    'IR'            => 'background-position:-218px -66px;width:19px;height:11px',
+    'IS'            => 'background-position:-185px -33px;width:15px;height:11px',
+    'IT'            => 'background-position:-239px -33px;width:17px;height:11px',
+    'JO'            => 'background-position:-75px -88px;width:22px;height:11px',
+    'JP'            => 'background-position:0 -44px;width:17px;height:11px',
+    'KG'            => 'background-position:-238px -44px;width:18px;height:11px',
+    'KR'            => 'background-position:-204px -44px;width:17px;height:11px',
+    'KZ'            => 'background-position:-112px -44px;width:22px;height:11px',
+    'LT'            => 'background-position:-33px -55px;width:18px;height:11px',
+    'LV'            => 'background-position:-11px -55px;width:22px;height:11px',
+    'MK'            => 'background-position:-104px -55px;width:22px;height:11px',
+    'ML'            => 'background-position:-237px 0;width:17px;height:11px',
+    'MN'            => 'background-position:-215px -55px;width:22px;height:11px',
+    'MORAVA'        => 'background-position:-90px -66px;width:17px;height:11px',
+    'MT'            => 'background-position:-143px -55px;width:17px;height:11px',
+    'NG'            => 'background-position:-253px -55px;width:22px;height:11px',
+    'NL'            => 'background-position:-100px -22px;width:17px;height:11px',
+    'NL-FR'         => 'background-position:-245px -22px;width:17px;height:11px',
+    'NO'            => 'background-position:-43px -66px;width:15px;height:11px',
+    'NP'            => 'background-position:-19px -66px;width:9px;height:11px',
+    'PE'            => 'background-position:-182px -77px;width:17px;height:11px',
+    'PH'            => 'background-position:-178px -88px;width:22px;height:11px',
+    'PK'            => 'background-position:-201px -66px;width:17px;height:11px',
+    'PL'            => 'background-position:0 -77px;width:18px;height:11px',
+    'PT'            => 'background-position:-18px -77px;width:17px;height:11px',
+    'PY'            => 'background-position:-177px -55px;width:20px;height:11px',
+    'RO'            => 'background-position:-69px -77px;width:17px;height:11px',
+    'RS'            => 'background-position:-165px -77px;width:17px;height:11px',
+    'RU'            => 'background-position:-97px -77px;width:17px;height:11px',
+    'RU-BU'         => 'background-position:-129px -11px;width:22px;height:11px',
+    'RU-CHU'        => 'background-position:-219px -11px;width:17px;height:11px',
+    'RU-DA'         => 'background-position:-83px -22px;width:17px;height:11px',
+    'RU-ERZYA'      => 'background-position:-139px -22px;width:22px;height:11px',
+    'RU-IVAN'       => 'background-position:-124px -66px;width:21px;height:11px',
+    'RU-KO'         => 'background-position:-187px -44px;width:17px;height:11px',
+    'RU-KR'         => 'background-position:-78px -44px;width:17px;height:11px',
+    'RU-MOKSHA'     => 'background-position:-197px -55px;width:18px;height:11px',
+    'RU-PER-KPO'    => 'background-position:-170px -44px;width:17px;height:11px',
+    'RU-SA'         => 'background-position:0 -110px;width:22px;height:11px',
+    'RU-TA'         => 'background-position:-239px -88px;width:22px;height:11px',
+    'SA-AL'         => 'background-position:-142px 0;width:17px;height:11px',
+    'SAMI'          => 'background-position:-28px -66px;width:15px;height:11px',
+    'SE'            => 'background-position:-131px -88px;width:18px;height:11px',
+    'SI'            => 'background-position:0 -88px;width:22px;height:11px',
+    'SK'            => 'background-position:-231px -77px;width:17px;height:11px',
+    'SN'            => 'background-position:-249px -99px;width:17px;height:11px',
+    'SO'            => 'background-position:-41px -88px;width:17px;height:11px',
+    'TH'            => 'background-position:0 -99px;width:17px;height:11px',
+    'TR'            => 'background-position:-221px -44px;width:17px;height:11px',
+    'TURKIC'        => 'background-position:-145px -66px;width:17px;height:11px',
+    'TZ'            => 'background-position:-114px -88px;width:17px;height:11px',
+    'UA'            => 'background-position:-102px -99px;width:17px;height:11px',
+    'VA'            => 'background-position:0 -55px;width:11px;height:11px',
+    'VN'            => 'background-position:-193px -99px;width:17px;height:11px',
+    'ZA'            => 'background-position:-22px 0;width:17px;height:11px'
+};
 
 my @lcodes0 = map {m/^\.lang\.([a-z]+)$/; $1} (split(/,/, $langstyles0));
 foreach my $lcode (@lcodes0)
@@ -70,71 +167,25 @@ foreach my $lcode (@lcodes0)
 # Parse the individual styles copied from the original file.
 my $langstyles = parse_styles($langstyles00);
 
-# For languages that are known in UD, label the styles by country/flag codes.
-my @lcodes = sort(keys(%{$udlanguages}));
-my %flags;
-foreach my $lcode (@lcodes)
-{
-    my $fcode = $udlanguages->{$lcode}{flag};
-    if(!exists($flags{$fcode}) && exists($langstyles->{$lcode}))
-    {
-        $flags{$fcode} = $langstyles->{$lcode};
-    }
-}
-print_flag_styles_as_perl_source(\%flags);
+#my $flagstyles = map_flag_codes_to_styles($udlanguages, $langstyles);
+#print_flag_styles_as_perl_source($flagstyles);
+
 # For languages that are known in UD but did not have a style so far, check
 # whether the flag has its style because of another language.
 foreach my $lcode (@lcodes)
 {
     my $fcode = $udlanguages->{$lcode}{flag};
-    if(exists($flags{$fcode}) && !exists($langstyles->{$lcode}))
+    if(exists($flagstyles->{$fcode}) && !exists($langstyles->{$lcode}))
     {
-        $langstyles->{$lcode} = $flags{$fcode};
+        $langstyles->{$lcode} = $flagstyles->{$fcode};
         my $filler = length($lcode) == 2 ? ' ' : '';
         print("NEW '$lcode'$filler => '$langstyles->{$lcode}',\n");
     }
 }
-# Group languages that have the same flag.
-my %styles;
-my @styles;
-my @lcodes = sort(keys(%{$langstyles}));
-foreach my $lcode (@lcodes)
-{
-    my $style = $langstyles->{$lcode};
-    if(!exists($styles{$style}))
-    {
-        push(@styles, $style);
-    }
-    push(@{$styles{$style}}, $lcode);
-}
-# Compile the final style string.
-my $stylestring = $lang;
-$stylestring .= join(',', map {'.lang.'.$_} (@lcodes)).$langall;
-foreach my $style (@styles)
-{
-    $stylestring .= join(',', map {'.lang.'.$_} (@{$styles{$style}})).'{'.$style.'}';
-}
+my $stylestring = get_style_string($langstyles);
 print("$stylestring\n");
 # Modify the style file.
-my $stylefile = '067a15c7538a679f56989044170937c9-admin.css';
-if(-f $stylefile)
-{
-    my $sfcontent;
-    open(SF, $stylefile) or die("Cannot read '$stylefile': $!");
-    while(<SF>)
-    {
-        chomp;
-        if(s/\.lang.*//)
-        {
-            $_ .= $stylestring;
-        }
-        $sfcontent .= $_."\n";
-    }
-    close(SF);
-    open(SF, ">$stylefile") or die("Cannot write '$stylefile': $!");
-    print SF ($sfcontent);
-    close(SF);
-}
+modify_style_file('067a15c7538a679f56989044170937c9-admin.css', $stylestring);
 
 
 
@@ -176,11 +227,32 @@ sub parse_styles
     foreach my $lcode (@lcodes)
     {
         my $style = join(';', sort {$a =~ m/^width/i && $b =~ m/^height/i ? -1 : $a =~ m/^height/i && $b =~ m/^width/i ? 1 : $a cmp $b} (split(/;/, join(';', @{$langstyles{$lcode}}))));
-        #my $filler = length($lcode) == 2 ? ' ' : '';
-        #print("    '$lcode'$filler => '$style',\n");
         $langstyles{$lcode} = $style;
     }
     return \%langstyles;
+}
+
+
+
+#------------------------------------------------------------------------------
+# Takes UD languages with flag codes, and server languages with flag styles.
+# For matching languages creates a hash to map flag codes to styles.
+#------------------------------------------------------------------------------
+sub map_flag_codes_to_styles
+{
+    my $udlanguages = shift;
+    my $langstyles = shift;
+    my @lcodes = sort(keys(%{$udlanguages}));
+    my %flags;
+    foreach my $lcode (@lcodes)
+    {
+        my $fcode = $udlanguages->{$lcode}{flag};
+        if(!exists($flags{$fcode}) && exists($langstyles->{$lcode}))
+        {
+            $flags{$fcode} = $langstyles->{$lcode};
+        }
+    }
+    return \%flags;
 }
 
 
@@ -211,4 +283,73 @@ sub print_flag_styles_as_perl_source
         print("    '$fcode'$filler => '$flagstyles->{$fcode}',\n");
     }
     print("};\n");
+}
+
+
+
+#------------------------------------------------------------------------------
+# Generates the style string for all languages for which we know the flag.
+#------------------------------------------------------------------------------
+sub get_style_string
+{
+    my $langstyles = shift;
+    # Main .lang style.
+    my $lang = '.lang{display:inline-block;vertical-align:baseline;margin:0 .5em 0 0;text-decoration:inherit;speak:none;font-smoothing:antialiased;-webkit-backface-visibility:hidden;backface-visibility:hidden}';
+    # Common style for all language subclasses.
+    my $langall = '{background-image:url(24c3ea8e1c7e63e7cebcdc15ebaa3873.png);background-repeat:no-repeat}';
+    # Group languages that have the same flag.
+    my %styles;
+    my @styles;
+    my @lcodes = sort(keys(%{$langstyles}));
+    foreach my $lcode (@lcodes)
+    {
+        my $style = $langstyles->{$lcode};
+        if(!exists($styles{$style}))
+        {
+            push(@styles, $style);
+        }
+        push(@{$styles{$style}}, $lcode);
+    }
+    # Compile the final style string.
+    my $stylestring = $lang;
+    $stylestring .= join(',', map {'.lang.'.$_} (@lcodes)).$langall;
+    foreach my $style (@styles)
+    {
+        $stylestring .= join(',', map {'.lang.'.$_} (@{$styles{$style}})).'{'.$style.'}';
+    }
+    return $stylestring;
+}
+
+
+
+#------------------------------------------------------------------------------
+# Modifies a style file by replacing the .lang styles with our style string.
+#------------------------------------------------------------------------------
+sub modify_style_file
+{
+    my $stylefile = shift; # path
+    my $stylestring = shift;
+    if(-f $stylefile)
+    {
+        my $sfcontent;
+        open(SF, $stylefile) or die("Cannot read '$stylefile': $!");
+        while(<SF>)
+        {
+            chomp;
+            # The line does not have to begin with the .lang styles.
+            # However, we assume that there is nothing else on the line after the .lang styles.
+            # Instead of adding our styles directly to the file, we could also
+            # save them in a separate file 'langflags.css' and then call
+            # @import "langflags.css";
+            if(s/\.lang.*//)
+            {
+                $_ .= $stylestring;
+            }
+            $sfcontent .= $_."\n";
+        }
+        close(SF);
+        open(SF, ">$stylefile") or die("Cannot write '$stylefile': $!");
+        print SF ($sfcontent);
+        close(SF);
+    }
 }
