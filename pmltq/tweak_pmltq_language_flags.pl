@@ -182,10 +182,12 @@ foreach my $lcode (@lcodes)
         print("NEW '$lcode'$filler => '$langstyles->{$lcode}',\n");
     }
 }
-my $stylestring = get_style_string($langstyles);
-print("$stylestring\n");
+my $stylestring = get_style_string($langstyles, 1);
+open(SF, ">langflags.css") or die("Cannot write 'langflags.css': $!");
+print SF ($stylestring);
+close(SF);
 # Modify the style file.
-modify_style_file('067a15c7538a679f56989044170937c9-admin.css', $stylestring);
+#modify_style_file('067a15c7538a679f56989044170937c9-admin.css', '@import "langflags.css";');
 
 
 
@@ -293,6 +295,7 @@ sub print_flag_styles_as_perl_source
 sub get_style_string
 {
     my $langstyles = shift;
+    my $formatted = shift; # boolean
     # Main .lang style.
     my $lang = '.lang{display:inline-block;vertical-align:baseline;margin:0 .5em 0 0;text-decoration:inherit;speak:none;font-smoothing:antialiased;-webkit-backface-visibility:hidden;backface-visibility:hidden}';
     # Common style for all language subclasses.
@@ -312,10 +315,13 @@ sub get_style_string
     }
     # Compile the final style string.
     my $stylestring = $lang;
+    $stylestring .= "\n" if($formatted);
     $stylestring .= join(',', map {'.lang.'.$_} (@lcodes)).$langall;
+    $stylestring .= "\n" if($formatted);
     foreach my $style (@styles)
     {
         $stylestring .= join(',', map {'.lang.'.$_} (@{$styles{$style}})).'{'.$style.'}';
+        $stylestring .= "\n" if($formatted);
     }
     return $stylestring;
 }
@@ -329,6 +335,7 @@ sub modify_style_file
 {
     my $stylefile = shift; # path
     my $stylestring = shift;
+    my $found = 0;
     if(-f $stylefile)
     {
         my $sfcontent;
@@ -344,12 +351,17 @@ sub modify_style_file
             if(s/\.lang.*//)
             {
                 $_ .= $stylestring;
+                $found = 1;
             }
             $sfcontent .= $_."\n";
         }
         close(SF);
-        open(SF, ">$stylefile") or die("Cannot write '$stylefile': $!");
-        print SF ($sfcontent);
-        close(SF);
+        if($found)
+        {
+            open(SF, ">$stylefile") or die("Cannot write '$stylefile': $!");
+            print SF ($sfcontent);
+            close(SF);
+        }
     }
+    return $found;
 }
