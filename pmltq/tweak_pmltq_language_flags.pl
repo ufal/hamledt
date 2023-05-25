@@ -81,6 +81,7 @@ foreach my $lcode (@lcodes)
         $flags{$fcode} = $langstyles->{$lcode};
     }
 }
+print_flag_styles_as_perl_source(\%flags);
 # For languages that are known in UD but did not have a style so far, check
 # whether the flag has its style because of another language.
 foreach my $lcode (@lcodes)
@@ -180,4 +181,34 @@ sub parse_styles
         $langstyles{$lcode} = $style;
     }
     return \%langstyles;
+}
+
+
+
+#------------------------------------------------------------------------------
+# Takes a hash mapping flags to styles and prints it as Perl source code. This
+# is a one-time step that we need to import the already known flag styles and
+# hardcode them here.
+#------------------------------------------------------------------------------
+sub print_flag_styles_as_perl_source
+{
+    my $flagstyles = shift; # hash ref, keys are country/flag codes
+    my @fcodes = sort(keys(%{$flagstyles}));
+    my $maxl;
+    foreach my $fcode (@fcodes)
+    {
+        my $l = length($fcode);
+        if(!defined($maxl) || $l > $maxl)
+        {
+            $maxl = $l;
+        }
+    }
+    print("{\n");
+    foreach my $fcode (@fcodes)
+    {
+        my $l = length($fcode);
+        my $filler = ' ' x ($maxl-$l);
+        print("    $fcode$filler => $flagstyles->{$fcode}\n");
+    }
+    print("};\n");
 }
