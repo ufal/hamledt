@@ -357,9 +357,8 @@ sub modify_style_file
             # Instead of adding our styles directly to the file, we could also
             # save them in a separate file 'langflags.css' and then call
             # @import "langflags.css";
-            if(s/(\.lang(\.[a-z]+)?(,\.lang\.[a-z]+)*\{.*?\})+//)
+            if(s/(\.lang(\.[a-z]+)?(,\.lang\.[a-z]+)*\{.*?\})+/$stylestring/)
             {
-                $_ .= $stylestring;
                 $found = 1;
             }
             $sfcontent .= $_."\n";
