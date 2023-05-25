@@ -27,23 +27,6 @@ if(!defined($udlanglistpath))
     die("Unknown path to the YAML file with UD languages");
 }
 
-# 2023-05-24: I found the relevant files at the following locations. I verified
-# that modifying them really projects to the presentation of the flags on the
-# web. What I don't know is whether these files may get overwritten automatically
-# during some regular events on the server. We will see.
-
-# The bitmap file that contains all the flags:
-# https://lindat.mff.cuni.cz/services/pmltq/24c3ea8e1c7e63e7cebcdc15ebaa3873.png
-# /opt/pmltq-web/24c3ea8e1c7e63e7cebcdc15ebaa3873.png
-
-# The stylesheet that maps languages to particular areas of the bitmap:
-# https://lindat.mff.cuni.cz/services/pmltq/067a15c7538a679f56989044170937c9-admin.css
-# /opt/pmltq-web/067a15c7538a679f56989044170937c9-admin.css
-# (The relevant styles are defined on the penultimate line of the file.)
-# Note that this file is accompanied by another file,
-# /opt/pmltq-web/067a15c7538a679f56989044170937c9-admin.css.map
-# but I don't think the other file is important for us.
-
 # All languages for which the system currently knows flags. Note that there may
 # be languages that are not yet registered in the UD infrastructure.
 my $langstyles0 = '.lang.ab,.lang.af,.lang.aii,.lang.ajp,.lang.akk,.lang.am,.lang.apu,.lang.aqz,.lang.ar,.lang.as,.lang.az,.lang.ba,.lang.be,.lang.bg,.lang.bho,.lang.bm,.lang.bn,.lang.bo,.lang.br,.lang.bxr,.lang.ca,.lang.ce,.lang.ckb,.lang.ckt,.lang.co,.lang.cop,.lang.cs,.lang.cu,.lang.cv,.lang.cy,.lang.da,.lang.dar,.lang.de,.lang.dsb,.lang.el,.lang.en,.lang.eo,.lang.es,.lang.et,.lang.eu,.lang.fa,.lang.fi,.lang.fo,.lang.fr,.lang.fro,.lang.fy,.lang.ga,.lang.gd,.lang.gl,.lang.got,.lang.grc,.lang.gsw,.lang.gu,.lang.gun,.lang.hak,.lang.he,.lang.hi,.lang.hr,.lang.hsb,.lang.hu,.lang.hy,.lang.id,.lang.is,.lang.it,.lang.ja,.lang.ka,.lang.kaa,.lang.kfm,.lang.kk,.lang.km,.lang.kmr,.lang.kn,.lang.ko,.lang.koi,.lang.kpv,.lang.krl,.lang.ks,.lang.ky,.lang.la,.lang.lb,.lang.lo,.lang.lt,.lang.lv,.lang.lzh,.lang.mdf,.lang.mk,.lang.ml,.lang.mn,.lang.mr,.lang.mt,.lang.my,.lang.myu,.lang.myv,.lang.ne,.lang.nl,.lang.nn,.lang.no,.lang.nyq,.lang.oc,.lang.olo,.lang.or,.lang.orv,.lang.os,.lang.otk,.lang.pa,.lang.pbv,.lang.pcm,.lang.pl,.lang.ps,.lang.pt,.lang.qhe,.lang.qtd,.lang.rm,.lang.rmn,.lang.ro,.lang.ru,.lang.sa,.lang.sah,.lang.sc,.lang.sd,.lang.shp,.lang.sk,.lang.sl,.lang.sme,.lang.sms,.lang.so,.lang.soj,.lang.sq,.lang.sr,.lang.sv,.lang.sw,.lang.swl,.lang.ta,.lang.te,.lang.tg,.lang.th,.lang.tk,.lang.tl,.lang.tpn,.lang.tr,.lang.tt,.lang.ug,.lang.uk,.lang.ur,.lang.uz,.lang.vi,.lang.wbp,.lang.wo,.lang.xal,.lang.yi,.lang.yo,.lang.yue,.lang.zh';
@@ -187,8 +170,33 @@ my $stylestring = get_style_string($langstyles, 1);
 open(SF, ">pmltq-web/langflags.css") or die("Cannot write 'pmltq-web/langflags.css': $!");
 print SF ($stylestring);
 close(SF);
-# Modify the style file.
-#modify_style_file('067a15c7538a679f56989044170937c9-admin.css', '@import "langflags.css";');
+
+# 2023-05-24: I found the relevant files at the following locations. I verified
+# that modifying them really projects to the presentation of the flags on the
+# web. What I don't know is whether these files may get overwritten automatically
+# during some regular events on the server. We will see.
+
+# It turns out that there are multiple style-sheets with language styles and it
+# is yet to be seen if they refer to one or more PNG maps with flags. So, for
+# example, the admin section of the server uses 067a...37c9-admin.css and
+# 24c3...3873.png and , but the browse treebanks page uses c821...67a5-pmltq.css
+# (still referring to the same PNG file).
+
+# The bitmap file that contains all the flags:
+#   https://lindat.mff.cuni.cz/services/pmltq/24c3ea8e1c7e63e7cebcdc15ebaa3873.png
+#   /opt/pmltq-web/24c3ea8e1c7e63e7cebcdc15ebaa3873.png
+# The relevant stylesheet for the admin part of the web (penultimate line):
+#   https://lindat.mff.cuni.cz/services/pmltq/067a15c7538a679f56989044170937c9-admin.css
+#   /opt/pmltq-web/067a15c7538a679f56989044170937c9-admin.css
+# The relevant stylesheet for the public part of the web:
+#   https://lindat.mff.cuni.cz/services/pmltq/c8217380d2a580e6d93849779c0267a5-pmltq.css
+#   /opt/pmltq-web/c8217380d2a580e6d93849779c0267a5-pmltq.css
+# Note that the stylesheets are accompanied by another file, e.g.
+#   /opt/pmltq-web/067a15c7538a679f56989044170937c9-admin.css.map
+# but I don't think the other file is important for us.
+
+modify_style_file('pmltq-web/067a15c7538a679f56989044170937c9-admin.css', '@import "langflags.css";');
+modify_style_file('pmltq-web/c8217380d2a580e6d93849779c0267a5-pmltq.css', '@import "langflags.css";');
 
 
 
@@ -344,12 +352,12 @@ sub modify_style_file
         while(<SF>)
         {
             chomp;
-            # The line does not have to begin with the .lang styles.
-            # However, we assume that there is nothing else on the line after the .lang styles.
+            # The line does not have to begin or end with the .lang styles.
+            # However, we assume that one style does not span multiple lines.
             # Instead of adding our styles directly to the file, we could also
             # save them in a separate file 'langflags.css' and then call
             # @import "langflags.css";
-            if(s/\.lang.*//)
+            if(s/(\.lang(\.[a-z]+)?(,\.lang\.[a-z]+)*\{.*?\})+//)
             {
                 $_ .= $stylestring;
                 $found = 1;
