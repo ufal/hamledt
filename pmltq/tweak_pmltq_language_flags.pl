@@ -172,6 +172,7 @@ my $langstyles = parse_styles($langstyles00);
 
 # For languages that are known in UD but did not have a style so far, check
 # whether the flag has its style because of another language.
+my @lcodes = sort(keys(%{$udlanguages}));
 foreach my $lcode (@lcodes)
 {
     my $fcode = $udlanguages->{$lcode}{flag};
@@ -183,7 +184,7 @@ foreach my $lcode (@lcodes)
     }
 }
 my $stylestring = get_style_string($langstyles, 1);
-open(SF, ">langflags.css") or die("Cannot write 'langflags.css': $!");
+open(SF, ">pmltq-web/langflags.css") or die("Cannot write 'pmltq-web/langflags.css': $!");
 print SF ($stylestring);
 close(SF);
 # Modify the style file.
