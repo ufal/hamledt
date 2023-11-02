@@ -197,6 +197,12 @@ close(SF);
 
 modify_style_file('pmltq-web/067a15c7538a679f56989044170937c9-admin.css', '@import "langflags.css";');
 modify_style_file('pmltq-web/c8217380d2a580e6d93849779c0267a5-pmltq.css', '@import "langflags.css";');
+print STDERR <<EOF
+After verifying the changes, send them to the server:
+cd pmltq-web
+scp *.css pmltq:/opt/pmltq-web
+EOF
+;
 
 
 
