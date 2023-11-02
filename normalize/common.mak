@@ -292,7 +292,7 @@ default_ud_export:
 	@echo `date` cat train started | tee -a time.log
 	cat $(CONLLUDIR)/train/*.conllu > $(UDCODE)-ud-train.conllu
 	@echo `date` cat dev started | tee -a time.log
-	cat $(CONLLUDIR)/*.conllu > $(UDCODE)-ud-dev.conllu
+	cat $(CONLLUDIR)/dev/*.conllu > $(UDCODE)-ud-dev.conllu
 	@echo `date` cat test started | tee -a time.log
 	cat $(CONLLUDIR)/test/*.conllu > $(UDCODE)-ud-test.conllu
 

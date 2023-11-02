@@ -91,5 +91,6 @@ clean:
 	rm -rf */???-cluster-run-*
 	rm -rf */bugs.html
 	rm -rf */time.log
+	rm -rf */validation.log
 	rm -rf */*.conllu.{debug,bak}
 
