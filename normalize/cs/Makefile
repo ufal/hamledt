@@ -132,7 +132,7 @@ treex_t_to_ud:
 # post-processing, too.
 ###!!! We should get rid of corefud.FixInterleaved because it is possible to have legitimate interleaved same-entity mentions.
 ###!!! https://github.com/ufal/corefUD/issues/25#issuecomment-1386793600
-UDAPISCEN = read.OldCorefUD corefud.FixInterleaved util.Eval node='for m in node.coref_mentions: m.head = m.words[0]' corefud.MoveHead ud.cs.FixEdeprels
+UDAPISCEN = read.OldCorefUD corefud.FixInterleaved util.Eval node='for m in node.coref_mentions: m.head = m.words[0]' corefud.MoveHead corefud.FixParentheses ud.cs.FixEdeprels
 export: ud_export default_ud_postprocessing
 
 ud_export:
