@@ -167,8 +167,8 @@ ud_export:
 
 # Complete make ud for the whole PDT takes more than 30 minutes and is not practical if we need to debug conversion of a single sentence.
 # Here we can run conversion for just one file (the tectogrammatical scenario).
-DEBUGPART=test
-DEBUGFILE=ln94211_70
+DEBUGPART=train
+DEBUGFILE=ln94205_71
 # treex_t_to_ud_debug:
 debug:
 	@echo `date` make prague tecto to ud enhanced started for $(DEBUGFILE) | tee -a time.log
@@ -192,3 +192,5 @@ debug:
 	@echo `date` validation started | tee -a time.log
 	$(UDTOOLS)/validate.py --lang=$(LANGCODE) --coref $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-debug.conllu 2>&1 | tee validation.log
 	@echo `date` export_ud.sh ended | tee -a time.log
+	# Visualize coreference to facilitate debugging.
+	udapy write.CorefHtml < $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-debug.conllu > ~/public_html/debug.html
