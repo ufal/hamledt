@@ -170,7 +170,7 @@ DEBUGFILE=ln94211_70
 # treex_t_to_ud_debug:
 debug:
 	@echo `date` make prague tecto to ud enhanced started for $(DEBUGFILE) | tee -a time.log
-	$(QTREEX) \
+	$(TREEX) \
 	    Read::Treex from='!$(DIR1)/{train,dev,test}/tamw/$(DEBUGFILE).treex' \
 	    $(SCEN2TE) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
