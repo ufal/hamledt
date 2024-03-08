@@ -163,3 +163,30 @@ ud_export:
 	cat $(CONLLUDIR)/test/tamw/*.conllu      | ../conllu_docpar_from_sentid.pl >  $(UDCODE)-ud-test.conllu
 	cat $(CONLLUDIR)/test/amw/*.conllu       | ../conllu_docpar_from_sentid.pl >> $(UDCODE)-ud-test.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-test.conllu
+
+# Complete make ud for the whole PDT takes more than 30 minutes and is not practical if we need to debug conversion of a single sentence.
+# Here we can run conversion for just one file (the tectogrammatical scenario).
+DEBUGFILE=ln94211_70
+# treex_t_to_ud_debug:
+debug:
+	@echo `date` make prague tecto to ud enhanced started for $(DEBUGFILE) | tee -a time.log
+	$(QTREEX) \
+	    Read::Treex from='!$(DIR1)/{train,dev,test}/tamw/$(DEBUGFILE).treex' \
+	    $(SCEN2TE) \
+	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
+	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
+	@echo `date` treex ended | tee -a time.log
+	@echo `date` cat started | tee -a time.log
+	cat $(CONLLUDIR)/train/tamw/$(DEBUGFILE).conllu | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-debug.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-debug.conllu
+	# The following is adapted from the common target default_ud_postprocessing.
+	@echo `date` udapy postprocessing started | tee -a time.log
+	# Skip CoNLL-U files that have zero size (some treebanks lack train and dev).
+	for i in $(UDCODE)-ud-debug.conllu ; do if [ -s $$i ] ; then cp $$i $$i.debug ; udapy -s $(UDAPISCEN) < $$i > fixed.conllu ; mv fixed.conllu $$i ; mv $$i $(UDDIR)/UD_$(UDNAME) ; else rm $$i ; fi ; done
+	@echo `date` udapy mark bugs started | tee -a time.log
+	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-debug.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
+	@echo `date` check sentence ids started | tee -a time.log
+	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-debug.conllu | $(UDTOOLS)/check_sentence_ids.pl
+	@echo `date` validation started | tee -a time.log
+	$(UDTOOLS)/validate.py --lang=$(LANGCODE) --coref $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-debug.conllu 2>&1 | tee validation.log
+	@echo `date` export_ud.sh ended | tee -a time.log
