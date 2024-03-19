@@ -25,11 +25,8 @@ export: ud_export default_ud_postprocessing
 
 ud_export:
 	@echo `date` cat train started | tee -a time.log
-	cat $(CONLLUDIR)/train/*.conllu | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train.conllu
-	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train.conllu
+	cat $(CONLLUDIR)/train/*.conllu > $(UDCODE)-ud-train.conllu
 	@echo `date` cat dev started | tee -a time.log
-	cat $(CONLLUDIR)/dev/*.conllu | ../conllu_docpar_from_sentid.pl >  $(UDCODE)-ud-dev.conllu
-	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-dev.conllu
+	cat $(CONLLUDIR)/dev/*.conllu >  $(UDCODE)-ud-dev.conllu
 	@echo `date` cat test started | tee -a time.log
-	cat $(CONLLUDIR)/test/*.conllu | ../conllu_docpar_from_sentid.pl >> $(UDCODE)-ud-test.conllu
-	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-test.conllu
+	cat $(CONLLUDIR)/test/*.conllu > $(UDCODE)-ud-test.conllu
