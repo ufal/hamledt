@@ -1,0 +1,27 @@
+/ Rom 	VH 	KH 	Dev 	SLP 	WX 	itrans 	Rom 	VH 	KH 	Dev 	SLP 	WX 	itrans
+// a 	a 	a 	अ 	a 	a 	a 	ñ 	~n 	J 	ञ् 	Y 	F 	~n
+// ā 	aa 	A 	आ 	A 	A 	aa 	ṭ 	.t 	T 	ट् 	w 	t 	T
+// i 	i 	i 	इ 	i 	i 	i 	ṭh 	.th 	Th 	ठ् 	W 	T 	Th
+// ī 	ii 	I 	ई 	I 	I 	ii 	ḍ 	.d 	D 	ड् 	q 	d 	D
+// u 	u 	u 	उ 	u 	u 	u 	ḍh 	.dh 	Dh 	ढ् 	Q 	D 	Dh
+// ū 	uu 	U 	ऊ 	U 	U 	uu 	ṇ 	.n 	N 	ण् 	R 	N 	N
+// ṛ 	.r 	R 	ऋ 	f 	q 	RRi 	t 	t 	t 	त् 	t 	w 	t
+// ?? 	.rr 	RR 	ॠ 	F 	Q 	RRI 	th 	th 	th 	थ् 	T 	W 	th
+// ?? 	.l 	L 	ऌ 	x 	L 	LLi 	d 	d 	d 	द् 	d 	x 	d
+// e 	e 	e 	ए 	e 	e 	e 	dh 	dh 	dh 	ध् 	D 	X 	dh
+// ai 	ai 	ai 	ऐ 	E 	E 	ai 	n 	n 	n 	न् 	n 	n 	n
+// o 	o 	o 	ओ 	o 	o 	o 	p 	p 	p 	प् 	p 	p 	p
+// au 	au 	au 	औ 	O 	O 	au 	ph 	ph 	ph 	फ् 	P 	P 	ph
+// ṃ 	.m 	M 	ं 	M 	M 	M 	b 	b 	b 	ब् 	b 	b 	b
+// ?? 	"m 	M 	ँ 	~ 	z 	.N 	bh 	bh 	bh 	भ् 	B 	B 	bh
+// ḥ 	.h 	H 	ः 	H 	H 	H 	m 	m 	m 	म् 	m 	m 	m
+// k 	k 	k 	क् 	k 	k 	k 	y 	y 	y 	य् 	y 	y 	y
+// kh 	kh 	kh 	ख् 	K 	K 	kh 	r 	r 	r 	र् 	r 	r 	r
+// g 	g 	g 	ग् 	g 	g 	g 	l 	l 	l 	ल् 	l 	l 	l
+// gh 	gh 	gh 	घ् 	G 	G 	gh 	v 	v 	v 	व् 	v 	v 	w
+// ṅ 	"n 	G 	ङ् 	N 	f 	~N 	ś 	"s 	z 	श् 	S 	S 	Sh
+// c 	c 	c 	च् 	c 	c 	ch 	ṣ 	.s 	S 	ष् 	z 	R 	sh
+// ch 	ch 	ch 	छ् 	C 	C 	Ch 	s 	s 	s 	स् 	s 	s 	s
+// j 	j 	j 	ज् 	j 	j 	j 	h 	h 	h 	ह् 	h 	h 	h
+// jh 	jh 	jh 	झ् 	J 	J 	jh 	\_ 	_ 	_ 	_ 	_ 	_ 	_
+

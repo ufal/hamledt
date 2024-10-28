@@ -1,0 +1,310 @@
+# sent_id 3
+1-4	सकलार्थशास्त्रसारं	_	_	_	_	_	_	_	_
+1	सकल	सकल	ADJ	X	Case=Voc|Number=Sing	2	amod	_	_
+2	अर्थशास्त्र	अर्थअर्थशास्त्र	NOUN	X	Case=Voc|Gender=Masc|Number=Sing	3	vocative	_	_
+3	सारम्	सार	NOUN	X	Case=Acc|Gender=Masc|Number=Sing	5	dobj	_	_
+4	जगति	जगत्	NOUN	X	Case=Loc|Gender=Neut|Number=Sing	2	nmod	_	_
+5	समालोक्य	समालोक्य	VERB	_	Case=Voc|Gender=Masc|Number=Sing|VerbForm=Ger	11	ccomp	_	_
+6-7	विष्णुशर्मेदम्	_	_	_	_	_	_	_	_
+6	विष्णुशर्मा	विष्णुशर्मन्	PROPN	X	Case=Nom|Gender=Masc|Number=Sing	11	nsubj	_	_
+7	इदम्	अयम्	PRON	X	Case=Nom|Gender=Neut|Number=Sing	8	nmod	_	_
+8	तन्त्रैः	तन्त्र	NOUN	X	Case=Ins|Gender=Masc|Number=Sing	11	nmod	_	_
+9	पञ्चभिः	पञ्चन्	ADJ	X	Case=Ins|Number=Plur	8	nummod	_	_
+10	एतत्	एष	PRON	X	Case=Nom|Gender=Neut|Number=Sing	11	dobj	_	_
+11	चकार	कृ	VERB	X	Aspect=Perf|Mood=Ind|Number=Sing|Person=1|Voice=Act	0	root	_	_
+12	सुमनोहरं	सुमनोहर्	ADJ	X	Case=Acc|Gender=Neut|Number=Sing	13	amod	_	_
+13	शास्त्रम्	शास्त्र	NOUN	X	Case=Acc|Gender=Neut|Number=Sing	11	nmod	_	_
+
+# sent_id 4
+1	तत्	तद्	DET	X	Case=Nom|Gender=Neut|Number=Sing	3	iobj	_	_
+2-3	यथानुश्रूयते	_	_	_	_	_	_	_	_
+2	यथा	यथा	ADV	X	_	3	advmod	_	_
+3	अनुश्रूयते	अनु-श्रु	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Pass	0	root	_	_
+
+# sent_id 5
+1	अस्ति	अस्_१	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Act	0	root	_	_
+2	दाक्षिणात्ये	दाक्षिण	ADJ	X	Case=Loc|Gender=Neut|Number=Sing	3	amod	_	_
+3	जनपदे	जनपदे	NOUN	X	Case=Loc|Gender=Neut|Number=Sing	1	nmod	_	_
+4	महिलारोप्यं	महिलारोप्य	PROPN	X	Case=Nom|Gender=Neut|Number=Sing	1	nsubj	_	_
+5	नाम	नामन्	NOUN	X	Case=Voc|Gender=Neut|Number=Sing	6	vocative	_	_
+6	नगरम्	नगर	NOUN	X	Case=Nom|Gender=Neut|Number=Sing	1	dobj	_	_
+
+# sent_id 6
+1	तत्र	तत्र	ADV	X	_	5	advmod	_	_
+2	अमरशक्तिर्	अमरशक्ति	PROPN	X	Case=Nom|Gender=Masc|Number=Sing	4	nmod	_	_
+3	नाम्नः	नामन्	NOUN	X	Case=Gen|Gender=Neut|Number=Sing	4	nmod	_	_
+4	राजा	राजन्	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	5	nsubj	_	_
+5	बभूव	भू_१	VERB	X	Aspect=Perf|Mood=Ind|Number=Sing|Person=1|Voice=Act	0	root	_	_
+
+# sent_id 7
+1	तस्य	तद्	PRON	X	Case=Gen|Gender=Masc|Number=Sing|Poss=Yes	6	nmod	_	_
+2	च	च	CONJ	X	_	1	cc	_	_
+3	त्रयः	त्रि	NUM	X	Case=Nom|Gender=Masc|Number=Plur	4	nummod	_	_
+4	पुत्राः	पुत्र	NOUN	X	Case=Nom|Gender=Masc|Number=Plur	7	nmod	_	_
+5-6	परमदुर्मेधसः	_	_	_	_	_	_	_	_
+5	परम	परम	ADV	X	Case=Voc|Number=Sing	6	advmod	_	_
+6	दुर्मेधसः	दुर्मेधस्	ADJ	X	Case=Nom|Gender=Masc|Number=Plur	4	amod	_	_
+7	वसुशक्तिः	वसुशक्ति	PROPN	X	Case=Nom|Gender=Masc|Number=Sing	12	nsubj	_	_
+8	उग्रशक्तिः	उग्रशक्ति	PROPN	X	Case=Nom|Gender=Masc|Number=Sing	7	conj	_	_
+9	अनन्तशक्तिश्	अनन्तशक्ति	PROPN	X	Case=Nom|Gender=Masc|Number=Sing	7	conj	_	_
+10-11	चेति	_	_	_	_	_	_	_	_
+10	च	च	CONJ	X	_	7	cc	_	_
+11	इति	इति	ADV	X	_	12	advmod	_	_
+12	बभूवुः	भू_१	VERB	X	Aspect=Perf|Mood=Ind|Number=Plur|Person=3|Voice=Act	0	root	_	_
+
+# sent_id 8
+1	अथ	अथ	ADV	X	_	9	advmod	_	_
+2	तान्	तद्	PRON	X	Case=Abl|Gender=Masc|Number=Plur	4	nmod	_	_
+3	शास्त्रविमुखान्	शास्त्रविमुख	NOUN	X	Case=Abl|Gender=Masc|Number=Plur	4	nmod	_	_
+4	समालोक्य	समालोक्य	VERB	X	Case=Voc|Gender=Masc|Number=Sing|VerbForm=Ger	8	ccomp	_	_
+5	स	तद्	DET	X	Case=Nom|Gender=Masc|Number=Sing	6	det	_	_
+6	राजा	राजन्	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	9	nsubj	_	_
+7	सचिवान्	सचिव	NOUN	X	Case=Abl|Gender=Masc|Number=Plur	8	dobj	_	_
+8	आहूय	आहूय	VERB	_	Mood=Ind|Number=Sing|Person=1|Tense=Past|Voice=Act	9	ccomp	_	_
+9	प्रोवाच	प्रो-वच्	VERB	X	Aspect=Perf|Mood=Ind|Number=Sing|Person=1|Voice=Act	0	root	_	_
+
+# sent_id 10
+1	तत्	तद्	DET	X	Case=Nom|Gender=Neut|Number=Sing	3	det	_	_
+2	एतान्	एष	PRON	X	Case=Abl|Gender=Masc|Number=Plur	3	dobj	_	_
+3	पश्यतः	पश्यत्	VERB	X	Case=Gen|Gender=Masc|Number=Sing|VerbForm=Ger	10	ccomp	_	_
+4	मे	अस्मद्	PRON	X	Case=Gen|Number=Sing	10	nmod	_	_
+5-6	मदपि	_	_	_	_	_	_	_	_
+5	महत्	महत्	ADJ	_	Case=Acc|Gender=Neut|Number=Sing	7	amod	_	_
+6	अपि	अपि	CONJ	_	_	7	cc	_	_
+7	राज्यम्	राज्य	NOUN	X	Case=Nom|Gender=Neut|Number=Sing	10	nmod	_	_
+8	न	न	PART	X	_	9	neg	_	_
+9	सौख्यम्	सौख्य	NOUN	X	Case=Acc|Gender=Neut|Number=Sing	10	nmod	_	_
+10	आवहति	आ-वह्_१	VERB	_	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Act	0	root	_	_
+
+# sent_id 11
+1	अथवा	अथVअ	ADV	X	_	4	advmod	_	_
+2	साधू	साधु	ADV	X	Case=Nom|Gender=Neut|Number=Sing	4	advmod	_	_
+3	इदम्	इदम्	PRON	X	Case=Nom|Gender=Neut|Number=Sing	4	nsubj	_	_
+4	उच्यते	वच्	VERB	X	Aspect=Perf|Number=Sing|Person=3|Tense=Pres	0	root	_	_
+
+# sent_id 14_1
+1	किम्	क_१	DET	X	Case=Nom|Gender=Neut|Number=Sing	3	det	_	_
+2	तया	तद्	PRON	X	Case=Ins|Gender=Fem|Number=Sing	4	nmod	_	_
+3	क्रियते	कृ_१	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Pass	0	root	_	_
+4	धेन्वा	धेनु	NOUN	X	Case=Ins|Gender=Fem|Number=Sing	3	dobj	_	_
+5	या	यद्	PRON	X	Case=Nom|Gender=Neut|Number=Sing	7	nsubj	_	_
+6	न	न	PART	X	_	7	neg	_	_
+7	सूते	सू	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Act	3	ccomp	_	_
+8	न	न	PART	X	_	10	neg	_	_
+9	क्षीरम्	क्षीर	NOUN	X	Case=Acc|Gender=Neut|Number=Sing	10	dobj	_	_
+10	ददाति	दा	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Act	7	ccomp	_	_
+
+#sent_id 14_2
+1	कः	क	DET	X	Case=Nom|Gender=Masc|Number=Sing	2	det	_	_
+2	अर्थः	अर्थ	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	4	nsubj	_	_
+3	पुत्रेण	पुत्र	NOUN	X	Case=Ins|Gender=Masc|Number=Sing	4	nmod	_	_
+4	जातेन	जात	VERB	X	Case=Ins|Gender=Masc|Number=Sing|VerbForm=Ger	0	root	_	_
+5	यः	यद्	PRON	X	Case=Nom|Gender=Masc|Number=Sing	10	nsubj	_	_
+6	न	न	PART	X	_	7	neg	_	_
+7	विद्वान्	विद्वस्	X	X	Case=Nom|Gender=Masc|Number=Sing	10	nmod	_	_
+8	न	न	PART	X	_	9	neg	_	_
+9	भक्तिमान्	भक्तिमत्	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	10	nmod	_	_
+10	अस्ति	अस्_१	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Act	4	ccomp	_	_
+
+# sent_id 15
+1	तत्	तद्	DET	X	Case=Nom|Gender=Neut|Number=Sing	2	det	_	_
+2	एषाम्	एतद्	PRON	X	Case=Gen|Gender=Masc|Number=Plur	3	nmod	_	_
+3-4	बुद्धिप्रबोधनं	_	_	_	_	_	_	_	_
+3	बुद्धि	बुद्धि	NOUN	X	Case=Nom|Gender=Neut|Number=Sing	6	nmod	_	_
+4	प्रबोधनम्	प्रबोधन	NOUN	X	Case=Nom|Gender=Neut|Number=Sing	6	nmod	_	_
+5	यथा	यथा	ADV	X	_	11	advmod	_	_
+6	भवति	भू_१	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Act	11	ccomp	_	_
+7	तथा	तथा	ADV	X	_	11	advmod	_	_
+8-9	केनाप्य्	_	_	_	_	_	_	_	_
+8	केन	केन	DET	X	Case=Ins|Gender=Masc|Number=Sing	10	det	_	_
+9	अपि	अपि	CONJ	X	_	10	cc	_	_
+10-11	उपायेनानुष्ठेयम्	_	_	_	_	_	_	_	_
+10	उपायेन	उपाय	NOUN	X	Case=Ins|Gender=Masc|Number=Sing	11	nmod	_	_
+11	अनुस्थ्येअम्	अनुश्थ्हेय	VERB	X	Case=Nom|Gender=Neut|Number=Sing|VerbForm=Ger	0	root	_	_
+
+# sent_id 16
+1-2	तत्रैकः	_	_	_	_	_	_	_	_
+1	तत्र	तत्र_१	ADV	X	_	3	advmod	_	_
+2	एकः	एक्	NUM	X	_	3	nummod	_	_
+3	प्रोचुः	प्र-वच्	VERB	X	Aspect=Perf|Mood=Ind|Number=Plur|Person=3|Voice=Act	0	root	_	_
+
+# sent_id 17
+1	देव	देव	NOUN	X	Case=Voc|Gender=Masc|Number=Sing	5	nsubj	_	_
+2	द्वादशभिर्	द्वादशभि	NUM	X	Case=Ins|Gender=Masc|Number=Sing	3	nummod	_	_
+3	वर्षैः	वर्ष	NOUN	X	Case=Ins|Number=Plur	5	nmod	_	_
+4	व्याकरणम्	व्याकरण	NOUN	X	Case=Acc|Gender=Neut|Number=Sing	5	dobj	_	_
+5	श्रूयते	श्रु	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Pass	0	root	_	_
+
+# sent_id _A1
+1	यावत्	यावत्	ADV	X	_	5	conj	_	_
+2	अयम्	अयम्	DET	X	Case=Nom|Gender=Masc|Number=Sing	3	det	_	_
+3	प्राणेन	प्राण	NOUN	X	Case=Ins|Gender=Masc|Number=Sing	5	dobj	_	_
+4	न	न	PART	X	_	5	neg	_	_
+5	वियुज्यते	वियुज्	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Pass	8	ccomp	_	_
+6	तावत्	तावत्	ADV	X	_	8	advmod	_	_
+7	इमम्	अयम्	PRON	X	Case=Acc|Gender=Masc|Number=Sing	8	dobj	_	_
+8	गृहाण	ग्रह्	VERB	X	Mood=Imp|Number=Sing|Person=2|Tense=Pres|Voice=Act	0	root	_	_
+
+# sent_id 19
+1	ततः	ततः	ADV	X	_	4	advmod	_	_
+2	बुद्धि	बुद्धि	NOUN	_	_	3	compound	_	_
+3	प्रबोधनं	प्रबोधनम्	NOUN	X	Case=Nom|Gender=Neut|Number=Sing	4	nsubj	_	_
+4	भवति	भू_१	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Act	0	root	_	_
+
+# sent_id 20
+1	अथ	अथ	ADV	X	_	7	advmod	_	_
+2-3	तन्मध्यतः	_	_	_	_	_	_	_	_
+2	तत्	तद्	PRON	X	Case=Nom|Gender=Neut|Number=Sing	3	iobj	_	_
+3	मध्यतः	मध्यतः	ADV	X	_	7	advmod	_	_
+4-6	सुमतिनामामात्यः	_	_	_	_	_	_	_	_
+4	सुमति	सुमति	PROPN	X	Case=Nom|Gender=Masc|Number=Sing	6	nmod	_	_
+5	नाम	नामन्	ADV	X	Case=Nom|Gender=Masc|Number=Sing	6	nsubj	_	_
+6	अमात्यः	अमात्य	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	7	nsubj	_	_
+7	प्राह	प्राह्	VERB	_	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Act	0	root	_	_
+
+# sent_id 22
+1-3	प्रभूतकालज्ञेयानि	_	_	_	_	_	_	_	_
+1	प्रभूत	प्र-भूत	ADV	X	Case=Voc|Gender=Masc|Number=Sing	2	advmod	_	_
+2	काल	काल_१	NOUN	X	Case=Acc|Gender=Neut|Number=Plur	3	iobj	_	_
+3	ज्ञेयानि	ज्ञेय	VERB	X	Case=Nom|Gender=Neut|Number=Plur|VerbForm=Ger	0	root	_	_
+4-5	शब्दशास्त्राणि	_	_	_	_	_	_	_	_
+4	शब्द	शब्द	ADJ	X	Case=Nom|Gender=Neut|Number=Plur	5	amod	_	_
+5	शास्त्राणि	शास्त्र	X	X	Case=Nom|Gender=Neut|Number=Plur	3	nsubj	_	_
+
+# sent_id 23
+1	तत्	तद्	PRON	X	Case=Nom|Gender=Neut|Number=Sing	2	nmod	_	_
+2	सङ्क्षेपमात्रम्	सङ्क्षेपमत्र	ADJ	X	Case=Acc|Gender=Masc|Number=Sing	3	amod	_	_
+3	शास्त्रम्	शस्त्र	NOUN	X	Case=Acc|Gender=Neut|Number=Sing	7	nsubj	_	_
+4	किंचिद्	किंचिद्	DET	_	Case=Nom|Number=Sing	3	det	_	_
+5	एतेषाम्	एतद्	PRON	X	Case=Gen|Gender=Masc|Number=Plur	6	nmod	_	_
+6	प्रबोधनर्थम्	प्रबोधनण्थम्	NOUN	X	Case=Acc|Gender=Neut|Number=Sing	7	dobj	_	_
+7	चिन्त्यताम्	चिन्त्	VERB	X	Mood=Imp|Number=Sing|Person=3|Tense=Pres|Voice=Pass	0	root	_	_
+
+# sent_id 26
+1-2	अत्रास्ति	_	_	_	_	_	_	_	_
+1	अत्र	अत्र_१	ADV	X	_	2	advmod	_	_
+2	अस्ति	अस्_१	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Act	0	root	_	_
+3	विष्णुशर्मा	विष्णुशर्म	PROPN	_	Case=Nom|Gender=Masc|Number=Sing	5	nmod	_	_
+4	नाम	नामन्	NOUN	X	Case=Nom|Gender=Neut|Number=Sing	5	nmod	_	_
+5	ब्राह्मणः	ब्राह्मण	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	8	nsubj	_	_
+6-9	अनेकशास्त्रलब्धकीर्तिः	_	_	_	_	_	_	_	_
+6	अनेक	अन्-एक	ADJ	X	Case=Nom|Gender=Neut|Number=Sing	7	amod	_	_
+7	शास्त्र	शास्त्र	NOUN	X	Case=Voc|Gender=Neut|Number=Plur	8	iobj	_	_
+8	लब्ध	लब्ध	VERB	X	Case=Voc|Gender=Masc|Number=Sing|VerbForm=Ger	2	ccomp	_	_
+9	कीर्तिः	कीर्ति	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	6	dobj	_	_
+
+# sent_id 27
+1	तस्मै	तद्	PRON	X	Case=Dat|Gender=Masc|Number=Sing	2	dobj	_	_
+2-3	समर्पयैतान्	_	_	_	_	_	_	_	_
+2	समर्पय	समर्पय	VERB	X	Mood=Imp|Number=Sing|Person=2|Tense=Pres|Voice=Act	0	root	_	_
+3	एतान्	एतद्	PRON	X	Case=Abl|Gender=Masc|Number=Plur	2	nsubj	_	_
+
+# sent_id 28
+1	स	तद्	PRON	X	Case=Nom|Gender=Masc|Number=Sing	5	nsubj	_	_
+2	नूनम्	नूनम्	ADV	X	_	5	advmod	_	_
+3	द्राक्	द्राक्	ADV	X	_	4	advmod	_	_
+4	प्रबुद्धान्	प्र-बुद्ध	VERB	X	Case=Abl|Gender=Masc|Number=Plur|VerbForm=Ger	5	ccomp	_	_
+5	करिष्यति	कृ_१	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Fut|Voice=Act	0	root	_	_
+
+# sent_id 29
+1	सः	तद्	DET	X	Case=Nom|Gender=Masc|Number=Sing	2	det	_	_
+2	राजा	राजन्	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	7	nsubj	_	_
+3	तत्	तद्	PRON	X	Case=Acc|Gender=Neut|Number=Sing	4	dobj	_	_
+4	आकर्ण्य	आकर्न्य	VERB	_	Case=Voc|Gender=Neut|Number=Sing|VerbForm=Part	6	ccomp	_	_
+5	विष्णुशर्माणम्	विष्णुशर्माण	PROPN	_	Case=Acc|Gender=Masc|Number=Sing	6	dobj	_	_
+6	आहूय	आहूय	VERB	_	Mood=Ind|Number=Sing|Person=1|Tense=Past|Voice=Act	7	ccomp	_	_
+7	प्रोवाच	प्र-वच्	VERB	X	Aspect=Perf|Mood=Ind|Number=Sing|Person=1|Tense=Pres|Voice=Act	0	root	_	_
+
+# sent_id 31
+1	अहम्	अस्मद्	PRON	X	Case=Nom|Gender=Masc|Number=Sing	5	nsubj	_	_
+2	त्वाम्	युष्मद्	PRON	X	Case=Acc|Gender=Masc|Number=Sing	5	dobj	_	_
+3-4	शासनशतेन	_	_	_	_	_	_	_	_
+3	शासन	शासन	NOUN	X	Case=Voc|Gender=Neut|Number=Sing	5	vocative	_	_
+4	शतेन	शत	NUM	X	Case=Ins|Gender=Masc|Number=Sing	3	nummod	_	_
+5	नियोजयिष्यामि	नि-युज्	VERB	X	Mood=Ind|Number=Sing|Person=1|Tense=Fut|Voice=Act	0	root	_	_
+
+# sent_id 32
+1	अथ	अथ	ADV	X	_	5	advmod	_	_
+2	विष्णुशर्म	विष्णुशर्मा	PROPN	X	Case=Nom|Gender=Masc|Number=Sing	5	nsubj	_	_
+3	तम्	तद्	DET	X	Case=Acc|Gender=Neut|Number=Sing	4	det	_	_
+4	राजानम्	राजन्	X	X	Case=Acc|Gender=Masc|Number=Sing	5	dobj	_	_
+5	उच्यते	वच्	VERB	X	Aspect=Perf|Number=Sing|Person=3|Tense=Pres	0	root	_	_
+
+# sent_id 33
+1	देव	देव	NOUN	X	Case=Voc|Gender=Masc|Number=Sing	2	nsubj	_	_
+2	श्रूयताम्	श्रु	VERB	X	Mood=Imp|Number=Sing|Person=3|Tense=Pres|Voice=Pass	0	root	_	_
+3	मे	अस्मद्	PRON	X	Case=Gen|Number=Sing|Poss=Yes	5	nmod	_	_
+4-5	तथ्यवचनम्	_	_	_	_	_	_	_	_
+4	तथ्य	तथ्य	ADJ	X	Case=Voc|Gender=Neut|Number=Sing	5	amod	_	_
+5	वचनम्	वचन	NOUN	X	Case=Acc|Gender=Neut|Number=Sing	2	dobj	_	_
+
+# sent_id 34
+1-2	नाहं	_	_	_	_	_	_	_	_
+1	न	न	PART	X	_	4	neg	_	_
+2	अहम्	अस्मद्	PRON	X	Case=Nom|Gender=Masc|Number=Sing	4	nsubj	_	_
+3	विद्याविक्रयं	विद्यविक्रय	NOUN	X	Case=Acc|Gender=Masc|Number=Sing	4	dobj	_	_
+4	करोमि	कृ_१	VERB	X	Mood=Ind|Number=Sing|Person=1|Tense=Pres|Voice=Act	0	root	_	_
+5	शासन	शासन	NOUN	X	Case=Voc|Gender=Neut|Number=Sing	4	vocative	_	_
+6	शतेन	शत	NUM	X	Case=Ins|Gender=Masc|Number=Sing	5	nummod	_	_
+
+#sent_id _A2
+1	मारीचः	मारिच	PROPN	X	Case=Nom|Gender=Masc|Number=Sing	4	iobj	_	_
+2	नाम	नामन्	NOUN	X	Case=Acc|Gender=Masc|Number=Sing	3	nmod	_	_
+3	राक्षसः	राक्षस	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	4	nsubj	_	_
+4	आसीत्	आस्	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Past|Voice=Act	0	root	_	_
+
+#sent_id  _A3
+1	यदा	यदा	ADV	X	_	3	advmod	_	_
+2	मेघः	मेघ	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	3	nsubj	_	_
+3	वर्षति	वर्ष्	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Act	0	root	_	_
+4	तदा	तदा	ADV	X	_	3	advmod	_	_
+5	मयूरः	मयूर	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	6	nsubj	_	_
+6	नृत्यति	नृत्य्	VERB	X	Mood=Ind|Number=Sing|Person=3|Tense=Pres|Voice=Act	3	ccomp	_	_
+
+#sent_id _A4
+1	रामः	राम	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	6	nsubj	_	_
+2	यस्मात्	यद्	ADJ	X	Case=Abl|Gender=Masc|Number=Sing	3	amod	_	_
+3	अध्यापकम्	अध्यापक	NOUN	X	Case=Acc|Gender=Masc|Number=Sing	6	nmod	_	_
+4	यत्	यद्	ADJ	X	Case=Acc|Gender=Masc|Number=Sing	5	amod	_	_
+5	पुस्तकम्	पुस्तक	NOUN	X	Case=Acc|Gender=Masc|Number=Sing	6	dobj	_	_
+6	अपठत्	पठ्	VERB	X	Mood=Imp|Number=Sing|Person=3|Tense=Pres|Voice=Act	0	root	_	_
+7	अहम्	अस्मद्	PRON	X	Case=Nom|Gender=Masc	12	nsubj	_	_
+8	तस्मात्	तद्	ADJ	X	Case=Abl|Gender=Masc|Number=Sing	9	amod	_	_
+9	अध्यापकात्	अद्ह्यपक	NOUN	X	Case=Abl|Gender=Masc|Number=Sing	12	nmod	_	_
+10	तत्	तद्	ADJ	X	Case=Acc|Gender=Masc|Number=Sing	11	amod	_	_
+11	पुस्तकम्	पुस्तक	NOUN	X	Case=Acc|Gender=Masc|Number=Sing	12	dobj	_	_
+12	अपठम्	पठ्	VERB	X	Mood=Imp|Number=Sing|Person=1|Tense=Pres|Voice=Act	6	ccomp	_	_
+
+#sent_id _A5
+1	त्वम्	युष्मद्	PRON	X	Case=Nom|Number=Sing	2	nsubj	_	_
+2	इच्छसि	इष्	VERB	X	Mood=Ind|Number=Sing|Person=2|Tense=Pres|Voice=Act	7	ccomp	_	_
+3	चेत्	चेद्	ADV	X	_	7	advmod	_	_
+4	अहम्	अस्मद्	PRON	X	Case=Nom|Number=Sing	7	nsubj	_	_
+5	भवतः	भवत्	PRON	X	Case=Abl|Number=Sing	6	nmod	_	_
+6	गृहम्	गृह	NOUN	X	Case=Acc|Gender=Neut|Number=Sing	7	dobj	_	_
+7	आगमिष्यामि	आ-गम्	VERB	X	Mood=Ind|Number=Sing|Person=1|Tense=Fut|Voice=Act	0	root	_	_
+
+#sent_id _A6
+1	प्रथमम्	प्रथम	ADV	X	Case=Acc|Gender=Masc|Number=Sing	3	advmod	_	_
+2	अहम्	अस्मद्	PRON	X	Case=Nom|Number=Sing	3	nsubj	_	_
+3	शृणोमि	स्णु	VERB	X	Mood=Ind|Number=Sing|Person=1|Tense=Pres|Voice=Act	0	root	_	_
+4	अथ	अथ	ADV	X	_	3	advmod	_	_
+5	लिखामि	लिख्	VERB	X	Mood=Ind|Number=Sing|Person=1|Tense=Pres|Voice=Act	3	ccomp	_	_
+
+#sent_id _A7
+1	समये	समय	NOUN	X	Case=Loc|Gender=Masc|Number=Sing	3	nmod	_	_
+2	न	न	ADV	X	_	3	neg	_	_
+3	आगतः	अअ-गम्	VERB	X	Case=Nom|Gender=Masc|Number=Sing|VerbForm=Ger	8	ccomp	_	_
+4	ततः	तद्	ADV	X	_	8	advmod	_	_
+5-6	प्रवेशपरीक्षायाम्	_	_	_	_	_	_	_	_
+5	प्रवेश	प्रवेश	NOUN	X	Case=Nom|Gender=Masc|Number=Sing	6	compound	_	_
+6	परीक्षायाम्	परीक्षा	NOUN	X	Case=Loc|Gender=Fem|Number=Sing	8	nmod	_	_
+7	न	न	ADV	X	_	8	neg	_	_
+8	अनुमतः	अनु-मन्	X	VERB	Case=Nom|Gender=Masc|Number=Sing|VerbForm=Ger	0	root	_	_
+
+#sent_id _A8
+1	देवदत्तः	देवदत्त	PROPN	X	Case=Nom|Gender=Masc|Number=Sing	4	nsubj	_	_
+2	विष्वामित्रेण	विष्वमित्र	PROPN	X	Case=Ins|Gender=Masc|Number=Sing	4	nmod	_	_
+3	ओदनम्	ओदन	NOUN	X	Case=Acc|Gender=Masc|Number=Sing	4	dobj	_	_
+4	पाचयति	पच	VERB	X	Mood=Ind|Number=Sing|Person=1|Tense=Pres|Voice=Act	0	root	_	_
+

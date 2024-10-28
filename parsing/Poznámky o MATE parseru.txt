@@ -1,0 +1,11 @@
+http://www.ims.uni-stuttgart.de/forschung/ressourcen/werkzeuge/matetools.en.html
+Download se nachází na code.google.com, ale je archivovaný. Novější verze, pokud existuje, možná bude někde na Githubu.
+https://code.google.com/p/mate-tools/
+https://code.google.com/p/mate-tools/wiki/ParserAndModels
+Terms of use: research only (GPL), please cite:
+Bernd Bohnet, Joakim Nivre, Igor Boguslavsky, Richárd Farkas, Filip Ginter, Jan Hajic: Joint Morphological and Syntactic Analysis for Richly Inflected Languages. TACL 1: 415-428 (2013) pdf
+(Pozn.: Odkaz na licenci GPL je trochu zvláštní, protože pokud se nepletu, tak ta žádné omezení na využití při výzkumu neumožňuje.)
+Commercial license and consulting is available, please contact Bernd Bohnet
+Bernd Bohnet or Anders Björkelund
+Dokumentace:
+https://code.google.com/p/mate-tools/wiki/Transition_based_parser
