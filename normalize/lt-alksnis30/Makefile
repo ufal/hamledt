@@ -69,7 +69,7 @@ treex:
 ud: prague_to_ud_enhanced export
 
 # We need our own export because we need specific post-processing.
-#UDAPISCEN=ud.sk.FixEdeprels
+UDAPISCEN=ud.lt.FixEdeprels
 export: ud_export default_ud_postprocessing
 
 ud_export:
