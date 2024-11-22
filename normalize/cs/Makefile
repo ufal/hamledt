@@ -164,19 +164,20 @@ ud_export:
 
 # Complete make ud for the whole PDT takes more than 30 minutes and is not practical if we need to debug conversion of a single sentence.
 # Here we can run conversion for just one file (the tectogrammatical scenario).
-DEBUGPART=dev
-DEBUGFILE=cmpr9410_049
+DEBUGTAMW=amw
+DEBUGPART=train
+DEBUGFILE=mf920924_128
 # treex_t_to_ud_debug:
 debug:
 	@echo `date` make prague tecto to ud enhanced started for $(DEBUGFILE) | tee -a time.log
 	$(TREEX) \
-	    Read::Treex from='!$(DIR1)/$(DEBUGPART)/tamw/$(DEBUGFILE).treex' \
+	    Read::Treex from='!$(DIR1)/$(DEBUGPART)/$(DEBUGTAMW)/$(DEBUGFILE).treex' \
 	    $(SCEN2TE) \
 	    Write::CoNLLU print_zone_id=0 substitute={$(SUBDIR1)}{$(SUBDIRCU)} compress=0 \
 	    Write::Treex substitute={$(SUBDIRCU)}{$(SUBDIR2)} $(OUTCOMPRESS)
 	@echo `date` treex ended | tee -a time.log
 	@echo `date` cat started | tee -a time.log
-	cat $(CONLLUDIR)/$(DEBUGPART)/tamw/$(DEBUGFILE).conllu | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-debug.conllu
+	cat $(CONLLUDIR)/$(DEBUGPART)/$(DEBUGTAMW)/$(DEBUGFILE).conllu | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-debug.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-debug.conllu
 	# The following is adapted from the common target default_ud_postprocessing.
 	@echo `date` udapy postprocessing started | tee -a time.log
