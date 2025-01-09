@@ -14,6 +14,10 @@ COREFUDDIR = /net/work/projects/corefud/data/cs-pdt
 #SOURCEDIR=/net/data/pdt-c-1.0/data/PDT/pml
 SOURCEDIR=/net/work/people/zeman/PDT-C-2.0/PDT/pml
 # subdirs: amw, tamw / train-[1-8] dtest etest / *.a.gz
+
+# "source_a" is the old way that takes everything from the a and m layers, even in documents that
+# also have the t layer. The new way is the target "source" below; if there is t layer, it will
+# use it.
 source_a:
 	mkdir -p data/source/train
 	mkdir -p data/source/dev
@@ -22,7 +26,7 @@ source_a:
 	ln -s $(SOURCEDIR)/{tamw,amw}/dtest/*.[amw].gz $(IN)/dev
 	ln -s $(SOURCEDIR)/{tamw,amw}/etest/*.[amw].gz $(IN)/test
 
-source_mix:
+source:
 	mkdir -p data/source/train/tamw
 	mkdir -p data/source/dev/tamw
 	mkdir -p data/source/test/tamw
@@ -36,6 +40,8 @@ source_mix:
 	ln -s $(SOURCEDIR)/amw/dtest/*.[amw].gz $(IN)/dev/amw
 	ln -s $(SOURCEDIR)/amw/etest/*.[amw].gz $(IN)/test/amw
 
+# Similarly to "source" and "source_a" above, "treex_a" ignores the t layer while "treex" uses
+# it when available.
 #SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
 SCHEMADIR=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema
 treex_a:
@@ -52,7 +58,7 @@ treex_a:
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/  compress=0
 
-treex_mix:
+treex:
 	rm -rf $(DIR0)/{train,dev,test}/*
 	mkdir -p $(DIR0)/train/tamw
 	mkdir -p $(DIR0)/dev/tamw
