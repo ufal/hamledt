@@ -22,23 +22,23 @@ source_a:
 	mkdir -p data/source/train
 	mkdir -p data/source/dev
 	mkdir -p data/source/test
-	ln -s $(SOURCEDIR)/{tamw,amw}/train-[1-8]/*.[amw].gz $(IN)/train
-	ln -s $(SOURCEDIR)/{tamw,amw}/dtest/*.[amw].gz $(IN)/dev
-	ln -s $(SOURCEDIR)/{tamw,amw}/etest/*.[amw].gz $(IN)/test
+	ln -s $(SOURCEDIR)/{tamw,amw}/train-[1-8]/*.[amw] $(IN)/train
+	ln -s $(SOURCEDIR)/{tamw,amw}/dtest/*.[amw] $(IN)/dev
+	ln -s $(SOURCEDIR)/{tamw,amw}/etest/*.[amw] $(IN)/test
 
 source:
 	mkdir -p data/source/train/tamw
 	mkdir -p data/source/dev/tamw
 	mkdir -p data/source/test/tamw
-	ln -s $(SOURCEDIR)/tamw/train-[1-8]/*.[tamw].gz $(IN)/train/tamw
-	ln -s $(SOURCEDIR)/tamw/dtest/*.[tamw].gz $(IN)/dev/tamw
-	ln -s $(SOURCEDIR)/tamw/etest/*.[tamw].gz $(IN)/test/tamw
+	ln -s $(SOURCEDIR)/tamw/train-[1-8]/*.[tamw] $(IN)/train/tamw
+	ln -s $(SOURCEDIR)/tamw/dtest/*.[tamw] $(IN)/dev/tamw
+	ln -s $(SOURCEDIR)/tamw/etest/*.[tamw] $(IN)/test/tamw
 	mkdir -p data/source/train/amw
 	mkdir -p data/source/dev/amw
 	mkdir -p data/source/test/amw
-	ln -s $(SOURCEDIR)/amw/train-[1-8]/*.[amw].gz $(IN)/train/amw
-	ln -s $(SOURCEDIR)/amw/dtest/*.[amw].gz $(IN)/dev/amw
-	ln -s $(SOURCEDIR)/amw/etest/*.[amw].gz $(IN)/test/amw
+	ln -s $(SOURCEDIR)/amw/train-[1-8]/*.[amw] $(IN)/train/amw
+	ln -s $(SOURCEDIR)/amw/dtest/*.[amw] $(IN)/dev/amw
+	ln -s $(SOURCEDIR)/amw/etest/*.[amw] $(IN)/test/amw
 
 # Similarly to "source" and "source_a" above, "treex_a" ignores the t layer while "treex" uses
 # it when available.
@@ -46,15 +46,15 @@ source:
 SCHEMADIR=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema
 treex_a:
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/*.a.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/*.a' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/train/ compress=0
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/dev/*.a.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/dev/*.a' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/dev/ compress=0
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/test/*.a.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/test/*.a' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/  compress=0
 
@@ -64,30 +64,30 @@ treex:
 	mkdir -p $(DIR0)/dev/tamw
 	mkdir -p $(DIR0)/test/tamw
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/train/tamw/*.t.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/train/tamw/*.t' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/train/tamw/ compress=0
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/dev/tamw/*.t.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/dev/tamw/*.t' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/dev/tamw/ compress=0
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/test/tamw/*.t.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/test/tamw/*.t' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/tamw/  compress=0
 	mkdir -p $(DIR0)/train/amw
 	mkdir -p $(DIR0)/dev/amw
 	mkdir -p $(DIR0)/test/amw
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/amw/*.a.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/amw/*.a' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/train/amw/ compress=0
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/dev/amw/*.a.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/dev/amw/*.a' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/dev/amw/ compress=0
 	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/test/amw/*.a.gz' \
+		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/test/amw/*.a' \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/amw/  compress=0
 
