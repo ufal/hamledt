@@ -11,7 +11,8 @@ COREFUDDIR = /net/work/projects/corefud/data/cs-pdt
 # Switching from PDT 3.0 to PDT-C.
 #SOURCEDIR=/net/projects/pdt/pdt30/data
 #SOURCEDIR=/net/projects/pdt/pdt35/PDT3.5/data
-SOURCEDIR=/net/data/pdt-c-1.0/data/PDT/pml
+#SOURCEDIR=/net/data/pdt-c-1.0/data/PDT/pml
+SOURCEDIR=/net/work/people/zeman/PDT-C-2.0/PDT/pml
 # subdirs: amw, tamw / train-[1-8] dtest etest / *.a.gz
 source_a:
 	mkdir -p data/source/train

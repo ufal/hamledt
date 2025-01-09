@@ -1,14 +1,14 @@
-Prague Dependency Treebank 3.0
-released via LINDAT/CLARIN on 31.12.2013
-http://hdl.handle.net/11858/00-097C-0000-0023-1AAF-3
-http://ufal.mff.cuni.cz/pdt3.0/
+Prague Dependency Treebank Consolidated (PDT-C) 2.0
+will contain a revised version of PDT, Czech part of PCEDT, PDTSC, and PDT-Faust.
+https://github.com/ufal/PDT-C/tree/master/WorkData2.0
+released via LINDAT/CLARIAH-CZ in January 2025
+http://hdl.handle.net/11234/1-5813
+https://ufal.mff.cuni.cz/pdt-c/
 
-License: Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
+License: Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
 
-We use combined PDT training and dtest parts as HamleDT training.
-We use PDT etest as HamleDT test data.
-training size = 77765 sentences, 1330152 tokens
-test size     = 10148 sentences,  173586 tokens
+The annotation guidelines for m- and a-layer changed from PDT 3.5.
+The documentation of the changes should be available soon.
 
-See the manual for the annotations on the analytical layer:
+See the OLD manual for the annotations on the analytical layer:
 http://ufal.mff.cuni.cz/pdt2.0/doc/pdt-guide/en/html/ch05.html
