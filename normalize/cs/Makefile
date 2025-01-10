@@ -200,8 +200,8 @@ debug_a:
 
 # Complete make ud for the whole PDT takes more than 30 minutes and is not practical if we need to debug conversion of a single sentence.
 # Here we can run conversion for just one file (the tectogrammatical scenario; for the analytical one, see above).
-DEBUGTPART=dev
-DEBUGTFILE=cmpr9415_025
+DEBUGTPART=train
+DEBUGTFILE=lnd94103_102
 debug_t:
 	@echo `date` make prague tecto to ud enhanced started for $(DEBUGTFILE) | tee -a time.log
 	$(TREEX) \
