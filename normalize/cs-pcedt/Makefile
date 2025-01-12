@@ -2,7 +2,7 @@ LANGCODE=cs
 TREEBANK=cs-pcedt
 UDCODE=cs_pcedt
 UDNAME=Czech-PCEDT
-HARMONIZE=Harmonize iset_driver=cs::pdtc
+HARMONIZE=HarmonizePDT iset_driver=cs::pdtc
 PRE_UD_BLOCKS=T2A::GenerateA2TRefs
 # Due to errors in the original annotation, some instances of coordination could not be converted
 # and the relation stayed labeled 'coord', which is invalid in Universal Dependencies. Get rid of them.
