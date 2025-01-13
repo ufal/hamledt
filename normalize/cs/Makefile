@@ -3,7 +3,7 @@ TREEBANK=cs
 UDCODE=cs_pdt
 UDNAME=Czech-PDT
 INPATTERN={train,dev,test}/{tamw,amw}/*.treex
-HARMONIZE=HarmonizePDT iset_driver=cs::pdtc
+HARMONIZE=HarmonizePDTC iset_driver=cs::pdtc
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 COREFUDDIR = /net/work/projects/corefud/data/cs-pdt
