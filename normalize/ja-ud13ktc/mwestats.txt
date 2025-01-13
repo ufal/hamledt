@@ -1,7 +1,0 @@
-560	_ _	ADP VERB	case
-208	_ _	ADP VERB	dep
-27	_ _ _	ADP VERB AUX	case
-11	_ _ _	ADP VERB AUX	dep
-880	_ _ _	ADP VERB SCONJ	case
-19	_ _ _	ADP VERB SCONJ	dep
-1	_ _ _ _	ADP VERB SCONJ PART	case

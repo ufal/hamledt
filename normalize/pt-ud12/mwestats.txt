@@ -1,2 +1,0 @@
-1	nunca de	ADV ADP	case
-1	também em	ADV ADP	case
