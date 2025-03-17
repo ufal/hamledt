@@ -141,6 +141,8 @@ UDAPISCEN = read.OldCorefUD util.Eval node='for m in node.coref_mentions: m.head
 export: ud_export default_ud_postprocessing
 
 ud_export:
+	# If there is any debug file from previous runs in the target folder, it must be removed before we count any statistics.
+	rm -f $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-debug.conllu
 	@echo `date` cat train-c started | tee -a time.log
 	cat $(CONLLUDIR)/train/tamw/cmpr*.conllu | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-ct.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-ct.conllu
@@ -172,7 +174,7 @@ ud_export:
 # Complete make ud for the whole PDT takes more than 30 minutes and is not practical if we need to debug conversion of a single sentence.
 # Here we can run conversion for just one file (the analytical scenario; for the tectogrammatical one, see below).
 DEBUGAPART=train
-DEBUGAFILE=vesm9212_032
+DEBUGAFILE=ln95044_041
 debug_a:
 	@echo `date` make prague tecto to ud enhanced started for $(DEBUGAFILE) | tee -a time.log
 	$(TREEX) \
@@ -201,7 +203,7 @@ debug_a:
 # Complete make ud for the whole PDT takes more than 30 minutes and is not practical if we need to debug conversion of a single sentence.
 # Here we can run conversion for just one file (the tectogrammatical scenario; for the analytical one, see above).
 DEBUGTPART=train
-DEBUGTFILE=lnd94103_122
+DEBUGTFILE=ln94207_87
 debug_t:
 	@echo `date` make prague tecto to ud enhanced started for $(DEBUGTFILE) | tee -a time.log
 	$(TREEX) \
