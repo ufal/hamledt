@@ -185,6 +185,7 @@ SCEN2TE = \
     A2A::CopyAtree source_selector='' selector='prague' \
     T2A::GenerateA2TRefs \
     $(PRE_UD_BLOCKS) \
+    HamleDT::OrigFileSentToComment \
     HamleDT::Udep \
     $(POST_UD_BLOCKS) \
     HamleDT::Punctuation \
