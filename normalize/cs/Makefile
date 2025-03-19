@@ -212,6 +212,7 @@ debug_a:
 # Here we can run conversion for just one file (the tectogrammatical scenario; for the analytical one, see above).
 # It should be possible to override the following variables and specify the file to debug directly on the commandline:
 # DEBUGTPART=train DEBUGTFILE=mf920922_090 make debug_t
+# DEBUGTPART=train DEBUGTFILE=cmpr9410_001 make debug_t 1>debug.log 2>&1
 DEBUGTPART ?= train
 DEBUGTFILE ?= mf920922_090
 debug_t:
@@ -244,3 +245,4 @@ debug_t:
 	@echo `date` export_ud.sh ended | tee -a time.log
 	# Visualize coreference to facilitate debugging.
 	udapy write.CorefHtml < $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-debug.conllu > ~/public_html/debug.html
+	@echo https://ufallab.ms.mff.cuni.cz/~zeman/debug.html
