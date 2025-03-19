@@ -140,12 +140,15 @@ prague:
 # dependent on "conllu_to_treex".
 ###############################################################################
 
+PRAGUE_TO_UD_BLOCKS = \
+    HamleDT::OrigFileSentToComment \
+    HamleDT::PragueDeprelsToUD \
+    HamleDT::Udep
+
 SCEN2B = \
     A2A::CopyAtree source_selector='' selector='prague' \
     $(PRE_UD_BLOCKS) \
-    HamleDT::OrigFileSentToComment \
-    HamleDT::PragueDeprelsToUD \
-    HamleDT::Udep \
+    $(PRAGUE_TO_UD_BLOCKS) \
     $(POST_UD_BLOCKS) \
     HamleDT::Punctuation
 
@@ -186,9 +189,7 @@ SCEN2TE = \
     A2A::CopyAtree source_selector='' selector='prague' \
     T2A::GenerateA2TRefs \
     $(PRE_UD_BLOCKS) \
-    HamleDT::OrigFileSentToComment \
-    HamleDT::PragueDeprelsToUD \
-    HamleDT::Udep \
+    $(PRAGUE_TO_UD_BLOCKS) \
     $(POST_UD_BLOCKS) \
     HamleDT::Punctuation \
     A2A::CopyBasicToEnhancedUD \

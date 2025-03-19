@@ -173,9 +173,17 @@ ud_export:
 
 # Complete make ud for the whole PDT takes more than 30 minutes and is not practical if we need to debug conversion of a single sentence.
 # Here we can run conversion for just one file (the analytical scenario; for the tectogrammatical one, see below).
-DEBUGAPART=train
-DEBUGAFILE=vesm9301_013
+# It should be possible to override the following variables and specify the file to debug directly on the commandline:
+# DEBUGAPART=train DEBUGAFILE=vesm9301_013 make debug_a
+DEBUGAPART ?= train
+DEBUGAFILE ?= vesm9301_013
 debug_a:
+	@echo `date` make prague to hamledt started for $(DEBUGAFILE) | tee -a time.log
+	$(TREEX) \
+	    Read::Treex from='!$(DIR0)/$(DEBUGAPART)/amw/$(DEBUGAFILE).treex' \
+	    A2A::CopyAtree source_selector='' selector='orig' \
+	    HamleDT::$(UCLANG)::$(HARMONIZE) \
+	    Write::Treex substitute={00}{01} $(OUTCOMPRESS)
 	@echo `date` make prague tecto to ud enhanced started for $(DEBUGAFILE) | tee -a time.log
 	$(TREEX) \
 	    Read::Treex from='!$(DIR1)/$(DEBUGAPART)/amw/$(DEBUGAFILE).treex' \
@@ -202,9 +210,17 @@ debug_a:
 
 # Complete make ud for the whole PDT takes more than 30 minutes and is not practical if we need to debug conversion of a single sentence.
 # Here we can run conversion for just one file (the tectogrammatical scenario; for the analytical one, see above).
-DEBUGTPART=train
-DEBUGTFILE=mf920922_090
+# It should be possible to override the following variables and specify the file to debug directly on the commandline:
+# DEBUGTPART=train DEBUGTFILE=mf920922_090 make debug_t
+DEBUGTPART ?= train
+DEBUGTFILE ?= mf920922_090
 debug_t:
+	@echo `date` make prague to hamledt started for $(DEBUGAFILE) | tee -a time.log
+	$(TREEX) \
+	    Read::Treex from='!$(DIR0)/$(DEBUGTPART)/tamw/$(DEBUGTFILE).treex' \
+	    A2A::CopyAtree source_selector='' selector='orig' \
+	    HamleDT::$(UCLANG)::$(HARMONIZE) \
+	    Write::Treex substitute={00}{01} $(OUTCOMPRESS)
 	@echo `date` make prague tecto to ud enhanced started for $(DEBUGTFILE) | tee -a time.log
 	$(TREEX) \
 	    Read::Treex from='!$(DIR1)/$(DEBUGTPART)/tamw/$(DEBUGTFILE).treex' \
