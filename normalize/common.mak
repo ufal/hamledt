@@ -200,6 +200,7 @@ SCEN2TE = \
     A2A::CorefClusters \
     A2A::RemoveUnusedEmptyNodes \
     A2A::CorefMentions \
+    A2A::CorefToMisc \
     A2A::CorefDestroyWild
 
 # CorefUD needs the tectogrammatical layer of Prague annotation style.
