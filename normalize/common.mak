@@ -309,7 +309,7 @@ default_ud_export:
 default_ud_postprocessing:
 	@echo `date` udapy postprocessing started | tee -a time.log
 	# Skip CoNLL-U files that have zero size (some treebanks lack train and dev).
-	( for i in *.conllu ; do if [ -s $$i ] ; then echo $$i ; cp $$i $$i.debug ; ( udapy -s $(UDAPISCEN) < $$i > fixed.conllu || exit ) ; mv fixed.conllu $$i ; mv $$i $(UDDIR)/UD_$(UDNAME) ; else rm $$i ; fi ; done ) |& tee udapi.log
+	( for i in *.conllu ; do if [ -s $$i ] ; then echo $$i ; cp $$i $$i.debug ; ( udapy -s $(UDAPISCEN) < $$i > fixed.conllu || break ) ; mv fixed.conllu $$i ; mv $$i $(UDDIR)/UD_$(UDNAME) ; else rm $$i ; fi ; done ) |& tee udapi.log
 	@echo `date` conllu stats started | tee -a time.log
 	$(UDTOOLS)/conllu-stats.pl $(UDDIR)/UD_$(UDNAME)/*.conllu > $(UDDIR)/UD_$(UDNAME)/stats.xml
 	@echo `date` udapy mark bugs started | tee -a time.log
