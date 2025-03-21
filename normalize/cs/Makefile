@@ -216,7 +216,7 @@ debug_a:
 DEBUGTPART ?= train
 DEBUGTFILE ?= mf920922_090
 debug_t:
-	@echo `date` make prague to hamledt started for $(DEBUGAFILE) | tee -a time.log
+	@echo `date` make prague to hamledt started for $(DEBUGTFILE) | tee -a time.log
 	$(TREEX) \
 	    Read::Treex from='!$(DIR0)/$(DEBUGTPART)/tamw/$(DEBUGTFILE).treex' \
 	    A2A::CopyAtree source_selector='' selector='orig' \
