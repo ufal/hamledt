@@ -199,7 +199,8 @@ SCEN2TE = \
     A2A::AddEnhancedUD \
     A2A::CorefClusters \
     A2A::RemoveUnusedEmptyNodes \
-    A2A::CorefMentions
+    A2A::CorefMentions \
+    A2A::CorefDestroyWild
 
 # CorefUD needs the tectogrammatical layer of Prague annotation style.
 # We cannot use this target for parts of PDT (Vesmír, what else?) and
