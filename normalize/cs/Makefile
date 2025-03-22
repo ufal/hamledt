@@ -197,7 +197,7 @@ debug_a:
 	# The following is adapted from the common target default_ud_postprocessing.
 	@echo `date` udapy postprocessing started | tee -a time.log
 	# Skip CoNLL-U files that have zero size (some treebanks lack train and dev).
-	for i in $(UDCODE)-ud-debug.conllu ; do if [ -s $$i ] ; then cp $$i $$i.debug ; udapy -s $(UDAPISCEN) < $$i > fixed.conllu ; kod=$$? ; if [[ "$$kod" == "0" ]] ; then mv fixed.conllu $$i && mv $$i $(UDDIR)/UD_$(UDNAME) ; else break ; fi ; else rm $$i ; fi ; done ; if [[ "$$kod" ]] ; then false ; fi 2>&1 | tee udapi.log ; if [[ "$${PIPESTATUS[0]}" != "0" ]] ; then echo ERROR $$kod ; false ; fi
+	for i in $(UDCODE)-ud-debug.conllu ; do if [ -s $$i ] ; then cp $$i $$i.debug ; udapy -s $(UDAPISCEN) < $$i > fixed.conllu ; kod=$$? ; if [[ "$$kod" == "0" ]] ; then mv fixed.conllu $$i && mv $$i $(UDDIR)/UD_$(UDNAME) ; else break ; fi ; else rm $$i ; fi ; done ; if [[ "$$kod" != "0" ]] ; then false ; fi 2>&1 | tee udapi.log ; if [[ "$${PIPESTATUS[0]}" != "0" ]] ; then echo ERROR $$kod ; false ; fi
 	@echo `date` udapy mark bugs started | tee -a time.log
 	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-debug.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
 	@echo `date` check sentence ids started | tee -a time.log
@@ -235,7 +235,7 @@ debug_t:
 	# The following is adapted from the common target default_ud_postprocessing.
 	@echo `date` udapy postprocessing started | tee -a time.log
 	# Skip CoNLL-U files that have zero size (some treebanks lack train and dev).
-	for i in $(UDCODE)-ud-debug.conllu ; do if [ -s $$i ] ; then cp $$i $$i.debug ; udapy -s $(UDAPISCEN) < $$i > fixed.conllu ; kod=$$? ; if [[ "$$kod" == "0" ]] ; then mv fixed.conllu $$i && mv $$i $(UDDIR)/UD_$(UDNAME) ; else break ; fi ; else rm $$i ; fi ; done ; if [[ "$$kod" ]] ; then false ; fi 2>&1 | tee udapi.log ; if [[ "$${PIPESTATUS[0]}" != "0" ]] ; then echo ERROR $$kod ; false ; fi
+	for i in $(UDCODE)-ud-debug.conllu ; do if [ -s $$i ] ; then cp $$i $$i.debug ; udapy -s $(UDAPISCEN) < $$i > fixed.conllu ; kod=$$? ; if [[ "$$kod" == "0" ]] ; then mv fixed.conllu $$i && mv $$i $(UDDIR)/UD_$(UDNAME) ; else break ; fi ; else rm $$i ; fi ; done ; if [[ "$$kod" != "0" ]] ; then false ; fi 2>&1 | tee udapi.log ; if [[ "$${PIPESTATUS[0]}" != "0" ]] ; then echo ERROR $$kod ; false ; fi
 	@echo `date` udapy mark bugs started | tee -a time.log
 	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-debug.conllu | udapy -HMAC ud.MarkBugs skip=no- > bugs.html
 	@echo `date` check sentence ids started | tee -a time.log
