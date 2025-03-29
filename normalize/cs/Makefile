@@ -8,55 +8,26 @@ POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 COREFUDDIR = /net/work/projects/corefud/data/cs-pdt
 
-# Switching from PDT 3.0 to PDT-C.
-#SOURCEDIR=/net/projects/pdt/pdt30/data
-#SOURCEDIR=/net/projects/pdt/pdt35/PDT3.5/data
-#SOURCEDIR=/net/data/pdt-c-1.0/data/PDT/pml
-SOURCEDIR=/net/work/people/zeman/PDT-C-2.0/PDT/pml
-# subdirs: amw, tamw / train-[1-8] dtest etest / *.a.gz
-
-# "source_a" is the old way that takes everything from the a and m layers, even in documents that
-# also have the t layer. The new way is the target "source" below; if there is t layer, it will
-# use it.
-source_a:
-	mkdir -p data/source/train
-	mkdir -p data/source/dev
-	mkdir -p data/source/test
-	ln -s $(SOURCEDIR)/{tamw,amw}/train-[1-8]/*.[amw] $(IN)/train
-	ln -s $(SOURCEDIR)/{tamw,amw}/dtest/*.[amw] $(IN)/dev
-	ln -s $(SOURCEDIR)/{tamw,amw}/etest/*.[amw] $(IN)/test
+SOURCEDIR=/net/work/people/zeman/PDT-C-2.0
 
 source:
 	mkdir -p data/source/train/tamw
 	mkdir -p data/source/dev/tamw
 	mkdir -p data/source/test/tamw
-	ln -s $(SOURCEDIR)/tamw/train-[1-8]/*.[tamw] $(IN)/train/tamw
-	ln -s $(SOURCEDIR)/tamw/dtest/*.[tamw] $(IN)/dev/tamw
-	ln -s $(SOURCEDIR)/tamw/etest/*.[tamw] $(IN)/test/tamw
+	ln -s $(SOURCEDIR)/PDT/pml/tamw/train-[1-8]/*.[tamw] $(IN)/train/tamw
+	ln -s $(SOURCEDIR)/PDT/pml/tamw/dtest/*.[tamw] $(IN)/dev/tamw
+	ln -s $(SOURCEDIR)/PDT/pml/tamw/etest/*.[tamw] $(IN)/test/tamw
+	ln -s $(SOURCEDIR)/Faust/pml/train/*.[tamw] $(IN)/train/tamw
+	ln -s $(SOURCEDIR)/Faust/pml/dtest/*.[tamw] $(IN)/dev/tamw
+	ln -s $(SOURCEDIR)/Faust/pml/etest/*.[tamw] $(IN)/test/tamw
 	mkdir -p data/source/train/amw
 	mkdir -p data/source/dev/amw
 	mkdir -p data/source/test/amw
-	ln -s $(SOURCEDIR)/amw/train-[1-8]/*.[amw] $(IN)/train/amw
-	ln -s $(SOURCEDIR)/amw/dtest/*.[amw] $(IN)/dev/amw
-	ln -s $(SOURCEDIR)/amw/etest/*.[amw] $(IN)/test/amw
+	ln -s $(SOURCEDIR)/PDT/pml/amw/train-[1-8]/*.[amw] $(IN)/train/amw
+	ln -s $(SOURCEDIR)/PDT/pml/amw/dtest/*.[amw] $(IN)/dev/amw
+	ln -s $(SOURCEDIR)/PDT/pml/amw/etest/*.[amw] $(IN)/test/amw
 
-# Similarly to "source" and "source_a" above, "treex_a" ignores the t layer while "treex" uses
-# it when available.
-#SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
 SCHEMADIR=/net/work/people/zeman/treex/lib/Treex/Block/Read/PDT_schema
-treex_a:
-	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/*.a' \
-		A2A::FillCoNLLAttributes \
-		Write::Treex clobber=1 path=$(DIR0)/train/ compress=0
-	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/dev/*.a' \
-		A2A::FillCoNLLAttributes \
-		Write::Treex clobber=1 path=$(DIR0)/dev/ compress=0
-	$(TREEX) \
-		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/test/*.a' \
-		A2A::FillCoNLLAttributes \
-		Write::Treex clobber=1 path=$(DIR0)/test/  compress=0
 
 treex:
 	rm -rf $(DIR0)/{train,dev,test}/*
