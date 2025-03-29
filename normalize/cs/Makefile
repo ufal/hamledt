@@ -133,6 +133,9 @@ ud_export:
 	# There is no -train-vt.conllu.
 	cat $(CONLLUDIR)/train/amw/vesm*.conllu  | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-va.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-va.conllu
+	@echo `date` cat train-f started | tee -a time.log
+	cat $(CONLLUDIR)/train/tamw/faust*.conllu   | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-ft.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-ft.conllu
 	@echo `date` cat dev started | tee -a time.log
 	cat $(CONLLUDIR)/dev/tamw/*.conllu       | ../conllu_docpar_from_sentid.pl >  $(UDCODE)-ud-dev.conllu
 	cat $(CONLLUDIR)/dev/amw/*.conllu        | ../conllu_docpar_from_sentid.pl >> $(UDCODE)-ud-dev.conllu
