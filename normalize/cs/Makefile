@@ -201,6 +201,7 @@ debug_t:
 	@echo `date` make prague to hamledt started for $(DEBUGTFILE) | tee -a time.log
 	$(TREEX) \
 	    Read::Treex from='!$(DIR0)/$(DEBUGTPART)/tamw/$(DEBUGTFILE).treex' \
+	    HamleDT::CS::SetBundleId \
 	    A2A::CopyAtree source_selector='' selector='orig' \
 	    HamleDT::$(UCLANG)::$(HARMONIZE) \
 	    Write::Treex substitute={00}{01} $(OUTCOMPRESS)
