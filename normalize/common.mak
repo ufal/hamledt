@@ -55,6 +55,8 @@ TEST       = $(IN)/test.conll
 # If a treebank requires postprocessing after import from CoNLL-X/CoNLL-2009, the treebank-specific Makefile must override the value of POST_IMPORTX_BLOCKS.
 # (This does not currently apply to import from CoNLL-U.)
 POST_IMPORTX_BLOCKS ?=
+# If a treebank requires preprocessing before conversion to Prague (i.e., before the $HARMONIZE block indicated above), the treebank-specific Makefile must override PRE_PRAGUE_BLOCKS.
+PRE_PRAGUE_BLOCKS ?=
 # If a treebank requires preprocessing before conversion to UD, the treebank-specific Makefile must override the value of PRE_UD_BLOCKS.
 # If a treebank requires postprocessing after conversion to UD, the treebank-specific Makefile must override the value of POST_UD_BLOCKS.
 # Example: PRE_UD_BLOCKS=HamleDT::CS::SplitFusedWords
@@ -119,6 +121,7 @@ orig_to_ud:
 
 SCEN1 = \
     A2A::CopyAtree source_selector='' selector='orig' \
+    $(PRE_PRAGUE_BLOCKS) \
     HamleDT::$(UCLANG)::$(HARMONIZE)
 
 prague:

@@ -3,6 +3,8 @@ TREEBANK=cs
 UDCODE=cs_pdt
 UDNAME=Czech-PDT
 INPATTERN={train,dev,test}/{tamw,amw}/*.treex
+###!!! PRE_PRAGUE_BLOCKS are needed temporarily until we run make treex next time because then the block will be applied there.
+PRE_PRAGUE_BLOCKS=HamleDT::CS::SetBundleId
 HARMONIZE=HarmonizePDTC iset_driver=cs::pdtc
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
@@ -36,14 +38,17 @@ treex:
 	mkdir -p $(DIR0)/test/tamw
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/train/tamw/*.t' \
+		HamleDT::CS::SetBundleId \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/train/tamw/ compress=0
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/dev/tamw/*.t' \
+		HamleDT::CS::SetBundleId \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/dev/tamw/ compress=0
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=t from='!$(IN)/test/tamw/*.t' \
+		HamleDT::CS::SetBundleId \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/tamw/  compress=0
 	mkdir -p $(DIR0)/train/amw
@@ -51,14 +56,17 @@ treex:
 	mkdir -p $(DIR0)/test/amw
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/train/amw/*.a' \
+		HamleDT::CS::SetBundleId \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/train/amw/ compress=0
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/dev/amw/*.a' \
+		HamleDT::CS::SetBundleId \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/dev/amw/ compress=0
 	$(TREEX) \
 		Read::PDT schema_dir=$(SCHEMADIR) top_layer=a from='!$(IN)/test/amw/*.a' \
+		HamleDT::CS::SetBundleId \
 		A2A::FillCoNLLAttributes \
 		Write::Treex clobber=1 path=$(DIR0)/test/amw/  compress=0
 
