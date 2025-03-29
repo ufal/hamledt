@@ -6,6 +6,8 @@
 # ln94200-100-p1s1
 # mf920901-001-p1s1A
 # vesm9211-001-p1s1
+# Faust (PDT-C 2.0):
+# faust_2010_07_mu_17-SCzechA-p1858-s1-root
 # Czech Academic Corpus:
 # a01w-s1
 # Czech FicTree: three digits before sentence number are chunk number.
@@ -14,7 +16,7 @@
 # wsj-1900-s7
 # Prague Arabic Dependency Treebank:
 # afp.20000715.0001:p2u1
-# Copyright © 2017, 2021 Dan Zeman <zeman@ufal.mff.cuni.cz>
+# Copyright © 2017, 2021, 2025 Dan Zeman <zeman@ufal.mff.cuni.cz>
 # License: GNU GPL
 
 use utf8;
@@ -84,6 +86,25 @@ while(<>)
             {
                 my $pid = $1;
                 my $did = $2;
+                if($did ne $current_did)
+                {
+                    print("# newdoc id = $did\n");
+                    $current_did = $did;
+                }
+                if($pid ne $current_pid)
+                {
+                    print("# newpar id = $pid\n");
+                    $current_pid = $pid;
+                }
+                print("# sent_id = $sid\n");
+            }
+            # Faust
+            # faust_2010_07_mu_17-SCzechA-p1858-s1-root
+            elsif($sid =~ m/^(faust_.+?)-SCzechA-(p\d+)-(s.+?)(?:-root)?$/)
+            {
+                my $did = $1;
+                my $pid = "$did-$2";
+                $sid = "$pid-$3";
                 if($did ne $current_did)
                 {
                     print("# newdoc id = $did\n");
