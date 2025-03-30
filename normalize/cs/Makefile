@@ -78,7 +78,7 @@ treex:
 # from common.mak because the input path is different: extra /amw or /tamw.
 ud: treex_a_to_ud treex_t_to_ud export
 	# Copy the new data to the Coref-UD project folder. Exclude sentences that do not have t-layer and coreference.
-	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-train-[clm]t.conllu | udapy -s util.Filter keep_tree='"Tectogrammatical annotation available." in [re.sub(r"^ +", r"", c) for c in tree.comment.split("\n")]' > $(COREFUDDIR)/$(UDCODE)-corefud-train.conllu
+	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-train-[clmfs]t.conllu | udapy -s util.Filter keep_tree='"Tectogrammatical annotation available." in [re.sub(r"^ +", r"", c) for c in tree.comment.split("\n")]' > $(COREFUDDIR)/$(UDCODE)-corefud-train.conllu
 	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-dev.conllu          | udapy -s util.Filter keep_tree='"Tectogrammatical annotation available." in [re.sub(r"^ +", r"", c) for c in tree.comment.split("\n")]' > $(COREFUDDIR)/$(UDCODE)-corefud-dev.conllu
 	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-test.conllu         | udapy -s util.Filter keep_tree='"Tectogrammatical annotation available." in [re.sub(r"^ +", r"", c) for c in tree.comment.split("\n")]' > $(COREFUDDIR)/$(UDCODE)-corefud-test.conllu
 
@@ -90,7 +90,7 @@ ud_a: prague_to_ud_enhanced export
 # copy the result to the folder where CorefUD data are collected.
 corefud: treex_t_to_ud export
 	# Copy the new data to the Coref-UD project folder. Exclude sentences that do not have t-layer and coreference.
-	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-train-[clm]t.conllu | udapy -s util.Filter keep_tree='"Tectogrammatical annotation available." in [re.sub(r"^ +", r"", c) for c in tree.comment.split("\n")]' > $(COREFUDDIR)/$(UDCODE)-corefud-train.conllu
+	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-train-[clmfs]t.conllu | udapy -s util.Filter keep_tree='"Tectogrammatical annotation available." in [re.sub(r"^ +", r"", c) for c in tree.comment.split("\n")]' > $(COREFUDDIR)/$(UDCODE)-corefud-train.conllu
 	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-dev.conllu          | udapy -s util.Filter keep_tree='"Tectogrammatical annotation available." in [re.sub(r"^ +", r"", c) for c in tree.comment.split("\n")]' > $(COREFUDDIR)/$(UDCODE)-corefud-dev.conllu
 	cat $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-test.conllu         | udapy -s util.Filter keep_tree='"Tectogrammatical annotation available." in [re.sub(r"^ +", r"", c) for c in tree.comment.split("\n")]' > $(COREFUDDIR)/$(UDCODE)-corefud-test.conllu
 
