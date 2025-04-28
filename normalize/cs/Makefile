@@ -25,6 +25,9 @@ source:
 	ln -s $(SOURCEDIR)/PDTSC/pml/train/*.[tamw] $(IN)/train/tamw
 	ln -s $(SOURCEDIR)/PDTSC/pml/dtest/*.[tamw] $(IN)/dev/tamw
 	ln -s $(SOURCEDIR)/PDTSC/pml/etest/*.[tamw] $(IN)/test/tamw
+	ln -s $(SOURCEDIR)/PCEDT-cz/pml/train/*.[tamw] $(IN)/train/tamw
+	ln -s $(SOURCEDIR)/PCEDT-cz/pml/dtest/*.[tamw] $(IN)/dev/tamw
+	ln -s $(SOURCEDIR)/PCEDT-cz/pml/etest/*.[tamw] $(IN)/test/tamw
 	mkdir -p data/source/train/amw
 	mkdir -p data/source/dev/amw
 	mkdir -p data/source/test/amw
@@ -150,6 +153,9 @@ ud_export:
 	@echo `date` cat train-s started | tee -a time.log
 	cat $(CONLLUDIR)/train/tamw/pdtsc*.conllu   | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-st.conllu
 	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-st.conllu
+	@echo `date` cat train-w started | tee -a time.log
+	cat $(CONLLUDIR)/train/tamw/wsj*.conllu   | ../conllu_docpar_from_sentid.pl > $(UDCODE)-ud-train-wt.conllu
+	$(UDTOOLS)/fix-space-after-paragraph.pl $(UDCODE)-ud-train-wt.conllu
 	@echo `date` cat dev started | tee -a time.log
 	cat $(CONLLUDIR)/dev/tamw/*.conllu       | ../conllu_docpar_from_sentid.pl >  $(UDCODE)-ud-dev.conllu
 	cat $(CONLLUDIR)/dev/amw/*.conllu        | ../conllu_docpar_from_sentid.pl >> $(UDCODE)-ud-dev.conllu
