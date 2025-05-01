@@ -1,7 +1,7 @@
 LANGCODE=cs
 TREEBANK=cs
-UDCODE=cs_pdt
-UDNAME=Czech-PDT
+UDCODE=cs_pdtc
+UDNAME=Czech-PDTC
 INPATTERN={train,dev,test}/{tamw,amw}/*.treex
 ###!!! PRE_PRAGUE_BLOCKS are needed temporarily until we run make treex next time because then the block will be applied there.
 PRE_PRAGUE_BLOCKS=HamleDT::CS::SetBundleId
