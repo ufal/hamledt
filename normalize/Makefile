@@ -97,4 +97,5 @@ clean:
 	rm -rf */time.log
 	rm -rf */validation.log
 	rm -rf */*.conllu.{debug,bak}
+	rm *-ud*-pmltq.{err,out,sh}
 
