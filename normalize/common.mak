@@ -333,7 +333,7 @@ default_ud_postprocessing:
 # We cannot change the id in the same run where we split the large documents into smaller ones because then Treex would try to
 # reindex nodes in document but the document would not exist at that moment.
 pmltq:
-	$(TREEX) Read::Treex from='!$(DIR2)/$(INPATTERN)' bundles_per_doc=50 Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/(.+)(\d\d\d)}{$(SUBDIRPTQ)/$$1-$$2-$$3}' compress=1
+	$(TREEX) Read::Treex from='!$(DIR2)/$(INPATTERN)' bundles_per_doc=50 A2A::RemoveEmptyNodes Write::Treex substitute='{$(SUBDIR2)/(train|dev|test)/(.+)(\d\d\d)}{$(SUBDIRPTQ)/$$1-$$2-$$3}' compress=1
 	$(TREEX) -s Read::Treex from='!$(PMLTQDIR)/*.treex.gz' W2W::AddNodeIdPrefix prefix=$(UDCODE)/ scsubst=1
 
 PMLTQCODE=$(shell perl -e '$$x = "$(TREEBANK)"; $$x =~ s/-ud20(.)/-ud20-$$1/; $$x =~ s/-ud20//; print $$x;')
