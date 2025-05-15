@@ -220,7 +220,7 @@ foreach my $folder (@folders)
     }
     else
     {
-        $command = "$scriptname 2>&1 | tee log-$ltcode.log";
+        $command = "./$scriptname 2>&1 | tee log-$ltcode.log";
         print("\t$command\n");
         system($command);
     }
