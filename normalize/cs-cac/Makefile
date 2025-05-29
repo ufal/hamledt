@@ -61,8 +61,7 @@ debug:
 	@echo `date` make prague to hamledt started for $(DEBUGAFILE) | tee -a time.log
 	$(TREEX) \
 	    Read::Treex from='!$(DIR0)/$(DEBUGAPART)/$(DEBUGAFILE).treex' \
-	    A2A::CopyAtree source_selector='' selector='orig' \
-	    HamleDT::$(UCLANG)::$(HARMONIZE) \
+	    $(SCEN1) \
 	    Write::Treex substitute={00}{01} $(OUTCOMPRESS)
 	@echo `date` make prague to ud enhanced started for $(DEBUGAFILE) | tee -a time.log
 	$(TREEX) \
