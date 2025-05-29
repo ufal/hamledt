@@ -313,6 +313,8 @@ default_ud_export:
 # UDAPISCEN = ud.cs.FixEdeprels
 default_ud_postprocessing:
 	@echo `date` udapy postprocessing started | tee -a time.log
+	# If there is any debug file from previous runs in the target folder, it must be removed before we count any statistics.
+	rm -f $(UDDIR)/UD_$(UDNAME)/$(UDCODE)-ud-debug.conllu
 	# Skip CoNLL-U files that have zero size (some treebanks lack train and dev).
 	for i in *.conllu ; do if [ -s $$i ] ; then echo $$i ; cp $$i $$i.debug ; udapy -s $(UDAPISCEN) < $$i > fixed.conllu ; kod=$$? ; if [[ "$$kod" == "0" ]] ; then mv fixed.conllu $$i && mv $$i $(UDDIR)/UD_$(UDNAME) ; else break ; fi ; else rm $$i ; fi ; done ; if [[ "$$kod" != "0" ]] ; then false ; fi 2>&1 | tee udapi.log ; if [[ "$${PIPESTATUS[0]}" != "0" ]] ; then echo ERROR $$kod ; false ; fi
 	@echo `date` conllu stats started | tee -a time.log
