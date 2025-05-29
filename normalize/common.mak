@@ -121,6 +121,7 @@ orig_to_ud:
 
 SCEN1 = \
     A2A::CopyAtree source_selector='' selector='orig' \
+    HamleDT::SetDeprel \
     $(PRE_PRAGUE_BLOCKS) \
     HamleDT::$(UCLANG)::$(HARMONIZE)
 
