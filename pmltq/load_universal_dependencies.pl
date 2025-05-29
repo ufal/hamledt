@@ -17,10 +17,10 @@ use udlib;
 sub usage
 {
     my $er = '25'; # example release number
-    print STDERR ("Usage: perl $0 --release $er --cluster [cs_pdt cs_cac]\n");
+    print STDERR ("Usage: perl $0 --release $er --cluster [cs_pdtc cs_cac]\n");
     print STDERR ("       ... run pmltq convert on all UD treebanks in parallel on the cluster\n");
     print STDERR ("       ... you must run this from the cluster head node (sol1 to sol10)\n");
-    print STDERR ("       ... optional args: codes of treebanks to process (default: all)\n");
+    print STDERR ("       ... optional args: codes of treebanks to process (default: all; codes as in data file names, e.g. 'cs_pdtc')\n");
     print STDERR ("       perl $0 --release $er\n");
     print STDERR ("       ... without --cluster it will run pmltq load and the rest of actions\n");
     print STDERR ("       ... you must be somewhere with DBD::Pg module (not on the cluster)\n");
