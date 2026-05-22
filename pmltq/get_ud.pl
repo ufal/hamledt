@@ -8,7 +8,7 @@ use strict;
 use warnings;
 
 # Default values
-my $udrel = "214";
+my $udrel = "218";
 my $only;
 my $pmltqdir = "/net/work/projects/pmltq/data";
 my $uddir = "/net/work/people/zeman/hamledt-data";
