@@ -4,6 +4,9 @@ https://catalog.ldc.upenn.edu/LDC2008T22
 https://ufal.mff.cuni.cz/cac
 /net/projects/cac/cac20
 
+Updates after release CAC 2.0:
+/net/work/projects/cac
+
 License: CC BY-SA 4.0
 
 Annotation style follows PDT 2.0.

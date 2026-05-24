@@ -6,17 +6,16 @@ HARMONIZE=HarmonizePDT iset_driver=cs::pdt
 POST_UD_BLOCKS=HamleDT::CS::SplitFusedWords HamleDT::CS::FixUD
 include ../common.mak
 
-SOURCEDIR=/net/projects/cac/cac20/data/pml
-SCHEMADIR=/net/projects/cac/cac20/data/schemas
+SOURCEDIR=/net/work/projects/cac/data
+SCHEMADIR=/net/work/projects/cac/schemas
 # There is no official train / dev / test data split. Temporary: s50w is dev, s60w is test, the rest is train.
 source:
 	mkdir -p data/source/train
 	mkdir -p data/source/dev
 	mkdir -p data/source/test
-	cp $(SOURCEDIR)/{[ans][03-9]0w,[ans][0-9][1-9]w}.[amw].gz $(IN)/train
-	cp $(SOURCEDIR)/[ans]10w.[amw].gz $(IN)/dev
-	cp $(SOURCEDIR)/[ans]20w.[amw].gz $(IN)/test
-	gunzip $(IN)/{train,dev,test}/*.gz
+	cp $(SOURCEDIR)/{[ans][03-9]0w,[ans][0-9][1-9]w}.[amw] $(IN)/train
+	cp $(SOURCEDIR)/[ans]10w.[amw] $(IN)/dev
+	cp $(SOURCEDIR)/[ans]20w.[amw] $(IN)/test
 
 #SCHEMADIR=$(TMT_ROOT)/treex/lib/Treex/Block/Read/PDT_schema
 treex:
