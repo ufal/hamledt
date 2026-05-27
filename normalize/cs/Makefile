@@ -122,7 +122,7 @@ treex_t_to_ud:
 # We need our own export (instead of default_ud_export) because PDT is large,
 # its train portion must be split into several files, and we need specific
 # post-processing, too.
-UDAPISCEN = read.OldCorefUD util.Eval node='for m in node.coref_mentions: m.head = m.words[0]' corefud.MoveHead corefud.FixParentheses ud.cs.FixEdeprels
+UDAPISCEN = read.OldCorefUD util.Eval node='for m in node.coref_mentions: m.head = m.words[0]' corefud.MoveHead corefud.FixParentheses mark=False ud.cs.FixEdeprels
 export: ud_export default_ud_postprocessing
 
 ud_export:
